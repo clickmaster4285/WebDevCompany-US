@@ -66,6 +66,15 @@ export function HeroSection() {
         delay: 0.5,
       });
 
+      // Independent animation for CTA form - faster and shorter delay
+      gsap.from(".cta-form", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "expo.out",
+        delay: 0.15, // Much shorter delay
+      });
+
       gsap.from(browser.current, {
         opacity: 0,
         y: 60,
@@ -177,12 +186,12 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Right Column - Compact CTA Form */}
-        <div className="hero-fade lg:pt-8">
-          <div className="rounded-3xl border border-white/10  p-6 md:p-8 backdrop-blur-2xl">
+        {/* Right Column - CTA Form - REMOVED hero-fade class, added cta-form class */}
+        <div className="cta-form lg:pt-8">
+          <div className="rounded-3xl border bg-white/10 border-white/10 p-6 md:p-8 backdrop-blur-full">
             <div className="mb-6">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs uppercase tracking-widest text-white/90">
-                Let’s talk
+                Let's talk
               </div>
               <h3 className="mt-5 text-2xl font-medium text-white leading-tight">
                 Ready to create something unforgettable?
@@ -228,11 +237,8 @@ export function HeroSection() {
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Send Message
-                
                 </span>
               </button>
-
-              
             </form>
           </div>
         </div>
