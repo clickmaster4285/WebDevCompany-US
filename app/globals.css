@@ -144,6 +144,20 @@
   color: var(--ink-mute);
 }
 
+@utility text-violet-soft {
+  color: var(--violet-soft);
+}
+
+@utility text-violet {
+  color: var(--violet);
+}
+
+@utility text-violet-400 {
+  color: var(--violet-soft);
+}
+
+
+
 
 @utility glass {
   background: linear-gradient(

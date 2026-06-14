@@ -31,13 +31,13 @@ export function AwardsSection() {
               key={a.n + a.y + a.d}
               className="group relative overflow-hidden rounded-2xl border border-white/8 bg-gradient-to-br from-white/5 to-transparent p-6 transition-all duration-500 hover:-translate-y-1 hover:border-violet/40"
             >
-              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-violet/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-primary/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
                 <div className="text-xs uppercase tracking-widest text-ink-mute">{a.y}</div>
                 <div className="mt-6 text-display text-2xl text-ink">{a.n}</div>
                 <div className="mt-2 text-sm text-ink-soft">{a.d}</div>
                 <div className="mt-8 inline-flex items-center gap-2 text-xs text-violet-soft">
-                  <span className="h-1.5 w-1.5 rounded-full bg-violet" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                   Verified
                 </div>
               </div>

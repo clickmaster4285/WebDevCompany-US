@@ -183,7 +183,7 @@ export function Process() {
             <div
               key={i}
               className={`h-1 rounded-full transition-all duration-300 ${
-                i === phase ? "w-12 bg-violet-600" : "w-6 bg-white/20"
+                i === phase ? "w-12 bg-primary-600" : "w-6 bg-white/20"
               }`}
             />
           ))}

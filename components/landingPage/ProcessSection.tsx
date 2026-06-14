@@ -80,7 +80,7 @@ export function ProcessSection() {
           <div className="relative">
             <div className="sticky top-32 h-[70vh]">
               <div className="absolute left-0 top-0 h-full w-px bg-white/10">
-                <div className="process-progress absolute inset-x-0 top-0 origin-top h-full bg-violet" style={{ transform: "scaleY(0.0001)" }} />
+                <div className="process-progress absolute inset-x-0 top-0 origin-top h-full bg-primary" style={{ transform: "scaleY(0.0001)" }} />
               </div>
               <div className="relative pl-10 h-full flex items-center">
                 <div className="relative w-full">

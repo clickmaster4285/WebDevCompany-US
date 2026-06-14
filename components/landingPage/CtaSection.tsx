@@ -26,7 +26,7 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
   return (
     <button
       ref={ref}
-      className="group inline-flex items-center gap-3 rounded-full bg-violet px-8 py-4 text-base font-medium text-white transition-[transform,box-shadow] duration-300 violet-glow hover:shadow-[0_40px_100px_-20px_var(--violet)]"
+      className="group inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-base font-medium text-white transition-[transform,box-shadow] duration-300 violet-glow hover:shadow-[0_40px_100px_-20px_var(--violet)]"
     >
       {children}
     </button>

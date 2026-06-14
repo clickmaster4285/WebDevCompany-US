@@ -50,7 +50,7 @@ export function Nav() {
           className="group relative inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
         >
           Start a project
-          <span className="inline-block transition-transform group-hover:translate-x-0.5">→</span>
+          
         </a>
       </div>
     </header>

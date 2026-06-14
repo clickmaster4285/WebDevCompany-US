@@ -160,11 +160,11 @@ export function HeroSection() {
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-violet px-7 py-4 text-sm font-medium text-white violet-glow transition-transform hover:-translate-y-0.5"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-primary px-7 py-4 text-sm font-medium text-white violet-glow transition-transform hover:-translate-y-0.5"
             >
               <span className="absolute inset-0 bg-[linear-gradient(120deg,transparent,oklch(1_0_0/0.25),transparent)] translate-x-[-100%] transition-transform duration-700 group-hover:translate-x-[100%]" />
               Start a project
-              <span>→</span>
+             
             </a>
             <a
               href="#work"
