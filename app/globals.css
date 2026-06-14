@@ -136,6 +136,15 @@
   font-weight: 500;
 }
 
+@utility text-ink-soft {
+  color: var(--ink-soft);
+}
+
+@utility text-ink-mute {
+  color: var(--ink-mute);
+}
+
+
 @utility glass {
   background: linear-gradient(
     180deg,
