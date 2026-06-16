@@ -127,8 +127,8 @@ export function CtaSection() {
             </div>
             <div className="space-y-2 text-sm">
               <div className="text-ink-mute">Email</div>
-              <a href="mailto:studio@clickmasters.dev" className="text-display text-2xl text-ink hover:text-violet-soft">
-                studio@clickmasters.dev
+              <a href="mailto:marketing@clickmasters.pk" className="text-display text-2xl text-ink hover:text-violet-soft">
+                marketing@clickmasters.pk
               </a>
             </div>
             <div className="space-y-2 text-sm">

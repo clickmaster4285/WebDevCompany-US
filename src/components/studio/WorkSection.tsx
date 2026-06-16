@@ -1,15 +1,43 @@
 import { useEffect, useRef } from "react";
 import { useGsap } from "@/lib/gsap";
-import saasImg from "@/assets/work-saas.jpg";
+import saasImg from "@/assets/kitchenFlow.jpg";
 import fintechImg from "@/assets/work-fintech.jpg";
 import ecomImg from "@/assets/work-ecom.jpg";
 import corpImg from "@/assets/work-corp.jpg";
 
 const PROJECTS = [
-  { name: "Helix Analytics", industry: "SaaS · B2B", img: saasImg, desc: "An AI-native analytics dashboard that turns raw product data into narrative insights.", tech: ["React", "Next.js", "tRPC", "Postgres"], result: "+212% activation" },
-  { name: "Northwind Pay", industry: "Fintech", img: fintechImg, desc: "A consumer fintech app that re-imagines balances, budgets and savings with cinematic motion.", tech: ["React Native", "GraphQL", "Stripe"], result: "1.2M MAU" },
-  { name: "Maison Atelier", industry: "Luxury E-commerce", img: ecomImg, desc: "A headless commerce experience for a couture fashion house with editorial storytelling.", tech: ["Shopify Hydrogen", "Three.js", "GSAP"], result: "+87% AOV" },
-  { name: "Orbital Group", industry: "Corporate", img: corpImg, desc: "A flagship marketing site for a global aerospace conglomerate with rich interactive case studies.", tech: ["Astro", "WebGL", "Sanity"], result: "Awwwards SOTD" },
+{
+  name: "Kitchen Flow",
+  industry: "Restaurant",
+  img: saasImg,
+  desc: "A modern restaurant website featuring online reservations, digital menus, event bookings, and a premium dining experience.",
+  tech: ["Next.js", "Tailwind CSS", "Node.js", "PostgreSQL"],
+  result: "+156% reservations",
+},
+  {
+    name: "SmileCraft Dental",
+    industry: "Healthcare",
+    img: fintechImg,
+    desc: "A modern dental clinic website with online appointment booking, treatment pages, and patient resources.",
+    tech: ["React", "Next.js", "Stripe"],
+    result: "+94% bookings",
+  },
+  {
+    name: "PrimeNest Realty",
+    industry: "Real Estate",
+    img: ecomImg,
+    desc: "A property showcase platform featuring advanced search, interactive maps, and agent profiles.",
+    tech: ["Next.js", "Mapbox", "Supabase"],
+    result: "12K+ monthly visitors",
+  },
+  {
+    name: "AutoMotive",
+    industry: "E-commerce",
+    img: corpImg,
+    desc: "A scalable online store with custom product experiences, fast checkout, and optimized conversions.",
+    tech: ["Shopify", "Hydrogen", "GraphQL"],
+    result: "+143% revenue",
+  },
 ];
 
 export function WorkSection() {

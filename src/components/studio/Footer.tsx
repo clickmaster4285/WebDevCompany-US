@@ -32,7 +32,7 @@ export function Footer() {
           {[
             ["Studio", ["About", "Process", "Careers", "Journal"]],
             ["Services", ["Web Development", "UI/UX Design", "Web Applications", "Performance"]],
-            ["Contact", ["studio@clickmasters.dev", "Berlin · Lisbon", "Available Q2 2026", "@clickmasters_studio"]],
+            ["Contact", ["marketing@clickmasters.pk", "Berlin · Lisbon", "Available Q2 2026", ""]],
           ].map(([h, items]) => (
             <div key={h as string}>
               <div className="text-xs uppercase tracking-widest text-ink-mute">{h as string}</div>
