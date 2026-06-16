@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { OTPInput, OTPInputContext } from "input-otp";
 import { Minus } from "lucide-react";
@@ -33,7 +35,17 @@ const InputOTPSlot = React.forwardRef<
   React.ComponentPropsWithoutRef<"div"> & { index: number }
 >(({ index, className, ...props }, ref) => {
   const inputOTPContext = React.useContext(OTPInputContext);
-  const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index];
+
+  // `input-otp` context typings vary by version; avoid assuming `slots` exists in the type.
+  const slot = (inputOTPContext as any)?.slots?.[index] as
+    | {
+        char?: React.ReactNode;
+        hasFakeCaret?: boolean;
+        isActive?: boolean;
+      }
+    | undefined;
+
+  const { char, hasFakeCaret, isActive } = slot ?? {};
 
   return (
     <div
@@ -54,6 +66,10 @@ const InputOTPSlot = React.forwardRef<
     </div>
   );
 });
+
+
+
+
 InputOTPSlot.displayName = "InputOTPSlot";
 
 const InputOTPSeparator = React.forwardRef<
