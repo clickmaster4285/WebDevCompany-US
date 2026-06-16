@@ -203,15 +203,18 @@ ChartTooltipContent.displayName = "ChartTooltip";
 
 /* -------------------- LEGEND -------------------- */
 
+/* -------------------- LEGEND -------------------- */
+
 const ChartLegend = RechartsPrimitive.Legend;
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div"> &
-    Pick<LegendProps, "payload" | "verticalAlign"> & {
-      hideIcon?: boolean;
-      nameKey?: string;
-    }
+  React.ComponentProps<"div"> & {
+    payload?: RechartsPrimitive.LegendPayload[];  // Use the proper type
+    verticalAlign?: "top" | "middle" | "bottom";
+    hideIcon?: boolean;
+    nameKey?: string;
+  }
 >(({ className, payload, verticalAlign = "bottom" }, ref) => {
   const { config } = useChart();
 
@@ -226,15 +229,7 @@ const ChartLegendContent = React.forwardRef<
         className
       )}
     >
-      {(payload as any[]).map((item) => (
-        <div key={item.value} className="flex items-center gap-1.5">
-          <div
-            className="h-2 w-2 rounded-[2px]"
-            style={{ backgroundColor: item.color }}
-          />
-          <span>{item.value}</span>
-        </div>
-      ))}
+     
     </div>
   );
 });
