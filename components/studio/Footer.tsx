@@ -1,6 +1,9 @@
-import { Link } from "@tanstack/react-router";
+"use client"; // ✅ 1. Added this to fix the Framer Motion server error
+
 import { motion } from "framer-motion";
-import footerImg from "@/assets/footer.png";
+import footerImg from "@/assets/footer.png"; // Make sure this path is correct in your project
+
+// Note: Removed the unused @tanstack/react-router import to avoid bundling conflicts
 
 export function Footer() {
   return (
@@ -15,7 +18,7 @@ export function Footer() {
                 className="shrink-0"
               >
                 <img
-                  src={footerImg}
+                  src={footerImg.src || footerImg} // Safe fallback for local asset imports in Next.js
                   alt=""
                   aria-hidden="true"
                   className="w-16 h-auto object-contain"
@@ -38,9 +41,12 @@ export function Footer() {
               <div className="text-xs uppercase tracking-widest text-ink-mute">{h as string}</div>
               <ul className="mt-5 space-y-3 text-sm text-ink-soft">
                 {(items as string[]).map((x) => (
-                  <li key={x}>
-                    <a className="hover:text-violet-soft transition-colors" href="#">{x}</a>
-                  </li>
+                  // Skip rendering if the string is empty
+                  x && (
+                    <li key={x}>
+                      <a className="hover:text-violet-soft transition-colors" href="#">{x}</a>
+                    </li>
+                  )
                 ))}
               </ul>
             </div>
