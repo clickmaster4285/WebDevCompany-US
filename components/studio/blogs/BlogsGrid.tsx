@@ -31,7 +31,7 @@ export function BlogsGrid() {
         </p>
       </div>
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-2">
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {visibleBlogs.map((blog) => (
           <BlogCard key={blog.id} blog={blog} />
         ))}

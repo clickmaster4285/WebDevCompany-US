@@ -4,6 +4,8 @@ import { blogs } from "@/data/blogs";
 import { Nav } from "@/components/studio/Nav";
 import { Footer } from "@/components/studio/Footer";
 import { BlogContentRenderer } from "@/components/studio/blogs/detail/BlogContentRenderer";
+import { AnimatedCTA } from "@/components/studio/blogs/detail/AnimatedCTA";
+import { BlogTOC } from "@/components/studio/blogs/detail/BlogTOC";
 
 type PageProps = {
   params: Promise<{
@@ -58,93 +60,102 @@ function getBlogCtas(blog: any) {
 }
 
 function CTASection({ cta }: { cta: any }) {
-  if (cta.variant === "light") {
-    return (
-      <section className="my-16 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_24px_90px_rgba(15,23,42,0.08)]">
-        <div className="grid gap-0 lg:grid-cols-[1fr_280px]">
-          <div className="relative p-7 md:p-10">
-            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-violet/10 blur-3xl" />
+if (cta.variant === "light") {
+  return (
+    <section className="my-16 [perspective:1200px]">
+      <div className="group relative overflow-hidden rounded-[2.25rem] border border-white/70 bg-white shadow-[0_35px_120px_rgba(15,23,42,0.14)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_45px_140px_rgba(124,92,255,0.18)] lg:[transform-style:preserve-3d]">
+        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-violet/20 blur-3xl" />
+        <div className="absolute -bottom-28 left-10 h-72 w-72 rounded-full bg-slate-950/5 blur-3xl" />
 
-            <div className="relative">
-              <p className="text-[11px] font-black uppercase tracking-[0.32em] text-violet">
-                {cta.label}
-              </p>
+        <div className="relative grid lg:grid-cols-[1fr_320px]">
+          <div className="relative p-7 md:p-10 lg:[transform:translateZ(28px)]">
+            <div className="inline-flex items-center gap-2 rounded-full bg-violet px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-white shadow-lg shadow-violet/25">
+              <span className="h-2 w-2 rounded-full bg-white" />
+              Recommended Next Step
+            </div>
 
-              <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.03em] text-slate-950 md:text-4xl">
-                {cta.title}
-              </h3>
+            <p className="mt-5 text-[11px] font-black uppercase tracking-[0.32em] text-violet">
+              {cta.label}
+            </p>
 
-              <p className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-600">
-                {cta.description}
-              </p>
+            <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-slate-950 md:text-4xl">
+              {cta.title}
+            </h3>
 
-              <div className="mt-7 flex flex-wrap gap-2">
-                {["Honest fit check", "No obligation", "Senior-led advice"].map(
-                  (item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600"
-                    >
-                      ✓ {item}
-                    </span>
-                  )
-                )}
-              </div>
+            <p className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-600">
+              {cta.description}
+            </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href={cta.primaryHref}
-                  className="rounded-full bg-slate-950 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-violet"
-                >
-                  {cta.primaryText} →
-                </Link>
+            <div className="mt-7 flex flex-wrap gap-2">
+              {["Honest fit check", "No obligation", "Senior-led advice"].map(
+                (item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-600 shadow-sm backdrop-blur"
+                  >
+                    ✓ {item}
+                  </span>
+                )
+              )}
+            </div>
 
-                <Link
-                  href={cta.secondaryHref}
-                  className="rounded-full border border-slate-200 px-5 py-3 text-sm font-bold text-slate-700 transition hover:border-violet hover:text-violet"
-                >
-                  {cta.secondaryText}
-                </Link>
-              </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href={cta.primaryHref}
+                className="rounded-full bg-slate-950 px-6 py-3 text-sm font-black text-white shadow-[0_14px_35px_rgba(15,23,42,0.25)] transition hover:-translate-y-0.5 hover:bg-violet"
+              >
+                {cta.primaryText} →
+              </Link>
+
+              <Link
+                href={cta.secondaryHref}
+                className="rounded-full border border-slate-200 bg-white/70 px-6 py-3 text-sm font-bold text-slate-700 shadow-sm transition hover:border-violet hover:text-violet"
+              >
+                {cta.secondaryText}
+              </Link>
             </div>
           </div>
 
-          <div className="border-t border-slate-100 bg-slate-50 p-7 lg:border-l lg:border-t-0">
+          <div className="relative border-t border-slate-100 bg-slate-50/80 p-7 backdrop-blur lg:border-l lg:border-t-0 lg:[transform:translateZ(42px)]">
+            <div className="absolute right-5 top-5 h-16 w-16 rounded-2xl border border-violet/20 bg-white shadow-[0_18px_50px_rgba(124,92,255,0.15)] rotate-6" />
+
             <p className="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">
               Fit Check
             </p>
 
-            <div className="mt-5 space-y-4">
+            <div className="mt-5 space-y-3">
               {[
                 ["Scope", "Website / SaaS / Commerce"],
                 ["Budget", "Clear range discussion"],
                 ["Timeline", "Launch-ready planning"],
               ].map(([label, value]) => (
-                <div key={label}>
+                <div
+                  key={label}
+                  className="relative rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_14px_40px_rgba(15,23,42,0.05)] transition group-hover:-translate-y-0.5"
+                >
                   <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
                     {label}
                   </p>
-                  <p className="mt-1 text-sm font-semibold text-slate-800">
+                  <p className="mt-1 text-sm font-semibold text-slate-850">
                     {value}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-6 rounded-2xl bg-white p-4 shadow-sm">
-              <p className="text-sm font-bold text-slate-950">
-                Quick recommendation
-              </p>
-              <p className="mt-2 text-xs leading-5 text-slate-500">
+            <div className="mt-5 rounded-2xl bg-slate-950 p-4 text-white shadow-[0_18px_50px_rgba(15,23,42,0.20)]">
+              <p className="text-sm font-black">Quick recommendation</p>
+              <p className="mt-2 text-xs leading-5 text-white/60">
                 We’ll tell you if ClickMasters fits — and if not, what type of
                 partner does.
               </p>
             </div>
           </div>
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
+}
 
   if (cta.variant === "light") {
   return (
@@ -418,49 +429,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
 </section>
 
         <section className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:px-10 lg:grid-cols-[220px_1fr]">
-<aside className="hidden lg:block">
-  <div className="sticky top-28 rounded-[1.25rem] border border-slate-200 bg-white p-3.5 shadow-[0_14px_40px_rgba(15,23,42,0.05)]">
-    <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
-      Contents
-    </p>
-
-    <nav className="relative mt-3 space-y-0.5 border-l border-slate-200 pl-3">
-      {headings?.map((heading: string, index: number) => (
-        <a
-          key={heading}
-          href={`#${slugify(heading)}`}
-          className={`group relative flex items-start gap-2 rounded-lg px-2 py-2 text-[13px] transition ${
-            index === 0
-              ? "bg-violet/10 text-violet"
-              : "text-slate-500 hover:bg-slate-50 hover:text-slate-950"
-          }`}
-        >
-          {index === 0 && (
-            <span className="absolute -left-[13px] top-0 h-full w-0.5 rounded-full bg-violet" />
-          )}
-
-          <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center text-[10px] font-black">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-
-          <span className="leading-5">{heading}</span>
-        </a>
-      ))}
-    </nav>
-
-    <Link
-      href="/#contact"
-      className="mt-4 flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2 text-[13px] font-medium text-slate-600 transition hover:border-violet hover:text-violet"
-    >
-      <span>Need help?</span>
-      <span>→</span>
-    </Link>
-  </div>
-</aside>
+<BlogTOC headings={headings || []} />
 
           <div className="min-w-0">
             <BlogContentRenderer content={firstBlock as any} />
-            <CTASection cta={ctas[0]} />
+            <AnimatedCTA cta={ctas[0]} />
 
             <BlogContentRenderer content={beforeMidCta as any} />
             <CTASection cta={ctas[1]} />
