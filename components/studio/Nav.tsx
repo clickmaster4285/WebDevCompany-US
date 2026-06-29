@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
-// Define the case studies data with proper slugs
+import Link from "next/dist/client/link";
+import ServicesDropdown from "@/components/services/ServicesDropdown"// Define the case studies data with proper slugs
 const caseStudiesData = [
   {
     id: "1",
@@ -62,71 +62,6 @@ const blogData = [
   }
 ];
 
-const resourceCategories = [
-  {
-    title: "Case Studies",
-    href: "/case-studies",
-    description: "Real client projects, outcomes and success stories.",
-    items: caseStudiesData.map(cs => ({
-      label: cs.label,
-      tag: cs.tag,
-      icon: cs.icon,
-      slug: cs.slug,
-      description: cs.description,
-      metrics: cs.metrics
-    }))
-  },
-  {
-    title: "Blogs",
-    href: "/blog",
-    description: "Latest insights, ideas, updates and industry articles.",
-    items: blogData.map(blog => ({
-      label: blog.label,
-      tag: blog.tag,
-      icon: blog.icon,
-      slug: blog.slug,
-      description: blog.description
-    }))
-  },
-  {
-    title: "FAQs",
-    href: "/faqs",
-    description: "Common questions about our process and services.",
-    items: [
-      {
-        label: "How long does a project take?",
-        tag: "Process",
-        icon: "❓",
-        slug: "#"
-      },
-      {
-        label: "Do you work with startups?",
-        tag: "Support",
-        icon: "💬",
-        slug: "#"
-      },
-    ],
-  },
-  {
-    title: "Testimonials",
-    href: "/testimonials",
-    description: "Client feedback and stories from successful projects.",
-    items: [
-      {
-        label: "Amazing delivery and communication",
-        tag: "Client",
-        icon: "⭐",
-        slug: "#"
-      },
-      {
-        label: "Helped us launch faster",
-        tag: "Review",
-        icon: "💜",
-        slug: "#"
-      },
-    ],
-  },
-];
 
 const resourceCategories = [
   {
@@ -242,11 +177,11 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
-        <a href="/" className="flex items-center gap-2 text-ink">
+        <Link href="/" className="flex items-center gap-2 text-ink">
           <span className="text-sm font-semibold tracking-wide">
             ClickMasters<span className="text-violet">.</span>
           </span>
-        </a>
+        </Link>
 
         <nav
           className={`hidden items-center gap-1 rounded-full px-2 py-2 text-sm text-ink-soft md:flex transition-all duration-500 ${
@@ -254,23 +189,23 @@ export function Nav() {
           }`}
         >
           {/* Studio */}
-          <a
+          <Link
             href="#story"
             className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
           >
             Studio
-          </a>
+          </Link>
 
           {/* ✅ Services Dropdown — standalone, NOT inside <a> tag */}
           <ServicesDropdown />
 
           {/* Work */}
-          <a
+          <Link
             href="#work"
             className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
           >
             Work
-          </a>
+          </Link>
 
           <div className="group relative">
             <button className="rounded-full px-4 py-2 text-violet transition-colors hover:bg-white/5 hover:text-ink">
@@ -291,7 +226,7 @@ export function Nav() {
                         activeResource.title === category.title;
 
                       return (
-                        <a
+                        <Link
                           key={category.title}
                           href={category.href}
                           onMouseEnter={() => setActiveResource(category)}
@@ -309,7 +244,7 @@ export function Nav() {
                         >
                           <span>{category.title}</span>
                           <span>›</span>
-                        </a>
+                        </Link>
                       );
                     })}
                   </div>
@@ -327,18 +262,18 @@ export function Nav() {
                       </p>
                     </div>
 
-                    <a
+                    <Link
                       href={activeResource.href}
                       onClick={(e) => handleViewAll(activeResource.href, e)}
                       className="flex items-center gap-2 text-sm font-medium text-violet hover:underline"
                     >
                       View All <span>›</span>
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     {activeResource.items.map((item) => (
-                      <a
+                      <Link
                         key={item.label}
                         href={item.slug && item.slug !== "#" 
                           ? `/${activeResource.title.toLowerCase().replace(" ", "-")}/${item.slug}`
@@ -403,7 +338,7 @@ export function Nav() {
                             </span>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -411,20 +346,20 @@ export function Nav() {
             </div>
           </div>
 
-          <a
+          <Link
             href="#process"
             className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
           >
             Process
-          </a>
+          </Link>
 
           {/* Stack */}
-          <a
+          <Link
             href="#stack"
             className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
           >
             Stack
-          </a>
+          </Link>
         </nav>
 
         <Link
@@ -435,7 +370,7 @@ export function Nav() {
           <span className="inline-block transition-transform group-hover:translate-x-0.5">
             →
           </span>
-        </a>
+        </Link>
       </div>
     </header>
   );
