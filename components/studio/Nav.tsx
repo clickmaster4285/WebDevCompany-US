@@ -128,6 +128,77 @@ const resourceCategories = [
   },
 ];
 
+const resourceCategories = [
+  {
+    title: "Case Studies",
+    href: "/case-studies",
+    description: "Real client projects, outcomes and success stories.",
+    items: [
+      {
+        label: "FinTech Wealth Management Platform",
+        tag: "FinTech",
+        icon: "💰",
+      },
+      {
+        label: "HealthTech NHS Frailty Assessment",
+        tag: "HealthTech",
+        icon: "🏥",
+      },
+    ],
+  },
+  {
+    title: "Blogs",
+    href: "/blogs",
+    description: "Latest insights, ideas, updates and industry articles.",
+    items: [
+      {
+        label: "How AI is changing SaaS products",
+        tag: "Insight",
+        icon: "✍️",
+      },
+      {
+        label: "Modern web app architecture",
+        tag: "Engineering",
+        icon: "⚙️",
+      },
+    ],
+  },
+  {
+    title: "FAQs",
+    href: "/faqs",
+    description: "Common questions about our process and services.",
+    items: [
+      {
+        label: "How long does a project take?",
+        tag: "Process",
+        icon: "❓",
+      },
+      {
+        label: "Do you work with startups?",
+        tag: "Support",
+        icon: "💬",
+      },
+    ],
+  },
+  {
+    title: "Testimonials",
+    href: "/testimonials",
+    description: "Client feedback and stories from successful projects.",
+    items: [
+      {
+        label: "Amazing delivery and communication",
+        tag: "Client",
+        icon: "⭐",
+      },
+      {
+        label: "Helped us launch faster",
+        tag: "Review",
+        icon: "💜",
+      },
+    ],
+  },
+];
+
 export function Nav() {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
@@ -357,8 +428,8 @@ export function Nav() {
           </a>
         </nav>
 
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           className="group relative inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
         >
           Start a project
