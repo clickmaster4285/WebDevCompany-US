@@ -1,0 +1,11 @@
+export { IndustryHero } from "./IndustryHero";
+export { IndustryFeaturedAnswer } from "./IndustryFeaturedAnswer";
+export { IndustryProblemSection } from "./IndustryProblemSection";
+export { IndustrySolutionSection } from "./IndustrySolutionSection";
+export { IndustryCapabilities } from "./IndustryCapabilities";
+export { IndustryComparison } from "./IndustryComparison";
+export { IndustryProcess } from "./IndustryProcess";
+export { IndustryOutcome } from "./IndustryOutcome";
+export { IndustryBusinessCase } from "./IndustryBusinessCase";
+export { IndustryFAQ } from "./IndustryFAQ";
+export { IndustrySidebar } from "./IndustrySidebar";
