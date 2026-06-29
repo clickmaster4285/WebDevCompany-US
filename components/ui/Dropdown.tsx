@@ -28,7 +28,8 @@ interface DropdownProps {
   layout?: "list" | "grid" | "simple-grid";
   width?: string;
   showViewAll?: boolean;
-  showSidebar?: boolean; // New prop to control sidebar visibility
+  showSidebar?: boolean;
+  maxItems?: number; // New prop to limit items shown
 }
 
 export function Dropdown({ 
@@ -38,13 +39,15 @@ export function Dropdown({
   layout = "list",
   width = "w-[680px]",
   showViewAll = true,
-  showSidebar = true // Default to true for backwards compatibility
+  showSidebar = true,
+  maxItems
 }: DropdownProps) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState(sections[0]);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -56,6 +59,35 @@ export function Dropdown({
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Handle mouse enter - open dropdown
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setIsOpen(true);
+  };
+
+  // Handle mouse leave - close dropdown with delay
+  const handleMouseLeave = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    timeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 150);
+  };
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
   // Handle item click
@@ -72,11 +104,20 @@ export function Dropdown({
     setIsOpen(false);
   };
 
+  // Get items with optional limit
+  const getItems = (items: DropdownItem[]) => {
+    if (maxItems) {
+      return items.slice(0, maxItems);
+    }
+    return items;
+  };
+
   // Render items as cards (for Resources)
   const renderCards = (section: DropdownSection) => {
+    const items = getItems(section.items);
     return (
       <div className="grid grid-cols-2 gap-4">
-        {section.items.map((item) => (
+        {items.map((item) => (
           <Link
             key={item.label}
             href={item.href}
@@ -86,7 +127,7 @@ export function Dropdown({
             className={`overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 ${
               hoveredItem === item.label 
                 ? "shadow-lg scale-[1.02] border-violet/20" 
-                : "hover:shadow-md"
+                : "hover:shadow-md hover:-translate-y-0.5"
             }`}
           >
             <div className="relative h-36 bg-slate-100 p-4">
@@ -142,11 +183,13 @@ export function Dropdown({
 
   // Render items as simple links (for Services)
   const renderLinks = (section: DropdownSection) => {
+    const items = getItems(section.items);
+    
     if (layout === "simple-grid") {
       // Split items into two columns for clean text links
-      const mid = Math.ceil(section.items.length / 2);
-      const leftColumn = section.items.slice(0, mid);
-      const rightColumn = section.items.slice(mid);
+      const mid = Math.ceil(items.length / 2);
+      const leftColumn = items.slice(0, mid);
+      const rightColumn = items.slice(mid);
 
       return (
         <div className="grid grid-cols-2 gap-x-6 gap-y-0">
@@ -157,7 +200,7 @@ export function Dropdown({
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleItemClick(section, item, e)}
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-violet/5 hover:text-violet"
+                className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-all duration-200 hover:bg-violet/10 hover:text-violet hover:translate-x-0.5"
               >
                 {item.label}
               </Link>
@@ -170,7 +213,7 @@ export function Dropdown({
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleItemClick(section, item, e)}
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-violet/5 hover:text-violet"
+                className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-all duration-200 hover:bg-violet/10 hover:text-violet hover:translate-x-0.5"
               >
                 {item.label}
               </Link>
@@ -182,9 +225,9 @@ export function Dropdown({
 
     if (layout === "grid") {
       // Split items into two columns with icons
-      const mid = Math.ceil(section.items.length / 2);
-      const leftColumn = section.items.slice(0, mid);
-      const rightColumn = section.items.slice(mid);
+      const mid = Math.ceil(items.length / 2);
+      const leftColumn = items.slice(0, mid);
+      const rightColumn = items.slice(mid);
 
       return (
         <div className="grid grid-cols-2 gap-2">
@@ -194,7 +237,7 @@ export function Dropdown({
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleItemClick(section, item, e)}
-                className="group flex items-center gap-2 rounded-lg px-3 py-2 transition-colors hover:bg-violet/5"
+                className="group flex items-center gap-2 rounded-lg px-3 py-2 transition-all duration-200 hover:bg-violet/10 hover:text-violet hover:translate-x-0.5"
               >
                 {item.icon && <span className="text-base">{item.icon}</span>}
                 <span className="text-sm font-medium text-slate-900 group-hover:text-violet transition-colors line-clamp-1">
@@ -209,7 +252,7 @@ export function Dropdown({
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleItemClick(section, item, e)}
-                className="group flex items-center gap-2 rounded-lg px-3 py-2 transition-colors hover:bg-violet/5"
+                className="group flex items-center gap-2 rounded-lg px-3 py-2 transition-all duration-200 hover:bg-violet/10 hover:text-violet hover:translate-x-0.5"
               >
                 {item.icon && <span className="text-base">{item.icon}</span>}
                 <span className="text-sm font-medium text-slate-900 group-hover:text-violet transition-colors line-clamp-1">
@@ -225,12 +268,12 @@ export function Dropdown({
     // Default list layout
     return (
       <div className="space-y-1">
-        {section.items.map((item) => (
+        {items.map((item) => (
           <Link
             key={item.label}
             href={item.href}
             onClick={(e) => handleItemClick(section, item, e)}
-            className="group flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-violet/5"
+            className="group flex items-center gap-3 rounded-lg px-3 py-2.5 transition-all duration-200 hover:bg-violet/10 hover:text-violet hover:translate-x-0.5"
           >
             {item.icon && <span className="text-lg">{item.icon}</span>}
             <div className="flex-1 min-w-0">
@@ -244,7 +287,7 @@ export function Dropdown({
               )}
             </div>
             {item.tag && (
-              <span className="inline-flex rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600">
+              <span className="inline-flex rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600 group-hover:bg-violet/10 group-hover:text-violet transition-colors">
                 {item.tag}
               </span>
             )}
@@ -273,9 +316,14 @@ export function Dropdown({
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div 
+      className="relative" 
+      ref={dropdownRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {/* Trigger */}
-      <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
+      <div className="cursor-pointer">
         {trigger}
       </div>
 
@@ -283,6 +331,8 @@ export function Dropdown({
       {isOpen && (
         <div 
           className={`absolute left-1/2 top-full mt-4 ${width} -translate-x-1/2 rounded-2xl border border-slate-200 bg-white shadow-2xl`}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <div className={`grid ${getGridCols()} overflow-hidden rounded-2xl`}>
             {/* Left sidebar - Categories (hidden when showSidebar is false) */}
@@ -305,14 +355,14 @@ export function Dropdown({
                           router.push(section.href);
                           setIsOpen(false);
                         }}
-                        className={`w-full text-left flex items-center justify-between rounded-lg px-4 py-2.5 text-sm font-medium transition ${
+                        className={`w-full text-left flex items-center justify-between rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
                           isActive
                             ? "bg-violet text-white shadow-lg shadow-violet/20"
-                            : "text-slate-700 hover:bg-white hover:text-violet"
+                            : "text-slate-700 hover:bg-white hover:text-violet hover:translate-x-0.5"
                         }`}
                       >
                         <span>{section.title}</span>
-                        <span className="text-xs">›</span>
+                        <span className="text-xs transition-transform duration-200 group-hover:translate-x-0.5">›</span>
                       </button>
                     );
                   })}
@@ -339,7 +389,7 @@ export function Dropdown({
                   <Link
                     href={activeSection.href}
                     onClick={(e) => handleViewAll(activeSection, e)}
-                    className="flex items-center gap-1 text-sm font-medium text-violet hover:underline"
+                    className="flex items-center gap-1 text-sm font-medium text-violet hover:underline transition-all duration-200 hover:gap-2"
                   >
                     View All <span>›</span>
                   </Link>

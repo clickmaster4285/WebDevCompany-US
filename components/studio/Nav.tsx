@@ -33,7 +33,7 @@ const resourceCategories: DropdownSection[] = [
     title: "Case Studies",
     href: "/case-studies",
     description: "Real client projects, outcomes and success stories.",
-    items: caseStudies.map((study) => ({
+    items: caseStudies.slice(0, 2).map((study) => ({
       label: study.title,
       href: `/case-studies/${study.slug}`,
       tag: study.category,
@@ -54,7 +54,7 @@ const resourceCategories: DropdownSection[] = [
     title: "Blogs",
     href: "/blogs",
     description: "Latest insights, ideas, updates and industry articles.",
-    items: blogs.map((blog) => ({
+    items: blogs.slice(0, 2).map((blog) => ({
       label: blog.title,
       href: `/blog/${blog.slug}`,
       tag: blog.category || "Insight",
@@ -66,7 +66,7 @@ const resourceCategories: DropdownSection[] = [
     title: "FAQs",
     href: "/faqs",
     description: "Common questions about our process and services.",
-    items: faqs.slice(0, 4).map((faq) => ({
+    items: faqs.slice(0, 2).map((faq) => ({
       label: faq.question.length > 60 ? faq.question.slice(0, 60) + "..." : faq.question,
       href: `/faqs#faq-item-${faqs.indexOf(faq)}`,
       tag: faq.meta,
@@ -78,7 +78,7 @@ const resourceCategories: DropdownSection[] = [
     title: "Testimonials",
     href: "/testimonials",
     description: "Client feedback and stories from successful projects.",
-    items: testimonials.slice(0, 4).map((testimonial) => ({
+    items: testimonials.slice(0, 2).map((testimonial) => ({
       label: testimonial.name,
       href: `/testimonials#${testimonial.name.toLowerCase().replace(/\s+/g, '-')}`,
       tag: testimonial.industry || "Client",
@@ -108,6 +108,28 @@ const technologiesCategories: DropdownSection[] = [
   },
 ];
 
+// Industries data - single category like Technologies
+const industriesCategories: DropdownSection[] = [
+  {
+    title: "Industries",
+    href: "/industries",
+    description: "Industry-specific web development solutions",
+    items: [
+      { label: "Healthcare Web Development", href: "/industries/healthcare-web-development" },
+      { label: "Law Firm Web Development", href: "/industries/law-firm-web-development" },
+      { label: "Real Estate Web Development", href: "/industries/real-estate-web-development" },
+      { label: "Fintech & Financial Services Web Development", href: "/industries/fintech-web-development" },
+      { label: "SaaS & Tech Web Development", href: "/industries/saas-web-development" },
+      { label: "Manufacturing Web Development", href: "/industries/manufacturing-web-development" },
+      { label: "eCommerce & Retail Web Development", href: "/industries/ecommerce-web-development" },
+      { label: "Hospitality Web Development", href: "/industries/hospitality-web-development" },
+      { label: "Education Web Development", href: "/industries/education-web-development" },
+      { label: "Dental Web Development", href: "/industries/dental-web-development" },
+      { label: "Construction Web Development", href: "/industries/construction-web-development" },
+      { label: "Nonprofit Web Development", href: "/industries/nonprofit-web-development" },
+    ],
+  },
+];
 export function Nav() {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
@@ -183,6 +205,20 @@ export function Nav() {
               </button>
             }
             sections={technologiesCategories}
+            variant="links"
+            layout="simple-grid"
+            width="w-[580px]"
+            showViewAll={true}
+            showSidebar={false}
+          />
+          {/* industries Dropdown - No Sidebar, With View All */}
+          <Dropdown
+            trigger={
+              <button className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink">
+                Industries <span className="ml-1">⌄</span>
+              </button>
+            }
+            sections={industriesCategories}
             variant="links"
             layout="simple-grid"
             width="w-[580px]"
