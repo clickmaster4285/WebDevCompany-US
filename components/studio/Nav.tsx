@@ -136,9 +136,10 @@ export function Nav() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
 
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -156,7 +157,7 @@ export function Nav() {
         </Link>
 
         <nav
-          className={`hidden items-center gap-1 rounded-full px-2 py-2 text-sm text-ink-soft md:flex transition-all duration-500 ${
+          className={`hidden items-center gap-1 rounded-full px-2 py-2 text-sm text-ink-soft transition-all duration-500 md:flex ${
             scrolled ? "glass" : "bg-transparent"
           }`}
         >
