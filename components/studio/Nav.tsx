@@ -253,6 +253,7 @@ export function Nav() {
             scrolled ? "glass" : "bg-transparent"
           }`}
         >
+          {/* Studio */}
           <a
             href="#story"
             className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
@@ -260,13 +261,10 @@ export function Nav() {
             Studio
           </a>
 
-          <a
-            href="#services"
-            className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
-          >
-            Services
-          </a>
+          {/* ✅ Services Dropdown — standalone, NOT inside <a> tag */}
+          <ServicesDropdown />
 
+          {/* Work */}
           <a
             href="#work"
             className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
@@ -420,6 +418,7 @@ export function Nav() {
             Process
           </a>
 
+          {/* Stack */}
           <a
             href="#stack"
             className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"

@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import footerImg from "@/assets/footer.png";
+import footerImg from "@/assets/footer.png"; // Make sure this path is correct in your project
+
+// Note: Removed the unused @tanstack/react-router import to avoid bundling conflicts
 
 export function Footer() {
   return (
@@ -20,7 +22,7 @@ export function Footer() {
                 className="shrink-0"
               >
                 <img
-                  src={footerImg.src}
+                  src={footerImg.src || footerImg} // Safe fallback for local asset imports in Next.js
                   alt=""
                   aria-hidden="true"
                   className="h-auto w-16 object-contain"
