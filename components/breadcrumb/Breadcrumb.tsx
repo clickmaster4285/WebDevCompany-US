@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 // Route label mappings
 const routeLabels: Record<string, string> = {
   'services': 'Services',
-  'blogs': 'Blog',
+  'blogs': 'Blogs',
   'case-studies': 'Case Studies',
   'costs': 'Costs',
   'faqs': 'FAQs',
