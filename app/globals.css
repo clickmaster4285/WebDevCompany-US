@@ -217,3 +217,15 @@
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
+@utility marquee-track {
+  animation: marquee-scroll var(--marquee-duration, 30s) linear infinite;
+}
+
+@utility marquee-pause {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

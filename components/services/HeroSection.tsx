@@ -172,7 +172,7 @@ export function HeroSection({
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-[90vh] w-full items-center justify-center overflow-hidden bg-surface-0 px-4 py-20 md:px-6"
+      className="relative flex min-h-[90vh] w-full items-center justify-center overflow-hidden bg-surface-0 e-0 px-4 py-20 md:px-6"
     >
       {/* Background grid */}
       <div
