@@ -15,6 +15,7 @@ const routeLabels: Record<string, string> = {
   'faqs': 'FAQs',
   'technologies': 'Technologies',
   'testimonials': 'Testimonials',
+  'locations': 'Locations',
 };
 
 interface BreadcrumbProps {
