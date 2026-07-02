@@ -1,5 +1,5 @@
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 import { BlogsHero } from "./BlogsHero";
 import { BlogsSearch } from "./BlogsSearch";
 import { BlogsGrid } from "./BlogsGrid";

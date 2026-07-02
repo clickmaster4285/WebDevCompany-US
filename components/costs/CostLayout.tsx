@@ -3,8 +3,8 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 import { Home, ChevronRight } from "lucide-react";
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
 type LayoutProps = {
   children: ReactNode;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { blogs } from "../../../data/blogs";
+import { blogs } from "../../data/blogs";
 import { BlogCard } from "./BlogCard";
 
 const BLOGS_PER_PAGE = 12;
