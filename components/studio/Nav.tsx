@@ -8,7 +8,7 @@ import { Dropdown, DropdownSection } from "@/components/ui/Dropdown";
 import { serviceData } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
 import { blogs } from "@/data/blogs";
-import { faqs, getFAQIcon } from "@/data/faqs";
+import { faqPages } from "@/data/faq-pages";
 import { testimonials } from "@/data/resources/testimonials/testimonials";
 
 
@@ -60,21 +60,21 @@ const resourceCategories: DropdownSection[] = [
       description: blog.excerpt || "",
     })),
   },
-  {
-    title: "FAQs",
-    href: "/faqs",
-    description: "Common questions about our process and services.",
-    items: faqs.slice(0, 2).map((faq, index) => ({
-      label:
-        faq.question.length > 60
-          ? `${faq.question.slice(0, 60)}...`
-          : faq.question,
-      href: `/faqs#faq-item-${index}`,
-      tag: faq.meta,
-      icon: getFAQIcon(faq.meta),
-      description: `${faq.answer.slice(0, 80)}...`,
-    })),
-  },
+{
+  title: "FAQs",
+  href: "/faqs",
+  description: "Common questions about our process and services.",
+  items: faqPages.slice(0, 2).map((faq) => ({
+    label:
+      faq.page.title.length > 60
+        ? `${faq.page.title.slice(0, 60)}...`
+        : faq.page.title,
+    href: `/faqs/${faq.slug}`,
+    tag: "FAQ",
+    icon: "❓",
+    description: `${faq.aboveTheFold.directAnswer.slice(0, 80)}...`,
+  })),
+},
   {
     title: "Testimonials",
     href: "/testimonials",
