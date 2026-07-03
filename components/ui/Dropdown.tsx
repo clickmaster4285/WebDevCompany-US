@@ -200,9 +200,10 @@ export function Dropdown({
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleItemClick(section, item, e)}
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-all duration-200 hover:bg-violet/10 hover:text-violet hover:translate-x-0.5"
+                className="group flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 transition-all duration-200 hover:bg-violet/10 hover:text-violet hover:translate-x-0.5"
               >
-                {item.label}
+                {item.icon && <span className="text-base shrink-0">{item.icon}</span>}
+                <span>{item.label}</span>
               </Link>
             ))}
           </div>
@@ -213,9 +214,10 @@ export function Dropdown({
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleItemClick(section, item, e)}
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-all duration-200 hover:bg-violet/10 hover:text-violet hover:translate-x-0.5"
+                className="group flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 transition-all duration-200 hover:bg-violet/10 hover:text-violet hover:translate-x-0.5"
               >
-                {item.label}
+                {item.icon && <span className="text-base shrink-0">{item.icon}</span>}
+                <span>{item.label}</span>
               </Link>
             ))}
           </div>

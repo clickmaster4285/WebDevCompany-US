@@ -12,9 +12,34 @@ import { faqPages } from "@/data/faq-pages";
 import { testimonials } from "@/data/resources/testimonials/testimonials";
 
 
+const serviceIcons: Record<string, string> = {
+  'web-development-services': '🌐',
+  'enterprise-web-development': '🏢',
+  'saas-development': '☁️',
+  'ecommerce-development': '🛒',
+  'shopify-development': '🛍️',
+  'wordpress-development': '📝',
+  'web-design-services': '🎨',
+  'custom-web-development': '⚙️',
+  'web-application-development': '📱',
+  'shopify-plus-development': '💎',
+  'woocommerce-development': '🛒',
+  'magento-development': '🏪',
+  'headless-commerce-development': '🧩',
+  'cms-development': '📰',
+  'ai-web-development': '🤖',
+  'ai-chatbot-development': '💬',
+  'api-development': '🔌',
+  'website-redesign-services': '🔄',
+  'website-speed-optimization': '⚡',
+  'website-maintenance-services': '🔧',
+  'full-stack-development': '🖥️',
+};
+
 const allServices = Object.keys(serviceData).map((slug) => ({
   label: serviceData[slug].title,
   href: `/${slug}`,
+  icon: serviceIcons[slug],
 }));
 
 const serviceCategories: DropdownSection[] = [
@@ -219,7 +244,7 @@ export function Nav() {
             sections={serviceCategories}
             variant="links"
             layout="simple-grid"
-            width="w-[500px]"
+            width="w-[600px]"
             showViewAll={false}
             showSidebar={false}
           />
@@ -238,7 +263,7 @@ export function Nav() {
             sections={technologiesCategories}
             variant="links"
             layout="simple-grid"
-            width="w-[580px]"
+            width="w-[600px]"
             showViewAll={true}
             showSidebar={false}
           />
@@ -252,6 +277,20 @@ export function Nav() {
             showViewAll={true}
             showSidebar={false}
           />
+
+          <Link
+            href="/about"
+            className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
+          >
+            About
+          </Link>
+
+          <Link
+            href="/contact"
+            className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
+          >
+            Contact
+          </Link>
         </nav>
 
         <Link

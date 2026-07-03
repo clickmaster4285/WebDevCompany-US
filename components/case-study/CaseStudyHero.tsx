@@ -106,22 +106,10 @@ export function CaseStudyHero({
   readingTime,
   lastUpdated,
 }: CaseStudyHeroProps) {
-  // Fix: Use proper Framer Motion variants with correct easing type
-  const fadeUpVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-        delay: 0.5 + i * 0.2,
-        ease: "easeInOut" as const,
-      },
-    }),
-  };
-
-  // Split title for gradient effect
-  const titleParts = title.split(' ');
+  // Split title into two parts for gradient effect
+  const splitIndex = title.indexOf(" — ");
+  const firstTitlePart = splitIndex !== -1 ? title.slice(0, splitIndex) : title;
+  const secondTitlePart = splitIndex !== -1 ? title.slice(splitIndex + 3) : null;
 
   return (
     <div className="relative flex min-h-screen w-full items-center justify-start overflow-hidden bg-[#030303]">
@@ -183,7 +171,7 @@ export function CaseStudyHero({
             animate="visible"
             className="mb-4"
           >
-            <CaseStudyBreadcrumb title={title} />
+            {/* <CaseStudyBreadcrumb title={title} /> */}
           </motion.div>
 
           <motion.div

@@ -24,7 +24,7 @@ export default async function ServiceLayout({ children, params }: LayoutProps) {
 
       <div className="flex-1 pt-[80px] md:pt-[100px]">
         {/* Breadcrumb - Below Nav */}
-        <div className="border-b border-white/[0.06] bg-surface-1/40 backdrop-blur-sm">
+        <div className="border-y border-white/[0.06] bg-surface-1/40 backdrop-blur-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <Breadcrumb
               customLabels={{

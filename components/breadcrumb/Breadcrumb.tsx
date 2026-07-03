@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getLocationPageBySlug } from "@/data/locationdata"; // adjust path if needed
 
@@ -164,9 +164,7 @@ export function Breadcrumb({
                   item.isHome && "hover:text-violet"
                 )}
               >
-                {item.isHome && <Home className="h-3.5 w-3.5 flex-shrink-0" />}
-                {!item.isHome && <span>{item.label}</span>}
-                {item.isHome && <span className="sr-only">Home</span>}
+                <span>{item.label}</span>
               </Link>
             )}
           </li>
