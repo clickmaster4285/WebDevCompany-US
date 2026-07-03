@@ -745,6 +745,7 @@ export const minneapolisLocation: LocationPageData = {
   pageNumber: 154
 };
 
+
 // ============================================
 // MASTER LOCATION DATA OBJECT
 // ============================================

@@ -710,39 +710,49 @@ export default function TestimonialsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-linear-to-br from-violet to-purple-800 text-ink">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-surface-1/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <MessageSquare className="w-4 h-4" />
-            <span>Share Your Experience</span>
-          </div>
+     {/* CTA Section */}
+<section className="relative overflow-hidden py-16 sm:py-20 bg-[#070B18] text-white">
+  {/* Background Effects */}
+  <div className="absolute inset-0 bg-gradient-to-br from-violet/20 via-transparent to-fuchsia-500/10" />
+  <div className="absolute -top-32 -left-32 h-80 w-80 rounded-full bg-violet/20 blur-[110px]" />
+  <div className="absolute -bottom-32 -right-32 h-80 w-80 rounded-full bg-fuchsia-500/10 blur-[110px]" />
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Join Our Success Stories?
-          </h2>
-          <p className="text-lg text-ink-soft/80 mb-8 max-w-2xl mx-auto">
-            Have you had a great experience with us? We&apos;d love to hear your
-            story and feature it here.
-          </p>
+  <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl px-6 py-12 sm:px-10 md:px-16 md:py-16 text-center shadow-[0_24px_90px_rgba(124,58,237,0.22)]">
+      <div className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/10">
+        <MessageSquare className="w-4 h-4 text-violet-300" />
+        <span>Share Your Experience</span>
+      </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/submit-testimonial"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-surface-1 text-violet font-semibold rounded-full hover:bg-surface-1/90 transition-all duration-200 shadow-soft hover:shadow-xl"
-            >
-              <MessageSquare className="w-5 h-5" />
-              Submit Your Testimonial
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 border border-border/30 text-ink font-semibold rounded-full hover:bg-surface-1/10 transition-all duration-200"
-            >
-              <ExternalLink className="w-5 h-5" />
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+        Ready to Join Our Success Stories?
+      </h2>
+
+      <p className="text-base sm:text-lg text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Have you had a great experience with us? We&apos;d love to hear your
+        story and feature it here.
+      </p>
+
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Link
+          href="/submit-testimonial"
+          className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3 bg-violet text-white font-semibold rounded-full hover:bg-violet/90 transition-all duration-200 shadow-lg shadow-violet/25 hover:shadow-violet/40 hover:-translate-y-0.5"
+        >
+          <MessageSquare className="w-5 h-5" />
+          Submit Your Testimonial
+        </Link>
+
+        <Link
+          href="/contact"
+          className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5"
+        >
+          <ExternalLink className="w-5 h-5" />
+          Contact Us
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Back to Top Button */}
       {showBackToTop && (

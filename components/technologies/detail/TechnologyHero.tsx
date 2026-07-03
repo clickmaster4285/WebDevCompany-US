@@ -2,21 +2,28 @@
 
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import type { Technology } from "@/data/technologies";
 
-type TechnologyHeroProps = {
+type Props = {
   technology: Technology;
 };
 
-export function TechnologyHero({ technology }: TechnologyHeroProps) {
-  const hero = technology.page.completePageCopy.aboveTheFold;
+export function TechnologyHero({ technology }: Props) {
+  const title = technology.title || "Technology";
+  const headline =
+    technology.page?.completePageCopy?.aboveTheFold?.headline || title;
+  const subheadline =
+    technology.page?.completePageCopy?.aboveTheFold?.subheadline || "";
+  const imageSrc = "/assets/technologies-hero.webp";
 
   return (
     <section className="relative overflow-hidden bg-background px-6 pb-20 pt-36 text-white">
       <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
       <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1fr_480px]">
         <div>
           <div className="mb-6">
             <Breadcrumb
@@ -31,80 +38,94 @@ export function TechnologyHero({ technology }: TechnologyHeroProps) {
             {technology.category}
           </p>
 
-          <h1 className="mt-5 max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.06em] md:text-7xl">
-            {hero.headline}
+          <h1 className="mt-7 max-w-3xl text-5xl font-black leading-[0.98] tracking-[-0.06em] text-white md:text-7xl">
+            {headline}
           </h1>
 
-          <p className="mt-7 max-w-3xl text-lg leading-8 text-white/70">
-            {hero.subheadline}
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/68 md:text-xl md:leading-9">
+            {subheadline}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-9 flex flex-wrap gap-4">
             <Link
-              href="/contact"
-              className="rounded-full bg-violet px-6 py-3 text-sm font-black text-white shadow-xl shadow-violet/20 transition hover:-translate-y-0.5 hover:bg-violet/90"
+              href="#technologies"
+              className="rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5 hover:bg-violet hover:text-white"
             >
-              {hero.primaryCTA}
+              Explore Technologies →
             </Link>
 
             <Link
-              href="/contact"
-              className="rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-white/15"
+              href="/#contact"
+              className="rounded-full border border-white/15 px-6 py-3 text-sm font-bold text-white/80 transition hover:border-white/30 hover:text-white"
             >
-              {hero.secondaryCTA}
+              Talk to an Expert
             </Link>
           </div>
 
-          <p className="mt-7 max-w-3xl text-sm font-medium leading-6 text-white/55">
-            {hero.credibilityBar}
-          </p>
-        </div>
-
-        <div className="relative">
-          <div className="rounded-[2rem] border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur">
-            <div className="rounded-[1.5rem] bg-white p-6 text-slate-950">
-              <div className="flex items-center justify-between">
-                <span className="rounded-full bg-violet/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-violet">
-                  {technology.level}
-                </span>
-
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-2xl font-black text-white">
-                  {technology.icon}
-                </span>
+          <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
+            {[
+              ["Modern", "Stack"],
+              ["Scalable", "Systems"],
+              ["Secure", "Delivery"],
+            ].map(([value, label]) => (
+              <div
+                key={label}
+                className="rounded-2xl border border-white/10 bg-white/[0.055] p-4 backdrop-blur"
+              >
+                <p className="text-xl font-black text-white">{value}</p>
+                <p className="mt-1 text-xs font-semibold text-white/45">
+                  {label}
+                </p>
               </div>
-
-              <h2 className="mt-10 text-3xl font-black tracking-[-0.05em]">
-                {technology.title}
-              </h2>
-
-              <p className="mt-4 text-sm leading-7 text-slate-600">
-                {technology.page.uniquePositioning}
-              </p>
-
-              <div className="mt-8 grid gap-3">
-                <div className="rounded-2xl bg-slate-100 p-4">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">
-                    Search Intent
-                  </p>
-
-                  <p className="mt-2 text-sm font-bold text-slate-800">
-                    {technology.page.searchIntent}
-                  </p>
-                </div>
-
-                <div className="rounded-2xl bg-slate-100 p-4">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">
-                    Buyer Persona
-                  </p>
-
-                  <p className="mt-2 text-sm font-bold text-slate-800">
-                    {technology.page.buyerPersona}
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
+
+        <motion.div
+          className="relative flex justify-center"
+          initial={{ opacity: 0, y: 35, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <motion.div
+            className="absolute -inset-6 rounded-[2.5rem] bg-violet/20 blur-3xl"
+            animate={{
+              scale: [1, 1.08, 1],
+              opacity: [0.55, 0.85, 0.55],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          <motion.div
+            animate={{
+              y: [0, -14, 0],
+              rotate: [0, 1.2, 0],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            whileHover={{
+              scale: 1.03,
+              rotate: 0,
+            }}
+            className="relative z-10"
+          >
+            <Image
+              src={imageSrc}
+              alt="Technologies Hero"
+              width={520}
+              height={620}
+              priority
+              className="h-auto w-full max-w-[520px] rounded-[2rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)]"
+            />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

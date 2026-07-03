@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogs } from "@/data/blogs";
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
-import { BlogContentRenderer } from "@/components/studio/blogs/detail/BlogContentRenderer";
-import { AnimatedCTA } from "@/components/studio/blogs/detail/AnimatedCTA";
-import { BlogTOC } from "@/components/studio/blogs/detail/BlogTOC";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
+import { BlogContentRenderer } from "@/components/blogs/detail/BlogContentRenderer";
+import { AnimatedCTA } from "@/components/blogs/detail/AnimatedCTA";
+import { BlogTOC } from "@/components/blogs/detail/BlogTOC";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb"; // ✅ Added import
 
 type PageProps = {
@@ -259,7 +259,7 @@ function CTASection({ cta }: { cta: any }) {
         </div>
       </section>
   );
-}
+  }
 
   return (
     <section className="my-20 overflow-hidden rounded-[2.5rem] bg-background p-1 shadow-[0_30px_100px_rgba(15,23,42,0.35)]">

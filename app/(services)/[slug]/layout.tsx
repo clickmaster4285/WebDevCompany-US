@@ -1,8 +1,8 @@
 // app/services/[slug]/layout.tsx
 import { notFound } from "next/navigation";
 import { getServiceBySlug } from "@/data/services";
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
 type LayoutProps = {

@@ -1,7 +1,9 @@
 "use client";
 
 import { useMemo, useState, type ChangeEvent } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   Search,
   X,
@@ -61,50 +63,105 @@ export default function FAQsPage() {
         <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
-        <div className="relative mx-auto max-w-5xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-white/80">
-            <Sparkles className="h-4 w-4 text-violet" />
-            FAQs
-          </span>
+        <div className="relative mx-auto max-w-7xl">
+          {/* Main Grid: Left Side Text & Right Side Image */}
+          <div className="mt-6 grid items-center gap-8 md:gap-12 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_520px]">
+            {/* Left Column: Content */}
+            <div className="w-full min-w-0">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-white/80">
+                <Sparkles className="h-4 w-4" />
+                FAQs
+              </span>
 
-          <h1 className="mt-7 text-5xl font-black leading-[0.95] tracking-[-0.06em] md:text-7xl">
-            Frequently Asked Questions
-          </h1>
+              <h1 className="mt-7 text-4xl font-black leading-[1.02] tracking-[-0.055em] text-white sm:text-5xl lg:text-6xl">
+                Frequently Asked Questions
+              </h1>
 
-          <p className="mx-auto mt-7 max-w-2xl text-lg leading-8 text-white/70">
-            Straight answers to common questions about our services, process,
-            and how we help businesses grow online.
-          </p>
+              <p className="mt-6 max-w-3xl text-base leading-8 text-white/70 sm:text-lg">
+                Straight answers to common questions about our services, process,
+                and how we help businesses grow online.
+              </p>
 
-          <div className="mx-auto mt-10 max-w-2xl">
-            <div className="relative rounded-2xl border border-white/10 bg-white/10 p-2 backdrop-blur">
-              <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-white/45" />
+              <div className="mt-8 w-full max-w-md">
+                <div className="relative rounded-2xl border border-white/10 bg-white/10 p-2 backdrop-blur">
+                  <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-white/45" />
 
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={handleSearch}
-                placeholder="Search questions..."
-                className="w-full rounded-xl bg-white px-12 py-4 text-sm font-semibold text-slate-950 outline-none placeholder:text-slate-400"
-              />
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={handleSearch}
+                    placeholder="Search questions..."
+                    className="w-full rounded-xl bg-white px-12 py-4 text-sm font-semibold text-slate-950 outline-none placeholder:text-slate-400"
+                  />
 
-              {searchTerm && (
-                <button
-                  type="button"
-                  onClick={() => setSearchTerm("")}
-                  className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-slate-100 p-1 text-slate-500 transition hover:bg-slate-200 hover:text-foreground"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              )}
+                  {searchTerm && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchTerm("")}
+                      className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-slate-100 p-1 text-slate-500 transition hover:bg-slate-200 hover:text-slate-900"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+
+                {searchTerm && (
+                  <p className="mt-3 text-sm text-white/55">
+                    Found {filteredFaqs.length} result
+                    {filteredFaqs.length !== 1 ? "s" : ""}
+                  </p>
+                )}
+              </div>
             </div>
 
-            {searchTerm && (
-              <p className="mt-3 text-sm text-white/55">
-                Found {filteredFaqs.length} result
-                {filteredFaqs.length !== 1 ? "s" : ""}
-              </p>
-            )}
+            {/* Right Column: Image with Animations */}
+            <motion.div
+              className="relative flex justify-center items-center w-full h-full min-h-[400px]"
+              initial={{ opacity: 0, y: 35, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              {/* Glowing Background Blur */}
+              <motion.div
+                className="absolute inset-0 rounded-[2.5rem] bg-violet-600/20 blur-3xl"
+                animate={{
+                  scale: [1, 1.08, 1],
+                  opacity: [0.55, 0.85, 0.55],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* Floating Image Wrapper */}
+              <motion.div
+                animate={{
+                  y: [0, -14, 0],
+                  rotate: [0, 1.2, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{
+                  scale: 1.03,
+                  rotate: 0,
+                }}
+                className="relative z-10 flex justify-center items-center"
+              >
+                <Image
+                  src="/assets/faqside.png"
+                  alt="FAQ Hero"
+                  width={520}
+                  height={520}
+                  priority
+                  className="h-auto w-full max-w-[520px] rounded-[2rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)]"
+                />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
