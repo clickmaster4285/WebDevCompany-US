@@ -8,6 +8,7 @@ import { TemplateCTA } from "@/components/ui/TemplateCta";
 import { caseStudyPageHeader } from "@/data/page-config";
 import { caseStudies } from "@/data/case-studies";
 import { Search, SlidersHorizontal, Circle, Sparkles } from "lucide-react";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { cn } from "@/lib/utils";
 
 function ElegantShape({
@@ -134,7 +135,7 @@ export default function CaseStudiesPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#030303]">
+    <div className="flex min-h-screen flex-col bg-background">
       <section className="relative w-full overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
 
@@ -187,6 +188,9 @@ export default function CaseStudiesPage() {
 
         <div className="container relative z-10 mx-auto px-4 py-20 md:px-6 md:py-28 lg:py-32">
           <div className="mx-auto max-w-4xl">
+            <div className="mb-6 text-left">
+              <Breadcrumb customLabels={{ 'case-studies': 'Case Studies' }} />
+            </div>
             <motion.div
               custom={0}
               variants={fadeUpVariants}
@@ -255,7 +259,7 @@ export default function CaseStudiesPage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-[#030303]/80" />
       </section>
 
-      <section className="relative bg-[#030303] py-12 md:py-16 lg:py-20">
+      <section className="relative bg-background py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-8 flex items-center justify-between">
             <p className="text-sm text-white/40">
@@ -372,7 +376,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <section className="relative bg-[#030303]">
+      <section className="relative bg-background">
         <div className="container mx-auto border-t border-white/5 px-4 py-16 md:px-6 md:py-20 lg:py-24">
           <TemplateCTA
             heading="Ready to Be Our Next Success Story?"

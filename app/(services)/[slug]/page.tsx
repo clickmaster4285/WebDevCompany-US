@@ -122,6 +122,7 @@ export default async function ServicePage({ params }: PageProps) {
       <HeroSection
         data={service.hero}
         slug={slug}
+        breadcrumbLabel={service.title}
         showSocial={config.showSocial}
         socialLinks={{
           github: "https://github.com/yourcompany",

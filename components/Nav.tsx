@@ -9,12 +9,38 @@ import { serviceData } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
 import { blogs } from "@/data/blogs";
 import { faqPages } from "@/data/faq-pages";
-import { testimonials } from "@/data/testimonials";
+import { industriesData } from "@/data/industries";
+import { testimonials } from "@/data/resources/testimonials/testimonials";
 
+
+const serviceIcons: Record<string, string> = {
+  'web-development-services': '🌐',
+  'enterprise-web-development': '🏢',
+  'saas-development': '☁️',
+  'ecommerce-development': '🛒',
+  'shopify-development': '🛍️',
+  'wordpress-development': '📝',
+  'web-design-services': '🎨',
+  'custom-web-development': '⚙️',
+  'web-application-development': '📱',
+  'shopify-plus-development': '💎',
+  'woocommerce-development': '🛒',
+  'magento-development': '🏪',
+  'headless-commerce-development': '🧩',
+  'cms-development': '📰',
+  'ai-web-development': '🤖',
+  'ai-chatbot-development': '💬',
+  'api-development': '🔌',
+  'website-redesign-services': '🔄',
+  'website-speed-optimization': '⚡',
+  'website-maintenance-services': '🔧',
+  'full-stack-development': '🖥️',
+};
 
 const allServices = Object.keys(serviceData).map((slug) => ({
   label: serviceData[slug].title,
   href: `/${slug}`,
+  icon: serviceIcons[slug],
 }));
 
 const serviceCategories: DropdownSection[] = [
@@ -110,61 +136,46 @@ const technologiesCategories: DropdownSection[] = [
   },
 ];
 
+const industriesIcons: Record<string, string> = {
+  'healthcare-web-development': '🏥',
+  'law-firm-web-development': '⚖️',
+  'real-estate-web-development': '🏠',
+  'fintech-web-development': '💰',
+  'saas-web-development': '💻',
+  'manufacturing-web-development': '🏭',
+  'ecommerce-web-development': '🛒',
+  'hospitality-web-development': '🏨',
+  'education-web-development': '📚',
+  'dental-web-development': '🦷',
+  'construction-web-development': '🔨',
+  'nonprofit-web-development': '🤝',
+};
+
+const industriesSlugs = [
+  'healthcare-web-development',
+  'law-firm-web-development',
+  'real-estate-web-development',
+  'fintech-web-development',
+  'saas-web-development',
+  'manufacturing-web-development',
+  'ecommerce-web-development',
+  'hospitality-web-development',
+  'education-web-development',
+  'dental-web-development',
+  'construction-web-development',
+  'nonprofit-web-development',
+];
+
 const industriesCategories: DropdownSection[] = [
   {
     title: "Industries",
     href: "/industries",
     description: "Industry-specific web development solutions",
-    items: [
-      {
-        label: "Healthcare Web Development",
-        href: "/industries/healthcare-web-development",
-      },
-      {
-        label: "Law Firm Web Development",
-        href: "/industries/law-firm-web-development",
-      },
-      {
-        label: "Real Estate Web Development",
-        href: "/industries/real-estate-web-development",
-      },
-      {
-        label: "Fintech & Financial Services Web Development",
-        href: "/industries/fintech-web-development",
-      },
-      {
-        label: "SaaS & Tech Web Development",
-        href: "/industries/saas-web-development",
-      },
-      {
-        label: "Manufacturing Web Development",
-        href: "/industries/manufacturing-web-development",
-      },
-      {
-        label: "eCommerce & Retail Web Development",
-        href: "/industries/ecommerce-web-development",
-      },
-      {
-        label: "Hospitality Web Development",
-        href: "/industries/hospitality-web-development",
-      },
-      {
-        label: "Education Web Development",
-        href: "/industries/education-web-development",
-      },
-      {
-        label: "Dental Web Development",
-        href: "/industries/dental-web-development",
-      },
-      {
-        label: "Construction Web Development",
-        href: "/industries/construction-web-development",
-      },
-      {
-        label: "Nonprofit Web Development",
-        href: "/industries/nonprofit-web-development",
-      },
-    ],
+    items: industriesSlugs.map((slug) => ({
+      label: industriesData[slug].title,
+      href: `/industries/${slug}`,
+      icon: industriesIcons[slug],
+    })),
   },
 ];
 
@@ -219,7 +230,7 @@ export function Nav() {
             sections={serviceCategories}
             variant="links"
             layout="simple-grid"
-            width="w-[500px]"
+            width="w-[600px]"
             showViewAll={false}
             showSidebar={false}
           />
@@ -238,7 +249,7 @@ export function Nav() {
             sections={technologiesCategories}
             variant="links"
             layout="simple-grid"
-            width="w-[580px]"
+            width="w-[600px]"
             showViewAll={true}
             showSidebar={false}
           />
@@ -252,6 +263,20 @@ export function Nav() {
             showViewAll={true}
             showSidebar={false}
           />
+
+          <Link
+            href="/about"
+            className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
+          >
+            About
+          </Link>
+
+          <Link
+            href="/contact"
+            className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
+          >
+            Contact
+          </Link>
         </nav>
 
         <Link

@@ -15,7 +15,7 @@ export function CompareHero({ comparison }: CompareHeroProps) {
   const rightOption = titleParts[1] || "Alternative";
 
   return (
-    <section className="relative overflow-hidden bg-[#182332] px-6 pb-20 pt-36 text-white">
+    <section className="relative overflow-hidden bg-background px-6 pb-20 pt-36 text-white">
       <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
       <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 

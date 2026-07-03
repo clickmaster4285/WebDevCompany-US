@@ -1,5 +1,3 @@
-// components/services/FeaturedAnswerBlock.tsx
-
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
@@ -11,24 +9,11 @@ interface FeaturedAnswerBlockProps {
 }
 
 const containerVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] as const,
-    },
-  },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
-export function FeaturedAnswerBlock({
-  question,
-  answer,
-}: FeaturedAnswerBlockProps) {
+export function FeaturedAnswerBlock({ question, answer }: FeaturedAnswerBlockProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -49,34 +34,17 @@ export function FeaturedAnswerBlock({
               initial={shouldReduceMotion ? false : { scale: 0, rotate: -20 }}
               whileInView={shouldReduceMotion ? undefined : { scale: 1, rotate: 0 }}
               viewport={{ once: true }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 20,
-                delay: 0.2,
-              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
             >
               <Quote className="h-5 w-5 md:h-6 md:w-6" />
             </motion.div>
 
-            <div className="mt-2">
-              <motion.h2
-                className="text-balance text-2xl font-semibold tracking-tight text-ink md:text-3xl"
-                initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
-                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
+            <div className="mt-2 text-left">
+              <motion.h2 className="text-balance text-2xl font-semibold tracking-tight text-ink md:text-3xl" initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }} whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
                 {question}
               </motion.h2>
 
-              <motion.div
-                className="mt-5 text-pretty text-base leading-relaxed text-ink-soft md:text-lg"
-                initial={shouldReduceMotion ? false : { opacity: 0 }}
-                whileInView={shouldReduceMotion ? undefined : { opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.25 }}
-              >
+              <motion.div className="mt-5 text-pretty text-base leading-relaxed text-ink-soft md:text-lg" initial={shouldReduceMotion ? false : { opacity: 0 }} whileInView={shouldReduceMotion ? undefined : { opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.25 }}>
                 {answer}
               </motion.div>
             </div>

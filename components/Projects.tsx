@@ -99,7 +99,7 @@ function ProjectShot({
         {/* ── MASK: dark panel that slides LEFT to reveal video ── */}
         <motion.div
           style={{ width: maskWidth }}
-          className="absolute inset-y-0 right-0 bg-[#050816] z-10"
+          className="absolute inset-y-0 right-0 bg-background z-10"
         />
 
         {/* ── NUMBER WATERMARK ── */}
@@ -131,7 +131,7 @@ function ProjectShot({
 
 export function Projects() {
   return (
-    <section id="projects" className="relative bg-[#050816]">
+    <section id="projects" className="relative bg-background">
       <div className="px-6 md:px-12 pt-32 pb-16 max-w-7xl mx-auto">
         <div className="text-eyebrow mb-4">/ Engineering</div>
         <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,4rem)] text-ink">

@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Technology } from "@/data/technologies";
 
@@ -18,16 +19,24 @@ export function TechnologyHero({ technology }: Props) {
   const imageSrc = "/assets/technologies-hero.webp";
 
   return (
-    <section className="relative overflow-hidden bg-[#101827] px-6 pb-20 pt-32 text-white md:px-10 md:pb-24 md:pt-36">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
-      <div className="absolute -right-32 top-20 h-80 w-80 rounded-full bg-violet/25 blur-3xl" />
-      <div className="absolute -left-32 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+    <section className="relative overflow-hidden bg-background px-6 pb-20 pt-36 text-white">
+      <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
+      <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1fr_480px]">
         <div>
-          <span className="inline-flex rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-violet-soft backdrop-blur">
-            Technologies
-          </span>
+          <div className="mb-6">
+            <Breadcrumb
+              customLabels={{
+                technologies: 'Technologies',
+                [technology.slug]: technology.title,
+              }}
+            />
+          </div>
+
+          <p className="text-sm font-bold uppercase tracking-[0.28em] text-violet">
+            {technology.category}
+          </p>
 
           <h1 className="mt-7 max-w-3xl text-5xl font-black leading-[0.98] tracking-[-0.06em] text-white md:text-7xl">
             {headline}

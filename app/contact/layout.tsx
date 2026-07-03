@@ -1,8 +1,8 @@
-// app/testimonials/layout.tsx
+// app/contact/layout.tsx
 import { Nav } from "@/components/studio/Nav";
 import { Footer } from "@/components/studio/Footer";
 
-export default function TestimonialsLayout({
+export default function ContactLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -25,6 +25,7 @@ import {
   ArrowUp,
   ArrowRight,
 } from "lucide-react";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { cn } from "@/lib/utils";
 import { 
   testimonials, 
@@ -120,6 +121,9 @@ export default function TestimonialsPage() {
 
         <div className="relative max-w-6xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
+            <div className="mb-6 text-left">
+              <Breadcrumb customLabels={{ testimonials: 'Testimonials' }} />
+            </div>
             <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Sparkles className="w-4 h-4" />
               <span>Client Success Stories</span>

@@ -58,11 +58,10 @@ export default function FAQsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-100 text-slate-900">
-      <section className="relative overflow-hidden bg-[#182332] px-4 pb-16 pt-28 text-white sm:px-6 sm:pt-32 lg:px-10 lg:pb-20 lg:pt-36">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
-        <div className="absolute -right-32 top-20 h-80 w-80 rounded-full bg-violet-600/25 blur-3xl" />
-        <div className="absolute -left-32 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+    <main className="min-h-screen bg-background text-foreground">
+      <section className="relative overflow-hidden bg-background px-6 pb-20 pt-36 text-white">
+        <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
+        <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl">
           {/* Main Grid: Left Side Text & Right Side Image */}

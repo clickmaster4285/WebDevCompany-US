@@ -19,12 +19,9 @@ type FAQDetailPageProps = {
 
 export function FAQDetailPage({ faq }: FAQDetailPageProps) {
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-[#f8f6ff] text-slate-900">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#101827] px-4 pb-16 pt-28 text-white sm:px-6 sm:pt-32 lg:px-10 lg:pb-20 lg:pt-36">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
-        <div className="absolute -right-32 top-20 h-80 w-80 rounded-full bg-violet-600/25 blur-3xl" />
-        <div className="absolute -left-32 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
+      <section className="relative overflow-hidden px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:pb-20 lg:pt-36">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(124,92,255,0.18),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(99,102,241,0.12),transparent_35%)]" />
 
         <div className="relative mx-auto max-w-7xl">
           {/* Top Bar: Back Link & Search */}

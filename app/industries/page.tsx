@@ -3,10 +3,11 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import { Search, Sparkles, ArrowRight, Circle, Briefcase } from "lucide-react";
+import { Search, Sparkles, ArrowRight, Circle } from "lucide-react";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { cn } from "@/lib/utils";
 import { industriesData } from "@/data/industries";
+import Image from "next/image";
 
 // Elegant Shape Component
 function ElegantShape({
@@ -136,19 +137,32 @@ export default function IndustriesPage() {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 md:px-6 py-20 md:py-28 lg:py-32">
-          <div className="grid items-center gap-8 md:gap-12 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_520px]">
-            {/* Left Column: Content */}
-            <div className="max-w-2xl">
-              <motion.div
-                custom={0}
-                variants={fadeUpVariants}
-                initial="hidden"
-                animate="visible"
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 md:mb-8"
-              >
-                <Circle className="h-2 w-2 fill-violet" />
-                <span className="text-sm text-ink-mute tracking-wide">
-                  Industries We Serve
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-6 text-left">
+              <Breadcrumb customLabels={{ industries: 'Industries' }} />
+            </div>
+            <motion.div
+              custom={0}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 md:mb-8"
+            >
+              <Circle className="h-2 w-2 fill-violet" />
+              <span className="text-sm text-ink-mute tracking-wide">
+                Industries We Serve
+              </span>
+            </motion.div>
+
+            <motion.div
+              custom={1}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 tracking-tight">
+                <span className="bg-clip-text text-transparent bg-linear-to-b from-ink to-ink/80">
+                  Industry-Specific Web Solutions
                 </span>
               </motion.div>
 

@@ -72,7 +72,7 @@ function CTASection({ cta }: { cta: any }) {
                 {cta.label}
               </p>
 
-              <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-slate-950 md:text-4xl">
+              <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-foreground md:text-4xl">
                 {cta.title}
               </h3>
 
@@ -168,7 +168,7 @@ function CTASection({ cta }: { cta: any }) {
                 {cta.label}
               </p>
 
-              <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-slate-950 md:text-4xl">
+              <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-foreground md:text-4xl">
                 {cta.title}
               </h3>
 
@@ -257,12 +257,12 @@ function CTASection({ cta }: { cta: any }) {
             ))}
           </div>
         </div>
-    </section >
+      </section>
   );
   }
 
   return (
-    <section className="my-20 overflow-hidden rounded-[2.5rem] bg-[#101827] p-1 shadow-[0_30px_100px_rgba(15,23,42,0.35)]">
+    <section className="my-20 overflow-hidden rounded-[2.5rem] bg-background p-1 shadow-[0_30px_100px_rgba(15,23,42,0.35)]">
       <div className="relative overflow-hidden rounded-[2.25rem] border border-white/10 p-8 text-white md:p-12">
         <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-violet/20 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
@@ -284,7 +284,7 @@ function CTASection({ cta }: { cta: any }) {
             <div className="mt-9 flex flex-wrap gap-4">
               <Link
                 href={cta.primaryHref}
-                className="rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5"
+                className="rounded-full bg-white px-6 py-3 text-sm font-bold text-foreground transition hover:-translate-y-0.5"
               >
                 {cta.primaryText} →
               </Link>
@@ -337,26 +337,22 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const afterMidCta = listIndex >= 0 ? afterFirstBlock.slice(listIndex + 1) : [];
 
   return (
-    <main className="min-h-screen bg-background text-slate-950">
+    <main className="min-h-screen bg-background text-foreground">
       <Nav />
 
-      {/* ✅ Breadcrumb bar - imported and used */}
-      <div className="border-b border-white/[0.06] bg-surface-1/40 backdrop-blur-sm mt-[80px] md:mt-[100px]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <Breadcrumb
-            customLabels={{
-              blogs: "Blogs",
-              [slug]: blog.title,
-            }}
-          />
-        </div>
-      </div>
-
       <article>
-        <section className="relative overflow-hidden bg-[#101827] px-6 pb-20 pt-20 text-white md:px-10">
+        <section className="relative overflow-hidden bg-background px-6 pb-20 pt-20 text-white md:px-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
 
           <div className="relative mx-auto max-w-6xl">
+            <div className="mb-6 text-left">
+              <Breadcrumb
+                customLabels={{
+                  blogs: "Blogs",
+                  [slug]: blog.title,
+                }}
+              />
+            </div>
             <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_340px] lg:items-end">
               <div>
                 <div className="flex flex-wrap items-center gap-3">
@@ -380,7 +376,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 <div className="mt-9 flex flex-wrap items-center gap-4">
                   <Link
                     href="/#contact"
-                    className="rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5"
+                    className="rounded-full bg-white px-6 py-3 text-sm font-bold text-foreground transition hover:-translate-y-0.5"
                   >
                     Start a project →
                   </Link>
@@ -462,14 +458,14 @@ export default async function BlogDetailPage({ params }: PageProps) {
                   Common Questions
                 </p>
 
-                <h2 className="mt-4 text-4xl font-black tracking-tight text-slate-950">
+                <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground">
                   Choosing a Web Development Company
                 </h2>
 
                 <div className="mt-8 space-y-4">
                   {blog.faqs.map((faq: any, index: number) => (
                     <details key={index} className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 open:bg-white">
-                      <summary className="cursor-pointer list-none text-lg font-bold text-slate-950">
+                      <summary className="cursor-pointer list-none text-lg font-bold text-foreground">
                         {faq.question}
                       </summary>
 
