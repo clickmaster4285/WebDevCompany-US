@@ -9,7 +9,7 @@ export const blogs = [
     author: "ClickMasters Team",
     date: "2026-06-23",
     readTime: "12 min read",
-    image: "",
+    image: "/assets/webdev.webp",
 
     hero: {
       badge: "RESOURCES",
@@ -225,7 +225,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "14 min read",
-  image: "",
+  image: "/assets/shopify.webp",
 
   hero: {
     badge: "RESOURCES",
@@ -457,7 +457,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "13 min read",
-  image: "",
+  image: "/assets/chatbot.jpg",
 
   hero: {
     badge: "RESOURCES",
@@ -684,7 +684,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "15 min read",
-  image: "",
+  image: "/assets/wp.png",
 
   hero: {
     badge: "RESOURCES",
@@ -912,7 +912,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "11 min read",
-  image: "",
+  image: "/assets/webstats.webp",
 
   hero: {
     badge: "RESOURCES",
@@ -1140,7 +1140,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "10 min read",
-  image: "",
+  image: "/assets/webcustom.png",
 
   hero: {
     badge: "RESOURCES",
@@ -1372,7 +1372,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "11 min read",
-  image: "",
+  image: "/assets/saas.jpg",
 
   hero: {
     badge: "RESOURCES",
@@ -1584,7 +1584,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "12 min read",
-  image: "",
+  image: "/assets/desing.webp",
 
   hero: {
     badge: "RESOURCES",
@@ -1812,7 +1812,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "13 min read",
-  image: "",
+  image: "/assets/cwv.jpeg",
 
   hero: {
     badge: "RESOURCES",
@@ -2024,7 +2024,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "12 min read",
-  image: "",
+  image: "/assets/designsteps.jpg",
 
   hero: {
     badge: "PROCESS",

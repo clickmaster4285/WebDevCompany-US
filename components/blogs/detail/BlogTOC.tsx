@@ -14,6 +14,54 @@ function slugify(text: string) {
     .replace(/(^-|-$)/g, "");
 }
 
+function getShortHeading(text: string) {
+  const stopWords = new Set([
+    "the",
+    "a",
+    "an",
+    "and",
+    "or",
+    "to",
+    "of",
+    "for",
+    "in",
+    "on",
+    "with",
+    "by",
+    "from",
+    "that",
+    "this",
+    "your",
+    "you",
+    "how",
+    "what",
+    "why",
+    "when",
+    "which",
+    "is",
+    "are",
+    "be",
+    "can",
+    "should",
+  ]);
+
+  const words = text
+    .replace(/[^\w\s-]/g, "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((word) => !stopWords.has(word.toLowerCase()));
+
+  if (words.length >= 2) {
+    return words.slice(0, 2).join(" ");
+  }
+
+  if (words.length === 1) {
+    return words[0];
+  }
+
+  return text.split(/\s+/).slice(0, 2).join(" ");
+}
+
 export function BlogTOC({ headings }: BlogTOCProps) {
   const [activeId, setActiveId] = useState("");
   const isManualScrolling = useRef(false);
@@ -45,7 +93,7 @@ export function BlogTOC({ headings }: BlogTOCProps) {
         }
       },
       {
-        rootMargin: "-30% 0px -55% 0px",
+        rootMargin: "-25% 0px -60% 0px",
         threshold: 0.15,
       }
     );
@@ -66,7 +114,7 @@ export function BlogTOC({ headings }: BlogTOCProps) {
       clearTimeout(scrollTimeout.current);
     }
 
-    const yOffset = -115;
+    const yOffset = -120;
     const y =
       element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
@@ -82,7 +130,7 @@ export function BlogTOC({ headings }: BlogTOCProps) {
 
   return (
     <aside className="hidden lg:block">
-      <div className="sticky top-28 rounded-[1.35rem] border border-slate-200 bg-white/85 p-3.5 shadow-[0_18px_60px_rgba(15,23,42,0.06)] backdrop-blur-xl">
+      <div className="sticky top-20 rounded-[1.35rem] border border-slate-200 bg-white/90 p-3.5 shadow-[0_18px_60px_rgba(15,23,42,0.07)] backdrop-blur-xl">
         <div className="flex items-center justify-between px-2">
           <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
             Contents
@@ -95,13 +143,15 @@ export function BlogTOC({ headings }: BlogTOCProps) {
           {headings.map((heading, index) => {
             const id = slugify(heading);
             const isActive = activeId === id;
+            const shortHeading = getShortHeading(heading);
 
             return (
               <button
                 key={heading}
                 type="button"
+                title={heading}
                 onClick={() => scrollToHeading(id)}
-                className={`group relative flex w-full items-start gap-2 rounded-xl px-2.5 py-2 text-left text-[13px] transition-colors duration-200 ${
+                className={`group relative flex w-full items-center gap-2 rounded-xl px-2.5 py-2 text-left text-[13px] transition-colors duration-200 ${
                   isActive
                     ? "bg-violet/10 text-violet"
                     : "text-slate-500 hover:bg-slate-50 hover:text-slate-950"
@@ -114,14 +164,16 @@ export function BlogTOC({ headings }: BlogTOCProps) {
                 />
 
                 <span
-                  className={`mt-0.5 flex h-4 w-5 shrink-0 items-center justify-center font-mono text-[10px] font-black transition-colors duration-200 ${
+                  className={`flex h-4 w-5 shrink-0 items-center justify-center font-mono text-[10px] font-black transition-colors duration-200 ${
                     isActive ? "text-violet" : "text-slate-300"
                   }`}
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <span className="leading-5">{heading}</span>
+                <span className="line-clamp-1 font-semibold leading-5">
+                  {shortHeading}
+                </span>
               </button>
             );
           })}

@@ -34,7 +34,8 @@ export function Footer() {
   aria-hidden="true"
   width={64}
   height={64}
-  className="h-auto w-16 object-contain"
+  style={{ height: "auto" }}
+  className="w-16 object-contain"
 />
               </motion.div>
 
@@ -153,45 +154,75 @@ export function Footer() {
           </div>
 
           {/* Resources & Technologies Column */}
-          <div className="col-span-2 md:col-span-1">
-            <div className="text-xs uppercase tracking-widest text-ink-mute">
-              Resources
-            </div>
-            <ul className="mt-5 space-y-3 text-sm text-ink-soft">
-              <li>
-                <Link href="/case-studies" className="transition-colors hover:text-violet-soft">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link href="/blogs" className="transition-colors hover:text-violet-soft">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/faqs" className="transition-colors hover:text-violet-soft">
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link href="/testimonials" className="transition-colors hover:text-violet-soft">
-                  Testimonials
-                </Link>
-              </li>
-            </ul>
+          {/* Resources & Technologies Column */}
+<div className="col-span-2 md:col-span-1">
+  <div className="text-xs uppercase tracking-widest text-ink-mute">
+    Resources
+  </div>
 
-            {/* Technologies Sub-section */}
-            <div className="mt-6 text-xs uppercase tracking-widest text-ink-mute">
-              Technologies
-            </div>
-            <ul className="mt-3 space-y-3 text-sm text-ink-soft">
-              <li>
-                <Link href="/technologies" className="transition-colors hover:text-violet-soft">
-                  Our Tech Stack
-                </Link>
-              </li>
-            </ul>
-          </div>
+  <ul className="mt-5 space-y-3 text-sm text-ink-soft">
+    <li>
+      <Link
+        href="/case-studies"
+        className="transition-colors hover:text-violet-soft"
+      >
+        Case Studies
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        href="/blogs"
+        className="transition-colors hover:text-violet-soft"
+      >
+        Blog
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        href="/compare"
+        className="transition-colors hover:text-violet-soft"
+      >
+        Comparisons
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        href="/faqs"
+        className="transition-colors hover:text-violet-soft"
+      >
+        FAQs
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        href="/testimonials"
+        className="transition-colors hover:text-violet-soft"
+      >
+        Testimonials
+      </Link>
+    </li>
+  </ul>
+
+  {/* Technologies Sub-section */}
+  <div className="mt-6 text-xs uppercase tracking-widest text-ink-mute">
+    Technologies
+  </div>
+
+  <ul className="mt-3 space-y-3 text-sm text-ink-soft">
+    <li>
+      <Link
+        href="/technologies"
+        className="transition-colors hover:text-violet-soft"
+      >
+        Our Tech Stack
+      </Link>
+    </li>
+  </ul>
+</div>
         </div>
 
         {/* Bottom Bar with Scroll to Top Button */}

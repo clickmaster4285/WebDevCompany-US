@@ -3,7 +3,8 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Search, Sparkles, ArrowRight, Circle } from "lucide-react";
+import Image from "next/image";
+import { Search, Sparkles, ArrowRight, Circle, Briefcase } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { industriesData } from "@/data/industries";
 
@@ -135,61 +136,143 @@ export default function IndustriesPage() {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 md:px-6 py-20 md:py-28 lg:py-32">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              custom={0}
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 md:mb-8"
-            >
-              <Circle className="h-2 w-2 fill-violet" />
-              <span className="text-sm text-ink-mute tracking-wide">
-                Industries We Serve
-              </span>
-            </motion.div>
-
-            <motion.div
-              custom={1}
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 tracking-tight">
-                <span className="bg-clip-text text-transparent bg-linear-to-b from-ink to-ink/80">
-                  Industry-Specific Web Solutions
+          <div className="grid items-center gap-8 md:gap-12 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_520px]">
+            {/* Left Column: Content */}
+            <div className="max-w-2xl">
+              <motion.div
+                custom={0}
+                variants={fadeUpVariants}
+                initial="hidden"
+                animate="visible"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 md:mb-8"
+              >
+                <Circle className="h-2 w-2 fill-violet" />
+                <span className="text-sm text-ink-mute tracking-wide">
+                  Industries We Serve
                 </span>
-              </h1>
-            </motion.div>
+              </motion.div>
 
+              <motion.div
+                custom={1}
+                variants={fadeUpVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 tracking-tight">
+                  <span className="bg-clip-text text-transparent bg-linear-to-b from-ink to-ink/80">
+                    Industry-Specific Web Solutions
+                  </span>
+                </h1>
+              </motion.div>
+
+              <motion.div
+                custom={2}
+                variants={fadeUpVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <p className="text-base sm:text-lg md:text-xl text-ink-mute mb-8 leading-relaxed font-light tracking-wide max-w-2xl">
+                  Expert web development tailored to your industry&apos;s unique challenges, compliance requirements, and customer expectations.
+                </p>
+              </motion.div>
+
+              <motion.div
+                custom={2.5}
+                variants={fadeUpVariants}
+                initial="hidden"
+                animate="visible"
+                className="flex gap-4 max-w-2xl"
+              >
+                <div className="relative flex-1 max-w-md">
+                  <Search className="absolute left-3 top-3.5 h-5 w-5 text-ink-mute" />
+                  <input
+                    type="text"
+                    placeholder="Search by industry name..."
+                    className="w-full pl-11 pr-4 py-3 bg-white/5 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-violet focus:border-violet transition-all text-ink placeholder:text-ink-mute backdrop-blur-sm"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Icon/Image */}
             <motion.div
-              custom={2}
+              custom={3}
               variants={fadeUpVariants}
               initial="hidden"
               animate="visible"
+              className="relative flex justify-center items-center h-full min-h-[400px]"
             >
-              <p className="text-base sm:text-lg md:text-xl text-ink-mute mb-8 leading-relaxed font-light tracking-wide max-w-2xl">
-                Expert web development tailored to your industry&apos;s unique challenges, compliance requirements, and customer expectations.
-              </p>
-            </motion.div>
+              <motion.div
+                className="absolute inset-0 rounded-[2.5rem] bg-violet/10 blur-3xl"
+                animate={{
+                  scale: [1, 1.08, 1],
+                  opacity: [0.4, 0.6, 0.4],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
 
-            <motion.div
-              custom={2.5}
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-              className="flex gap-4 max-w-2xl"
-            >
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-3.5 h-5 w-5 text-ink-mute" />
-                <input
-                  type="text"
-                  placeholder="Search by industry name..."
-                  className="w-full pl-11 pr-4 py-3 bg-white/5 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-violet focus:border-violet transition-all text-ink placeholder:text-ink-mute backdrop-blur-sm"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
+              <motion.div
+                animate={{
+                  y: [0, -14, 0],
+                  rotate: [0, 1.2, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{
+                  scale: 1.03,
+                  rotate: 0,
+                }}
+                className="relative z-10 flex justify-center items-center w-full"
+              >
+                <div className="flex justify-center items-center">
+                  <div className="h-auto w-full max-w-[480px] flex justify-center items-center">
+                    <div className="relative w-full h-full flex justify-center items-center">
+                      {/* Professional gradient icon for industries */}
+                      <div className="relative w-80 h-80 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-gradient-to-br from-violet/20 to-violet/5 rounded-full blur-2xl" />
+                        <div className="relative z-10">
+                          <svg className="w-64 h-64 text-violet drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <defs>
+                              <linearGradient id="industryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#7c5cff" />
+                                <stop offset="100%" stopColor="#4c1d95" />
+                              </linearGradient>
+                            </defs>
+                            <g strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round">
+                              {/* Building complex icon */}
+                              <rect x="3" y="2" width="18" height="20" rx="2" fill="url(#industryGradient)" opacity="0.1" stroke="url(#industryGradient)" strokeWidth="1.5"/>
+                              <line x1="9" y1="2" x2="9" y2="22" stroke="url(#industryGradient)" strokeWidth="1.5" opacity="0.5"/>
+                              <line x1="15" y1="2" x2="15" y2="22" stroke="url(#industryGradient)" strokeWidth="1.5" opacity="0.5"/>
+                              {/* Windows */}
+                              <rect x="5" y="5" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="5" y="9" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="5" y="13" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="5" y="17" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="11" y="5" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="11" y="9" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="11" y="13" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="11" y="17" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="17" y="5" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="17" y="9" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="17" y="13" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                              <rect x="17" y="17" width="2" height="2" rx="0.5" fill="url(#industryGradient)" />
+                            </g>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

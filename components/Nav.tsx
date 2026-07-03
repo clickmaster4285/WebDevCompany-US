@@ -9,7 +9,7 @@ import { serviceData } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
 import { blogs } from "@/data/blogs";
 import { faqPages } from "@/data/faq-pages";
-import { testimonials } from "@/data/resources/testimonials/testimonials";
+import { testimonials } from "@/data/testimonials";
 
 
 const allServices = Object.keys(serviceData).map((slug) => ({
