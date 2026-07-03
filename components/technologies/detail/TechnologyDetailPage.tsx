@@ -1,5 +1,5 @@
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 import type { Technology } from "@/data/technologies";
 import { TechnologyHero } from "./TechnologyHero";
 import { TechnologyFeaturedAnswer } from "./TechnologyFeaturedAnswer";

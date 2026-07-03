@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
 export default function FAQsLayout({ children }: { children: ReactNode }) {

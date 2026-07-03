@@ -1,21 +1,21 @@
 // app/ClientWrapper.tsx
 "use client";
 
-import { Nav } from "@/components/studio/Nav";
-import { HeroSection } from "@/components/studio/HeroSection";
-import { StorySection } from "@/components/studio/StorySection";
-import { ServicesSection } from "@/components/studio/ServicesSection";
-import { WorkSection } from "@/components/studio/WorkSection";
-import { ProcessSection } from "@/components/studio/ProcessSection";
-import { TechSection } from "@/components/studio/TechSection";
-import { ResultsSection } from "@/components/studio/ResultsSection";
-import { TestimonialsSection } from "@/components/studio/TestimonialsSection";
-import { AwardsSection } from "@/components/studio/AwardsSection";
-import { CtaSection } from "@/components/studio/CtaSection";
-import { Footer } from "@/components/studio/Footer";
-import { Partners } from "@/components/studio/Partners";
-import { Projects } from "@/components/studio/Projects";
-import { Process } from "@/components/studio/Process";
+import { Nav } from "@/components/Nav";
+import { HeroSection } from "@/components/HeroSection";
+import { StorySection } from "@/components/StorySection";
+import { ServicesSection } from "@/components/ServicesSection";
+import { WorkSection } from "@/components/WorkSection";
+import { ProcessSection } from "@/components/ProcessSection";
+import { TechSection } from "@/components/TechSection";
+import { ResultsSection } from "@/components/ResultsSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { AwardsSection } from "@/components/AwardsSection";
+import { CtaSection } from "@/components/CtaSection";
+import { Footer } from "@/components/Footer";
+import { Partners } from "@/components/Partners";
+import { Projects } from "@/components/Projects";
+import { Process } from "@/components/Process";
 
 export default function ClientWrapper() {
   return (

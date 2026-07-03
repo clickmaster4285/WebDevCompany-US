@@ -2,8 +2,8 @@
 
 import { ReactNode } from "react";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
 type LayoutProps = {
   children: ReactNode;

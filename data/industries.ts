@@ -1171,14 +1171,14 @@ export const industriesData: Record<string, IndustryPage> = {
 
   'ecommerce-web-development': {
     slug: 'ecommerce-web-development',
-    title: 'eCommerce & Retail Web Development',
-    metaDescription: 'eCommerce and retail web development that grows revenue and brand — conversion + brand experience engineered together for consumer brands.',
+    title: 'Ecommerce & Retail Web Development',
+    metaDescription: 'Ecommerce and retail web development that grows revenue and brand — conversion + brand experience engineered together for consumer brands.',
     pageGoal: 'Convert retail and consumer brands into scoping engagements by demonstrating revenue-per-visitor and brand-experience expertise.',
     buyerPersona: 'Founders, eCommerce directors, and marketing leaders at DTC, retail, and consumer brands.',
     searchIntent: 'Commercial / industry — evaluating a partner for a retail/consumer commerce build.',
     uniquePositioning: 'We build retail and consumer commerce experiences that grow revenue per visitor and build brand — because for consumer brands, the store is both the revenue engine and the brand experience, and it has to win on both.',
     hero: {
-      heading: 'eCommerce & Retail Web Development That Grows Revenue and Brand',
+      heading: 'Eommerce & Retail Web Development That Grows Revenue and Brand',
       subheading: 'For a consumer brand, the store is your revenue engine and your brand experience at once. We build retail commerce that converts and that feels like your brand — engineered for revenue per visitor, average order value, and the experience that turns buyers into repeat customers.',
       credibilityBar: [
         'Conversion + brand experience',
