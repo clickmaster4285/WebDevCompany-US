@@ -4,6 +4,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAllLocationPages, LocationPageData } from '@/data/locationdata';
 
@@ -53,6 +54,9 @@ export default function LocationsContent() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
+            <div className="mb-6 text-left">
+              <Breadcrumb customLabels={{ locations: 'Locations' }} />
+            </div>
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full glass border border-white/10">
               <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
               <span className="text-xs font-medium text-ink-mute uppercase tracking-wider">

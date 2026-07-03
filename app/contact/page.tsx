@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -173,6 +174,9 @@ export default function ContactPage() {
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
+            <div className="mb-6 text-left">
+              <Breadcrumb customLabels={{ contact: 'Contact Us' }} />
+            </div>
             <motion.div
               custom={0}
               variants={fadeUpVariants}

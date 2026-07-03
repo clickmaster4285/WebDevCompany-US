@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import type { Technology } from "@/data/technologies";
 
 type TechnologyHeroProps = {
@@ -9,12 +12,21 @@ export function TechnologyHero({ technology }: TechnologyHeroProps) {
   const hero = technology.page.completePageCopy.aboveTheFold;
 
   return (
-    <section className="relative overflow-hidden bg-[#182332] px-6 pb-20 pt-36 text-white">
+    <section className="relative overflow-hidden bg-background px-6 pb-20 pt-36 text-white">
       <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
       <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
       <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
         <div>
+          <div className="mb-6">
+            <Breadcrumb
+              customLabels={{
+                technologies: 'Technologies',
+                [technology.slug]: technology.title,
+              }}
+            />
+          </div>
+
           <p className="text-sm font-bold uppercase tracking-[0.28em] text-violet">
             {technology.category}
           </p>

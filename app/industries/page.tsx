@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Search, Sparkles, ArrowRight, Circle } from "lucide-react";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { cn } from "@/lib/utils";
 import { industriesData } from "@/data/industries";
 
@@ -136,6 +137,9 @@ export default function IndustriesPage() {
 
         <div className="relative z-10 container mx-auto px-4 md:px-6 py-20 md:py-28 lg:py-32">
           <div className="max-w-4xl mx-auto">
+            <div className="mb-6 text-left">
+              <Breadcrumb customLabels={{ industries: 'Industries' }} />
+            </div>
             <motion.div
               custom={0}
               variants={fadeUpVariants}

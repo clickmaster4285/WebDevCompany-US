@@ -903,7 +903,7 @@ export const technologies = [
   "title": "Python & Django Development",
   "excerpt": "Python and Django development for secure, data-rich, and AI-ready web applications with built-in security and production-grade engineering.",
   "category": "Backend",
-  "icon": "🐍",
+  "icon": "🛡️",
   "level": "Core Backend Technology",
   "page": {
     "url": "/technologies/python-django-development/",

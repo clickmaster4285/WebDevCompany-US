@@ -56,8 +56,8 @@ export default function FAQsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-100 text-slate-900">
-      <section className="relative overflow-hidden bg-[#182332] px-6 pb-20 pt-36 text-white">
+    <main className="min-h-screen bg-background text-foreground">
+      <section className="relative overflow-hidden bg-background px-6 pb-20 pt-36 text-white">
         <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
@@ -92,7 +92,7 @@ export default function FAQsPage() {
                 <button
                   type="button"
                   onClick={() => setSearchTerm("")}
-                  className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-slate-100 p-1 text-slate-500 transition hover:bg-slate-200 hover:text-slate-900"
+                  className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-slate-100 p-1 text-slate-500 transition hover:bg-slate-200 hover:text-foreground"
                 >
                   <X className="h-4 w-4" />
                 </button>

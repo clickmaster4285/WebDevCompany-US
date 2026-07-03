@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
 interface IndustryHeroProps {
   data: {
@@ -24,6 +25,9 @@ export function IndustryHero({ data, title }: IndustryHeroProps) {
       
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         <div className="max-w-4xl">
+          <div className="mb-6">
+            <Breadcrumb customLabels={{ industries: 'Industries' }} />
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -1,7 +1,15 @@
+"use client";
+
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
+
 export function TechnologiesHero() {
   return (
-    <section className="bg-[#182332] px-6 pb-24 pt-36 text-center text-white">
+    <section className="bg-background px-6 pb-24 pt-36 text-center text-white">
       <div className="mx-auto max-w-4xl">
+        <div className="mb-8 text-left">
+          <Breadcrumb customLabels={{ technologies: 'Technologies' }} />
+        </div>
+
         <span className="rounded-full bg-white/10 px-4 py-2 text-xs font-semibold tracking-wider">
           TECHNOLOGIES
         </span>

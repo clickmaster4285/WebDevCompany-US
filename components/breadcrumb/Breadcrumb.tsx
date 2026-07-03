@@ -8,6 +8,7 @@ import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getLocationPageBySlug } from "@/data/locationdata"; // adjust path if needed
 
+
 // Route label mappings (static)
 const routeLabels: Record<string, string> = {
   'services': 'Services',

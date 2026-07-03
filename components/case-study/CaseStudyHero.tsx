@@ -4,7 +4,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { CaseStudyBreadcrumb } from "./CaseStudyBreadcrumb";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { CaseStudyBadges } from "./CaseStudyBadges";
 import { CaseStudyMetaInfo } from "./CaseStudyMetaInfo";
 
@@ -112,7 +112,7 @@ export function CaseStudyHero({
   const secondTitlePart = splitIndex !== -1 ? title.slice(splitIndex + 3) : null;
 
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-start overflow-hidden bg-[#030303]">
+    <div className="relative flex min-h-screen w-full items-center justify-start overflow-hidden bg-background">
       <div className="absolute inset-0 bg-linear-to-br from-indigo-500/5 via-transparent to-rose-500/5 blur-3xl" />
 
       <div className="absolute inset-0 overflow-hidden">
@@ -171,7 +171,7 @@ export function CaseStudyHero({
             animate="visible"
             className="mb-4"
           >
-            {/* <CaseStudyBreadcrumb title={title} /> */}
+            <Breadcrumb customLabels={{ 'case-studies': 'Case Studies' }} />
           </motion.div>
 
           <motion.div

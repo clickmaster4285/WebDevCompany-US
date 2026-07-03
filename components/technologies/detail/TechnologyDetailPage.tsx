@@ -6,7 +6,6 @@ import { TechnologyFeaturedAnswer } from "./TechnologyFeaturedAnswer";
 import { TechnologySectionRenderer } from "./TechnologySectionRenderer";
 import { TechnologyRiskReversal } from "./TechnologyRiskReversal";
 import { TechnologyTableOfContents } from "./TechnologyTableOfContents";
-import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
 type TechnologyDetailPageProps = {
   technology: Technology;
@@ -18,20 +17,8 @@ export function TechnologyDetailPage({
   const copy = technology.page.completePageCopy;
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-slate-900">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Nav />
-
-      {/* Breadcrumb - Below Nav */}
-      <div className="border-y border-white/[0.06] bg-surface-1/40 backdrop-blur-sm mt-[80px] md:mt-[100px]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <Breadcrumb
-            customLabels={{
-              'technologies': 'Technologies',
-              [technology.slug]: technology.title,
-            }}
-          />
-        </div>
-      </div>
 
       {/* Main Content */}
       <main className="grow">

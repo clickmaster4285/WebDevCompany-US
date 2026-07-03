@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
 export default function FAQsLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-100 text-slate-900">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Nav />
       <main className="grow">{children}</main>
       <Footer />

@@ -9,6 +9,7 @@ import { serviceData } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
 import { blogs } from "@/data/blogs";
 import { faqPages } from "@/data/faq-pages";
+import { industriesData } from "@/data/industries";
 import { testimonials } from "@/data/resources/testimonials/testimonials";
 
 
@@ -135,61 +136,46 @@ const technologiesCategories: DropdownSection[] = [
   },
 ];
 
+const industriesIcons: Record<string, string> = {
+  'healthcare-web-development': '🏥',
+  'law-firm-web-development': '⚖️',
+  'real-estate-web-development': '🏠',
+  'fintech-web-development': '💰',
+  'saas-web-development': '💻',
+  'manufacturing-web-development': '🏭',
+  'ecommerce-web-development': '🛒',
+  'hospitality-web-development': '🏨',
+  'education-web-development': '📚',
+  'dental-web-development': '🦷',
+  'construction-web-development': '🔨',
+  'nonprofit-web-development': '🤝',
+};
+
+const industriesSlugs = [
+  'healthcare-web-development',
+  'law-firm-web-development',
+  'real-estate-web-development',
+  'fintech-web-development',
+  'saas-web-development',
+  'manufacturing-web-development',
+  'ecommerce-web-development',
+  'hospitality-web-development',
+  'education-web-development',
+  'dental-web-development',
+  'construction-web-development',
+  'nonprofit-web-development',
+];
+
 const industriesCategories: DropdownSection[] = [
   {
     title: "Industries",
     href: "/industries",
     description: "Industry-specific web development solutions",
-    items: [
-      {
-        label: "Healthcare Web Development",
-        href: "/industries/healthcare-web-development",
-      },
-      {
-        label: "Law Firm Web Development",
-        href: "/industries/law-firm-web-development",
-      },
-      {
-        label: "Real Estate Web Development",
-        href: "/industries/real-estate-web-development",
-      },
-      {
-        label: "Fintech & Financial Services Web Development",
-        href: "/industries/fintech-web-development",
-      },
-      {
-        label: "SaaS & Tech Web Development",
-        href: "/industries/saas-web-development",
-      },
-      {
-        label: "Manufacturing Web Development",
-        href: "/industries/manufacturing-web-development",
-      },
-      {
-        label: "eCommerce & Retail Web Development",
-        href: "/industries/ecommerce-web-development",
-      },
-      {
-        label: "Hospitality Web Development",
-        href: "/industries/hospitality-web-development",
-      },
-      {
-        label: "Education Web Development",
-        href: "/industries/education-web-development",
-      },
-      {
-        label: "Dental Web Development",
-        href: "/industries/dental-web-development",
-      },
-      {
-        label: "Construction Web Development",
-        href: "/industries/construction-web-development",
-      },
-      {
-        label: "Nonprofit Web Development",
-        href: "/industries/nonprofit-web-development",
-      },
-    ],
+    items: industriesSlugs.map((slug) => ({
+      label: industriesData[slug].title,
+      href: `/industries/${slug}`,
+      icon: industriesIcons[slug],
+    })),
   },
 ];
 

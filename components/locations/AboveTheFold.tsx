@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { CredibilityBar } from './CredibilityBar';
 
 interface AboveTheFoldProps {
@@ -44,6 +45,9 @@ export const AboveTheFold: React.FC<AboveTheFoldProps> = ({
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center"
         >
+          <div className="mb-6 text-left">
+            <Breadcrumb customLabels={{ locations: 'Locations' }} />
+          </div>
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full glass border border-white/10">
             <span className="text-xs font-medium text-ink-mute uppercase tracking-wider">
               Serving {city} & {region}

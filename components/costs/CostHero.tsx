@@ -4,6 +4,7 @@
 
 import { motion } from "framer-motion";
 import { DollarSign, Clock, CheckCircle2 } from "lucide-react";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { cn } from "@/lib/utils";
 
 interface CostHeroProps {
@@ -77,6 +78,11 @@ export function CostHero({
           animate="visible"
           className="mx-auto max-w-4xl text-center lg:mx-0 lg:text-left"
         >
+          {/* Breadcrumb */}
+          <motion.div variants={itemVariants} className="mb-6">
+            <Breadcrumb customLabels={{ costs: 'Cost Guides' }} />
+          </motion.div>
+
           {/* Badge */}
           <motion.div
             variants={itemVariants}

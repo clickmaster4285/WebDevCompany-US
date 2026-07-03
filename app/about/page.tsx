@@ -1,6 +1,7 @@
 // app/about/page.tsx
 "use client";
 
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { motion } from "framer-motion";
 import {
   Code2,
@@ -204,6 +205,9 @@ export default function AboutPage() {
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
+            <div className="mb-6 text-left">
+              <Breadcrumb customLabels={{ about: 'About Us' }} />
+            </div>
             <motion.div
               custom={0}
               variants={fadeUpVariants}
