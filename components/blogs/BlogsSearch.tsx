@@ -5,7 +5,7 @@ export function BlogsSearch() {
         <input
           type="text"
           placeholder="Search blogs..."
-          className="w-full rounded-full border border-slate-200 px-5 py-3 text-sm outline-none"
+          className="w-full rounded-full border text-black border-slate-200 px-5 py-3 text-sm outline-none"
         />
       </div>
     </section>

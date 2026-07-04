@@ -3,43 +3,47 @@
 import { technologies } from "@/data/technologies";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ArrowRight} from "lucide-react";
+import {
+  ChevronDown,
+  ArrowRight,
+  Menu,
+  X,
+} from "lucide-react";
 import { Dropdown, DropdownSection } from "@/components/ui/Dropdown";
 import { serviceData } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
 import { blogs } from "@/data/blogs";
 import { faqPages } from "@/data/faq-pages";
 import { industriesData } from "@/data/industries";
-import { testimonials } from "@/data/resources/testimonials/testimonials";
-
+import { testimonials } from "@/data/testimonials";
 
 const serviceIcons: Record<string, string> = {
-  'web-development-services': '🌐',
-  'enterprise-web-development': '🏢',
-  'saas-development': '☁️',
-  'ecommerce-development': '🛒',
-  'shopify-development': '🛍️',
-  'wordpress-development': '📝',
-  'web-design-services': '🎨',
-  'custom-web-development': '⚙️',
-  'web-application-development': '📱',
-  'shopify-plus-development': '💎',
-  'woocommerce-development': '🛒',
-  'magento-development': '🏪',
-  'headless-commerce-development': '🧩',
-  'cms-development': '📰',
-  'ai-web-development': '🤖',
-  'ai-chatbot-development': '💬',
-  'api-development': '🔌',
-  'website-redesign-services': '🔄',
-  'website-speed-optimization': '⚡',
-  'website-maintenance-services': '🔧',
-  'full-stack-development': '🖥️',
+  "web-development-services": "🌐",
+  "enterprise-web-development": "🏢",
+  "saas-development": "☁️",
+  "ecommerce-development": "🛒",
+  "shopify-development": "🛍️",
+  "wordpress-development": "📝",
+  "web-design-services": "🎨",
+  "custom-web-development": "⚙️",
+  "web-application-development": "📱",
+  "shopify-plus-development": "💎",
+  "woocommerce-development": "🛒",
+  "magento-development": "🏪",
+  "headless-commerce-development": "🧩",
+  "cms-development": "📰",
+  "ai-web-development": "🤖",
+  "ai-chatbot-development": "💬",
+  "api-development": "🔌",
+  "website-redesign-services": "🔄",
+  "website-speed-optimization": "⚡",
+  "website-maintenance-services": "🔧",
+  "full-stack-development": "🖥️",
 };
 
 const allServices = Object.keys(serviceData).map((slug) => ({
   label: serviceData[slug].title,
-  href: `/${slug}`,
+  href: `/services/${slug}`,
   icon: serviceIcons[slug],
 }));
 
@@ -63,15 +67,6 @@ const resourceCategories: DropdownSection[] = [
       tag: study.category,
       icon: study.icon,
       description: study.description,
-      metrics: {
-        ...(study.results &&
-          study.results.length > 0 && {
-            "Key Result": study.results[0].replace(/^[^-]*-/, "").trim(),
-          }),
-        ...(study.projectDetails && {
-          Status: study.projectDetails.status,
-        }),
-      },
     })),
   },
   {
@@ -86,21 +81,21 @@ const resourceCategories: DropdownSection[] = [
       description: blog.excerpt || "",
     })),
   },
-{
-  title: "FAQs",
-  href: "/faqs",
-  description: "Common questions about our process and services.",
-  items: faqPages.slice(0, 2).map((faq) => ({
-    label:
-      faq.page.title.length > 60
-        ? `${faq.page.title.slice(0, 60)}...`
-        : faq.page.title,
-    href: `/faqs/${faq.slug}`,
-    tag: "FAQ",
-    icon: "❓",
-    description: `${faq.aboveTheFold.directAnswer.slice(0, 80)}...`,
-  })),
-},
+  {
+    title: "FAQs",
+    href: "/faqs",
+    description: "Common questions about our process and services.",
+    items: faqPages.slice(0, 2).map((faq) => ({
+      label:
+        faq.page.title.length > 60
+          ? `${faq.page.title.slice(0, 60)}...`
+          : faq.page.title,
+      href: `/faqs/${faq.slug}`,
+      tag: "FAQ",
+      icon: "❓",
+      description: `${faq.aboveTheFold.directAnswer.slice(0, 80)}...`,
+    })),
+  },
   {
     title: "Testimonials",
     href: "/testimonials",
@@ -113,10 +108,6 @@ const resourceCategories: DropdownSection[] = [
       tag: testimonial.industry || "Client",
       icon: "⭐",
       description: `${testimonial.description.slice(0, 80)}...`,
-      metrics: {
-        ...(testimonial.company && { Company: testimonial.company }),
-        ...(testimonial.rating && { Rating: `${testimonial.rating}/5` }),
-      },
     })),
   },
 ];
@@ -137,33 +128,33 @@ const technologiesCategories: DropdownSection[] = [
 ];
 
 const industriesIcons: Record<string, string> = {
-  'healthcare-web-development': '🏥',
-  'law-firm-web-development': '⚖️',
-  'real-estate-web-development': '🏠',
-  'fintech-web-development': '💰',
-  'saas-web-development': '💻',
-  'manufacturing-web-development': '🏭',
-  'ecommerce-web-development': '🛒',
-  'hospitality-web-development': '🏨',
-  'education-web-development': '📚',
-  'dental-web-development': '🦷',
-  'construction-web-development': '🔨',
-  'nonprofit-web-development': '🤝',
+  "healthcare-web-development": "🏥",
+  "law-firm-web-development": "⚖️",
+  "real-estate-web-development": "🏠",
+  "fintech-web-development": "💰",
+  "saas-web-development": "💻",
+  "manufacturing-web-development": "🏭",
+  "ecommerce-web-development": "🛒",
+  "hospitality-web-development": "🏨",
+  "education-web-development": "📚",
+  "dental-web-development": "🦷",
+  "construction-web-development": "🔨",
+  "nonprofit-web-development": "🤝",
 };
 
 const industriesSlugs = [
-  'healthcare-web-development',
-  'law-firm-web-development',
-  'real-estate-web-development',
-  'fintech-web-development',
-  'saas-web-development',
-  'manufacturing-web-development',
-  'ecommerce-web-development',
-  'hospitality-web-development',
-  'education-web-development',
-  'dental-web-development',
-  'construction-web-development',
-  'nonprofit-web-development',
+  "healthcare-web-development",
+  "law-firm-web-development",
+  "real-estate-web-development",
+  "fintech-web-development",
+  "saas-web-development",
+  "manufacturing-web-development",
+  "ecommerce-web-development",
+  "hospitality-web-development",
+  "education-web-development",
+  "dental-web-development",
+  "construction-web-development",
+  "nonprofit-web-development",
 ];
 
 const industriesCategories: DropdownSection[] = [
@@ -181,15 +172,29 @@ const industriesCategories: DropdownSection[] = [
 
 function DropdownTrigger({ label }: { label: string }) {
   return (
-    <button className="inline-flex items-center rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink">
+    <button className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet">
       {label}
-      <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-200" />
+      <ChevronDown className="ml-1 h-4 w-4" />
     </button>
   );
 }
 
+const mobileLinks = [
+  { label: "Solutions", href: "/solutions" },
+  { label: "Services", href: "/services" },
+  { label: "Resources", href: "/blogs" },
+  { label: "Technologies", href: "/technologies" },
+  { label: "Industries", href: "/industries" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "FAQs", href: "/faqs" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -200,93 +205,140 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "py-3" : "py-6"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? "py-3" : "py-4"
       }`}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
-        <Link href="/" className="flex items-center gap-2 text-ink">
-          <span className="text-sm font-semibold tracking-wide">
-            ClickMasters<span className="text-violet">.</span>
-          </span>
-        </Link>
-
-        <nav
-          className={`hidden items-center gap-1 rounded-full px-2 py-2 text-sm text-ink-soft transition-all duration-500 md:flex ${
-            scrolled ? "glass" : "bg-transparent"
-          }`}
-        >
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-10">
+        <div className="flex items-center justify-between rounded-full border border-slate-200 bg-white/95 px-4 py-3 shadow-[0_14px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl">
           <Link
-            href="/solutions"
-            className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
+            href="/"
+            className="flex items-center gap-2 text-slate-950"
+            onClick={() => setMobileOpen(false)}
           >
-            Solutions
+            <span className="text-base font-black tracking-wide">
+              ClickMasters<span className="text-violet">.</span>
+            </span>
           </Link>
 
-          <Dropdown
-            trigger={<DropdownTrigger label="Services" />}
-            sections={serviceCategories}
-            variant="links"
-            layout="simple-grid"
-            width="w-[600px]"
-            showViewAll={false}
-            showSidebar={false}
-          />
+          <nav className="hidden items-center gap-1 text-sm md:flex">
+            <Link
+              href="/solutions"
+              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet"
+            >
+              Solutions
+            </Link>
 
-          <Dropdown
-            trigger={<DropdownTrigger label="Resources" />}
-            sections={resourceCategories}
-            variant="cards"
-            width="w-[980px]"
-            showViewAll={true}
-            showSidebar={true}
-          />
+            <Dropdown
+              trigger={<DropdownTrigger label="Services" />}
+              sections={serviceCategories}
+              variant="links"
+              layout="simple-grid"
+              width="w-[600px]"
+              showViewAll={false}
+              showSidebar={false}
+            />
 
-          <Dropdown
-            trigger={<DropdownTrigger label="Technologies" />}
-            sections={technologiesCategories}
-            variant="links"
-            layout="simple-grid"
-            width="w-[600px]"
-            showViewAll={true}
-            showSidebar={false}
-          />
+            <Dropdown
+              trigger={<DropdownTrigger label="Resources" />}
+              sections={resourceCategories}
+              variant="cards"
+              width="w-[980px]"
+              showViewAll={true}
+              showSidebar={true}
+            />
 
-          <Dropdown
-            trigger={<DropdownTrigger label="Industries" />}
-            sections={industriesCategories}
-            variant="links"
-            layout="simple-grid"
-            width="w-[580px]"
-            showViewAll={true}
-            showSidebar={false}
-          />
+            <Dropdown
+              trigger={<DropdownTrigger label="Technologies" />}
+              sections={technologiesCategories}
+              variant="links"
+              layout="simple-grid"
+              width="w-[600px]"
+              showViewAll={true}
+              showSidebar={false}
+            />
 
-          <Link
-            href="/about"
-            className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
+            <Dropdown
+              trigger={<DropdownTrigger label="Industries" />}
+              sections={industriesCategories}
+              variant="links"
+              layout="simple-grid"
+              width="w-[580px]"
+              showViewAll={true}
+              showSidebar={false}
+            />
+
+            <Link
+              href="/about"
+              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet"
+            >
+              About
+            </Link>
+
+            <Link
+              href="/contact"
+              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet"
+            >
+              Contact
+            </Link>
+          </nav>
+
+          <div className="hidden md:block">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-violet"
+            >
+              <span>Start a project</span>
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setMobileOpen((value) => !value)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-950 transition hover:bg-slate-100 md:hidden"
+            aria-label="Toggle menu"
           >
-            About
-          </Link>
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
 
-          <Link
-            href="/contact"
-            className="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-ink"
-          >
-            Contact
-          </Link>
-        </nav>
+        {mobileOpen && (
+          <div className="mt-3 rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-[0_20px_70px_rgba(15,23,42,0.14)] md:hidden">
+            <div className="grid gap-2">
+              {mobileLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50 hover:text-violet"
+                >
+                  {link.label}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              ))}
+            </div>
 
-        <Link
-  href="/contact"
-  className="group relative inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-background transition-all duration-300 hover:-translate-y-0.5"
->
-  <span>Start a project</span>
-
-  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-</Link>
+            <Link
+              href="/contact"
+              onClick={() => setMobileOpen(false)}
+              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-black text-white transition hover:bg-violet"
+            >
+              Start a project
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );

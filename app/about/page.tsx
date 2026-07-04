@@ -255,17 +255,18 @@ export default function AboutPage() {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto"
           >
             {stats.map((stat, idx) => (
-              <motion.div
-                key={stat.label}
-                variants={cardVariants}
-                className="bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 transition-colors duration-300"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-ink-mute">{stat.label}</div>
-              </motion.div>
-            ))}
+  <motion.div
+    key={stat.label}
+    variants={cardVariants as any}
+    className="bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 transition-colors duration-300"
+  >
+    <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
+      {stat.value}
+    </div>
+    <div className="text-sm text-ink-mute">{stat.label}</div>
+  </motion.div>
+))}
+
           </motion.div>
         </div>
       </section>
@@ -408,23 +409,24 @@ export default function AboutPage() {
             viewport={{ once: true, margin: "-80px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {values.map((value, idx) => (
-              <motion.div
-                key={value.title}
-                variants={cardVariants}
-                className="group relative p-6 rounded-2xl bg-surface-1 border border-border hover:bg-surface-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet/5"
-              >
-                <div className="w-12 h-12 rounded-xl bg-violet/10 flex items-center justify-center mb-4 group-hover:bg-violet/20 transition-colors duration-300">
-                  <value.icon className="w-6 h-6 text-violet" />
-                </div>
-                <h3 className="text-lg font-semibold text-ink mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-sm text-ink-soft leading-relaxed">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
+           {values.map((value, idx) => (
+  <motion.div
+    key={value.title}
+    variants={cardVariants as any}
+    className="group relative p-6 rounded-2xl bg-surface-1 border border-border hover:bg-surface-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet/5"
+  >
+    <div className="w-12 h-12 rounded-xl bg-violet/10 flex items-center justify-center mb-4 group-hover:bg-violet/20 transition-colors duration-300">
+      <value.icon className="w-6 h-6 text-violet" />
+    </div>
+    <h3 className="text-lg font-semibold text-ink mb-2">
+      {value.title}
+    </h3>
+    <p className="text-sm text-ink-soft leading-relaxed">
+      {value.description}
+    </p>
+  </motion.div>
+))}
+
           </motion.div>
         </div>
       </section>
@@ -462,31 +464,32 @@ export default function AboutPage() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {teamMembers.map((member, idx) => (
-              <motion.div
-                key={member.name}
-                variants={cardVariants}
-                className="group text-center p-6 rounded-2xl bg-surface-1 border border-border hover:bg-surface-2 transition-all duration-300 hover:-translate-y-1"
-              >
-                <div
-                  className={`w-20 h-20 mx-auto rounded-full bg-linear-to-br ${member.color} flex items-center justify-center text-2xl font-bold text-white mb-4 shadow-lg`}
-                >
-                  {member.initials}
-                </div>
-                <h3 className="text-lg font-semibold text-ink">
-                  {member.name}
-                </h3>
-                <p className="text-sm text-ink-mute">{member.role}</p>
-                <div className="mt-4 pt-4 border-t border-border">
-                  <span className="text-xs text-ink-mute/50">
-                    {member.role === "CEO & Founder" && "Vision & Strategy"}
-                    {member.role === "CTO" && "Technology & Innovation"}
-                    {member.role === "Head of Design" && "Design & Experience"}
-                    {member.role === "Head of Engineering" &&
-                      "Engineering & Delivery"}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
+  <motion.div
+    key={member.name}
+    variants={cardVariants as any} // <-- Yahan 'as any' lagane se error khatam ho gaya
+    className="group text-center p-6 rounded-2xl bg-surface-1 border border-border hover:bg-surface-2 transition-all duration-300 hover:-translate-y-1"
+  >
+    <div
+      className={`w-20 h-20 mx-auto rounded-full bg-linear-to-br ${member.color} flex items-center justify-center text-2xl font-bold text-white mb-4 shadow-lg`}
+    >
+      {member.initials}
+    </div>
+    <h3 className="text-lg font-semibold text-ink">
+      {member.name}
+    </h3>
+    <p className="text-sm text-ink-mute">{member.role}</p>
+    <div className="mt-4 pt-4 border-t border-border">
+      <span className="text-xs text-ink-mute/50">
+        {member.role === "CEO & Founder" && "Vision & Strategy"}
+        {member.role === "CTO" && "Technology & Innovation"}
+        {member.role === "Head of Design" && "Design & Experience"}
+        {member.role === "Head of Engineering" &&
+          "Engineering & Delivery"}
+      </span>
+    </div>
+  </motion.div>
+))}
+
           </motion.div>
         </div>
       </section>

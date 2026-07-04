@@ -24,7 +24,7 @@ export function CompareGrid() {
             Comparison Library
           </p>
 
-          <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-950 sm:text-4xl md:text-5xl">
+          <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
             Choose with clarity
           </h2>
         </div>

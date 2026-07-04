@@ -172,7 +172,7 @@ export default function FAQsPage() {
             FAQ Library
           </p>
 
-          <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-950 md:text-4xl">
+          <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white-950 md:text-4xl">
             Choose a question
           </h2>
         </div>
