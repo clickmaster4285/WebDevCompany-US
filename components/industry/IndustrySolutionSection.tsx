@@ -41,11 +41,11 @@ export function IndustrySolutionSection({ data }: IndustrySolutionSectionProps) 
             >
               <div className="flex items-center gap-3 mb-3">
                 <CheckCircle className="w-5 h-5 text-violet flex-shrink-0" />
-                <h3 className="text-lg font-semibold text-ink">
+                <h3 className="text-lg font-semibold text-white">
                   {pillar.title}
                 </h3>
               </div>
-              <p className="text-ink-mute text-sm leading-relaxed">
+              <p className="text-white text-sm leading-relaxed">
                 {pillar.description}
               </p>
             </div>

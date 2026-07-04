@@ -34,7 +34,7 @@ function slugify(text: string) {
 
 export function BlogContentRenderer({ content }: BlogContentRendererProps) {
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 text-white">
       {content.map((block, index) => {
         if (block.type === "featuredAnswer") {
           return (
@@ -73,7 +73,7 @@ export function BlogContentRenderer({ content }: BlogContentRendererProps) {
             <div key={index} className="pt-12">
               <h2
                 id={slugify(block.text)}
-                className="relative inline-block scroll-mt-32 text-3xl font-black leading-tight tracking-[-0.03em] text-slate-950 md:text-5xl"
+                className="relative inline-block scroll-mt-32 text-3xl font-black leading-tight tracking-[-0.03em] text-white md:text-5xl"
               >
                 {block.text}
 
@@ -86,13 +86,13 @@ export function BlogContentRenderer({ content }: BlogContentRendererProps) {
                 >
                   <path
                     d="M8 16C40 10 78 7 116 8C155 9 192 11 230 15"
-                    stroke="#111827"
+                    stroke="#ffffff"
                     strokeWidth="5"
                     strokeLinecap="round"
                   />
                   <path
                     d="M18 20C58 14 108 13 170 15"
-                    stroke="#111827"
+                    stroke="#ffffff"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     opacity="0.35"
@@ -106,7 +106,7 @@ export function BlogContentRenderer({ content }: BlogContentRendererProps) {
         if (block.type === "paragraph") {
           return (
             <div key={index} className="max-w-3xl">
-              <p className="border-l-2 border-violet/30 pl-6 text-[19px] leading-[2] tracking-[-0.01em] text-slate-600">
+              <p className="border-l-2 border-violet/30 pl-6 text-[19px] leading-[2] tracking-[-0.01em] text-white/85">
                 {block.text}
               </p>
             </div>
@@ -125,7 +125,7 @@ export function BlogContentRenderer({ content }: BlogContentRendererProps) {
                     {String(itemIndex + 1).padStart(2, "0")}
                   </span>
 
-                  <span className="text-lg leading-8 text-slate-600">
+                  <span className="text-lg leading-8 text-slate-900">
                     {item}
                   </span>
                 </li>
@@ -145,7 +145,7 @@ export function BlogContentRenderer({ content }: BlogContentRendererProps) {
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-violet text-sm font-bold text-white">
                     ✓
                   </span>
-                  <p className="leading-7 text-slate-600">{item}</p>
+                  <p className="leading-7 text-slate-900">{item}</p>
                 </div>
               ))}
             </div>

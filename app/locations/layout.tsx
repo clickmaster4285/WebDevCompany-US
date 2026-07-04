@@ -1,8 +1,8 @@
 // app/locations/layout.tsx
 
 import { Metadata } from 'next';
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: 'Web Development Company Locations',

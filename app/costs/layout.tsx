@@ -1,8 +1,8 @@
 // app/costs/layout.tsx
 
 import { ReactNode } from "react";
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
+import { Nav } from "@/components//Nav";
+import { Footer } from "@/components/Footer";
 
 type LayoutProps = {
   children: ReactNode;

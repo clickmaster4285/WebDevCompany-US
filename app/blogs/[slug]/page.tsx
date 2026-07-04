@@ -72,7 +72,7 @@ function CTASection({ cta }: { cta: any }) {
                 {cta.label}
               </p>
 
-              <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-foreground md:text-4xl">
+              <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-slate-950 md:text-4xl">
                 {cta.title}
               </h3>
 
@@ -168,7 +168,7 @@ function CTASection({ cta }: { cta: any }) {
                 {cta.label}
               </p>
 
-              <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-foreground md:text-4xl">
+              <h3 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-slate-950 md:text-4xl">
                 {cta.title}
               </h3>
 
@@ -284,7 +284,7 @@ function CTASection({ cta }: { cta: any }) {
             <div className="mt-9 flex flex-wrap gap-4">
               <Link
                 href={cta.primaryHref}
-                className="rounded-full bg-white px-6 py-3 text-sm font-bold text-foreground transition hover:-translate-y-0.5"
+                className="rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5"
               >
                 {cta.primaryText} →
               </Link>
@@ -375,11 +375,12 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
                 <div className="mt-9 flex flex-wrap items-center gap-4">
                   <Link
-                    href="/#contact"
-                    className="rounded-full bg-white px-6 py-3 text-sm font-bold text-foreground transition hover:-translate-y-0.5"
-                  >
-                    Start a project →
-                  </Link>
+  href="/#contact"
+  className="rounded-full text-black bg-white px-6 py-3 text-sm font-bold transition hover:-translate-y-0.5"
+>
+  Start a project →
+</Link>
+
 
                   <Link
                     href="/blogs"
@@ -458,14 +459,14 @@ export default async function BlogDetailPage({ params }: PageProps) {
                   Common Questions
                 </p>
 
-                <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground">
+                <h2 className="mt-4 text-4xl font-black tracking-tight text-slate-950">
                   Choosing a Web Development Company
                 </h2>
 
                 <div className="mt-8 space-y-4">
                   {blog.faqs.map((faq: any, index: number) => (
                     <details key={index} className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 open:bg-white">
-                      <summary className="cursor-pointer list-none text-lg font-bold text-foreground">
+                      <summary className="cursor-pointer list-none text-lg font-bold text-slate-950">
                         {faq.question}
                       </summary>
 

@@ -21,7 +21,7 @@ export function BlogsGrid() {
             Blog Library
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold text-slate-950 md:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
             Latest resources
           </h2>
         </div>

@@ -1,6 +1,6 @@
 // app/case-studies/layout.tsx
-import { Nav } from "@/components/studio/Nav";
-import { Footer } from "@/components/studio/Footer";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
 export default function CaseStudiesLayout({
   children,

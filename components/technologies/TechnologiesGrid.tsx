@@ -35,7 +35,7 @@ export function TechnologiesGrid() {
                 Explore our technology stack
               </h2>
 
-              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-500">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-black">
                 A curated collection of technologies we use across websites,
                 SaaS products, eCommerce platforms, automation systems, and
                 modern digital experiences.
