@@ -94,7 +94,7 @@ export function SolutionSection({ heading, content, pillars }: SolutionSectionPr
         <div className="absolute left-0 top-1/2 h-[600px] w-[500px] -translate-y-1/2 rounded-full bg-violet/[0.03] blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative layout-container px-4 sm:px-6 lg:px-8">
         <motion.span
           variants={fadeUpVariants}
           {...motionProps}
@@ -117,7 +117,7 @@ export function SolutionSection({ heading, content, pillars }: SolutionSectionPr
           variants={fadeUpVariants}
           {...motionProps}
           transition={{ delay: 0.2 }}
-          className="mt-5 max-w-2xl text-left text-base leading-relaxed text-ink-soft sm:text-lg"
+          className="mt-5 max-w-2xl text-justify text-base leading-relaxed text-ink-soft sm:text-lg"
         >
           {content}
         </motion.p>

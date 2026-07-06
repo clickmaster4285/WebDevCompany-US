@@ -91,7 +91,7 @@ export function BusinessCase({ heading, content, valueStreams }: BusinessCasePro
         <div className="absolute left-0 top-1/2 h-[600px] w-[500px] -translate-y-1/2 rounded-full bg-violet/[0.02] blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative layout-container px-4 sm:px-6 lg:px-8">
         <motion.div className="mb-14 sm:mb-16" variants={fadeUpVariants} {...motionProps}>
           <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm">
             <TrendingUp className="h-3.5 w-3.5" aria-hidden="true" />
@@ -102,7 +102,7 @@ export function BusinessCase({ heading, content, valueStreams }: BusinessCasePro
             {heading}
           </h2>
 
-          <p className="mt-5 max-w-3xl text-balance text-base leading-relaxed text-ink-soft sm:text-lg">
+          <p className="mt-5 max-w-3xl text-justify text-base leading-relaxed text-ink-soft sm:text-lg">
             {content}
           </p>
         </motion.div>

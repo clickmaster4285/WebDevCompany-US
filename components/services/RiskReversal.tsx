@@ -14,7 +14,7 @@ export function RiskReversal({ text }: RiskReversalProps) {
     <section className="relative border-t border-border/60 bg-background py-16 md:py-20">
       <div className="pointer-events-none absolute left-1/4 top-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/5 blur-3xl" />
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative layout-container px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getServiceBySlug } from "@/data/services";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
+// import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -22,7 +22,7 @@ export default async function ServiceLayout({ children, params }: LayoutProps) {
     <div className="min-h-screen flex flex-col">
       <Nav />
 
-      <div className="flex-1 pt-[80px] md:pt-[100px]">
+      <div className="">
         {/* Breadcrumb - Below Nav */}
         {/* <div className="border-y border-white/[0.06] bg-surface-1/40 backdrop-blur-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">

@@ -23,6 +23,8 @@ export interface IndustryPage {
   problemSection: {
     heading: string;
     content: string[];
+    image?: string;
+    imageAlt?: string;
   };
   solutionSection: {
     heading: string;
@@ -126,7 +128,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Healthcare organizations carry two web risks that general agencies rarely understand. The first is compliance: any site that collects, transmits, or stores protected health information — a contact form, a patient portal, an intake tool — sits within HIPAA\'s reach, and a careless build can create exposure that carries serious regulatory and financial consequences. Even analytics and tracking, configured wrong, have become a documented compliance problem in healthcare. The second is accessibility: healthcare sites face heightened ADA/WCAG expectations, and inaccessible sites invite both legal risk and lost patients.',
         'The second, quieter risk is commercial. Healthcare is one of the most-searched categories, and patients increasingly choose providers online — yet many healthcare sites bury the one action that matters: booking. A practice spending on visibility while making appointments hard to book is forfeiting patient volume at the final step. Slow load times, confusing navigation, and no clear path to schedule cost real patients to competitors who made it easy.'
-      ]
+      ],
+      image: '/assets/service-dev.jpg',
+      imageAlt: 'Healthcare web development - secure patient portal on tablet'
     },
     solutionSection: {
       heading: 'How We Build for Compliance and Patient Conversion Together',
@@ -305,7 +309,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Legal clients choosing a firm are making a high-stakes, trust-driven decision — and most firm websites undermine exactly the credibility that decision requires. A dated, generic site signals a dated, generic firm. Unclear practice-area positioning leaves prospects unsure you handle their specific matter. Buried or clunky intake makes reaching out harder than it should be, at the precise moment a motivated prospect is ready to call. In a profession where reputation and trust are everything, the website often contradicts the firm\'s actual quality.',
         'The economics make this expensive in a way few firms quantify. Legal client acquisition is competitive and costly, and case values are high — so a single lead lost to a confusing site or a competitor\'s clearer one can represent a five- or six-figure case walking out the door. A firm investing in visibility while converting poorly at intake is paying to send motivated, high-value prospects to better-converting competitors.'
-      ]
+      ],
+      image: '/assets/work-corp.jpg',
+      imageAlt: 'Law firm web development - professional corporate website'
     },
     solutionSection: {
       heading: 'How We Build for Credibility, Conversion, and Compliance',
@@ -484,7 +490,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Real estate websites attract motivated, high-intent visitors — people actively looking to buy, sell, or rent — and then routinely fail to capture them. Listings that load slowly or display poorly send browsers to a competitor\'s faster site. Property search that\'s clunky or limited frustrates the exact behavior visitors came to do. Lead capture that\'s weak or absent lets high-intent prospects browse and leave without ever entering your pipeline.',
         'The cost is direct: real estate is high-value and high-intent, so a leaked lead can be a lost commission or a lost sale worth far more than the website. A brokerage driving traffic to listings while converting poorly is paying to let motivated buyers and sellers slip through.'
-      ]
+      ],
+      image: '/assets/webdev.webp',
+      imageAlt: 'Real estate web development - property search platform'
     },
     solutionSection: {
       heading: 'How We Build for Listings and Lead Conversion',
@@ -663,7 +671,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Financial services is the category where getting the web wrong doesn\'t just cost money — it can end the company. A security breach exposing financial data is catastrophic: regulatory penalties, legal liability, and a collapse of the user trust that the entire business depends on. A compliance failure — PCI-DSS for payments, SOC 2 for enterprise sales, GDPR and other data regulations — can mean fines, lost partnerships, and being locked out of markets.',
         'Trust compounds the stakes on the upside too. Financial users are rightly cautious, and they judge trustworthiness partly through the digital experience — a platform that looks or feels insecure loses them before it can earn their business. Enterprise and partner deals in finance gate on security review; a fintech that can\'t pass forfeits the segment.'
-      ]
+      ],
+      image: '/assets/work-fintech.jpg',
+      imageAlt: 'Fintech web development - secure financial dashboard'
     },
     solutionSection: {
       heading: 'How We Build to Financial-Grade Standards',
@@ -842,7 +852,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'SaaS companies leak growth at two points, and generic web work addresses neither. The first is the marketing site: SaaS buyers decide fast, and a site that doesn\'t communicate value in seconds, doesn\'t make the trial or demo obvious, or loads slowly forfeits signups at the top of the funnel — expensive, because that traffic is hard-won. The second is the product experience: a confusing onboarding or a clunky UI means trials don\'t activate and customers churn, and in SaaS, churn quietly destroys the unit economics the whole business runs on.',
         'The numbers are unforgiving in both places. A SaaS site converting visitors to trials at half the achievable rate is wasting half its acquisition spend. A product where new users don\'t reach value quickly sees activation and retention suffer — and since SaaS profitability depends on retained revenue, weak activation caps growth no matter how well marketing performs.'
-      ]
+      ],
+      image: '/assets/work-saas.jpg',
+      imageAlt: 'SaaS web development - startup platform dashboard'
     },
     solutionSection: {
       heading: 'How We Build SaaS for Conversion and Retention',
@@ -1021,7 +1033,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Industrial and B2B buyers do extensive online research before ever contacting a vendor — and most manufacturer websites fail them at exactly that stage. Complex products presented with thin specifications, no clear configuration or compatibility information, and poor search leave technical buyers unable to evaluate whether you have what they need. Distributor and dealer models go unsupported, confusing the actual purchasing path.',
         'The cost is qualified pipeline lost before sales ever sees it. Manufacturing deals are high-value and sales cycles are long, so a buyer who can\'t evaluate your products online, or can\'t easily inquire, simply moves to a competitor whose site served them better.'
-      ]
+      ],
+      image: '/assets/webcustom.png',
+      imageAlt: 'Manufacturing web development - industrial product catalog'
     },
     solutionSection: {
       heading: 'How We Build for Industrial Products and Lead Generation',
@@ -1200,7 +1214,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Consumer commerce is won on two fronts at once, and weak builds lose on both. On conversion: a slow store, a leaky checkout, product pages that don\'t sell, and a poor mobile experience forfeit revenue from traffic the brand paid dearly to acquire. On brand: a generic, templated experience that doesn\'t feel like the brand erodes the distinctiveness and emotional connection that consumer loyalty and premium pricing depend on.',
         'The economics are direct and large. A consumer brand converting at well below its category benchmark is leaving substantial revenue on the table every day. Weak retention — driven by a forgettable experience and no post-purchase engagement — means paying repeatedly to re-acquire customers who should have come back.'
-      ]
+      ],
+      image: '/assets/work-ecom.jpg',
+      imageAlt: 'Ecommerce web development - online store shopping experience'
     },
     solutionSection: {
       heading: 'How We Build Commerce That Converts and Feels Like You',
@@ -1379,7 +1395,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Hospitality businesses hand a substantial share of revenue to third-party platforms in commissions — and much of it is avoidable. The reason is that their own websites don\'t win the direct booking: a clunky or slow reservation experience, a booking flow that breaks on mobile, and a site that doesn\'t give guests a reason to book direct all push reservations to the third-party platforms that then charge for the privilege.',
         'Over a year, the math is striking. A hotel or restaurant group routing a large share of bookings through commissioned platforms is paying a recurring tax that often dwarfs the cost of a website built to capture those bookings directly. Every percentage point of bookings shifted from third-party to direct flows straight to margin.'
-      ]
+      ],
+      image: '/assets/kitchenFlow.jpg',
+      imageAlt: 'Hospitality web development - restaurant booking experience'
     },
     solutionSection: {
       heading: 'How We Build to Shift Bookings Direct',
@@ -1558,7 +1576,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Education websites serve a prospective student who is comparing options and deciding where to apply — and many fail that prospect at the decision point. Hard-to-find program information, a confusing or buried application path, slow performance, and a weak mobile experience all cost applications from prospects who were genuinely interested.',
         'Accessibility adds a second, non-negotiable dimension. Educational institutions face strict accessibility requirements — ADA, WCAG, and Section 508 for many — and inaccessible sites create real legal exposure as well as excluding students the institution is meant to serve.'
-      ]
+      ],
+      image: '/assets/designsteps.jpg',
+      imageAlt: 'Education web development - academic portal and learning experience'
     },
     solutionSection: {
       heading: 'How We Build for Enrollment and Accessibility',
@@ -1737,7 +1757,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Most people choose a dentist by searching locally and picking from what they find — and many practices lose that patient before the first visit. Weak local search presence means the practice doesn\'t appear when nearby patients look. A dated, low-trust site makes prospects hesitate. And a missing or clunky online booking option loses the patient at the moment they\'re ready to act.',
         'The economics make each lost patient costly. A new dental patient represents recurring revenue over years of cleanings, treatments, and family visits — so the lifetime value is high, and losing a steady flow of new patients to better-positioned competitors quietly caps practice growth.'
-      ]
+      ],
+      image: '/assets/service-design.jpg',
+      imageAlt: 'Dental web development - modern practice website design'
     },
     solutionSection: {
       heading: 'How We Build for New-Patient Acquisition',
@@ -1916,7 +1938,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'Prospective clients evaluating a contractor want proof and confidence before they inquire about a significant project — and most construction websites fail to provide it. A weak or absent project portfolio gives prospects nothing to judge quality by. A dated, low-credibility site makes them hesitate to trust you with a major investment. Poor local search presence means they don\'t find you when searching for their project type nearby.',
         'The economics make every lost lead expensive. Construction and contracting projects are high-value, so a single qualified lead can be worth more than the entire website — and a prospect who can\'t see your work, doesn\'t trust your site, or can\'t easily inquire simply contacts a competitor whose site gave them confidence.'
-      ]
+      ],
+      image: '/assets/story-workstation.jpg',
+      imageAlt: 'Construction web development - building project portfolio showcase'
     },
     solutionSection: {
       heading: 'How We Build for Project Lead Generation',
@@ -2095,7 +2119,9 @@ export const industriesData: Record<string, IndustryPage> = {
       content: [
         'A nonprofit\'s website is its fundraising and engagement engine — and many leak donations at exactly the moment of generosity. A clunky, slow, or multi-step donation flow loses donors who arrived ready to give. A weak mission story fails to create the emotional connection that motivates giving. A site that doesn\'t make the impact of a gift clear leaves donors unsure their contribution matters. And no path to ongoing engagement means one-time donors never become recurring supporters.',
         'The cost is mission directly unfunded. Because online giving funds the work, every donor lost to a frustrating donation flow, or every gift not made because the story didn\'t land, is program dollars that never arrive.'
-      ]
+      ],
+      image: '/assets/service-motion.jpg',
+      imageAlt: 'Nonprofit web development - engaging donation platform for mission-driven organizations'
     },
     solutionSection: {
       heading: 'How We Build to Raise More',

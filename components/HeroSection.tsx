@@ -96,14 +96,14 @@ className="relative mx-auto flex flex-col items-center justify-center overflow-x
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 grid w-full max-w-[1400px] grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
+      <div className="relative z-10 layout-container grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
         
         {/* Left Column */}
         <div>
-          <div className="hero-fade text-eyebrow mb-8 flex items-center gap-3">
+          {/* <div className="hero-fade text-eyebrow mb-8 flex items-center gap-3">
             <span className="h-px w-10 bg-ink-mute" />
             ClickMasters / Digital Studio · Est. 2018
-          </div>
+          </div> */}
 
           <h1
             ref={headline}

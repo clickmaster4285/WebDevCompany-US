@@ -69,9 +69,9 @@ export function ProcessSection() {
   }, []);
 
   return (
-    <section ref={root} id="process" className="relative py-32 md:py-44">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="text-eyebrow mb-4">/ Capabilities</div>
+    <section ref={root} id="process" className="relative py-20 md:py-35">
+      <div className="layout-container px-6 md:px-10">
+        {/* <div className="text-eyebrow mb-4">/ Capabilities</div> */}
         <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,4rem)] text-ink">
           Web development <span className="text-violet-soft">expertise</span> that delivers.
         </h2>

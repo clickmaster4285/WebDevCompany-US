@@ -187,7 +187,7 @@ export default function CaseStudiesPage() {
         </div>
 
         <div className="container relative z-10 mx-auto px-4 py-20 md:px-6 md:py-28 lg:py-32">
-          <div className="mx-auto max-w-4xl">
+          <div className="layout-container">
             <div className="mb-6 text-left">
               <Breadcrumb customLabels={{ 'case-studies': 'Case Studies' }} />
             </div>

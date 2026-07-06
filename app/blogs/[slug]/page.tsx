@@ -344,7 +344,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
         <section className="relative overflow-hidden bg-background px-6 pb-20 pt-20 text-white md:px-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
 
-          <div className="relative mx-auto max-w-6xl">
+          <div className="relative layout-container">
             <div className="mb-6 text-left">
               <Breadcrumb
                 customLabels={{
@@ -441,7 +441,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:px-10 lg:grid-cols-[220px_1fr]">
+        <section className="layout-container grid gap-10 px-6 py-16 md:px-10 lg:grid-cols-[220px_1fr]">
           <BlogTOC headings={headings || []} />
 
           <div className="min-w-0">

@@ -26,7 +26,7 @@ export function TechnologyDetailPage({
 
         <TechnologyFeaturedAnswer content={copy.featuredAnswerBlock?.content} />
 
-        <section className="mx-auto grid max-w-7xl gap-8 px-6 py-10 lg:grid-cols-[280px_1fr]">
+        <section className="layout-container grid gap-8 px-6 py-10 lg:grid-cols-[280px_1fr]">
           <TechnologyTableOfContents sections={copy.sections} />
 
           <div className="grid gap-6">

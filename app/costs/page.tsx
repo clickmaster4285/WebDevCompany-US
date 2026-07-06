@@ -32,7 +32,7 @@ export default function CostsPage() {
         <div className="absolute left-1/2 top-0 h-[30%] w-[60%] -translate-x-1/2 rounded-full bg-violet/8 blur-[120px]" />
       </div>
 
-      <section className="container mx-auto px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+      <section className="layout-container px-4 py-24 sm:px-6 md:py-32 lg:px-8">
         {/* Header */}
         <div className="mx-auto mb-16 max-w-4xl text-center md:mb-20">
           <span className="text-eyebrow mb-4 block">Cost Guides</span>

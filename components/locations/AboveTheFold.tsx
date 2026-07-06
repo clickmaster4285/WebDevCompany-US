@@ -38,7 +38,7 @@ export const AboveTheFold: React.FC<AboveTheFoldProps> = ({
         <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-violet/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4">
+      <div className="relative layout-container px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

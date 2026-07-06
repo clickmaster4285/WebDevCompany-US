@@ -23,7 +23,7 @@ export function TechnologyHero({ technology }: Props) {
       <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
       <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1fr_480px]">
+      <div className="relative layout-container grid items-center gap-12 lg:grid-cols-[1fr_480px]">
         <div>
           <div className="mb-6">
             <Breadcrumb

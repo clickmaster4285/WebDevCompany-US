@@ -42,7 +42,7 @@ export const LocationPage: React.FC<LocationPageProps> = ({ data }) => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="layout-container px-4 sm:px-6 lg:px-8">
         {/* Page Number Indicator */}
         {/* <div className="flex items-center justify-end gap-2 py-4 text-xs text-ink-mute">
           <span className="inline-block w-1 h-1 rounded-full bg-violet"></span>

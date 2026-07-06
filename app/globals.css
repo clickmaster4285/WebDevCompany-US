@@ -264,3 +264,9 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+@layer components {
+  .layout-container {
+    @apply w-[97vw] md:w-[90vw] mx-auto;
+  }
+}
