@@ -48,7 +48,7 @@ export function CaseStudyStats({
 
   return (
     <div className={`border-b border-border py-8 ${className}`}>
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="layout-container px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat) => (
             <Card 

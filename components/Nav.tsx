@@ -3,6 +3,7 @@
 import { technologies } from "@/data/technologies";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image"; // 👈 added
 import {
   ChevronDown,
   ArrowRight,
@@ -219,16 +220,23 @@ export function Nav() {
         scrolled ? "py-3" : "py-4"
       }`}
     >
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-10">
+      {/* 👇 width changed: 97vw on mobile, 90vw on md+ */}
+      <div className="layout-container px-4 sm:px-6 md:px-10">
         <div className="flex items-center justify-between rounded-full border border-slate-200 bg-white/95 px-4 py-3 shadow-[0_14px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl">
           <Link
             href="/"
             className="flex items-center gap-2 text-slate-950"
             onClick={() => setMobileOpen(false)}
           >
-            <span className="text-base font-black tracking-wide">
-              ClickMasters<span className="text-violet">.</span>
-            </span>
+            {/* 👇 Logo image from /public folder */}
+            <Image
+              src="/logo.webp" // ⚠️ Replace with your actual file name, e.g. /logo.svg, /logo.webp
+              alt="ClickMasters Logo"
+              width={140}
+              height={40}
+              priority
+              className="h-8 w-auto object-contain"
+            />
           </Link>
 
           <nav className="hidden items-center gap-1 text-sm md:flex">

@@ -29,9 +29,9 @@ export function Partners() {
 
   return (
     <section className="relative z-10 bg-black px-6">
-      <div className="mx-auto max-w-7xl">
+      <div className="layout-container">
         {/* Partners Section */}
-        <div className="mt-32">
+        <div className="mt-0">
           <div
             className="relative overflow-hidden"
             style={{

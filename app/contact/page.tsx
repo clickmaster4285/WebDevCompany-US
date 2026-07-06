@@ -172,7 +172,7 @@ export default function ContactPage() {
           />
         </div>
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative layout-container px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <div className="mb-6 text-left">
               <Breadcrumb customLabels={{ contact: 'Contact Us' }} />
@@ -221,7 +221,7 @@ export default function ContactPage() {
           CONTACT FORM + INFO SECTION
       ════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-8 md:py-12 pb-20 border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="layout-container px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
             {/* ── Contact Form ── */}
             <motion.div
@@ -439,7 +439,7 @@ export default function ContactPage() {
           CTA SECTION
       ════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-16 md:py-20 lg:py-24 border-t border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="layout-container px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

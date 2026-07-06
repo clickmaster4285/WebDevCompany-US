@@ -119,7 +119,7 @@ export default function TestimonialsPage() {
         <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-violet/5 to-transparent rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-violet/5 to-transparent rounded-full blur-3xl" />
 
-        <div className="relative max-w-6xl mx-auto px-4">
+        <div className="relative layout-container px-4">
           <div className="text-center max-w-3xl mx-auto">
             <div className="mb-6 text-left">
               <Breadcrumb customLabels={{ testimonials: 'Testimonials' }} />
@@ -181,7 +181,7 @@ export default function TestimonialsPage() {
 
       {/* Featured Testimonials Carousel */}
       <section className="py-12 bg-surface-0">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="layout-container px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-ink mb-2">
               Featured Testimonials
@@ -425,7 +425,7 @@ export default function TestimonialsPage() {
 
       {/* Video Testimonials Section */}
       <section className="py-12 bg-surface-1">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="layout-container px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-ink mb-2">
               Video Testimonials
@@ -459,7 +459,7 @@ export default function TestimonialsPage() {
 
       {/* Filter & Grid Section */}
       <section className="py-12 bg-surface-0">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="layout-container px-4">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
             <div>
               <h2 className="text-3xl font-bold text-ink">
@@ -590,7 +590,7 @@ export default function TestimonialsPage() {
 
       {/* Industry-Specific Section */}
       <section className="py-12 bg-surface-1">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="layout-container px-4">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
               <Building2 className="w-3.5 h-3.5" />
@@ -717,7 +717,7 @@ export default function TestimonialsPage() {
   <div className="absolute -top-32 -left-32 h-80 w-80 rounded-full bg-violet/20 blur-[110px]" />
   <div className="absolute -bottom-32 -right-32 h-80 w-80 rounded-full bg-fuchsia-500/10 blur-[110px]" />
 
-  <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="relative z-10 layout-container px-4 sm:px-6 lg:px-8">
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl px-6 py-12 sm:px-10 md:px-16 md:py-16 text-center shadow-[0_24px_90px_rgba(124,58,237,0.22)]">
       <div className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/10">
         <MessageSquare className="w-4 h-4 text-violet-300" />

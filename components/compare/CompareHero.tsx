@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 export function CompareHero() {
   return (
     <section className="bg-background px-6 pb-24 pt-36 text-center text-white">
-      <div className="mx-auto max-w-4xl">
+      <div className="layout-container">
         <div className="mb-8 text-left">
           <Breadcrumb customLabels={{ compare: 'Comparisons' }} />
         </div>

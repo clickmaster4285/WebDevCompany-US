@@ -150,10 +150,10 @@ export function TechSection() {
   }, []);
 
   return (
-    <section id="stack" className="relative overflow-hidden py-32">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-16 px-6 md:grid-cols-[1fr_1fr] md:px-10">
+    <section id="stack" className="relative overflow-hidden py-10">
+      <div className="layout-container grid grid-cols-1 items-center gap-16 px-6 md:grid-cols-[1fr_1fr] md:px-10">
         <div>
-          <div className="text-eyebrow mb-4">/ Technology</div>
+          {/* <div className="text-eyebrow mb-4">/ Technology</div> */}
           <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink">
             An ecosystem of <span className="text-violet-soft">modern tools.</span>
           </h2>

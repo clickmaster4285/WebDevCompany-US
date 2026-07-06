@@ -23,7 +23,7 @@ export function TechnologiesGrid() {
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,92,255,0.08),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(15,23,42,0.06),transparent_35%)]" />
 
-      <div className="relative mx-auto max-w-7xl">
+      <div className="relative layout-container">
         <div className="rounded-[2rem] border border-slate-200 bg-white/80 p-6 shadow-[0_24px_90px_rgba(15,23,42,0.06)] backdrop-blur-xl md:p-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>

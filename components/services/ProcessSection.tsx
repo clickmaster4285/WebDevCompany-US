@@ -31,7 +31,7 @@ export function ProcessSection({ heading, steps }: ProcessSectionProps) {
 
   return (
     <Section background="transparent" padding="lg">
-      <div className="mx-auto max-w-4xl">
+      <div className="layout-container">
         <motion.div
           className="mb-12 text-left"
           initial={{ opacity: 0, y: 20 }}

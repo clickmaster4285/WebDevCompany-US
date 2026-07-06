@@ -132,8 +132,8 @@ function ProjectShot({
 export function Projects() {
   return (
     <section id="projects" className="relative bg-background">
-      <div className="px-6 md:px-12 pt-32 pb-16 max-w-7xl mx-auto">
-        <div className="text-eyebrow mb-4">/ Engineering</div>
+      <div className="layout-container px-6 md:px-12 pt-32 pb-5">
+        {/* <div className="text-eyebrow mb-4">/ Engineering</div> */}
         <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,4rem)] text-ink">
           Modern <span className="text-violet-soft">Engineering</span>
         </h2>

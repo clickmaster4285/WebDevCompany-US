@@ -162,7 +162,7 @@ export function CaseStudyHero({
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 md:px-6">
+      <div className="relative z-10 layout-container px-4 md:px-6">
         <div className="mx-auto max-w-4xl">
           <motion.div
             custom={0}
@@ -196,17 +196,17 @@ export function CaseStudyHero({
           >
             <h1 className="mb-6 text-left text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="bg-linear-to-b from-white to-white/80 bg-clip-text text-transparent">
-                {/* {firstTitlePart} */}
+                {firstTitlePart}
               </span>
 
-              {/* {secondTitlePart && (
+              {secondTitlePart && (
                 <>
                   {" "}
                   <span className="bg-linear-to-r from-indigo-300 via-white/90 to-rose-300 bg-clip-text text-transparent">
                     {secondTitlePart}
                   </span>
                 </>
-              )} */}
+              )}
             </h1>
           </motion.div>
 

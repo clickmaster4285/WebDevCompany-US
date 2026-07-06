@@ -12,15 +12,15 @@ const AWARDS = [
 export function AwardsSection() {
   return (
     <section className="relative py-32">
-      <div className="mx-auto max-w-350 px-6 md:px-10">
+      <div className="layout-container px-6 md:px-10">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <div className="text-eyebrow mb-4">/ Recognition</div>
+            {/* <div className="text-eyebrow mb-4">/ Recognition</div> */}
             <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-2xl">
               A wall worth <span className="text-violet-soft">scrolling.</span>
             </h2>
           </div>
-          <div className="text-sm text-ink-mute">Industry awards · Featured publications</div>
+          {/* <div className="text-sm text-ink-mute">Industry awards · Featured publications</div> */}
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-4">

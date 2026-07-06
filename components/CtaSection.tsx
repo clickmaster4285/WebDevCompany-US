@@ -92,9 +92,9 @@ export function CtaSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,oklch(0.62_0.21_295/0.18),transparent_60%)]" />
       </div>
 
-      <div className="mx-auto max-w-350 px-6 md:px-10">
+      <div className="layout-container px-6 md:px-10">
         <div className="text-center">
-          <div className="text-eyebrow mb-6">/ Begin</div>
+          {/* <div className="text-eyebrow mb-6">/ Begin</div> */}
           <h2 className="text-display mx-auto max-w-5xl text-[clamp(2.6rem,8vw,7.2rem)] text-ink">
             {"Let's build something".split(" ").map((w, i) => (
               <span

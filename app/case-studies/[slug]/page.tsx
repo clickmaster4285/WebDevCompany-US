@@ -60,7 +60,7 @@ export default async function CaseStudyDetailPage({
       />
 
       {/* Main Content */}
-      <main className="mx-auto max-w-7xl w-full px-6 md:px-12 py-12 lg:py-16">
+      <main className="layout-container px-6 md:px-12 py-12 lg:py-16">
         {/* Stats Bar — full width, above the grid */}
         <CaseStudyStats
           region={study.location}

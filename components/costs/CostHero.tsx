@@ -71,7 +71,7 @@ export function CostHero({
       {/* Grain texture overlay */}
       <div className="grain-after" />
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 layout-container px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"

@@ -46,9 +46,9 @@ export default async function IndustryDetailPage({
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <IndustryHero data={data.hero} title={data.title} />
+      <IndustryHero data={data.hero} />
 
-      <main className="mx-auto max-w-7xl w-full px-6 md:px-12 py-12 lg:py-16">
+      <main className="layout-container px-6 md:px-12 py-12 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-1 order-2 lg:order-1">
             <div className="sticky top-16 space-y-6">

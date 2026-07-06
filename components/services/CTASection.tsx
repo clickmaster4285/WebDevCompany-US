@@ -136,7 +136,7 @@ export function CTASection({
       <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/[0.08] blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/3 translate-y-1/3 rounded-full bg-violet/[0.05] blur-3xl" />
 
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="relative layout-container px-4 sm:px-6 lg:px-8">
         {/* Main CTA Card */}
         <motion.div
           className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-surface-1/80 p-8 shadow-2xl backdrop-blur-2xl sm:p-10 md:p-14 lg:p-16"

@@ -55,10 +55,10 @@ export function StorySection() {
 
   return (
     <section ref={root} id="story" className="relative mx-auto py-32 md:py-44 md:mx-auto">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="layout-container px-6 md:px-10">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-5">
-            <div className="text-eyebrow mb-6">/ The studio</div>
+            {/* <div className="text-eyebrow mb-6">/ The studio</div> */}
             <h2 className="text-display text-[clamp(2.2rem,5vw,4.4rem)] text-ink">
               <span className="overflow-hidden inline-block"><span className="story-line inline-block">Craft as</span></span>{" "}
               <span className="overflow-hidden inline-block"><span className="story-line inline-block">a system.</span></span>

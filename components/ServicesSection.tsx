@@ -49,15 +49,15 @@ export function ServicesSection() {
 
   return (
     <section ref={root} id="services" className="relative overflow-hidden py-24 md:py-0">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 md:pt-32">
+      <div className="layout-container px-6 md:px-10 md:pt-10">
         <div className="flex items-end justify-between gap-8">
           <div>
-            <div className="text-eyebrow mb-4">/ Services</div>
+            {/* <div className="text-eyebrow mb-4">/ Services</div> */}
             <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-2xl">
               Six disciplines, <span className="text-violet-soft">one studio.</span>
             </h2>
           </div>
-          <div className="hidden text-sm text-ink-mute md:block">Scroll →</div>
+          {/* <div className="hidden text-sm text-ink-mute md:block">Scroll →</div> */}
         </div>
       </div>
 

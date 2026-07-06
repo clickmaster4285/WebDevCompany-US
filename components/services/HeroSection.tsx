@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useReducedMotion,
-  useMotionTemplate,
   useMotionValue,
   useInView,
   type Variants,
@@ -246,30 +245,6 @@ export function HeroSection({
   const badgeText = getBadgeText(slug);
   const shouldReduceMotion = useReducedMotion();
 
-  const containerRef = useRef<HTMLElement | null>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      if (!containerRef.current) return;
-      const { left, top } = containerRef.current.getBoundingClientRect();
-      mouseX.set(event.clientX - left);
-      mouseY.set(event.clientY - top);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
-
-  const spotlightBackground = useMotionTemplate`
-    radial-gradient(
-      650px circle at ${mouseX}px ${mouseY}px,
-      rgb(124 92 255 / 0.15),
-      transparent 80%
-    )
-  `;
-
   const words = data.heading.trim().split(/\s+/).filter(Boolean);
   const hasMultipleWords = words.length > 1;
   const leadWords = hasMultipleWords ? words.slice(0, -1).join(" ") : "";
@@ -277,79 +252,22 @@ export function HeroSection({
 
   return (
     <section
-      ref={containerRef}
-      className="relative flex min-h-screen w-full items-center overflow-hidden bg-surface-0 px-4 py-24 sm:px-6 lg:min-h-[95vh] lg:px-8 xl:px-12"
+      className="relative flex min-h-screen w-full items-start overflow-hidden bg-surface-1/50 px-4 pb-24 pt-0 sm:px-6 lg:min-h-[95vh] lg:px-8 xl:px-12"
     >
-      {/* Background grid */}
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, var(--color-border) 1px, transparent 1px), linear-gradient(to bottom, var(--color-border) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-          maskImage:
-            "radial-gradient(ellipse 80% 60% at 30% 50%, black 25%, transparent 75%)",
-        }}
-      />
-
-      {/* Noise texture */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.22]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      />
-
-      {/* Glow orbs */}
-      <motion.div
-        aria-hidden
-        className="absolute -right-20 -top-20 h-[40rem] w-[40rem] rounded-full bg-violet/20 blur-[130px]"
-        animate={
-          shouldReduceMotion
-            ? {}
-            : { scale: [1, 1.15, 1], opacity: [0.3, 0.6, 0.3] }
-        }
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute -bottom-32 -left-32 h-[35rem] w-[35rem] rounded-full bg-violet/12 blur-[120px]"
-        animate={
-          shouldReduceMotion
-            ? {}
-            : { scale: [1, 1.2, 1], opacity: [0.2, 0.5, 0.2] }
-        }
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute right-1/4 top-1/3 h-[25rem] w-[25rem] rounded-full bg-indigo-500/10 blur-[100px]"
-      />
-
-      {/* Mouse spotlight */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{ background: spotlightBackground }}
-      />
-
-      <FloatingShapes shouldReduceMotion={shouldReduceMotion} />
+      {/* Subtle ambient glow */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute right-0 top-0 h-[600px] w-[600px] rounded-full bg-violet/[0.06] blur-[150px]" />
+        <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-violet/[0.04] blur-[120px]" />
+      </div>
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12"
+        className="relative z-10 layout-container grid grid-cols-1 items-start gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12"
       >
         {/* LEFT COLUMN */}
-        <div className="flex flex-col items-start text-left">
+        <div className="flex flex-col items-start text-left pt-24 lg:pt-32">
           {/* Breadcrumb */}
           {slug && breadcrumbLabel && (
             <motion.div
@@ -445,16 +363,6 @@ export function HeroSection({
             </MagneticButton>
           </motion.div>
 
-          {/* Social proof */}
-          {data.socialProof && (
-            <motion.p
-              variants={itemVariants}
-              className="mt-5 max-w-md text-xs italic leading-relaxed text-ink-mute sm:text-sm"
-            >
-              &ldquo;{data.socialProof}&rdquo;
-            </motion.p>
-          )}
-
           {/* Stats */}
           <motion.div
             variants={itemVariants}
@@ -523,7 +431,7 @@ export function HeroSection({
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="relative flex items-center justify-center lg:justify-end">
+        <div className="relative flex items-start justify-center 30 lg:pt-45 lg:justify-start">
           {rightVisual === "image" && rightImage ? (
             <motion.div
               variants={visualVariants}
@@ -561,57 +469,6 @@ export function HeroSection({
         </motion.div>
       </motion.div>
     </section>
-  );
-}
-
-function FloatingShapes({
-  shouldReduceMotion,
-}: {
-  shouldReduceMotion: boolean | null;
-}) {
-  return (
-    <>
-      <motion.div
-        aria-hidden
-        className="absolute left-[10%] top-[20%] h-3 w-3 rounded-full bg-violet/40"
-        animate={
-          shouldReduceMotion
-            ? {}
-            : { y: [0, -20, 0], opacity: [0.4, 0.8, 0.4] }
-        }
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute right-[15%] top-[25%] h-4 w-4 rotate-45 bg-indigo-500/30"
-        animate={
-          shouldReduceMotion
-            ? {}
-            : { y: [0, 18, 0], rotate: [45, 55, 45] }
-        }
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute bottom-[30%] left-[8%] h-2 w-2 rounded-full bg-emerald-400/40"
-        animate={
-          shouldReduceMotion
-            ? {}
-            : { y: [0, 15, 0], opacity: [0.4, 0.9, 0.4] }
-        }
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute right-[25%] bottom-[20%] h-3 w-3 rounded-lg border border-violet/30"
-        animate={
-          shouldReduceMotion
-            ? {}
-            : { y: [0, -12, 0], rotate: [0, 90, 0] }
-        }
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-      />
-    </>
   );
 }
 
@@ -684,7 +541,6 @@ function TechVisual({
             <span className="text-ink-soft/50">();</span>
           </div>
           <div className="h-2" />
-          <div className="pl-5 text-ink-mute">// Your product, shipped.</div>
         </div>
 
         <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-surface-1 to-transparent" />

@@ -45,7 +45,7 @@ export function CostFAQ({ heading, faqs, className }: CostFAQProps) {
       className={cn("relative overflow-hidden bg-background py-24 md:py-32", className)}
       aria-labelledby="cost-faq-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="layout-container px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

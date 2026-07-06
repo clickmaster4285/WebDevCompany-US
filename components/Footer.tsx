@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
-import footerImg from "@/public/assets/footer.png";
 import Image from "next/image";
+
+// ❌ Removed: import footerImg from "@/public/assets/footer.png";
 
 export function Footer() {
   // Scroll to top function
@@ -14,35 +15,24 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-white/8 bg-surface-1 py-16">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      {/* 👇 Updated width to match navbar (97vw on mobile, 90vw on md+) */}
+      <div className="layout-container px-6 md:px-10">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-3 text-ink">
-              <motion.div
-                animate={{ y: [0, -10, 0], rotate: [-2, 2, -2] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="shrink-0"
-              >
-           <Image
-  src={footerImg}
-  alt=""
-  aria-hidden="true"
-  width={64}
-  height={64}
-  style={{ height: "auto" }}
-  className="w-16 object-contain"
-/>
-              </motion.div>
-
-              <span className="text-3xl font-semibold tracking-wide sm:text-xl">
-                ClickMasters<span className="text-violet">.</span>
-              </span>
-            </Link>
+        <Link href="/" className="flex items-center gap-3 text-ink">
+  <div className="shrink-0">
+    {/* 👇 Logo image from /public folder */}
+    <Image
+      src="/logo.webp" // ⚠️ Use a light/white version: /logo-light.webp or /logo-white.webp
+      alt="ClickMasters Logo"
+      width={120}
+      height={48}
+      className="h-12 w-auto object-contain brightness-0 invert"
+      priority
+    />
+  </div>
+</Link>
 
             <p className="mt-6 max-w-xs text-sm text-ink-mute">
               A premium web development studio crafting cinematic digital
@@ -154,75 +144,74 @@ export function Footer() {
           </div>
 
           {/* Resources & Technologies Column */}
-          {/* Resources & Technologies Column */}
-<div className="col-span-2 md:col-span-1">
-  <div className="text-xs uppercase tracking-widest text-ink-mute">
-    Resources
-  </div>
+          <div className="col-span-2 md:col-span-1">
+            <div className="text-xs uppercase tracking-widest text-ink-mute">
+              Resources
+            </div>
 
-  <ul className="mt-5 space-y-3 text-sm text-ink-soft">
-    <li>
-      <Link
-        href="/case-studies"
-        className="transition-colors hover:text-violet-soft"
-      >
-        Case Studies
-      </Link>
-    </li>
+            <ul className="mt-5 space-y-3 text-sm text-ink-soft">
+              <li>
+                <Link
+                  href="/case-studies"
+                  className="transition-colors hover:text-violet-soft"
+                >
+                  Case Studies
+                </Link>
+              </li>
 
-    <li>
-      <Link
-        href="/blogs"
-        className="transition-colors hover:text-violet-soft"
-      >
-        Blog
-      </Link>
-    </li>
+              <li>
+                <Link
+                  href="/blogs"
+                  className="transition-colors hover:text-violet-soft"
+                >
+                  Blog
+                </Link>
+              </li>
 
-    <li>
-      <Link
-        href="/compare"
-        className="transition-colors hover:text-violet-soft"
-      >
-        Comparisons
-      </Link>
-    </li>
+              <li>
+                <Link
+                  href="/compare"
+                  className="transition-colors hover:text-violet-soft"
+                >
+                  Comparisons
+                </Link>
+              </li>
 
-    <li>
-      <Link
-        href="/faqs"
-        className="transition-colors hover:text-violet-soft"
-      >
-        FAQs
-      </Link>
-    </li>
+              <li>
+                <Link
+                  href="/faqs"
+                  className="transition-colors hover:text-violet-soft"
+                >
+                  FAQs
+                </Link>
+              </li>
 
-    <li>
-      <Link
-        href="/testimonials"
-        className="transition-colors hover:text-violet-soft"
-      >
-        Testimonials
-      </Link>
-    </li>
-  </ul>
+              <li>
+                <Link
+                  href="/testimonials"
+                  className="transition-colors hover:text-violet-soft"
+                >
+                  Testimonials
+                </Link>
+              </li>
+            </ul>
 
-  {/* Technologies Sub-section */}
-  <div className="mt-6 text-xs uppercase tracking-widest text-ink-mute">
-    Technologies
-  </div>
+            {/* Technologies Sub-section */}
+            <div className="mt-6 text-xs uppercase tracking-widest text-ink-mute">
+              Technologies
+            </div>
 
-  <ul className="mt-3 space-y-3 text-sm text-ink-soft">
-    <li>
-      <Link
-        href="/technologies"
-        className="transition-colors hover:text-violet-soft"
-      >
-        Our Tech Stack
-      </Link>
-    </li>
-  </ul>
-</div>
+            <ul className="mt-3 space-y-3 text-sm text-ink-soft">
+              <li>
+                <Link
+                  href="/technologies"
+                  className="transition-colors hover:text-violet-soft"
+                >
+                  Our Tech Stack
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Bottom Bar with Scroll to Top Button */}

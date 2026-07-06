@@ -12,7 +12,7 @@ export function BlogsHero() {
       <div className="absolute -right-32 top-20 h-80 w-80 rounded-full bg-violet/25 blur-3xl" />
       <div className="absolute -left-32 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1fr_480px]">
+      <div className="relative layout-container grid items-center gap-12 lg:grid-cols-[1fr_480px]">
         <div>
           <span className="inline-flex rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-violet-soft backdrop-blur">
             Resources

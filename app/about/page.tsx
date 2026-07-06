@@ -203,7 +203,7 @@ export default function AboutPage() {
           />
         </div>
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative layout-container px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <div className="mb-6 text-left">
               <Breadcrumb customLabels={{ about: 'About Us' }} />
@@ -275,7 +275,7 @@ export default function AboutPage() {
           OUR STORY SECTION
       ════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-16 md:py-20 lg:py-24 border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="layout-container px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -381,7 +381,7 @@ export default function AboutPage() {
           VALUES SECTION
       ════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-16 md:py-20 lg:py-24 bg-surface-1/50 border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="layout-container px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -435,7 +435,7 @@ export default function AboutPage() {
           TEAM SECTION
       ════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-16 md:py-20 lg:py-24 border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="layout-container px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -498,7 +498,7 @@ export default function AboutPage() {
           CTA SECTION
       ════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-16 md:py-20 lg:py-24 border-t border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="layout-container px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

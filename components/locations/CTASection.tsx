@@ -27,7 +27,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-violet/10 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-violet/5 rounded-full blur-3xl"></div>
 
-      <div className="relative max-w-4xl mx-auto px-4 text-center">
+      <div className="relative layout-container px-4 text-center">
         <div className="glass rounded-3xl border border-white/10 p-8 md:p-12 lg:p-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-ink">
             Build a Site That Works for Your {city} Business

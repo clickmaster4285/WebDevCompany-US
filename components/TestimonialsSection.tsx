@@ -51,9 +51,9 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <section ref={root} className="relative py-32">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="text-eyebrow mb-4">/ Voices</div>
+    <section ref={root} className="relative py-20">
+      <div className="layout-container px-6 md:px-10">
+        {/* <div className="text-eyebrow mb-4">/ Voices</div> */}
         <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-3xl">
           Words from the people <span className="text-violet-soft">we build with.</span>
         </h2>
@@ -81,11 +81,11 @@ export function TestimonialsSection() {
                 ))}
               </div>
               <div className="mt-10 flex items-center gap-4">
-                <div className="h-px w-12 bg-ink-mute" />
-                <div>
+                {/* <div className="h-px w-12 bg-ink-mute" /> */}
+                {/* <div>
                   <div className="text-ink">{t.name}</div>
                   <div className="text-xs uppercase tracking-widest text-ink-mute">{t.role}</div>
-                </div>
+                </div> */}
               </div>
             </div>
           </article>

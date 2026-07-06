@@ -32,12 +32,12 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
 
   return (
     <Section background="default" padding="lg">
-      <div className="mx-auto max-w-6xl">
+      <div className="layout-container">
         <motion.h2 className="text-display text-left text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           {heading}
         </motion.h2>
 
-        <motion.div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} role="list">
+        <motion.div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} role="list">
           {items.map((item, index) => (
             <motion.div
               key={index}
