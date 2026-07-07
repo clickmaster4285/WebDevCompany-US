@@ -94,7 +94,7 @@ export function SolutionSection({ heading, content, pillars }: SolutionSectionPr
         <div className="absolute left-0 top-1/2 h-[600px] w-[500px] -translate-y-1/2 rounded-full bg-violet/[0.03] blur-3xl" />
       </div>
 
-      <div className="relative layout-container px-4 sm:px-6 lg:px-8">
+      <div className="relative layout-container px-18">
         <motion.span
           variants={fadeUpVariants}
           {...motionProps}

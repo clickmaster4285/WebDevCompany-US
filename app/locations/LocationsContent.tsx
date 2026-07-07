@@ -47,7 +47,7 @@ export default function LocationsContent() {
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-violet/5 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative layout-container px-4">
+        <div className="relative layout-container px-18">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ export default function LocationsContent() {
 
       {/* Locations Grid */}
       <section className="py-12">
-        <div className="layout-container px-4">
+        <div className="layout-container px-18">
           <AnimatePresence mode="wait">
             {filteredLocations.length === 0 ? (
               <motion.div
@@ -201,7 +201,7 @@ export default function LocationsContent() {
 
       {/* CTA Section */}
       <section className="py-16">
-        <div className="layout-container px-4 text-center">
+        <div className="layout-container px-18 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

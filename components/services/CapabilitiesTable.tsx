@@ -31,8 +31,8 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
   const activeCardVariants = shouldReduceMotion ? reducedCardVariants : cardVariants;
 
   return (
-    <Section background="default" padding="lg">
-      <div className="layout-container">
+    <Section background="background" padding="lg">
+      <div className="layout-container px-18">
         <motion.h2 className="text-display text-left text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           {heading}
         </motion.h2>
@@ -45,7 +45,7 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
               whileHover={shouldReduceMotion ? undefined : { y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
               role="listitem"
             >
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border/60 bg-surface-1/50 shadow-soft backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-violet/30 hover:shadow-violet-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-0">
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border/60 bg-background shadow-soft backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-violet/30 hover:shadow-violet-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-0">
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet/0 to-violet/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:from-violet/10 group-hover:to-violet/5" />
                 <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-violet/0 via-violet/0 to-violet/0 transition-all duration-300 group-hover:via-violet/60" />
                 <CardContent className="relative flex flex-1 flex-col gap-4 p-6">

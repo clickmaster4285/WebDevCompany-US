@@ -54,7 +54,7 @@ export function StorySection() {
   }, []);
 
   return (
-    <section ref={root} id="story" className="relative mx-auto py-32 md:py-44 md:mx-auto">
+    <section ref={root} id="story" className="relative mx-auto py-20 md:py-35 md:mx-auto">
       <div className="layout-container px-6 md:px-10">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-5">

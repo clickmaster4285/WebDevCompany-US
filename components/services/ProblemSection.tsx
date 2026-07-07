@@ -178,7 +178,7 @@ export function ProblemSection({
         <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-destructive/[0.03] blur-3xl" />
       </div>
 
-      <div className="relative layout-container grid grid-cols-1 items-start gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+      <div className="relative layout-container grid grid-cols-1 items-start gap-8 px-10 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
         {/* LEFT COLUMN — Content */}
         <div className="text-left">
           <motion.span
@@ -208,7 +208,7 @@ export function ProblemSection({
               <motion.p
                 key={index}
                 variants={itemVariants}
-                className="flex items-start gap-3 text-base leading-relaxed text-ink-soft sm:text-lg sm:leading-relaxed"
+                className="flex items-start gap-3 text-justify leading-relaxed text-ink-soft sm:text-lg sm:leading-relaxed"
               >
                 <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-destructive/40" />
                 <span>{paragraph}</span>
@@ -230,7 +230,7 @@ export function ProblemSection({
         </div>
 
         {/* RIGHT COLUMN — Visual */}
-        <div className="relative flex items-start justify-center lg:justify-end">
+        <div className="relative flex items-start pt-40 pr-10 justify-center lg:justify-end">
           {visualType === "image" ? (
             <motion.div
               variants={visualVariants}

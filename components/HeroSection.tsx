@@ -96,7 +96,7 @@ className="relative mx-auto flex flex-col items-center justify-center overflow-x
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 layout-container grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
+      <div className="relative z-10 layout-container px-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
         
         {/* Left Column */}
         <div>

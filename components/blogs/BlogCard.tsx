@@ -48,7 +48,7 @@ export function BlogCard({ blog }: BlogCardProps) {
 
         <div className="p-6">
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between px-15">
             <span className="font-mono text-xs font-bold text-slate-300">
               #{String(blog.id).padStart(2, "0")}
             </span>

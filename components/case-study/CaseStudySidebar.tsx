@@ -89,7 +89,7 @@ export function CaseStudySidebar({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 sticky top-[100px] max-h-[calc(100vh-120px)] overflow-y-auto pr-2">
       <div className="bg-surface-1 rounded-2xl shadow-soft border border-border p-6 lg:p-8 space-y-6">
         <div>
           <h3 className="text-xs font-semibold uppercase tracking-wider text-ink-mute">

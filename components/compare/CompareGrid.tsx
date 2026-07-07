@@ -17,7 +17,7 @@ export function CompareGrid() {
   );
 
   return (
-    <section className="layout-container px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <section className="layout-container px-18 py-12 sm:py-16 ">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.22em] text-violet sm:text-sm">

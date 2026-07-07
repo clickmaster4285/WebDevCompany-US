@@ -132,7 +132,7 @@ function ProjectShot({
 export function Projects() {
   return (
     <section id="projects" className="relative bg-background">
-      <div className="layout-container px-6 md:px-12 pt-32 pb-5">
+      <div className="layout-container px-6 md:px-12 py-8 md:py-15">
         {/* <div className="text-eyebrow mb-4">/ Engineering</div> */}
         <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,4rem)] text-ink">
           Modern <span className="text-violet-soft">Engineering</span>
@@ -143,7 +143,7 @@ export function Projects() {
       {projects.map((p, i) => (
         <ProjectShot key={p.title} project={p} index={i} />
       ))}
-      <div className="h-[40vh]" />
+      {/* <div className="h-[40vh]" /> */}
     </section>
   );
 }

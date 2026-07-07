@@ -30,7 +30,7 @@ export function RiskReversal({ text }: RiskReversalProps) {
 
             <div className="relative z-10 flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:gap-7 md:p-8">
               <motion.div
-                className="relative flex h-16 w-16 shrink-0 items-center justify-center"
+                className="relative flex h-16 w-16 shrink-3 items-center justify-center"
                 whileHover={shouldReduceMotion ? {} : { rotate: 360, scale: 1.08 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
@@ -50,7 +50,7 @@ export function RiskReversal({ text }: RiskReversalProps) {
                     Our Guarantee
                   </span>
                 </div>
-                <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+                <p className="text-justify leading-relaxed text-muted-foreground md:text-lg">
                   {text}
                 </p>
               </div>

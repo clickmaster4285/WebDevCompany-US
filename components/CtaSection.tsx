@@ -87,7 +87,7 @@ export function CtaSection() {
   }, [gsap]);
 
   return (
-    <section ref={root} id="contact" className="relative overflow-hidden py-32">
+    <section ref={root} id="contact" className="relative overflow-hidden py-20 md:py-30">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,oklch(0.62_0.21_295/0.18),transparent_60%)]" />
       </div>

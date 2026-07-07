@@ -150,7 +150,7 @@ export function TechSection() {
   }, []);
 
   return (
-    <section id="stack" className="relative overflow-hidden py-10">
+    <section id="stack" className="relative overflow-hidden py-10 md:py-20">
       <div className="layout-container grid grid-cols-1 items-center gap-16 px-6 md:grid-cols-[1fr_1fr] md:px-10">
         <div>
           {/* <div className="text-eyebrow mb-4">/ Technology</div> */}

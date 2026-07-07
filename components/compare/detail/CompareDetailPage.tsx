@@ -43,7 +43,7 @@ export function CompareDetailPage({
         rightOption={rightOption}
       />
 
-      <section className="layout-container px-4 py-10 sm:px-6 sm:py-12">
+      <section className="layout-container px-18 py-10 sm:py-12">
   <div className="grid gap-6 lg:grid-cols-[230px_minmax(0,1fr)]">
           {/* Sticky TOC */}
           <CompareTableOfContents sections={page.sections} />
