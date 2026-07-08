@@ -19,7 +19,7 @@ export function CompareHero({ comparison }: CompareHeroProps) {
       <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
       <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
-      <div className="relative layout-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="relative layout-container px-18 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.28em] text-violet">
             {comparison.level || comparison.category}

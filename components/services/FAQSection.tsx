@@ -33,7 +33,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
   const toggle = (index: number) => setOpenIndex(openIndex === index ? null : index);
 
   return (
-    <Section background="default" padding="lg">
+    <Section background="background" padding="lg">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <motion.div
           className="mb-16 text-left"
@@ -59,7 +59,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             const isOpen = openIndex === index;
             return (
               <motion.div key={index} variants={activeItemVariants} custom={index}>
-                <div className={`group relative overflow-hidden rounded-2xl border bg-surface-1/80 transition-all duration-300 ${isOpen ? "border-violet/40 shadow-lg shadow-violet/5" : "border-border/60 hover:border-violet/30"}`}>
+                <div className={`group relative overflow-hidden rounded-2xl border bg-background transition-all duration-300 ${isOpen ? "border-violet/40 shadow-lg shadow-violet/5" : "border-border/60 hover:border-violet/30"}`}>
                   <div className={`absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-violet via-violet/60 to-violet/20 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 group-hover:opacity-50"}`} />
                   <button className={`flex w-full items-center gap-4 px-6 py-5 text-left transition-colors duration-300 md:px-7 md:py-6 ${isOpen ? "bg-violet/[0.03]" : "hover:bg-muted/30"}`} onClick={() => toggle(index)} aria-expanded={isOpen}>
                     <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors duration-300 ${isOpen ? "bg-violet text-foreground" : "bg-violet/10 text-violet"}`}>

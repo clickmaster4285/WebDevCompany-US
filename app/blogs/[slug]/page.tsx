@@ -344,8 +344,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
         <section className="relative overflow-hidden bg-background px-6 pb-20 pt-20 text-white md:px-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
 
-          <div className="relative layout-container">
-            <div className="mb-6 text-left">
+          <div className="relative layout-container px-18 md:10">
+            <div className="mt-15 text-left">
               <Breadcrumb
                 customLabels={{
                   blogs: "Blogs",

@@ -280,7 +280,7 @@ const textures = useMemo(() => {
 
   return (
     <section id="process" className="relative min-h-screen">
-      <div className="layout-container sm:px-6 pt-24 md:pt-32 pb-5">
+      <div className="layout-container sm:px-6 px-9 md:px-12 py-5 md:py-15">
         {/* <div className="text-eyebrow mb-4">/ Process</div> */}
         <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,4rem)] text-ink">
           A measured journey from <span className="text-violet-soft">idea to impact.</span>

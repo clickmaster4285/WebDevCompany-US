@@ -52,7 +52,7 @@ export function TestimonialsSection() {
 
   return (
     <section ref={root} className="relative py-20">
-      <div className="layout-container px-6 md:px-10">
+      <div className="layout-container px-18 md:px-10">
         {/* <div className="text-eyebrow mb-4">/ Voices</div> */}
         <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-3xl">
           Words from the people <span className="text-violet-soft">we build with.</span>

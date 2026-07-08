@@ -63,7 +63,7 @@ export default function FAQsPage() {
         <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
-        <div className="relative layout-container">
+        <div className="relative layout-container px-18">
           {/* Main Grid: Left Side Text & Right Side Image */}
           <div className="mt-6 grid items-center gap-8 md:gap-12 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_520px]">
             {/* Left Column: Content */}
@@ -166,7 +166,7 @@ export default function FAQsPage() {
         </div>
       </section>
 
-      <section className="layout-container px-6 py-16">
+      <section className="layout-container px-18 py-16">
         <div className="mb-10 text-center">
           <p className="text-sm font-black uppercase tracking-[0.25em] text-violet">
             FAQ Library
@@ -229,13 +229,13 @@ export default function FAQsPage() {
             </p>
 
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-              <a
+              <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-violet px-6 py-3 text-sm font-black text-white shadow-lg shadow-violet/20 transition hover:bg-violet/90"
               >
                 <Mail className="h-4 w-4" />
                 Contact Support
-              </a>
+              </Link>
 
               <a
                 href="/book-call"

@@ -264,7 +264,7 @@ export function HeroSection({
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 layout-container grid grid-cols-1 items-start gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12"
+        className="relative z-10 layout-container px-10 grid grid-cols-1 items-start gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12"
       >
         {/* LEFT COLUMN */}
         <div className="flex flex-col items-start text-left pt-24 lg:pt-32">
@@ -431,7 +431,7 @@ export function HeroSection({
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="relative flex items-start justify-center 30 lg:pt-45 lg:justify-start">
+        <div className="relative flex items-start justify-center 30 lg:pt-55 lg:justify-start">
           {rightVisual === "image" && rightImage ? (
             <motion.div
               variants={visualVariants}

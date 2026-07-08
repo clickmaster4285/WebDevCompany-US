@@ -32,8 +32,8 @@ export function ComparisonTable({ heading, intro, options }: ComparisonTableProp
   const activeCardVariants = shouldReduceMotion ? reducedCardVariants : cardVariants;
 
   return (
-    <Section background="default" padding="lg">
-      <div className="layout-container">
+    <Section background="background" padding="lg">
+      <div className="layout-container px-18">
         <motion.div className="mb-12 text-left" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <span className="inline-flex items-center gap-2 rounded-full border border-violet/30 bg-violet/10 px-4 py-1.5 text-sm font-medium text-violet backdrop-blur-sm">
             <Award className="h-4 w-4" aria-hidden="true" />

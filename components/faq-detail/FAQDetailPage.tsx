@@ -23,7 +23,7 @@ export function FAQDetailPage({ faq }: FAQDetailPageProps) {
       <section className="relative overflow-hidden px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:pb-20 lg:pt-36">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(124,92,255,0.18),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(99,102,241,0.12),transparent_35%)]" />
 
-        <div className="relative layout-container">
+        <div className="relative layout-container px-17">
           {/* Top Bar: Back Link & Search */}
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <Link
@@ -164,7 +164,7 @@ export function FAQDetailPage({ faq }: FAQDetailPageProps) {
       </section>
 
       {/* Main Body Content & Sidebar */}
-      <section className="layout-container px-4 py-10 sm:px-6 lg:py-12">
+      <section className="layout-container px-18 py-10 lg:py-12">
         <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_330px]">
           {/* Main Column */}
           <div className="grid min-w-0 gap-7">

@@ -36,7 +36,7 @@ export function DecisionSnapshot({
 
   return (
     <section className="px-6 pb-12">
-      <div className="layout-container">
+      <div className="layout-container px-18">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.25em] text-violet">

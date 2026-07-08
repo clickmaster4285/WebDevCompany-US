@@ -7,12 +7,12 @@ import blogHeroImg from "@/public/assets/blog-hero.png";
 
 export function BlogsHero() {
   return (
-    <section className="relative overflow-hidden bg-[#101827] px-6 pb-20 pt-32 text-white md:px-10 md:pb-24 md:pt-36">
+    <section className="relative overflow-hidden bg-background px-6 pb-20 pt-32 text-white md:px-10 md:pb-24 md:pt-36">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
       <div className="absolute -right-32 top-20 h-80 w-80 rounded-full bg-violet/25 blur-3xl" />
       <div className="absolute -left-32 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
 
-      <div className="relative layout-container grid items-center gap-12 lg:grid-cols-[1fr_480px]">
+      <div className="relative layout-container px-85 grid items-center gap-12 lg:grid-cols-[1fr_480px]">
         <div>
           <span className="inline-flex rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-violet-soft backdrop-blur">
             Resources
@@ -44,7 +44,7 @@ export function BlogsHero() {
             </Link>
           </div>
 
-          <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
+          <div className="mt-10 grid max-w-xl grid-cols-3 px-15 gap-3">
             {[
               ["20+", "Guides"],
               ["5+", "Topics"],

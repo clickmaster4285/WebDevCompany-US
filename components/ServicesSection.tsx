@@ -48,12 +48,12 @@ export function ServicesSection() {
   }, []);
 
   return (
-    <section ref={root} id="services" className="relative overflow-hidden py-24 md:py-0">
+    <section ref={root} id="services" className="relative overflow-hidden py-20 md:py-30">
       <div className="layout-container px-6 md:px-10 md:pt-10">
         <div className="flex items-end justify-between gap-8">
           <div>
             {/* <div className="text-eyebrow mb-4">/ Services</div> */}
-            <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-2xl">
+            <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-2xl whitespace-nowrap">
               Six disciplines, <span className="text-violet-soft">one studio.</span>
             </h2>
           </div>

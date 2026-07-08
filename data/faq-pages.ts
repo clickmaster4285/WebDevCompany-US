@@ -295,7 +295,7 @@ export const faqPages = [
 {
   slug: "build-vs-buy-website",
   page: {
-    url: "/faq/build-vs-buy-website/",
+    url: "/faqs/build-vs-buy-website/",
     title: "Is It Cheaper to Build or Buy a Website?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Is It Cheaper to Build or Buy a Website?"; capture long-tail informational intent; feed into the Custom Web Development pillar.',
@@ -558,7 +558,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -588,7 +588,7 @@ export const faqPages = [
 {
   slug: "why-is-web-development-expensive",
   page: {
-    url: "/faq/why-is-web-development-expensive/",
+    url: "/faqs/why-is-web-development-expensive/",
     title: "Why Is Web Development So Expensive?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Why Is Web Development So Expensive?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -851,7 +851,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -881,7 +881,7 @@ export const faqPages = [
 {
   slug: "how-to-choose-web-development-company",
   page: {
-    url: "/faq/how-to-choose-web-development-company/",
+    url: "/faqs/how-to-choose-web-development-company/",
     title: "How Do I Choose a Web Development Company?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "How Do I Choose a Web Development Company?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -1144,7 +1144,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -1174,7 +1174,7 @@ export const faqPages = [
 {
   slug: "what-to-look-for-in-a-web-developer",
   page: {
-    url: "/faq/what-to-look-for-in-a-web-developer/",
+    url: "/faqs/what-to-look-for-in-a-web-developer/",
     title: "What Should I Look for in a Web Developer?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "What Should I Look for in a Web Developer?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -1437,7 +1437,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -1467,7 +1467,7 @@ export const faqPages = [
 {
   slug: "do-i-own-my-website",
   page: {
-    url: "/faq/do-i-own-my-website/",
+    url: "/faqs/do-i-own-my-website/",
     title: "Do I Own My Website After It's Built?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Do I Own My Website After It\'s Built?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -1730,7 +1730,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -1760,7 +1760,7 @@ export const faqPages = [
 {
   slug: "best-language-for-web-development",
   page: {
-    url: "/faq/best-language-for-web-development/",
+    url: "/faqs/best-language-for-web-development/",
     title: "Which Programming Language Is Best for Web Development?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Which Programming Language Is Best for Web Development?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -2023,7 +2023,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -2053,7 +2053,7 @@ export const faqPages = [
 {
   slug: "best-tech-stack-for-web-app",
   page: {
-    url: "/faq/best-tech-stack-for-web-app/",
+    url: "/faqs/best-tech-stack-for-web-app/",
     title: "What Is the Best Tech Stack for a Web App?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "What Is the Best Tech Stack for a Web App?"; capture long-tail informational intent; feed into the Web Application Development pillar.',
@@ -2316,7 +2316,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -2346,7 +2346,7 @@ export const faqPages = [
 {
   slug: "wordpress-vs-custom-website",
   page: {
-    url: "/faq/wordpress-vs-custom-website/",
+    url: "/faqs/wordpress-vs-custom-website/",
     title: "Should I Use WordPress or Build a Custom Website?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Should I Use WordPress or Build a Custom Website?"; capture long-tail informational intent; feed into the Custom Web Development pillar.',
@@ -2609,7 +2609,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -2639,7 +2639,7 @@ export const faqPages = [
 {
   slug: "does-website-speed-affect-seo",
   page: {
-    url: "/faq/does-website-speed-affect-seo/",
+    url: "/faqs/does-website-speed-affect-seo/",
     title: "Does Website Speed Affect SEO?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Does Website Speed Affect SEO?"; capture long-tail informational intent; feed into the Website Speed Optimization pillar.',
@@ -2902,7 +2902,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -2932,7 +2932,7 @@ export const faqPages = [
 {
   slug: "how-to-make-website-load-faster",
   page: {
-    url: "/faq/how-to-make-website-load-faster/",
+    url: "/faqs/how-to-make-website-load-faster/",
     title: "How Do I Make My Website Load Faster?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "How Do I Make My Website Load Faster?"; capture long-tail informational intent; feed into the Website Speed Optimization pillar.',
@@ -3195,7 +3195,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -3225,7 +3225,7 @@ export const faqPages = [
 {
   slug: "best-platform-for-online-store",
   page: {
-    url: "/faq/best-platform-for-online-store/",
+    url: "/faqs/best-platform-for-online-store/",
     title: "What Is the Best Platform for an Online Store?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "What Is the Best Platform for an Online Store?"; capture long-tail informational intent; feed into the E-commerce Development pillar.',
@@ -3488,7 +3488,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -3518,7 +3518,7 @@ export const faqPages = [
 {
   slug: "cost-to-build-online-store",
   page: {
-    url: "/faq/cost-to-build-online-store/",
+    url: "/faqs/cost-to-build-online-store/",
     title: "How Much Does It Cost to Build an Online Store?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "How Much Does It Cost to Build an Online Store?"; capture long-tail informational intent; feed into the E-commerce Development pillar.',
@@ -3781,7 +3781,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -3811,7 +3811,7 @@ export const faqPages = [
 {
   slug: "can-ai-build-a-website",
   page: {
-    url: "/faq/can-ai-build-a-website/",
+    url: "/faqs/can-ai-build-a-website/",
     title: "Can AI Build a Website?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Can AI Build a Website?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -4074,7 +4074,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -4104,7 +4104,7 @@ export const faqPages = [
 {
   slug: "what-is-a-headless-website",
   page: {
-    url: "/faq/what-is-a-headless-website/",
+    url: "/faqs/what-is-a-headless-website/",
     title: "What Is a Headless Website?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "What Is a Headless Website?"; capture long-tail informational intent; feed into the Headless Commerce Development pillar.',
@@ -4367,7 +4367,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -4397,7 +4397,7 @@ export const faqPages = [
 {
   slug: "do-i-need-to-maintain-my-website",
   page: {
-    url: "/faq/do-i-need-to-maintain-my-website/",
+    url: "/faqs/do-i-need-to-maintain-my-website/",
     title: "Do I Need to Maintain My Website?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Do I Need to Maintain My Website?"; capture long-tail informational intent; feed into the Website Maintenance & Support pillar.',
@@ -4660,7 +4660,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -4690,7 +4690,7 @@ export const faqPages = [
 {
   slug: "how-often-redesign-website",
   page: {
-    url: "/faq/how-often-redesign-website/",
+    url: "/faqs/how-often-redesign-website/",
     title: "How Often Should I Redesign My Website?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "How Often Should I Redesign My Website?"; capture long-tail informational intent; feed into the Website Redesign Services pillar.',
@@ -4953,7 +4953,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -4983,7 +4983,7 @@ export const faqPages = [
 {
   slug: "why-isnt-my-website-converting",
   page: {
-    url: "/faq/why-isnt-my-website-converting/",
+    url: "/faqs/why-isnt-my-website-converting/",
     title: "Why Isn't My Website Converting?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Why Isn\'t My Website Converting?"; capture long-tail informational intent; feed into the Conversion Rate Optimization pillar.',
@@ -5246,7 +5246,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -5276,7 +5276,7 @@ export const faqPages = [
 {
   slug: "what-makes-a-good-business-website",
   page: {
-    url: "/faq/what-makes-a-good-business-website/",
+    url: "/faqs/what-makes-a-good-business-website/",
     title: "What Makes a Good Business Website?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "What Makes a Good Business Website?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -5539,7 +5539,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -5569,7 +5569,7 @@ export const faqPages = [
 {
   slug: "should-website-be-mobile-first",
   page: {
-    url: "/faq/should-website-be-mobile-first/",
+    url: "/faqs/should-website-be-mobile-first/",
     title: "Should My Website Be Mobile-First?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Should My Website Be Mobile-First?"; capture long-tail informational intent; feed into the Web Design & UI/UX pillar.',
@@ -5832,7 +5832,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -5862,7 +5862,7 @@ export const faqPages = [
 {
   slug: "how-to-migrate-website",
   page: {
-    url: "/faq/how-to-migrate-website/",
+    url: "/faqs/how-to-migrate-website/",
     title: "How Do I Migrate My Website to a New Platform?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "How Do I Migrate My Website to a New Platform?"; capture long-tail informational intent; feed into the Website Migration Services pillar.',
@@ -6125,7 +6125,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -6155,7 +6155,7 @@ export const faqPages = [
 {
   slug: "website-vs-web-application",
   page: {
-    url: "/faq/website-vs-web-application/",
+    url: "/faqs/website-vs-web-application/",
     title: "What Is the Difference Between a Website and a Web Application?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "What Is the Difference Between a Website and a Web Application?"; capture long-tail informational intent; feed into the Web Application Development pillar.',
@@ -6418,7 +6418,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -6448,7 +6448,7 @@ export const faqPages = [
 {
   slug: "website-maintenance-cost",
   page: {
-    url: "/faq/website-maintenance-cost/",
+    url: "/faqs/website-maintenance-cost/",
     title: "How Much Does Website Maintenance Cost?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "How Much Does Website Maintenance Cost?"; capture long-tail informational intent; feed into the Website Maintenance & Support pillar.',
@@ -6711,7 +6711,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -6741,7 +6741,7 @@ export const faqPages = [
 {
   slug: "can-i-update-my-website-myself",
   page: {
-    url: "/faq/can-i-update-my-website-myself/",
+    url: "/faqs/can-i-update-my-website-myself/",
     title: "Can I Update My Website Myself?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Can I Update My Website Myself?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -7004,7 +7004,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -7034,7 +7034,7 @@ export const faqPages = [
 {
   slug: "what-is-ux-design",
   page: {
-    url: "/faq/what-is-ux-design/",
+    url: "/faqs/what-is-ux-design/",
     title: "What Is UX Design and Why Does It Matter?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "What Is UX Design and Why Does It Matter?"; capture long-tail informational intent; feed into the Web Design & UI/UX pillar.',
@@ -7297,7 +7297,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -7327,7 +7327,7 @@ export const faqPages = [
 {
   slug: "how-to-get-more-leads-from-website",
   page: {
-    url: "/faq/how-to-get-more-leads-from-website/",
+    url: "/faqs/how-to-get-more-leads-from-website/",
     title: "How Do I Get More Leads From My Website?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "How Do I Get More Leads From My Website?"; capture long-tail informational intent; feed into the Conversion Rate Optimization pillar.',
@@ -7590,7 +7590,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -7620,7 +7620,7 @@ export const faqPages = [
 {
   slug: "is-professional-website-worth-it",
   page: {
-    url: "/faq/is-professional-website-worth-it/",
+    url: "/faqs/is-professional-website-worth-it/",
     title: "Is It Worth Investing in a Professional Website?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "Is It Worth Investing in a Professional Website?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -7883,7 +7883,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
@@ -7913,7 +7913,7 @@ export const faqPages = [
 {
   slug: "small-business-website-cost",
   page: {
-    url: "/faq/small-business-website-cost/",
+    url: "/faqs/small-business-website-cost/",
     title: "What Should a Website Cost for a Small Business?",
     pageGoal:
       'Rank for and win the AI-answer/featured snippet for "What Should a Website Cost for a Small Business?"; capture long-tail informational intent; feed into the Web Development Services pillar.',
@@ -8176,7 +8176,7 @@ export const faqPages = [
       },
       {
         relation: "→ Related FAQs",
-        url: "/faq/",
+        url: "/faqs/",
         label: "Related FAQ micro-pages",
       },
       {
