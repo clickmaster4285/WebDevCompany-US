@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { DollarSign, Clock, CheckCircle2 } from "lucide-react";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface CostHeroProps {
   title: string;
@@ -72,97 +73,159 @@ export function CostHero({
       <div className="grain-after" />
 
       <div className="relative z-10 layout-container px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="mx-auto max-w-4xl text-center lg:mx-0 lg:text-left"
-        >
-          {/* Breadcrumb */}
-          <motion.div variants={itemVariants} className="mb-6">
-            <Breadcrumb customLabels={{ costs: 'Cost Guides' }} />
-          </motion.div>
-
-          {/* Badge */}
+        {/* Two-column grid layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Side - Content */}
           <motion.div
-            variants={itemVariants}
-            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-border bg-white/5 px-4 py-2 text-sm font-medium text-ink-soft backdrop-blur-sm"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-center lg:text-left"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet/70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-violet" />
-            </span>
-            Cost Guide
-          </motion.div>
+            {/* Breadcrumb */}
+            <motion.div variants={itemVariants} className="mb-6">
+              <Breadcrumb customLabels={{ costs: 'Cost Guides' }} />
+            </motion.div>
 
-          {/* Title */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-display text-4xl text-ink md:text-5xl lg:text-6xl xl:text-7xl text-balance"
-          >
-            {title}
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            variants={itemVariants}
-            className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-mute text-balance lg:mx-0 md:text-xl"
-          >
-            {description}
-          </motion.p>
-
-          {/* Stats */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start"
-          >
-            <div className="glass flex items-center gap-4 rounded-2xl px-5 py-4 transition-all duration-300 hover:bg-white/5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-violet/15 text-violet">
-                <DollarSign className="h-5 w-5" />
-              </span>
-              <div>
-                <div className="text-xs font-medium uppercase tracking-wider text-ink-mute">
-                  Price Range
-                </div>
-                <div className="text-lg font-bold text-ink tabular-nums">
-                  {priceRange}
-                </div>
-              </div>
-            </div>
-
-            <div className="glass flex items-center gap-4 rounded-2xl px-5 py-4 transition-all duration-300 hover:bg-white/5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-violet/15 text-violet">
-                <Clock className="h-5 w-5" />
-              </span>
-              <div>
-                <div className="text-xs font-medium uppercase tracking-wider text-ink-mute">
-                  Timeline
-                </div>
-                <div className="text-lg font-bold text-ink">
-                  {timeline}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Credibility Bar */}
-          {credibilityBar.length > 0 && (
+            {/* Badge */}
             <motion.div
               variants={itemVariants}
-              className="mt-10 flex flex-wrap justify-center gap-3 gap-y-2 border-t border-border/50 pt-6 lg:justify-start"
+              className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-border bg-white/5 px-4 py-2 text-sm font-medium text-ink-soft backdrop-blur-sm"
             >
-              {credibilityBar.map((item, index) => (
-                <span
-                  key={index}
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-white/5 px-3 py-1.5 text-sm text-ink-soft"
-                >
-                  <CheckCircle2 className="h-4 w-4 text-violet" />
-                  {item}
-                </span>
-              ))}
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet/70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-violet" />
+              </span>
+              Cost Guide
             </motion.div>
-          )}
-        </motion.div>
+
+            {/* Title */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-display text-4xl text-ink md:text-5xl lg:text-5xl xl:text-6xl text-balance"
+            >
+              {title}
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              variants={itemVariants}
+              className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-mute text-balance lg:mx-0 md:text-xl"
+            >
+              {description}
+            </motion.p>
+
+            {/* Stats */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start"
+            >
+              <div className="glass flex items-center gap-4 rounded-2xl px-5 py-4 transition-all duration-300 hover:bg-white/5">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-violet/15 text-violet">
+                  <DollarSign className="h-5 w-5" />
+                </span>
+                <div>
+                  <div className="text-xs font-medium uppercase tracking-wider text-ink-mute">
+                    Price Range
+                  </div>
+                  <div className="text-lg font-bold text-ink tabular-nums">
+                    {priceRange}
+                  </div>
+                </div>
+              </div>
+
+              <div className="glass flex items-center gap-4 rounded-2xl px-5 py-4 transition-all duration-300 hover:bg-white/5">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-violet/15 text-violet">
+                  <Clock className="h-5 w-5" />
+                </span>
+                <div>
+                  <div className="text-xs font-medium uppercase tracking-wider text-ink-mute">
+                    Timeline
+                  </div>
+                  <div className="text-lg font-bold text-ink">
+                    {timeline}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Credibility Bar */}
+            {credibilityBar.length > 0 && (
+              <motion.div
+                variants={itemVariants}
+                className="mt-10 flex flex-wrap justify-center gap-3 gap-y-2 border-t border-border/50 pt-6 lg:justify-start"
+              >
+                {credibilityBar.map((item, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center gap-2 rounded-full border border-border bg-white/5 px-3 py-1.5 text-sm text-ink-soft"
+                  >
+                    <CheckCircle2 className="h-4 w-4 text-violet" />
+                    {item}
+                  </span>
+                ))}
+              </motion.div>
+            )}
+          </motion.div>
+
+          {/* Right Side - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: easeOutExpo }}
+            className="relative"
+          >
+            <div className="relative aspect-[4/3] w-full max-w-2xl mx-auto lg:mx-0">
+              {/* Image container with decorative elements */}
+              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border/50 shadow-2xl shadow-violet/10">
+                <Image
+                  src="/costimage.png"
+                  alt="Web development cost visualization and pricing breakdown"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                  priority
+                />
+                
+                {/* Overlay gradient for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+
+              {/* Decorative floating elements */}
+              {/* <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-violet/20 blur-2xl"
+              /> */}
+              {/* <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-cyan/10 blur-2xl"
+              /> */}
+
+              {/* Optional: Floating badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+                className="absolute -bottom-4 -right-4 bg-surface-1/95 backdrop-blur-sm border border-border rounded-xl px-4 py-3 shadow-lg"
+              >
+                <div className="flex items-center gap-2">
+                  {/* <div className="flex -space-x-2">
+                    <div className="w-6 h-6 rounded-full bg-violet flex items-center justify-center text-[8px] font-bold text-white">
+                      $
+                    </div>
+                    <div className="w-6 h-6 rounded-full bg-cyan-500 flex items-center justify-center text-[8px] font-bold text-white">
+                      %
+                    </div>
+                  </div> */}
+                  {/* <span className="text-xs font-medium text-ink">Transparent Pricing</span> */}
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

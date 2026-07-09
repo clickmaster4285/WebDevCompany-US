@@ -31,7 +31,7 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
   const activeCardVariants = shouldReduceMotion ? reducedCardVariants : cardVariants;
 
   return (
-    <Section background="background" padding="lg">
+    <Section background="default" padding="lg">
       <div className="layout-container px-18">
         <motion.h2 className="text-display text-left text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           {heading}

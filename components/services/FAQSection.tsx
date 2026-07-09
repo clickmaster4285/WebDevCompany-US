@@ -33,7 +33,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
   const toggle = (index: number) => setOpenIndex(openIndex === index ? null : index);
 
   return (
-    <Section background="background" padding="lg">
+    <Section background="default" padding="lg">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <motion.div
           className="mb-16 text-left"

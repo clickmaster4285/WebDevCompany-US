@@ -73,7 +73,7 @@ export function WorkSection() {
     <section ref={root} id="work" className="relative py-10">
       <div className="layout-container px-6 md:px-10">
         {/* <div className="text-eyebrow mb-4">/ Selected work</div> */}
-        <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-3xl">
+        <h2 className="text-display mx-auto text-[clamp(2rem,5vw,4rem)] text-ink max-w-3xl">
           Recent products we've shaped, shipped <span className="text-violet-soft">and scaled.</span>
         </h2>
       </div>
