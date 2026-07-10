@@ -67,7 +67,7 @@ const impactConfig = {
 export function CostFactors({ heading, items, className }: CostFactorsProps) {
   return (
     <section
-      className={cn("relative overflow-hidden bg-background py-24 md:py-32", className)}
+      className={cn("relative overflow-hidden bg-background py-24 md:py-20", className)}
       aria-labelledby="cost-factors-heading"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

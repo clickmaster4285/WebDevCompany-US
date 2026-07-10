@@ -11,7 +11,7 @@ const AWARDS = [
 
 export function AwardsSection() {
   return (
-    <section className="relative py-20 md:py-30">
+    <section className="relative py-15 md:py-20">
       <div className="layout-container px-6 md:px-10">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>

@@ -123,7 +123,7 @@ className="relative mx-auto flex flex-col items-center justify-center overflow-x
           </p>
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
-            <a href="#contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-violet px-7 py-4 text-sm font-medium text-white transition-transform hover:-translate-y-0.5">
+            <a href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-violet px-7 py-4 text-sm font-medium text-white transition-transform hover:-translate-y-0.5">
               Start a project
               <span>→</span>
             </a>

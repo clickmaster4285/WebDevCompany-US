@@ -186,7 +186,6 @@ export default async function ServicePage({ params }: PageProps) {
         heading={service.cta.heading}
         primary={service.cta.primary}
         secondary={service.cta.secondary}
-        pricing={service.pricing}
       />
 
       <RiskReversal text={service.riskReversal} />

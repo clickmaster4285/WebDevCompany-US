@@ -14,7 +14,7 @@ export function BlogsGrid() {
   const visibleBlogs = blogs.slice(startIndex, startIndex + BLOGS_PER_PAGE);
 
   return (
-    <section className="layout-container px-6 py-16">
+    <section className="layout-container px-6 md:px-18 py-16">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-sm font-medium uppercase tracking-[0.25em] text-violet">

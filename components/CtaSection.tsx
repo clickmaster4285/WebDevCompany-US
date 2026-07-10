@@ -87,32 +87,34 @@ export function CtaSection() {
   }, [gsap]);
 
   return (
-    <section ref={root} id="contact" className="relative overflow-hidden py-20 md:py-30">
+    <section ref={root} id="contact" className="relative overflow-hidden py-15 md:py-20">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,oklch(0.62_0.21_295/0.18),transparent_60%)]" />
       </div>
 
       <div className="layout-container px-6 md:px-10">
         <div className="text-center">
-          {/* <div className="text-eyebrow mb-6">/ Begin</div> */}
-          <h2 className="text-display mx-auto max-w-5xl text-[clamp(2.6rem,8vw,7.2rem)] text-ink">
-            {"Let's build something".split(" ").map((w, i) => (
-              <span
-                key={i}
-                className="inline-block overflow-hidden align-top mr-[0.2em]"
-              >
-                <span className="cta-line inline-block">{w}</span>
-              </span>
-            ))}
-            <br />
-            <span className="inline-block overflow-hidden align-top">
-              <span className="cta-line inline-block text-violet-soft italic">
-                exceptional.
-              </span>
-            </span>
-          </h2>
-        </div>
+  <h2 className="text-display mx-auto max-w-none text-[clamp(2.6rem,8vw,7.2rem)] text-ink">
+    <span className="whitespace-nowrap">
+      {"Let's build something".split(" ").map((w, i) => (
+        <span
+          key={i}
+          className="inline-block overflow-hidden align-top mr-[0.2em]"
+        >
+          <span className="cta-line inline-block">{w}</span>
+        </span>
+      ))}
+    </span>
 
+    <br />
+
+    <span className="inline-block overflow-hidden align-top">
+      <span className="cta-line inline-block text-violet-soft italic">
+        exceptional.
+      </span>
+    </span>
+  </h2>
+</div>
         <div ref={scene} className="mx-auto mt-20 aspect-5/4 w-full max-w-215">
           <HeroBrowserScene />
         </div>

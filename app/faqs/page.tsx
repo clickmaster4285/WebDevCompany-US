@@ -14,6 +14,7 @@ import {
   Sparkles,
   ChevronRight,
 } from "lucide-react";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { faqPages } from "@/data/faq-pages";
 
 export default function FAQsPage() {
@@ -64,6 +65,17 @@ export default function FAQsPage() {
         <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
         <div className="relative layout-container px-18">
+          {/* Breadcrumb */}
+          <div className="mb-6">
+            <div className="inline-flex rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2 backdrop-blur-sm">
+              <Breadcrumb
+                customLabels={{
+                  faqs: "FAQs",
+                }}
+              />
+            </div>
+          </div>
+
           {/* Main Grid: Left Side Text & Right Side Image */}
           <div className="mt-6 grid items-center gap-8 md:gap-12 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_520px]">
             {/* Left Column: Content */}

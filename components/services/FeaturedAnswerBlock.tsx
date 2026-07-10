@@ -17,7 +17,7 @@ export function FeaturedAnswerBlock({ question, answer }: FeaturedAnswerBlockPro
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-back py-16 md:py-24">
+    <section className="relative overflow-hidden bg-back py-16 md:py-20">
       <div className="layout-container px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}

@@ -123,7 +123,7 @@ export default function IndustriesPage() {
           />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-20 md:px-6 md:py-28 lg:py-32">
+        <div className="relative z-10 container mx-auto px-4 py-20 md:px-6 md:py-20 lg:py-20">
           <div className="mb-8">
             <Breadcrumb customLabels={{ industries: "Industries" }} />
           </div>
@@ -304,7 +304,7 @@ export default function IndustriesPage() {
         <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-background via-transparent to-background/80" />
       </section>
 
-      <section className="relative bg-background py-12 md:py-16 lg:py-20">
+      <section className="relative bg-background py-12 md:py-20 lg:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-8 flex items-center justify-between">
             <p className="text-sm text-ink-mute">

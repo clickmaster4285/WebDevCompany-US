@@ -139,12 +139,6 @@ export default async function ServicePage({ params }: PageProps) {
         question={service.featuredAnswer.question}
         answer={service.featuredAnswer.answer}
       />
-       <CTASection
-        heading={service.cta.heading}
-        primary={service.cta.primary}
-        secondary={service.cta.secondary}
-        pricing={service.pricing}
-      />
 
       <ProblemSection
         heading={service.problemSection.heading}
@@ -161,12 +155,6 @@ export default async function ServicePage({ params }: PageProps) {
       <CapabilitiesTable
         heading={service.capabilities.heading}
         items={service.capabilities.items}
-      />
-       <CTASection
-        heading={service.cta.heading}
-        primary={service.cta.primary}
-        secondary={service.cta.secondary}
-        pricing={service.pricing}
       />
 
       <ComparisonTable
@@ -185,12 +173,6 @@ export default async function ServicePage({ params }: PageProps) {
         solution={service.outcome.solution}
         metrics={service.outcome.metrics}
       />
-       <CTASection
-        heading={service.cta.heading}
-        primary={service.cta.primary}
-        secondary={service.cta.secondary}
-        pricing={service.pricing}
-      />
 
       <BusinessCase
         heading={service.businessCase.heading}
@@ -204,7 +186,6 @@ export default async function ServicePage({ params }: PageProps) {
         heading={service.cta.heading}
         primary={service.cta.primary}
         secondary={service.cta.secondary}
-        pricing={service.pricing}
       />
 
       <RiskReversal text={service.riskReversal} />

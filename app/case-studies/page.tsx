@@ -186,9 +186,9 @@ export default function CaseStudiesPage() {
           />
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 py-20 md:px-6 md:py-28 lg:py-32">
+        <div className="container relative z-10 mx-auto px-4 py-20 md:px-6 md:py-20 lg:py-20">
           <div className="layout-container">
-            <div className="mb-6 text-left">
+            <div className="mb-6 md:pt-15 text-left">
               <Breadcrumb customLabels={{ 'case-studies': 'Case Studies' }} />
             </div>
             <motion.div
@@ -259,7 +259,7 @@ export default function CaseStudiesPage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-[#030303]/80" />
       </section>
 
-      <section className="relative bg-background py-12 md:py-16 lg:py-20">
+      <section className="relative bg-background py-12 md:py-20 lg:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-8 flex items-center justify-between">
             <p className="text-sm text-white/40">

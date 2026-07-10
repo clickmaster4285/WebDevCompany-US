@@ -19,7 +19,7 @@ export function TemplateCTA({
   heading, 
   subtext, 
   buttonText = "Start Your Journey →",
-  buttonHref = "#contact",
+  buttonHref = "/contact",
   className,
   variant = "default"
 }: TemplateCTAProps) {

@@ -48,7 +48,7 @@ export function ServicesSection() {
   }, []);
 
   return (
-    <section ref={root} id="services" className="relative overflow-hidden py-20 md:py-30">
+    <section ref={root} id="services" className="relative overflow-hidden py-10 md:py-20">
       <div className="layout-container px-6 md:px-10 md:pt-10">
         <div className="flex items-end justify-between gap-8">
           <div>
@@ -94,7 +94,7 @@ export function ServicesSection() {
                     <div className="text-display text-3xl text-violet-soft md:text-4xl">{s.metric[0]}</div>
                     <div className="mt-1 text-xs uppercase tracking-widest text-ink-mute">{s.metric[1]}</div>
                   </div>
-                  <a className="inline-flex items-center gap-2 text-sm text-ink hover:text-violet-soft" href="#contact">
+                  <a className="inline-flex items-center gap-2 text-sm text-ink hover:text-violet-soft" href="/contact">
                     Discuss this service →
                   </a>
                 </div>

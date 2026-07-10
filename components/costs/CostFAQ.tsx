@@ -42,7 +42,7 @@ export function CostFAQ({ heading, faqs, className }: CostFAQProps) {
 
   return (
     <section
-      className={cn("relative overflow-hidden bg-background py-24 md:py-32", className)}
+      className={cn("relative overflow-hidden bg-background py-24 md:py-20", className)}
       aria-labelledby="cost-faq-heading"
     >
       <div className="layout-container px-4 sm:px-6 lg:px-8">

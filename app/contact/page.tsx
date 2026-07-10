@@ -481,7 +481,7 @@ export default function ContactPage() {
       {/* ═══════════════════════════════════════════════════════════════════
           CONTACT FORM + INFO SECTION
       ════════════════════════════════════════════════════════════════════ */}
-      <section id="contact-form" className="relative py-8 md:py-12 pb-20 border-t border-border">
+      <section id="contact-form" className="relative py-8 md:py-20 pb-20 border-t border-border">
         <div className="layout-container px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
             {/* ── Contact Form ── */}
