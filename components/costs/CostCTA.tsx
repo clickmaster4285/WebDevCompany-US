@@ -27,7 +27,7 @@ export function CostCTA({
 }: CostCTAProps) {
   return (
     <section
-      className={cn("relative overflow-hidden py-24 md:py-32", className)}
+      className={cn("relative overflow-hidden py-24 md:py-20", className)}
       aria-label="Call to action"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-violet via-violet to-violet-soft" />

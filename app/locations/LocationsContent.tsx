@@ -41,7 +41,7 @@ export default function LocationsContent() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
+      <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-violet/10 via-transparent to-transparent"></div>
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-violet/5 rounded-full blur-3xl"></div>
@@ -54,7 +54,7 @@ export default function LocationsContent() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <div className="mb-6 text-left">
+            <div className="mb-6 md:pt-15 text-left">
               <Breadcrumb customLabels={{ locations: 'Locations' }} />
             </div>
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full glass border border-white/10">

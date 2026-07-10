@@ -19,7 +19,7 @@ export function TechnologiesGrid() {
   return (
     <section
       id="technologies"
-      className="relative overflow-hidden px-6 py-20 md:py-24"
+      className="relative overflow-hidden px-6 py-20 md:py-20"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,92,255,0.08),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(15,23,42,0.06),transparent_35%)]" />
 

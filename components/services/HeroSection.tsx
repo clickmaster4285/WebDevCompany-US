@@ -347,7 +347,7 @@ export function HeroSection({
             className="mt-10 flex flex-col items-start gap-4 sm:flex-row"
           >
             <MagneticButton
-              href={data.primaryCTALink ?? "#contact"}
+              href={data.primaryCTALink ?? "/contact"}
               variant="primary"
             >
               {data.primaryCTA}
@@ -451,23 +451,23 @@ export function HeroSection({
       </motion.div>
 
       {/* Scroll indicator */}
-      <motion.div
+      {/* <motion.div
         aria-hidden
         className="absolute bottom-8 left-8 hidden -translate-x-0 flex-col items-start gap-2 text-ink-mute lg:flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.6 }}
-      >
-        <span className="text-[10px] uppercase tracking-[0.2em]">
+      > */}
+        {/* <span className="text-[10px] uppercase tracking-[0.2em]">
           Scroll to explore
-        </span>
-        <motion.div
+        </span> */}
+        {/* <motion.div
           animate={shouldReduceMotion ? {} : { y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <ChevronDown className="h-4 w-4" />
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }

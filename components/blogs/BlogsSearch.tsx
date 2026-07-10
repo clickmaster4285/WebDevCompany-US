@@ -1,6 +1,6 @@
 export function BlogsSearch() {
   return (
-    <section className="layout-container px-6 pt-12">
+    <section className="layout-container px-6 md:px-18 pt-12">
       <div className="rounded-2xl bg-white p-6 shadow-sm">
         <input
           type="text"

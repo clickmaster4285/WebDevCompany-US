@@ -1,6 +1,4 @@
-
-
-
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import type * as THREE_TYPE from "three";
 
@@ -10,14 +8,14 @@ const TECH = [
   { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
   { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
   { name: "Three.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" },
-  { name: "GSAP", logo: "https://raw.githubusercontent.com/greensock/GSAP/master/src/assets/logo.svg" },
+  { name: "GSAP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Greensock_Logo.png" },
   { name: "Tailwind", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
   { name: "Postgres", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
   { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
   { name: "GraphQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" },
   { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
   { name: "Kubernetes", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
-  { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+  { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
   { name: "Redis", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
   { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
   { name: "Go", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" },
@@ -33,15 +31,20 @@ export function TechSection() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    
     let raf = 0;
     let cleanup = () => {};
+
     (async () => {
       const THREE = await import("three");
+      
       const w = el.clientWidth;
       const h = el.clientHeight;
+      
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 100);
       camera.position.z = 12;
+      
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setSize(w, h);
@@ -51,7 +54,7 @@ export function TechSection() {
       const group = new THREE.Group();
       scene.add(group);
 
-      // Build nodes on a sphere - adjusted for more items
+      // Fibonacci Sphere Distribution for Nodes
       const count = TECH.length;
       const radius = 4.5;
       const positions: THREE_TYPE.Vector3[] = [];
@@ -68,6 +71,7 @@ export function TechSection() {
       const nodeMat = new THREE.MeshBasicMaterial({ color: 0xa78bfa });
       const glowMat = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.2 });
       const nodes: THREE_TYPE.Group[] = [];
+      
       positions.forEach((p) => {
         const g = new THREE.Group();
         g.add(new THREE.Mesh(new THREE.SphereGeometry(0.11, 24, 24), nodeMat));
@@ -77,13 +81,16 @@ export function TechSection() {
         nodes.push(g);
       });
 
-      // Lines connecting near-neighbors
+      // Connect nearby nodes with lines
       const lineMat = new THREE.LineBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.2 });
       const linePos: number[] = [];
       for (let i = 0; i < positions.length; i++) {
         for (let j = i + 1; j < positions.length; j++) {
           if (positions[i].distanceTo(positions[j]) < 5.5) {
-            linePos.push(positions[i].x, positions[i].y, positions[i].z, positions[j].x, positions[j].y, positions[j].z);
+            linePos.push(
+              positions[i].x, positions[i].y, positions[i].z, 
+              positions[j].x, positions[j].y, positions[j].z
+            );
           }
         }
       }
@@ -92,7 +99,7 @@ export function TechSection() {
       const lines = new THREE.LineSegments(lineGeo, lineMat);
       group.add(lines);
 
-      // particles
+      // Background Particles
       const pcount = 600;
       const ppos = new Float32Array(pcount * 3);
       for (let i = 0; i < pcount; i++) {
@@ -108,6 +115,7 @@ export function TechSection() {
       );
       scene.add(particles);
 
+      // Mouse Interaction
       const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
       const onMove = (e: MouseEvent) => {
         const r = el.getBoundingClientRect();
@@ -115,6 +123,7 @@ export function TechSection() {
         mouse.ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
       };
       window.addEventListener("mousemove", onMove);
+      
       const onResize = () => {
         camera.aspect = el.clientWidth / el.clientHeight;
         camera.updateProjectionMatrix();
@@ -122,66 +131,94 @@ export function TechSection() {
       };
       window.addEventListener("resize", onResize);
 
+      // Animation Loop
       const clock = new THREE.Clock();
       const animate = () => {
         const t = clock.getElapsedTime();
         mouse.x += (mouse.tx - mouse.x) * 0.05;
         mouse.y += (mouse.ty - mouse.y) * 0.05;
+        
         group.rotation.y = t * 0.12 + mouse.x * 0.6;
         group.rotation.x = mouse.y * 0.4;
         particles.rotation.y = t * 0.02;
         particles.rotation.x = t * 0.01;
+        
         renderer.render(scene, camera);
         raf = requestAnimationFrame(animate);
       };
       animate();
 
+      // Robust Cleanup Function
       cleanup = () => {
         cancelAnimationFrame(raf);
         window.removeEventListener("mousemove", onMove);
         window.removeEventListener("resize", onResize);
-        renderer.dispose();
+        
+        // Dispose Geometries
         lineGeo.dispose();
         pGeo.dispose();
-        if (renderer.domElement.parentElement === el) el.removeChild(renderer.domElement);
+        nodes.forEach(n => {
+           n.children.forEach(child => {
+              if (child instanceof THREE.Mesh) child.geometry.dispose();
+           });
+        });
+        
+        // Dispose Materials (Crucial for preventing memory leaks)
+        nodeMat.dispose();
+        glowMat.dispose();
+        lineMat.dispose();
+        (particles.material as THREE_TYPE.PointsMaterial).dispose();
+        
+        // Dispose Renderer
+        renderer.dispose();
+        if (renderer.domElement.parentElement === el) {
+          el.removeChild(renderer.domElement);
+        }
       };
     })();
+    
     return () => cleanup();
   }, []);
 
   return (
-    <section id="stack" className="relative overflow-hidden py-10 md:py-20">
-      <div className="layout-container grid grid-cols-1 items-center gap-16 px-6 md:grid-cols-[1fr_1fr] md:px-10">
-        <div>
-          {/* <div className="text-eyebrow mb-4">/ Technology</div> */}
+    <section id="stack" className="relative overflow-hidden py-20 md:py-20 bg-background">
+      {/* 3D Canvas Background */}
+      <div ref={ref} className="absolute inset-0 z-0" />
+      
+      {/* Gradient overlay to ensure text readability over the 3D scene */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background via-background/60 to-background pointer-events-none" />
+
+      {/* Content Overlay */}
+      <div className="relative z-10 layout-container px-6 md:px-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink">
-            An ecosystem of <span className="text-violet-soft">modern tools.</span>
+            Powered by a <span className="text-violet-soft">modern stack.</span>
           </h2>
-          <p className="mt-6 max-w-md text-ink-soft">
-            We choose technology that compounds — battle-tested frameworks paired with cutting-edge runtimes
-            and a deep bench of in-house libraries.
+          <p className="mt-4 text-ink-mute text-lg">
+            We leverage the best tools in the industry to build scalable, high-performance applications.
           </p>
-          <div className="mt-10 flex max-h-[400px] flex-wrap gap-3 overflow-y-auto pr-2">
-            {TECH.map((tech) => (
-              <div 
-                key={tech.name} 
-                className="glass flex items-center gap-2 rounded-full px-4 py-2 text-xs text-ink-soft transition-all hover:scale-105 hover:bg-white/10"
-              >
+        </div>
+
+        {/* Tech Logos Grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-8 max-w-5xl mx-auto">
+          {TECH.map((tech) => (
+            <div key={tech.name} className="flex flex-col items-center gap-3 group">
+              <div className="relative w-14 h-14 flex items-center justify-center bg-surface/50 rounded-xl border border-border/50 backdrop-blur-sm transition-all group-hover:scale-110 group-hover:border-violet-soft group-hover:shadow-lg group-hover:shadow-violet-soft/20">
+                {/* Note: Using standard <img> for external SVGs/PNGs to avoid Next.js remotePatterns config issues */}
                 <img 
                   src={tech.logo} 
-                  alt={tech.name} 
-                  className="h-4 w-4 object-contain"
+                  alt={`${tech.name} logo`} 
+                  className="w-8 h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
                   onError={(e) => {
                     // Fallback for broken images
-                    (e.target as HTMLImageElement).style.display = 'none';
+                    (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔧%3C/text%3E%3C/svg%3E";
                   }}
                 />
-                <span>{tech.name}</span>
               </div>
-            ))}
-          </div>
+              <span className="text-xs text-ink-mute font-medium tracking-wide uppercase">{tech.name}</span>
+            </div>
+          ))}
         </div>
-        <div ref={ref} className="relative aspect-square w-full" />
       </div>
     </section>
   );

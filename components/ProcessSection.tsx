@@ -1,7 +1,6 @@
+"use client";
 
-
-
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGsap } from "@/lib/gsap";
 
 const CAPABILITIES = [
@@ -39,63 +38,95 @@ const CAPABILITIES = [
 
 export function ProcessSection() {
   const root = useRef<HTMLElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const { gsap, ScrollTrigger } = useGsap();
 
   useEffect(() => {
-    const { gsap, ScrollTrigger } = useGsap();
     const ctx = gsap.context(() => {
       const items = gsap.utils.toArray<HTMLElement>(".process-step");
-      const bigs = gsap.utils.toArray<HTMLElement>(".process-big");
+      
+      // For each step on the right, create ScrollTriggers that smoothly
+      // update the activeIndex as the user scrolls through them
       items.forEach((item, i) => {
+        // Scrolling down: when this item enters from below, activate it
         ScrollTrigger.create({
           trigger: item,
           start: "top 60%",
-          end: "bottom 40%",
-          onToggle: (st) => {
-            if (st.isActive) {
-              bigs.forEach((b, j) => {
-                gsap.to(b, { opacity: j === i ? 1 : 0, y: j === i ? 0 : 12, duration: 0.6, ease: "expo.out" });
-              });
-              gsap.to(".process-progress", {
-                scaleY: (i + 1) / items.length,
-                duration: 0.6,
-                ease: "expo.out",
-              });
-            }
+          onEnter: () => setActiveIndex(i),
+        });
+
+        // Scrolling up: when this item exits upward, activate the previous one
+        ScrollTrigger.create({
+          trigger: item,
+          start: "top 60%",
+          onLeaveBack: () => {
+            if (i > 0) setActiveIndex(i - 1);
           },
         });
       });
     }, root);
     return () => ctx.revert();
-  }, []);
+  }, [gsap, ScrollTrigger]);
+
+  // Animate left content when activeIndex changes
+  useEffect(() => {
+    const bigs = gsap.utils.toArray<HTMLElement>(".process-big");
+    
+    bigs.forEach((b, i) => {
+      gsap.to(b, {
+        opacity: i === activeIndex ? 1 : 0,
+        y: i === activeIndex ? 0 : 12,
+        duration: 0.6,
+        ease: "expo.out",
+        overwrite: "auto",
+      });
+    });
+
+    gsap.to(".process-progress", {
+      scaleY: (activeIndex + 1) / CAPABILITIES.length,
+      duration: 0.6,
+      ease: "expo.out",
+      overwrite: "auto",
+    });
+  }, [activeIndex, gsap]);
 
   return (
-    <section ref={root} id="process" className="relative py-20 md:py-35">
+    <section ref={root} id="process" className="relative py-20 md:py-20">
       <div className="layout-container px-6 md:px-10">
-        {/* <div className="text-eyebrow mb-4">/ Capabilities</div> */}
         <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,4rem)] text-ink">
           Web development <span className="text-violet-soft">expertise</span> that delivers.
         </h2>
 
         <div className="mt-20 grid grid-cols-1 gap-16 md:grid-cols-[1fr_1fr]">
-          {/* Sticky right side number */}
+          {/* Left side — sticky with dynamic content */}
           <div className="relative">
             <div className="sticky top-32 h-[70vh]">
+              {/* Vertical progress bar */}
               <div className="absolute left-0 top-0 h-full w-px bg-white/10">
-                <div className="process-progress absolute inset-x-0 top-0 origin-top h-full bg-violet" style={{ transform: "scaleY(0.0001)" }} />
+                <div
+                  className="process-progress absolute inset-x-0 top-0 origin-top h-full bg-violet"
+                  style={{ transform: "scaleY(0.0001)" }}
+                />
               </div>
+
+              {/* Content that swaps one-by-one */}
               <div className="relative pl-10 h-full flex items-center">
-                <div className="relative w-full">
+                <div className="relative w-full min-h-[20rem]">
                   {CAPABILITIES.map((s, i) => (
                     <div
                       key={s.n}
-                      className="process-big absolute inset-0"
-                      style={{ opacity: i === 0 ? 1 : 0 }}
+                      className="process-big absolute inset-0 flex flex-col justify-center"
+                      style={{ opacity: i === activeIndex ? 1 : 0 }}
                     >
-                      <div className="text-eyebrow mb-3 text-violet-soft">Capability {s.n}</div>
+                      <div className="text-eyebrow mb-3 text-violet-soft">
+                        Capability {s.n}
+                      </div>
                       <div className="text-display text-[clamp(5rem,14vw,12rem)] leading-none text-ink">
                         {s.n}
                       </div>
-                      <div className="mt-4 text-display text-3xl text-ink md:text-5xl">{s.t}</div>
+                      <div className="mt-4 text-display text-3xl text-ink md:text-5xl">
+                        {s.t}
+                      </div>
                       <p className="mt-6 max-w-md text-ink-soft">{s.d}</p>
                     </div>
                   ))}
@@ -104,15 +135,19 @@ export function ProcessSection() {
             </div>
           </div>
 
-          {/* Right scroll list */}
+          {/* Right side — scrollable list of steps */}
           <div className="space-y-24 md:space-y-40">
             {CAPABILITIES.map((s) => (
               <div key={s.n} className="process-step border-t border-white/10 pt-8">
                 <div className="flex items-baseline justify-between">
                   <div className="text-display text-4xl text-ink-soft">{s.n}</div>
-                  <div className="text-xs uppercase tracking-widest text-ink-mute">Expertise</div>
+                  <div className="text-xs uppercase tracking-widest text-ink-mute">
+                    Expertise
+                  </div>
                 </div>
-                <h3 className="text-display mt-6 text-3xl text-ink md:text-4xl">{s.t}</h3>
+                <h3 className="text-display mt-6 text-3xl text-ink md:text-4xl">
+                  {s.t}
+                </h3>
                 <p className="mt-4 max-w-md text-ink-soft">{s.d}</p>
               </div>
             ))}

@@ -163,7 +163,7 @@ export function CaseStudyHero({
       </div>
 
       <div className="relative z-10 layout-container px-4 md:px-6">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto pt-20 md:pt-20 max-w-4xl">
           <motion.div
             custom={0}
             variants={fadeUpVariants}

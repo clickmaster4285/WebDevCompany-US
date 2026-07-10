@@ -33,10 +33,10 @@ const bgClasses: Record<BackgroundVariant, string> = {
 
 const paddingClasses: Record<PaddingVariant, string> = {
   none: "py-0",
-  sm: "py-8 md:py-12",
-  md: "py-12 md:py-16",
-  lg: "py-16 md:py-24",
-  xl: "py-20 md:py-32",
+  sm: "py-8 md:py-20",
+  md: "py-12 md:py-20",
+  lg: "py-16 md:py-20",
+  xl: "py-20 md:py-20",
 };
 
 export function Section({

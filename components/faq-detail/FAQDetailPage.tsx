@@ -4,13 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  ArrowLeft,
   ArrowRight,
   CheckCircle2,
-  Search,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import type { FAQPage } from "@/data/faq-pages";
 
 type FAQDetailPageProps = {
@@ -24,21 +23,13 @@ export function FAQDetailPage({ faq }: FAQDetailPageProps) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(124,92,255,0.18),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(99,102,241,0.12),transparent_35%)]" />
 
         <div className="relative layout-container px-17">
-          {/* Top Bar: Back Link & Search */}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <Link
-              href="/faqs"
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-white/80 backdrop-blur transition hover:bg-violet-600 hover:text-white"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to FAQs
-            </Link>
-
-            <div className="relative w-full sm:max-w-xs">
-              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
-              <input
-                placeholder="Search FAQs..."
-                className="w-full rounded-full border border-white/10 bg-white/10 py-3 pl-10 pr-4 text-sm font-semibold text-white outline-none backdrop-blur transition placeholder:text-white/40 focus:border-violet-500"
+          {/* Breadcrumb */}
+          <div className="mb-6">
+            <div className="inline-flex rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2 backdrop-blur-sm">
+              <Breadcrumb
+                customLabels={{
+                  faqs: "FAQs",
+                }}
               />
             </div>
           </div>

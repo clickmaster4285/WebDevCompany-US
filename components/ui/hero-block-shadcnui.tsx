@@ -26,7 +26,7 @@ export function HeroBlock({
   subtitle = "Crafting beautiful, performant web applications with modern technologies. Passionate about clean code and exceptional user experiences.",
   primaryCTA = "Get in Touch",
   secondaryCTA = "View Projects",
-  primaryCTALink = "#contact",
+  primaryCTALink = "/contact",
   secondaryCTALink = "#projects",
   socialLinks = {
     github: "#",

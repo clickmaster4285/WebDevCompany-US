@@ -40,20 +40,22 @@ export const CTASection: React.FC<CTASectionProps> = ({
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <motion.button
+            <motion.a
+              href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-violet hover:bg-violet/90 text-white font-semibold rounded-xl transition-all shadow-violet hover:shadow-2xl"
+              className="inline-flex px-8 py-4 bg-violet hover:bg-violet/90 text-white font-semibold rounded-xl transition-all shadow-violet hover:shadow-2xl cursor-pointer"
             >
               {primaryCTA}
-            </motion.button>
-            <motion.button
+            </motion.a>
+            <motion.a
+              href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 glass text-ink-soft font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all"
+              className="inline-flex px-8 py-4 glass text-ink-soft font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all cursor-pointer"
             >
               {secondaryCTA}
-            </motion.button>
+            </motion.a>
           </div>
 
           <p className="mt-6 text-sm text-ink-mute max-w-xl mx-auto">

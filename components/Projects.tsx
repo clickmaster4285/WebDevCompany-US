@@ -68,7 +68,7 @@ function ProjectShot({
   return (
     <section
       ref={ref}
-      className="relative h-screen top-0 flex items-center justify-center overflow-hidden"
+      className="relative h-screen -top-30 flex items-center justify-center overflow-hidden"
     >
       <motion.div
         style={{ scale, opacity, y }}
@@ -132,7 +132,7 @@ function ProjectShot({
 export function Projects() {
   return (
     <section id="projects" className="relative bg-background">
-      <div className="layout-container px-6 md:px-12 py-8 md:py-15">
+      <div className="layout-container px-6 md:px-12 py-8 md:py-20">
         {/* <div className="text-eyebrow mb-4">/ Engineering</div> */}
         <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,4rem)] text-ink">
           Modern <span className="text-violet-soft">Engineering</span>

@@ -181,7 +181,7 @@ function DropdownTrigger({ label }: { label: string }) {
 }
 
 const mobileLinks = [
-  { label: "Solutions", href: "/solutions" },
+  { label: "Solutions", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Resources", href: "/blogs" },
   { label: "Technologies", href: "/technologies" },
@@ -241,7 +241,7 @@ export function Nav() {
 
           <nav className="hidden items-center gap-1 text-sm md:flex">
             <Link
-              href="/solutions"
+              href="/"
               className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet"
             >
               Solutions

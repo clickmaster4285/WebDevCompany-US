@@ -54,7 +54,7 @@ export function CostHero({
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-surface-2 py-20 md:py-28 lg:py-36",
+        "relative overflow-hidden bg-surface-2 py-20 md:py-20 lg:py-36",
         className
       )}
       aria-label="Cost guide hero"

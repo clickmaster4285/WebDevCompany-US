@@ -105,7 +105,7 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <section ref={root} className="relative py-20 md:py-32 overflow-hidden">
+    <section ref={root} className="relative py-10 md:py-20 overflow-hidden">
       <div className="layout-container px-6 md:px-10">
         <h2 className="t-heading text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-3xl">
           Words from the people{" "}
@@ -113,7 +113,7 @@ export function TestimonialsSection() {
         </h2>
       </div>
 
-      <div className="mt-20 space-y-32 md:space-y-48">
+      <div className="mt-20 space-y-25 md:space-y-20">
         {ITEMS.map((t, i) => (
           <article
             key={t.name}
