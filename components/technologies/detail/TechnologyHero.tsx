@@ -1,22 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import type { Technology } from "@/data/technologies";
+import { ChevronRight, ArrowLeft } from "lucide-react";
+import type { TechnologySummary } from "@/data/technologies";
 
 type Props = {
-  technology: Technology;
+  technology: TechnologySummary;
+  parentTechnology?: TechnologySummary;
 };
 
-export function TechnologyHero({ technology }: Props) {
+export function TechnologyHero({ technology, parentTechnology }: Props) {
   const title = technology.title || "Technology";
   const headline =
     technology.page?.completePageCopy?.aboveTheFold?.headline || title;
   const subheadline =
     technology.page?.completePageCopy?.aboveTheFold?.subheadline || "";
   const imageSrc = "/assets/technologies-hero.webp";
+
+  // Shared breadcrumb link styles — transparent base, white on hover
+  const linkClass =
+    "text-white/50 transition-colors duration-200 hover:text-white";
 
   return (
     <section className="relative overflow-hidden bg-background px-6 pb-20 pt-36 text-white">
@@ -25,14 +30,47 @@ export function TechnologyHero({ technology }: Props) {
 
       <div className="relative layout-container px-18 grid items-center gap-12 lg:grid-cols-[1fr_480px]">
         <div>
-          <div className="mb-6">
-            <Breadcrumb
-              customLabels={{
-                technologies: 'Technologies',
-                [technology.slug]: technology.title,
-              }}
-            />
-          </div>
+          {/* Breadcrumb nav — inside the hero, on the dark background */}
+          <nav
+            className="mb-6 flex items-center gap-1.5 text-sm flex-wrap"
+            aria-label="Breadcrumb"
+          >
+            <Link href="/" className={linkClass}>
+              Home
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5 text-white/25" />
+            <Link href="/technologies" className={linkClass}>
+              Technologies
+            </Link>
+
+            {parentTechnology && (
+              <>
+                <ChevronRight className="h-3.5 w-3.5 text-white/25" />
+                <Link
+                  href={`/technologies/${parentTechnology.slug}`}
+                  className={linkClass}
+                >
+                  {parentTechnology.title}
+                </Link>
+              </>
+            )}
+
+            <ChevronRight className="h-3.5 w-3.5 text-white/25" />
+            <span className="font-medium text-white/80 truncate max-w-[200px]">
+              {technology.title}
+            </span>
+          </nav>
+
+          {/* Back to Parent (sub-pages only) */}
+          {parentTechnology && (
+            <Link
+              href={`/technologies/${parentTechnology.slug}`}
+              className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-violet transition-all duration-200 hover:gap-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span>Back to {parentTechnology.title}</span>
+            </Link>
+          )}
 
           <p className="text-sm font-bold uppercase tracking-[0.28em] text-violet">
             {technology.category}
@@ -85,7 +123,7 @@ export function TechnologyHero({ technology }: Props) {
           className="relative flex justify-center"
           initial={{ opacity: 0, y: 35, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" as const }}
         >
           <motion.div
             className="absolute -inset-6 rounded-[2.5rem] bg-violet/20 blur-3xl"

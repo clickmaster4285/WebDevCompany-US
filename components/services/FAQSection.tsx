@@ -23,7 +23,7 @@ const itemVariants: Variants = {
 
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 /* ─── Sub-components ─────────────────────── */
@@ -203,7 +203,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
                         transition={
                           shouldReduceMotion
                             ? { duration: 0 }
-                            : { duration: 0.35, ease: [0.22, 1, 0.36, 1] }
+                            : { duration: 0.35, ease: [0.22, 1, 0.36, 1] as const }
                         }
                       >
                         <div className="border-t border-border/40 px-6 pb-6 pt-4 md:px-7">

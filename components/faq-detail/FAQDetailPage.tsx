@@ -90,7 +90,7 @@ export function FAQDetailPage({ faq }: FAQDetailPageProps) {
               className="relative flex justify-center items-center w-full h-full min-h-[400px]"
               initial={{ opacity: 0, y: 35, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.8, ease: "easeOut" as const }}
             >
               {/* Glowing Background Blur */}
               <motion.div

@@ -1,17 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { technologies } from "../../data/technologies";
+import { technologies as importedTechnologies } from "../../data/technologies";
+import type { TechnologySummary } from "../../data/technologies";
 import { TechnologyCard } from "./TechnologyCard";
+
+type TechnologiesGridProps = {
+  technologies?: TechnologySummary[];
+};
 
 const TECHNOLOGIES_PER_PAGE = 12;
 
-export function TechnologiesGrid() {
+export function TechnologiesGrid({ technologies }: TechnologiesGridProps) {
+  const techs = technologies ?? importedTechnologies;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(technologies.length / TECHNOLOGIES_PER_PAGE);
+  const totalPages = Math.ceil(techs.length / TECHNOLOGIES_PER_PAGE);
   const startIndex = (currentPage - 1) * TECHNOLOGIES_PER_PAGE;
-  const visibleTechnologies = technologies.slice(
+  const visibleTechnologies = techs.slice(
     startIndex,
     startIndex + TECHNOLOGIES_PER_PAGE
   );
@@ -49,7 +55,7 @@ export function TechnologiesGrid() {
 
               <p className="mt-1 text-sm font-bold text-slate-700">
                 <span className="text-violet">{visibleTechnologies.length}</span>{" "}
-                of <span className="text-slate-950">{technologies.length}</span>{" "}
+                of <span className="text-slate-950">{techs.length}</span>{" "}
                 technologies
               </p>
             </div>

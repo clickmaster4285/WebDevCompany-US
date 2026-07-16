@@ -14,9 +14,8 @@ export default async function ServiceLayout({ children, params }: LayoutProps) {
   const resolvedParams = await params;
   const service = getServiceBySlug(resolvedParams.slug);
 
-  if (!service) {
-    notFound();
-  }
+  // If the slug isn't a known service, let the page component handle it
+  // (it might be 'technologies' or another route handled downstream)
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -29,7 +28,7 @@ export default async function ServiceLayout({ children, params }: LayoutProps) {
             <Breadcrumb
               customLabels={{
                 'services': 'Services',
-                [resolvedParams.slug]: service.title
+                [resolvedParams.slug]: service?.title ?? resolvedParams.slug
               }}
             />
           </div>

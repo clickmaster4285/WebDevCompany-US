@@ -33,12 +33,12 @@ const statCardVariants: Variants = {
 
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const } },
 };
 
 const visualVariants: Variants = {
   hidden: { opacity: 0, scale: 0.95, x: 30 },
-  visible: { opacity: 1, scale: 1, x: 0, transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] } },
+  visible: { opacity: 1, scale: 1, x: 0, transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as const } },
 };
 
 /* ─── Sub-components ─────────────────────── */

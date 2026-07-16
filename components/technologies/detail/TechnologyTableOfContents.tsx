@@ -7,6 +7,7 @@ type TechnologyTableOfContentsProps = {
   sections: {
     heading: string;
   }[];
+  variant?: 'sidebar' | 'compact';
 };
 
 function getShortHeading(text: string) {
@@ -56,6 +57,7 @@ function getShortHeading(text: string) {
 
 export function TechnologyTableOfContents({
   sections,
+  variant = 'sidebar',
 }: TechnologyTableOfContentsProps) {
   const [activeId, setActiveId] = useState("");
   const isManualScrolling = useRef(false);
@@ -117,9 +119,13 @@ export function TechnologyTableOfContents({
     }, 900);
   };
 
+  const isCompact = variant === 'compact';
+
   return (
-    <aside className="hidden lg:block">
-      <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-[1.35rem] border border-slate-200 bg-white/90 p-3.5 shadow-[0_18px_60px_rgba(15,23,42,0.07)] backdrop-blur-xl">
+    <aside className={isCompact ? '' : 'hidden lg:block'}>
+      <div className={`overflow-y-auto rounded-[1.35rem] border border-slate-200 bg-white/90 p-3.5 shadow-[0_18px_60px_rgba(15,23,42,0.07)] backdrop-blur-xl ${
+        isCompact ? '' : 'sticky top-20 max-h-[calc(100vh-6rem)]'
+      }`}>
         <div className="flex items-center justify-between px-2">
           <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
             On this page

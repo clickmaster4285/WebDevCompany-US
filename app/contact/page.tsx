@@ -47,7 +47,7 @@ function ElegantShape({
       transition={{
         duration: 2.4,
         delay,
-        ease: [0.23, 0.86, 0.39, 0.96],
+        ease: [0.23, 0.86, 0.39, 0.96] as const,
         opacity: { duration: 1.2 },
       }}
       className={className}
@@ -84,7 +84,7 @@ function StatCounter({
     if (!isInView) return;
     const controls = animate(0, value, {
       duration: 1.6,
-      ease: [0.25, 0.4, 0.25, 1],
+      ease: [0.25, 0.4, 0.25, 1] as const,
       onUpdate: (v) => setDisplay(Number(v.toFixed(decimals))),
     });
     return () => controls.stop();
@@ -132,7 +132,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
+    transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] as const },
   },
 };
 
@@ -489,7 +489,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
               className="lg:col-span-3"
             >
               <div className="relative bg-surface-1/40 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8 lg:p-10 overflow-hidden focus-within:border-violet/40 transition-colors duration-300">
@@ -651,7 +651,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
               className="lg:col-span-2 space-y-6"
             >
               {/* Real photo replaces what used to be an all-icon sidebar */}

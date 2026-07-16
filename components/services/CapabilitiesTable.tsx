@@ -25,7 +25,7 @@ const cardVariants: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6, ease: "easeOut" as const },
   },
 };
 
@@ -34,7 +34,7 @@ const fadeUpVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: "easeOut" as const },
   },
 };
 
@@ -131,8 +131,7 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
                 variants={cardVariants}
                 whileHover={
                   shouldReduceMotion
-                    ? undefined
-                    : { y: -6, transition: { duration: 0.3, ease: "easeOut" } }
+                    ? undefined                      : { y: -6, transition: { duration: 0.3, ease: "easeOut" as const } }
                 }
                 className="group relative"
                 role="listitem"

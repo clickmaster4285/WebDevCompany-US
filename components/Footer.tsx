@@ -68,8 +68,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/solutions" className="transition-colors hover:text-violet-soft">
-                  Solutions
+                <Link href="/services" className="transition-colors hover:text-violet-soft">
+                  Services
                 </Link>
               </li>
             </ul>
@@ -82,27 +82,27 @@ export function Footer() {
             </div>
             <ul className="mt-5 space-y-3 text-sm text-ink-soft">
               <li>
-                <Link href="/services/web-development-services" className="transition-colors hover:text-violet-soft">
+                <Link href="/web-development-services" className="transition-colors hover:text-violet-soft">
                   Web Development
                 </Link>
               </li>
               <li>
-                <Link href="/services/web-design-services" className="transition-colors hover:text-violet-soft">
+                <Link href="/web-design-services" className="transition-colors hover:text-violet-soft">
                   UI/UX Design
                 </Link>
               </li>
               <li>
-                <Link href="/services/web-application-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/web-application-development" className="transition-colors hover:text-violet-soft">
                   Web Applications
                 </Link>
               </li>
               <li>
-                <Link href="/services/ecommerce-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/ecommerce-development" className="transition-colors hover:text-violet-soft">
                   eCommerce Development
                 </Link>
               </li>
               <li>
-                <Link href="/services/saas-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/saas-development" className="transition-colors hover:text-violet-soft">
                   SaaS Development
                 </Link>
               </li>

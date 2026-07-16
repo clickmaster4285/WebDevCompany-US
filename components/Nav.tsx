@@ -10,7 +10,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { Dropdown, DropdownSection } from "@/components/ui/Dropdown";
+import { Dropdown, DropdownSection, DropdownItem } from "@/components/ui/Dropdown";
 import { serviceData } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
 import { blogs } from "@/data/blogs";
@@ -44,7 +44,7 @@ const serviceIcons: Record<string, string> = {
 
 const allServices = Object.keys(serviceData).map((slug) => ({
   label: serviceData[slug].title,
-  href: `/services/${slug}`,
+  href: `/${slug}`,
   icon: serviceIcons[slug],
 }));
 
@@ -113,20 +113,61 @@ const resourceCategories: DropdownSection[] = [
   },
 ];
 
-const technologiesCategories: DropdownSection[] = [
-  {
-    title: "Technologies",
+// ── Split Dropdown: group technologies by parent-child ──
+const parentTechnologies = technologies.filter((t) => !t.parentId);
+
+// Collect children per parent technology
+const childrenByParentId = new Map<number, (typeof technologies)[number][]>();
+for (const tech of technologies) {
+  if (tech.parentId) {
+    const existing = childrenByParentId.get(tech.parentId) || [];
+    existing.push(tech);
+    childrenByParentId.set(tech.parentId, existing);
+  }
+}
+
+const technologiesCategories: DropdownSection[] = [];
+
+// Create a section per parent that has sub-pages
+for (const parent of parentTechnologies) {
+  const children = childrenByParentId.get(parent.id) || [];
+  if (children.length > 0) {
+    technologiesCategories.push({
+      title: parent.title,
+      href: `/technologies/${parent.slug}`,
+      description: parent.excerpt.slice(0, 80) + (parent.excerpt.length > 80 ? "…" : ""),
+      items: children.map((child) => ({
+        label: child.title,
+        href: `/technologies/${child.slug}`,
+        tag: child.category,
+        icon: parent.icon || "⚙️",
+        description: child.excerpt,
+      })),
+    });
+  }
+}
+
+// Add "All Technologies" section for standalone technologies and full overview
+const standaloneTechs = parentTechnologies.filter(
+  (p) => (childrenByParentId.get(p.id) || []).length === 0
+);
+// Also include standalone + a representative sample of sub-pages for discoverability
+const allTechItems: DropdownItem[] = standaloneTechs.map((tech) => ({
+  label: tech.title,
+  href: `/technologies/${tech.slug}`,
+  tag: tech.category,
+  icon: tech.icon || "⚙️",
+  description: tech.excerpt,
+}));
+
+if (allTechItems.length > 0) {
+  technologiesCategories.push({
+    title: "All Technologies",
     href: "/technologies",
-    description: "Explore the technologies we use to build modern products.",
-    items: technologies.map((technology) => ({
-      label: technology.title,
-      href: `/technologies/${technology.slug}`,
-      tag: technology.category,
-      icon: technology.icon || "⚙️",
-      description: technology.excerpt,
-    })),
-  },
-];
+    description: "Browse every technology, framework and platform we use.",
+    items: allTechItems,
+  });
+}
 
 const industriesIcons: Record<string, string> = {
   "healthcare-web-development": "🏥",
@@ -271,9 +312,9 @@ export function Nav() {
               sections={technologiesCategories}
               variant="links"
               layout="simple-grid"
-              width="w-[600px]"
+              width="w-[760px]"
               showViewAll={true}
-              showSidebar={false}
+              showSidebar={true}
             />
 
             <Dropdown

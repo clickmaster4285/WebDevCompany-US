@@ -48,7 +48,7 @@ export default function ServicesDropdown() {
             initial={{ opacity: 0, y: 8, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.97 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.2, ease: "easeOut" as const }}
             className="absolute left-0 top-full z-50 mt-2 w-72 overflow-hidden rounded-2xl border border-zinc-700 bg-zinc-900 shadow-2xl"
           >
             <div className="border-b border-zinc-800 px-4 py-3">
@@ -62,7 +62,7 @@ export default function ServicesDropdown() {
               {services.map((service) => (
                 <Link
                   key={service.slug}
-                  href={`/services/${service.slug}`}
+                  href={`/${service.slug}`}
                   className={`group flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-zinc-800 ${
                     service.isPillar
                       ? "bg-zinc-800/50 font-semibold text-primary"
