@@ -84,7 +84,7 @@ export function ProcessSection({ heading, steps }: ProcessSectionProps) {
       };
 
   return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-20">
+    <section className="relative overflow-hidden bg-background py-20 md:py-24">
       {/* ── Ambient Background Effects ── */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-violet/[0.04] blur-[150px]" />
@@ -114,7 +114,8 @@ export function ProcessSection({ heading, steps }: ProcessSectionProps) {
         }}
       />
 
-      <div className="relative z-10 layout-container px-4 sm:px-6 lg:px-10">
+      {/* Applied your specific responsive padding here */}
+      <div className="relative z-10 layout-container px-4 sm:px-6 md:px-[4.5rem] lg:px-20">
         {/* ── Header ── */}
         <motion.div
           className="mx-auto mb-16 max-w-2xl text-center md:mb-24"
@@ -144,81 +145,90 @@ export function ProcessSection({ heading, steps }: ProcessSectionProps) {
           </motion.p>
         </motion.div>
 
-        {/* ── Process Steps Grid ── */}
-        <div className="mx-auto max-w-5xl">
-          <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:gap-10">
-            {steps.map((step, index) => {
-              const Icon = defaultIcons[index % defaultIcons.length];
-              const isLast = index === steps.length - 1;
+        {/* ── Process Steps Grid (Removed max-w, added containerVariants for stagger) ── */}
+        <motion.div
+          className="grid gap-6 md:grid-cols-2 md:gap-8 lg:gap-10"
+          variants={containerVariants}
+          {...motionProps}
+        >
+          {steps.map((step, index) => {
+            const Icon = defaultIcons[index % defaultIcons.length];
+            const isLast = index === steps.length - 1;
 
-              return (
-                <motion.div
-                  key={step.number}
-                  className={`group relative ${isLast && steps.length % 2 === 1 ? "md:col-span-2 md:mx-auto md:max-w-lg" : ""}`}
-                  {...motionProps}
-                  variants={cardVariants}
-                >
-                  {/* Card */}
-                  <div className="relative h-full overflow-hidden rounded-2xl border border-border/60 bg-surface-1/40 p-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-violet/30 hover:shadow-lg hover:shadow-violet/5 sm:p-8">
-                    {/* Hover gradient overlay */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet/[0.02] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            return (
+              <motion.div
+                key={step.number}
+                className={`group relative h-full ${isLast && steps.length % 2 === 1 ? "md:col-span-2 md:mx-auto md:max-w-lg" : ""}`}
+                variants={cardVariants}
+                whileHover={
+                  shouldReduceMotion
+                    ? undefined
+                    : { y: -6, transition: { duration: 0.3, ease: "easeOut" as const } }
+                }
+              >
+                {/* Added Glow effect on hover */}
+                <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-gradient-to-br from-violet/20 via-violet/5 to-transparent opacity-0 blur-lg transition-all duration-500 group-hover:opacity-100" />
 
-                    {/* Top accent line */}
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-violet/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                {/* Card */}
+                <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-surface-1/40 p-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-violet/40 hover:shadow-xl hover:shadow-violet/5 sm:p-8">
+                  {/* Hover gradient overlay */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet/[0.03] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-                    {/* Number badge */}
-                    <div className="relative z-10 mb-4 flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet to-violet-soft text-sm font-bold text-white shadow-md shadow-violet/20 md:h-12 md:w-12 md:text-base">
-                        {step.number}
-                      </div>
-                      <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-violet">
-                        Step {step.number}
-                      </span>
+                  {/* Top accent line */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-violet/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                  {/* Number badge */}
+                  <div className="relative z-10 mb-5 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet to-violet-soft text-sm font-bold text-white shadow-md shadow-violet/20 md:h-12 md:w-12 md:text-base">
+                      {step.number}
                     </div>
-
-                    {/* Content */}
-                    <div className="relative z-10">
-                      <div className="mb-3 flex items-center gap-2.5">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet/10 text-violet">
-                          <Icon className="h-4 w-4" />
-                        </div>
-                        <h3 className="text-lg font-semibold text-ink md:text-xl">
-                          {step.title}
-                        </h3>
-                      </div>
-
-                      <p className="leading-relaxed text-ink-soft">
-                        {step.description}
-                      </p>
-                    </div>
-
-                    {/* Bottom indicator for visual continuity */}
-                    {!isLast && (
-                      <div className="pointer-events-none absolute -bottom-3 left-1/2 hidden -translate-x-1/2 md:block">
-                        <ArrowRight className="h-5 w-5 rotate-90 text-violet/20" />
-                      </div>
-                    )}
+                    <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-violet">
+                      Step {step.number}
+                    </span>
                   </div>
-                </motion.div>
-              );
-            })}
-          </div>
 
-          {/* ── Bottom CTA nudge ── */}
-          <motion.div
-            className="mt-12 text-center md:mt-16"
-            {...motionProps}
-            variants={fadeUpVariants}
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-surface-1/40 px-5 py-2.5 text-sm text-ink-mute backdrop-blur-sm">
-              <CheckCircle2 className="h-4 w-4 text-violet" />
-              <span>
-                <strong className="text-ink">{steps.length} stages</strong> from
-                discovery to deployment
-              </span>
-            </div>
-          </motion.div>
-        </div>
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="mb-3 flex items-center gap-2.5">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet/10 text-violet ring-1 ring-inset ring-violet/20 transition-all duration-500 group-hover:bg-violet group-hover:text-white">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-ink md:text-xl">
+                        {step.title}
+                      </h3>
+                    </div>
+
+                    <p className="leading-relaxed text-ink-soft">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  {/* Bottom indicator for visual continuity */}
+                  {!isLast && (
+                    <div className="pointer-events-none absolute -bottom-3 left-1/2 hidden -translate-x-1/2 md:block">
+                      <ArrowRight className="h-5 w-5 rotate-90 text-violet/20" />
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* ── Bottom CTA nudge ── */}
+        <motion.div
+          className="mt-12 text-center md:mt-16"
+          {...motionProps}
+          variants={fadeUpVariants}
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-surface-1/40 px-5 py-2.5 text-sm text-ink-mute backdrop-blur-sm">
+            <CheckCircle2 className="h-4 w-4 text-violet" />
+            <span>
+              <strong className="text-ink">{steps.length} stages</strong> from
+              discovery to deployment
+            </span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

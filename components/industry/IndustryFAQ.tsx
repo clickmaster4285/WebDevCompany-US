@@ -14,12 +14,9 @@ interface IndustryFAQProps {
 export function IndustryFAQ({ faqs }: IndustryFAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleIndex = useCallback(
-    (index: number) => {
-      setOpenIndex((prev) => (prev === index ? null : index));
-    },
-    []
-  );
+  const toggleIndex = useCallback((index: number) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  }, []);
 
   return (
     <div className="py-10 md:py-14" id="faq">
@@ -29,11 +26,11 @@ export function IndustryFAQ({ faqs }: IndustryFAQProps) {
         transition={{ duration: 0.7, ease: [0.215, 0.61, 0.355, 1] as const }}
         viewport={{ once: true, margin: "-80px" }}
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-medium mb-5">
-          <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-3 py-1.5 text-xs font-medium text-purple-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-purple-400" />
           FAQ
         </div>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-ink mb-6 md:mb-8">
+        <h2 className="mb-6 text-2xl font-bold text-ink md:mb-8 md:text-3xl lg:text-4xl text-balance">
           Frequently Asked Questions
         </h2>
 
@@ -47,19 +44,19 @@ export function IndustryFAQ({ faqs }: IndustryFAQProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-surface-1/50 rounded-xl md:rounded-2xl border border-border overflow-hidden transition-colors duration-300 hover:border-purple-500/20"
+                className="overflow-hidden rounded-xl border border-border bg-surface-1/50 transition-colors duration-300 hover:border-purple-500/20 md:rounded-2xl"
               >
                 <button
                   onClick={() => toggleIndex(index)}
-                  className="w-full flex items-center justify-between p-5 md:p-6 text-left hover:bg-surface-1/70 transition-colors duration-200 group"
+                  className="group flex w-full items-center justify-between p-5 text-left transition-colors duration-200 hover:bg-surface-1/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/30 md:p-6"
                   aria-expanded={isOpen}
                 >
-                  <span className="flex items-center gap-3 text-ink font-medium pr-4 text-sm md:text-base">
-                    <HelpCircle className="w-5 h-5 text-purple-400/60 flex-shrink-0 group-hover:text-purple-400 transition-colors" />
+                  <span className="flex items-center gap-3 pr-4 text-sm font-medium text-ink md:text-base">
+                    <HelpCircle className="h-5 w-5 flex-shrink-0 text-purple-400/60 transition-colors group-hover:text-purple-400" />
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300 ${
+                    className={`h-5 w-5 flex-shrink-0 text-ink-mute transition-transform duration-300 ${
                       isOpen ? "rotate-180 text-purple-400" : ""
                     }`}
                   />
@@ -74,9 +71,9 @@ export function IndustryFAQ({ faqs }: IndustryFAQProps) {
                       transition={{ duration: 0.35, ease: [0.215, 0.61, 0.355, 1] as const }}
                       className="overflow-hidden"
                     >
-                      <div className="px-5 md:px-6 pb-5 md:pb-6 pt-0">
-                        <div className="pl-8 border-l-2 border-purple-500/20">
-                          <p className="text-ink-soft leading-relaxed text-sm md:text-base">
+                      <div className="px-5 pb-5 pt-0 md:px-6 md:pb-6">
+                        <div className="border-l-2 border-purple-500/20 pl-8">
+                          <p className="text-sm leading-relaxed text-ink-soft md:text-base">
                             {faq.answer}
                           </p>
                         </div>

@@ -37,17 +37,17 @@ export function IndustryBusinessCase({ data }: IndustryBusinessCaseProps) {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.215, 0.61, 0.355, 1] }}
+        transition={{ duration: 0.7, ease: [0.215, 0.61, 0.355, 1] as const }}
         viewport={{ once: true, margin: "-80px" }}
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium mb-5">
-          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1.5 text-xs font-medium text-indigo-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
           Business Case
         </div>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-ink mb-4 max-w-3xl">
+        <h2 className="mb-4 max-w-3xl text-2xl font-bold text-ink md:text-3xl lg:text-4xl text-balance">
           {data.heading}
         </h2>
-        <p className="text-ink-soft leading-relaxed mb-6 md:mb-8 max-w-2xl text-sm sm:text-base">
+        <p className="mb-6 max-w-2xl text-sm leading-relaxed text-ink-soft sm:text-base md:mb-8">
           {data.content}
         </p>
 
@@ -56,7 +56,7 @@ export function IndustryBusinessCase({ data }: IndustryBusinessCaseProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="grid sm:grid-cols-2 gap-3 md:gap-4"
+          className="grid gap-3 sm:grid-cols-2 md:gap-4"
         >
           {data.valueStreams.map((stream, index) => {
             const Icon = icons[index % icons.length];
@@ -64,12 +64,12 @@ export function IndustryBusinessCase({ data }: IndustryBusinessCaseProps) {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className="group flex items-center gap-3.5 bg-surface-1/50 rounded-xl p-4 md:p-5 border border-border hover:border-emerald-400/30 transition-all duration-500 hover:shadow-lg hover:shadow-emerald-500/5"
+                className="group flex items-center gap-3.5 rounded-xl border border-border bg-surface-1/50 p-4 transition-all duration-500 hover:border-emerald-400/30 hover:shadow-lg hover:shadow-emerald-500/5 md:p-5"
               >
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-400 group-hover:text-white transition-all duration-300">
-                  <Icon className="w-5 h-5" />
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 transition-all duration-300 group-hover:bg-emerald-400 group-hover:text-white">
+                  <Icon className="h-5 w-5" />
                 </div>
-                <span className="text-sm text-ink-soft group-hover:text-ink transition-colors">
+                <span className="text-sm text-ink-soft transition-colors group-hover:text-ink">
                   {stream}
                 </span>
               </motion.div>

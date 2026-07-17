@@ -42,32 +42,32 @@ export function IndustryOutcome({ data }: IndustryOutcomeProps) {
         transition={{ duration: 0.7, ease: [0.215, 0.61, 0.355, 1] as const }}
         viewport={{ once: true, margin: "-80px" }}
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium mb-5">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1.5 text-xs font-medium text-green-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
           Outcome
         </div>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-ink mb-6 md:mb-8">
+        <h2 className="mb-6 text-2xl font-bold text-ink md:mb-8 md:text-3xl lg:text-4xl text-balance">
           Representative Outcome
         </h2>
 
         {/* Challenge / Solution Card */}
-        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
+        <div className="mb-6 grid gap-4 md:mb-8 md:grid-cols-2 md:gap-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-surface-1/50 rounded-2xl p-5 md:p-6 border border-border/60 border-l-4 border-l-red-400/60"
+            className="rounded-2xl border border-border/60 border-l-4 border-l-red-400/60 bg-surface-1/50 p-5 md:p-6"
           >
             <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400">
-                <AlertTriangle className="w-5 h-5" />
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
+                <AlertTriangle className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-red-400 mb-1.5 uppercase tracking-wide">
+                <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-red-400">
                   Challenge
                 </h3>
-                <p className="text-ink-soft text-sm leading-relaxed">{data.challenge}</p>
+                <p className="text-sm leading-relaxed text-ink-soft">{data.challenge}</p>
               </div>
             </div>
           </motion.div>
@@ -77,17 +77,17 @@ export function IndustryOutcome({ data }: IndustryOutcomeProps) {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="bg-surface-1/50 rounded-2xl p-5 md:p-6 border border-border/60 border-l-4 border-l-green-400/60"
+            className="rounded-2xl border border-border/60 border-l-4 border-l-green-400/60 bg-surface-1/50 p-5 md:p-6"
           >
             <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400">
-                <CheckCircle2 className="w-5 h-5" />
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-green-500/10 text-green-400">
+                <CheckCircle2 className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-green-400 mb-1.5 uppercase tracking-wide">
+                <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-green-400">
                   Solution
                 </h3>
-                <p className="text-ink-soft text-sm leading-relaxed">{data.solution}</p>
+                <p className="text-sm leading-relaxed text-ink-soft">{data.solution}</p>
               </div>
             </div>
           </motion.div>
@@ -99,28 +99,28 @@ export function IndustryOutcome({ data }: IndustryOutcomeProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-5"
         >
           {data.metrics.map((metric, index) => (
             <motion.div
               key={index}
               variants={metricVariants}
-              className="group bg-surface-1/50 rounded-2xl p-5 md:p-6 border border-border hover:border-violet/30 transition-all duration-500 hover:shadow-lg hover:shadow-violet/5"
+              className="group rounded-2xl border border-border bg-surface-1/50 p-5 transition-all duration-500 hover:border-violet/30 hover:shadow-lg hover:shadow-violet/5 md:p-6"
             >
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 rounded-lg bg-violet/10 flex items-center justify-center group-hover:bg-violet/20 transition-colors">
-                  <Target className="w-4 h-4 text-violet" />
+              <div className="mb-3 flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet/10 transition-colors group-hover:bg-violet/20">
+                  <Target className="h-4 w-4 text-violet" />
                 </div>
-                <span className="text-xs font-medium text-ink-mute uppercase tracking-wide">
+                <span className="text-xs font-medium uppercase tracking-wide text-ink-mute">
                   {metric.kpi}
                 </span>
               </div>
-              <div className="text-2xl md:text-3xl font-bold text-ink mb-2 group-hover:text-violet transition-colors">
+              <div className="mb-2 text-2xl font-bold text-ink transition-colors group-hover:text-violet md:text-3xl">
                 {metric.result}
               </div>
               <div className="flex items-start gap-1.5">
-                <TrendingUp className="w-3.5 h-3.5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                <p className="text-sm text-ink-mute leading-relaxed">{metric.whyItMatters}</p>
+                <TrendingUp className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-emerald-400" />
+                <p className="text-sm leading-relaxed text-ink-mute">{metric.whyItMatters}</p>
               </div>
             </motion.div>
           ))}

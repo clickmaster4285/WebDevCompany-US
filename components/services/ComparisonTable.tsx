@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Check, X, Award, Sparkles, ArrowRight, Shield, TrendingUp, Zap } from "lucide-react";
@@ -73,7 +74,7 @@ export function ComparisonTable({ heading, intro, options }: ComparisonTableProp
       };
 
   return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-20">
+    <section className="relative overflow-hidden bg-background py-20 md:py-24">
       {/* ── Ambient Background ── */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-0 top-1/4 h-[450px] w-[450px] rounded-full bg-violet/[0.04] blur-[130px]" />
@@ -103,7 +104,8 @@ export function ComparisonTable({ heading, intro, options }: ComparisonTableProp
         }}
       />
 
-      <div className="relative z-10 layout-container px-4 sm:px-6 lg:px-10">
+      {/* Applied your specific responsive padding here */}
+      <div className="relative z-10 layout-container px-4 sm:px-6 md:px-[4.5rem] lg:px-20">
         {/* ── Header ── */}
         <motion.div
           className="mx-auto mb-14 max-w-3xl text-center md:mb-20"
@@ -132,36 +134,36 @@ export function ComparisonTable({ heading, intro, options }: ComparisonTableProp
           </motion.p>
         </motion.div>
 
-        {/* ── Cards Grid ── */}
+        {/* ── Cards Grid (Removed max-w to fill container width) ── */}
         <motion.div
-          className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 md:gap-8"
+          className="grid gap-6 md:grid-cols-2 md:gap-8"
           variants={containerVariants}
           {...motionProps}
           role="list"
         >
           {options.map((option, index) => {
-
             return (
               <motion.div
                 key={index}
                 variants={cardVariants}
                 whileHover={
                   shouldReduceMotion
-                    ? undefined                      : { y: -6, transition: { duration: 0.3, ease: "easeOut" as const } }
+                    ? undefined
+                    : { y: -6, transition: { duration: 0.3, ease: "easeOut" as const } }
                 }
-                className="group relative"
+                className="group relative h-full"
                 role="listitem"
               >
-                {/* Glow on hover */}
-                <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-br from-violet/0 via-violet/0 to-violet/0 opacity-0 blur-xl transition-all duration-500 group-hover:from-violet/10 group-hover:via-violet/5 group-hover:to-transparent group-hover:opacity-100" />
+                {/* Fixed Glow effect on hover */}
+                <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-gradient-to-br from-violet/20 via-violet/5 to-transparent opacity-0 blur-lg transition-all duration-500 group-hover:opacity-100" />
 
                 {/* Card */}
-                <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/50 bg-surface-1/30 p-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-violet/30 hover:shadow-lg hover:shadow-violet/5 sm:p-8">
+                <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-surface-1/40 p-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-violet/40 hover:shadow-xl hover:shadow-violet/5 sm:p-8">
                   {/* Hover gradient */}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet/[0.02] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet/[0.03] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   {/* Top accent */}
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-violet/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-violet/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   {/* Title */}
                   <div className="relative z-10 mb-5 flex items-center gap-3">
@@ -176,30 +178,30 @@ export function ComparisonTable({ heading, intro, options }: ComparisonTableProp
                   {/* Content sections */}
                   <div className="relative z-10 flex flex-1 flex-col gap-3">
                     {/* Where it works */}
-                    <div className="flex items-start gap-3 rounded-xl bg-emerald-500/[0.04] px-3.5 py-3 ring-1 ring-emerald-500/10">
+                    <div className="flex items-start gap-3 rounded-xl bg-emerald-500/[0.04] px-3.5 py-3 ring-1 ring-inset ring-emerald-500/10">
                       <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
                         <Check className="h-3 w-3" aria-hidden="true" />
                       </span>
                       <span className="text-sm leading-relaxed text-ink-soft">
-                        <strong className="text-emerald-600">Best for:</strong>{" "}
+                        <strong className="text-emerald-500">Best for:</strong>{" "}
                         {option.whereWorks}
                       </span>
                     </div>
 
                     {/* Where it fails */}
-                    <div className="flex items-start gap-3 rounded-xl bg-red-500/[0.04] px-3.5 py-3 ring-1 ring-red-500/10">
+                    <div className="flex items-start gap-3 rounded-xl bg-red-500/[0.04] px-3.5 py-3 ring-1 ring-inset ring-red-500/10">
                       <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/15 text-red-400">
                         <X className="h-3 w-3" aria-hidden="true" />
                       </span>
                       <span className="text-sm leading-relaxed text-ink-soft">
-                        <strong className="text-red-600">Not ideal for:</strong>{" "}
+                        <strong className="text-red-500">Not ideal for:</strong>{" "}
                         {option.whereFails}
                       </span>
                     </div>
                   </div>
 
                   {/* Our Position */}
-                  <div className="relative z-10 mt-4 flex items-start gap-3 rounded-xl bg-gradient-to-br from-violet/[0.06] to-violet/[0.02] px-4 py-3.5 ring-1 ring-violet/15 transition-all duration-500 group-hover:from-violet/[0.08] group-hover:ring-violet/25">
+                  <div className="relative z-10 mt-4 flex items-start gap-3 rounded-xl bg-gradient-to-br from-violet/[0.06] to-violet/[0.02] px-4 py-3.5 ring-1 ring-inset ring-violet/15 transition-all duration-500 group-hover:from-violet/[0.08] group-hover:ring-violet/25">
                     <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet text-white shadow-sm">
                       <Check className="h-3 w-3" aria-hidden="true" />
                     </span>
@@ -224,13 +226,13 @@ export function ComparisonTable({ heading, intro, options }: ComparisonTableProp
           {...motionProps}
           variants={fadeUpVariants}
         >
-          <a
+          <Link
             href="/contact"
             className="group inline-flex items-center gap-2.5 rounded-full bg-violet px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-violet/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-violet/30"
           >
             Get the right recommendation
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
