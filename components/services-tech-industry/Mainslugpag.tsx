@@ -25,7 +25,7 @@ export default function IndustryPageTemplate({ data }: Props) {
       {/* 2. Animated Credibility Bar (Placed directly below Hero) */}
       <CredibilityBar text={data.hero.credibilityBar} />
       
-      <section className="layout-container md:px-18 space-y-24">
+      <section className="layout-container px-4 sm:px-6 md:px-18 py-6 sm:py-8 md:py-10 space-y-10 sm:space-y-16 md:space-y-20 lg:space-y-24">
         <FeaturedAnswer text={data.featuredAnswer} />
         <WhySector items={data.whySector} />
         <HowWeBuild text={data.howWeBuild} />

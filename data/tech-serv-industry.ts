@@ -46,9 +46,9 @@ export type IndustryPageData = {
 
 export const pages: Record<string, IndustryPageData> = {
   // ----- Shopify Development for Hospitality -----
-  "shopify/hospitality": {
+  "shopify-development/hospitality": {
     title: "Shopify Development for Hospitality",
-    slug: "shopify/hospitality",
+    slug: "shopify-development/hospitality",
     hero: {
       heading: "Shopify Development for Hospitality",
       description:
@@ -218,9 +218,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- E-commerce Development for Manufacturing & Industrial -----
-  "ecommerce/manufacturing": {
+  "ecommerce-development/manufacturing": {
     title: "E-commerce Development for Manufacturing & Industrial",
-    slug: "ecommerce/manufacturing",
+    slug: "ecommerce-development/manufacturing",
     hero: {
       heading: "E-commerce Development for Manufacturing & Industrial",
       description:
@@ -392,9 +392,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- SaaS Development for Healthcare -----
-  "saas/healthcare": {
+  "saas-development/healthcare": {
     title: "SaaS Development for Healthcare",
-    slug: "saas/healthcare",
+    slug: "saas-development/healthcare",
     hero: {
       heading: "SaaS Development for Healthcare",
       description:
@@ -563,9 +563,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- SaaS Development for Fintech & Financial Services -----
-  "saas/fintech": {
+  "saas-development/fintech": {
     title: "SaaS Development for Fintech & Financial Services",
-    slug: "saas/fintech",
+    slug: "saas-development/fintech",
     hero: {
       heading: "SaaS Development for Fintech & Financial Services",
       description:
@@ -735,9 +735,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- SaaS Development for Startups -----
-  "saas/startups": {
+  "saas-development/startups": {
     title: "SaaS Development for Startups",
-    slug: "saas/startups",
+    slug: "saas-development/startups",
     hero: {
       heading: "SaaS Development for Startups",
       description:
@@ -904,9 +904,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- Web Application Development for Healthcare -----
-  "web-application/healthcare": {
+  "web-development-services/healthcare": {
     title: "Web Application Development for Healthcare",
-    slug: "web-application/healthcare",
+    slug: "web-development-services/healthcare",
     hero: {
       heading: "Web Application Development for Healthcare",
       description:
@@ -1075,9 +1075,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- Web Application Development for Fintech & Financial Services -----
-  "web-application/fintech": {
+  "web-development-services/fintech": {
     title: "Web Application Development for Fintech & Financial Services",
-    slug: "web-application/fintech",
+    slug: "web-development-services/fintech",
     hero: {
       heading: "Web Application Development for Fintech & Financial Services",
       description:
@@ -1247,9 +1247,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- Web Application Development for Manufacturing & Industrial -----
-  "web-application/manufacturing": {
+  "web-development-services/manufacturing": {
     title: "Web Application Development for Manufacturing & Industrial",
-    slug: "web-application/manufacturing",
+    slug: "web-development-services/manufacturing",
     hero: {
       heading: "Web Application Development for Manufacturing & Industrial",
       description:
@@ -1420,9 +1420,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- Web Application Development for Real Estate -----
-  "web-application/real-estate": {
+  "web-development-services/real-estate": {
     title: "Web Application Development for Real Estate",
-    slug: "web-application/real-estate",
+    slug: "web-development-services/real-estate",
     hero: {
       heading: "Web Application Development for Real Estate",
       description:
@@ -2276,9 +2276,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- Web Design & UI/UX for E-commerce & Retail -----
-  "web-design/ecommerce": {
+  "web-design-services/ecommerce": {
     title: "Web Design & UI/UX for E-commerce & Retail",
-    slug: "web-design/ecommerce",
+    slug: "web-design-services/ecommerce",
     hero: {
       heading: "Web Design & UI/UX for E-commerce & Retail",
       description:
@@ -2447,9 +2447,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- Web Design & UI/UX for Hospitality -----
-  "web-design/hospitality": {
+  "web-design-serviceshospitality": {
     title: "Web Design & UI/UX for Hospitality",
-    slug: "web-design/hospitality",
+    slug: "web-design-services/hospitality",
     hero: {
       heading: "Web Design & UI/UX for Hospitality",
       description:
@@ -2620,9 +2620,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- Web Design & UI/UX for Law Firms -----
-  "web-design/law-firm": {
+  "web-design-services/law-firm": {
     title: "Web Design & UI/UX for Law Firms",
-    slug: "web-design/law-firm",
+    slug: "web-design-services/law-firm",
     hero: {
       heading: "Web Design & UI/UX for Law Firms",
       description:
@@ -2791,9 +2791,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- Web Design & UI/UX for Education -----
-  "web-design/education": {
+  "web-design-services/education": {
     title: "Web Design & UI/UX for Education",
-    slug: "web-design/education",
+    slug: "web-design-services/education",
     hero: {
       heading: "Web Design & UI/UX for Education",
       description:
@@ -2963,9 +2963,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- WordPress Development for Education -----
-  "wordpress/education": {
+  "wordpress-development/education": {
     title: "WordPress Development for Education",
-    slug: "wordpress/education",
+    slug: "wordpress-development/education",
     hero: {
       heading: "WordPress Development for Education",
       description:
@@ -3135,9 +3135,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- WordPress Development for Law Firms -----
-  "wordpress/law-firm": {
+  "wordpress-development/law-firm": {
     title: "WordPress Development for Law Firms",
-    slug: "wordpress/law-firm",
+    slug: "wordpress-development/law-firm",
     hero: {
       heading: "WordPress Development for Law Firms",
       description:
@@ -3306,9 +3306,9 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- WordPress Development for Healthcare -----
-  "wordpress/healthcare": {
+  "wordpress-development/healthcare": {
     title: "WordPress Development for Healthcare",
-    slug: "wordpress/healthcare",
+    slug: "wordpress-development/healthcare",
     hero: {
       heading: "WordPress Development for Healthcare",
       description:

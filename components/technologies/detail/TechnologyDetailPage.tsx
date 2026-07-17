@@ -43,15 +43,15 @@ export function TechnologyDetailPage({
 
       {hasSubPages ? (
         /* Split layout: main content left, sub-pages sidebar right */
-        <section className="layout-container grid gap-8 px-6 py-10 lg:grid-cols-[1fr_340px]">
+        <section className="layout-container grid gap-8 md:px-18 py-10 lg:grid-cols-[1fr_340px]">
           <div className="min-w-0">
             {/* Embedded TOC — visible on all screens, sticky at top of content */}
-            <div className="sticky top-24 z-10 mb-8">
+            {/* <div className="sticky top-24 z-10 mb-8">
               <TechnologyTableOfContents
                 sections={copy.sections}
                 variant="compact"
               />
-            </div>
+            </div> */}
 
             <div className="grid gap-6">
               {copy.sections.map((section: any, index: number) => (
@@ -71,10 +71,10 @@ export function TechnologyDetailPage({
         </section>
       ) : (
         /* Default layout: TOC left, content right */
-        <section className="layout-container grid gap-8 px-6 py-10 lg:grid-cols-[280px_1fr]">
+        <section className="layout-container grid gap-8 md:px-18 py-10 lg:grid-cols-[280px_1fr]">
           <TechnologyTableOfContents sections={copy.sections} />
 
-          <div className="grid gap-6">
+          <div className="min-w-0 grid gap-6">
             {copy.sections.map((section: any, index: number) => (
               <TechnologySectionRenderer
                 key={`${section.heading}-${index}`}

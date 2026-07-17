@@ -15,26 +15,26 @@ const stepIcons = [
 export function ProcessTimeline({ steps }: Props) {
   return (
     <section>
-      <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">Our Process</h2>
-      <div className="max-w-3xl mx-auto space-y-0">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 md:mb-12 text-slate-900 px-4">Our Process</h2>
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {steps.map((step, idx) => {
           const parts = step.split('—');
           const title = parts[0]?.trim().replace(/^\d+\.\s*/, '');
           const desc = parts.slice(1).join('—').trim();
 
           return (
-            <div key={idx} className="flex gap-6 pb-10 relative">
+            <div key={idx} className="flex gap-3 sm:gap-4 md:gap-6 pb-6 sm:pb-8 md:pb-10 relative">
               {idx !== steps.length - 1 && (
-                <div className="absolute left-[23px] top-12 bottom-0 w-0.5 border-l-2 border-dashed border-slate-300" />
+                <div className="absolute left-[19px] sm:left-[23px] top-10 sm:top-12 bottom-0 w-0.5 border-l-2 border-dashed border-slate-300" />
               )}
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white z-10 shadow-md ring-4 ring-white">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-blue-600 rounded-full flex items-center justify-center text-white z-10 shadow-md ring-4 ring-white">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {stepIcons[idx % stepIcons.length]}
                 </svg>
               </div>
-              <div className="pt-1.5">
-                <h3 className="text-xl font-bold text-slate-900">{title}</h3>
-                {desc && <p className="text-gray-600 mt-2 leading-relaxed">{desc}</p>}
+              <div className="pt-1 sm:pt-1.5 min-w-0">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-slate-900">{title}</h3>
+                {desc && <p className="text-gray-600 mt-1.5 sm:mt-2 text-sm sm:text-base leading-relaxed">{desc}</p>}
               </div>
             </div>
           );

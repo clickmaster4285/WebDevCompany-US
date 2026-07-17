@@ -150,12 +150,12 @@ export function IndustryHero({ data }: IndustryHeroProps) {
           </motion.div>
 
           {/* Social proof */}
-          <motion.p
+          {/* <motion.p
             variants={itemVariants}
             className="mt-6 text-xs text-ink-mute md:mt-8"
           >
             {data.socialProof}
-          </motion.p>
+          </motion.p> */}
         </div>
 
         {/* ===== RIGHT COLUMN — Form ===== */}

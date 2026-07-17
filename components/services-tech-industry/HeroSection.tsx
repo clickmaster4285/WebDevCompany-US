@@ -1,47 +1,95 @@
-// components/sections/HeroSection.tsx
-import Link from 'next/link';
-import { IndustryPageData } from '@/data/tech-serv-industry';
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
-type HeroProps = IndustryPageData['hero'];
+type HeroSectionProps = {
+  heading: string;
+  description: string;
+  credibilityBar?: string;
+  primaryCTA?: string;
+  secondaryCTA?: string;
+  socialProof?: string;
+};
 
-export function HeroSection({ heading, description, primaryCTA, secondaryCTA, socialProof }: HeroProps) {
+export function HeroSection({
+  heading,
+  description,
+  credibilityBar,
+  primaryCTA,
+  secondaryCTA,
+  socialProof,
+}: HeroSectionProps) {
   return (
-    <section className="relative bg-slate-950 text-white py-24 px-4 overflow-hidden">
-      {/* Background Pattern: Dot Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-40" />
-      
-      {/* Background Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/20 rounded-full blur-3xl -z-0" />
-
-      <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Breadcrumb — left aligned above content */}
-        <div className="mb-8 md:pt-10 text-left">
-          <Breadcrumb />
-        </div>
-
-        <div className="text-center space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
-            {heading}
-          </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">{description}</p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-            <Link
-              href="/contact"
-              className="px-8 py-3.5 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition shadow-lg shadow-blue-600/20"
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 text-white">
+      <div className="layout-container px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div className="mx-auto flex max-w-6xl flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl lg:w-1/2"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mb-5 self-start"
             >
-              {primaryCTA}
-            </Link>
-            <Link
-              href="/contact"
-              className="px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg font-semibold transition backdrop-blur-sm"
-            >
-              {secondaryCTA}
-            </Link>
-          </div>
-          
-          {/* <p className="text-sm text-slate-500 pt-10">{socialProof}</p> */}
+              <Breadcrumb className="[&_a]:text-white/70 [&_a:hover]:text-white [&_[aria-current]]:text-white/90 [&_svg]:text-white/40" />
+            </motion.div>
+            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm font-medium text-slate-200 backdrop-blur">
+              Services • Industry expertise
+            </span>
+            <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+              {heading}
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-300">
+              {description}
+            </p>
+            {(primaryCTA || secondaryCTA) && (
+              <div className="mt-8 flex flex-wrap gap-3">
+                {primaryCTA && (
+                  <Link
+                    href="#contact"
+                    className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-500"
+                  >
+                    {primaryCTA}
+                  </Link>
+                )}
+                {secondaryCTA && (
+                  <Link
+                    href="#services"
+                    className="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/20"
+                  >
+                    {secondaryCTA}
+                  </Link>
+                )}
+              </div>
+            )}
+          </motion.div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden lg:block lg:w-5/12"
+          >
+            <div className="relative">
+              <div className="absolute inset-0 rounded-3xl bg-blue-500/20 blur-3xl"></div>
+              <Image
+                src="/batch9.png"
+                alt="Service illustration"
+                width={600}
+                height={500}
+                className="relative rounded-3xl shadow-2xl shadow-blue-900/50"
+                priority
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
