@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ShieldCheck, BadgeCheck, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 
@@ -155,13 +155,13 @@ export function RiskReversal({ text }: RiskReversalProps) {
             variants={fadeUpVariants}
             className="mt-8 text-center"
           >
-            <a
+            <Link
               href="/contact"
               className="group inline-flex items-center gap-2 rounded-full bg-violet/10 px-5 py-2.5 text-sm font-medium text-violet ring-1 ring-violet/20 transition-all hover:bg-violet hover:text-white hover:shadow-lg hover:shadow-violet/25"
             >
               Start with confidence
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

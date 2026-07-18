@@ -1,7 +1,8 @@
 // components/ui/hero-block-shadcnui.tsx
 
 "use client";
-
+import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
@@ -59,9 +60,11 @@ export function HeroBlock({
           >
             <div className="mx-auto h-24 w-24 rounded-full border-4 border-background bg-gradient-to-br from-primary to-muted shadow-lg overflow-hidden">
               {avatarImage ? (
-                <img
+                <Image
                   src={avatarImage}
                   alt={title}
+                  width={96}
+                  height={96}
                   className="h-full w-full object-cover"
                 />
               ) : (
@@ -96,17 +99,18 @@ export function HeroBlock({
             transition={{ delay: 0.5, duration: 0.6 }}
             className="mb-12 flex flex-wrap justify-center gap-4"
           >
+            {/* ✅ FIXED LINK COMPONENTS HERE */}
             <Button size="lg" className="gap-2" asChild>
-              <a href={primaryCTALink}>
+              <Link href={primaryCTALink}>
                 <Mail className="h-4 w-4" />
                 {primaryCTA}
-              </a>
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="gap-2" asChild>
-              <a href={secondaryCTALink}>
+              <Link href={secondaryCTALink}>
                 View Projects
                 <ArrowDown className="h-4 w-4" />
-              </a>
+              </Link>
             </Button>
           </motion.div>
 

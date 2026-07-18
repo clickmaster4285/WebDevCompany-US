@@ -249,13 +249,13 @@ export default function FAQsPage() {
                 Contact Support
               </Link>
 
-              <a
+              <Link
                 href="/book-call"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-black text-white transition hover:bg-white/15"
               >
                 <Calendar className="h-4 w-4" />
                 Book a Call
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -271,13 +271,13 @@ export default function FAQsPage() {
         </button>
       )}
 
-      <a
+      <Link
         href="/chat"
         className="fixed bottom-8 right-8 z-40 flex items-center gap-2 rounded-full bg-violet p-4 text-white shadow-lg shadow-violet/20 transition hover:scale-105 hover:bg-violet/90"
       >
         <MessageCircle className="h-6 w-6" />
         <span className="hidden text-sm font-black md:inline">Chat with us</span>
-      </a>
+      </Link>
     </main>
   );
 }

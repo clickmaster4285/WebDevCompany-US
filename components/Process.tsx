@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 import type { StaticImageData } from "next/image";
 import { gsap } from "gsap";
@@ -72,10 +73,13 @@ export function Process() {
               {/* LEFT SIDE: Process image */}
               <div className="relative w-full h-1/2 md:h-full overflow-hidden rounded-[1rem] md:rounded-[2rem] bg-[#111111] shadow-inner">
                 {phases.map((p, i) => (
-                  <img
+                  <Image
                     key={p.num}
                     src={p.image}
                     alt={p.label}
+                    width={32}       // Matches Tailwind w-8 (32px)
+                    height={32}      // Matches Tailwind h-8 (32px)
+                    unoptimized 
                     className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-out ${
                       i === phase ? "opacity-100 scale-100" : "opacity-0 scale-105"
                     }`}

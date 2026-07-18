@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
+import  Image from "next/image";
 
 const PARTNERS = [
   { name: "Clutch", icon: "https://cdn.simpleicons.org/clutch/4B9CD3", dark: false },
@@ -51,10 +52,13 @@ export function Partners() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="w-18 h-18 md:w-22 md:h-22 flex items-center justify-center rounded-2xl  p-4 transition-all duration-300 hover:bg-white/10">
-                    <img
+                  <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl p-4 transition-all duration-300 hover:bg-white/10">
+                    <Image
                       src={partner.icon}
                       alt={partner.name}
+                      width={40}   // ✅ 2. Added required width
+                      height={40}  // ✅ 2. Added required height
+                      unoptimized  // ✅ 2. Required for external CDN images (like simpleicons)
                       className={`w-full h-full object-contain transition-all duration-300 ${
                         partner.dark ? "brightness-0 invert" : ""
                       }`}

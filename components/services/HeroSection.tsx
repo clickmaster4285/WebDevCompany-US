@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -438,7 +439,7 @@ export function HeroSection({
               className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-surface-1 p-2 shadow-2xl"
             >
               <div className="absolute inset-0 rounded-3xl bg-linear-to-tr from-violet/15 via-transparent to-indigo-500/10" />
-              <img
+              <Image
                 src={rightImage}
                 alt="Hero visual"
                 className="h-auto w-full rounded-2xl object-cover"
