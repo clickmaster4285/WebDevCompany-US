@@ -43,7 +43,7 @@ export function Navbar() {
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 className={`flex items-center px-3 py-2 rounded-md transition-colors ${
-                  pathname?.startsWith('/services') 
+                  Object.keys(serviceData).some(s => pathname === `/${s}`) 
                     ? 'text-blue-600 font-semibold' 
                     : 'text-gray-700 hover:text-blue-600'
                 }`}
@@ -65,9 +65,9 @@ export function Navbar() {
                   {services.map((service) => (
                     <Link
                       key={service.slug}
-                      href={`/services/${service.slug}`}
+                      href={`/${service.slug}`}
                       className={`block px-4 py-2.5 hover:bg-gray-50 text-sm transition-colors ${
-                        pathname === `/services/${service.slug}`
+                        pathname === `/${service.slug}`
                           ? 'text-blue-600 font-medium bg-blue-50'
                           : 'text-gray-700 hover:text-blue-600'
                       }`}
@@ -128,9 +128,9 @@ export function Navbar() {
                 {services.map((service) => (
                   <Link
                     key={service.slug}
-                    href={`/services/${service.slug}`}
+                    href={`/${service.slug}`}
                     className={`block px-3 py-2 text-sm rounded-md transition-colors ${
-                      pathname === `/services/${service.slug}`
+                      pathname === `/${service.slug}`
                         ? 'text-blue-600 font-medium bg-blue-50'
                         : 'text-gray-700 hover:bg-gray-50'
                     }`}

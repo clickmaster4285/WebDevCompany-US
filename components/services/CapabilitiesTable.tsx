@@ -25,7 +25,7 @@ const cardVariants: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6, ease: "easeOut" as const },
   },
 };
 
@@ -34,7 +34,7 @@ const fadeUpVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: "easeOut" as const },
   },
 };
 
@@ -79,7 +79,7 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
       };
 
   return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-20">
+    <section className="relative overflow-hidden bg-background py-20 md:py-24">
       {/* ── Ambient Background ── */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/4 top-0 h-[400px] w-[400px] rounded-full bg-violet/[0.04] blur-[120px]" />
@@ -93,7 +93,8 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
         />
       )}
 
-      <div className="relative z-10 layout-container px-4 sm:px-6 lg:px-10">
+      {/* Uses your global .layout-container class */}
+      <div className="relative z-10 layout-container md:px-18 sm:6 lg:px-20">
         {/* ── Header ── */}
         <motion.div
           className="mx-auto mb-14 max-w-3xl text-center md:mb-20"
@@ -115,9 +116,9 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
           </motion.h2>
         </motion.div>
 
-        {/* ── Cards Grid ── */}
+        {/* ── Cards Grid (Removed max-w to respect layout-container) ── */}
         <motion.div
-          className="mx-auto grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
           variants={containerVariants}
           {...motionProps}
           role="list"
@@ -132,24 +133,25 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
                 whileHover={
                   shouldReduceMotion
                     ? undefined
-                    : { y: -6, transition: { duration: 0.3, ease: "easeOut" } }
+                    : { y: -6, transition: { duration: 0.3, ease: "easeOut" as const } }
                 }
-                className="group relative"
+                // Added h-full here so all cards match the tallest card in the row
+                className="group relative h-full"
                 role="listitem"
               >
-                {/* Glow on hover */}
-                <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-br from-violet/0 via-violet/0 to-violet/0 opacity-0 blur-xl transition-all duration-500 group-hover:from-violet/10 group-hover:via-violet/5 group-hover:to-transparent group-hover:opacity-100" />
+                {/* Fixed Glow effect on hover */}
+                <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-gradient-to-br from-violet/20 via-violet/5 to-transparent opacity-0 blur-lg transition-all duration-500 group-hover:opacity-100" />
 
-                {/* Card */}
-                <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/50 bg-surface-1/30 p-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-violet/30 hover:shadow-lg hover:shadow-violet/5 sm:p-8">
+                {/* Card Body */}
+                <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-surface-1/40 p-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-violet/40 hover:shadow-xl hover:shadow-violet/5 sm:p-7">
                   {/* Hover gradient overlay */}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet/[0.02] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet/[0.03] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   {/* Top accent line */}
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-violet/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-violet/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   {/* Icon */}
-                  <div className="relative z-10 mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet/10 to-violet/5 text-violet ring-1 ring-violet/20 transition-all duration-500 group-hover:scale-110 group-hover:from-violet group-hover:to-violet-soft group-hover:text-white group-hover:ring-violet/40 group-hover:shadow-lg group-hover:shadow-violet/30">
+                  <div className="relative z-10 mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet/10 to-violet/5 text-violet ring-1 ring-violet/20 transition-all duration-500 group-hover:scale-110 group-hover:from-violet group-hover:to-violet-soft group-hover:text-white group-hover:ring-violet/40 group-hover:shadow-lg group-hover:shadow-violet/30">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </div>
 
@@ -164,11 +166,11 @@ export function CapabilitiesTable({ heading, items }: CapabilitiesTableProps) {
                   </p>
 
                   {/* Separator */}
-                  <div className="relative z-10 my-4 h-px w-full bg-gradient-to-r from-border/50 via-border to-border/50" />
+                  <div className="relative z-10 my-5 h-px w-full bg-gradient-to-r from-border/50 via-border to-border/50" />
 
-                  {/* Business Impact */}
-                  <div className="relative z-10 mt-auto flex items-start gap-2.5 rounded-xl bg-violet/[0.04] px-3.5 py-2.5 ring-1 ring-violet/10 transition-all duration-500 group-hover:bg-violet/[0.06] group-hover:ring-violet/20">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet/15 text-violet transition-all duration-500 group-hover:bg-violet group-hover:text-white">
+                  {/* Business Impact Box (Polished) */}
+                  <div className="relative z-10 mt-auto flex items-start gap-3 rounded-xl bg-violet/[0.05] p-3.5 ring-1 ring-inset ring-violet/15 transition-all duration-500 group-hover:bg-violet/[0.08] group-hover:ring-violet/25">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet/20 text-violet transition-all duration-500 group-hover:bg-violet group-hover:text-white">
                       <Check className="h-3 w-3" aria-hidden="true" />
                     </span>
                     <span className="text-sm font-medium leading-relaxed text-ink/80">

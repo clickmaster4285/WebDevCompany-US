@@ -49,6 +49,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+
   const service = getServiceBySlug(slug);
 
   if (!service) {
@@ -58,7 +59,7 @@ export async function generateMetadata({
     };
   }
 
-  const canonicalUrl = `${SITE_URL}/services/${service.slug}`;
+  const canonicalUrl = `${SITE_URL}/${service.slug}`;
 
   return {
     title: `${service.title} | ${COMPANY_NAME}`,
@@ -88,6 +89,7 @@ export async function generateMetadata({
 
 export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params;
+
   const service = getServiceBySlug(slug);
 
   if (!service) {
@@ -107,7 +109,7 @@ export default async function ServicePage({ params }: PageProps) {
       name: COMPANY_NAME,
       url: SITE_URL,
     },
-    url: `${SITE_URL}/services/${service.slug}`,
+    url: `${SITE_URL}/${service.slug}`,
     areaServed: "Global",
   };
 

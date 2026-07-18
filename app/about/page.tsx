@@ -49,7 +49,7 @@ function ElegantShape({
       transition={{
         duration: 2.4,
         delay,
-        ease: [0.23, 0.86, 0.39, 0.96],
+        ease: [0.23, 0.86, 0.39, 0.96] as const,
         opacity: { duration: 1.2 },
       }}
       className={className}
@@ -78,7 +78,7 @@ function StatCounter({ value, suffix = "" }: { value: number; suffix?: string })
     if (!isInView) return;
     const controls = animate(0, value, {
       duration: 1.6,
-      ease: [0.25, 0.4, 0.25, 1],
+      ease: [0.25, 0.4, 0.25, 1] as const,
       onUpdate: (v) => setDisplay(Math.round(v)),
     });
     return () => controls.stop();
@@ -126,7 +126,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
+    transition: { duration: 0.6, ease: "easeOut" as const },
   },
 };
 
@@ -516,7 +516,7 @@ export default function AboutPage() {
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
       >
         <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
           <Sparkles className="w-3.5 h-3.5" />
@@ -569,7 +569,7 @@ export default function AboutPage() {
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
         className="relative"
       >
         <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-1 border border-white/10 shadow-2xl shadow-black/40">
@@ -754,7 +754,7 @@ export default function AboutPage() {
                 <ArrowRight className="relative w-5 h-5" />
               </Link>
               <Link
-                href="/solutions"
+                href="/case-studies"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border text-ink-soft hover:text-ink font-semibold rounded-full transition-all duration-300 hover:bg-surface-1 hover:-translate-y-0.5"
               >
                 View Our Work

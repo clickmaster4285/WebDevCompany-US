@@ -15,7 +15,7 @@ export function AnimatedCTA({ cta }: { cta: any }) {
       initial={{ opacity: 0, y: 80, scale: 0.96 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: false, amount: 0.35 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
+      transition={{ duration: 0.7, ease: "easeOut" as const }}
       className="my-16 overflow-hidden rounded-[2.25rem] border border-violet/20 bg-white shadow-[0_35px_120px_rgba(15,23,42,0.12)]"
     >
       <div className="grid lg:grid-cols-[1fr_320px]">
@@ -23,7 +23,7 @@ export function AnimatedCTA({ cta }: { cta: any }) {
           initial={{ opacity: 0, x: -70 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false, amount: 0.45 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut" as const }}
           className="relative p-7 md:p-10"
         >
           <div className="absolute right-0 top-0 h-56 w-56 rounded-full bg-violet/15 blur-3xl" />
@@ -96,7 +96,7 @@ export function AnimatedCTA({ cta }: { cta: any }) {
                 transition={{
                   delay: index * 0.12,
                   duration: 0.6,
-                  ease: "easeOut",
+                  ease: "easeOut" as const,
                 }}
                 className="rounded-2xl bg-white p-4 shadow-[0_18px_55px_rgba(15,23,42,0.08)]"
               >
@@ -114,7 +114,7 @@ export function AnimatedCTA({ cta }: { cta: any }) {
             initial={{ opacity: 0, y: 35, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: false, amount: 0.4 }}
-            transition={{ delay: 0.42, duration: 0.6, ease: "easeOut" }}
+            transition={{ delay: 0.42, duration: 0.6, ease: "easeOut" as const }}
             className="mt-5 rounded-2xl bg-slate-950 p-4 text-white shadow-[0_22px_60px_rgba(15,23,42,0.25)]"
           >
             <p className="text-sm font-black">Quick recommendation</p>

@@ -1,21 +1,19 @@
 // app/industries/layout.tsx
+import type { ReactNode } from 'react';
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export default function IndustriesLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Nav />
-
-      {/* Main Content */}
-      <main className="grow">
+      <div className="flex-1">
         {children}
-      </main>
-
+      </div>
       <Footer />
     </div>
   );

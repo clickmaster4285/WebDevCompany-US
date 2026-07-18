@@ -7,6 +7,7 @@ type TechnologyTableOfContentsProps = {
   sections: {
     heading: string;
   }[];
+  variant?: 'sidebar' | 'compact';
 };
 
 function getShortHeading(text: string) {
@@ -56,6 +57,7 @@ function getShortHeading(text: string) {
 
 export function TechnologyTableOfContents({
   sections,
+  variant = 'sidebar',
 }: TechnologyTableOfContentsProps) {
   const [activeId, setActiveId] = useState("");
   const isManualScrolling = useRef(false);
@@ -117,18 +119,22 @@ export function TechnologyTableOfContents({
     }, 900);
   };
 
+  const isCompact = variant === 'compact';
+
   return (
-    <aside className="hidden lg:block">
-      <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-[1.35rem] border border-slate-200 bg-white/90 p-3.5 shadow-[0_18px_60px_rgba(15,23,42,0.07)] backdrop-blur-xl">
-        <div className="flex items-center justify-between px-2">
-          <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
+    <aside className={isCompact ? '' : 'hidden lg:block'}>
+      <div className={`overflow-y-auto rounded-[1.35rem] border border-slate-200 bg-white/90 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.07)] backdrop-blur-xl xl:p-3.5 ${
+        isCompact ? '' : 'sticky top-20 max-h-[calc(100vh-6rem)]'
+      }`}>
+        <div className="flex items-center justify-between px-1.5 xl:px-2">
+          <p className="text-[10px] font-black uppercase tracking-[0.22em] text-slate-400 xl:tracking-[0.25em]">
             On this page
           </p>
 
-          <span className="h-1.5 w-1.5 rounded-full bg-violet shadow-[0_0_16px_rgba(124,92,255,0.8)]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-violet shadow-[0_0_16px_rgba(124,92,255,0.8)] shrink-0" />
         </div>
 
-        <nav className="relative mt-4 space-y-1 border-l border-slate-200 pl-3">
+        <nav className="relative mt-3 space-y-0.5 border-l border-slate-200 pl-2.5 xl:mt-4 xl:pl-3">
           {sections.map((section, index) => {
             const id = createSectionId(section.heading);
             const isActive = activeId === id;
@@ -140,20 +146,20 @@ export function TechnologyTableOfContents({
                 type="button"
                 title={section.heading}
                 onClick={() => handleClick(section.heading)}
-                className={`group relative flex w-full items-center gap-2 rounded-xl px-2.5 py-2 text-left text-[13px] transition-colors duration-200 ${
+                className={`group relative flex w-full items-center gap-1.5 rounded-xl px-2 py-1.5 text-left text-xs transition-colors duration-200 xl:gap-2 xl:px-2.5 xl:py-2 xl:text-[13px] ${
                   isActive
                     ? "bg-violet/10 text-violet"
                     : "text-slate-500 hover:bg-slate-50 hover:text-slate-950"
                 }`}
               >
                 <span
-                  className={`absolute -left-[13px] top-1/2 h-7 w-0.5 -translate-y-1/2 rounded-full bg-violet shadow-[0_0_14px_rgba(124,92,255,0.75)] transition-opacity duration-200 ${
+                  className={`absolute -left-[11px] top-1/2 h-6 w-0.5 -translate-y-1/2 rounded-full bg-violet shadow-[0_0_14px_rgba(124,92,255,0.75)] transition-opacity duration-200 xl:-left-[13px] xl:h-7 ${
                     isActive ? "opacity-100" : "opacity-0"
                   }`}
                 />
 
                 <span
-                  className={`flex h-4 w-5 shrink-0 items-center justify-center font-mono text-[10px] font-black transition-colors duration-200 ${
+                  className={`flex h-3.5 w-4 shrink-0 items-center justify-center font-mono text-[9px] font-black transition-colors duration-200 xl:h-4 xl:w-5 xl:text-[10px] ${
                     isActive ? "text-violet" : "text-slate-300"
                   }`}
                 >

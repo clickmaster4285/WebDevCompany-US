@@ -33,12 +33,12 @@ const statCardVariants: Variants = {
 
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const } },
 };
 
 const visualVariants: Variants = {
   hidden: { opacity: 0, scale: 0.95, x: 30 },
-  visible: { opacity: 1, scale: 1, x: 0, transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] } },
+  visible: { opacity: 1, scale: 1, x: 0, transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as const } },
 };
 
 /* ─── Sub-components ─────────────────────── */
@@ -202,10 +202,19 @@ export function ProblemSection({
 
   return (
     <section className="relative overflow-hidden bg-background py-20 md:py-20">
-      {/* ── Ambient Background ── */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-destructive/[0.03] blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-violet/[0.02] blur-[100px]" />
+      {/* ── Background Image & Ambient Effects ── */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: "url('/assets/services/servicespage.png')" }}
+        />
+        {/* Dark overlay to ensure text remains readable over the image */}
+        {/* <div className="absolute inset-0 bg-background/80" /> */}
+        
+        {/* Ambient Glows */}
+        <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-destructive/[0.05] blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-violet/[0.03] blur-[100px]" />
       </div>
 
       {!shouldReduceMotion && (

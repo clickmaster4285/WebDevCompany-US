@@ -27,6 +27,10 @@ interface CaseStudySidebarProps {
   projectDetails?: ProjectDetails;
 }
 
+// Adjust this to match your actual fixed navbar height
+const NAVBAR_HEIGHT = 100;
+const GAP = 24;
+
 export function CaseStudySidebar({
   projectDetails,
   sections = [
@@ -56,31 +60,24 @@ export function CaseStudySidebar({
 
     sections.forEach((section) => {
       const element = document.getElementById(section.id);
-
-      if (element) {
-        observer.observe(element);
-      }
+      if (element) observer.observe(element);
     });
 
     return () => {
       sections.forEach((section) => {
         const element = document.getElementById(section.id);
-
-        if (element) {
-          observer.unobserve(element);
-        }
+        if (element) observer.unobserve(element);
       });
     };
   }, [sections]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-
     if (!element) return;
 
-    const offset = 80;
+    const offset = NAVBAR_HEIGHT + GAP;
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    const offsetPosition = elementPosition + window.scrollY - offset;
 
     window.scrollTo({
       top: offsetPosition,
@@ -88,8 +85,16 @@ export function CaseStudySidebar({
     });
   };
 
+  const sidebarTop = NAVBAR_HEIGHT + GAP;
+
   return (
-    <div className="space-y-6 sticky top-[100px] max-h-[calc(100vh-120px)] overflow-y-auto pr-2">
+    <div
+      className="space-y-6 sticky self-start z-10 overflow-y-auto pr-2"
+      style={{
+        top: `${sidebarTop}px`,
+        maxHeight: `calc(100vh - ${sidebarTop + GAP}px)`,
+      }}
+    >
       <div className="bg-surface-1 rounded-2xl shadow-soft border border-border p-6 lg:p-8 space-y-6">
         <div>
           <h3 className="text-xs font-semibold uppercase tracking-wider text-ink-mute">
@@ -140,31 +145,24 @@ export function CaseStudySidebar({
             {projectDetails.sector && (
               <DetailRow label="Sector" value={projectDetails.sector} />
             )}
-
             {projectDetails.country && (
               <DetailRow label="Country" value={projectDetails.country} />
             )}
-
             {projectDetails.status && (
               <DetailRow label="Status" value={projectDetails.status} />
             )}
-
             {projectDetails.contract && (
               <DetailRow label="Contract" value={projectDetails.contract} />
             )}
-
             {projectDetails.readingTime && (
               <DetailRow label="Reading Time" value={projectDetails.readingTime} />
             )}
-
             {projectDetails.ipOwnership && (
               <DetailRow label="IP Ownership" value={projectDetails.ipOwnership} />
             )}
-
             {projectDetails.lastUpdated && (
               <DetailRow label="Last Updated" value={projectDetails.lastUpdated} />
             )}
-
             {projectDetails.reviewedBy && (
               <DetailRow label="Reviewed By" value={projectDetails.reviewedBy} />
             )}

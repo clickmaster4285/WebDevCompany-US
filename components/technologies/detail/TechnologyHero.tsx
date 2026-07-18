@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import type { Technology } from "@/data/technologies";
+import { ChevronRight, ArrowLeft } from "lucide-react";
+import type { TechnologySummary } from "@/data/technologies";
 
 type Props = {
-  technology: Technology;
+  technology: TechnologySummary;
+  parentTechnology?: TechnologySummary;
 };
 
-export function TechnologyHero({ technology }: Props) {
+export function TechnologyHero({ technology, parentTechnology }: Props) {
   const title = technology.title || "Technology";
   const headline =
     technology.page?.completePageCopy?.aboveTheFold?.headline || title;
@@ -18,51 +19,77 @@ export function TechnologyHero({ technology }: Props) {
     technology.page?.completePageCopy?.aboveTheFold?.subheadline || "";
   const imageSrc = "/assets/technologies-hero.webp";
 
+  // Shared breadcrumb link styles — transparent base, white on hover
+  const linkClass =
+    "text-white/50 transition-colors duration-200 hover:text-white";
+
   return (
-    <section className="relative overflow-hidden bg-background px-6 pb-20 pt-36 text-white">
-      <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl" />
-      <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+    <section className="relative overflow-hidden bg-background px-6 pb-16 pt-28 text-white md:pb-20 md:pt-36">
+      <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-violet/30 blur-3xl max-lg:-right-40 max-lg:h-60 max-lg:w-60" />
+      <div className="pointer-events-none absolute -left-24 bottom-10 h-80 w-80 rounded-full bg-white/10 blur-3xl max-lg:-left-40 max-lg:h-60 max-lg:w-60" />
 
-      <div className="relative layout-container px-18 grid items-center gap-12 lg:grid-cols-[1fr_480px]">
-        <div>
-          <div className="mb-6">
-            <Breadcrumb
-              customLabels={{
-                technologies: 'Technologies',
-                [technology.slug]: technology.title,
-              }}
-            />
-          </div>
+      <div className="relative layout-container px-6 grid items-center gap-10 lg:grid-cols-[1fr_480px] lg:px-18 lg:gap-12">
+        <div className="min-w-0">
+          {/* Breadcrumb nav — inside the hero, on the dark background */}
+          <nav
+            className="mb-4 flex items-center gap-1.5 text-xs flex-wrap md:mb-6 md:text-sm"
+            aria-label="Breadcrumb"
+          >
+            <Link href="/" className={linkClass}>
+              Home
+            </Link>
+            <ChevronRight className="h-3 w-3 shrink-0 text-white/25 md:h-3.5 md:w-3.5" />
+            <Link href="/technologies" className={linkClass}>
+              Technologies
+            </Link>
 
-          <p className="text-sm font-bold uppercase tracking-[0.28em] text-violet">
+            {parentTechnology && (
+              <>
+                <ChevronRight className="h-3 w-3 shrink-0 text-white/25 md:h-3.5 md:w-3.5" />
+                <Link
+                  href={`/technologies/${parentTechnology.slug}`}
+                  className={`${linkClass} truncate max-w-[120px] md:max-w-[160px]`}
+                >
+                  {parentTechnology.title}
+                </Link>
+              </>
+            )}
+
+            <ChevronRight className="h-3 w-3 shrink-0 text-white/25 md:h-3.5 md:w-3.5" />
+            <span className="font-medium text-white/80 truncate max-w-[140px] md:max-w-[200px]">
+              {technology.title}
+            </span>
+          </nav>
+
+          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-violet md:text-sm md:tracking-[0.28em]">
             {technology.category}
           </p>
 
-          <h1 className="mt-7 max-w-3xl text-5xl font-black leading-[0.98] tracking-[-0.06em] text-white md:text-7xl">
+          <h1 className="mt-5 max-w-3xl text-[2.25rem] font-black leading-[0.98] tracking-[-0.05em] text-white md:mt-7 md:text-5xl md:tracking-[-0.06em] lg:text-7xl">
             {headline}
           </h1>
 
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/68 md:text-xl md:leading-9">
+          <p className="mt-5 max-w-2xl text-base leading-7 text-white/68 md:mt-7 md:text-lg md:leading-8 lg:text-xl lg:leading-9">
             {subheadline}
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-4">
+          <div className="mt-7 flex flex-wrap gap-3 md:mt-9 md:gap-4">
             <Link
               href="#technologies"
-              className="rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5 hover:bg-violet hover:text-white"
+              className="rounded-full bg-white px-5 py-2.5 text-xs font-bold text-slate-950 transition hover:-translate-y-0.5 hover:bg-violet hover:text-white md:px-6 md:py-3 md:text-sm"
             >
               Explore Technologies →
             </Link>
 
             <Link
               href="/#contact"
-              className="rounded-full border border-white/15 px-6 py-3 text-sm font-bold text-white/80 transition hover:border-white/30 hover:text-white"
+              className="rounded-full border border-white/15 px-5 py-2.5 text-xs font-bold text-white/80 transition hover:border-white/30 hover:text-white md:px-6 md:py-3 md:text-sm"
             >
               Talk to an Expert
             </Link>
           </div>
 
-          <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
+          <div className="mt-8 grid max-w-xl grid-cols-3 gap-2 md:mt-10 md:gap-3">
             {[
               ["Modern", "Stack"],
               ["Scalable", "Systems"],
@@ -70,10 +97,12 @@ export function TechnologyHero({ technology }: Props) {
             ].map(([value, label]) => (
               <div
                 key={label}
-                className="rounded-2xl border border-white/10 bg-white/[0.055] p-4 backdrop-blur"
+                className="rounded-2xl border border-white/10 bg-white/[0.055] p-3 backdrop-blur md:p-4"
               >
-                <p className="text-xl font-black text-white">{value}</p>
-                <p className="mt-1 text-xs font-semibold text-white/45">
+                <p className="text-base font-black text-white md:text-xl">
+                  {value}
+                </p>
+                <p className="mt-0.5 text-[10px] font-semibold text-white/45 md:mt-1 md:text-xs">
                   {label}
                 </p>
               </div>
@@ -85,10 +114,10 @@ export function TechnologyHero({ technology }: Props) {
           className="relative flex justify-center"
           initial={{ opacity: 0, y: 35, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" as const }}
         >
           <motion.div
-            className="absolute -inset-6 rounded-[2.5rem] bg-violet/20 blur-3xl"
+            className="absolute -inset-4 rounded-[2rem] bg-violet/20 blur-3xl md:-inset-6 md:rounded-[2.5rem]"
             animate={{
               scale: [1, 1.08, 1],
               opacity: [0.55, 0.85, 0.55],
@@ -114,7 +143,7 @@ export function TechnologyHero({ technology }: Props) {
               scale: 1.03,
               rotate: 0,
             }}
-            className="relative z-10"
+            className="relative z-10 w-full max-w-[360px] md:max-w-[480px] lg:max-w-[520px]"
           >
             <Image
               src={imageSrc}
@@ -122,7 +151,7 @@ export function TechnologyHero({ technology }: Props) {
               width={520}
               height={620}
               priority
-              className="h-auto w-full max-w-[520px] rounded-[2rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)]"
+              className="h-auto w-full rounded-[1.5rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)] md:rounded-[2rem]"
             />
           </motion.div>
         </motion.div>

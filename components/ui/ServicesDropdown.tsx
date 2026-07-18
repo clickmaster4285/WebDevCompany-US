@@ -68,9 +68,9 @@ export function ServicesDropdown({
                 {services.map((service) => (
                   <Link
                     key={service.slug}
-                    href={`/services/${service.slug}`}
+                    href={`/${service.slug}`}
                     className={`block px-3 py-2 text-sm rounded-md transition-colors ${
-                      pathname === `/services/${service.slug}`
+                      pathname === `/${service.slug}`
                         ? 'text-blue-600 font-medium bg-blue-50'
                         : 'text-gray-700 hover:bg-gray-50'
                     }`}
@@ -94,9 +94,9 @@ export function ServicesDropdown({
         onClick={handleToggle}
         onMouseEnter={() => setIsOpen(true)}
         className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${
-          pathname?.startsWith('/services') 
-            ? 'text-blue-600 font-semibold' 
-            : 'text-gray-700 hover:text-blue-600'
+        Object.keys(serviceData).some(s => pathname === `/${s}`) 
+          ? 'text-blue-600 font-semibold' 
+          : 'text-gray-700 hover:text-blue-600'
         }`}
         aria-expanded={isOpen}
       >
@@ -126,11 +126,11 @@ export function ServicesDropdown({
             </div>
             
             {services.map((service) => {
-              const isActive = pathname === `/services/${service.slug}`;
+              const isActive = pathname === `/${service.slug}`;
               return (
                 <Link
                   key={service.slug}
-                  href={`/services/${service.slug}`}
+                  href={`/${service.slug}`}
                   className={`flex items-center justify-between px-4 py-2.5 hover:bg-gray-50 text-sm transition-colors ${
                     isActive
                       ? 'text-blue-600 font-medium bg-blue-50'

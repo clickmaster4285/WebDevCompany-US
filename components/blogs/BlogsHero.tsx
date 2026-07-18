@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import blogHeroImg from "@/public/assets/blog-hero.png";
+import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
 export function BlogsHero() {
   return (
@@ -14,6 +15,14 @@ export function BlogsHero() {
 
       <div className="relative layout-container px-85 grid items-center gap-12 lg:grid-cols-[1fr_480px]">
         <div>
+          <div className="mb-10 rounded-xl px-4 py-2 backdrop-blur-sm">
+            <Breadcrumb
+              customLabels={{
+                blogs: "Blogs",
+              }}
+            />
+          </div>
+
           <span className="inline-flex rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-violet-soft backdrop-blur">
             Resources
           </span>
@@ -37,7 +46,7 @@ export function BlogsHero() {
             </Link>
 
             <Link
-              href="/#contact"
+              href="/contact"
               className="rounded-full border border-white/15 px-6 py-3 text-sm font-bold text-white/80 transition hover:border-white/30 hover:text-white"
             >
               Talk to an Expert
@@ -67,7 +76,7 @@ export function BlogsHero() {
           className="relative flex justify-center"
           initial={{ opacity: 0, y: 35, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" as const }}
         >
           <motion.div
             className="absolute -inset-6 rounded-[2.5rem] bg-violet/20 blur-3xl"

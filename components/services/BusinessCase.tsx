@@ -18,7 +18,7 @@ const itemVariants: Variants = {
 
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const reducedItemVariants: Variants = {
@@ -64,7 +64,7 @@ function ValueCard({ stream, index, shouldReduceMotion }: { stream: string; inde
 
         <div className="mt-5">
           <div className="h-[2px] w-full overflow-hidden rounded-full bg-border/50">
-            <motion.div className="h-full rounded-full bg-gradient-to-r from-violet/60 to-violet/20" initial={{ width: 0 }} whileInView={{ width: `${Math.min((index + 1) * 25, 100)}%` }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4 + index * 0.15, ease: [0.22, 1, 0.36, 1] }} />
+            <motion.div className="h-full rounded-full bg-gradient-to-r from-violet/60 to-violet/20" initial={{ width: 0 }} whileInView={{ width: `${Math.min((index + 1) * 25, 100)}%` }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4 + index * 0.15, ease: [0.22, 1, 0.36, 1] as const }} />
           </div>
         </div>
       </div>
