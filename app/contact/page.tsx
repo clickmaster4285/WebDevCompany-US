@@ -1,6 +1,7 @@
 // app/contact/page.tsx
 "use client";
 
+
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { motion, animate, useInView } from "framer-motion";
@@ -673,12 +674,12 @@ export default function ContactPage() {
                           {item.label}
                         </p>
                         {item.href ? (
-                          <a
+                          <Link
                             href={item.href}
                             className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
                           >
                             {item.value}
-                          </a>
+                          </Link>
                         ) : (
                           <p className="text-sm font-medium text-ink whitespace-pre-line">
                             {item.value}
@@ -704,13 +705,13 @@ export default function ContactPage() {
                   For urgent inquiries, call us directly. We&apos;re here to
                   help you succeed.
                 </p>
-                <a
+                <Link
                   href="tel:+447988576086"
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-violet hover:text-violet/80 transition-colors"
                 >
                   Call +44 7988 576086
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -847,14 +848,14 @@ export default function ContactPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-              <a
+              <Link
                 href="#contact-form"
                 className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-violet hover:bg-violet/90 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-violet/25 hover:shadow-violet/40 hover:-translate-y-0.5 overflow-hidden"
               >
                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-linear-to-r from-transparent via-white/25 to-transparent" />
                 <span className="relative">Contact Us</span>
                 <ArrowRight className="relative w-5 h-5" />
-              </a>
+              </Link>
             </div>
 
             <div className="flex flex-wrap justify-center gap-3">

@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Clickmasters - Web Development Company",
   description: "Clickmasters is a leading web development company that specializes in creating innovative and user-friendly websites. Our team of experts is dedicated to delivering high-quality web solutions that help businesses succeed online.",
+  verification: {
+    google: "Wj_h0JbVwyvoLp7jT7VzLlMN05Z8Ws7NDAkACJ10W-E",
+  },
 };
 
 export default function RootLayout({

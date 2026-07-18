@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useGsap } from "@/lib/gsap";
 import { HeroBrowserScene } from "./HeroBrowserScene";
 import heroVideo from "@/public/assets/hero.mp4";
+import Link from "next/link";
 
 export function HeroSection() {
   const root = useRef<HTMLElement>(null);
@@ -123,13 +124,14 @@ className="relative mx-auto flex flex-col items-center justify-center overflow-x
           </p>
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
-            <a href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-violet px-7 py-4 text-sm font-medium text-white transition-transform hover:-translate-y-0.5">
+            <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-violet px-7 py-4 text-sm font-medium text-white transition-transform hover:-translate-y-0.5">
               Start a project
               <span>→</span>
-            </a>
-            <a href="#work" className="inline-flex items-center gap-3 rounded-full border border-white/15 px-7 py-4 text-sm font-medium text-ink transition-colors hover:bg-white/5">
+            </Link>
+
+            <Link href="#work" className="inline-flex items-center gap-3 rounded-full border border-white/15 px-7 py-4 text-sm font-medium text-ink transition-colors hover:bg-white/5">
               See selected work
-            </a>
+            </Link>
           </div>
 
           <div className="hero-fade mt-16 grid max-w-md grid-cols-3 gap-6">

@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 interface CaseStudyCardProps {
   slug?: string;
@@ -63,7 +64,7 @@ function CardContent({
     <>
       {/* Image Section */}
       <div className={cn("relative w-full overflow-hidden bg-surface-2", imageHeight)}>
-        <img
+        <Image
           src={imageUrl}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.08]"

@@ -1,6 +1,6 @@
 
 
-
+import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useGsap } from "@/lib/gsap";
@@ -94,9 +94,9 @@ export function ServicesSection() {
                     <div className="text-display text-3xl text-violet-soft md:text-4xl">{s.metric[0]}</div>
                     <div className="mt-1 text-xs uppercase tracking-widest text-ink-mute">{s.metric[1]}</div>
                   </div>
-                  <a className="inline-flex items-center gap-2 text-sm text-ink hover:text-violet-soft" href="/contact">
+                  <Link className="inline-flex items-center gap-2 text-sm text-ink hover:text-violet-soft" href="/contact">
                     Discuss this service →
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

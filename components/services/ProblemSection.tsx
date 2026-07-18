@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image"
 import { motion, useReducedMotion, useInView, type Variants } from "framer-motion";
 import {
   Activity,
@@ -289,8 +290,10 @@ export function ProblemSection({
           </div>
 
           {/* ── RIGHT COLUMN ── */}
+                   {/* ── RIGHT COLUMN ── */}
+                   {/* ── RIGHT COLUMN ── */}
           <div className="relative flex items-start justify-center pt-10 lg:justify-end lg:pt-20">
-            {visualType === "image" ? (
+            {image ? (
               <motion.div
                 variants={visualVariants}
                 initial="hidden"
@@ -299,13 +302,13 @@ export function ProblemSection({
                 className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-surface-1 p-2 shadow-2xl lg:max-w-xl"
               >
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-destructive/10 via-transparent to-violet/10" />
-                <img
+                <Image
                   src={image}
                   alt={imageAlt}
                   className="relative h-auto w-full rounded-2xl object-cover"
                 />
               </motion.div>
-            ) : visualType === "form" ? (
+            ) : rightVisual === "form" ? (
               <AuditForm
                 isReduced={isReduced}
                 onSubmit={onFormSubmit}
@@ -313,7 +316,12 @@ export function ProblemSection({
                 subtitle={formSubtitle}
               />
             ) : (
-              <ProblemVisual type={visualType} isReduced={isReduced} />
+              <ProblemVisual 
+                // If rightVisual is "image" but no image prop was provided, 
+                // gracefully fallback to "painpoints" to satisfy TypeScript and prevent bugs.
+                type={rightVisual === "image" ? "painpoints" : rightVisual} 
+                isReduced={isReduced} 
+              />
             )}
           </div>
         </div>

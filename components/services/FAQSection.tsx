@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
 import { HelpCircle, ChevronDown, Sparkles, Search } from "lucide-react";
@@ -234,12 +234,12 @@ export function FAQSection({ faqs }: FAQSectionProps) {
               <span>
                 <strong className="text-ink">{faqs.length} questions</strong>{" "}
                 answered — still have one?{" "}
-                <a
+                <Link
                   href="/contact"
                   className="font-medium text-violet transition-colors hover:text-violet/80"
                 >
                   Ask us directly
-                </a>
+                </Link>
               </span>
             </div>
           </motion.div>

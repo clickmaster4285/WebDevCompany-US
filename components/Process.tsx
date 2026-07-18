@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 import type { StaticImageData } from "next/image";
 import { gsap } from "gsap";
@@ -72,7 +73,7 @@ export function Process() {
               {/* LEFT SIDE: Process image */}
               <div className="relative w-full h-1/2 md:h-full overflow-hidden rounded-[1rem] md:rounded-[2rem] bg-[#111111] shadow-inner">
                 {phases.map((p, i) => (
-                  <img
+                  <Image
                     key={p.num}
                     src={p.image}
                     alt={p.label}
