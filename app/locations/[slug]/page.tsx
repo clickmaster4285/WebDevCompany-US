@@ -12,10 +12,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params;
   const pageData = getLocationPageBySlug(slug);
@@ -31,15 +31,15 @@ export async function generateMetadata({
     title: pageData.title,
     description: pageData.metaDescription,
     alternates: {
-      canonical: `https://yourdomain.com/location/${pageData.slug}`,
+      canonical: `https://clickmasterswebdevelopmentcompany.com/locations/${pageData.slug}`,
     },
   };
 }
 
-export default async function LocationPageRoute({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export default async function LocationPageRoute({
+  params
+}: {
+  params: Promise<{ slug: string }>
 }) {
   const { slug } = await params;
   const pageData = getLocationPageBySlug(slug);

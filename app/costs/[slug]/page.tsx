@@ -17,8 +17,8 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const SITE_URL = "https://yourdomain.com";
-const COMPANY_NAME = "Your Company Name";
+const SITE_URL = "https://clickmasterswebdevelopmentcompany.com";
+const COMPANY_NAME = "Clickmasters";
 
 export async function generateStaticParams() {
   const slugs = getAllCostSlugs();
@@ -97,7 +97,7 @@ export default async function CostPage({ params }: PageProps) {
   return (
     <>
       {/* ✅ No CostLayout wrapper - using main layout instead */}
-      
+
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
