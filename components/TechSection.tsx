@@ -205,9 +205,12 @@ export function TechSection() {
             <div key={tech.name} className="flex flex-col items-center gap-3 group">
               <div className="relative w-14 h-14 flex items-center justify-center bg-surface/50 rounded-xl border border-border/50 backdrop-blur-sm transition-all group-hover:scale-110 group-hover:border-violet-soft group-hover:shadow-lg group-hover:shadow-violet-soft/20">
                 {/* Note: Using standard <Image> for external SVGs/PNGs to avoid Next.js remotePatterns config issues */}
-                <Image 
+                               <Image 
                   src={tech.logo} 
                   alt={`${tech.name} logo`} 
+                  width={32}
+                  height={32}
+                  unoptimized
                   className="w-8 h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
                   onError={(e) => {
                     // Fallback for broken images

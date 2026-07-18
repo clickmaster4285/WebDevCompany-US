@@ -77,6 +77,9 @@ export function Process() {
                     key={p.num}
                     src={p.image}
                     alt={p.label}
+                    width={32}       // Matches Tailwind w-8 (32px)
+                    height={32}      // Matches Tailwind h-8 (32px)
+                    unoptimized 
                     className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-out ${
                       i === phase ? "opacity-100 scale-100" : "opacity-0 scale-105"
                     }`}
