@@ -91,16 +91,16 @@ export function ProcessSection() {
   }, [activeIndex, gsap]);
 
   return (
-    <section ref={root} id="process" className="relative py-20 md:py-20">
-      <div className="layout-container px-6 md:px-10">
+    <section ref={root} id="process" className="relative py-16 md:py-20">
+      <div className="layout-container px-4 sm:px-6 md:px-10">
         <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,4rem)] text-ink">
           Web development <span className="text-violet-soft">expertise</span> that delivers.
         </h2>
 
-        <div className="mt-20 grid grid-cols-1 gap-16 md:grid-cols-[1fr_1fr]">
+        <div className="mt-12 md:mt-20 grid grid-cols-1 gap-12 md:gap-16 lg:grid-cols-[1fr_1fr]">
           {/* Left side — sticky with dynamic content */}
-          <div className="relative">
-            <div className="sticky top-32 h-[70vh]">
+          <div className="relative order-2 lg:order-1">
+            <div className="sticky top-24 md:top-32 h-[50vh] md:h-[70vh]">
               {/* Vertical progress bar */}
               <div className="absolute left-0 top-0 h-full w-px bg-white/10">
                 <div
@@ -110,24 +110,24 @@ export function ProcessSection() {
               </div>
 
               {/* Content that swaps one-by-one */}
-              <div className="relative pl-10 h-full flex items-center">
-                <div className="relative w-full min-h-[20rem]">
+              <div className="relative pl-6 md:pl-10 h-full flex items-center">
+                <div className="relative w-full min-h-[16rem] md:min-h-[20rem]">
                   {CAPABILITIES.map((s, i) => (
                     <div
                       key={s.n}
                       className="process-big absolute inset-0 flex flex-col justify-center"
                       style={{ opacity: i === activeIndex ? 1 : 0 }}
                     >
-                      <div className="text-eyebrow mb-3 text-violet-soft">
+                      <div className="text-eyebrow mb-2 md:mb-3 text-violet-soft text-xs">
                         Capability {s.n}
                       </div>
-                      <div className="text-display text-[clamp(5rem,14vw,12rem)] leading-none text-ink">
+                      <div className="text-display text-[clamp(3rem,12vw,8rem)] md:text-[clamp(5rem,14vw,12rem)] leading-none text-ink">
                         {s.n}
                       </div>
-                      <div className="mt-4 text-display text-3xl text-ink md:text-5xl">
+                      <div className="mt-2 md:mt-4 text-display text-2xl md:text-3xl lg:text-5xl text-ink">
                         {s.t}
                       </div>
-                      <p className="mt-6 max-w-md text-ink-soft">{s.d}</p>
+                      <p className="mt-4 md:mt-6 max-w-md text-sm md:text-base text-ink-soft">{s.d}</p>
                     </div>
                   ))}
                 </div>
@@ -136,19 +136,19 @@ export function ProcessSection() {
           </div>
 
           {/* Right side — scrollable list of steps */}
-          <div className="space-y-24 md:space-y-40">
+          <div className="space-y-16 md:space-y-24 lg:space-y-40 order-1 lg:order-2">
             {CAPABILITIES.map((s) => (
-              <div key={s.n} className="process-step border-t border-white/10 pt-8">
+              <div key={s.n} className="process-step border-t border-white/10 pt-6 md:pt-8">
                 <div className="flex items-baseline justify-between">
-                  <div className="text-display text-4xl text-ink-soft">{s.n}</div>
+                  <div className="text-display text-3xl md:text-4xl text-ink-soft">{s.n}</div>
                   <div className="text-xs uppercase tracking-widest text-ink-mute">
                     Expertise
                   </div>
                 </div>
-                <h3 className="text-display mt-6 text-3xl text-ink md:text-4xl">
+                <h3 className="text-display mt-4 md:mt-6 text-2xl md:text-3xl lg:text-4xl text-ink">
                   {s.t}
                 </h3>
-                <p className="mt-4 max-w-md text-ink-soft">{s.d}</p>
+                <p className="mt-3 md:mt-4 max-w-md text-sm md:text-base text-ink-soft">{s.d}</p>
               </div>
             ))}
           </div>

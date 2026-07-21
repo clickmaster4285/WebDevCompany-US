@@ -181,7 +181,7 @@ export function TechSection() {
   }, []);
 
   return (
-    <section id="stack" className="relative overflow-hidden py-20 md:py-20 bg-background">
+    <section id="stack" className="relative overflow-hidden py-16 md:py-20 bg-background">
       {/* 3D Canvas Background */}
       <div ref={ref} className="absolute inset-0 z-0" />
       
@@ -189,21 +189,21 @@ export function TechSection() {
       <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background via-background/60 to-background pointer-events-none" />
 
       {/* Content Overlay */}
-      <div className="relative z-10 layout-container px-6 md:px-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink">
+      <div className="relative z-10 layout-container px-4 sm:px-6 md:px-10">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <h2 className="text-display text-[clamp(1.8rem,5vw,4rem)] text-ink">
             Powered by a <span className="text-violet-soft">modern stack.</span>
           </h2>
-          <p className="mt-4 text-ink-mute text-lg">
+          <p className="mt-4 text-ink-mute text-base md:text-lg">
             We leverage the best tools in the industry to build scalable, high-performance applications.
           </p>
         </div>
 
         {/* Tech Logos Grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-6 md:gap-8 max-w-5xl mx-auto">
           {TECH.map((tech) => (
-            <div key={tech.name} className="flex flex-col items-center gap-3 group">
-              <div className="relative w-14 h-14 flex items-center justify-center bg-surface/50 rounded-xl border border-border/50 backdrop-blur-sm transition-all group-hover:scale-110 group-hover:border-violet-soft group-hover:shadow-lg group-hover:shadow-violet-soft/20">
+            <div key={tech.name} className="flex flex-col items-center gap-2 md:gap-3 group">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-surface/50 rounded-xl border border-border/50 backdrop-blur-sm transition-all group-hover:scale-110 group-hover:border-violet-soft group-hover:shadow-lg group-hover:shadow-violet-soft/20">
                 {/* Note: Using standard <Image> for external SVGs/PNGs to avoid Next.js remotePatterns config issues */}
                                <Image 
                   src={tech.logo} 
@@ -211,14 +211,14 @@ export function TechSection() {
                   width={32}
                   height={32}
                   unoptimized
-                  className="w-8 h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
                   onError={(e) => {
                     // Fallback for broken images
                     (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔧%3C/text%3E%3C/svg%3E";
                   }}
                 />
               </div>
-              <span className="text-xs text-ink-mute font-medium tracking-wide uppercase">{tech.name}</span>
+              <span className="text-[10px] sm:text-xs text-ink-mute font-medium tracking-wide uppercase">{tech.name}</span>
             </div>
           ))}
         </div>

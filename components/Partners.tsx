@@ -29,7 +29,7 @@ export function Partners() {
   const partnersRow = [...PARTNERS, ...PARTNERS];
 
   return (
-    <section className="relative z-10 bg-black px-6">
+    <section className="relative z-10 bg-black px-4 sm:px-6">
       <div className="layout-container">
         {/* Partners Section */}
         <div className="mt-0">
@@ -41,7 +41,7 @@ export function Partners() {
             }}
           >
             <motion.div
-              className="flex gap-12 md:gap-16 items-center will-change-transform"
+              className="flex gap-8 sm:gap-12 md:gap-16 items-center will-change-transform"
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 40, ease: "linear", repeat: Infinity }}
             >
@@ -52,7 +52,7 @@ export function Partners() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl p-4 transition-all duration-300 hover:bg-white/10">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl p-3 sm:p-4 transition-all duration-300 hover:bg-white/10">
                     <Image
                       src={partner.icon}
                       alt={partner.name}
@@ -64,7 +64,7 @@ export function Partners() {
                       }`}
                     />
                   </div>
-                  <span className="text-sm font-medium text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-xs sm:text-sm font-medium text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {partner.name}
                   </span>
                 </motion.div>

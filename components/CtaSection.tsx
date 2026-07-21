@@ -34,7 +34,7 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
   return (
     <button
       ref={ref}
-      className="group inline-flex items-center gap-3 rounded-full bg-violet px-8 py-4 text-base font-medium text-white transition-[transform,box-shadow] duration-300 violet-glow hover:shadow-[0_40px_100px_-20px_var(--violet)]"
+      className="group inline-flex items-center gap-3 rounded-full bg-violet px-6 sm:px-8 py-4 text-sm sm:text-base font-medium text-white transition-[transform,box-shadow] duration-300 violet-glow hover:shadow-[0_40px_100px_-20px_var(--violet)] min-h-[48px] min-w-[48px]"
     >
       {children}
     </button>
@@ -87,15 +87,15 @@ export function CtaSection() {
   }, [gsap]);
 
   return (
-    <section ref={root} id="contact" className="relative overflow-hidden py-15 md:py-20">
+    <section ref={root} id="contact" className="relative overflow-hidden py-12 md:py-20">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,oklch(0.62_0.21_295/0.18),transparent_60%)]" />
       </div>
 
-      <div className="layout-container px-6 md:px-10">
+      <div className="layout-container px-4 sm:px-6 md:px-10">
         <div className="text-center">
-  <h2 className="text-display mx-auto max-w-none text-[clamp(2.6rem,8vw,7.2rem)] text-ink">
-    <span className="whitespace-nowrap">
+  <h2 className="text-display mx-auto max-w-none text-[clamp(2rem,6vw,7.2rem)] text-ink">
+    <span className="whitespace-nowrap sm:whitespace-normal">
       {"Let's build something".split(" ").map((w, i) => (
         <span
           key={i}
@@ -115,11 +115,11 @@ export function CtaSection() {
     </span>
   </h2>
 </div>
-        <div ref={scene} className="mx-auto mt-20 aspect-5/4 w-full max-w-215">
+        <div ref={scene} className="mx-auto mt-12 md:mt-20 aspect-5/4 w-full max-w-215">
           <HeroBrowserScene />
         </div>
         {/* Now the linter will see that MagneticButton is being used */}
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-8 md:mt-10">
           <MagneticButton>Send brief →</MagneticButton>
         </div>
       </div>

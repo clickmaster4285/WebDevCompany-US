@@ -71,18 +71,18 @@ export function WorkSection() {
 
   return (
     <section ref={root} id="work" className="relative py-10 md:py-20">
-      <div className="layout-container px-6 md:px-10">
+      <div className="layout-container px-4 sm:px-6 md:px-10">
         {/* <div className="text-eyebrow mb-4">/ Selected work</div> */}
         <h2 className="text-display mx-auto text-[clamp(2rem,5vw,4rem)] text-ink max-w-3xl">
           Recent products we've shaped, shipped <span className="text-violet-soft">and scaled.</span>
         </h2>
       </div>
 
-      <div className="mt-16 space-y-10 px-4 md:px-10">
+      <div className="mt-12 sm:mt-16 space-y-8 sm:space-y-10 px-4 sm:px-6 md:px-10">
         {PROJECTS.map((p, i) => (
           <article
             key={p.name}
-            className="work-panel sticky top-24 mx-auto max-w-[1300px] overflow-hidden rounded-3xl border border-white/5 bg-surface-1"
+            className="work-panel sticky top-20 sm:top-24 mx-auto max-w-[1300px] overflow-hidden rounded-3xl border border-white/5 bg-surface-1"
             style={{ zIndex: i + 1 }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
@@ -90,27 +90,27 @@ export function WorkSection() {
                 <Image src={p.img} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" fill />
                 <div className="absolute inset-0 bg-gradient-to-t from-surface-1/60 to-transparent" />
               </div>
-              <div className="flex flex-col justify-between p-8 md:p-14">
+              <div className="flex flex-col justify-between p-6 sm:p-8 md:p-14">
                 <div className="flex items-start justify-between text-xs uppercase tracking-[0.3em] text-ink-mute">
                   <span className="text-violet-soft">0{i + 1}</span>
                   <span>{p.industry}</span>
                 </div>
                 <div>
-                  <h3 className="text-display mt-10 text-[clamp(2rem,4vw,3.6rem)] text-ink">
+                  <h3 className="text-display mt-6 sm:mt-10 text-[clamp(1.8rem,4vw,3.6rem)] text-ink">
                     {p.name}
                   </h3>
-                  <p className="mt-5 max-w-md text-ink-soft">{p.desc}</p>
+                  <p className="mt-4 sm:mt-5 max-w-md text-sm sm:text-base text-ink-soft">{p.desc}</p>
                 </div>
-                <div className="mt-10 flex flex-wrap items-end justify-between gap-6">
+                <div className="mt-8 sm:mt-10 flex flex-wrap items-end justify-between gap-4 sm:gap-6">
                   <div className="flex flex-wrap gap-2">
                     {p.tech.map((t) => (
-                      <span key={t} className="rounded-full border border-white/10 px-3 py-1 text-xs text-ink-soft">
+                      <span key={t} className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-ink-soft min-h-[32px] flex items-center">
                         {t}
                       </span>
                     ))}
                   </div>
                   <div className="text-right">
-                    <div className="text-display text-2xl text-violet-soft">{p.result}</div>
+                    <div className="text-display text-xl sm:text-2xl text-violet-soft">{p.result}</div>
                     <div className="text-xs uppercase tracking-widest text-ink-mute">Outcome</div>
                   </div>
                 </div>

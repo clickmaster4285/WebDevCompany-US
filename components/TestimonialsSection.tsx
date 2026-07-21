@@ -106,18 +106,18 @@ export function TestimonialsSection() {
 
   return (
     <section ref={root} className="relative py-10 md:py-20 overflow-hidden">
-      <div className="layout-container px-6 md:px-10">
-        <h2 className="t-heading text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-3xl">
+      <div className="layout-container px-4 sm:px-6 md:px-10">
+        <h2 className="t-heading text-display text-[clamp(1.8rem,5vw,4rem)] text-ink max-w-3xl">
           Words from the people{" "}
           <span className="text-violet-soft">we build with.</span>
         </h2>
       </div>
 
-      <div className="mt-20 space-y-25 md:space-y-20">
+      <div className="mt-12 md:mt-20 space-y-16 md:space-y-20">
         {ITEMS.map((t, i) => (
           <article
             key={t.name}
-            className="t-card mx-auto grid max-w-[1300px] grid-cols-1 items-center gap-12 px-6 md:px-10 lg:grid-cols-[1fr_1.4fr]"
+            className="t-card mx-auto grid max-w-[1300px] grid-cols-1 items-center gap-8 md:gap-12 px-4 sm:px-6 md:px-10 lg:grid-cols-[1fr_1.4fr]"
           >
             {/* Image Column */}
             <div
@@ -133,14 +133,14 @@ export function TestimonialsSection() {
                 fill
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 text-xs uppercase tracking-[0.3em] text-ink-soft">
+              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-ink-soft">
                 {t.role}
               </div>
             </div>
 
             {/* Quote Column */}
             <div>
-              <div className="text-display text-[clamp(1.6rem,3.4vw,3rem)] leading-[1.15] text-ink">
+              <div className="text-display text-[clamp(1.4rem,3.4vw,3rem)] leading-[1.15] text-ink">
                 {t.quote.split(" ").map((w, j) => (
                   <span
                     key={j}

@@ -172,7 +172,7 @@ export function StorySection() {
       )}
 
       <div className="relative z-10 layout-container px-4 sm:px-6 lg:px-10">
-        <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+        <div className="grid items-start gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           {/* ── LEFT COLUMN ── */}
           <motion.div
             variants={containerVariants}
@@ -181,15 +181,15 @@ export function StorySection() {
           >
             {/* Badge */}
             <motion.div variants={slideUpVariants}>
-              <span className="inline-flex items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm">
+              <span className="inline-flex items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-3 sm:px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm">
                 <Sparkles className="h-3.5 w-3.5" />
                 The Studio
               </span>
             </motion.div>
 
             {/* Headline with word reveal */}
-            <div className="mt-6">
-              <h2 className="text-display text-[clamp(2.2rem,5vw,4.4rem)] text-ink leading-[1.08]">
+            <div className="mt-4 sm:mt-6">
+              <h2 className="text-display text-[clamp(1.8rem,5vw,4.4rem)] text-ink leading-[1.08]">
                 <span className="overflow-hidden inline-block">
                   <span className="story-line inline-block">Craft as</span>
                 </span>{" "}
@@ -209,7 +209,7 @@ export function StorySection() {
             {/* Description */}
             <motion.p
               variants={slideUpVariants}
-              className="mt-6 max-w-md text-base leading-relaxed text-ink-soft md:text-lg"
+              className="mt-4 sm:mt-6 max-w-md text-sm sm:text-base leading-relaxed text-ink-soft md:text-lg"
             >
               We&apos;re a senior team of designers and engineers obsessed with
               the details others overlook — the easing curve on a hover, the
@@ -220,19 +220,19 @@ export function StorySection() {
             {/* Principles grid */}
             <motion.div
               variants={containerVariants}
-              className="mt-8 grid grid-cols-2 gap-3 sm:gap-4"
+              className="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-4"
             >
               {principles.map((p) => (
                 <motion.div
                   key={p.title}
                   variants={slideUpVariants}
-                  className="group rounded-xl border border-border/50 bg-surface-1/20 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-violet/20 hover:bg-violet/[0.03] hover:shadow-sm"
+                  className="group rounded-xl border border-border/50 bg-surface-1/20 p-3 sm:p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-violet/20 hover:bg-violet/[0.03] hover:shadow-sm"
                 >
                   <p.icon className="h-4 w-4 text-violet" />
                   <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-violet-soft">
                     {p.title}
                   </p>
-                  <p className="mt-1 text-sm text-ink-soft">{p.desc}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-ink-soft">{p.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -240,18 +240,18 @@ export function StorySection() {
             {/* Stats row */}
             <motion.div
               variants={slideUpVariants}
-              className="mt-8 flex items-center gap-8 border-t border-border/50 pt-6"
+              className="mt-6 sm:mt-8 flex items-center gap-6 sm:gap-8 border-t border-border/50 pt-4 sm:pt-6"
             >
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <span className="block text-2xl font-bold tracking-tight text-ink md:text-3xl">
+                  <span className="block text-xl sm:text-2xl font-bold tracking-tight text-ink md:text-3xl">
                     {shouldReduceMotion ? (
                       `${stat.value}${stat.suffix}`
                     ) : (
                       <StatCounter value={stat.value} suffix={stat.suffix} />
                     )}
                   </span>
-                  <span className="mt-0.5 block text-[11px] font-medium uppercase tracking-wider text-ink-mute">
+                  <span className="mt-0.5 block text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-ink-mute">
                     {stat.label}
                   </span>
                 </div>
@@ -288,15 +288,15 @@ export function StorySection() {
               <div className="absolute inset-0 bg-gradient-to-r from-background/20 via-transparent to-transparent" />
 
               {/* Bottom info bar */}
-              <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-6">
-                <div className="flex items-center gap-3 rounded-xl bg-black/40 px-4 py-2.5 backdrop-blur-md">
+              <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-4 sm:p-6">
+                <div className="flex items-center gap-2 sm:gap-3 rounded-xl bg-black/40 px-3 sm:px-4 py-2 sm:py-2.5 backdrop-blur-md">
                   <div className="flex h-2 w-2 rounded-full bg-emerald-400" />
-                  <span className="text-[11px] font-medium uppercase tracking-wider text-white/70">
+                  <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-white/70">
                     Studio · Remote
                   </span>
                 </div>
-                <div className="rounded-xl bg-black/40 px-4 py-2.5 backdrop-blur-md">
-                  <span className="text-[11px] font-medium uppercase tracking-wider text-white/70">
+                <div className="rounded-xl bg-black/40 px-3 sm:px-4 py-2 sm:py-2.5 backdrop-blur-md">
+                  <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-white/70">
                     Since MMXVIII
                   </span>
                 </div>

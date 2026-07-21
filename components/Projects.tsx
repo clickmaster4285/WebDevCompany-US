@@ -132,9 +132,9 @@ function ProjectShot({
 export function Projects() {
   return (
     <section id="projects" className="relative bg-background">
-      <div className="layout-container px-6 md:px-12 py-8 md:py-20">
+      <div className="layout-container px-4 sm:px-6 md:px-12 py-8 md:py-20">
         {/* <div className="text-eyebrow mb-4">/ Engineering</div> */}
-        <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,4rem)] text-ink">
+        <h2 className="text-display max-w-3xl text-[clamp(1.8rem,5vw,4rem)] text-ink">
           Modern <span className="text-violet-soft">Engineering</span>
         </h2>
 

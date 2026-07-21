@@ -55,16 +55,16 @@ export function Process() {
   return (
     <section id="process" className="relative bg-background">
       {/* Top Heading */}
-      <div className="layout-container sm:px-6 px-9 md:px-12 py-8 md:py-20">
-        <h2 className="text-display max-w-3xl text-[clamp(2rem,5vw,3.5rem)] text-ink">
+      <div className="layout-container px-4 sm:px-6 md:px-12 py-8 md:py-20">
+        <h2 className="text-display max-w-3xl text-[clamp(1.8rem,5vw,3.5rem)] text-ink">
           A measured journey from <span className="text-violet-soft">idea to impact.</span>
         </h2>
       </div>
 
       {/* Pinned Scroll Section */}
-      <div ref={pinRef} className="relative h-[80vh] overflow-hidden bg-background">
+      <div ref={pinRef} className="relative h-[60vh] md:h-[80vh] overflow-hidden bg-background">
         
-        <div className="layout-container h-full w-full mx-auto flex items-center md:px-35 py-2 md:py-20">
+        <div className="layout-container h-full w-full mx-auto flex items-center px-4 sm:px-6 md:px-12 lg:px-16 py-2 md:py-20">
           
           {/* The visual "Card" */}
           <div className="relative w-full h-full overflow-hidden rounded-[1.5rem] md:rounded-[3rem] bg-black shadow-2xl">
@@ -110,7 +110,7 @@ export function Process() {
                       <div className="text-mono text-violet-400 mb-2 md:mb-4 font-bold tracking-[0.2em] text-xs md:text-base">
                         PHASE {p.num}
                       </div>
-                      <h3 className="text-display text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] mb-2 md:mb-4">
+                      <h3 className="text-display text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] mb-2 md:mb-4">
                         {p.label}
                       </h3>
                       <p className="text-white/70 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed font-light">

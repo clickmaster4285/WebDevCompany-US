@@ -49,11 +49,11 @@ export function ServicesSection() {
 
   return (
     <section ref={root} id="services" className="relative overflow-hidden py-10 md:py-20">
-      <div className="layout-container px-6 md:px-10 md:pt-10">
+      <div className="layout-container px-4 sm:px-6 md:px-10 md:pt-10">
         <div className="flex items-end justify-between gap-8">
           <div>
             {/* <div className="text-eyebrow mb-4">/ Services</div> */}
-            <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-2xl whitespace-nowrap">
+            <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-2xl whitespace-nowrap sm:whitespace-normal">
               Six disciplines, <span className="text-violet-soft">one studio.</span>
             </h2>
           </div>
@@ -63,12 +63,12 @@ export function ServicesSection() {
 
       <div
         ref={track}
-        className="mt-16 flex w-max flex-row gap-8 px-6 md:mt-24 md:px-12"
+        className="mt-16 flex w-max flex-row gap-6 sm:gap-8 px-4 sm:px-6 md:mt-24 md:px-12"
       >
         {SERVICES.map((s) => (
           <article
             key={s.title}
-            className="relative flex h-[78vh] w-[88vw] max-w-[1100px] shrink-0 overflow-hidden rounded-3xl border border-white/5 bg-surface-1 md:w-[80vw]"
+            className="relative flex h-[60vh] sm:h-[70vh] md:h-[78vh] w-[90vw] sm:w-[88vw] max-w-[1100px] shrink-0 overflow-hidden rounded-3xl border border-white/5 bg-surface-1 md:w-[80vw]"
           >
             <Image
               src={s.img}
@@ -79,22 +79,22 @@ export function ServicesSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/30" />
-            <div className="relative z-10 flex w-full flex-col justify-between p-8 md:p-14">
+            <div className="relative z-10 flex w-full flex-col justify-between p-6 sm:p-8 md:p-14">
               <div className="flex items-start justify-between">
                 <span className="text-xs uppercase tracking-[0.3em] text-violet-soft">{s.n}</span>
                 <span className="text-xs uppercase tracking-[0.3em] text-ink-mute">Service</span>
               </div>
               <div className="max-w-2xl">
-                <h3 className="text-display text-[clamp(2.2rem,5vw,4.5rem)] text-ink">
+                <h3 className="text-display text-[clamp(1.8rem,4vw,3rem)] sm:text-[clamp(2.2rem,5vw,4.5rem)] text-ink">
                   {s.title}
                 </h3>
-                <p className="mt-6 max-w-lg text-base text-ink-soft md:text-lg">{s.desc}</p>
-                <div className="mt-10 flex items-center gap-10">
+                <p className="mt-6 max-w-lg text-sm sm:text-base text-ink-soft md:text-lg">{s.desc}</p>
+                <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10">
                   <div>
-                    <div className="text-display text-3xl text-violet-soft md:text-4xl">{s.metric[0]}</div>
+                    <div className="text-display text-2xl sm:text-3xl text-violet-soft md:text-4xl">{s.metric[0]}</div>
                     <div className="mt-1 text-xs uppercase tracking-widest text-ink-mute">{s.metric[1]}</div>
                   </div>
-                  <Link className="inline-flex items-center gap-2 text-sm text-ink hover:text-violet-soft" href="/contact">
+                  <Link className="inline-flex items-center gap-2 text-sm text-ink hover:text-violet-soft min-h-[44px] min-w-[44px] py-2" href="/contact">
                     Discuss this service →
                   </Link>
                 </div>
@@ -102,7 +102,7 @@ export function ServicesSection() {
             </div>
           </article>
         ))}
-        <div className="w-12 shrink-0" />
+        <div className="w-8 sm:w-12 shrink-0" />
       </div>
     </section>
   );
