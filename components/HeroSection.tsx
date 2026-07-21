@@ -83,7 +83,7 @@ export function HeroSection() {
       className="relative mx-auto flex flex-col items-center justify-center overflow-x-hidden max-w-full min-h-[100dvh] w-full pt-20 pb-16 px-4 sm:px-6 sm:pt-24 sm:pb-20 md:px-10">
       {/* Background Layer */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <video
+               <video
           ref={videoRef}
           autoPlay
           loop
@@ -93,6 +93,7 @@ export function HeroSection() {
           style={{ filter: "brightness(0.4)" }}
         >
           <source src={heroVideo} type="video/mp4" />
+          <track kind="captions" srcLang="en" label="English" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
       </div>
@@ -151,7 +152,7 @@ export function HeroSection() {
         {/* Right Column */}
         <div className="cta-form">
           <div className="rounded-3xl border bg-white/10 border-white/10 p-6 md:p-8 backdrop-blur-md">
-            <h3 className="text-lg sm:text-xl font-medium text-white">Ready to create something unforgettable?</h3>
+            <h2 className="text-lg sm:text-xl font-medium text-white">Ready to create something unforgettable?</h2>
             <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
               <input type="text" className="w-full rounded-xl bg-white/10 p-4 text-white min-h-[48px]" placeholder="Name" />
               <input type="email" className="w-full rounded-xl bg-white/10 p-4 text-white min-h-[48px]" placeholder="Email" />

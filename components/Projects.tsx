@@ -82,7 +82,9 @@ function ProjectShot({
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-        />
+        >
+          <track kind="captions" srcLang="en" label="English" />
+        </video>
 
         {/* ── DARK TINT OVER VIDEO so text stays readable ── */}
         <div className="absolute inset-0 bg-black/50" />
