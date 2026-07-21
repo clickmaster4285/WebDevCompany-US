@@ -34,7 +34,7 @@ const cardVariants = {
 
 export function IndustryProcess({ data }: IndustryProcessProps) {
   return (
-    <div className="py-10 md:py-14" id="process">
+    <div className="py-12 sm:py-16 md:py-20 lg:py-24" id="process">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export function IndustryProcess({ data }: IndustryProcessProps) {
               variants={cardVariants}
               className="group flex gap-4 rounded-2xl border border-border bg-surface-1/50 p-5 transition-all duration-500 hover:border-violet/30 hover:shadow-lg hover:shadow-violet/5 md:p-6"
             >
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-violet/10 text-sm font-bold text-violet transition-all duration-300 group-hover:bg-violet group-hover:text-white">
                   {step.number}
                 </div>

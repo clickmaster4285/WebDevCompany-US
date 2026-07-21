@@ -26,8 +26,8 @@ export function Footer() {
     <Image
       src="/logo.webp" // ⚠️ Use a light/white version: /logo-light.webp or /logo-white.webp
       alt="ClickMasters Logo"
-      width={120}
-      height={48}
+      width={256}
+      height={51}
       className="h-12 w-auto object-contain brightness-0 invert"
       priority
     />

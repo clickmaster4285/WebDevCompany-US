@@ -20,7 +20,7 @@ export default function IndustryPageClient({ data }: IndustryPageClientProps) {
   return (
     <div className="min-h-screen">
       <IndustryHero data={data.hero} />
-      <div className="container mx-auto px-6 md:px-12">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <IndustryFeaturedAnswer data={data.featuredAnswer} />
         <IndustryProblemSection data={data.problemSection} />
         <IndustrySolutionSection data={data.solutionSection} />

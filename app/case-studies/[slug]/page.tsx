@@ -1,6 +1,8 @@
 // app/case-studies/[slug]/page.tsx
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { caseStudies } from "@/data/case-studies";
+import { getMetadata } from "@/lib/metadata";
 import { TemplateCTA } from "@/components/ui/TemplateCta";
 import {
   CaseStudyHero,
@@ -20,6 +22,25 @@ export async function generateStaticParams() {
   return caseStudies.map((study) => ({
     slug: study.slug,
   }));
+}
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const study = caseStudies.find((item) => item.slug === slug);
+
+  if (!study) {
+    return { title: "Case Study Not Found" };
+  }
+
+  return getMetadata({
+    title: study.title,
+    description: study.description,
+    slug: `case-studies/${study.slug}`,
+  });
 }
 
 export default async function CaseStudyDetailPage({

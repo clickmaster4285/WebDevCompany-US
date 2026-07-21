@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { comparisons } from "@/data/comparisons";
+import { getMetadata } from "@/lib/metadata";
 import { CompareDetailPage } from "@/components/compare/detail/CompareDetailPage";
 
 type ComparePageProps = {
@@ -16,7 +18,7 @@ export function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: ComparePageProps) {
+export async function generateMetadata({ params }: ComparePageProps): Promise<Metadata> {
   const { slug } = await params;
 
   const comparison = comparisons.find((item) => item.slug === slug);
@@ -27,10 +29,11 @@ export async function generateMetadata({ params }: ComparePageProps) {
     };
   }
 
-  return {
-    title: `${comparison.title} | ClickMasters`,
+  return getMetadata({
+    title: comparison.title,
     description: comparison.excerpt,
-  };
+    slug: `compare/${slug}`,
+  });
 }
 
 export default async function Page({ params }: ComparePageProps) {

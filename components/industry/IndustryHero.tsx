@@ -62,7 +62,7 @@ export function IndustryHero({ data }: IndustryHeroProps) {
   const isReduced = Boolean(shouldReduceMotion);
 
   return (
-    <section className="relative overflow-hidden bg-background pt-20 pb-16 md:pt-28 md:pb-24 lg:pt-32 lg:pb-28">
+    <section className="relative overflow-hidden bg-background px-0 py-16 pt-20 sm:py-20 md:py-24 lg:py-28 lg:pt-32">
       {/* Ambient glow effects */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute right-0 top-0 h-[500px] w-[500px] md:h-[700px] md:w-[700px] rounded-full bg-violet/[0.05] blur-[120px] md:blur-[150px]" />
@@ -83,12 +83,10 @@ export function IndustryHero({ data }: IndustryHeroProps) {
         initial={isReduced ? "visible" : "hidden"}
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        // Changed grid columns to pull image closer, reduced gap to gap-8/gap-10
-        // Applied your responsive padding
-        className="relative layout-container grid grid-cols-1 items-center gap-8 px-4 sm:px-6 md:grid-cols-[1.15fr_0.85fr] md:gap-10 lg:gap-12 md:px-[4.5rem] lg:px-20"
+        className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-4 sm:px-6 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-10 md:px-8 lg:gap-12 lg:px-8"
       >
         {/* ===== LEFT COLUMN — Content ===== */}
-        <div className="flex flex-col pt-2 md:pt-6 lg:pt-8">
+        <div className="flex min-w-0 flex-col pt-2 md:pt-6 lg:pt-8">
           <motion.div variants={itemVariants} className="mb-5 self-start">
             <Breadcrumb customLabels={{ industries: "Industries" }} />
           </motion.div>
@@ -128,7 +126,7 @@ export function IndustryHero({ data }: IndustryHeroProps) {
           >
             <Link
               href="/contact"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-violet px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet/25 transition-all hover:bg-violet/90 hover:shadow-xl hover:shadow-violet/30 active:scale-[0.98] sm:px-8 sm:py-4 sm:text-base"
+              className="group relative inline-flex min-h-[44px] items-center gap-2 overflow-hidden rounded-full bg-violet px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet/25 transition-all hover:bg-violet/90 hover:shadow-xl hover:shadow-violet/30 active:scale-[0.98] sm:px-8 sm:py-4 sm:text-base"
             >
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               {data.primaryCTA}
@@ -136,7 +134,7 @@ export function IndustryHero({ data }: IndustryHeroProps) {
             </Link>
             <Link
               href="#overview"
-              className="group inline-flex items-center gap-2 rounded-full border border-border/60 bg-surface-1/40 px-6 py-3.5 text-sm font-semibold text-ink-soft backdrop-blur-md transition-all hover:border-violet/40 hover:bg-violet/5 hover:text-ink active:scale-[0.98] sm:px-8 sm:py-4 sm:text-base"
+              className="group inline-flex min-h-[44px] items-center gap-2 rounded-full border border-border/60 bg-surface-1/40 px-6 py-3.5 text-sm font-semibold text-ink-soft backdrop-blur-md transition-all hover:border-violet/40 hover:bg-violet/5 hover:text-ink active:scale-[0.98] sm:px-8 sm:py-4 sm:text-base"
             >
               {data.secondaryCTA}
             </Link>
@@ -155,14 +153,16 @@ export function IndustryHero({ data }: IndustryHeroProps) {
           <div className="absolute -inset-4 md:-inset-8 rounded-full bg-violet/10 blur-[50px] md:blur-[70px]" />
 
           <div className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-border/60 bg-surface-1/40 shadow-2xl backdrop-blur-sm md:rounded-3xl">
-            <Image
-              src="/foridustryherosection.png"
-              alt="Industry hero illustration"
-              width={700}
-              height={500}
-              className="h-auto w-full object-cover transition-transform duration-700 hover:scale-105"
-              priority
-            />
+            <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <Image
+                src="/foridustryherosection.png"
+                alt="Industry hero illustration"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 hover:scale-105"
+                priority
+              />
+            </div>
             <div className="absolute inset-0 rounded-2xl md:rounded-3xl ring-1 ring-inset ring-border/60" />
           </div>
         </motion.div>

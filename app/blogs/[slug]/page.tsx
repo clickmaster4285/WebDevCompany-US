@@ -1,12 +1,29 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { blogs } from "@/data/blogs";
+import { getMetadata } from "@/lib/metadata";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { BlogContentRenderer } from "@/components/blogs/detail/BlogContentRenderer";
 import { AnimatedCTA } from "@/components/blogs/detail/AnimatedCTA";
 import { BlogTOC } from "@/components/blogs/detail/BlogTOC";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb"; // ✅ Added import
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = blogs.find((item) => item.slug === slug);
+
+  if (!blog) {
+    return { title: "Blog Not Found" };
+  }
+
+  return getMetadata({
+    title: blog.title,
+    description: blog.hero?.description || blog.excerpt || "",
+    slug: `blogs/${slug}`,
+  });
+}
 
 type PageProps = {
   params: Promise<{

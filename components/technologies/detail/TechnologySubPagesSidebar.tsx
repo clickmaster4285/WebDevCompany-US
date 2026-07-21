@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { TechnologySummary } from "@/data/technologies";
+import { TechIcon } from "@/lib/technology-icons";
 
 type Props = {
   parent: TechnologySummary;
@@ -25,7 +26,9 @@ export function TechnologySubPagesSidebar({ parent, subPages }: Props) {
 
         <div className="mt-3 border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2 min-w-0">
-            <span className="text-lg shrink-0">{parent.icon || "⚙️"}</span>
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center text-lg">
+              <TechIcon slug={parent.slug} className="h-5 w-5" fallback={parent.icon || "⚙️"} />
+            </span>
             <div className="min-w-0">
               <p className="text-sm font-bold text-slate-900 leading-tight truncate">
                 {parent.title}
@@ -57,8 +60,8 @@ export function TechnologySubPagesSidebar({ parent, subPages }: Props) {
                   <span className="absolute -left-[9px] top-1/2 h-6 w-0.5 -translate-y-1/2 rounded-full bg-violet shadow-[0_0_14px_rgba(124,92,255,0.75)]" />
                 )}
 
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-xs shadow-sm transition-colors group-hover:border-violet/30 group-hover:bg-violet/5 xl:h-8 xl:w-8 xl:text-sm">
-                  {subPage.icon || parent.icon || "⚙️"}
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white shadow-sm transition-colors group-hover:border-violet/30 group-hover:bg-violet/5 xl:h-8 xl:w-8">
+                  <TechIcon slug={subPage.slug} className="h-4 w-4 xl:h-5 xl:w-5" fallback={subPage.icon || parent.icon || "⚙️"} />
                 </span>
 
                 <div className="flex-1 min-w-0">

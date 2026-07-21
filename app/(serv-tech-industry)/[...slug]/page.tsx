@@ -4,6 +4,7 @@ import IndustryPageTemplate from '@/components/services-tech-industry/Mainslugpa
 import { CategoryOverview } from '@/components/services-tech-industry/CategoryOverview';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { getMetadata } from '@/lib/metadata';
 
 // Helper: group pages by category
 function getCategoryPages(category: string) {
@@ -50,20 +51,22 @@ export async function generateMetadata({
     const category = slug[0];
     const categoryPages = getCategoryPages(category);
     if (categoryPages.length === 0) return { title: 'Page Not Found' };
-    return {
+    return getMetadata({
       title: `${category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} Solutions`,
       description: `Explore our ${category.replace(/-/g, ' ')} solutions across industries.`,
-    };
+      slug: category,
+    });
   }
 
   // --- Industry/service detail pages ---
   const pageData = pages[slugKey];
   if (!pageData) return { title: 'Page Not Found' };
 
-  return {
+  return getMetadata({
     title: pageData.title,
     description: pageData.hero.description,
-  };
+    slug: slugKey,
+  });
 }
 
 // 3. The Page Component (Next.js 15/16 compatible)

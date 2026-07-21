@@ -17,8 +17,10 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const SITE_URL = "https://clickmasterswebdevelopmentcompany.com";
-const COMPANY_NAME = "Clickmasters";
+import { siteConfig } from "@/lib/siteConfig";
+
+const SITE_URL = siteConfig.url;
+const COMPANY_NAME = siteConfig.legalName;
 
 export async function generateStaticParams() {
   const slugs = getAllCostSlugs();

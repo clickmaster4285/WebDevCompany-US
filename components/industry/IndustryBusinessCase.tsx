@@ -33,7 +33,7 @@ const cardVariants = {
 
 export function IndustryBusinessCase({ data }: IndustryBusinessCaseProps) {
   return (
-    <div className="py-10 md:py-14" id="business-case">
+    <div className="py-12 sm:py-16 md:py-20 lg:py-24" id="business-case">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export function IndustryBusinessCase({ data }: IndustryBusinessCaseProps) {
                 variants={cardVariants}
                 className="group flex items-center gap-3.5 rounded-xl border border-border bg-surface-1/50 p-4 transition-all duration-500 hover:border-emerald-400/30 hover:shadow-lg hover:shadow-emerald-500/5 md:p-5"
               >
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 transition-all duration-300 group-hover:bg-emerald-400 group-hover:text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 transition-all duration-300 group-hover:bg-emerald-400 group-hover:text-white">
                   <Icon className="h-5 w-5" />
                 </div>
                 <span className="text-sm text-ink-soft transition-colors group-hover:text-ink">

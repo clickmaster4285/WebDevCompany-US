@@ -299,13 +299,15 @@ export function ProblemSection({
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-80px" }}
-                className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-surface-1 p-2 shadow-2xl lg:max-w-xl"
+                className="relative aspect-[4/3] w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-surface-1 p-2 shadow-2xl lg:max-w-xl"
               >
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-destructive/10 via-transparent to-violet/10" />
                 <Image
                   src={image}
                   alt={imageAlt}
-                  className="relative h-auto w-full rounded-2xl object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="rounded-2xl object-cover"
                 />
               </motion.div>
             ) : rightVisual === "form" ? (

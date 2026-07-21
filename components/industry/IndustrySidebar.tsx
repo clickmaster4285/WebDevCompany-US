@@ -73,7 +73,7 @@ export function IndustrySidebar({ sections, pricing }: IndustrySidebarProps) {
         <p className="text-sm text-ink-mute mb-5">{pricing.note}</p>
         <Link
           href="/contact"
-          className="group w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-violet hover:bg-violet/90 text-white text-sm font-medium rounded-xl transition-all duration-300 active:scale-[0.98]"
+          className="group inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-violet px-4 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-violet/90 active:scale-[0.98]"
         >
           Get a Custom Quote
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -95,15 +95,16 @@ export function IndustrySidebar({ sections, pricing }: IndustrySidebarProps) {
             return (
               <button
                 key={section.id}
+                type="button"
                 onClick={() => scrollToSection(section.id)}
-                className={`w-full flex items-center gap-2 text-left text-sm px-3 py-2 rounded-lg transition-all duration-200 ${
+                className={`min-h-11 w-full flex items-center gap-2 text-left text-sm px-3 py-2 rounded-lg transition-all duration-200 ${
                   isActive
                     ? "text-violet bg-violet/10 font-medium"
                     : "text-ink-mute hover:text-violet hover:bg-surface-1/70"
                 }`}
               >
                 <ChevronRight
-                  className={`w-3.5 h-3.5 flex-shrink-0 transition-transform ${
+                  className={`w-3.5 h-3.5 shrink-0 transition-transform ${
                     isActive ? "text-violet translate-x-0.5" : "text-ink-mute/50"
                   }`}
                 />
@@ -117,8 +118,11 @@ export function IndustrySidebar({ sections, pricing }: IndustrySidebarProps) {
       {/* Mobile Quick Links Toggle */}
       <div className="md:hidden">
         <button
+          type="button"
+          aria-expanded={mobileOpen}
+          aria-controls="industry-sidebar-mobile-nav"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="w-full flex items-center justify-between bg-surface-1/50 rounded-xl p-4 border border-border text-sm font-medium text-ink"
+          className="min-h-11 w-full flex items-center justify-between bg-surface-1/50 rounded-xl p-4 border border-border text-sm font-medium text-ink"
         >
           <span className="flex items-center gap-2">
             <Menu className="w-4 h-4 text-ink-mute" />
@@ -132,6 +136,7 @@ export function IndustrySidebar({ sections, pricing }: IndustrySidebarProps) {
         </button>
         {mobileOpen && (
           <motion.nav
+            id="industry-sidebar-mobile-nav"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             className="mt-2 bg-surface-1/50 rounded-xl p-3 border border-border space-y-1"
@@ -139,8 +144,9 @@ export function IndustrySidebar({ sections, pricing }: IndustrySidebarProps) {
             {sections.map((section) => (
               <button
                 key={section.id}
+                type="button"
                 onClick={() => scrollToSection(section.id)}
-                className="w-full text-left text-sm px-3 py-2 rounded-lg text-ink-mute hover:text-violet hover:bg-surface-1/70 transition-all"
+                className="min-h-11 w-full text-left text-sm px-3 py-2 rounded-lg text-ink-mute hover:text-violet hover:bg-surface-1/70 transition-all"
               >
                 {section.label}
               </button>

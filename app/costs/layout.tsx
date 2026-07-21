@@ -1,8 +1,16 @@
 // app/costs/layout.tsx
 
+import type { Metadata } from "next";
 import { ReactNode } from "react";
-import { Nav } from "@/components//Nav";
+import { getMetadata } from "@/lib/metadata";
+import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+
+export const metadata: Metadata = getMetadata({
+  title: "Cost Guides",
+  description: "Transparent web development cost guides. Get pricing estimates for custom websites, eCommerce, SaaS, and enterprise projects.",
+  slug: "costs",
+});
 
 type LayoutProps = {
   children: ReactNode;

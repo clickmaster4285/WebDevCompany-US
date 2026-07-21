@@ -149,7 +149,7 @@ export function TechnologyHero({ technology, parentTechnology }: Props) {
               src={imageSrc}
               alt="Technologies Hero"
               width={520}
-              height={620}
+              height={520}
               priority
               className="h-auto w-full rounded-[1.5rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)] md:rounded-[2rem]"
             />
