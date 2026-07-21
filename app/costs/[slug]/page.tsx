@@ -99,7 +99,7 @@ export default async function CostPage({ params }: PageProps) {
   return (
     <>
       {/* ✅ No CostLayout wrapper - using main layout instead */}
-      
+
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"

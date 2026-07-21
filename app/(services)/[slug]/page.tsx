@@ -122,19 +122,19 @@ export default async function ServicePage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-<HeroSection
-  data={service.hero}
-  slug={slug}
-  breadcrumbLabel={service.title}
-  showSocial={config.showSocial}
-  socialLinks={{
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    email: "hello@yourcompany.com",
-  }}
-  /* @ts-ignore */
-  avatarImage={config.avatarImage}
-/>
+      <HeroSection
+        data={service.hero}
+        slug={slug}
+        breadcrumbLabel={service.title}
+        showSocial={config.showSocial}
+        socialLinks={{
+          github: "https://github.com",
+          linkedin: "https://linkedin.com",
+          email: "hello@yourcompany.com",
+        }}
+        /* @ts-ignore */
+        avatarImage={config.avatarImage}
+      />
 
 
       <CredibilityBar items={service.hero.credibilityBar ?? []} />
