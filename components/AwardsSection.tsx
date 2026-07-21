@@ -11,30 +11,30 @@ const AWARDS = [
 
 export function AwardsSection() {
   return (
-    <section className="relative py-15 md:py-20">
-      <div className="layout-container px-6 md:px-10">
+    <section className="relative py-12 md:py-20">
+      <div className="layout-container px-4 sm:px-6 md:px-10">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             {/* <div className="text-eyebrow mb-4">/ Recognition</div> */}
-            <h2 className="text-display text-[clamp(2rem,5vw,4rem)] text-ink max-w-2xl">
+            <h2 className="text-display text-[clamp(1.8rem,5vw,4rem)] text-ink max-w-2xl">
               A wall worth <span className="text-violet-soft">scrolling.</span>
             </h2>
           </div>
           {/* <div className="text-sm text-ink-mute">Industry awards · Featured publications</div> */}
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {AWARDS.map((a) => (
             <div
               key={a.n + a.y + a.d}
-              className="group relative overflow-hidden rounded-2xl border border-white/8 bg-linear-to-br from-white/5 to-transparent p-6 transition-all duration-500 hover:-translate-y-1 hover:border-violet/40"
+              className="group relative overflow-hidden rounded-2xl border border-white/8 bg-linear-to-br from-white/5 to-transparent p-4 sm:p-6 transition-all duration-500 hover:-translate-y-1 hover:border-violet/40"
             >
               <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-violet/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
                 <div className="text-xs uppercase tracking-widest text-ink-mute">{a.y}</div>
-                <div className="mt-6 text-display text-2xl text-ink">{a.n}</div>
-                <div className="mt-2 text-sm text-ink-soft">{a.d}</div>
-                <div className="mt-8 inline-flex items-center gap-2 text-xs text-violet-soft">
+                <div className="mt-4 sm:mt-6 text-display text-xl sm:text-2xl text-ink">{a.n}</div>
+                <div className="mt-2 text-xs sm:text-sm text-ink-soft">{a.d}</div>
+                <div className="mt-6 sm:mt-8 inline-flex items-center gap-2 text-xs text-violet-soft">
                   <span className="h-1.5 w-1.5 rounded-full bg-violet" />
                   Verified
                 </div>
@@ -43,7 +43,7 @@ export function AwardsSection() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center gap-6 text-sm text-ink-mute">
+        <div className="mt-8 md:mt-12 flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-ink-mute">
           <span>Featured in</span>
           {["Sidebar", "Codrops", "CSS Winner", "Httpster", "Muz.li", "Hover States"].map((p) => (
             <span key={p} className="opacity-70">{p}</span>

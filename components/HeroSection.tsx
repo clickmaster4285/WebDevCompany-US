@@ -80,7 +80,8 @@ export function HeroSection() {
     <section
       ref={root}
       id="top"
-className="relative mx-auto flex flex-col items-center justify-center overflow-x-hidden max-w-full min-h-[100dvh] w-full pt-20 pb-16 px-6 sm:pt-24 sm:pb-20 md:px-10">      {/* Background Layer */}
+      className="relative mx-auto flex flex-col items-center justify-center overflow-x-hidden max-w-full min-h-[100dvh] w-full pt-20 pb-16 px-4 sm:px-6 sm:pt-24 sm:pb-20 md:px-10">
+      {/* Background Layer */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <video
           ref={videoRef}
@@ -97,7 +98,7 @@ className="relative mx-auto flex flex-col items-center justify-center overflow-x
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 layout-container px-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
+      <div className="relative z-10 layout-container px-4 sm:px-6 md:px-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
         
         {/* Left Column */}
         <div>
@@ -124,12 +125,12 @@ className="relative mx-auto flex flex-col items-center justify-center overflow-x
           </p>
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
-            <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-violet px-7 py-4 text-sm font-medium text-white transition-transform hover:-translate-y-0.5">
+            <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-violet px-6 py-4 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 min-h-[48px] sm:px-7">
               Start a project
               <span>→</span>
             </Link>
 
-            <Link href="#work" className="inline-flex items-center gap-3 rounded-full border border-white/15 px-7 py-4 text-sm font-medium text-ink transition-colors hover:bg-white/5">
+            <Link href="#work" className="inline-flex items-center gap-3 rounded-full border border-white/15 px-6 py-4 text-sm font-medium text-ink transition-colors hover:bg-white/5 min-h-[48px] sm:px-7">
               See selected work
             </Link>
           </div>
@@ -150,12 +151,12 @@ className="relative mx-auto flex flex-col items-center justify-center overflow-x
         {/* Right Column */}
         <div className="cta-form">
           <div className="rounded-3xl border bg-white/10 border-white/10 p-6 md:p-8 backdrop-blur-md">
-            <h3 className="text-xl font-medium text-white">Ready to create something unforgettable?</h3>
+            <h3 className="text-lg sm:text-xl font-medium text-white">Ready to create something unforgettable?</h3>
             <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <input type="text" className="w-full rounded-xl bg-white/10 p-4 text-white" placeholder="Name" />
-              <input type="email" className="w-full rounded-xl bg-white/10 p-4 text-white" placeholder="Email" />
-              <textarea className="w-full rounded-xl bg-white/10 p-4 text-white" rows={3} placeholder="Project details" />
-              <button type="submit" className="w-full rounded-xl bg-primary py-4 text-white">Send Message</button>
+              <input type="text" className="w-full rounded-xl bg-white/10 p-4 text-white min-h-[48px]" placeholder="Name" />
+              <input type="email" className="w-full rounded-xl bg-white/10 p-4 text-white min-h-[48px]" placeholder="Email" />
+              <textarea className="w-full rounded-xl bg-white/10 p-4 text-white min-h-[100px]" rows={3} placeholder="Project details" />
+              <button type="submit" className="w-full rounded-xl bg-primary py-4 text-white min-h-[48px]">Send Message</button>
             </form>
           </div>
         </div>
