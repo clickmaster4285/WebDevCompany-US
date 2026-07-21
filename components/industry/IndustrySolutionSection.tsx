@@ -34,7 +34,7 @@ const cardVariants = {
 
 export function IndustrySolutionSection({ data }: IndustrySolutionSectionProps) {
   return (
-    <div className="py-10 md:py-14" id="solution">
+    <div className="py-12 sm:py-16 md:py-20 lg:py-24" id="solution">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

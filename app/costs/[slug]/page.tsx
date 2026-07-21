@@ -17,8 +17,10 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const SITE_URL = "https://yourdomain.com";
-const COMPANY_NAME = "Your Company Name";
+import { siteConfig } from "@/lib/siteConfig";
+
+const SITE_URL = siteConfig.url;
+const COMPANY_NAME = siteConfig.legalName;
 
 export async function generateStaticParams() {
   const slugs = getAllCostSlugs();

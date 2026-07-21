@@ -436,13 +436,15 @@ export function HeroSection({
           {rightVisual === "image" && rightImage ? (
             <motion.div
               variants={visualVariants}
-              className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-surface-1 p-2 shadow-2xl"
+              className="relative aspect-[4/3] w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-surface-1 p-2 shadow-2xl"
             >
               <div className="absolute inset-0 rounded-3xl bg-linear-to-tr from-violet/15 via-transparent to-indigo-500/10" />
               <Image
                 src={rightImage}
                 alt="Hero visual"
-                className="h-auto w-full rounded-2xl object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="rounded-2xl object-cover"
               />
             </motion.div>
           ) : (

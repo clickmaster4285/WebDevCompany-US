@@ -80,14 +80,16 @@ export function HeroSection({
           >
             <div className="relative">
               <div className="absolute inset-0 rounded-3xl bg-blue-500/20 blur-3xl"></div>
-              <Image
-                src="/batch9.png"
-                alt="Service illustration"
-                width={600}
-                height={500}
-                className="relative rounded-3xl shadow-2xl shadow-blue-900/50"
-                priority
-              />
+              <div className="relative aspect-[1408/768] w-full">
+                <Image
+                  src="/batch9.png"
+                  alt="Service illustration"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                  className="rounded-3xl object-cover shadow-2xl shadow-blue-900/50"
+                  priority
+                />
+              </div>
             </div>
           </motion.div>
         </div>

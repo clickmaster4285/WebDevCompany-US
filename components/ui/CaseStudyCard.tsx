@@ -67,7 +67,16 @@ function CardContent({
         <Image
           src={imageUrl}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.08]"
+          fill
+          // Parent is `relative` + already sized by `imageHeight` (h-[140px]/h-[200px]),
+          // so `fill` tracks that box instead of forcing a static width/height that
+          // would fight the card's fluid width in a responsive grid.
+          sizes={
+            compact
+              ? "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          }
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.08]"
           loading="lazy"
         />
 

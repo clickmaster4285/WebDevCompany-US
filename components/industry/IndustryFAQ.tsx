@@ -19,7 +19,7 @@ export function IndustryFAQ({ faqs }: IndustryFAQProps) {
   }, []);
 
   return (
-    <div className="py-10 md:py-14" id="faq">
+    <div className="py-12 sm:py-16 md:py-20 lg:py-24" id="faq">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -48,15 +48,15 @@ export function IndustryFAQ({ faqs }: IndustryFAQProps) {
               >
                 <button
                   onClick={() => toggleIndex(index)}
-                  className="group flex w-full items-center justify-between p-5 text-left transition-colors duration-200 hover:bg-surface-1/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/30 md:p-6"
+                  className="group flex min-h-11 w-full items-center justify-between p-5 text-left transition-colors duration-200 hover:bg-surface-1/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/30 md:p-6"
                   aria-expanded={isOpen}
                 >
                   <span className="flex items-center gap-3 pr-4 text-sm font-medium text-ink md:text-base">
-                    <HelpCircle className="h-5 w-5 flex-shrink-0 text-purple-400/60 transition-colors group-hover:text-purple-400" />
+                    <HelpCircle className="h-5 w-5 shrink-0 text-purple-400/60 transition-colors group-hover:text-purple-400" />
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`h-5 w-5 flex-shrink-0 text-ink-mute transition-transform duration-300 ${
+                    className={`h-5 w-5 shrink-0 text-ink-mute transition-transform duration-300 ${
                       isOpen ? "rotate-180 text-purple-400" : ""
                     }`}
                   />

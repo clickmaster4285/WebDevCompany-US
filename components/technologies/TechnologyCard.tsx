@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TechIcon } from "@/lib/technology-icons";
 
 type TechnologyCardProps = {
   technology: {
@@ -30,7 +31,7 @@ export function TechnologyCard({ technology }: TechnologyCardProps) {
           </div>
 
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-base font-black text-slate-700 transition group-hover:border-violet group-hover:bg-violet group-hover:text-white sm:h-12 sm:w-12 sm:rounded-2xl sm:text-lg">
-            {technology.icon}
+            <TechIcon slug={technology.slug} className="h-5 w-5 sm:h-6 sm:w-6" fallback={technology.icon} />
           </span>
         </div>
 

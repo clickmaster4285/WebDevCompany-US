@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import type { TechnologySummary } from "@/data/technologies";
+import { TechIcon } from "@/lib/technology-icons";
 
 type Props = {
   parent: TechnologySummary;
@@ -41,8 +42,8 @@ export function TechnologySubPagesMobile({ parent, subPages }: Props) {
                 }`}
               >
                 <div className="flex items-center gap-2 sm:gap-2.5">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-xs shadow-sm sm:h-8 sm:w-8 sm:text-sm">
-                    {subPage.icon || parent.icon || "⚙️"}
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white shadow-sm sm:h-8 sm:w-8">
+                    <TechIcon slug={subPage.slug} className="h-4 w-4 sm:h-5 sm:w-5" fallback={subPage.icon || parent.icon || "⚙️"} />
                   </span>
                   <div className="flex-1 min-w-0">
                     <p

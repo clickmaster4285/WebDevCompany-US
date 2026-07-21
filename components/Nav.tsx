@@ -257,7 +257,7 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-all duration-300 ${
         scrolled ? "py-3" : "py-4"
       }`}
     >
@@ -273,8 +273,8 @@ export function Nav() {
             <Image
               src="/logo.webp" // ⚠️ Replace with your actual file name, e.g. /logo.svg, /logo.webp
               alt="ClickMasters Logo"
-              width={140}
-              height={40}
+              width={256}
+              height={51}
               priority
               className="h-8 w-auto object-contain"
             />

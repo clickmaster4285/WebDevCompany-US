@@ -36,7 +36,7 @@ const cardVariants = {
 
 export function IndustryComparison({ data }: IndustryComparisonProps) {
   return (
-    <div className="py-10 md:py-14" id="comparison">
+    <div className="py-12 sm:py-16 md:py-20 lg:py-24" id="comparison">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export function IndustryComparison({ data }: IndustryComparisonProps) {
 
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-3 rounded-xl border border-emerald-500/10 bg-emerald-500/5 p-3">
-                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-400" />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
                   <span className="text-ink-soft">
                     <span className="mb-0.5 block font-medium text-emerald-400">Works</span>
                     {option.whereWorks}
@@ -81,7 +81,7 @@ export function IndustryComparison({ data }: IndustryComparisonProps) {
                 </div>
 
                 <div className="flex items-start gap-3 rounded-xl border border-red-500/10 bg-red-500/5 p-3">
-                  <X className="mt-0.5 h-4 w-4 flex-shrink-0 text-red-400" />
+                  <X className="mt-0.5 h-4 w-4 shrink-0 text-red-400" />
                   <span className="text-ink-soft">
                     <span className="mb-0.5 block font-medium text-red-400">Fails</span>
                     {option.whereFails}
@@ -89,7 +89,7 @@ export function IndustryComparison({ data }: IndustryComparisonProps) {
                 </div>
 
                 <div className="flex items-start gap-3 border-t border-border pt-3">
-                  <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-violet" />
+                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-violet" />
                   <span>
                     <span className="font-medium text-violet">Our Position:</span>{" "}
                     <span className="text-ink-soft">{option.ourPosition}</span>

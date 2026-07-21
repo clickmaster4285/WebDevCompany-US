@@ -16,7 +16,7 @@ export function IndustryProblemSection({ data }: IndustryProblemSectionProps) {
   const hasImage = Boolean(data.image);
 
   return (
-    <div className="py-10 md:py-14" id="problem">
+    <div className="py-12 sm:py-16 md:py-20 lg:py-24" id="problem">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -29,8 +29,8 @@ export function IndustryProblemSection({ data }: IndustryProblemSectionProps) {
         </div>
 
         <div
-          className={`grid grid-cols-1 items-start gap-8 ${
-            hasImage ? "lg:grid-cols-2 gap-10 lg:gap-14" : ""
+          className={`grid grid-cols-1 items-start gap-8 sm:gap-10 ${
+            hasImage ? "lg:grid-cols-2 lg:gap-14" : ""
           }`}
         >
           {/* Left: Content */}
@@ -60,7 +60,7 @@ export function IndustryProblemSection({ data }: IndustryProblemSectionProps) {
               whileInView={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as const }}
               viewport={{ once: true, margin: "-60px" }}
-              className="relative mt-4 lg:mt-0"
+              className="relative mt-4 w-full lg:mt-0"
             >
               <div className="relative overflow-hidden rounded-2xl border border-border bg-surface-1/60 shadow-xl group">
                 <Image

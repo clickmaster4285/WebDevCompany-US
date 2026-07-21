@@ -16,6 +16,8 @@ export async function generateStaticParams() {
   return params;
 }
 
+import { getMetadata } from "@/lib/metadata";
+
 // 2. Dynamic SEO Metadata (Next.js 15/16 compatible)
 export async function generateMetadata({ 
   params 
@@ -28,10 +30,11 @@ export async function generateMetadata({
   const pageData = industriesData[slugKey];
   if (!pageData) return { title: 'Page Not Found' };
 
-  return {
+  return getMetadata({
     title: pageData.title,
     description: pageData.metaDescription,
-  };
+    slug: `industries/${slugKey}`,
+  });
 }
 
 // 3. The Page Component (Next.js 15/16 compatible)

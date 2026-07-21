@@ -3,14 +3,16 @@
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { getAllCostSlugs, costData } from "@/data/costdata";
 import Link from "next/link";
-import { Metadata } from "next";
 import { ArrowRight, DollarSign, Clock } from "lucide-react";
+import type { Metadata } from "next";
+import { getMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Web Development Cost Guides | Pricing & Estimates",
+export const metadata: Metadata = getMetadata({
+  title: "Web Development Cost Guides — Pricing & Estimates",
   description:
     "Complete cost guides for web development, eCommerce, Shopify, SaaS, and more. Get transparent pricing estimates for your next project.",
-};
+  slug: "costs",
+});
 
 export default function CostsPage() {
   const slugs = getAllCostSlugs();

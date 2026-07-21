@@ -35,7 +35,7 @@ const metricVariants = {
 
 export function IndustryOutcome({ data }: IndustryOutcomeProps) {
   return (
-    <div className="py-10 md:py-14" id="outcome">
+    <div className="py-12 sm:py-16 md:py-20 lg:py-24" id="outcome">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export function IndustryOutcome({ data }: IndustryOutcomeProps) {
             className="rounded-2xl border border-border/60 border-l-4 border-l-red-400/60 bg-surface-1/50 p-5 md:p-6"
           >
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
                 <AlertTriangle className="h-5 w-5" />
               </div>
               <div>
@@ -80,7 +80,7 @@ export function IndustryOutcome({ data }: IndustryOutcomeProps) {
             className="rounded-2xl border border-border/60 border-l-4 border-l-green-400/60 bg-surface-1/50 p-5 md:p-6"
           >
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-green-500/10 text-green-400">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-500/10 text-green-400">
                 <CheckCircle2 className="h-5 w-5" />
               </div>
               <div>
@@ -119,7 +119,7 @@ export function IndustryOutcome({ data }: IndustryOutcomeProps) {
                 {metric.result}
               </div>
               <div className="flex items-start gap-1.5">
-                <TrendingUp className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-emerald-400" />
+                <TrendingUp className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-400" />
                 <p className="text-sm leading-relaxed text-ink-mute">{metric.whyItMatters}</p>
               </div>
             </motion.div>

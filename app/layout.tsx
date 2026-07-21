@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { siteConfig } from "@/lib/siteConfig";
 import "./globals.css";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +14,41 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Clickmasters - Web Development Company",
-  description: "Clickmasters is a leading web development company that specializes in creating innovative and user-friendly websites. Our team of experts is dedicated to delivering high-quality web solutions that help businesses succeed online.",
+  title: {
+    default: `${siteConfig.name} - Web Development Company`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: `${siteConfig.name} - Web Development Company`,
+    description: siteConfig.description,
+    url: "/",
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.logo,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} - Web Development Company`,
+    description: siteConfig.description,
+    images: [siteConfig.logo],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   verification: {
     google: "Wj_h0JbVwyvoLp7jT7VzLlMN05Z8Ws7NDAkACJ10W-E",
   },

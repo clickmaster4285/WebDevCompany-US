@@ -5,6 +5,9 @@ import IndustryPageTemplate from '@/components/services-tech-industry/Mainslugpa
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
+// lib/metadata.ts: helper for consistent metadata, canonical URLs, OG & Twitter
+import { getMetadata } from "@/lib/metadata";
+
 // 1. Pre-render all technology pages at build time
 export async function generateStaticParams() {
   const params: { slug: string }[] = [];
@@ -36,19 +39,21 @@ export async function generateMetadata({
   // First check if it's a technology (main or sub-page)
   const tech = technologies.find(t => t.slug === slug);
   if (tech) {
-    return {
+    return getMetadata({
       title: tech.title,
       description: tech.excerpt,
-    };
+      slug: `technologies/${slug}`,
+    });
   }
 
   // Then check if it's an industry-specific page from tech-serv-industry
   const industryPage = pages[`technologies/${slug}`];
   if (industryPage) {
-    return {
+    return getMetadata({
       title: industryPage.title,
       description: industryPage.hero.description,
-    };
+      slug: `technologies/${slug}`,
+    });
   }
 
   return { title: 'Page Not Found' };

@@ -12,6 +12,8 @@ export async function generateStaticParams() {
   }));
 }
 
+import { getMetadata } from "@/lib/metadata";
+
 export async function generateMetadata({ 
   params 
 }: { 
@@ -27,13 +29,11 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return getMetadata({
     title: pageData.title,
     description: pageData.metaDescription,
-    alternates: {
-      canonical: `https://yourdomain.com/location/${pageData.slug}`,
-    },
-  };
+    slug: `locations/${pageData.slug}`,
+  });
 }
 
 export default async function LocationPageRoute({ 
