@@ -84,7 +84,7 @@
   --foreground: oklch(1 0 0);
   --ink:        oklch(1 0 0);               /* #FFFFFF */
   --ink-soft:   oklch(0.87 0.005 286);      /* #D4D4D8 */
-  --ink-mute:   oklch(0.55 0.01 286);       /* #71717A */
+  --ink-mute:   oklch(0.68 0.01 286);       /* #9E9EA5 - lightened for WCAG AA contrast */
   /* Brand */
   --violet:      oklch(0.65 0.22 210);      /* blue base */
   --violet-soft: oklch(0.75 0.17 210);      /* blue soft */

@@ -85,7 +85,7 @@ export function HeroSection({
                   src="/batch9.png"
                   alt="Service illustration"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 704px"
                   className="rounded-3xl object-cover shadow-2xl shadow-blue-900/50"
                   priority
                 />

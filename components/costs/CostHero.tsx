@@ -183,7 +183,7 @@ export function CostHero({
                   src="/costimage.png"
                   alt="Web development cost visualization and pricing breakdown"
                   fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  sizes="(max-width: 1024px) 100vw, 688px"
                   className="object-cover"
                   priority
                 />

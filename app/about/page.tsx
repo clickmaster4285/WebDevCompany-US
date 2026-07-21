@@ -577,7 +577,7 @@ export default function AboutPage() {
             src="/ourimage.png"
             alt="ClickMasters team and office"
             fill
-            sizes="(min-width: 1024px) 560px, 100vw"
+            sizes="(max-width: 1024px) 100vw, 560px"
             className="object-cover"
             priority
           />

@@ -11,9 +11,9 @@ export default function IndustriesLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <Nav />
-      <div className="flex-1">
+      <main className="flex-1">
         {children}
-      </div>
+      </main>
       <Footer />
     </div>
   );
