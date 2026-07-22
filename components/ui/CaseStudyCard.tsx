@@ -168,23 +168,23 @@ function CardContent({
 // Helper function to generate category images
 function getCategoryImage(category: string, fallbackImage?: string): string {
   const categoryImages: Record<string, string> = {
-    PropTech: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop',
-    FinTech: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop',
-    GovTech: 'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=600&h=400&fit=crop',
-    HealthTech: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop',
-    eCommerce: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-    EdTech: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop',
-    InsurTech: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop',
-    Logistics: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop',
-    Retail: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop',
-    MarTech: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&h=400&fit=crop',
-    CleanTech: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&h=400&fit=crop',
-    HRTech: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=400&fit=crop',
-    LegalTech: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop',
-    AgriTech: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=600&h=400&fit=crop',
-    Transport: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop',
+    PropTech: '/assets/casestudy/proptech.jpg',
+    FinTech: '/assets/casestudy/fintech.jpg',
+    GovTech: '/assets/casestudy/govtech.jpg',
+    HealthTech: '/assets/casestudy/healthtech.jpg',
+    eCommerce: '/assets/casestudy/ecommerce.jpg',
+    EdTech: '/assets/casestudy/edtech.jpg',
+    InsurTech: '/assets/casestudy/insurtech.jpg',
+    Logistics: '/assets/casestudy/logistics.jpg',
+    Retail: '/assets/casestudy/retail.jpg',
+    MarTech: '/assets/casestudy/martech.jpg',
+    CleanTech: '/assets/casestudy/cleantech.jpg',
+    HRTech: '/assets/casestudy/hrtech.jpg',
+    LegalTech: '/assets/casestudy/legaltech.jpg',
+    AgriTech: '/assets/casestudy/agritech.jpg',
+    Transport: '/assets/casestudy/transport.jpg',
   };
-  return categoryImages[category] || fallbackImage || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop';
+  return categoryImages[category] || fallbackImage || '/assets/casestudy/default.jpg';
 }
 
 export function CaseStudyCard({

@@ -208,7 +208,7 @@ export function ProblemSection({
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/assets/services/servicespage.png')" }}
+          style={{ backgroundImage: "url('/assets/services/servicespage.webp')" }}
         />
         {/* Dark overlay to ensure text remains readable over the image */}
         {/* <div className="absolute inset-0 bg-background/80" /> */}
