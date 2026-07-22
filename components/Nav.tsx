@@ -3,7 +3,7 @@
 import { technologies } from "@/data/technologies";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image"; // 👈 added
+import Image from "next/image";
 import {
   ChevronDown,
   ArrowRight,
@@ -140,7 +140,8 @@ for (const parent of parentTechnologies) {
         label: child.title,
         href: `/technologies/${child.slug}`,
         tag: child.category,
-        icon: parent.icon || "⚙️",
+        // 👇 FIX: Prioritize child.icon, then fallback to parent.icon, then generic gear
+        icon: child.icon || parent.icon || "⚙️", 
         description: child.excerpt,
       })),
     });
@@ -151,7 +152,7 @@ for (const parent of parentTechnologies) {
 const standaloneTechs = parentTechnologies.filter(
   (p) => (childrenByParentId.get(p.id) || []).length === 0
 );
-// Also include standalone + a representative sample of sub-pages for discoverability
+
 const allTechItems: DropdownItem[] = standaloneTechs.map((tech) => ({
   label: tech.title,
   href: `/technologies/${tech.slug}`,
@@ -261,7 +262,6 @@ export function Nav() {
         scrolled ? "py-3" : "py-4"
       }`}
     >
-      {/* 👇 width changed: 97vw on mobile, 90vw on md+ */}
       <div className="layout-container px-4 sm:px-6 md:px-10">
         <div className="flex items-center justify-between rounded-full border border-slate-200 bg-white/95 px-4 py-3 shadow-[0_14px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl">
           <Link
@@ -269,9 +269,8 @@ export function Nav() {
             className="flex items-center gap-2 text-slate-950"
             onClick={() => setMobileOpen(false)}
           >
-            {/* 👇 Logo image from /public folder */}
             <Image
-              src="/logo.webp" // ⚠️ Replace with your actual file name, e.g. /logo.svg, /logo.webp
+              src="/logo.webp"
               alt="ClickMasters Logo"
               width={256}
               height={51}
