@@ -1,14 +1,42 @@
-import { useEffect, useRef } from "react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { useGsap } from "@/lib/gsap";
 import { HeroBrowserScene } from "./HeroBrowserScene";
 import heroVideo from "@/public/assets/hero.mp4";
 import Link from "next/link";
+
+// Dark poster matching the video tint
+const POSTER_BASE64 =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Crect fill='%230a0a0a' width='100%25' height='100%25'/%3E%3C/svg%3E";
 
 export function HeroSection() {
   const root = useRef<HTMLElement>(null);
   const headline = useRef<HTMLHeadingElement>(null);
   const browser = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
+
+  // IntersectionObserver — only load/play video when hero scrolls into view
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.preload = "auto";
+          video.play().catch(() => {});
+          setVideoReady(true);
+          observer.unobserve(video);
+        }
+      },
+      { rootMargin: "200px 0px" } // start loading 200px before it enters
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const { gsap } = useGsap();
@@ -85,10 +113,11 @@ export function HeroSection() {
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
                <video
           ref={videoRef}
-          autoPlay
+          preload="metadata"
           loop
           muted
           playsInline
+          poster={POSTER_BASE64}
           className="absolute inset-0 h-full w-full object-cover"
           style={{ filter: "brightness(0.4)" }}
         >
@@ -103,11 +132,6 @@ export function HeroSection() {
         
         {/* Left Column */}
         <div>
-          {/* <div className="hero-fade text-eyebrow mb-8 flex items-center gap-3">
-            <span className="h-px w-10 bg-ink-mute" />
-            ClickMasters / Digital Studio · Est. 2018
-          </div> */}
-
           <h1
             ref={headline}
             className="overflow-hidden text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95]"

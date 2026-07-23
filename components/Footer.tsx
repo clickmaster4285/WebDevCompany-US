@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import Image from "next/image";
@@ -228,15 +227,13 @@ export function Footer() {
             </span>
 
             {/* Scroll to Top Button */}
-            <motion.button
+            <button
               onClick={scrollToTop}
-              className="group flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm text-ink-soft transition-all hover:bg-violet hover:text-white"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="group flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm text-ink-soft transition-all hover:bg-violet hover:text-white hover:scale-105 active:scale-95"
             >
               <span>Back to Top</span>
               <ArrowUp className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-
+"use client";
 
 import { useEffect, useRef } from "react";
 import { useGsap } from "@/lib/gsap";
@@ -11,23 +11,39 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const el = ref.current;
     if (!el) return;
 
+    // Cache rect across frames — only re-read on scroll/resize, not on every mousemove
+    let cachedRect: DOMRect | null = null;
+
+    const updateRect = () => {
+      if (el) cachedRect = el.getBoundingClientRect();
+    };
+
     const onMove = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width / 2;
-      const y = e.clientY - r.top - r.height / 2;
-      el.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
+      requestAnimationFrame(() => {
+        if (!cachedRect) updateRect();
+        const r = cachedRect!;
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        el.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
+      });
     };
 
     const onLeave = () => {
-      el.style.transform = "";
+      requestAnimationFrame(() => {
+        el.style.transform = "";
+      });
     };
 
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
+    el.addEventListener("mousemove", onMove, { passive: true });
+    el.addEventListener("mouseleave", onLeave, { passive: true });
+    window.addEventListener("scroll", updateRect, { passive: true });
+    window.addEventListener("resize", updateRect, { passive: true });
 
     return () => {
       el.removeEventListener("mousemove", onMove);
       el.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("scroll", updateRect);
+      window.removeEventListener("resize", updateRect);
     };
   }, []);
 
