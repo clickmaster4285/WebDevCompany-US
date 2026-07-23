@@ -804,10 +804,10 @@ export default function ContactPage() {
                     <div className="min-w-0">
                       <p className="text-xs text-ink-mute/70 mb-0.5">Email</p>
                       <Link
-                        href="mailto:sales@yourdomain.com"
+                        href="mailto:sales@clickmasterssoftwaredevelopmentcompany.com"
                         className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
                       >
-                        sales@yourdomain.com
+                        sales@clickmasterssoftwaredevelopmentcompany.com
                       </Link>
                     </div>
                   </div>
