@@ -183,8 +183,8 @@ const contactDetails = [
   {
     icon: Mail,
     label: "Email",
-    value: "sale@clickmasterssoftwaredevelopmentcompany.co.uk",
-    href: "mailto:sale@clickmasterssoftwaredevelopmentcompany.co.uk",
+    value: "sale@clickmasterswebdevelopmentcompany.com",
+    href: "mailto:sale@clickmasterswebdevelopmentcompany.com",
   },
   {
     icon: MapPin,
