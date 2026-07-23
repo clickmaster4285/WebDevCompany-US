@@ -342,7 +342,9 @@ function PersonCard({ member }: { member: (typeof contactTeam)[number] }) {
                 onError={() => setErrored(true)}
               />
             ) : member.initials ? (
-              <span className="text-xl font-bold text-white/90">{member.initials}</span>
+              <span className="text-xl font-bold text-white/90">
+                {member.initials}
+              </span>
             ) : (
               <Users className="w-8 h-8 text-white/80" />
             )}
@@ -369,7 +371,9 @@ export default function ContactPage() {
   const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -404,7 +408,13 @@ export default function ContactPage() {
 
       if (res.ok) {
         setSubmitted(true);
-        setFormState({ name: "", email: "", phone: "", budget: "", message: "" });
+        setFormState({
+          name: "",
+          email: "",
+          phone: "",
+          budget: "",
+          message: "",
+        });
         setTimeout(() => setSubmitted(false), 5000);
       } else {
         const err = await res.json().catch(() => ({}));
@@ -475,7 +485,12 @@ export default function ContactPage() {
               <span className="text-ink-mute tracking-wide">Contact Us</span>
             </motion.div>
 
-            <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
+            <motion.div
+              custom={1}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+            >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
                 <span className="bg-clip-text text-transparent bg-linear-to-b from-ink to-ink/80">
                   Let&apos;s Build Something
@@ -484,10 +499,16 @@ export default function ContactPage() {
               </h1>
             </motion.div>
 
-            <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
+            <motion.div
+              custom={2}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+            >
               <p className="text-lg md:text-xl text-ink-soft leading-relaxed max-w-3xl mx-auto font-light">
-                Ready to transform your business? Share your details — we&apos;ll
-                respond within one business day with a personalized roadmap.
+                Ready to transform your business? Share your details —
+                we&apos;ll respond within one business day with a personalized
+                roadmap.
               </p>
             </motion.div>
           </div>
@@ -526,7 +547,10 @@ export default function ContactPage() {
       {/* ═══════════════════════════════════════════════════════════════════
           CONTACT FORM + INFO SECTION
       ════════════════════════════════════════════════════════════════════ */}
-      <section id="contact-form" className="relative py-8 md:py-20 pb-20 border-t border-border">
+      <section
+        id="contact-form"
+        className="relative py-8 md:py-20 pb-20 border-t border-border"
+      >
         <div className="layout-container px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
             {/* ── Contact Form ── */}
@@ -534,7 +558,10 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.4, 0.25, 1] as const,
+              }}
               className="lg:col-span-3"
             >
               <div className="relative bg-surface-1/40 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8 lg:p-10 overflow-hidden focus-within:border-violet/40 transition-colors duration-300">
@@ -686,7 +713,10 @@ export default function ContactPage() {
 
                   <p className="text-xs text-ink-mute/60 text-center">
                     By submitting, you agree to our{" "}
-                    <Link href="/privacy" className="text-violet hover:underline">
+                    <Link
+                      href="/privacy"
+                      className="text-violet hover:underline"
+                    >
                       privacy policy
                     </Link>
                     . We&apos;ll never share your information.
@@ -700,42 +730,87 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.4, 0.25, 1] as const,
+              }}
               className="lg:col-span-2 space-y-6"
             >
-              {/* Real photo replaces what used to be an all-icon sidebar */}
-              {/* <ContactVisual /> */}
-
               {/* Consolidated contact details card */}
               <div className="p-6 md:p-8 rounded-2xl bg-surface-1/40 border border-border">
                 <h3 className="text-lg font-semibold text-ink mb-5">
                   Contact Information
                 </h3>
                 <div className="space-y-5">
-                  {contactDetails.map((item) => (
-                    <div key={item.label} className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
-                        <item.icon className="w-5 h-5 text-violet" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-xs text-ink-mute/70 mb-0.5">
-                          {item.label}
-                        </p>
-                        {item.href ? (
-                          <Link
-                            href={item.href}
-                            className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
-                          >
-                            {item.value}
-                          </Link>
-                        ) : (
-                          <p className="text-sm font-medium text-ink whitespace-pre-line">
-                            {item.value}
-                          </p>
-                        )}
-                      </div>
+                  {/* Pakistan */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                      <Phone className="w-5 h-5 text-violet" />
                     </div>
-                  ))}
+                    <div className="min-w-0">
+                      <p className="text-xs text-ink-mute/70 mb-0.5">
+                        🇵🇰 Pakistan
+                      </p>
+                      <Link
+                        href="tel:+923325394285"
+                        className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
+                      >
+                        +92 332 5394285
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* United Kingdom */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                      <Phone className="w-5 h-5 text-violet" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs text-ink-mute/70 mb-0.5">
+                        United Kingdom
+                      </p>
+                      <Link
+                        href="tel:+447988576086"
+                        className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
+                      >
+                        +44 7988 576086
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* United States */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                      <Phone className="w-5 h-5 text-violet" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs text-ink-mute/70 mb-0.5">
+                        United States
+                      </p>
+                      <Link
+                        href="tel:+13252024074"
+                        className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
+                      >
+                        +1 325 202 4074
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Email */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                      <Mail className="w-5 h-5 text-violet" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs text-ink-mute/70 mb-0.5">Email</p>
+                      <Link
+                        href="mailto:sales@yourdomain.com"
+                        className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
+                      >
+                        sales@yourdomain.com
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -750,8 +825,8 @@ export default function ContactPage() {
                   </p>
                 </div>
                 <p className="text-xs text-ink-mute/80 mb-4 leading-relaxed">
-                  For urgent inquiries, call us directly. We&apos;re here to
-                  help you succeed.
+                  For urgent inquiries, call us directly. We're here to help you
+                  succeed.
                 </p>
                 <Link
                   href="tel:+447988576086"
@@ -760,6 +835,13 @@ export default function ContactPage() {
                   Call +44 7988 576086
                   <ArrowRight className="w-4 h-4" />
                 </Link>
+              </div>
+
+              {/* Copyright */}
+              <div className="text-center pt-2 pb-1">
+                <p className="text-xs text-ink-mute/50">
+                  © 2026 ClickMasters Digital Marketing Agency
+                </p>
               </div>
             </motion.div>
           </div>
