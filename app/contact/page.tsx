@@ -1,7 +1,6 @@
 // app/contact/page.tsx
 "use client";
 
-
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { motion, animate, useInView } from "framer-motion";
@@ -24,6 +23,22 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+// ─── CRM lead endpoint config ───────────────────────────────────────────────
+const WEBSITE = "clickmasterssoftwaredevelopmentcompany.com";
+const SERVICE = "Software Development";
+
+function getUtmParams() {
+  if (typeof window === "undefined") return {};
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utm_source: params.get("utm_source") || "",
+    utm_medium: params.get("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || "",
+    utm_term: params.get("utm_term") || "",
+    utm_content: params.get("utm_content") || "",
+  };
+}
 
 // ─── Elegant Background Shapes ──────────────────────────────────────────────
 function ElegantShape({
@@ -351,6 +366,7 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -361,16 +377,44 @@ export default function ContactPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const payload = {
+      name: formState.name,
+      email: formState.email,
+      phone: formState.phone,
+      // the budget select has no matching CRM field, so fold it into
+      // the message body instead of dropping it
+      message: formState.budget
+        ? `Budget: ${formState.budget}\n\n${formState.message}`
+        : formState.message,
+      website: WEBSITE,
+      service: SERVICE,
+      landingPage: window.location.href,
+      referrer: document.referrer,
+      ...getUtmParams(),
+    };
 
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormState({ name: "", email: "", phone: "", budget: "", message: "" });
+    try {
+      const res = await fetch("https://crm.clickmasters.pk/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    // Reset success state after 5 seconds
-    setTimeout(() => setSubmitted(false), 5000);
+      if (res.ok) {
+        setSubmitted(true);
+        setFormState({ name: "", email: "", phone: "", budget: "", message: "" });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        const err = await res.json().catch(() => ({}));
+        setError(err.error || "Submission failed. Please try again.");
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClasses =
@@ -635,6 +679,10 @@ export default function ContactPage() {
                       </>
                     )}
                   </button>
+
+                  {error && (
+                    <p className="text-sm text-red-500 text-center">{error}</p>
+                  )}
 
                   <p className="text-xs text-ink-mute/60 text-center">
                     By submitting, you agree to our{" "}

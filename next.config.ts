@@ -7,7 +7,7 @@ const cspHeader = `
   img-src 'self' data: blob: https://cdn.jsdelivr.net https://cdn.simpleicons.org https://upload.wikimedia.org;
   font-src 'self' data:;
   media-src 'self' blob: data:;
-  connect-src 'self' ws:;
+  connect-src 'self' ws: https://crm.clickmasters.pk;
   frame-ancestors 'none';
   form-action 'self';
   base-uri 'self';
