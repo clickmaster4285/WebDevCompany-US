@@ -25,7 +25,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // ─── CRM lead endpoint config ───────────────────────────────────────────────
-const WEBSITE = "clickmasterssoftwaredevelopmentcompany.com";
+const WEBSITE = "clickmasterswebdevelopmentcompany.com";
 const SERVICE = "Software Development";
 
 function getUtmParams() {

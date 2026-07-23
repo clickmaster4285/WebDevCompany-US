@@ -212,7 +212,7 @@
       "slug": "laravel-application-development",
       "excerpt": "Laravel application development for elegant, secure PHP applications with rapid development and modern features.",
       "category": "Backend",
-      "icon": "🎨"
+      "icon": "🐘"
     },
     {
       "id": 5,
@@ -338,7 +338,7 @@
       "slug": "laravel-development-for-law-firm",
       "excerpt": "Laravel for Law Firms: secure client portals, document management, and case tracking.",
       "category": "Industry-Specific",
-      "icon": "🎨"
+      "icon": "🐘"
     },
     {
       "id": 114,
@@ -347,7 +347,7 @@
       "slug": "laravel-development-for-healthcare",
       "excerpt": "Laravel for Healthcare: HIPAA-compliant scheduling, patient portals, and secure data.",
       "category": "Industry-Specific",
-      "icon": "🎨"
+      "icon": "🐘"
     },
     {
       "id": 115,
@@ -356,7 +356,7 @@
       "slug": "laravel-development-for-education",
       "excerpt": "Laravel for Education: scalable LMS, student portals, and secure content delivery.",
       "category": "Industry-Specific",
-      "icon": "🎨"
+      "icon": "🐘"
     },
     {
       "id": 116,
@@ -365,7 +365,7 @@
       "slug": "laravel-development-for-manufacturing",
       "excerpt": "Laravel for Manufacturing: ERP integration, inventory management, and IoT data handling.",
       "category": "Industry-Specific",
-      "icon": "🎨"
+      "icon": "🐘"
     },
     {
       "id": 117,
