@@ -1307,7 +1307,7 @@ export const technologies: TechnologySummary[] = [
     title: "Laravel Development for Healthcare",
     excerpt: "Laravel for Healthcare: HIPAA-compliant scheduling, patient portals, and secure data.",
     category: "Industry-Specific",
-    icon: "🎨",
+    icon: "🐘",
     level: "Healthcare Laravel",
     parentId: 4,
     page: {
@@ -1348,7 +1348,7 @@ export const technologies: TechnologySummary[] = [
     title: "Laravel Development for Education",
     excerpt: "Laravel for Education: scalable LMS, student portals, and secure content delivery.",
     category: "Industry-Specific",
-    icon: "🎨",
+    icon: "🐘",
     level: "Education Laravel",
     parentId: 4,
     page: {
@@ -1389,7 +1389,7 @@ export const technologies: TechnologySummary[] = [
     title: "Laravel Development for Manufacturing & Industrial",
     excerpt: "Laravel for Manufacturing: ERP integration, inventory management, and IoT data handling.",
     category: "Industry-Specific",
-    icon: "🎨",
+    icon: "🐘",
     level: "Manufacturing Laravel",
     parentId: 4,
     page: {
