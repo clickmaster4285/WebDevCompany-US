@@ -128,6 +128,7 @@ export function FAQDetailPage({ faq }: FAQDetailPageProps) {
                   alt="FAQ Hero"
                   width={520}
                   height={520}
+                  sizes="(max-width: 520px) 100vw, 520px"
                   priority
                   className="h-auto w-full max-w-[520px] rounded-[2rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)]"
                 />

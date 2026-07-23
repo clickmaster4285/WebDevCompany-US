@@ -1,5 +1,3 @@
-
-"use client";
 // components/ui/SectionHeader.tsx
 import React from 'react';
 

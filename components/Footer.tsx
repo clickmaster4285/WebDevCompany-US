@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import Image from "next/image";
@@ -14,10 +13,10 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/8 bg-surface-1 py-12 sm:py-16">
+    <footer className="relative border-t border-white/8 bg-surface-1 py-16">
       {/* 👇 Updated width to match navbar (97vw on mobile, 90vw on md+) */}
-      <div className="layout-container px-4 sm:px-6 md:px-10">
-        <div className="grid grid-cols-2 gap-8 sm:gap-10 md:grid-cols-4 lg:grid-cols-5">
+      <div className="layout-container px-6 md:px-10">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
         <Link href="/" className="flex items-center gap-3 text-ink">
@@ -28,19 +27,19 @@ export function Footer() {
       alt="ClickMasters Logo"
       width={256}
       height={51}
-      className="h-10 sm:h-12 w-auto object-contain brightness-0 invert"
+      className="h-12 w-auto object-contain brightness-0 invert"
       priority
     />
   </div>
 </Link>
 
-            <p className="mt-4 sm:mt-6 max-w-xs text-xs sm:text-sm text-ink-mute">
+            <p className="mt-6 max-w-xs text-sm text-ink-mute">
               A premium web development studio crafting cinematic digital
               products.
             </p>
 
             {/* Social/Trust Badge */}
-            <div className="mt-4 sm:mt-6 flex items-center gap-2 text-xs text-ink-mute">
+            <div className="mt-6 flex items-center gap-2 text-xs text-ink-mute">
               <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-violet" />
               Currently accepting two new projects
             </div>
@@ -51,24 +50,24 @@ export function Footer() {
             <div className="text-xs uppercase tracking-widest text-ink-mute">
               Company
             </div>
-            <ul className="mt-4 sm:mt-5 space-y-2 sm:space-y-3 text-sm text-ink-soft">
+            <ul className="mt-5 space-y-3 text-sm text-ink-soft">
               <li>
-                <Link href="/" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/" className="transition-colors hover:text-violet-soft">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/about" className="transition-colors hover:text-violet-soft">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/contact" className="transition-colors hover:text-violet-soft">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/services" className="transition-colors hover:text-violet-soft">
                   Services
                 </Link>
               </li>
@@ -80,29 +79,29 @@ export function Footer() {
             <div className="text-xs uppercase tracking-widest text-ink-mute">
               Services
             </div>
-            <ul className="mt-4 sm:mt-5 space-y-2 sm:space-y-3 text-sm text-ink-soft">
+            <ul className="mt-5 space-y-3 text-sm text-ink-soft">
               <li>
-                <Link href="/web-development-services" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/web-development-services" className="transition-colors hover:text-violet-soft">
                   Web Development
                 </Link>
               </li>
               <li>
-                <Link href="/web-design-services" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/web-design-services" className="transition-colors hover:text-violet-soft">
                   UI/UX Design
                 </Link>
               </li>
               <li>
-                <Link href="/web-application-development" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/web-application-development" className="transition-colors hover:text-violet-soft">
                   Web Applications
                 </Link>
               </li>
               <li>
-                <Link href="/ecommerce-development" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/ecommerce-development" className="transition-colors hover:text-violet-soft">
                   eCommerce Development
                 </Link>
               </li>
               <li>
-                <Link href="/saas-development" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/saas-development" className="transition-colors hover:text-violet-soft">
                   SaaS Development
                 </Link>
               </li>
@@ -114,29 +113,29 @@ export function Footer() {
             <div className="text-xs uppercase tracking-widest text-ink-mute">
               Industries
             </div>
-            <ul className="mt-4 sm:mt-5 space-y-2 sm:space-y-3 text-sm text-ink-soft">
+            <ul className="mt-5 space-y-3 text-sm text-ink-soft">
               <li>
-                <Link href="/industries/healthcare-web-development" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/industries/healthcare-web-development" className="transition-colors hover:text-violet-soft">
                   Healthcare
                 </Link>
               </li>
               <li>
-                <Link href="/industries/fintech-web-development" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/industries/fintech-web-development" className="transition-colors hover:text-violet-soft">
                   Fintech
                 </Link>
               </li>
               <li>
-                <Link href="/industries/ecommerce-web-development" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/industries/ecommerce-web-development" className="transition-colors hover:text-violet-soft">
                   eCommerce & Retail
                 </Link>
               </li>
               <li>
-                <Link href="/industries/saas-web-development" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/industries/saas-web-development" className="transition-colors hover:text-violet-soft">
                   SaaS & Tech
                 </Link>
               </li>
               <li>
-                <Link href="/industries/real-estate-web-development" className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]">
+                <Link href="/industries/real-estate-web-development" className="transition-colors hover:text-violet-soft">
                   Real Estate
                 </Link>
               </li>
@@ -149,11 +148,11 @@ export function Footer() {
               Resources
             </div>
 
-            <ul className="mt-4 sm:mt-5 space-y-2 sm:space-y-3 text-sm text-ink-soft">
+            <ul className="mt-5 space-y-3 text-sm text-ink-soft">
               <li>
                 <Link
                   href="/case-studies"
-                  className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]"
+                  className="transition-colors hover:text-violet-soft"
                 >
                   Case Studies
                 </Link>
@@ -162,7 +161,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blogs"
-                  className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]"
+                  className="transition-colors hover:text-violet-soft"
                 >
                   Blog
                 </Link>
@@ -171,7 +170,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/compare"
-                  className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]"
+                  className="transition-colors hover:text-violet-soft"
                 >
                   Comparisons
                 </Link>
@@ -180,7 +179,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/faqs"
-                  className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]"
+                  className="transition-colors hover:text-violet-soft"
                 >
                   FAQs
                 </Link>
@@ -189,7 +188,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/testimonials"
-                  className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]"
+                  className="transition-colors hover:text-violet-soft"
                 >
                   Testimonials
                 </Link>
@@ -197,15 +196,15 @@ export function Footer() {
             </ul>
 
             {/* Technologies Sub-section */}
-            <div className="mt-4 sm:mt-6 text-xs uppercase tracking-widest text-ink-mute">
+            <div className="mt-6 text-xs uppercase tracking-widest text-ink-mute">
               Technologies
             </div>
 
-            <ul className="mt-3 space-y-2 sm:space-y-3 text-sm text-ink-soft">
+            <ul className="mt-3 space-y-3 text-sm text-ink-soft">
               <li>
                 <Link
                   href="/technologies"
-                  className="block py-2 transition-colors hover:text-violet-soft min-h-[44px]"
+                  className="transition-colors hover:text-violet-soft"
                 >
                   Our Tech Stack
                 </Link>
@@ -215,12 +214,12 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar with Scroll to Top Button */}
-        <div className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/8 pt-6 sm:pt-8 text-xs text-ink-mute">
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-8 text-xs text-ink-mute">
           <div>
             © {new Date().getFullYear()} ClickMasters. All rights reserved.
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="flex items-center gap-4">
             {/* Social/Trust Badge */}
             <span className="flex items-center gap-2">
               <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-violet" />
@@ -228,15 +227,13 @@ export function Footer() {
             </span>
 
             {/* Scroll to Top Button */}
-            <motion.button
+            <button
               onClick={scrollToTop}
-              className="group flex items-center gap-2 rounded-full bg-white/5 px-4 py-3 text-sm text-ink-soft transition-all hover:bg-violet hover:text-white min-h-[44px] min-w-[44px]"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="group flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm text-ink-soft transition-all hover:bg-violet hover:text-white hover:scale-105 active:scale-95"
             >
               <span>Back to Top</span>
               <ArrowUp className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>

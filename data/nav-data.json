@@ -1,0 +1,428 @@
+{
+  "services": [
+    {
+      "slug": "web-development-services",
+      "title": "Web Development Services"
+    },
+    {
+      "slug": "enterprise-web-development",
+      "title": "Enterprise Web Development"
+    },
+    {
+      "slug": "saas-development",
+      "title": "SaaS Development"
+    },
+    {
+      "slug": "ecommerce-development",
+      "title": "eCommerce Development"
+    },
+    {
+      "slug": "shopify-development",
+      "title": "Shopify Development"
+    },
+    {
+      "slug": "wordpress-development",
+      "title": "WordPress Development"
+    },
+    {
+      "slug": "web-design-services",
+      "title": "Web Design Services (UI/UX)"
+    },
+    {
+      "slug": "custom-web-development",
+      "title": "Custom Web Development"
+    },
+    {
+      "slug": "web-application-development",
+      "title": "Web Application Development"
+    },
+    {
+      "slug": "shopify-plus-development",
+      "title": "Shopify Plus Development"
+    },
+    {
+      "slug": "woocommerce-development",
+      "title": "WooCommerce Development"
+    },
+    {
+      "slug": "magento-development",
+      "title": "Magento Development"
+    },
+    {
+      "slug": "headless-commerce-development",
+      "title": "Headless Commerce Development"
+    },
+    {
+      "slug": "cms-development",
+      "title": "CMS Development"
+    },
+    {
+      "slug": "ai-web-development",
+      "title": "AI Web Development"
+    },
+    {
+      "slug": "ai-chatbot-development",
+      "title": "AI Chatbot Development"
+    },
+    {
+      "slug": "api-development",
+      "title": "API Development"
+    },
+    {
+      "slug": "website-redesign-services",
+      "title": "Website Redesign Services"
+    },
+    {
+      "slug": "website-speed-optimization",
+      "title": "Website Speed Optimization"
+    },
+    {
+      "slug": "website-maintenance-services",
+      "title": "Website Maintenance & Support"
+    },
+    {
+      "slug": "full-stack-development",
+      "title": "Full-Stack Development"
+    }
+  ],
+  "industries": [
+    {
+      "slug": "healthcare-web-development",
+      "title": "Healthcare Web Development"
+    },
+    {
+      "slug": "law-firm-web-development",
+      "title": "Law Firm Web Development"
+    },
+    {
+      "slug": "real-estate-web-development",
+      "title": "Real Estate Web Development"
+    },
+    {
+      "slug": "fintech-web-development",
+      "title": "Fintech & Financial Services Web Development"
+    },
+    {
+      "slug": "saas-web-development",
+      "title": "SaaS & Tech Web Development"
+    },
+    {
+      "slug": "manufacturing-web-development",
+      "title": "Manufacturing Web Development"
+    },
+    {
+      "slug": "ecommerce-web-development",
+      "title": "Ecommerce & Retail Web Development"
+    },
+    {
+      "slug": "hospitality-web-development",
+      "title": "Hospitality Web Development"
+    },
+    {
+      "slug": "education-web-development",
+      "title": "Education Web Development"
+    },
+    {
+      "slug": "dental-web-development",
+      "title": "Dental Web Development"
+    },
+    {
+      "slug": "construction-web-development",
+      "title": "Construction Web Development"
+    },
+    {
+      "slug": "nonprofit-web-development",
+      "title": "Nonprofit Web Development"
+    }
+  ],
+  "caseStudies": [
+    {
+      "title": "PropTech Build-to-Rent Portfolio Management Platform — UK Institutional Landlord",
+      "slug": "proptech-build-to-rent-portfolio-management",
+      "category": "PropTech",
+      "icon": "🏗️",
+      "description": "A UK institutional landlord managing 4,200 build-to-rent units across 18 developments wanted a unified portfolio management system."
+    },
+    {
+      "title": "FinTech Wealth Management Platform — UK Discretionary Investment Manager",
+      "slug": "fintech-wealth-management-platform",
+      "category": "FinTech",
+      "icon": "💰",
+      "description": "A UK discretionary investment manager with £840M AUM and 1,400 client portfolios needed to replace their legacy system."
+    }
+  ],
+  "blogs": [
+    {
+      "title": "Best Web Development Companies in the USA (2026)",
+      "slug": "best-web-development-companies",
+      "category": "Web Development",
+      "excerpt": "A transparent, methodology-driven shortlist of leading US web development companies with a practical comparison framework."
+    },
+    {
+      "title": "Best Shopify Development Companies (2026)",
+      "slug": "best-shopify-development-companies",
+      "category": "Shopify Development",
+      "excerpt": "A methodology-driven shortlist of leading Shopify development companies — evaluated on Shopify-specific expertise, conversion focus, and fit, not on who paid to be listed. Our own inclusion is stated plainly."
+    }
+  ],
+  "faqs": [
+    {
+      "slug": "how-long-to-build-a-website",
+      "title": "How Long Does It Take to Build a Website?",
+      "directAnswer": "Building a website typically takes 4–12 weeks: a simple custom site around 4–6 weeks, a complex site or web application 3–6 months, and a large platform or SaaS product longer. Timeline depends on scope, complexity, content readiness, and feedback speed. A clear scope and prompt feedback keep projects on the faster end."
+    },
+    {
+      "slug": "build-vs-buy-website",
+      "title": "Is It Cheaper to Build or Buy a Website?",
+      "directAnswer": "For simple needs, buying (a template or website builder) is cheaper and faster. For sites that must convert, integrate, differentiate, or scale, building custom costs more but returns it through capability a template can"
+    }
+  ],
+  "technologies": [
+    {
+      "id": 1,
+      "parentId": null,
+      "title": "React Development",
+      "slug": "react-development",
+      "excerpt": "React development for fast, scalable and maintainable product interfaces.",
+      "category": "Frontend",
+      "icon": "⚛️"
+    },
+    {
+      "id": 2,
+      "parentId": null,
+      "title": "Next.js Development",
+      "slug": "nextjs-development",
+      "excerpt": "Next.js development for React power without the SEO trade-off — fast, search-friendly, and scalable.",
+      "category": "Frontend",
+      "icon": "⚡"
+    },
+    {
+      "id": 3,
+      "parentId": null,
+      "title": "Node.js Development",
+      "slug": "nodejs-development",
+      "excerpt": "Node.js development for fast, scalable back ends and real-time applications that perform under load.",
+      "category": "Backend",
+      "icon": "🟢"
+    },
+    {
+      "id": 4,
+      "parentId": null,
+      "title": "Laravel Application Development",
+      "slug": "laravel-application-development",
+      "excerpt": "Laravel application development for elegant, secure PHP applications with rapid development and modern features.",
+      "category": "Backend",
+      "icon": "🎨"
+    },
+    {
+      "id": 5,
+      "parentId": null,
+      "title": "Django Application Development",
+      "slug": "django-application-development",
+      "excerpt": "Django application development for secure, scalable Python applications with batteries-included functionality.",
+      "category": "Backend",
+      "icon": "🐍"
+    },
+    {
+      "id": 6,
+      "parentId": null,
+      "title": "Framework Selection",
+      "slug": "framework-selection",
+      "excerpt": "Framework selection guidance to choose the right technology stack for your specific needs.",
+      "category": "Strategy",
+      "icon": "🎯"
+    },
+    {
+      "id": 7,
+      "parentId": null,
+      "title": "MERN Stack Development",
+      "slug": "mern-stack-development",
+      "excerpt": "MERN stack development for cohesive, full-JavaScript applications that scale efficiently from MVP to product.",
+      "category": "Full Stack",
+      "icon": "⚛️"
+    },
+    {
+      "id": 103,
+      "parentId": 1,
+      "title": "React Development for SaaS & Technology",
+      "slug": "react-development-for-saas",
+      "excerpt": "React applied to SaaS: converting trials, driving activation, and scaling with fast, interactive interfaces.",
+      "category": "Industry-Specific",
+      "icon": "⚛️"
+    },
+    {
+      "id": 104,
+      "parentId": 1,
+      "title": "React Development for Fintech & Financial Services",
+      "slug": "react-development-for-fintech",
+      "excerpt": "React for Fintech: secure, real-time, and compliant interfaces for financial applications.",
+      "category": "Industry-Specific",
+      "icon": "⚛️"
+    },
+    {
+      "id": 105,
+      "parentId": 1,
+      "title": "React Development for Startups",
+      "slug": "react-development-for-startups",
+      "excerpt": "React for Startups: rapid MVP development, scalable architecture, and fast iteration.",
+      "category": "Industry-Specific",
+      "icon": "⚛️"
+    },
+    {
+      "id": 106,
+      "parentId": 1,
+      "title": "React Development for Healthcare",
+      "slug": "react-development-for-healthcare",
+      "excerpt": "React for Healthcare: HIPAA-compliant, secure patient portals and data visualization.",
+      "category": "Industry-Specific",
+      "icon": "⚛️"
+    },
+    {
+      "id": 107,
+      "parentId": 2,
+      "title": "Next.js Development for E-commerce & Retail",
+      "slug": "nextjs-development-for-ecommerce",
+      "excerpt": "Next.js for E-commerce: high-performance, SEO-optimized headless commerce front ends.",
+      "category": "Industry-Specific",
+      "icon": "⚡"
+    },
+    {
+      "id": 108,
+      "parentId": 2,
+      "title": "Next.js Development for SaaS & Technology",
+      "slug": "nextjs-development-for-saas",
+      "excerpt": "Next.js for SaaS: unified marketing and product stack with perfect SEO and fast loads.",
+      "category": "Industry-Specific",
+      "icon": "⚡"
+    },
+    {
+      "id": 109,
+      "parentId": 2,
+      "title": "Next.js Development for Startups",
+      "slug": "nextjs-development-for-startups",
+      "excerpt": "Next.js for Startups: rapid launch, perfect SEO, and a unified stack from day one.",
+      "category": "Industry-Specific",
+      "icon": "⚡"
+    },
+    {
+      "id": 110,
+      "parentId": 3,
+      "title": "Node.js Development for SaaS & Technology",
+      "slug": "nodejs-development-for-saas",
+      "excerpt": "Node.js for SaaS: scalable, real-time APIs and microservices for SaaS platforms.",
+      "category": "Industry-Specific",
+      "icon": "🟢"
+    },
+    {
+      "id": 111,
+      "parentId": 3,
+      "title": "Node.js Development for Fintech & Financial Services",
+      "slug": "nodejs-development-for-fintech",
+      "excerpt": "Node.js for Fintech: high-concurrency, secure, and real-time financial APIs.",
+      "category": "Industry-Specific",
+      "icon": "🟢"
+    },
+    {
+      "id": 112,
+      "parentId": 3,
+      "title": "Node.js Development for Startups",
+      "slug": "nodejs-development-for-startups",
+      "excerpt": "Node.js for Startups: fast backend development, JSON everywhere, and rapid iteration.",
+      "category": "Industry-Specific",
+      "icon": "🟢"
+    },
+    {
+      "id": 113,
+      "parentId": 4,
+      "title": "Laravel Development for Law Firms",
+      "slug": "laravel-development-for-law-firm",
+      "excerpt": "Laravel for Law Firms: secure client portals, document management, and case tracking.",
+      "category": "Industry-Specific",
+      "icon": "🎨"
+    },
+    {
+      "id": 114,
+      "parentId": 4,
+      "title": "Laravel Development for Healthcare",
+      "slug": "laravel-development-for-healthcare",
+      "excerpt": "Laravel for Healthcare: HIPAA-compliant scheduling, patient portals, and secure data.",
+      "category": "Industry-Specific",
+      "icon": "🎨"
+    },
+    {
+      "id": 115,
+      "parentId": 4,
+      "title": "Laravel Development for Education",
+      "slug": "laravel-development-for-education",
+      "excerpt": "Laravel for Education: scalable LMS, student portals, and secure content delivery.",
+      "category": "Industry-Specific",
+      "icon": "🎨"
+    },
+    {
+      "id": 116,
+      "parentId": 4,
+      "title": "Laravel Development for Manufacturing & Industrial",
+      "slug": "laravel-development-for-manufacturing",
+      "excerpt": "Laravel for Manufacturing: ERP integration, inventory management, and IoT data handling.",
+      "category": "Industry-Specific",
+      "icon": "🎨"
+    },
+    {
+      "id": 117,
+      "parentId": 5,
+      "title": "Python / Django Development for Healthcare",
+      "slug": "python-django-development-for-healthcare",
+      "excerpt": "Python/Django for Healthcare: HIPAA-compliant data analysis, secure APIs, and patient systems.",
+      "category": "Industry-Specific",
+      "icon": "🐍"
+    },
+    {
+      "id": 118,
+      "parentId": 5,
+      "title": "Python / Django Development for Fintech & Financial Services",
+      "slug": "python-django-development-for-fintech",
+      "excerpt": "Python/Django for Fintech: quantitative analysis, secure transactions, and financial APIs.",
+      "category": "Industry-Specific",
+      "icon": "🐍"
+    },
+    {
+      "id": 119,
+      "parentId": 5,
+      "title": "Python / Django Development for SaaS & Technology",
+      "slug": "python-django-development-for-saas",
+      "excerpt": "Python/Django for SaaS: rapid backend development, admin panels, and scalable APIs.",
+      "category": "Industry-Specific",
+      "icon": "🐍"
+    },
+    {
+      "id": 120,
+      "parentId": 7,
+      "title": "MERN Stack Development for Startups",
+      "slug": "mern-stack-development-for-startups",
+      "excerpt": "MERN for Startups: full-JavaScript MVP, cohesive team, and rapid iteration.",
+      "category": "Industry-Specific",
+      "icon": "⚛️"
+    },
+    {
+      "id": 121,
+      "parentId": 7,
+      "title": "MERN Stack Development for SaaS & Technology",
+      "slug": "mern-stack-development-for-saas",
+      "excerpt": "MERN for SaaS: scalable full-stack, real-time features, and unified codebase.",
+      "category": "Industry-Specific",
+      "icon": "⚛️"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Michael Chen",
+      "industry": "Technology",
+      "description": "Working with this team completely changed our infrastructure game. The support and expertise were incredible. They delivered beyond our expectations and helped us scale to millions of users."
+    },
+    {
+      "name": "Jessica Roberts",
+      "industry": "Data Science",
+      "description": "The data analytics platform they built gave our team the confidence and tools needed for true data-driven decisions. Their dashboarding capabilities went above and beyond our expectations."
+    }
+  ]
+}

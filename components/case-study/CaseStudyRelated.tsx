@@ -47,7 +47,7 @@ export function CaseStudyRelated({ studies }: CaseStudyRelatedProps) {
               title={study.title}
               description={study.description}
               techStack={study.techStack}
-              imageUrl={study.imageUrl}
+
               compact={true}
               techStackLimit={3}
               showReadMore={true}

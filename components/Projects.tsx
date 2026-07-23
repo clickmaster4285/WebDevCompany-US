@@ -1,13 +1,16 @@
+"use client";
 
-
-
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import AiVideo from "@/public/assets/ai.mp4";
 import WebDesign from "@/public/assets/web-design.mp4";
 import WebDev from "@/public/assets/web-dev.mp4";
 import Security from "@/public/assets/security.mp4";
+
+// Dark poster base64 — lightweight SVG that matches the site bg
+const POSTER_BASE64 =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Crect fill='%230a0a0a' width='100%25' height='100%25'/%3E%3C/svg%3E";
 
 const projects = [
 {
@@ -44,6 +47,30 @@ const projects = [
 },
 ];
 
+function useLazyVideo(videoRef: React.RefObject<HTMLVideoElement | null>) {
+  const loadedRef = useRef(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || loadedRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.preload = "auto";
+          video.play().catch(() => {});
+          loadedRef.current = true;
+          observer.unobserve(video);
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [videoRef]);
+}
+
 function ProjectShot({
   project,
   index,
@@ -52,10 +79,13 @@ function ProjectShot({
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
+
+  useLazyVideo(videoRef);
 
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 1, 1.05]);
   const opacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 1, 1, 0]);
@@ -76,13 +106,17 @@ function ProjectShot({
       >
         {/* ── VIDEO BACKGROUND ── */}
         <video
-          src={project.video}
-          autoPlay
+          ref={videoRef}
+          preload="metadata"
           loop
           muted
           playsInline
+          poster={POSTER_BASE64}
           className="absolute inset-0 w-full h-full object-cover"
-        />
+        >
+          <source src={project.video} type="video/mp4" />
+          <track kind="captions" srcLang="en" label="English" />
+        </video>
 
         {/* ── DARK TINT OVER VIDEO so text stays readable ── */}
         <div className="absolute inset-0 bg-black/50" />

@@ -94,11 +94,13 @@ function StatCounter({ value, suffix = "" }: { value: number; suffix?: string })
 
 // ─── Cursor spotlight helper (imperative, no re-render on mousemove) ───────
 function handleSpotlight(e: React.MouseEvent<HTMLDivElement>) {
-  const rect = e.currentTarget.getBoundingClientRect();
-  const x = ((e.clientX - rect.left) / rect.width) * 100;
-  const y = ((e.clientY - rect.top) / rect.height) * 100;
-  e.currentTarget.style.setProperty("--x", `${x}%`);
-  e.currentTarget.style.setProperty("--y", `${y}%`);
+  requestAnimationFrame(() => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    e.currentTarget.style.setProperty("--x", `${x}%`);
+    e.currentTarget.style.setProperty("--y", `${y}%`);
+  });
 }
 
 // ─── Animation Variants ─────────────────────────────────────────────────────
@@ -577,7 +579,7 @@ export default function AboutPage() {
             src="/ourimage.png"
             alt="ClickMasters team and office"
             fill
-            sizes="(min-width: 1024px) 560px, 100vw"
+            sizes="(max-width: 1024px) 100vw, 560px"
             className="object-cover"
             priority
           />

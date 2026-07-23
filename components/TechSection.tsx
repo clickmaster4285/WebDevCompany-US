@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import type * as THREE_TYPE from "three";
@@ -118,11 +120,13 @@ export function TechSection() {
       // Mouse Interaction
       const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
       const onMove = (e: MouseEvent) => {
-        const r = el.getBoundingClientRect();
-        mouse.tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-        mouse.ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        requestAnimationFrame(() => {
+          const r = el.getBoundingClientRect();
+          mouse.tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+          mouse.ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        });
       };
-      window.addEventListener("mousemove", onMove);
+      window.addEventListener("mousemove", onMove, { passive: true });
       
       const onResize = () => {
         camera.aspect = el.clientWidth / el.clientHeight;

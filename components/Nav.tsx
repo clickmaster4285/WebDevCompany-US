@@ -1,9 +1,8 @@
 "use client";
 
-import { technologies } from "@/data/technologies";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image"; // 👈 added
+import Image from "next/image";
 import {
   ChevronDown,
   ArrowRight,
@@ -11,12 +10,9 @@ import {
   X,
 } from "lucide-react";
 import { Dropdown, DropdownSection, DropdownItem } from "@/components/ui/Dropdown";
-import { serviceData } from "@/data/services";
-import { caseStudies } from "@/data/case-studies";
-import { blogs } from "@/data/blogs";
-import { faqPages } from "@/data/faq-pages";
-import { industriesData } from "@/data/industries";
-import { testimonials } from "@/data/testimonials";
+
+// ⚡ Lightweight nav data (~14.5KB) instead of importing 7 large data files (~1MB total)
+import navData from "@/data/nav-data.json";
 
 const serviceIcons: Record<string, string> = {
   "web-development-services": "🌐",
@@ -42,10 +38,10 @@ const serviceIcons: Record<string, string> = {
   "full-stack-development": "🖥️",
 };
 
-const allServices = Object.keys(serviceData).map((slug) => ({
-  label: serviceData[slug].title,
-  href: `/${slug}`,
-  icon: serviceIcons[slug],
+const allServices = navData.services.map((s) => ({
+  label: s.title,
+  href: `/${s.slug}`,
+  icon: serviceIcons[s.slug],
 }));
 
 const serviceCategories: DropdownSection[] = [
@@ -62,7 +58,7 @@ const resourceCategories: DropdownSection[] = [
     title: "Case Studies",
     href: "/case-studies",
     description: "Real client projects, outcomes and success stories.",
-    items: caseStudies.slice(0, 2).map((study) => ({
+    items: navData.caseStudies.slice(0, 2).map((study) => ({
       label: study.title,
       href: `/case-studies/${study.slug}`,
       tag: study.category,
@@ -74,7 +70,7 @@ const resourceCategories: DropdownSection[] = [
     title: "Blogs",
     href: "/blogs",
     description: "Latest insights, ideas, updates and industry articles.",
-    items: blogs.slice(0, 2).map((blog) => ({
+    items: navData.blogs.slice(0, 2).map((blog) => ({
       label: blog.title,
       href: `/blogs/${blog.slug}`,
       tag: blog.category || "Insight",
@@ -86,22 +82,22 @@ const resourceCategories: DropdownSection[] = [
     title: "FAQs",
     href: "/faqs",
     description: "Common questions about our process and services.",
-    items: faqPages.slice(0, 2).map((faq) => ({
+    items: navData.faqs.slice(0, 2).map((faq) => ({
       label:
-        faq.page.title.length > 60
-          ? `${faq.page.title.slice(0, 60)}...`
-          : faq.page.title,
+        faq.title.length > 60
+          ? `${faq.title.slice(0, 60)}...`
+          : faq.title,
       href: `/faqs/${faq.slug}`,
       tag: "FAQ",
       icon: "❓",
-      description: `${faq.aboveTheFold.directAnswer.slice(0, 80)}...`,
+      description: `${faq.directAnswer.slice(0, 80)}...`,
     })),
   },
   {
     title: "Testimonials",
     href: "/testimonials",
     description: "Client feedback and stories from successful projects.",
-    items: testimonials.slice(0, 2).map((testimonial) => ({
+    items: navData.testimonials.slice(0, 2).map((testimonial) => ({
       label: testimonial.name,
       href: `/testimonials#${testimonial.name
         .toLowerCase()
@@ -114,11 +110,11 @@ const resourceCategories: DropdownSection[] = [
 ];
 
 // ── Split Dropdown: group technologies by parent-child ──
-const parentTechnologies = technologies.filter((t) => !t.parentId);
+const parentTechnologies = navData.technologies.filter((t) => !t.parentId);
 
 // Collect children per parent technology
-const childrenByParentId = new Map<number, (typeof technologies)[number][]>();
-for (const tech of technologies) {
+const childrenByParentId = new Map<number, typeof navData.technologies>();
+for (const tech of navData.technologies) {
   if (tech.parentId) {
     const existing = childrenByParentId.get(tech.parentId) || [];
     existing.push(tech);
@@ -135,23 +131,23 @@ for (const parent of parentTechnologies) {
     technologiesCategories.push({
       title: parent.title,
       href: `/technologies/${parent.slug}`,
-      description: parent.excerpt.slice(0, 80) + (parent.excerpt.length > 80 ? "…" : ""),
+      description: (parent.excerpt || "").slice(0, 80) + ((parent.excerpt || "").length > 80 ? "…" : ""),
       items: children.map((child) => ({
         label: child.title,
         href: `/technologies/${child.slug}`,
         tag: child.category,
-        icon: parent.icon || "⚙️",
+        icon: child.icon || parent.icon || "⚙️",
         description: child.excerpt,
       })),
     });
   }
 }
 
-// Add "All Technologies" section for standalone technologies and full overview
+// Add "All Technologies" section for standalone technologies
 const standaloneTechs = parentTechnologies.filter(
   (p) => (childrenByParentId.get(p.id) || []).length === 0
 );
-// Also include standalone + a representative sample of sub-pages for discoverability
+
 const allTechItems: DropdownItem[] = standaloneTechs.map((tech) => ({
   label: tech.title,
   href: `/technologies/${tech.slug}`,
@@ -184,20 +180,12 @@ const industriesIcons: Record<string, string> = {
   "nonprofit-web-development": "🤝",
 };
 
-const industriesSlugs = [
-  "healthcare-web-development",
-  "law-firm-web-development",
-  "real-estate-web-development",
-  "fintech-web-development",
-  "saas-web-development",
-  "manufacturing-web-development",
-  "ecommerce-web-development",
-  "hospitality-web-development",
-  "education-web-development",
-  "dental-web-development",
-  "construction-web-development",
-  "nonprofit-web-development",
-];
+// Build a lookup map for industries (slug -> title)
+const industriesDataMap = Object.fromEntries(
+  navData.industries.map((i) => [i.slug, { title: i.title }])
+);
+
+const industriesSlugs = navData.industries.map((i) => i.slug);
 
 const industriesCategories: DropdownSection[] = [
   {
@@ -205,7 +193,7 @@ const industriesCategories: DropdownSection[] = [
     href: "/industries",
     description: "Industry-specific web development solutions",
     items: industriesSlugs.map((slug) => ({
-      label: industriesData[slug].title,
+      label: industriesDataMap[slug]?.title || slug,
       href: `/industries/${slug}`,
       icon: industriesIcons[slug],
     })),
@@ -261,7 +249,6 @@ export function Nav() {
         scrolled ? "py-3" : "py-4"
       }`}
     >
-      {/* 👇 width changed: 97vw on mobile, 90vw on md+ */}
       <div className="layout-container px-4 sm:px-6 md:px-10">
         <div className="flex items-center justify-between rounded-full border border-slate-200 bg-white/95 px-4 py-3 shadow-[0_14px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl">
           <Link
@@ -269,9 +256,8 @@ export function Nav() {
             className="flex items-center gap-2 text-slate-950"
             onClick={() => setMobileOpen(false)}
           >
-            {/* 👇 Logo image from /public folder */}
             <Image
-              src="/logo.webp" // ⚠️ Replace with your actual file name, e.g. /logo.svg, /logo.webp
+              src="/logo.webp"
               alt="ClickMasters Logo"
               width={256}
               height={51}

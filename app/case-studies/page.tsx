@@ -295,7 +295,7 @@ export default function CaseStudiesPage() {
                     title={study.title}
                     description={study.description}
                     techStack={study.techStack}
-                    imageUrl={study.imageUrl}
+
                   />
                 </motion.div>
               ))}

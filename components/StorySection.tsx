@@ -280,6 +280,7 @@ export function StorySection() {
                 loading="lazy"
                 width={1600}
                 height={1024}
+                sizes="(max-width: 768px) 97vw, (max-width: 1024px) 50vw, 560px"
                 className="h-full w-full object-cover"
               />
 

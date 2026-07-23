@@ -1,12 +1,7 @@
-
-
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { motion } from "framer-motion";
-import  Image from "next/image";
+import Image from "next/image";
 
 const PARTNERS = [
-  { name: "Clutch", icon: "https://cdn.simpleicons.org/clutch/4B9CD3", dark: false },
+  { name: "Clutch", icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234B9CD3' d='M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.6c-5.301 0-9.6-4.299-9.6-9.6S6.699 2.4 12 2.4s9.6 4.299 9.6 9.6-4.299 9.6-9.6 9.6zM8.4 12c0-1.988 1.612-3.6 3.6-3.6s3.6 1.612 3.6 3.6-1.612 3.6-3.6 3.6-3.6-1.612-3.6-3.6z'/%3E%3C/svg%3E", dark: false },
   { name: "Google", icon: "https://cdn.simpleicons.org/google/4285F4", dark: false },
   { name: "HubSpot", icon: "https://cdn.simpleicons.org/hubspot/FF7A59", dark: false },
   { name: "Shopify Partners", icon: "https://cdn.simpleicons.org/shopify/7AB55C", dark: false },
@@ -31,7 +26,6 @@ export function Partners() {
   return (
     <section className="relative z-10 bg-black px-4 sm:px-6">
       <div className="layout-container">
-        {/* Partners Section */}
         <div className="mt-0">
           <div
             className="relative overflow-hidden"
@@ -40,25 +34,22 @@ export function Partners() {
               WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
             }}
           >
-            <motion.div
-              className="flex gap-8 sm:gap-12 md:gap-16 items-center will-change-transform"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 40, ease: "linear", repeat: Infinity }}
+            <div
+              className="flex gap-8 sm:gap-12 md:gap-16 items-center will-change-transform marquee-track"
+              style={{ "--marquee-duration": "40s" } as React.CSSProperties}
             >
               {partnersRow.map((partner, i) => (
-                <motion.div
+                <div
                   key={`${partner.name}-${i}`}
-                  className="flex flex-col items-center gap-2 group"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
+                  className="flex flex-col items-center gap-2 group transition-transform duration-200 hover:scale-105"
                 >
                   <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl p-3 sm:p-4 transition-all duration-300 hover:bg-white/10">
                     <Image
                       src={partner.icon}
                       alt={partner.name}
-                      width={40}   // ✅ 2. Added required width
-                      height={40}  // ✅ 2. Added required height
-                      unoptimized  // ✅ 2. Required for external CDN images (like simpleicons)
+                      width={40}
+                      height={40}
+                      unoptimized
                       className={`w-full h-full object-contain transition-all duration-300 ${
                         partner.dark ? "brightness-0 invert" : ""
                       }`}
@@ -67,9 +58,9 @@ export function Partners() {
                   <span className="text-xs sm:text-sm font-medium text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {partner.name}
                   </span>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

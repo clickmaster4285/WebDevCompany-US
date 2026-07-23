@@ -10,7 +10,6 @@ export const caseStudies = [
     title: "PropTech Build-to-Rent Portfolio Management Platform — UK Institutional Landlord",
     description: "A UK institutional landlord managing 4,200 build-to-rent units across 18 developments wanted a unified portfolio management system.",
     techStack: ["React", "Node.js/Fastify", "PostgreSQL", "DocuSign", "Ofgem DCC API", "Vaillant API", "Homes England API", "AWS eu-west-2"],
-    imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
     
     challenge: "A UK institutional landlord managing 4,200 build-to-rent units across 18 developments wanted a unified portfolio management platform — replacing five separate systems (Fixflo for maintenance, Yardi for accounting, Excel for void management, paper tenancy files, and a bespoke but unmaintained application for reporting). RICS code for leasing, Renters' Rights Bill 2024 compliance (decent homes standard, rent increase restrictions), UK GDPR for tenant data, and Homes England reporting (for affordable housing units) were the requirements. Budget: £140,000.",
     
@@ -107,7 +106,6 @@ export const caseStudies = [
     title: "FinTech Wealth Management Platform — UK Discretionary Investment Manager",
     description: "A UK discretionary investment manager with £840M AUM and 1,400 client portfolios needed to replace their legacy system.",
     techStack: ["React", "Node.js/Fastify", "PostgreSQL", "Refinitiv (LSEG) Data API", "Bloomberg API", "AWS"],
-    imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop",
     
     challenge: "A UK discretionary investment manager with £840M in Assets Under Management and 1,400 client portfolios was struggling with a legacy system that couldn't handle real-time data processing, automated rebalancing, or compliance reporting. They needed a modern wealth management platform that could integrate with Refinitiv data, provide real-time portfolio analytics, and automate regulatory reporting to the FCA.",
     
@@ -173,7 +171,6 @@ export const caseStudies = [
     title: "GovTech Local Authority Housing Allocations Platform — UK District Council",
     description: "A UK District Council managing 4,800 properties (council and housing association) with 3,400 applicants on the housing register.",
     techStack: ["React", "GOV.UK Design System", "Node.js/Fastify", "PostgreSQL"],
-    imageUrl: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=600&h=400&fit=crop",
     
     challenge: "A UK District Council managing 4,800 properties and 3,400 housing register applicants was using a manual, paper-based allocation process that was slow, error-prone, and lacked transparency. They needed a digital platform that could automate housing allocations, ensure fairness, and provide real-time visibility to applicants while complying with the Local Government Act and Data Protection regulations.",
     
@@ -239,7 +236,6 @@ export const caseStudies = [
     title: "HealthTech NHS Frailty Assessment Digital Tool — Community Trust",
     description: "An NHS Community Trust providing frailty services to a population of 420,000 adults over 65 wanted to digitise frailty assessments.",
     techStack: ["React", "GOV.UK/NHS Design System", "Node.js/Fastify", "PostgreSQL", "HL7 FHIR", "NHS API"],
-    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
     
     challenge: "An NHS Community Trust serving 420,000 adults over 65 was using paper-based frailty assessments that were inconsistent, time-consuming, and difficult to track. They needed a digital tool that could standardize assessments, provide clinical decision support, and integrate with existing NHS systems while complying with NHS Digital standards and UK GDPR.",
     
@@ -305,7 +301,6 @@ export const caseStudies = [
     title: "eCommerce Fashion Marketplace Platform — UK Multi-Brand Retailer",
     description: "A UK multi-brand fashion retailer with 340 independent designer brands, 2.4 million registered customers, and complex inventory management.",
     techStack: ["Next.js App Router", "React", "Shopify Plus Storefront API", "Stripe Connect", "AWS", "Redis"],
-    imageUrl: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=400&fit=crop",
     
     challenge: "A UK multi-brand fashion retailer with 340 independent designer brands and 2.4 million customers needed a marketplace platform that could handle complex inventory management (multi-vendor, multi-warehouse), provide a seamless shopping experience, and automate payments and commissions while managing the complexity of 340 independent sellers with their own inventory, pricing, and fulfillment requirements.",
     
