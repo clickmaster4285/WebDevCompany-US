@@ -216,7 +216,7 @@ export function Footer() {
         {/* Bottom Bar with Scroll to Top Button */}
         <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-8 text-xs text-ink-mute">
           <div>
-            © {new Date().getFullYear()} ClickMasters. All rights reserved.
+            © {new Date().getFullYear()} ClickMasters Digital Marketing Agency
           </div>
 
           <div className="flex items-center gap-4">
