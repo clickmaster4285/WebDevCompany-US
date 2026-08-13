@@ -5,6 +5,11 @@ import { Partners } from "@/components/Partners";
 
 // ── Above-the-fold: SSR for LCP/CLS ────────────────────────────────────────
 // These render on the server so the browser gets real HTML immediately.
+
+const WhatWeDoIntro = dynamic(
+  () => import("@/components/WhatWeDo").then((m) => ({ default: m.WhatWeDoIntro })),
+  { ssr: true }
+);
 const StorySection = dynamic(
   () => import("@/components/StorySection").then((m) => ({ default: m.StorySection })),
   { ssr: true }
@@ -13,11 +18,20 @@ const ServicesSection = dynamic(
   () => import("@/components/ServicesSection").then((m) => ({ default: m.ServicesSection })),
   { ssr: true }
 );
+const WhyChoose = dynamic(
+  () => import("@/components/WhyChoose").then((m) => ({ default: m.WhyChooseSection })),
+  { ssr: true }
+);
+
 const TechSection = dynamic(
   () => import("@/components/TechSection").then((m) => ({ default: m.TechSection })),
   { ssr: true }
 );
 
+const Faq = dynamic(
+  () => import("@/components/Faq").then((m) => ({ default: m.FAQSection })),
+  { ssr: true }
+);
 // ── Below-the-fold: SSR + code-split JS ────────────────────────────────────
 // SSR: true ensures the HTML is in the initial payload (SEO + fast paint).
 // Dynamic import ensures the JS is a separate chunk loaded on demand.
@@ -81,23 +95,27 @@ export default function HomePage() {
 
       {/* Hero: client component (GSAP animations, video lazy-load) */}
       <HeroSection />
+    
 
       {/* Partners: direct import — above-the-fold, marquee starts instantly */}
       <Partners />
-
+      <WhatWeDoIntro />
       {/* Above-the-fold: SSR + lazy JS */}
       <StorySection />
       <ServicesSection />
+      <WhyChoose />
       <TechSection />
-
+     
       {/* Below-the-fold: all SSR + lazy JS */}
       <WorkSection />
       <ProcessSection />
       <Process />
+     
       <Projects />
       <ResultsSection />
       <TestimonialsSection />
       <AwardsSection />
+      <Faq/>
       <CtaSection />
       <Footer />
     </main>

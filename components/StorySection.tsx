@@ -85,10 +85,30 @@ const stats = [
 ];
 
 const principles = [
-  { icon: Palette, title: "Philosophy", desc: "Design and engineering as one craft." },
-  { icon: Code2, title: "Detail", desc: "Pixel-perfect, motion-aware, accessible." },
-  { icon: Target, title: "Outcome", desc: "Products that drive measurable growth." },
-  { icon: ArrowRight, title: "Partnership", desc: "Long-term collaboration, not handoffs." },
+  { 
+    icon: Palette, 
+    title: "Philosophy", 
+    desc: "Design and engineering as one craft.",
+    fullDesc: "We believe the best digital products emerge when design and engineering work as one unified discipline, not separate handoffs."
+  },
+  { 
+    icon: Code2, 
+    title: "Detail", 
+    desc: "Pixel-perfect, motion-aware, accessible.",
+    fullDesc: "Every interaction, animation, and pixel is crafted with obsessive attention to create experiences that feel alive and intuitive."
+  },
+  { 
+    icon: Target, 
+    title: "Outcome", 
+    desc: "Products that drive measurable growth.",
+    fullDesc: "We build with purpose — every decision is measured against real business outcomes and user needs."
+  },
+  { 
+    icon: ArrowRight, 
+    title: "Partnership", 
+    desc: "Long-term collaboration, not handoffs.",
+    fullDesc: "We work alongside your team as an extension of your business, providing ongoing support and continuous improvement."
+  },
 ];
 
 /* ─── Main Component ─────────────────────── */
@@ -217,7 +237,7 @@ export function StorySection() {
               We build digital products that compound business growth.
             </motion.p>
 
-            {/* Principles grid */}
+            {/* Principles grid with full descriptions */}
             <motion.div
               variants={containerVariants}
               className="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-4"
@@ -233,6 +253,10 @@ export function StorySection() {
                     {p.title}
                   </p>
                   <p className="mt-1 text-xs sm:text-sm text-ink-soft">{p.desc}</p>
+                  {/* Full description for SEO and readability */}
+                  <p className="mt-2 text-[10px] sm:text-xs leading-relaxed text-ink-mute border-t border-border/30 pt-2">
+                    {p.fullDesc}
+                  </p>
                 </motion.div>
               ))}
             </motion.div>

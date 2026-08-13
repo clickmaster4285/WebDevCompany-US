@@ -435,482 +435,490 @@ export default function ContactPage() {
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
-        {/* Background glow */}
-        <div className="absolute inset-0 bg-linear-to-br from-violet/5 via-transparent to-violet/5" />
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-linear-to-tl from-violet/10 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-linear-to-br from-violet/10 to-transparent rounded-full blur-3xl" />
+     
+    <section className="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
+      {/* Background glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-violet/5 via-transparent to-violet/5" />
+      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-violet/10 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-violet/10 to-transparent rounded-full blur-3xl" />
 
-        {/* Decorative shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ElegantShape
-            delay={0.3}
-            width={600}
-            height={140}
-            rotate={12}
-            gradient="from-violet/10"
-            className="left-[-10%] top-[15%] md:left-[-5%] md:top-[20%]"
-          />
-          <ElegantShape
-            delay={0.5}
-            width={500}
-            height={120}
-            rotate={-15}
-            gradient="from-violet/10"
-            className="right-[-5%] top-[70%] md:right-[0%] md:top-[75%]"
-          />
-          <ElegantShape
-            delay={0.4}
-            width={300}
-            height={80}
-            rotate={-8}
-            gradient="from-violet/10"
-            className="left-[5%] bottom-[5%] md:left-[10%] md:bottom-[10%]"
-          />
-        </div>
+      {/* Decorative shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <ElegantShape
+          delay={0.3}
+          width={600}
+          height={140}
+          rotate={12}
+          gradient="from-violet/10"
+          className="left-[-10%] top-[15%] md:left-[-5%] md:top-[20%]"
+        />
+        <ElegantShape
+          delay={0.5}
+          width={500}
+          height={120}
+          rotate={-15}
+          gradient="from-violet/10"
+          className="right-[-5%] top-[70%] md:right-[0%] md:top-[75%]"
+        />
+        <ElegantShape
+          delay={0.4}
+          width={300}
+          height={80}
+          rotate={-8}
+          gradient="from-violet/10"
+          className="left-[5%] bottom-[5%] md:left-[10%] md:bottom-[10%]"
+        />
+      </div>
 
-        <div className="relative layout-container px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="mb-6 text-left">
-              <Breadcrumb customLabels={{ contact: "Contact Us" }} />
-            </div>
-            <motion.div
-              custom={0}
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-              className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm font-medium mb-6"
-            >
-              <Circle className="h-2 w-2 fill-violet" />
-              <span className="text-ink-mute tracking-wide">Contact Us</span>
-            </motion.div>
-
-            <motion.div
-              custom={1}
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-                <span className="bg-clip-text text-transparent bg-linear-to-b from-ink to-ink/80">
-                  Let&apos;s Build Something
-                </span>
-                <span className="text-violet"> Great Together</span>
-              </h1>
-            </motion.div>
-
-            <motion.div
-              custom={2}
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <p className="text-lg md:text-xl text-ink-soft leading-relaxed max-w-3xl mx-auto font-light">
-                Ready to transform your business? Share your details —
-                we&apos;ll respond within one business day with a personalized
-                roadmap.
-              </p>
-            </motion.div>
+      <div className="relative layout-container px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="mb-6 text-left">
+            <Breadcrumb customLabels={{ contact: "Contact Us" }} />
           </div>
 
-          {/* Stats */}
+          {/* Badge */}
           <motion.div
-            variants={staggerContainer}
+            custom={0}
+            variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto"
+            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm font-medium mb-6"
           >
-            {heroStats.map((stat) => (
-              <motion.div
-                key={stat.label}
-                variants={cardVariants as any}
-                className="bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
-                  {stat.display ? (
-                    stat.display
-                  ) : (
-                    <StatCounter
-                      value={stat.value ?? 0}
-                      suffix={stat.suffix}
-                      decimals={stat.decimals}
-                    />
-                  )}
-                </div>
-                <div className="text-sm text-ink-mute">{stat.label}</div>
-              </motion.div>
-            ))}
+            <Circle className="h-2 w-2 fill-violet" />
+            <span className="text-ink-mute tracking-wide">Contact Us</span>
+          </motion.div>
+
+          {/* H1 Heading */}
+          <motion.div
+            custom={1}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-b from-ink to-ink/80">
+                Let&apos;s Build Something
+              </span>
+              <span className="text-violet"> Great Together</span>
+            </h1>
+          </motion.div>
+
+          {/* Subhead */}
+          <motion.div
+            custom={2}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <p className="text-lg md:text-xl text-ink-soft leading-relaxed max-w-3xl mx-auto font-light">
+              Ready to transform your business? Share your details — we&apos;ll respond within one business day with a personalized roadmap.
+            </p>
           </motion.div>
         </div>
-      </section>
 
+        {/* Stats with working counter */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto"
+        >
+          {heroStats.map((stat) => (
+            <motion.div
+              key={stat.label}
+              variants={cardVariants}
+              className="bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 hover:-translate-y-1 transition-all duration-300 group"
+            >
+              <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
+                {stat.display ? (
+                  stat.display
+                ) : (
+                  <StatCounter
+                    value={stat.value ?? 0}
+                    suffix={stat.suffix || ""}
+                    decimals={stat.decimals || 0}
+                  />
+                )}
+              </div>
+              <div className="text-sm text-ink-mute group-hover:text-ink transition-colors">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  
       {/* ═══════════════════════════════════════════════════════════════════
           CONTACT FORM + INFO SECTION
       ════════════════════════════════════════════════════════════════════ */}
-      <section
-        id="contact-form"
-        className="relative py-8 md:py-20 pb-20 border-t border-border"
-      >
-        <div className="layout-container px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
-            {/* ── Contact Form ── */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{
-                duration: 0.8,
-                ease: [0.25, 0.4, 0.25, 1] as const,
-              }}
-              className="lg:col-span-3"
-            >
-              <div className="relative bg-surface-1/40 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8 lg:p-10 overflow-hidden focus-within:border-violet/40 transition-colors duration-300">
-                <div className="pointer-events-none absolute -top-24 -right-24 w-64 h-64 rounded-full bg-violet/10 blur-3xl" />
+   
+    <section
+      id="contact-form"
+      className="relative py-8 md:py-20 pb-20 border-t border-border"
+    >
+      <div className="layout-container px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
+          {/* ── Contact Form ── */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{
+              duration: 0.8,
+              ease: [0.25, 0.4, 0.25, 1] as const,
+            }}
+            className="lg:col-span-3"
+          >
+            <div className="relative bg-surface-1/40 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8 lg:p-10 overflow-hidden focus-within:border-violet/40 transition-colors duration-300">
+              <div className="pointer-events-none absolute -top-24 -right-24 w-64 h-64 rounded-full bg-violet/10 blur-3xl" />
 
-                <div className="relative mb-8">
-                  <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Get in Touch</span>
-                  </div>
-                  <h2 className="text-2xl font-bold text-ink mb-2">
-                    Send Us a Message
-                  </h2>
-                  <p className="text-ink-mute text-sm">
-                    Fill out the form below and we&apos;ll get back to you
-                    within 24 hours.
-                  </p>
+              <div className="relative mb-8">
+                <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Get in Touch</span>
                 </div>
+                <h2 className="text-2xl font-bold text-ink mb-2">
+                  Send Us a Message
+                </h2>
+                <p className="text-ink-mute text-sm">
+                  Fill out the form below and we&apos;ll get back to you
+                  within 24 hours.
+                </p>
+              </div>
 
-                <form onSubmit={handleSubmit} className="relative space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-ink-soft mb-1.5"
-                      >
-                        Full Name <span className="text-violet">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formState.name}
-                        onChange={handleChange}
-                        required
-                        placeholder="John Doe"
-                        className={inputClasses}
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-ink-soft mb-1.5"
-                      >
-                        Work Email <span className="text-violet">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formState.email}
-                        onChange={handleChange}
-                        required
-                        placeholder="john@company.com"
-                        className={inputClasses}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-medium text-ink-soft mb-1.5"
-                      >
-                        Phone (optional)
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formState.phone}
-                        onChange={handleChange}
-                        placeholder="+1 (555) 000-0000"
-                        className={inputClasses}
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="budget"
-                        className="block text-sm font-medium text-ink-soft mb-1.5"
-                      >
-                        Estimated Budget (optional)
-                      </label>
-                      <select
-                        id="budget"
-                        name="budget"
-                        value={formState.budget}
-                        onChange={handleChange}
-                        className={`${inputClasses} appearance-none cursor-pointer`}
-                      >
-                        <option value="">Select budget</option>
-                        {budgetOptions.map((option) => (
-                          <option key={option} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
+              <form onSubmit={handleSubmit} className="relative space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label
-                      htmlFor="message"
+                      htmlFor="name"
                       className="block text-sm font-medium text-ink-soft mb-1.5"
                     >
-                      What would you like to build?{" "}
-                      <span className="text-violet">*</span>
+                      Full Name <span className="text-violet">*</span>
                     </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formState.message}
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formState.name}
                       onChange={handleChange}
                       required
-                      rows={5}
-                      placeholder="Tell us about your project, goals, and timeline..."
-                      className={`${inputClasses} resize-none min-h-[140px]`}
+                      placeholder="John Doe"
+                      className={inputClasses}
                     />
                   </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="group relative w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-violet hover:bg-violet/90 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-violet/25 hover:shadow-violet/40 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 overflow-hidden"
-                  >
-                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-linear-to-r from-transparent via-white/25 to-transparent" />
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="relative w-5 h-5 animate-spin" />
-                        <span className="relative">Sending...</span>
-                      </>
-                    ) : submitted ? (
-                      <>
-                        <CheckCircle2 className="relative w-5 h-5 text-green-400" />
-                        <span className="relative">Message Sent!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send className="relative w-5 h-5" />
-                        <span className="relative">Send Message</span>
-                      </>
-                    )}
-                  </button>
-
-                  {error && (
-                    <p className="text-sm text-red-500 text-center">{error}</p>
-                  )}
-
-                  <p className="text-xs text-ink-mute/60 text-center">
-                    By submitting, you agree to our{" "}
-                    <Link
-                      href="/privacy"
-                      className="text-violet hover:underline"
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-ink-soft mb-1.5"
                     >
-                      privacy policy
-                    </Link>
-                    . We&apos;ll never share your information.
-                  </p>
-                </form>
-              </div>
-            </motion.div>
-
-            {/* ── Contact Info Sidebar ── */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{
-                duration: 0.8,
-                ease: [0.25, 0.4, 0.25, 1] as const,
-              }}
-              className="lg:col-span-2 space-y-6"
-            >
-              {/* Consolidated contact details card */}
-              <div className="p-6 md:p-8 rounded-2xl bg-surface-1/40 border border-border">
-                <h3 className="text-lg font-semibold text-ink mb-5">
-                  Contact Information
-                </h3>
-                <div className="space-y-5">
-                  {/* Pakistan */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 text-violet" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs text-ink-mute/70 mb-0.5">
-                        🇵🇰 Pakistan
-                      </p>
-                      <Link
-                        href="tel:+923325394285"
-                        className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
-                      >
-                        +92 332 5394285
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* United Kingdom */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 text-violet" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs text-ink-mute/70 mb-0.5">
-                        United Kingdom
-                      </p>
-                      <Link
-                        href="tel:+447988576086"
-                        className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
-                      >
-                        +44 7988 576086
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* United States */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 text-violet" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs text-ink-mute/70 mb-0.5">
-                        United States
-                      </p>
-                      <Link
-                        href="tel:+13252024074"
-                        className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
-                      >
-                        +1 325 202 4074
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* Email */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
-                      <Mail className="w-5 h-5 text-violet" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs text-ink-mute/70 mb-0.5">Email</p>
-                      <Link
-                        href="mailto:sales@clickmasterswebdevelopmentcompany.com"
-                        className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
-                      >
-                        sales@clickmasterswebdevelopmentcompany.com
-                      </Link>
-                    </div>
+                      Work Email <span className="text-violet">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formState.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="john@company.com"
+                      className={inputClasses}
+                    />
                   </div>
                 </div>
-              </div>
 
-              {/* Need Immediate Help */}
-              <div className="p-6 rounded-2xl bg-violet/5 border border-violet/10">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
-                    <PhoneCall className="w-5 h-5 text-violet" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-ink-soft mb-1.5"
+                    >
+                      Phone (optional)
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formState.phone}
+                      onChange={handleChange}
+                      placeholder="+1 (555) 000-0000"
+                      className={inputClasses}
+                    />
                   </div>
-                  <p className="text-sm font-semibold text-ink">
-                    Need Immediate Help?
-                  </p>
+                  <div>
+                    <label
+                      htmlFor="budget"
+                      className="block text-sm font-medium text-ink-soft mb-1.5"
+                    >
+                      Estimated Budget (optional)
+                    </label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      value={formState.budget}
+                      onChange={handleChange}
+                      className={`${inputClasses} appearance-none cursor-pointer`}
+                    >
+                      <option value="">Select budget</option>
+                      {budgetOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
-                <p className="text-xs text-ink-mute/80 mb-4 leading-relaxed">
-                  For urgent inquiries, call us directly. We're here to help you
-                  succeed.
-                </p>
-                <Link
-                  href="tel:+447988576086"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-violet hover:text-violet/80 transition-colors"
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-ink-soft mb-1.5"
+                  >
+                    What would you like to build?{" "}
+                    <span className="text-violet">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formState.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    placeholder="Tell us about your project, goals, and timeline..."
+                    className={`${inputClasses} resize-none min-h-[140px]`}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group relative w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-violet hover:bg-violet/90 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-violet/25 hover:shadow-violet/40 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 overflow-hidden"
                 >
-                  Call +44 7988 576086
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="relative w-5 h-5 animate-spin" />
+                      <span className="relative">Sending...</span>
+                    </>
+                  ) : submitted ? (
+                    <>
+                      <CheckCircle2 className="relative w-5 h-5 text-green-400" />
+                      <span className="relative">Message Sent!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="relative w-5 h-5" />
+                      <span className="relative">Send Message</span>
+                    </>
+                  )}
+                </button>
 
-              {/* Copyright */}
-              <div className="text-center pt-2 pb-1">
-                <p className="text-xs text-ink-mute/50">
-                  © 2026 ClickMasters Digital Marketing Agency
+                {error && (
+                  <p className="text-sm text-red-500 text-center">{error}</p>
+                )}
+
+                <p className="text-xs text-ink-mute/60 text-center">
+                  By submitting, you agree to our{" "}
+                  <Link
+                    href="/privacy"
+                    className="text-violet hover:underline"
+                  >
+                    privacy policy
+                  </Link>
+                  . We&apos;ll never share your information.
+                </p>
+              </form>
+            </div>
+          </motion.div>
+
+          {/* ── Contact Info Sidebar ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{
+              duration: 0.8,
+              ease: [0.25, 0.4, 0.25, 1] as const,
+            }}
+            className="lg:col-span-2 space-y-6"
+          >
+            {/* Consolidated contact details card */}
+            <div className="p-6 md:p-8 rounded-2xl bg-surface-1/40 border border-border">
+              <h3 className="text-lg font-semibold text-ink mb-5">
+                Contact Information
+              </h3>
+              <div className="space-y-5">
+                {/* Pakistan */}
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5 text-violet" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs text-ink-mute/70 mb-0.5">
+                      🇵🇰 Pakistan
+                    </p>
+                    <Link
+                      href="tel:+923325394285"
+                      className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
+                    >
+                      +92 332 5394285
+                    </Link>
+                  </div>
+                </div>
+
+                {/* United Kingdom */}
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5 text-violet" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs text-ink-mute/70 mb-0.5">
+                      🇬🇧 United Kingdom
+                    </p>
+                    <Link
+                      href="tel:+447988576086"
+                      className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
+                    >
+                      +44 7988 576086
+                    </Link>
+                  </div>
+                </div>
+
+                {/* United States */}
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5 text-violet" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs text-ink-mute/70 mb-0.5">
+                      🇺🇸 United States
+                    </p>
+                    <Link
+                      href="tel:+13252024074"
+                      className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
+                    >
+                      +1 325 202 4074
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5 text-violet" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs text-ink-mute/70 mb-0.5">Email</p>
+                    <Link
+                      href="mailto:sales@clickmasterswebdevelopmentcompany.com"
+                      className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
+                    >
+                      sales@clickmasterswebdevelopmentcompany.com
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Need Immediate Help - Calls UK number */}
+            <div className="p-6 rounded-2xl bg-violet/5 border border-violet/10">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                  <PhoneCall className="w-5 h-5 text-violet" />
+                </div>
+                <p className="text-sm font-semibold text-ink">
+                  Need Immediate Help?
                 </p>
               </div>
-            </motion.div>
-          </div>
+              <p className="text-xs text-ink-mute/80 mb-4 leading-relaxed">
+                For urgent inquiries, call us directly. We're here to help you
+                succeed.
+              </p>
+              <Link
+                href="tel:+447988576086"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-violet hover:text-violet/80 transition-colors"
+              >
+                Call +44 7988 576086
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-center pt-2 pb-1">
+              <p className="text-xs text-ink-mute/50">
+                © 2026 ClickMasters Digital Marketing Agency
+              </p>
+            </div>
+          </motion.div>
         </div>
-      </section>
+      </div>
+    </section>
+  
 
       {/* ═══════════════════════════════════════════════════════════════════
           WHY CONTACT US SECTION
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-16 md:py-20 lg:py-24 bg-surface-1/50 border-t border-border">
-        <div className="layout-container px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-14"
-          >
-            <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Why Contact Us</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">
-              We&apos;re Here to Help You Succeed
-            </h2>
-            <p className="text-ink-soft text-lg">
-              Every interaction with ClickMasters is designed to give you
-              confidence in your project.
-            </p>
-          </motion.div>
+  
+    <section className="relative py-16 md:py-20 lg:py-24 bg-surface-1/50 border-t border-border">
+      <div className="layout-container px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-14"
+        >
+          <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Why Contact Us</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">
+            We're Here to Help You Succeed
+          </h2>
+          <p className="text-ink-soft text-lg">
+            Every interaction with ClickMasters is designed to give you
+            confidence in your project.
+          </p>
+        </motion.div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {whyContactUs.map((item) => (
-              <motion.div
-                key={item.title}
-                variants={cardVariants as any}
-                onMouseMove={handleSpotlight}
-                className="group relative p-6 rounded-2xl bg-surface-1 border border-border hover:border-violet/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet/5 overflow-hidden"
-              >
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background:
-                      "radial-gradient(360px circle at var(--x, 50%) var(--y, 50%), rgba(139,92,246,0.10), transparent 70%)",
-                  }}
-                />
-                <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-violet/10 flex items-center justify-center mb-4 group-hover:bg-violet/20 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
-                    <item.icon className="w-6 h-6 text-violet" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-ink mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-ink-soft leading-relaxed">
-                    {item.description}
-                  </p>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {whyContactUs.map((item) => (
+            <motion.div
+              key={item.title}
+              variants={cardVariants}
+              onMouseMove={handleSpotlight}
+              className="group relative p-6 rounded-2xl bg-surface-1 border border-border hover:border-violet/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet/5 overflow-hidden"
+            >
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background:
+                    "radial-gradient(360px circle at var(--x, 50%) var(--y, 50%), rgba(139,92,246,0.10), transparent 70%)",
+                }}
+              />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-violet/10 flex items-center justify-center mb-4 group-hover:bg-violet/20 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+                  <item.icon className="w-6 h-6 text-violet" />
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
+                <h3 className="text-lg font-semibold text-ink mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-ink-soft leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  
       {/* ═══════════════════════════════════════════════════════════════════
           MEET OUR TEAM SECTION
       ════════════════════════════════════════════════════════════════════ */}

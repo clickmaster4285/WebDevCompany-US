@@ -45,7 +45,7 @@ export function HeroSection() {
       const h = headline.current;
 
       if (h) {
-        const text = "We build digital experiences that people remember.";
+        const text = "ClickMasters, No.1 Web Development Services Company in USA";
         h.innerHTML = "";
         const words = text.split(' ');
         const allChars: HTMLElement[] = [];
@@ -111,7 +111,7 @@ export function HeroSection() {
       className="relative mx-auto flex flex-col items-center justify-center overflow-x-hidden max-w-full min-h-[100dvh] w-full pt-20 pb-16 px-4 sm:px-6 sm:pt-24 sm:pb-20 md:px-10">
       {/* Background Layer */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-               <video
+        <video
           ref={videoRef}
           preload="metadata"
           loop
@@ -136,52 +136,78 @@ export function HeroSection() {
             ref={headline}
             className="overflow-hidden text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95]"
           >
-            We build digital experiences that people{" "}
-            <span className="text-primary relative inline-block italic">
-              Remember.
-              <span className="absolute left-0 bottom-0 h-[3px] w-full bg-primary rounded-full" />
-            </span>
+            <span className="text-white">ClickMasters</span>
+            <span className="text-white/40">,</span>
+            <span className="text-primary"> No.1</span>
+            <span className="text-white"> Web Development</span>
+            <br className="hidden sm:block" />
+            <span className="text-white">Services</span>
+            <span className="text-white/40"> </span>
+            <span className="text-white">Company in</span>
+            <span className="text-primary"> USA</span>
           </h1>
 
-          <p className="hero-fade mt-8 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
-            A small studio engineering large, cinematic products for ambitious
-            brands. Strategy, design and code under one roof — crafted with
-            obsessive attention to motion, performance and detail.
+          <h2 className="hero-fade mt-6 text-white/90 text-xl sm:text-2xl md:text-3xl leading-tight font-medium">
+            We build websites, web apps, and online stores that feel effortless to use and are built to last. Our team handles everything from <span className="text-primary">custom web development</span> to <span className="text-violet-soft">UI/UX design</span>, <span className="text-primary/80">eCommerce</span>, <span className="text-violet-soft/80">SaaS</span>, and <span className="text-primary">AI powered tools</span>, all under one roof.
+          </h2>
+
+          <p className="hero-fade mt-6 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
+            We are a small studio that builds big things for ambitious brands. As a <span className="text-primary/80">web development company in the USA</span>, we bring strategy, design, and code together in one place, with real care put into how everything looks, feels, and performs.
           </p>
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
-            <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-violet px-6 py-4 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 min-h-[48px] sm:px-7">
+            <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-violet px-6 py-4 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 min-h-[48px] sm:px-7">
               Start a project
-              <span>→</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
 
-            <Link href="#work" className="inline-flex items-center gap-3 rounded-full border border-white/15 px-6 py-4 text-sm font-medium text-ink transition-colors hover:bg-white/5 min-h-[48px] sm:px-7">
+            <Link href="#work" className="inline-flex items-center gap-3 rounded-full border border-white/15 px-6 py-4 text-sm font-medium text-white/80 transition-all hover:bg-white/5 hover:text-white hover:border-white/30 min-h-[48px] sm:px-7">
               See selected work
             </Link>
           </div>
 
           <div className="hero-fade mt-16 grid max-w-md grid-cols-3 gap-6">
-            {["120+ Projects", "18 Awards", "99 Lighthouse"].map((item) => {
-              const [val, label] = item.split(' ');
-              return (
-                <div key={label}>
-                  <div className="text-2xl text-white md:text-3xl">{val}</div>
-                  <div className="mt-2 text-xs uppercase tracking-widest text-ink-mute">{label}</div>
+            {[
+              { val: "120+", label: "Projects", highlight: true },
+              { val: "18", label: "Awards", highlight: false },
+              { val: "99", label: "Lighthouse", highlight: true }
+            ].map((item) => (
+              <div key={item.label}>
+                <div className={`text-2xl font-semibold md:text-3xl ${item.highlight ? 'text-primary' : 'text-white'}`}>
+                  {item.val}
                 </div>
-              );
-            })}
+                <div className="mt-2 text-xs uppercase tracking-widest text-white/50">{item.label}</div>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Right Column */}
         <div className="cta-form">
-          <div className="rounded-3xl border bg-white/10 border-white/10 p-6 md:p-8 backdrop-blur-md">
-            <h2 className="text-lg sm:text-xl font-medium text-white">Ready to create something unforgettable?</h2>
+          <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8">
+            <h3 className="text-lg sm:text-xl font-medium text-white">Ready to create something <span className="text-primary">unforgettable</span>?</h3>
             <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <input type="text" className="w-full rounded-xl bg-white/10 p-4 text-white min-h-[48px]" placeholder="Name" />
-              <input type="email" className="w-full rounded-xl bg-white/10 p-4 text-white min-h-[48px]" placeholder="Email" />
-              <textarea className="w-full rounded-xl bg-white/10 p-4 text-white min-h-[100px]" rows={3} placeholder="Project details" />
-              <button type="submit" className="w-full rounded-xl bg-primary py-4 text-white min-h-[48px]">Send Message</button>
+              <input 
+                type="text" 
+                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]" 
+                placeholder="Name" 
+              />
+              <input 
+                type="email" 
+                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]" 
+                placeholder="Email" 
+              />
+              <textarea 
+                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[100px]" 
+                rows={3} 
+                placeholder="Project details" 
+              />
+              <button 
+                type="submit" 
+                className="w-full rounded-xl bg-gradient-to-r from-primary to-violet hover:shadow-lg hover:shadow-primary/25 py-4 text-white font-medium transition-all hover:-translate-y-0.5 min-h-[48px]"
+              >
+                Send Message
+              </button>
             </form>
           </div>
         </div>

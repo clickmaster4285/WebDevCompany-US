@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { title } from "process";
 
 // ─── Elegant Background Shapes ──────────────────────────────────────────────
 function ElegantShape({
@@ -415,310 +416,302 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
-        {/* Background glow */}
-        <div className="absolute inset-0 bg-linear-to-br from-violet/5 via-transparent to-violet/5" />
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-linear-to-tl from-violet/10 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-linear-to-br from-violet/10 to-transparent rounded-full blur-3xl" />
+  <section className="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
+      {/* Background glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-violet/5 via-transparent to-violet/5" />
+      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-violet/10 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-violet/10 to-transparent rounded-full blur-3xl" />
 
-        {/* Decorative shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ElegantShape
-            delay={0.3}
-            width={600}
-            height={140}
-            rotate={12}
-            gradient="from-violet/10"
-            className="left-[-10%] top-[15%] md:left-[-5%] md:top-[20%]"
-          />
-          <ElegantShape
-            delay={0.5}
-            width={500}
-            height={120}
-            rotate={-15}
-            gradient="from-violet/10"
-            className="right-[-5%] top-[70%] md:right-[0%] md:top-[75%]"
-          />
-          <ElegantShape
-            delay={0.4}
-            width={300}
-            height={80}
-            rotate={-8}
-            gradient="from-violet/10"
-            className="left-[5%] bottom-[5%] md:left-[10%] md:bottom-[10%]"
-          />
-        </div>
+      {/* Decorative shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <ElegantShape
+          delay={0.3}
+          width={600}
+          height={140}
+          rotate={12}
+          gradient="from-violet/10"
+          className="left-[-10%] top-[15%] md:left-[-5%] md:top-[20%]"
+        />
+        <ElegantShape
+          delay={0.5}
+          width={500}
+          height={120}
+          rotate={-15}
+          gradient="from-violet/10"
+          className="right-[-5%] top-[70%] md:right-[0%] md:top-[75%]"
+        />
+        <ElegantShape
+          delay={0.4}
+          width={300}
+          height={80}
+          rotate={-8}
+          gradient="from-violet/10"
+          className="left-[5%] bottom-[5%] md:left-[10%] md:bottom-[10%]"
+        />
+      </div>
 
-        <div className="relative layout-container px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="mb-6 text-left">
-              <Breadcrumb customLabels={{ about: "About Us" }} />
-            </div>
-            <motion.div
-              custom={0}
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-              className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm font-medium mb-6"
-            >
-              <Circle className="h-2 w-2 fill-violet" />
-              <span className="text-ink-mute tracking-wide">About Us</span>
-            </motion.div>
-
-            <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-                <span className="bg-clip-text text-transparent bg-linear-to-b from-ink to-ink/80">
-                  We Build Digital Products That Matter
-                </span>
-              </h1>
-            </motion.div>
-
-            <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
-              <p className="text-lg md:text-xl text-ink-soft leading-relaxed max-w-3xl mx-auto font-light">
-                ClickMasters is a premium web development studio founded on the
-                belief that great software is born from the intersection of
-                technical mastery, design excellence, and genuine human
-                collaboration.
-              </p>
-            </motion.div>
+      <div className="relative layout-container px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="mb-6 text-left">
+            <Breadcrumb customLabels={{ about: "About Us" }} />
           </div>
 
-          {/* Stats */}
+          {/* Badge */}
           <motion.div
-            variants={staggerContainer}
+            custom={0}
+            variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto"
+            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm font-medium mb-6"
           >
-            {stats.map((stat) => (
-              <motion.div
-                key={stat.label}
-                variants={cardVariants as any}
-                className="bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
-                  <StatCounter value={stat.value} suffix={stat.suffix} />
-                </div>
-                <div className="text-sm text-ink-mute">{stat.label}</div>
-              </motion.div>
-            ))}
+            <Circle className="h-2 w-2 fill-violet" />
+            <span className="text-ink-mute tracking-wide">About Us</span>
+          </motion.div>
+
+          {/* H1 Heading */}
+          <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-b from-ink to-ink/80">
+                We Build Digital Products That Matter
+              </span>
+            </h1>
+          </motion.div>
+
+          {/* Intro Paragraph */}
+          <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
+            <p className="text-lg md:text-xl text-ink-soft leading-relaxed max-w-3xl mx-auto font-light">
+              ClickMasters is a web development company built on one idea. Great software comes from real craft, not shortcuts. We bring together technical skill, thoughtful design, and honest collaboration to build websites and web apps that actually work well for the people using them.
+            </p>
           </motion.div>
         </div>
-      </section>
+
+        {/* Stats with working counter */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              variants={cardVariants}
+              className="bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 hover:-translate-y-1 transition-all duration-300 group"
+            >
+              <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
+                <StatCounter value={stat.value} suffix={stat.suffix} />
+              </div>
+              <div className="text-sm text-ink-mute group-hover:text-ink transition-colors">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+
 
       {/* ═══════════════════════════════════════════════════════════════════
           OUR STORY SECTION
       ════════════════════════════════════════════════════════════════════ */}
       {/* // Replace the Our Story section with this: */}
-<section className="relative py-16 md:py-20 lg:py-24 border-t border-border">
-  <div className="layout-container px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      {/* Left Side - Content */}
-      <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
-      >
-        <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Our Story</span>
+
+    <section className="relative py-16 md:py-20 lg:py-24 border-t border-border">
+      <div className="layout-container px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Side - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
+          >
+            <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Our Story</span>
+            </div>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-6">
+              From a Small Team to a{" "}
+              <span className="text-violet">Full Digital Studio</span>
+            </h2>
+
+            <div className="space-y-4 text-ink-soft leading-relaxed">
+              <p>
+                ClickMasters started in 2018 with a simple idea. Web development should be treated as a craft, not something you buy off a shelf. Our founder, Alex Chen, kept seeing businesses settle for websites that looked fine but never really captured what made them different.
+              </p>
+              <p>
+                What began as a two person team has grown into a full service studio with more than 50 people. Over the years we have worked with startups just getting off the ground and with large, established companies, building everything from full SaaS platforms to bold, memorable brand websites.
+              </p>
+              <p>
+                Today, we are known for caring about quality, working closely with our clients, and turning big ideas into something real. Every project is a chance to build something a little better than what came before it.
+              </p>
+            </div>
+
+            <div className="mt-8 flex items-center gap-4">
+              <div className="flex -space-x-2">
+                {teamMembers.slice(0, 4).map((member) => (
+                  <MiniAvatar key={member.name} member={member} />
+                ))}
+              </div>
+              <div className="text-sm text-ink-mute">
+                <span className="font-semibold text-ink">50+</span> team
+                members worldwide
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Side - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
+            className="relative"
+          >
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-1 border border-white/10 shadow-2xl shadow-black/40">
+              <Image
+                src="/ourimage.png"
+                alt="ClickMasters team and office"
+                fill
+                sizes="(max-width: 1024px) 100vw, 560px"
+                className="object-cover"
+                priority
+              />
+              
+              {/* Optional: Overlay gradient for better aesthetics */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            </div>
+
+            {/* Optional: Floating badge */}
+            
+          </motion.div>
         </div>
-
-        <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-6">
-          From a Vision to a
-          <span className="text-violet"> Digital Powerhouse</span>
-        </h2>
-
-        <div className="space-y-4 text-ink-soft leading-relaxed">
-          <p>
-            ClickMasters began in 2018 with a simple idea: that web
-            development should be treated as a craft — not a commodity. Our
-            founder, Alex Chen, saw too many businesses settling for
-            mediocre websites that failed to capture their true potential.
-          </p>
-          <p>
-            What started as a two-person consultancy has grown into a
-            full-service digital studio with over 50 talented
-            professionals. We&apos;ve partnered with startups, Fortune 500
-            companies, and everything in between — delivering projects
-            that range from complex SaaS platforms to cinematic brand
-            experiences.
-          </p>
-          <p>
-            Today, we&apos;re known for our relentless pursuit of quality,
-            our collaborative approach, and our ability to turn ambitious
-            ideas into reality. Every project we take on is an opportunity
-            to push the boundaries of what the web can do.
-          </p>
-        </div>
-
-        <div className="mt-8 flex items-center gap-4">
-          <div className="flex -space-x-2">
-            {teamMembers.slice(0, 4).map((member) => (
-              <MiniAvatar key={member.name} member={member} />
-            ))}
-          </div>
-          <div className="text-sm text-ink-mute">
-            <span className="font-semibold text-ink">50+</span> team
-            members worldwide
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Right Side - Image */}
-      <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
-        className="relative"
-      >
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-1 border border-white/10 shadow-2xl shadow-black/40">
-          <Image
-            src="/ourimage.png"
-            alt="ClickMasters team and office"
-            fill
-            sizes="(max-width: 1024px) 100vw, 560px"
-            className="object-cover"
-            priority
-          />
-          
-          {/* Optional: Overlay gradient for better aesthetics */}
-          <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent" />
-        </div>
-
-        {/* Optional: Floating badge */}
-        
-      </motion.div>
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
+ 
 
       {/* ═══════════════════════════════════════════════════════════════════
           VALUES SECTION
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-16 md:py-20 lg:py-24 bg-surface-1/50 border-t border-border">
-        <div className="layout-container px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-14"
-          >
-            <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Our Values</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">
-              What Drives Us Every Day
-            </h2>
-            <p className="text-ink-soft text-lg">
-              These core principles guide every decision we make and every
-              project we deliver.
-            </p>
-          </motion.div>
+    
+    <section className="relative py-16 md:py-20 lg:py-24 bg-surface-1/50 border-t border-border">
+      <div className="layout-container px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-14"
+        >
+          <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Our Values</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">
+            What Drives Us Every Day
+          </h2>
+          <p className="text-ink-soft text-lg">
+            These are the ideas we keep coming back to on every project.
+          </p>
+        </motion.div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {values.map((value) => (
-              <motion.div
-                key={value.title}
-                variants={cardVariants as any}
-                onMouseMove={handleSpotlight}
-                className="group relative p-6 rounded-2xl bg-surface-1 border border-border hover:border-violet/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet/5 overflow-hidden"
-              >
-                {/* cursor-tracking spotlight */}
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background:
-                      "radial-gradient(360px circle at var(--x, 50%) var(--y, 50%), rgba(139,92,246,0.10), transparent 70%)",
-                  }}
-                />
-                <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-violet/10 flex items-center justify-center mb-4 group-hover:bg-violet/20 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
-                    <value.icon className="w-6 h-6 text-violet" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-ink mb-2">{value.title}</h3>
-                  <p className="text-sm text-ink-soft leading-relaxed">{value.description}</p>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {values.map((value) => (
+            <motion.div
+              key={value.title}
+              variants={cardVariants}
+              onMouseMove={handleSpotlight}
+              className="group relative p-6 rounded-2xl bg-surface-1 border border-border hover:border-violet/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet/5 overflow-hidden"
+            >
+              {/* cursor-tracking spotlight */}
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background:
+                    "radial-gradient(360px circle at var(--x, 50%) var(--y, 50%), rgba(139,92,246,0.10), transparent 70%)",
+                }}
+              />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-violet/10 flex items-center justify-center mb-4 group-hover:bg-violet/20 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+                  <value.icon className="w-6 h-6 text-violet" />
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+                <h3 className="text-lg font-semibold text-ink mb-2">{value.title}</h3>
+                <p className="text-sm text-ink-soft leading-relaxed">{value.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+ 
 
       {/* ═══════════════════════════════════════════════════════════════════
           TEAM SECTION
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-16 md:py-20 lg:py-24 border-t border-border">
-        <div className="layout-container px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-14"
-          >
-            <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
-              <Users className="w-3.5 h-3.5" />
-              <span>Leadership</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">
-              Meet the People Behind the Code
-            </h2>
-            <p className="text-ink-soft text-lg">
-              A diverse team of builders, designers, and strategists united by a
-              shared passion for great digital experiences.
-            </p>
-          </motion.div>
+    
+    <section className="relative py-16 md:py-20 lg:py-24 border-t border-border">
+      <div className="layout-container px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-14"
+        >
+          <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
+            <Users className="w-3.5 h-3.5" />
+            <span>Leadership</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">
+            Meet the People Behind the Code
+          </h2>
+          <p className="text-ink-soft text-lg">
+            A small group of builders, designers, and strategists who care about doing this work well.
+          </p>
+        </motion.div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {teamMembers.map((member) => (
-              <motion.div
-                key={member.name}
-                variants={cardVariants as any}
-                onMouseMove={handleSpotlight}
-                className="group relative text-center p-6 rounded-2xl bg-surface-1 border border-border hover:border-violet/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
-              >
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background:
-                      "radial-gradient(320px circle at var(--x, 50%) var(--y, 50%), rgba(139,92,246,0.10), transparent 70%)",
-                  }}
-                />
-                <div className="relative">
-                  <TeamAvatar member={member} />
-                  <h3 className="text-lg font-semibold text-ink">{member.name}</h3>
-                  <p className="text-sm text-ink-mute">{member.role}</p>
-                  <div className="mt-4 pt-4 border-t border-border">
-                    <span className="text-xs text-ink-mute/50">
-                      {member.role === "CEO & Founder" && "Vision & Strategy"}
-                      {member.role === "CTO" && "Technology & Innovation"}
-                      {member.role === "Head of Design" && "Design & Experience"}
-                      {member.role === "Head of Engineering" && "Engineering & Delivery"}
-                    </span>
-                  </div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {teamMembers.map((member) => (
+            <motion.div
+              key={member.name}
+              variants={cardVariants}
+              onMouseMove={handleSpotlight}
+              className="group relative text-center p-6 rounded-2xl bg-surface-1 border border-border hover:border-violet/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+            >
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background:
+                    "radial-gradient(320px circle at var(--x, 50%) var(--y, 50%), rgba(139,92,246,0.10), transparent 70%)",
+                }}
+              />
+              <div className="relative">
+                <TeamAvatar member={member} />
+                <h3 className="text-lg font-semibold text-ink">{member.name}</h3>
+                <p className="text-sm text-violet font-medium">{member.role}</p>
+                <div className="mt-3 pt-3 border-t border-border">
+                  <p className="text-xs text-ink-mute leading-relaxed">{(member as any).bio}</p>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  
 
       {/* ═══════════════════════════════════════════════════════════════════
           CTA SECTION
