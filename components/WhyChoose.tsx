@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import {
   Trophy,
   Users,
@@ -55,19 +56,6 @@ const REASONS = [
   },
 ];
 
-// Same blueprint grid used across the site — fine 16px grid + coarse 96px grid, primary-tinted
-const BLUEPRINT_GRID: React.CSSProperties = {
-  backgroundImage: `
-    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(to right, rgba(94,168,255,0.10) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(94,168,255,0.10) 1px, transparent 1px)
-  `,
-  backgroundSize: "16px 16px, 16px 16px, 96px 96px, 96px 96px",
-  maskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
-  WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
-};
-
 function CornerMarks() {
   return (
     <>
@@ -91,7 +79,7 @@ function ReasonRow({ reason, index }: { reason: (typeof REASONS)[number]; index:
       initial={{ opacity: 0, x: -12 }}
       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
       transition={{ duration: 0.5, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative flex gap-4 border border-white/10 bg-white/[0.02] p-5 pl-6 transition-all duration-300 hover:border-primary/30 hover:bg-white/[0.06] hover:shadow-lg hover:shadow-primary/5 sm:gap-5 sm:p-6 sm:pl-7"
+      className="group relative flex gap-4 border border-white/10 bg-black/40 backdrop-blur-sm p-5 pl-6 transition-all duration-300 hover:border-primary/30 hover:bg-black/60 hover:shadow-lg hover:shadow-primary/5 sm:gap-5 sm:p-6 sm:pl-7"
     >
       <CornerMarks />
 
@@ -100,7 +88,7 @@ function ReasonRow({ reason, index }: { reason: (typeof REASONS)[number]; index:
 
       {/* icon housing with hover effects */}
       <motion.div 
-        className="relative flex h-11 w-11 shrink-0 items-center justify-center border border-white/10 bg-background/60 transition-all duration-300 group-hover:border-primary/40 group-hover:bg-primary/10 group-hover:shadow-lg group-hover:shadow-primary/10"
+        className="relative flex h-11 w-11 shrink-0 items-center justify-center border border-white/10 bg-black/60 transition-all duration-300 group-hover:border-primary/40 group-hover:bg-primary/10 group-hover:shadow-lg group-hover:shadow-primary/10"
         whileHover={{ scale: 1.05, rotate: -5 }}
         transition={{ duration: 0.2 }}
       >
@@ -145,14 +133,72 @@ export function WhyChooseSection() {
 
   return (
     <section id="why-us" className="relative overflow-hidden py-16 md:py-24">
-      <div className="pointer-events-none absolute inset-0" style={BLUEPRINT_GRID} aria-hidden="true" />
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/why.jpg"
+          alt="Why choose ClickMasters"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/30" />
+      </div>
 
-      <div className="layout-container relative px-4 sm:px-6 md:px-10">
+      {/* Animated background orbs */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <motion.div
+          className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/10 blur-3xl"
+          animate={{
+            x: [0, 30, -20, 0],
+            y: [0, -20, 10, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-violet/10 blur-3xl"
+          animate={{
+            x: [0, -30, 20, 0],
+            y: [0, 20, -10, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4,
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 layout-container px-4 sm:px-6 md:px-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
           {/* Left — console panel */}
           <div className="lg:sticky lg:top-24 lg:self-start">
             <div className="mb-4 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-primary/70">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary motion-safe:animate-pulse" />
+              <motion.span 
+                className="inline-block h-1.5 w-1.5 rounded-full bg-primary"
+                animate={{ scale: [1, 1.5, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
               <span>Verification Log</span>
             </div>
 
@@ -193,7 +239,7 @@ export function WhyChooseSection() {
             </div>
 
             {/* domain / verified credential stamp */}
-            <div className="mt-8 inline-flex items-center gap-2 border border-white/10 bg-white/[0.02] px-3 py-2 font-mono text-[11px] text-white/40 transition-all duration-300 hover:border-primary/20 hover:bg-white/[0.05]">
+            <div className="mt-8 inline-flex items-center gap-2 border border-white/10 bg-black/30 backdrop-blur-sm px-3 py-2 font-mono text-[11px] text-white/40 transition-all duration-300 hover:border-primary/20 hover:bg-black/50">
               <BadgeCheck className="h-3.5 w-3.5 text-primary/70" />
               <span>clickmasterswebdevelopmentcompany.com</span>
             </div>

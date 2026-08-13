@@ -118,7 +118,7 @@ function FAQItem({
         <div className="flex items-start gap-4">
           <span
             className={`mt-0.5 font-mono text-xs transition-colors duration-300 ${
-              isOpen ? "text-primary" : "text-primary/40 group-hover:text-primary/60"
+              isOpen ? "text-primary" : "text-white/40 group-hover:text-primary/60"
             }`}
           >
             {String(index + 1).padStart(2, "0")}
@@ -323,7 +323,7 @@ export function FAQSection() {
   };
 
   return (
-    <section ref={sectionRef} id="faq" className="relative overflow-hidden py-16 md:py-24">
+    <section ref={sectionRef} id="faq" className="relative overflow-hidden py-16 md:py-24 bg-black">
       <script type="application/ld+json">{JSON.stringify(faqPageSchema)}</script>
 
       <div className="pointer-events-none absolute inset-0" style={BLUEPRINT_GRID} aria-hidden="true" />
@@ -349,7 +349,7 @@ export function FAQSection() {
               transition={{ duration: 0.5, delay: 0.08 }}
               className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
             >
-              Common Questions
+              Common <span className="text-primary">Questions</span>
             </motion.h2>
 
             <motion.p
