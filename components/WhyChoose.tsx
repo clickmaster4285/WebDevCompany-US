@@ -203,12 +203,13 @@ export function WhyChooseSection() {
             </div>
 
             <h2 className="mb-5 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-              Why Choose Clickmasters
+              Why Choose Clickmasters Web Development Company
+
             </h2>
 
             <p className="mb-8 max-w-md text-base leading-relaxed text-white/60 md:text-lg">
-              There are many software development companies out there — here&apos;s why USA
-              businesses choose Clickmasters.
+             As a web development services company, we bring together design and engineering to build things that actually work well for your users.
+
             </p>
 
             {/* stat readout */}

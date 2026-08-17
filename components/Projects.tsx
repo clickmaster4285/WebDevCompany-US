@@ -166,14 +166,15 @@ function ProjectShot({
 export function Projects() {
   return (
     <section id="projects" className="relative bg-background">
-      <div className="layout-container px-4 sm:px-6 md:px-12 py-8 md:py-20">
-        {/* <div className="text-eyebrow mb-4">/ Engineering</div> */}
-        <h2 className="text-display max-w-3xl text-[clamp(1.8rem,5vw,4rem)] text-ink">
-          Modern <span className="text-violet-soft">Engineering</span>
-        </h2>
+     <div className="layout-container px-4 sm:px-6 md:px-12 py-8 md:py-20 bg-transparent">
+  <h2 className="text-display max-w-3xl text-[clamp(1.8rem,5vw,4rem)] text-white" style={{ backgroundColor: 'transparent' }}>
+    Recent <span className="text-violet-soft">Work</span>
+  </h2>
 
-      </div>
-
+  <p className="mt-4 max-w-xl text-base text-white/60">
+    A few real projects and the results they brought our clients.
+  </p>
+</div>
       {projects.map((p, i) => (
         <ProjectShot key={p.title} project={p} index={i} />
       ))}
