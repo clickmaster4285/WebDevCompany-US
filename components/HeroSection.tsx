@@ -148,12 +148,24 @@ export function HeroSection() {
           </h1>
 
           <h2 className="hero-fade mt-6 text-white/90 text-xl sm:text-2xl md:text-3xl leading-tight font-medium">
-            We build websites, web apps, and online stores that feel effortless to use and are built to last. Our team handles everything from <span className="text-primary">custom web development</span> to <span className="text-violet-soft">UI/UX design</span>, <span className="text-primary/80">eCommerce</span>, <span className="text-violet-soft/80">SaaS</span>, and <span className="text-primary">AI powered tools</span>, all under one roof.
-          </h2>
+            <span className="text-primary">ClickMasters</span> is a{" "}
+            <span className="text-primary/80">
+              web development company in the USA
+            </span>{" "}
+            helping ambitious brands build websites, web applications, and online stores
+            that feel effortless and are built to last.
 
-          <p className="hero-fade mt-6 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
-            We are a small studio that builds big things for ambitious brands. As a <span className="text-primary/80">web development company in the USA</span>, we bring strategy, design, and code together in one place, with real care put into how everything looks, feels, and performs.
-          </p>
+            <span className="mt-6 max-w-xl">
+              Our in-house team delivers{" "}
+              <span className="text-primary">custom web development</span>,{" "}
+              <span className="text-violet-soft">UI/UX design</span>,{" "}
+              <span className="text-primary/80">eCommerce development</span>,{" "}
+              <span className="text-violet-soft/80">SaaS platforms</span>, and{" "}
+              <span className="text-primary">AI powered tools</span> — bringing strategy,
+              design, and code together in one place, with real attention to how every
+              product looks, feels, and performs.
+            </span>
+          </h2>
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
             <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-violet px-6 py-4 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 min-h-[48px] sm:px-7">
@@ -183,7 +195,7 @@ export function HeroSection() {
         </div>
 
         {/* Right Column */}
-        <div className="cta-form">
+       <div className="cta-form">
           <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8">
             <h3 className="text-lg sm:text-xl font-medium text-white">Ready to create something <span className="text-primary">unforgettable</span>?</h3>
             <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -196,6 +208,12 @@ export function HeroSection() {
                 type="email" 
                 className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]" 
                 placeholder="Email" 
+              />
+              {/* New Phone Number Input */}
+              <input 
+                type="tel" 
+                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]" 
+                placeholder="Phone number" 
               />
               <textarea 
                 className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[100px]" 

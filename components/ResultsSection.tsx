@@ -7,7 +7,7 @@ import { useGsap } from "@/lib/gsap";
 const STATS = [
   { v: 120, suffix: "+", l: "Projects Delivered" },
   { v: 99, suffix: "%", l: "Avg. Lighthouse Score" },
-  { v: 96, suffix: "%", l: "Client Satisfaction" },
+  { v: 98, suffix: "%", l: "Client Satisfaction" },
   { v: 4.2, suffix: "×", l: "Avg. Revenue Growth", decimals: 1 },
 ];
 
@@ -73,10 +73,10 @@ function Ring({ percent }: { percent: number }) {
 
 export function ResultsSection() {
   return (
-    <section className="relative py-5">
+    <section className="relative py-10">
       <div className="layout-container px-4 sm:px-6 md:px-10">
         {/* <div className="text-eyebrow mb-4">/ Results</div> */}
-        <h2 className="text-display text-[clamp(1.8rem,5vw,4rem)] text-ink max-w-3xl">
+        <h2 className="text-display text-[clamp(1.8rem,5vw,4rem)] text-ink max-w-3xl mx-auto">
           Numbers that <span className="text-violet-soft">compound.</span>
         </h2>
 

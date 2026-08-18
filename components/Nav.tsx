@@ -14,42 +14,38 @@ import { Dropdown, DropdownSection, DropdownItem } from "@/components/ui/Dropdow
 // ⚡ Lightweight nav data (~14.5KB) instead of importing 7 large data files (~1MB total)
 import navData from "@/data/nav-data.json";
 
-const serviceIcons: Record<string, string> = {
-  "web-development-services": "🌐",
-  "enterprise-web-development": "🏢",
-  "saas-development": "☁️",
-  "ecommerce-development": "🛒",
-  "shopify-development": "🛍️",
-  "wordpress-development": "📝",
-  "web-design-services": "🎨",
-  "custom-web-development": "⚙️",
-  "web-application-development": "📱",
-  "shopify-plus-development": "💎",
-  "woocommerce-development": "🛒",
-  "magento-development": "🏪",
-  "headless-commerce-development": "🧩",
-  "cms-development": "📰",
-  "ai-web-development": "🤖",
-  "ai-chatbot-development": "💬",
-  "api-development": "🔌",
-  "website-redesign-services": "🔄",
-  "website-speed-optimization": "⚡",
-  "website-maintenance-services": "🔧",
-  "full-stack-development": "🖥️",
-};
-
-const allServices = navData.services.map((s) => ({
-  label: s.title,
-  href: `/${s.slug}`,
-  icon: serviceIcons[s.slug],
-}));
-
 const serviceCategories: DropdownSection[] = [
   {
     title: "All Services",
     href: "/services",
-    description: "",
-    items: allServices,
+    description: "Browse every web development, design, and AI solution we offer.",
+    items: [
+      // Core Development
+      { label: "Web Development Services", href: "/services/web-development-services", icon: "🌐" },
+      { label: "Enterprise Web Development", href: "/services/enterprise-web-development", icon: "🏢" },
+      { label: "Custom Web Development", href: "/services/custom-web-development", icon: "⚙️" },
+      { label: "Web Application Development", href: "/services/web-application-development", icon: "📱" },
+      { label: "Full Stack Development", href: "/services/full-stack-development", icon: "🖥️" },
+      
+      // Platforms & eCommerce
+      { label: "WordPress Development", href: "/services/wordpress-development", icon: "📝" },
+      { label: "Shopify Development", href: "/services/shopify-development", icon: "🛍️" },
+      { label: "Shopify Plus Development", href: "/services/shopify-plus-development", icon: "💎" },
+      { label: "WooCommerce Development", href: "/services/woocommerce-development", icon: "🛒" },
+      { label: "Magento Development", href: "/services/magento-development", icon: "🏪" },
+      { label: "eCommerce Development", href: "/services/ecommerce-development", icon: "🛒" },
+      { label: "Headless Commerce Development", href: "/services/headless-commerce-development", icon: "🧩" },
+      { label: "CMS Development", href: "/services/cms-development", icon: "📰" },
+      
+      // Design, AI & Support
+      { label: "Web Design Services (UI/UX)", href: "/services/web-design-services", icon: "🎨" },
+      { label: "Website Redesign Services", href: "/services/website-redesign-services", icon: "🔄" },
+      { label: "AI Web Development", href: "/services/ai-web-development", icon: "🤖" },
+      { label: "AI Chatbot Development", href: "/services/ai-chatbot-development", icon: "💬" },
+      { label: "API Development", href: "/services/api-development", icon: "🔌" },
+      { label: "Website Speed Optimization", href: "/services/website-speed-optimization", icon: "⚡" },
+      { label: "Website Maintenance & Support", href: "/services/website-maintenance-services", icon: "🔧" },
+    ],
   },
 ];
 
@@ -279,8 +275,8 @@ export function Nav() {
               sections={serviceCategories}
               variant="links"
               layout="simple-grid"
-              width="w-[600px] lg:w-[700px]"
-              showViewAll={false}
+              width="w-[760px] lg:w-[850px]"
+              showViewAll={true} 
               showSidebar={false}
             />
 

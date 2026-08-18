@@ -5,6 +5,8 @@ import { useRef, useEffect, useState } from "react";
 import type { StaticImageData } from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 import process1 from "@/public/solution/process1.png";
 import process2 from "@/public/solution/process2.png";
@@ -29,7 +31,9 @@ const phases = [
 
 export function Process() {
   const pinRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState(0);
+  const isInView = useInView(headingRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
     if (!pinRef.current) return;
@@ -52,14 +56,60 @@ export function Process() {
     return () => { trigger.kill(); };
   }, []);
 
+  // Framer Motion variants for staggered text content
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08, delayChildren: 0.15 }
+    },
+    exit: {
+      opacity: 0,
+      transition: { staggerChildren: 0.04, staggerDirection: -1, when: "afterChildren" }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20, scale: 0.98 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+      transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  // Variants for the background image crossfade
+  const imageVariants: Variants = {
+    enter: { opacity: 0, scale: 1.1 },
+    center: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  };
+
   return (
     <section id="process" className="relative bg-background">
       {/* Top Heading */}
-      <div className="layout-container px-4 sm:px-6 md:px-12 py-8 md:py-20">
+      <motion.div
+        ref={headingRef}
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="layout-container px-4 sm:px-6 md:px-12 py-8 md:py-20"
+      >
+        <div className="mb-4 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-violet-soft/70">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-violet-500 motion-safe:animate-pulse" />
+          <span>Execution Process</span>
+          <span className="text-ink/30">/ 05 phases</span>
+        </div>
         <h2 className="text-display max-w-3xl text-[clamp(1.8rem,5vw,3.5rem)] text-ink">
           A measured journey from <span className="text-violet-soft">idea to impact.</span>
         </h2>
-      </div>
+      </motion.div>
 
       {/* Pinned Scroll Section */}
       <div ref={pinRef} className="relative h-[60vh] md:h-[80vh] overflow-hidden bg-background">
@@ -72,23 +122,26 @@ export function Process() {
               
               {/* LEFT SIDE: Process image */}
               <div className="relative w-full h-1/2 md:h-full overflow-hidden rounded-[1rem] md:rounded-[2rem] bg-[#111111] shadow-inner">
-                {phases.map((p, i) => (
-                  <Image
-                    key={p.num}
-                    src={p.image}
-                    alt={p.label}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className={`object-cover transition-all duration-1000 ease-out ${
-                      i === phase ? "opacity-100 scale-100" : "opacity-0 scale-105"
-                    }`}
-                  />
-                ))}
+                <AnimatePresence initial={false} mode="popLayout">
+                  <motion.div
+                    key={phase}
+                    variants={imageVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={phases[phase].image}
+                      alt={phases[phase].label}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </motion.div>
+                </AnimatePresence>
                 
-                {/* 
-                  FIX: Overlay to hide the baked-in text in the top-left corner.
-                  Adjust w-[45%] and h-[25%] if the text requires more or less coverage.
-                */}
+                {/* Overlay to hide the baked-in text in the top-left corner. */}
                 <div className="absolute top-0 left-0 w-[45%] h-[25%] bg-gradient-to-br from-black via-black/80 to-transparent pointer-events-none z-10" />
                 
                 {/* General bottom shadow for depth */}
@@ -97,43 +150,53 @@ export function Process() {
 
               {/* RIGHT SIDE: Text content */}
               <div className="relative flex items-center justify-center px-4 md:px-8 lg:px-12 z-10 w-full h-1/2 md:h-full rounded-[1rem] md:rounded-[2rem] bg-gradient-to-br from-black/80 via-black/70 to-black/50 backdrop-blur-sm border border-white/5 overflow-hidden py-4">
-                <div className="relative w-full max-w-2xl">
-                  {phases.map((p, i) => (
-                    <div
-                      key={p.num}
-                      className={`transition-all duration-700 ease-out ${
-                        i === phase
-                          ? "opacity-100 translate-y-0 relative"
-                          : "opacity-0 translate-y-12 pointer-events-none absolute inset-0 flex flex-col justify-center"
-                      }`}
+                <div className="relative w-full max-w-2xl h-full flex items-center justify-center">
+                  <AnimatePresence initial={false} mode="popLayout">
+                    <motion.div
+                      key={phase}
+                      variants={containerVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="w-full"
                     >
-                      <div className="text-mono text-violet-400 mb-2 md:mb-4 font-bold tracking-[0.2em] text-xs md:text-base">
-                        PHASE {p.num}
-                      </div>
-                      <h3 className="text-display text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] mb-2 md:mb-4">
-                        {p.label}
-                      </h3>
-                      <p className="text-white/70 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed font-light">
-                        {p.desc}
-                      </p>
-                    </div>
-                  ))}
+                      <motion.div 
+                        variants={itemVariants} 
+                        className="text-mono text-violet-400 mb-2 md:mb-4 font-bold tracking-[0.2em] text-xs md:text-base"
+                      >
+                        PHASE {phases[phase].num}
+                      </motion.div>
+                      <motion.h3 
+                        variants={itemVariants} 
+                        className="text-display text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] mb-2 md:mb-4"
+                      >
+                        {phases[phase].label}
+                      </motion.h3>
+                      <motion.p 
+                        variants={itemVariants} 
+                        className="text-white/70 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed font-light"
+                      >
+                        {phases[phase].desc}
+                      </motion.p>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
 
             </div>
 
             {/* Progress Indicators */}
-            <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20">
-              {phases.map((_, i) => (
-                <div
-                  key={i}
-                  className={`h-1 md:h-1.5 rounded-full transition-all duration-500 ${
-                    i === phase 
-                      ? "w-8 md:w-12 bg-violet-500 shadow-lg shadow-violet-500/50" 
-                      : "w-4 md:w-6 bg-white/20"
-                  }`}
-                />
+            <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20 items-center">
+              {phases.map((p, i) => (
+                <div key={i} className="relative h-1.5 w-6 rounded-full bg-white/20 overflow-hidden">
+                  {i === phase && (
+                    <motion.div
+                      layoutId="phase-indicator"
+                      className="absolute inset-0 rounded-full bg-violet-500 shadow-lg shadow-violet-500/50"
+                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                </div>
               ))}
             </div>
           </div>

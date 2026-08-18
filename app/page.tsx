@@ -72,6 +72,12 @@ const Footer = dynamic(
   { ssr: true }
 );
 
+const Testimonials = dynamic(
+  () => import("@/components/Testimonials").then((m) => ({ default: m.Testimonials })),
+  { ssr: true }
+);
+
+
 // ── Page: Server Component ─────────────────────────────────────────────────
 // By removing "use client", this page is a Server Component.
 // Next.js renders the entire component tree on the server, sends real HTML
@@ -100,8 +106,10 @@ export default function HomePage() {
       {/* Partners: direct import — above-the-fold, marquee starts instantly */}
       <Partners />
       <WhatWeDoIntro />
+            <ResultsSection />
+
       {/* Above-the-fold: SSR + lazy JS */}
-      <StorySection />
+      {/* <StorySection /> */}
       <ServicesSection />
       <WhyChoose />
       <TechSection />
@@ -109,12 +117,13 @@ export default function HomePage() {
       {/* Below-the-fold: all SSR + lazy JS */}
       <WorkSection />
       <ProcessSection />
-      <Process />
+      {/* <Process /> */}
      
       <Projects />
-      <ResultsSection />
-      <TestimonialsSection />
-      <AwardsSection />
+      <Testimonials></Testimonials>
+
+      {/* <TestimonialsSection /> */}
+      {/* <AwardsSection /> */}
       <Faq/>
       <CtaSection />
       <Footer />
