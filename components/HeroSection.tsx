@@ -134,7 +134,7 @@ export function HeroSection() {
         <div>
           <h1
             ref={headline}
-            className="overflow-hidden text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95]"
+            className="overflow-hidden font-bold text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95]"
           >
             <span className="text-white">ClickMasters</span>
             <span className="text-white/40">,</span>
@@ -147,25 +147,14 @@ export function HeroSection() {
             <span className="text-primary"> USA</span>
           </h1>
 
-          <h2 className="hero-fade mt-6 text-white/90 text-xl sm:text-2xl md:text-3xl leading-tight font-medium">
-            <span className="text-primary">ClickMasters</span> is a{" "}
-            <span className="text-primary/80">
-              web development company in the USA
-            </span>{" "}
-            helping ambitious brands build websites, web applications, and online stores
-            that feel effortless and are built to last.
-
-            <span className="mt-6 max-w-xl">
-              Our in-house team delivers{" "}
-              <span className="text-primary">custom web development</span>,{" "}
-              <span className="text-violet-soft">UI/UX design</span>,{" "}
-              <span className="text-primary/80">eCommerce development</span>,{" "}
-              <span className="text-violet-soft/80">SaaS platforms</span>, and{" "}
-              <span className="text-primary">AI powered tools</span> — bringing strategy,
-              design, and code together in one place, with real attention to how every
-              product looks, feels, and performs.
-            </span>
-          </h2>
+         <h2 className="hero-fade mt-6 text-white/90 text-xl sm:text-2xl md:text-3xl leading-tight font-medium">
+  <span className="text-primary">ClickMasters</span> is a{" "}
+  <span className="text-primary/80">
+    web development company in USA
+  </span>{" "}
+  helping ambitious brands build websites, web applications, and online stores
+  that feel effortless and are built to last.
+</h2>
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
             <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-violet px-6 py-4 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 min-h-[48px] sm:px-7">

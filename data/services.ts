@@ -113,9 +113,10 @@ export interface PricingData {
 export interface ServicePageData {
   // Meta
   slug: string;
-  title: string;
+  title: string;       // Visible page title / H1
+  metaTitle: string;   // SEO Meta Title
   metaDescription: string;
-  keywords?: string[];  // ← Add this line
+  targetKeywords: string[];
   pageGoal: string;
   buyerPersona: string;
   uniquePositioning: string;
@@ -152,90 +153,106 @@ export const serviceData: Record<string, ServicePageData> = {
   // ------------------------------------------
   // 1. Web Development Services (Pillar)
   // ------------------------------------------
-  'web-development-services': {
-    slug: 'web-development-services',
-    title: 'Web Development Services',
-    metaDescription: 'Enterprise-grade web development services engineered for revenue, scale, and business outcomes. Custom web platforms that perform as business infrastructure.',
-    pageGoal: 'Capture broad commercial intent and route qualified mid-market/enterprise buyers into a scoped consultation',
-    buyerPersona: 'Mid-market & enterprise decision-makers (CEO, COO, VP Eng, CMO) evaluating a serious web build or rebuild',
-    uniquePositioning: 'We build web platforms as business infrastructure — engineered for revenue, scale, and the realities of your industry — not websites as marketing artifacts.',
+ 'web-development-services': {
+   slug: 'web-development-services',
+    title: 'Web Development Services', // <-- Visible Page Title
+    metaTitle: 'Web Development Services | Custom Websites Built to Convert', // <-- SEO Meta Title
+    metaDescription: 'Professional web development services for US businesses. We design, build, and scale fast, secure, SEO-ready websites that turn visitors into customers.',
+    targetKeywords: [
+      'web development services',
+      'professional website development company',
+      'custom web development USA',
+      'business website development',
+      'hire web developers'
+    ],
+    pageGoal: 'Capture broad commercial intent from US businesses searching for web development partners and convert them into consultation requests',
+    buyerPersona: 'Startups, growing companies, and established enterprises across the US who need a fast, secure, SEO-ready website that turns visitors into customers',
+    uniquePositioning: 'We build web development around outcomes, not deliverables. Every project starts with your business goals and works backward into the tech stack, not the other way around.',
     
     hero: {
-      heading: 'Web Development That Performs as Business Infrastructure',
-      subheading: 'We design, build, and scale web platforms for companies where the website is not a brochure — it is where revenue is won, operations run, and growth is constrained or unlocked. From custom applications to enterprise eCommerce, we engineer for the outcomes your board measures.',
+      heading: 'Web Development Services That Grow Your Business',
+      subheading: 'Your website is often the first conversation a customer has with your brand, and in the United States, that first impression happens in under three seconds. Our web development services combine clean engineering, modern design, and search-first architecture to make sure that conversation goes well—guiding visitors toward a purchase, a form fill, or a phone call.',
       credibilityBar: [
-        'Senior-led engagements',
-        'Fixed-scope or dedicated-team models',
-        'Security & compliance built in',
-        'You own 100% of the code'
+        'Custom-coded to your business goals',
+        'Mobile-first, responsive layouts',
+        'Clean, semantic SEO code',
+        'Secure & scalable architecture'
       ],
-      primaryCTA: 'Book a 30-minute scoping consultation',
-      secondaryCTA: 'Request a sample scope & estimate',
-      socialProof: '[PLACEHOLDER: Clutch rating · G2 rating · "4.9/5 across N verified reviews"] · Representative work spans SaaS, healthcare, financial services, logistics, and eCommerce.'
+      primaryCTA: 'Book a Consultation',
+      secondaryCTA: 'View Our Work',
+      socialProof: 'Professional website development company trusted by US startups, growing companies, and established enterprises.'
     },
     
     featuredAnswer: {
       question: 'What are web development services?',
-      answer: 'Web development services cover the strategy, design, engineering, and ongoing optimization of websites and web applications. For mid-market and enterprise buyers, the value is not the site itself but what it changes: higher conversion, lower operating cost, faster time-to-market, and a platform that scales without a rebuild. The right partner is measured on business outcomes, not deliverables.'
+      answer: 'Web development is the process of building the functional backbone of a website: the code, databases, integrations, and infrastructure that let a design actually work in a browser. It covers everything from front-end interactivity to back-end logic, hosting, and security, and it’s the layer that determines whether a beautiful design actually performs under real traffic.'
     },
     
     problemSection: {
-      heading: 'What a Weak Web Platform Actually Costs You',
+      heading: 'What a Weak Website Actually Costs Your Business',
       content: [
-        'Most companies don\'t lose money because their website looks dated. They lose it in ways the website quietly causes and no one attributes back.',
-        'A checkout that drops 2% of carts on mobile. A lead form that takes nine fields and loses a third of the people who start it. A CMS so brittle that every change needs a developer, so changes stop happening. A platform that can\'t integrate with the CRM, so sales works off spreadsheets.',
-        'These are not design problems. They are margin problems. A B2B company spending $40,000 a month on demand generation and converting at 1.2% instead of an achievable 2.4% is not under-spending on ads — it is leaving half its pipeline on the floor at the last step. An eCommerce brand doing $5M a year with a 1.5-second slower load than its category leader is forfeiting revenue measured in six figures annually, because speed and conversion move together.',
-        'The risk of inaction compounds. Technical debt accrues interest: the cheaper, faster build you chose two years ago is now the reason a six-week feature takes four months. Competitors who treated their platform as infrastructure are now iterating weekly while you wait on a queue. The cost of a poor platform is rarely a line item — which is exactly why it goes unmanaged.'
+        'Your website is often the first conversation a customer has with your brand. If that conversation goes poorly, you lose revenue before you even know the prospect was there.',
+        'A site that takes more than three seconds to load. A design that breaks on mobile. Code so tangled that Google’s crawlers give up. These aren’t just technical issues—they are lost leads, lower search rankings, and wasted ad spend.',
+        'A generic template might get you online quickly, but it won’t give you the clean, semantic code search engines reward or the conversion-focused architecture your business needs to grow. You end up with a digital brochure instead of a revenue driver.'
       ],
       stats: [
         {
-          label: 'Conversion Loss',
-          value: '50%',
-          description: 'Pipeline left on the floor at 1.2% vs 2.4% conversion'
+          label: 'First Impression',
+          value: '< 3 secs',
+          description: 'Time it takes US users to form an opinion about your site'
         },
         {
-          label: 'Revenue Impact',
-          value: '$100K+',
-          description: 'Annual revenue forfeited from slow load times'
+          label: 'SEO Foundation',
+          value: '100%',
+          description: 'Clean, semantic code essential for Google rankings from day one'
         }
       ]
     },
     
     solutionSection: {
-      heading: 'How We Engineer for the Outcome, Not the Deliverable',
-      content: 'We run every engagement through a value-first methodology: before a line of code, we establish what business metric this build must move and what it is worth. That number governs scope, sequencing, and trade-offs. It is the difference between a project that ships features and one that changes the P&L.',
+      heading: 'Why Choose Us',
+      content: 'We’ve built web development around outcomes, not deliverables. That means every project starts with your business goals and works backward into the tech stack, not the other way around. Our team handles the strategy, design, and engineering in-house, so there’s no hand-off friction between departments and no surprises when it’s time to launch.',
       pillars: [
         {
-          title: 'Architecture Before Aesthetics',
-          description: 'We design the data model, integrations, and scale path first — because that determines whether the platform is an asset or a liability in year three.'
+          title: 'Outcomes Over Deliverables',
+          description: 'We start with your business goals and work backward into the tech stack, ensuring the site actually grows your business.'
         },
         {
-          title: 'Conversion as an Engineering Discipline',
-          description: 'We instrument, test, and optimize the revenue path, not just build it.'
+          title: 'Seamless In-House Delivery',
+          description: 'Strategy, design, and engineering all under one roof. No hand-off friction between departments.'
         },
         {
-          title: 'You Own Everything',
-          description: 'The code, the infrastructure, the documentation, and the ability to walk away or take it in-house. No lock-in, no proprietary black boxes.'
+          title: 'Search-First Architecture',
+          description: 'Clean URL structures, fast load speeds, mobile responsiveness, and schema markup built-in from day one.'
         }
       ]
     },
+    
+    keyBenefits: [
+      'Custom-coded sites built around your business goals, not a generic template',
+      'Mobile-first, responsive layouts that perform on every device',
+      'Clean, semantic code structured for on-page and technical SEO',
+      'Fast load times using modern frameworks and optimized assets',
+      'Secure architecture with SSL, hardened hosting, and regular patching',
+      'Scalable builds that grow with your traffic and feature needs'
+    ],
     
     capabilities: {
       heading: 'What We Deliver',
       items: [
         {
-          service: 'Custom Web Development',
-          whatItIs: 'Bespoke platforms built to your workflows and data, not bent to fit a template.',
-          businessImpact: 'Eliminates the operational tax of software that doesn\'t fit how you actually work.'
+          service: 'Custom Business Websites',
+          whatItIs: 'Bespoke sites built around your business goals and user flows.',
+          businessImpact: 'Turns your website from a digital brochure into an active revenue driver.'
         },
         {
           service: 'Enterprise Web Development',
-          whatItIs: 'Large-scale, secure, integrated platforms with the governance enterprises require.',
-          businessImpact: 'Supports complex orgs, compliance, and multi-team delivery without breaking.'
+          whatItIs: 'Large-scale, secure, integrated platforms with the governance established enterprises require.',
+          businessImpact: 'Supports complex organizations, compliance, and multi-team delivery without breaking.'
         },
         {
           service: 'eCommerce & Shopify Development',
-          whatItIs: 'Conversion-engineered storefronts on Shopify, Shopify Plus, and headless stacks.',
+          whatItIs: 'Conversion-engineered storefronts on Shopify, Shopify Plus, and custom stacks.',
           businessImpact: 'Directly grows revenue per visitor and lowers cost-to-serve.'
         },
         {
@@ -244,26 +261,26 @@ export const serviceData: Record<string, ServicePageData> = {
           businessImpact: 'Turns manual processes into scalable, automated systems.'
         },
         {
-          service: 'SaaS Development',
-          whatItIs: 'Multi-tenant products engineered for scale, security, and unit economics.',
-          businessImpact: 'Builds the asset your valuation is based on.'
+          service: 'WordPress Development',
+          whatItIs: 'SEO-ready, easy-to-manage WordPress sites for growing businesses.',
+          businessImpact: 'Gives your marketing team the power to publish without needing a developer.'
         },
         {
           service: 'Website Redesign & Migration',
           whatItIs: 'Replatforming and redesigns that preserve SEO equity and lift conversion.',
-          businessImpact: 'Modernizes without losing the traffic and rankings you\'ve paid for.'
+          businessImpact: 'Modernizes without losing the traffic and rankings you’ve paid for.'
         },
         {
           service: 'Optimization & Support',
           whatItIs: 'Speed, Core Web Vitals, CRO, and managed maintenance.',
-          businessImpact: 'Protects and compounds the value of what you\'ve built.'
+          businessImpact: 'Protects and compounds the value of what you’ve built.'
         }
       ]
     },
     
     comparison: {
       heading: 'Why Companies Choose Us Over the Alternatives',
-      intro: 'The honest comparison isn\'t us versus another agency — it\'s us versus the three real options on your desk: a cheap offshore team, a freelancer, or hiring in-house. Each has a place, and each has a failure mode.',
+      intro: 'The honest comparison isn’t us versus another agency — it’s us versus the three real options on your desk: a cheap offshore team, a freelancer, or an in-house hire.',
       options: [
         {
           option: 'Offshore at a third of the cost',
@@ -280,148 +297,120 @@ export const serviceData: Record<string, ServicePageData> = {
         {
           option: 'Hire in-house',
           whereWorks: 'Long-term ownership of a stable product',
-          whereFails: '12–18 month ramp, $300K+ loaded cost before output, hiring risk',
+          whereFails: 'High loaded cost, hiring risk, slow ramp-up',
           ourPosition: 'Immediate senior capacity; hand off to your team when ready'
         },
         {
-          option: 'Generic agency',
-          whereWorks: 'Marketing sites',
-          whereFails: 'Treating a revenue platform like a brochure',
-          ourPosition: 'We engineer for the metric, not the launch'
+          option: 'Generic Agency',
+          whereWorks: 'Standard marketing sites',
+          whereFails: 'Hand-off friction between departments, surprises at launch',
+          ourPosition: 'In-house strategy, design, and engineering with zero hand-off friction'
         }
       ]
     },
     
     process: {
-      heading: 'Our Process: Discovery to Optimization',
+      heading: 'Our Process',
       steps: [
         {
           number: 1,
-          title: 'Discovery',
-          description: 'We establish the business goal, the metric to move, and what it\'s worth. Stakeholder interviews, technical audit, and a defined success definition.'
+          title: 'Discovery & Strategy',
+          description: 'We learn your business, audience, and competitors, then map out the site structure and technical requirements.'
         },
         {
           number: 2,
-          title: 'Strategy',
-          description: 'Scope, sequencing, and trade-offs governed by ROI. You see the plan and the reasoning before we build.'
+          title: 'Design',
+          description: 'Wireframes and visual design are built around usability and conversion, not just aesthetics.'
         },
         {
           number: 3,
-          title: 'Architecture',
-          description: 'Data model, integrations, security, and scale path designed first — the decisions that determine cost in year three.'
+          title: 'Development',
+          description: 'Our engineers build the front end and back end using modern, maintainable code.'
         },
         {
           number: 4,
-          title: 'Design',
-          description: 'Conversion-led UX and UI, prototyped and validated, not decorated.'
+          title: 'Testing & QA',
+          description: 'Every page is tested across browsers, devices, and load conditions before launch.'
         },
         {
           number: 5,
-          title: 'Development',
-          description: 'Senior-led engineering in tested, documented increments with regular working demos.'
-        },
-        {
-          number: 6,
-          title: 'QA',
-          description: 'Functional, performance, security, and accessibility testing as a gate, not an afterthought.'
-        },
-        {
-          number: 7,
-          title: 'Launch',
-          description: 'Controlled deployment with rollback, monitoring, and zero-surprise cutover.'
-        },
-        {
-          number: 8,
-          title: 'Optimization',
-          description: 'Post-launch instrumentation and iteration — because the launch is the start of the value, not the end of the project.'
+          title: 'Launch & Support',
+          description: 'We deploy your site and stay on for monitoring, updates, and ongoing improvements.'
         }
       ]
     },
     
     outcome: {
-      challenge: 'A mid-market B2B services company was generating strong ad-driven traffic but converting poorly. The site was visually fine but architecturally weak: slow, a nine-field lead form, no CRM integration, and a CMS only developers could touch.',
-      solution: 'We rebuilt the conversion path as an engineering problem — reduced the form to the three fields sales actually used, integrated directly with their CRM for instant lead routing, cut load time by more than half, and gave marketing a CMS they could run without a ticket queue.',
+      challenge: 'A growing US-based B2B services company was generating strong ad-driven traffic but converting poorly. The site was visually fine but architecturally weak: slow to load, breaking on mobile, and lacking clean code for Google to crawl effectively.',
+      solution: 'We rebuilt the site using a search-first architecture. We implemented clean, semantic code, cut load times to under three seconds, ensured flawless mobile responsiveness, and structured the data for rich snippets.',
       metrics: [
         {
-          kpi: 'Lead conversion rate',
-          result: '~1.2% → ~2.5%',
-          whyItMatters: 'Roughly doubled qualified pipeline from the same ad spend'
+          kpi: 'Organic Traffic',
+          result: 'Significant Lift',
+          whyItMatters: 'Clean code and schema markup allowed Google to crawl and rank the site effectively from day one.'
         },
         {
-          kpi: 'Page load time',
+          kpi: 'Page Load Time',
           result: 'Cut by >50%',
-          whyItMatters: 'Lower bounce, higher conversion, better rankings'
+          whyItMatters: 'Lower bounce, higher conversion, and better search rankings.'
         },
         {
-          kpi: 'Time to publish a change',
-          result: 'Days → minutes',
-          whyItMatters: 'Marketing ships independently; engineering freed for product'
-        },
-        {
-          kpi: 'Cost per qualified lead',
-          result: 'Down ~45%',
-          whyItMatters: 'Same budget, far more pipeline'
+          kpi: 'Mobile Conversions',
+          result: 'Improved Drastically',
+          whyItMatters: 'Responsive layouts ensured the site performed perfectly on every device.'
         }
       ]
     },
     
     businessCase: {
       heading: 'The Business Case',
-      content: 'A web platform engagement should pay for itself, and the math is usually straightforward. If a rebuild lifts conversion from 1.2% to 2.4% on a site that drives $40K/month in demand-gen spend, you\'ve effectively doubled the return on that spend — a six-figure annual swing that dwarfs the build cost. If it cuts the time to ship marketing changes from days to minutes, you recover engineering capacity and move faster than competitors waiting in a queue.',
+      content: 'A professional website should pay for itself by turning visitors into customers. Whether it’s capturing leads that currently bounce due to slow load times, or ranking for high-intent keywords through clean semantic code, the right web development partner builds an asset that grows your business, not just a digital brochure.',
       valueStreams: [
-        'Revenue impact (conversion, AOV, retention)',
-        'Cost savings (operational efficiency, reduced developer dependency, lower cost-to-serve)',
-        'Efficiency gains (automation of manual work)',
-        'Growth optionality (a platform that scales into new markets and products without a rebuild)'
+        'Revenue impact (higher conversion rates from faster load times)',
+        'Cost savings (in-house team can easily update content without developer tickets)',
+        'Efficiency gains (automation of manual work through custom applications)',
+        'Growth optionality (a scalable build that grows with your traffic and feature needs)'
       ]
     },
     
     faqs: [
       {
-        question: 'What does a web development project actually cost?',
-        answer: 'It depends on scope, but ranges are knowable. A focused custom site typically runs $15K–$50K; a complex web application or enterprise platform $50K–$250K+; a SaaS product or large eCommerce build $100K–$500K+. We give a defined estimate after a short scoping conversation, and we\'d rather right-size the project than win it on a number that can\'t deliver.'
+        question: 'How much does professional web development cost in the US?',
+        answer: 'Pricing typically depends on scope: a small business site may start in the low thousands, while a custom enterprise build with integrations and custom functionality runs higher. We scope every project individually after understanding your requirements.'
       },
       {
-        question: 'Why not just use an offshore team at a third of the price?',
-        answer: 'For well-specified, contained work, you sometimes should — and we\'ll tell you when that\'s the smart call. The offshore model fails on ambiguous scope, senior architectural judgment, and accountability. The cheaper build often becomes the expensive rebuild. We cost more per hour and frequently less per outcome, because we get it right the first time and you own a platform that doesn\'t need redoing.'
+        question: 'How long does it take to build a website?',
+        answer: 'A standard business website usually takes four to eight weeks from kickoff to launch. Larger, custom-built platforms with complex integrations can take longer, depending on scope.'
       },
       {
-        question: 'How long will it take?',
-        answer: 'A focused site is typically 6–12 weeks; a complex application or platform 3–6 months. We sequence so that value ships in increments rather than one distant launch, and we commit to dates in the SOW with transparent change management.'
+        question: 'Will my new website be optimized for Google?',
+        answer: 'Yes. Every site we build follows on-page SEO best practices, including clean URL structures, fast load speeds, mobile responsiveness, and schema markup, so it’s ready to rank from day one.'
       },
       {
-        question: 'What if we outgrow the build?',
-        answer: 'You won\'t, because we architect for scale from the first decision — that\'s the point of architecture before aesthetics. The data model, integrations, and infrastructure are designed for where you\'re going, not just where you are. And because you own all the code and documentation, you\'re never trapped.'
-      },
-      {
-        question: 'What about security and compliance?',
-        answer: 'Security and data handling are designed in, not bolted on. We work to the requirements your industry demands — whether that\'s HIPAA, PCI-DSS, SOC 2 readiness, or GDPR — and we\'re built to pass your procurement and security review, not skate around it.'
-      },
-      {
-        question: 'Do we own the code?',
-        answer: 'Completely. The code, the infrastructure, the documentation, and the credentials are yours. No proprietary lock-in, no hostage scenarios. You can take it in-house or move it anytime — we earn the relationship by being worth keeping, not by trapping you.'
+        question: 'Do you build websites for specific platforms like WordPress or Shopify?',
+        answer: 'Yes, we develop on WordPress, Shopify, custom frameworks, and headless architectures depending on what best fits your business needs.'
       }
     ],
     
     cta: {
       heading: 'Start With a Conversation, Not a Commitment',
-      primary: 'Book your scoping consultation',
-      secondary: 'Request a sample scope & estimate'
+      primary: 'Book a Consultation',
+      secondary: 'View Our Work'
     },
     
-    riskReversal: 'Fixed-scope engagements are quoted to a defined deliverable and price. Dedicated-team engagements run on a 30-day rolling basis — if we\'re not earning the relationship, you\'re not locked in.',
+    riskReversal: 'We scope every project individually after understanding your requirements, ensuring you get exactly what your business needs without paying for unnecessary features.',
     
     pricing: {
-      range: '$15K–$500K+',
-      note: 'Focused custom site: $15K–$50K; complex application: $50K–$250K+; SaaS/eCommerce: $100K–$500K+'
+      range: 'Low thousands and up',
+      note: 'A small business site may start in the low thousands, while a custom enterprise build with integrations and custom functionality runs higher. We scope every project individually.'
     },
     
     internalLinks: ['/enterprise-web-development', '/saas-development', '/ecommerce-development', '/shopify-development', '/wordpress-development', '/web-design-services', '/custom-web-development', '/web-application-development'],
     
     schema: {
       serviceType: 'Web Development',
-      priceRange: '$15,000 - $500,000+',
-      audience: 'Mid-market & Enterprise Organizations'
+      priceRange: 'Low thousands and up',
+      audience: 'US Businesses (Startups to Enterprises)'
     }
   },
 
