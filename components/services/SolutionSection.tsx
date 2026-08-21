@@ -78,10 +78,10 @@ function PillarCard({
 interface SolutionSectionProps {
   heading: string;
   content: string;
-  pillars: SolutionPillar[];
+  pillars?: SolutionPillar[]; // Made optional
 }
 
-export function SolutionSection({ heading, content, pillars }: SolutionSectionProps) {
+export function SolutionSection({ heading, content, pillars = [] }: SolutionSectionProps) {
   const shouldReduceMotion = useReducedMotion();
 
   const motionProps = shouldReduceMotion
@@ -122,17 +122,20 @@ export function SolutionSection({ heading, content, pillars }: SolutionSectionPr
           {content}
         </motion.p>
 
-        <motion.div
-          className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-        >
-          {pillars.map((pillar, index) => (
-            <PillarCard key={index} pillar={pillar} shouldReduceMotion={shouldReduceMotion} />
-          ))}
-        </motion.div>
+        {/* Only render the grid if pillars exist and have items */}
+        {pillars && pillars.length > 0 && (
+          <motion.div
+            className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            {pillars.map((pillar, index) => (
+              <PillarCard key={index} pillar={pillar} shouldReduceMotion={shouldReduceMotion} />
+            ))}
+          </motion.div>
+        )}
       </div>
     </Section>
   );

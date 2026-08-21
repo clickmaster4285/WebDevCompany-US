@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { generateAboutSchema } from "@/lib/schema/aboutSchema";
 
 // ─── Elegant Background Shapes ──────────────────────────────────────────────
 function ElegantShape({
@@ -418,7 +419,15 @@ function StoryVisual() {
 
 // ─── About Page Component ───────────────────────────────────────────────────
 export default function AboutPage() {
+  // Generate the JSON-LD schema
+  const jsonLd = generateAboutSchema();
   return (
+   <>
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
     <div className="min-h-screen bg-background text-foreground">
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION
@@ -766,5 +775,6 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { generateContactSchema } from "@/lib/schema/contactSchema";
 // ─── CRM lead endpoint config ───────────────────────────────────────────────
 const WEBSITE = "clickmasterswebdevelopmentcompany.com";
 const SERVICE = "Software Development";
@@ -422,7 +422,14 @@ export default function ContactPage() {
   const inputClasses =
     "w-full rounded-xl border border-border bg-surface-1/60 px-4 py-3.5 text-sm text-ink placeholder:text-ink-mute/50 focus:outline-none focus:ring-2 focus:ring-violet/40 focus:border-violet transition-all duration-200 backdrop-blur-sm";
 
+    const jsonLd = generateContactSchema();
   return (
+    <>
+     {/* Inject the structured data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <div className="min-h-screen bg-background text-foreground">
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION
@@ -1003,5 +1010,6 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

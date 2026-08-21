@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Nav } from "@/components/Nav";
 import { HeroSection } from "@/components/HeroSection";
 import { Partners } from "@/components/Partners";
+import { generateHomeSchema } from "@/lib/schema/homeSchema";
 
 // ── Above-the-fold: SSR for LCP/CLS ────────────────────────────────────────
 // These render on the server so the browser gets real HTML immediately.
@@ -93,8 +94,22 @@ const Testimonials = dynamic(
 //    It was adding ~2KB of dead JS + CSS animation classes.
 // 3. Partners is a direct import (not dynamic) because it's above-the-fold
 //    and needs its marquee animation to start immediately.
+
+ // Generate the JSON-LD schema
+  const jsonLd = generateHomeSchema();
 export default function HomePage() {
   return (
+
+    <>
+
+
+    {/* Inject the structured data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+
     <main className="relative w-full overflow-x-hidden bg-background text-ink">
       {/* Nav: client component (dropdowns, scroll state, mobile menu) */}
       <Nav />
@@ -128,5 +143,6 @@ export default function HomePage() {
       <CtaSection />
       <Footer />
     </main>
+    </>
   );
 }

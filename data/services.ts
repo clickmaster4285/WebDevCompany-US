@@ -38,7 +38,7 @@ export interface SolutionPillar {
 export interface SolutionSectionData {
   heading: string;
   content: string;
-  pillars: SolutionPillar[];
+  pillars?: SolutionPillar[];
 }
 
 export interface CapabilityItem {
@@ -135,7 +135,7 @@ export interface ServicePageData {
   cta: CTAData;
   riskReversal: string;
   pricing: PricingData;
-  
+   keyBenefits: string[];
   // SEO
   internalLinks: string[];
   schema: {
@@ -146,7 +146,7 @@ export interface ServicePageData {
 }
 
 // ============================================
-// DATA FOR ALL 9 SERVICES
+// DATA FOR ALL SERVICES
 // ============================================
 
 export const serviceData: Record<string, ServicePageData> = {
@@ -420,14 +420,22 @@ export const serviceData: Record<string, ServicePageData> = {
   'enterprise-web-development': {
     slug: 'enterprise-web-development',
     title: 'Enterprise Web Development',
-    metaDescription: 'Enterprise web development engineered for scale, security, and governance. Custom platforms that pass security review and serve complex organizations.',
-    pageGoal: 'Convert enterprise and upper-mid-market buyers with complex, multi-stakeholder, security-gated requirements into a scoped engagement',
-    buyerPersona: 'Enterprise VP Engineering, CTO, CIO, Director of Digital, and procurement; buying through committee, security review, and an MSA',
-    uniquePositioning: 'We deliver enterprise web platforms with the engineering rigor, security posture, and governance of a consulting firm — at the speed and accountability of a senior product team.',
+    metaTitle: 'Enterprise Web Development Services | Scalable, Secure Platforms',
+    metaDescription: 'Enterprise web development built for scale. Secure, high-performance platforms with custom integrations, designed for large US organizations.',
+    targetKeywords: [
+      'enterprise web development',
+      'enterprise website development company',
+      'large scale web development',
+      'enterprise CMS development',
+      'corporate web development services'
+    ],
+    pageGoal: 'Convert large US organizations with complex, multi-stakeholder, security-gated requirements into a scoped engagement',
+    buyerPersona: 'Large US companies, multi-location businesses, and organizations with layered approval processes (CTO, VP Eng, Director of Digital, procurement)',
+    uniquePositioning: 'Enterprise projects fail most often on communication, not code. We assign dedicated project leads who coordinate across your stakeholders, keep documentation tight, and build platforms your internal teams can actually maintain.',
     
     hero: {
-      heading: 'Enterprise Web Development, Engineered for Scale and Scrutiny',
-      subheading: 'Large organizations don\'t need a website — they need a platform that integrates with a complex stack, survives a security review, supports multiple teams and stakeholders, and scales without a rebuild. We build that, with the governance and accountability your environment requires.',
+      heading: 'Enterprise Web Development for Complex, High-Stakes Platforms',
+      subheading: 'Enterprise organizations don\'t need another website; they need a platform that can handle high traffic, multiple stakeholders, strict compliance requirements, and dozens of internal systems talking to each other at once. Our enterprise web development services are built for exactly that kind of complexity.',
       credibilityBar: [
         'Security & compliance by design',
         'SOC 2 / HIPAA / PCI-aware delivery',
@@ -437,12 +445,12 @@ export const serviceData: Record<string, ServicePageData> = {
       ],
       primaryCTA: 'Request an enterprise scoping session',
       secondaryCTA: 'Download our enterprise delivery & security overview',
-      socialProof: '[PLACEHOLDER: enterprise client logos / Clutch enterprise rating] · Representative engagements across financial services, healthcare, logistics, and manufacturing.'
+      socialProof: 'Representative engagements across large US companies, multi-location businesses, and organizations with layered approval processes.'
     },
     
     featuredAnswer: {
       question: 'What is enterprise web development?',
-      answer: 'Enterprise web development is the delivery of large-scale, secure, integrated web platforms for complex organizations. It differs from standard web development in four ways: it must integrate with existing enterprise systems, satisfy formal security and compliance review, support multi-team governance, and scale across business units. The right partner is judged on architecture, security posture, and delivery governance — not visual design.'
+      answer: 'Enterprise web development refers to building large-scale digital platforms designed to support high traffic volumes, multiple departments, complex permission structures, and integrations with enterprise systems like CRMs, ERPs, and internal databases. It requires a different engineering approach than a standard business website, with heavier emphasis on architecture, security, and long-term maintainability.'
     },
     
     problemSection: {
@@ -455,8 +463,8 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     solutionSection: {
-      heading: 'Our Enterprise Delivery Model',
-      content: 'We operate the way your environment demands: senior-led, security-first, and governed. Every enterprise engagement is structured around three pillars that map directly to why enterprise projects fail.',
+      heading: 'Why Choose Us',
+      content: 'Enterprise projects fail most often on communication, not code. We assign dedicated project leads who coordinate across your stakeholders, keep documentation tight, and build platforms that your internal teams can actually maintain without needing us for every small change. Every enterprise engagement is structured around three pillars that map directly to why enterprise projects fail.',
       pillars: [
         {
           title: 'Integration-first architecture',
@@ -472,6 +480,15 @@ export const serviceData: Record<string, ServicePageData> = {
         }
       ]
     },
+    
+    keyBenefits: [
+      'Architecture built to handle high concurrent traffic without slowdowns',
+      'Role-based access and multi-user content workflows for large teams',
+      'Deep integrations with CRM, ERP, and internal enterprise systems',
+      'Compliance-ready builds for industries with regulatory requirements',
+      'Multi-site and multi-region support for national or global operations',
+      'Dedicated support structured around enterprise SLAs'
+    ],
     
     capabilities: {
       heading: 'Enterprise Capabilities',
@@ -535,47 +552,32 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     process: {
-      heading: 'Governed Delivery, Stage by Stage',
+      heading: 'Our Process',
       steps: [
         {
           number: 1,
-          title: 'Discovery & alignment',
-          description: 'Stakeholder mapping, requirements, technical and security audit, success metrics, and a defined governance model.'
+          title: 'Requirements Mapping',
+          description: 'We work with stakeholders across departments to document technical, security, and workflow requirements.'
         },
         {
           number: 2,
-          title: 'Architecture & security design',
-          description: 'Integration architecture, data model, security and compliance design — reviewed with your security team before build.'
+          title: 'Architecture Planning',
+          description: 'Our engineers design a scalable system architecture before writing a line of production code.'
         },
         {
           number: 3,
-          title: 'Strategy & roadmap',
-          description: 'Phased delivery plan sequenced by business value and dependency, with change-control process defined.'
+          title: 'Agile Development',
+          description: 'Work is delivered in sprints with regular check-ins so large teams stay aligned throughout the build.'
         },
         {
           number: 4,
-          title: 'Design & prototyping',
-          description: 'Validated UX for complex workflows and multi-role access.'
+          title: 'Security & Compliance Testing',
+          description: 'We test for vulnerabilities and confirm the platform meets relevant compliance standards.'
         },
         {
           number: 5,
-          title: 'Development',
-          description: 'Senior-led engineering in governed increments, with regular stakeholder demos and documented progress.'
-        },
-        {
-          number: 6,
-          title: 'QA & security testing',
-          description: 'Functional, performance, accessibility, and security testing including penetration-test readiness.'
-        },
-        {
-          number: 7,
-          title: 'Launch',
-          description: 'Controlled, monitored deployment with rollback and a zero-surprise cutover plan.'
-        },
-        {
-          number: 8,
-          title: 'Optimization & support',
-          description: 'Post-launch monitoring, SLA-backed support, and a continuous improvement roadmap.'
+          title: 'Rollout & Training',
+          description: 'We manage a phased launch and train internal teams on managing the new platform.'
         }
       ]
     },
@@ -620,28 +622,24 @@ export const serviceData: Record<string, ServicePageData> = {
     
     faqs: [
       {
-        question: 'Can you pass our security review?',
-        answer: 'Yes — it\'s designed into delivery, not handled as an afterthought. We build to SOC 2, HIPAA, PCI-DSS, and GDPR requirements as your environment demands, and we sequence security architecture before build so review is cleared early rather than becoming a late-stage blocker. We\'re built to satisfy procurement and security, not to route around them.'
+        question: 'What makes enterprise web development different from a standard business website?',
+        answer: 'Enterprise builds involve more complex architecture, higher traffic loads, multiple integrations with internal systems, and stricter security and compliance requirements than a typical business site. They require a heavier emphasis on long-term maintainability and multi-user workflows.'
       },
       {
-        question: 'Will you work under our MSA and security requirements?',
-        answer: 'Yes. We\'re set up for enterprise contracting — MSA, SOW, DPA, and your security and data-handling requirements. We\'d rather invest in clearing your process than ask you to bend it.'
+        question: 'Can you integrate our new platform with our existing CRM or ERP?',
+        answer: 'Yes, integrating with existing enterprise systems is a core part of most enterprise builds we deliver. We design the architecture to connect securely with your CRM, ERP, identity provider, and internal databases so data flows seamlessly instead of sitting in silos.'
       },
       {
-        question: 'How do you handle multiple stakeholders with conflicting requirements?',
-        answer: 'With governance. A defined RACI, a named accountable lead, regular stakeholder demos, and a change-control process turn multi-stakeholder complexity into a managed process. Conflicting requirements are surfaced and resolved early, in the open, against the business goal — not discovered at launch.'
+        question: 'How do you handle security for enterprise platforms?',
+        answer: 'We implement layered security including encrypted data handling, role-based permissions, regular vulnerability testing, and compliance alignment specific to your industry. We build to pass your formal security review, satisfying standards like SOC 2, HIPAA, or PCI-DSS as required.'
       },
       {
-        question: 'What if your team is the single point of failure?',
-        answer: 'It isn\'t. We deliver with team redundancy, documented architecture, and knowledge transfer built in. You own all code, infrastructure, and documentation, and we\'ll train your internal team for handoff whenever you choose. The relationship is retained on value, never on dependency.'
+        question: 'Do you support multi-location or multi-brand websites?',
+        answer: 'Yes, we build multi-site architectures that let large organizations manage multiple brands or regional sites from a centralized system. This allows for global or national operations while maintaining local control and content relevance.'
       },
       {
         question: 'How does pricing work at this scale?',
         answer: 'Enterprise engagements typically run $100K–$500K+ depending on scope, and we structure them as fixed-scope phases or dedicated-team models depending on how defined the requirements are. You get a transparent estimate and phased commitment after a scoping session — not a black-box number.'
-      },
-      {
-        question: 'How do we know you can operate at our scale?',
-        answer: 'References on request — we\'ll connect you with comparable engagements under NDA. The faster signal is the scoping session itself: bring your hardest integration and security constraints, and judge us on how we reason about them.'
       }
     ],
     
@@ -663,7 +661,7 @@ export const serviceData: Record<string, ServicePageData> = {
     schema: {
       serviceType: 'Enterprise Software Development',
       priceRange: '$100,000 - $500,000+',
-      audience: 'Enterprise Organizations'
+      audience: 'Large US Organizations & Multi-Location Businesses'
     }
   },
 
@@ -672,30 +670,38 @@ export const serviceData: Record<string, ServicePageData> = {
   // ------------------------------------------
   'saas-development': {
     slug: 'saas-development',
-    title: 'SaaS Development',
-    metaDescription: 'SaaS development for products your valuation depends on. Multi-tenant platforms engineered for scale, security, and unit economics by senior product engineers.',
-    pageGoal: 'Convert SaaS founders and product leaders building or scaling a product into a scoping engagement',
-    buyerPersona: 'SaaS founders, technical and non-technical; VPs of Product/Engineering at funded startups and scaleups; occasionally their investors',
-    uniquePositioning: 'We build SaaS products as the asset your valuation rests on — engineered for scale, security, and unit economics from the first commit, by senior teams who\'ve shipped products, not just features.',
+    title: 'SaaS Development Services',
+    metaTitle: 'SaaS Development Company | Custom SaaS Application Development',
+    metaDescription: 'Full-cycle SaaS development services covering MVP to scale. We build secure, multi-tenant SaaS platforms for US startups and growth-stage companies.',
+    targetKeywords: [
+      'SaaS development company',
+      'SaaS application development',
+      'custom SaaS development USA',
+      'MVP development for startups',
+      'multi-tenant SaaS architecture'
+    ],
+    pageGoal: 'Convert US startups and growth-stage companies building or scaling a SaaS product into a scoping engagement',
+    buyerPersona: 'SaaS founders, technical and non-technical; VPs of Product/Engineering at funded startups and scaleups',
+    uniquePositioning: 'We’ve built SaaS products from zero and helped existing ones scale past their original architecture. We know which shortcuts are safe to take early on and which ones will cost you later, so your MVP doesn\'t turn into technical debt the moment you find product-market fit.',
     
     hero: {
-      heading: 'SaaS Development for Products Your Valuation Depends On',
-      subheading: 'Your product is your company. We build multi-tenant SaaS platforms engineered for the things that determine whether you scale or stall — architecture that holds at 100x the users, security that survives enterprise procurement, and unit economics that work when you grow. Senior-led, equity-grade engineering.',
+      heading: 'SaaS Development Services for Startups and Scaling Companies',
+      subheading: 'Building a SaaS product means solving two problems at once: shipping something customers will pay for, and building it on architecture that won\'t collapse the moment you get traction. Our SaaS development team has done both, repeatedly, for founders across the US. Whether you\'re validating an idea with an MVP or scaling to handle thousands of accounts, we build platforms with the subscription logic, multi-tenancy, and security your business actually needs.',
       credibilityBar: [
         'Multi-tenant architecture',
-        'SOC 2-ready delivery',
+        'Subscription billing built-in',
         'MVP to scale',
         'Senior product engineers',
         'You own 100% of the IP'
       ],
       primaryCTA: 'Book a product scoping session',
       secondaryCTA: 'Request our SaaS architecture & MVP guide',
-      socialProof: '[PLACEHOLDER: SaaS client logos / founder testimonials] · Representative work spans B2B SaaS, vertical SaaS, and platform products.'
+      socialProof: 'Representative work spans B2B SaaS, vertical SaaS, and platform products for startups and growth-stage companies across the US.'
     },
     
     featuredAnswer: {
       question: 'What is SaaS development?',
-      answer: 'SaaS development is the design and engineering of multi-tenant software delivered over the web, where one platform securely serves many customers. For founders, the stakes are existential: the architecture, security, and unit economics decided early determine whether the product scales profitably, passes enterprise procurement, and supports the valuation. The right partner builds for where the product is going, not just the first release.'
+      answer: 'SaaS development is the process of building cloud-based software that customers access through a subscription, typically through a browser rather than a local install. It requires specialized architecture for multi-tenancy, billing, user permissions, and uptime, since customers are relying on the platform continuously rather than using it as a one-time tool.'
     },
     
     problemSection: {
@@ -708,8 +714,8 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     solutionSection: {
-      heading: 'How We Build SaaS That Scales Profitably',
-      content: 'We engineer for the three things that determine a SaaS company\'s trajectory, from the first architectural decision.',
+      heading: 'Why Choose Us',
+      content: 'We\'ve built SaaS products from zero and helped existing ones scale past their original architecture. That range means we know which shortcuts are safe to take early on and which ones will cost you later, so your MVP doesn\'t turn into technical debt the moment you find product-market fit. We engineer for the three things that determine a SaaS company\'s trajectory, from the first architectural decision.',
       pillars: [
         {
           title: 'Multi-tenancy and scale by design',
@@ -726,12 +732,21 @@ export const serviceData: Record<string, ServicePageData> = {
       ]
     },
     
+    keyBenefits: [
+      'Multi-tenant architecture built for secure account isolation',
+      'Subscription billing and plan management built in from the start',
+      'Cloud infrastructure that scales automatically with user growth',
+      'API-first design for easy integrations with other tools',
+      'Fast MVP builds to validate your idea before full investment',
+      'Ongoing DevOps support to maintain uptime as you scale'
+    ],
+    
     capabilities: {
       heading: 'SaaS Engineering Capabilities',
       items: [
         {
           service: 'MVP development',
-          whatItIs: 'A real, sellable first version on a foundation that scales.',
+          whatItIs: 'A lean, functional version of your product to get real user feedback fast.',
           businessImpact: 'Proves the model fast without a rebuild when it works.'
         },
         {
@@ -740,9 +755,19 @@ export const serviceData: Record<string, ServicePageData> = {
           businessImpact: 'Supports growth and unlocks the enterprise segment.'
         },
         {
+          service: 'Subscription billing & logic',
+          whatItIs: 'Subscription tiers, usage-based billing, and payment integrations using platforms like Stripe.',
+          businessImpact: 'Monetizes the product effectively from day one.'
+        },
+        {
           service: 'SaaS architecture & infrastructure',
-          whatItIs: 'Cloud architecture engineered for scale and cost-efficiency.',
+          whatItIs: 'Cloud architecture (AWS/GCP) engineered for scale and cost-efficiency.',
           businessImpact: 'Decouples cost from growth; protects margin.'
+        },
+        {
+          service: 'API-first design & integrations',
+          whatItIs: 'Public APIs, webhooks, and third-party integrations.',
+          businessImpact: 'Drives adoption, stickiness, and ecosystem value.'
         },
         {
           service: 'Security & SOC 2-ready delivery',
@@ -750,18 +775,8 @@ export const serviceData: Record<string, ServicePageData> = {
           businessImpact: 'Passes enterprise procurement; protects valuation.'
         },
         {
-          service: 'Integrations & API development',
-          whatItIs: 'Public APIs, webhooks, and third-party integrations.',
-          businessImpact: 'Drives adoption, stickiness, and ecosystem value.'
-        },
-        {
-          service: 'AI feature engineering',
-          whatItIs: 'LLM and AI capabilities built into the product.',
-          businessImpact: 'Differentiates and adds defensible value.'
-        },
-        {
-          service: 'Scale & optimization',
-          whatItIs: 'Performance, reliability, and cost optimization as you grow.',
+          service: 'Scaling & DevOps support',
+          whatItIs: 'Infrastructure scaling, monitoring, and feature development as your user base grows.',
           businessImpact: 'Keeps the product fast, stable, and profitable at scale.'
         }
       ]
@@ -799,47 +814,32 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     process: {
-      heading: 'From Idea to Scale',
+      heading: 'Our Process',
       steps: [
         {
           number: 1,
-          title: 'Discovery',
-          description: 'Product goals, target users, business model, and the architecture implications of where you\'re headed.'
+          title: 'Product Discovery',
+          description: 'We define your core value proposition and map the minimum feature set for launch.'
         },
         {
           number: 2,
-          title: 'Strategy & MVP scope',
-          description: 'Ruthless prioritization to a real MVP that proves the core value — and a scale path the MVP won\'t violate.'
+          title: 'Technical Architecture',
+          description: 'We choose the right stack (e.g., React/Vue, Node/Python, AWS/GCP) and design a multi-tenant system built to scale.'
         },
         {
           number: 3,
-          title: 'Architecture',
-          description: 'Multi-tenancy, scale, security, and cost model designed first — the decisions that determine your trajectory.'
+          title: 'MVP Development',
+          description: 'We build a lean, functional version of your product to get real user feedback fast.'
         },
         {
           number: 4,
-          title: 'Design',
-          description: 'Product UX engineered for activation and retention, not just screens.'
+          title: 'Iteration',
+          description: 'Based on user data, we refine features and prepare for a full-scale release.'
         },
         {
           number: 5,
-          title: 'Development',
-          description: 'Senior-led, incremental builds with working demos and tight founder feedback loops.'
-        },
-        {
-          number: 6,
-          title: 'QA & security',
-          description: 'Functional, performance, and security testing including SOC 2-readiness posture.'
-        },
-        {
-          number: 7,
-          title: 'Launch',
-          description: 'Controlled release with monitoring, analytics, and an instrumented activation funnel.'
-        },
-        {
-          number: 8,
-          title: 'Scale & optimize',
-          description: 'Performance, reliability, cost, and feature iteration as you grow and raise.'
+          title: 'Scaling & Support',
+          description: 'We handle infrastructure scaling, monitoring, and feature development as your user base grows.'
         }
       ]
     },
@@ -884,28 +884,24 @@ export const serviceData: Record<string, ServicePageData> = {
     
     faqs: [
       {
-        question: 'Should we build an MVP or the full product?',
-        answer: 'An MVP — but a real one, on an architecture that scales. The trap is either a throwaway prototype that accidentally becomes production, or over-building for scale you haven\'t earned. We scope a genuine MVP that proves the core value fast and cheap, on a foundation that won\'t need replacing when it works. That\'s the sequencing that protects both speed and runway.'
+        question: 'How long does it take to build a SaaS MVP?',
+        answer: 'Most MVPs take eight to sixteen weeks depending on feature complexity, with lean builds moving faster and integration-heavy products taking longer. We ruthlessly prioritize the minimum feature set to get you to market fast on a scalable architecture.'
       },
       {
-        question: 'How do you handle multi-tenancy and security?',
-        answer: 'Both are architected from the first decision, because retrofitting them is expensive and sometimes impossible. We build proper tenant isolation and SOC 2-ready security in from the start — it\'s what makes the enterprise segment, and its multiples, available to you. Building it later usually means a re-architecture exactly when you can least afford one.'
+        question: 'What tech stack do you use for SaaS development?',
+        answer: 'We select the stack based on your product\'s needs, commonly using modern frameworks like React or Vue on the front end with Node.js, Python, or Ruby on the back end, deployed on cloud infrastructure like AWS or GCP.'
       },
       {
-        question: 'What does a SaaS build cost?',
-        answer: 'A focused MVP typically runs $50K–$150K; a more complex platform or a scale-stage build $150K–$500K+. The number depends on scope, and we\'d rather scope a defensible MVP than win the project on a figure that produces a prototype you outgrow in a quarter. You get a transparent estimate after a scoping session.'
+        question: 'Can you help with pricing and subscription billing logic?',
+        answer: 'Yes, we build subscription tiers, usage-based billing, and payment integrations using platforms like Stripe as part of the core product. Billing is a first-class concern in our SaaS architecture, not an afterthought.'
+      },
+      {
+        question: 'Do you offer ongoing development after launch?',
+        answer: 'Yes, most SaaS clients stay on for continued feature development, infrastructure scaling, and maintenance after the initial launch. We provide ongoing DevOps support to maintain uptime as your user base grows.'
       },
       {
         question: 'Will we own the IP and code?',
         answer: 'Entirely — code, infrastructure, and documentation. For a company whose value is its product, anything less is unacceptable, and we agree. No lock-in, full handoff to your team whenever you hire, and we earn the relationship by being worth keeping.'
-      },
-      {
-        question: 'Can you work with our existing technical team or co-founder?',
-        answer: 'Yes — we frequently extend a founder\'s or a small team\'s capacity rather than replace it. We bring senior architectural judgment and delivery bandwidth, integrate with your team and tools, and transfer knowledge as you hire. You scale capacity without diluting equity.'
-      },
-      {
-        question: 'How do we know the architecture will actually scale?',
-        answer: 'Because scale is the first thing we design for, not the last thing we hope for — and we\'ll walk you and your technical advisors through the architecture and the reasoning before we build. Bring your investor\'s technical diligence questions to the scoping session and judge us on the answers.'
       }
     ],
     
@@ -927,7 +923,7 @@ export const serviceData: Record<string, ServicePageData> = {
     schema: {
       serviceType: 'SaaS Development',
       priceRange: '$50,000 - $500,000+',
-      audience: 'SaaS Founders & Product Leaders'
+      audience: 'US Startups & Growth-Stage SaaS Companies'
     }
   },
 
@@ -937,29 +933,37 @@ export const serviceData: Record<string, ServicePageData> = {
   'ecommerce-development': {
     slug: 'ecommerce-development',
     title: 'eCommerce Development',
-    metaDescription: 'eCommerce development built to grow revenue per visitor. Shopify, Shopify Plus, and headless stores engineered for conversion, AOV, and cost-to-serve.',
-    pageGoal: 'Convert eCommerce brands and retailers into a scoping engagement focused on revenue per visitor and cost-to-serve',
-    buyerPersona: 'Founders, CEOs, and eCommerce/digital directors at growing DTC and B2B commerce brands ($1M–$50M+ revenue)',
-    uniquePositioning: 'We build commerce platforms as revenue engines — engineered around conversion, average order value, and cost-to-serve — on the right stack for your stage, from Shopify to fully headless.',
+    metaTitle: 'eCommerce Development Services | Custom Online Store Development',
+    metaDescription: 'Custom eCommerce development services that increase conversions and sales. We build fast, secure online stores for US retailers on any platform.',
+    targetKeywords: [
+      'ecommerce development services',
+      'ecommerce website development company',
+      'online store development',
+      'custom ecommerce solutions',
+      'ecommerce development USA'
+    ],
+    pageGoal: 'Convert US retailers and eCommerce brands into a scoping engagement focused on increasing conversions and sales',
+    buyerPersona: 'Founders, CEOs, and eCommerce directors at US retail brands needing a fast, secure online store that turns browsers into buyers',
+    uniquePositioning: 'Most eCommerce underperformance isn\'t a traffic problem, it\'s a conversion problem. We build stores with checkout speed, mobile usability, and merchandising strategy baked in from day one, so the traffic you already have converts at a higher rate.',
     
     hero: {
-      heading: 'eCommerce Development Built to Grow Revenue Per Visitor',
-      subheading: 'A store\'s job is not to exist — it\'s to convert traffic into revenue and do it at a cost that protects margin. We build and replatform commerce experiences engineered around the numbers that decide whether you grow profitably: conversion rate, AOV, retention, and cost-to-serve.',
+      heading: 'eCommerce Development Built to Sell',
+      subheading: 'An online store has one job: turn browsers into buyers. Our eCommerce development services focus on the details that actually move that number, from checkout friction to page speed to how products are merchandised on the page. We build and optimize online stores for US retailers, combining conversion-focused design with the technical performance that keeps Google and your customers happy.',
       credibilityBar: [
-        'Shopify, Shopify Plus & headless',
-        'Conversion-engineered',
-        'Performance-first',
-        'Integrated with your stack',
+        'Conversion-optimized',
+        'PCI-compliant payments',
+        'Fast load speeds',
+        'Integrated inventory',
         'You own the build'
       ],
       primaryCTA: 'Book an eCommerce strategy call',
       secondaryCTA: 'Request a conversion & performance teardown',
-      socialProof: '[PLACEHOLDER: brand logos / Clutch eCommerce rating] · Representative work across DTC, B2B commerce, and high-volume retail.'
+      socialProof: 'Representative work across DTC, B2B commerce, and high-volume US retail brands.'
     },
     
     featuredAnswer: {
       question: 'What is eCommerce development?',
-      answer: 'eCommerce development is the design and engineering of online stores and commerce platforms. For brands, the value isn\'t the storefront — it\'s revenue per visitor and cost-to-serve. The right build raises conversion and average order value, lowers operating cost, and runs on a platform matched to your volume and complexity, from Shopify for most brands to headless for those with specific performance or content needs.'
+      answer: 'eCommerce development is the process of building an online store, including product catalog management, shopping cart and checkout functionality, payment processing, and often inventory or fulfillment integrations. It blends front-end UX design with back-end systems that need to handle transactions securely and reliably at scale.'
     },
     
     problemSection: {
@@ -972,8 +976,8 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     solutionSection: {
-      heading: 'How We Engineer Commerce for Profit, Not Just Launch',
-      content: 'We treat your store as a revenue system with three levers, and we engineer each one deliberately.',
+      heading: 'Why Choose Us',
+      content: 'Most eCommerce underperformance isn\'t a traffic problem, it\'s a conversion problem. We build stores with checkout speed, mobile usability, and merchandising strategy baked in from day one, so the traffic you already have converts at a higher rate. We treat your store as a revenue system with three levers, and we engineer each one deliberately.',
       pillars: [
         {
           title: 'Conversion',
@@ -990,13 +994,22 @@ export const serviceData: Record<string, ServicePageData> = {
       ]
     },
     
+    keyBenefits: [
+      'Conversion-optimized product pages and checkout flows',
+      'Secure, PCI-compliant payment processing integrations',
+      'Fast load speeds even with large product catalogs',
+      'Inventory, shipping, and fulfillment system integrations',
+      'Mobile-optimized shopping experience across devices',
+      'SEO-structured category and product pages built to rank'
+    ],
+    
     capabilities: {
       heading: 'Commerce Capabilities',
       items: [
         {
-          service: 'Shopify & Shopify Plus development',
-          whatItIs: 'Conversion-engineered stores on the platform with the best return for most brands.',
-          businessImpact: 'Fast to launch, low overhead, proven to scale.'
+          service: 'Custom Online Store Development',
+          whatItIs: 'Bespoke storefronts built for conversion on platforms like Shopify, Shopify Plus, WooCommerce, and Magento.',
+          businessImpact: 'A fast, secure store engineered to turn browsers into buyers.'
         },
         {
           service: 'Headless commerce',
@@ -1063,47 +1076,32 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     process: {
-      heading: 'From Audit to Optimization',
+      heading: 'Our Process',
       steps: [
         {
           number: 1,
-          title: 'Discovery & audit',
-          description: 'Conversion, performance, and operations audit; revenue goals; the right-platform decision.'
+          title: 'Store Strategy',
+          description: 'We audit your products, audience, and competitors to plan store structure and features.'
         },
         {
           number: 2,
-          title: 'Strategy',
-          description: 'Scope and platform choice governed by ROI — conversion lift, AOV, and cost-to-serve targets.'
+          title: 'UX & Design',
+          description: 'We design product pages and checkout flows around reducing cart abandonment.'
         },
         {
           number: 3,
-          title: 'Architecture',
-          description: 'Catalog, integrations, and data model designed for your volume and operations.'
+          title: 'Development',
+          description: 'We build the storefront, integrate payments, and connect inventory systems.'
         },
         {
           number: 4,
-          title: 'Design',
-          description: 'Conversion-led UX for product, cart, and checkout — tested, not guessed.'
+          title: 'Testing',
+          description: 'Every transaction path is tested to make sure checkout works flawlessly.'
         },
         {
           number: 5,
-          title: 'Development',
-          description: 'Senior-led build with working demos and a migration plan that preserves SEO equity.'
-        },
-        {
-          number: 6,
-          title: 'QA',
-          description: 'Functional, payment, performance, and cross-device testing as a launch gate.'
-        },
-        {
-          number: 7,
-          title: 'Launch',
-          description: 'Controlled cutover with redirects, monitoring, and zero traffic loss.'
-        },
-        {
-          number: 8,
-          title: 'Optimization',
-          description: 'Post-launch CRO and performance iteration — compounding revenue from existing traffic.'
+          title: 'Launch & Optimization',
+          description: 'After launch, we monitor conversion data and continue optimizing the store.'
         }
       ]
     },
@@ -1148,28 +1146,20 @@ export const serviceData: Record<string, ServicePageData> = {
     
     faqs: [
       {
-        question: 'Shopify, Shopify Plus, or headless — which do we need?',
-        answer: 'For most brands, Shopify or Shopify Plus delivers the best return: fast to market, low operational overhead, and a deep ecosystem. Headless earns its added complexity only when you have specific performance, content, or omnichannel requirements. We\'ll tell you which your business actually needs — and we frequently recommend the less expensive option, because the right answer is the one that grows your profit, not our invoice.'
+        question: 'What eCommerce platforms do you build on?',
+        answer: 'We work with Shopify, Shopify Plus, WooCommerce, Magento, and fully custom headless commerce builds, depending on your catalog size and business needs. We recommend the platform that offers the best return for your specific stage.'
       },
       {
-        question: 'Will replatforming hurt our SEO and traffic?',
-        answer: 'Not when it\'s done correctly — preserving SEO equity is a core part of the migration, with a full redirect map, URL strategy, and careful cutover. Done carelessly, replatforming can lose traffic; that\'s precisely why it shouldn\'t be handed to a freelancer or done as an afterthought. We treat traffic preservation as a deliverable.'
+        question: 'Can you migrate my existing store to a new platform?',
+        answer: 'Yes, we handle full store migrations, including products, customer data, and SEO redirects, to avoid ranking loss during the switch. We treat traffic preservation as a core deliverable.'
       },
       {
-        question: 'What does an eCommerce build cost?',
-        answer: 'A focused Shopify build typically runs $15K–$60K; a Shopify Plus or complex store $60K–$150K; a headless or B2B commerce platform $100K–$250K+. The number follows scope, and we size it to the return. You get a transparent estimate after a strategy call.'
+        question: 'How do you improve checkout conversion rates?',
+        answer: 'We reduce steps in the checkout flow, add trusted payment options, optimize for mobile, and remove friction points identified through UX testing and data. We build checkout experiences designed to close, not leak.'
       },
       {
-        question: 'How quickly will we see results?',
-        answer: 'Conversion and performance gains often show within weeks of launch because they act on existing traffic. We instrument from day one so the impact is measured, not assumed, and optimization continues compounding after launch.'
-      },
-      {
-        question: 'Can you integrate with our ERP, fulfillment, and marketing stack?',
-        answer: 'Yes — integration is central to lowering cost-to-serve. We connect inventory, fulfillment, ERP, CRM, and marketing tools so operations scale without proportional headcount, and so your data isn\'t trapped in silos.'
-      },
-      {
-        question: 'Do we own the store and data?',
-        answer: 'Completely — the build, the theme code, the configuration, and the data are yours. No lock-in, full control, and you can take it elsewhere anytime. We keep the relationship by growing your revenue, not by holding your store hostage.'
+        question: 'Do you handle payment gateway integrations?',
+        answer: 'Yes, we integrate secure, PCI-compliant payment gateways including Stripe, PayPal, and platform-native payment systems to ensure transactions are handled securely and reliably at scale.'
       }
     ],
     
@@ -1191,7 +1181,7 @@ export const serviceData: Record<string, ServicePageData> = {
     schema: {
       serviceType: 'eCommerce Development',
       priceRange: '$15,000 - $250,000+',
-      audience: 'DTC & B2B Commerce Brands'
+      audience: 'US Retailers & DTC Commerce Brands'
     }
   },
 
@@ -1201,29 +1191,37 @@ export const serviceData: Record<string, ServicePageData> = {
   'shopify-development': {
     slug: 'shopify-development',
     title: 'Shopify Development',
-    metaDescription: 'Shopify development that treats your store as a revenue engine. Custom Shopify and Shopify Plus stores engineered for conversion, AOV, and scale.',
-    pageGoal: 'Capture high-intent Shopify buyers and convert to a scoping call; position as Shopify experts who optimize for revenue, not theme-installers',
-    buyerPersona: 'DTC and B2B brand founders and eCommerce managers on or moving to Shopify; growth-stage and scaling',
-    uniquePositioning: 'We\'re Shopify specialists who treat the platform as a revenue engine — building and optimizing stores on Shopify and Shopify Plus for conversion, AOV, and scale, not just launching themes.',
+    metaTitle: 'Shopify Development Services | Custom Shopify Store Development',
+    metaDescription: 'Expert Shopify development services for US brands. Custom themes, app integrations, and store optimization built to increase sales.',
+    targetKeywords: [
+      'Shopify development services',
+      'Shopify development company',
+      'custom Shopify theme development',
+      'Shopify store setup',
+      'hire Shopify developer'
+    ],
+    pageGoal: 'Capture high-intent US Shopify buyers and convert to a scoping call; position as Shopify experts who optimize for revenue, not theme-installers',
+    buyerPersona: 'US-based brands launching new stores and established merchants looking to redesign, optimize, or scale an existing Shopify store',
+    uniquePositioning: 'We build Shopify stores as growth engines, not just storefronts. That means every theme decision, app choice, and page layout is made with conversion rate and page speed in mind, not just visual appeal.',
     
     hero: {
-      heading: 'Shopify Development That Treats Your Store as a Revenue Engine',
-      subheading: 'Shopify is the best commerce platform for most brands — if it\'s built to convert. We design, build, and optimize Shopify and Shopify Plus stores around the metrics that grow profit: conversion rate, average order value, and cost-to-serve. Specialists, not theme-installers.',
+      heading: 'Shopify Development Services for High-Converting Stores',
+      subheading: 'Shopify gives you a strong foundation, but a default theme won\'t differentiate your brand or maximize conversions. Our Shopify development services focus on custom theme builds, app integrations, and store optimization tailored to how your customers actually shop. We work with US-based brands to build stores that sell.',
       credibilityBar: [
         'Shopify & Shopify Plus',
-        'Conversion-first',
-        'Custom apps & integrations',
+        'Custom Liquid development',
+        'App & integration setup',
         'Performance-engineered',
         'You own the build'
       ],
       primaryCTA: 'Book a Shopify strategy call',
       secondaryCTA: 'Request a free Shopify store teardown',
-      socialProof: '[PLACEHOLDER: Shopify Partner badge / brand logos / rating] · Representative work across DTC, scaling, and B2B Shopify brands.'
+      socialProof: 'Representative work across DTC, scaling, and B2B Shopify brands in the US.'
     },
     
     featuredAnswer: {
       question: 'What is Shopify development?',
-      answer: 'Shopify development is the design, customization, and engineering of stores on Shopify and Shopify Plus. For brands, the value is in how well the store converts and scales — not the theme. Expert Shopify development optimizes the product and checkout experience for conversion and average order value, integrates operations to lower cost-to-serve, and extends the platform with custom apps where standard features fall short.'
+      answer: 'Shopify development covers building and customizing stores on the Shopify platform, from custom theme coding in Liquid to app integrations, checkout customization, and performance optimization. It\'s a popular choice for merchants who want a managed, secure platform without sacrificing design flexibility or conversion potential.'
     },
     
     problemSection: {
@@ -1236,8 +1234,8 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     solutionSection: {
-      heading: 'How We Build Shopify for Revenue and Scale',
-      content: 'We approach Shopify as commerce engineering, not theme configuration.',
+      heading: 'Why Choose Us',
+      content: 'We build Shopify stores as growth engines, not just storefronts. That means every theme decision, app choice, and page layout is made with conversion rate and page speed in mind, not just visual appeal. We approach Shopify as commerce engineering, not theme configuration.',
       pillars: [
         {
           title: 'Conversion-first build',
@@ -1245,7 +1243,7 @@ export const serviceData: Record<string, ServicePageData> = {
         },
         {
           title: 'Disciplined app and custom-code strategy',
-          description: 'We use apps where they earn their place and build custom functionality where apps fall short or slow you down, keeping the store lean.'
+          description: 'We use apps where they earn their place and build custom Liquid functionality where apps fall short or slow you down, keeping the store lean.'
         },
         {
           title: 'Operations integration',
@@ -1254,23 +1252,32 @@ export const serviceData: Record<string, ServicePageData> = {
       ]
     },
     
+    keyBenefits: [
+      'Custom Liquid theme development matched to your brand',
+      'App integrations for reviews, subscriptions, loyalty, and more',
+      'Speed optimization to reduce load times and bounce rate',
+      'Custom checkout experiences (Shopify Plus)',
+      'SEO-friendly store structure and metadata setup',
+      'Ongoing store management and feature development'
+    ],
+    
     capabilities: {
       heading: 'Shopify Capabilities',
       items: [
         {
           service: 'Custom Shopify theme development',
-          whatItIs: 'Conversion-engineered, brand-specific storefronts — not lightly-skinned templates.',
+          whatItIs: 'Custom Liquid theme coding matched to your brand — not lightly-skinned templates.',
           businessImpact: 'Higher conversion from a store built to close your customer.'
         },
         {
           service: 'Shopify Plus development',
-          whatItIs: 'Advanced builds using Plus\'s checkout, scripts, and B2B capabilities.',
+          whatItIs: 'Advanced builds using Plus\'s custom checkout, scripts, and B2B capabilities.',
           businessImpact: 'Enterprise-grade commerce with higher conversion control.'
         },
         {
-          service: 'Custom Shopify app development',
-          whatItIs: 'Private apps and custom functionality where standard features fall short.',
-          businessImpact: 'Capabilities competitors using stock Shopify can\'t match.'
+          service: 'App & integration setup',
+          whatItIs: 'Configuring and connecting apps for reviews, subscriptions, loyalty, and ERP/inventory.',
+          businessImpact: 'Lower cost-to-serve through automation and seamless operations.'
         },
         {
           service: 'Store optimization & CRO',
@@ -1279,13 +1286,13 @@ export const serviceData: Record<string, ServicePageData> = {
         },
         {
           service: 'Migration to Shopify',
-          whatItIs: 'Moving from other platforms with zero data loss and preserved SEO.',
+          whatItIs: 'Moving from WooCommerce, Magento, or other platforms with zero data loss and preserved SEO.',
           businessImpact: 'Modernize onto Shopify without losing traffic.'
         },
         {
-          service: 'Integrations',
-          whatItIs: 'ERP, fulfillment, inventory, subscription, and marketing-stack integration.',
-          businessImpact: 'Lower cost-to-serve through automation.'
+          service: 'Custom Shopify app development',
+          whatItIs: 'Private apps and custom functionality where standard features fall short.',
+          businessImpact: 'Capabilities competitors using stock Shopify can\'t match.'
         },
         {
           service: 'B2B & wholesale on Shopify',
@@ -1327,47 +1334,32 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     process: {
-      heading: 'From Teardown to Growth',
+      heading: 'Our Process',
       steps: [
         {
           number: 1,
-          title: 'Discovery & teardown',
-          description: 'Conversion, performance, and app-stack audit; revenue goals; Plus-vs-standard decision.'
+          title: 'Store Audit or Kickoff',
+          description: 'We review your existing store or start fresh with a strategy session on goals and audience.'
         },
         {
           number: 2,
-          title: 'Strategy',
-          description: 'Scope governed by conversion, AOV, and cost-to-serve targets.'
+          title: 'Custom Design',
+          description: 'We design a storefront that reflects your brand rather than a stock theme look.'
         },
         {
           number: 3,
-          title: 'Architecture',
-          description: 'Theme structure, app strategy, custom-code plan, and integration map.'
+          title: 'Liquid Development',
+          description: 'Our developers build custom themes and functionality using Shopify\'s Liquid templating language.'
         },
         {
           number: 4,
-          title: 'Design',
-          description: 'Conversion-led product, cart, and checkout UX — tested.'
+          title: 'App & Integration Setup',
+          description: 'We configure and connect the apps and tools your store needs to run smoothly.'
         },
         {
           number: 5,
-          title: 'Development',
-          description: 'Senior Shopify build with working demos and SEO-safe migration where applicable.'
-        },
-        {
-          number: 6,
-          title: 'QA',
-          description: 'Functional, payment, performance, and device testing as a gate.'
-        },
-        {
-          number: 7,
-          title: 'Launch',
-          description: 'Controlled cutover with redirects and monitoring — no traffic loss.'
-        },
-        {
-          number: 8,
-          title: 'Optimization',
-          description: 'Ongoing CRO and performance work — compounding revenue post-launch.'
+          title: 'QA & Launch',
+          description: 'We test across devices and payment flows before going live.'
         }
       ]
     },
@@ -1412,28 +1404,20 @@ export const serviceData: Record<string, ServicePageData> = {
     
     faqs: [
       {
-        question: 'Is Shopify good enough for a serious or large brand?',
-        answer: 'Yes — Shopify and especially Shopify Plus power some very large brands, and for the large majority of businesses it delivers a better return than more complex platforms. The differentiator is how it\'s built. A serious brand on a conversion-engineered Shopify build outperforms one on an over-engineered enterprise platform that drains budget on overhead. We\'ll tell you honestly if your needs are the rare exception.'
+        question: 'Do I need a custom Shopify theme or can I use a template?',
+        answer: 'Templates work for getting started quickly, but a custom theme lets you differentiate your brand, improve site speed, and build features templates don\'t support. We build custom Liquid themes matched to your brand to maximize conversions. We can advise based on your goals and budget.'
       },
       {
-        question: 'Do we need Shopify Plus or is standard Shopify enough?',
-        answer: 'Most brands start perfectly well on standard Shopify. Plus earns its higher cost when you need checkout customization, advanced B2B/wholesale, higher volume, or scripting. We\'ll assess your stage and tell you which is the right spend — and we won\'t push Plus if standard Shopify serves your goals.'
+        question: 'Can you migrate my store from another platform to Shopify?',
+        answer: 'Yes, we handle migrations from WooCommerce, Magento, and other platforms, preserving your SEO rankings and customer data. We treat traffic preservation as a core deliverable, not an afterthought.'
       },
       {
-        question: 'What does a Shopify build cost?',
-        answer: 'A custom theme build typically runs $15K–$60K; a Shopify Plus or app-heavy build $60K–$150K+. Cost follows scope and we size it to the return. You get a transparent estimate after a strategy call — and a free teardown shows you the opportunity first.'
+        question: 'Do you build on Shopify Plus?',
+        answer: 'Yes, we develop on both standard Shopify and Shopify Plus, including custom checkout customization available only on Plus. We\'ll assess your stage and tell you which is the right spend — and we won\'t push Plus if standard Shopify serves your goals.'
       },
       {
-        question: 'Will too many apps slow our store down?',
-        answer: 'Yes, and it\'s one of the most common causes of underperformance. We take a disciplined approach — keep the apps that earn their place, replace redundant ones with lean custom code, and engineer for speed — because performance and conversion move together.'
-      },
-      {
-        question: 'Can you migrate us to Shopify without losing SEO?',
-        answer: 'Yes — SEO-preserving migration with a full redirect map and careful cutover is standard practice for us. Done carelessly, migration loses traffic; we treat traffic preservation as a deliverable, not an afterthought.'
-      },
-      {
-        question: 'Do we own the store and custom code?',
-        answer: 'Completely — the theme code, any custom apps, the configuration, and the data are yours. No lock-in, full control, take it elsewhere anytime. We earn the relationship by growing your store.'
+        question: 'How much does custom Shopify development cost?',
+        answer: 'Costs vary based on design complexity and required functionality. A custom theme build typically runs $15K–$60K; a Shopify Plus or app-heavy build $60K–$150K+. We provide a detailed quote after understanding your specific requirements.'
       }
     ],
     
@@ -1455,7 +1439,7 @@ export const serviceData: Record<string, ServicePageData> = {
     schema: {
       serviceType: 'Shopify Development',
       priceRange: '$15,000 - $150,000+',
-      audience: 'DTC & B2B Shopify Brands'
+      audience: 'US Brands & Shopify Merchants'
     }
   },
 
@@ -1465,29 +1449,37 @@ export const serviceData: Record<string, ServicePageData> = {
   'wordpress-development': {
     slug: 'wordpress-development',
     title: 'WordPress Development',
-    metaDescription: 'WordPress development for companies that outgrew cheap WordPress. Custom, fast, secure, and marketing-empowering WordPress sites built properly.',
-    pageGoal: 'Convert businesses seeking serious WordPress work — not cheap theme jobs — into scoping engagements',
-    buyerPersona: 'Marketing leaders, founders, and operators at content-driven and mid-market businesses who need a fast, secure, manageable WordPress site or are escaping a bad one',
-    uniquePositioning: 'We build WordPress as a fast, secure, marketing-empowering platform — enterprise-grade where it needs to be — not the slow, fragile, plugin-bloated builds that give WordPress a bad name.',
+    metaTitle: 'WordPress Development Services | Custom WordPress Websites',
+    metaDescription: 'Custom WordPress development services for US businesses. Fast, secure, SEO-friendly WordPress sites, themes, and plugin development.',
+    targetKeywords: [
+      'WordPress development services',
+      'custom WordPress development',
+      'WordPress website design',
+      'WordPress plugin development',
+      'hire WordPress developer'
+    ],
+    pageGoal: 'Convert US businesses seeking fast, secure, and SEO-friendly WordPress sites into scoping engagements',
+    buyerPersona: 'US businesses that need a content-friendly platform without sacrificing speed or security',
+    uniquePositioning: 'Most WordPress sites slow down because of plugin bloat and poorly coded themes. We build lean, custom-coded WordPress sites that stay fast even as you add content, and we set up the security layer most agencies skip.',
     
     hero: {
-      heading: 'WordPress Development for Companies That Outgrew Cheap WordPress',
-      subheading: 'WordPress powers a huge share of the web — and most of those sites are slow, insecure, and a developer-dependent headache. We build WordPress the way it should be: fast, secure, and built so your marketing team can run it without a ticket queue. Enterprise-grade when you need it.',
+      heading: 'WordPress Development Services Built for Speed and SEO',
+      subheading: 'WordPress powers a huge share of the web, but the difference between a slow, bloated site and a fast, secure one comes down to how it\'s built. Our WordPress development services focus on clean custom code, not plugin stacking, to give you a site that performs. We build custom WordPress websites, themes, and plugins for US businesses that need a content-friendly platform without sacrificing speed or security.',
       credibilityBar: [
         'Custom themes, no bloat',
         'Performance & security-hardened',
-        'Headless WordPress available',
+        'Custom plugin development',
         'Marketing-team friendly',
         'You own everything'
       ],
       primaryCTA: 'Book a WordPress strategy call',
       secondaryCTA: 'Request a WordPress performance & security audit',
-      socialProof: '[PLACEHOLDER: client logos / rating] · Representative work across content-driven, mid-market, and enterprise WordPress sites.'
+      socialProof: 'Representative work across content-driven, mid-market, and enterprise WordPress sites for US businesses.'
     },
     
     featuredAnswer: {
       question: 'What is WordPress development?',
-      answer: 'WordPress development is the design and engineering of websites on WordPress, the world\'s most widely used CMS. Done well, WordPress is fast, secure, and easy for non-technical teams to manage. Done poorly — with bloated themes and excessive plugins — it\'s slow, vulnerable, and developer-dependent. Professional WordPress development means custom, performance-engineered, security-hardened builds that empower marketing teams rather than trapping them.'
+      answer: 'WordPress development involves building websites on the WordPress content management system, including custom theme design, plugin development, and performance optimization. It\'s widely used because it gives non-technical teams an easy way to manage content, while still allowing developers to build fully custom functionality underneath.'
     },
     
     problemSection: {
@@ -1500,8 +1492,8 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     solutionSection: {
-      heading: 'How We Build WordPress That\'s Fast, Secure, and Yours to Run',
-      content: 'We build WordPress the way capable teams build it — deliberately, not by stacking plugins.',
+      heading: 'Why Choose Us',
+      content: 'Most WordPress sites slow down because of plugin bloat and poorly coded themes. We build lean, custom-coded WordPress sites that stay fast even as you add content, and we set up the security layer most agencies skip. We build WordPress the way capable teams build it — deliberately, not by stacking plugins.',
       pillars: [
         {
           title: 'Custom, lean themes',
@@ -1518,6 +1510,15 @@ export const serviceData: Record<string, ServicePageData> = {
       ]
     },
     
+    keyBenefits: [
+      'Custom theme development instead of bloated pre-built themes',
+      'Lightweight, optimized code for fast page load speeds',
+      'Custom plugin development for unique functionality',
+      'Hardened security setup to prevent common WordPress vulnerabilities',
+      'SEO-ready structure with clean permalinks and schema markup',
+      'Easy-to-use content management for your internal team'
+    ],
+    
     capabilities: {
       heading: 'WordPress Capabilities',
       items: [
@@ -1527,9 +1528,9 @@ export const serviceData: Record<string, ServicePageData> = {
           businessImpact: 'Speed and stability by design; better conversion and rankings.'
         },
         {
-          service: 'Headless WordPress',
-          whatItIs: 'WordPress back end with a modern decoupled front end.',
-          businessImpact: 'Maximum performance and flexibility where it pays off.'
+          service: 'Custom plugin development',
+          whatItIs: 'Bespoke functionality instead of bloated third-party plugins.',
+          businessImpact: 'Capabilities you need without the sprawl that slows sites.'
         },
         {
           service: 'WordPress performance optimization',
@@ -1542,14 +1543,14 @@ export const serviceData: Record<string, ServicePageData> = {
           businessImpact: 'Protects against breaches and the cost they bring.'
         },
         {
+          service: 'Headless WordPress',
+          whatItIs: 'WordPress back end with a modern decoupled front end.',
+          businessImpact: 'Maximum performance and flexibility where it pays off.'
+        },
+        {
           service: 'WooCommerce development',
           whatItIs: 'Commerce on WordPress, built to convert.',
           businessImpact: 'Sell on WordPress without the typical performance penalty.'
-        },
-        {
-          service: 'Custom plugin development',
-          whatItIs: 'Bespoke functionality instead of bloated third-party plugins.',
-          businessImpact: 'Capabilities you need without the sprawl that slows sites.'
         },
         {
           service: 'Migration & rebuilds',
@@ -1591,47 +1592,32 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     process: {
-      heading: 'From Audit to Optimization',
+      heading: 'Our Process',
       steps: [
         {
           number: 1,
-          title: 'Discovery & audit',
-          description: 'Performance, security, and manageability audit; goals; traditional-vs-headless decision.'
+          title: 'Planning',
+          description: 'We map your site structure, content needs, and required functionality.'
         },
         {
           number: 2,
-          title: 'Strategy',
-          description: 'Scope governed by speed, security, and marketing-velocity goals.'
+          title: 'Custom Design',
+          description: 'We design a site tailored to your brand rather than modifying a generic theme.'
         },
         {
           number: 3,
-          title: 'Architecture',
-          description: 'Theme structure, plugin strategy, content model, and security plan.'
+          title: 'Development',
+          description: 'Our developers build custom themes and any needed plugins from scratch.'
         },
         {
           number: 4,
-          title: 'Design',
-          description: 'Conversion-led UX with a clean, team-friendly editing experience.'
+          title: 'Security & Performance Setup',
+          description: 'We configure hosting, caching, and security best practices.'
         },
         {
           number: 5,
-          title: 'Development',
-          description: 'Senior, lean build with working demos and SEO-safe migration.'
-        },
-        {
-          number: 6,
-          title: 'QA',
-          description: 'Performance, security, accessibility, and device testing as a gate.'
-        },
-        {
-          number: 7,
-          title: 'Launch',
-          description: 'Controlled cutover with redirects and monitoring — no traffic loss.'
-        },
-        {
-          number: 8,
-          title: 'Optimization & care',
-          description: 'Ongoing performance, security, and managed maintenance.'
+          title: 'Training & Launch',
+          description: 'We train your team on the CMS and launch the site with ongoing support available.'
         }
       ]
     },
@@ -1676,28 +1662,20 @@ export const serviceData: Record<string, ServicePageData> = {
     
     faqs: [
       {
-        question: 'Isn\'t WordPress slow and insecure?',
-        answer: 'Badly built WordPress is — and that\'s most of it. Properly built WordPress, with a lean custom theme, disciplined plugins, performance engineering, and security hardening, is fast and secure. The platform isn\'t the problem; the typical build is. We build the version that performs.'
+        question: 'Is WordPress a good choice for my business website?',
+        answer: 'WordPress is a strong choice for content-heavy sites and businesses that want an easy-to-manage CMS with strong SEO capabilities. We can help you determine if it fits your specific goals, but for most US businesses focused on content and SEO, it is a highly effective platform.'
       },
       {
-        question: 'Should we use WordPress or move to something else?',
-        answer: 'For most content-driven and mid-market sites, a properly built WordPress is the right, cost-effective answer — it\'s flexible, your team likely knows it, and it avoids retraining and migration cost. We\'ll tell you honestly if your specific needs genuinely warrant a different platform, but we won\'t push you off WordPress to inflate a project.'
+        question: 'Can you build custom plugins for unique functionality?',
+        answer: 'Yes, we develop custom WordPress plugins when existing plugins don\'t meet your specific functional requirements. This prevents the plugin bloat that slows down most WordPress sites while giving you exactly the functionality you need.'
       },
       {
-        question: 'What does a WordPress build cost?',
-        answer: 'A custom WordPress build typically runs $10K–$40K; a complex, headless, or enterprise build $40K–$100K+. Cost follows scope and we size it to the return. You get a transparent estimate after a strategy call, and an audit shows the opportunity first.'
+        question: 'How do you keep WordPress sites secure?',
+        answer: 'We implement hardened hosting configurations, limit plugin usage, apply regular updates, and follow WordPress security best practices to reduce vulnerabilities. Security is built in from the start, not bolted on as an afterthought.'
       },
       {
-        question: 'Will our marketing team be able to manage it?',
-        answer: 'Yes — that\'s a core design goal. We deliver a clean, well-structured editing experience, often with a properly configured page builder, so your team can create and update pages and campaigns without a developer. Empowering your team is part of the deliverable.'
-      },
-      {
-        question: 'Can you fix or rebuild our existing WordPress site?',
-        answer: 'Often, yes — and sometimes fixing is smarter than rebuilding. We audit first and tell you candidly whether a targeted fix or a rebuild gives the better return. Either way, we preserve your SEO and content.'
-      },
-      {
-        question: 'Do we own the site, theme, and code?',
-        answer: 'Completely — the theme, any custom plugins, the content, and the data are yours, with no lock-in. WordPress is open-source and we keep it that way: full control, take it anywhere. We keep the relationship on results.'
+        question: 'Will my WordPress site be fast?',
+        answer: 'Yes, we prioritize lightweight custom code, image optimization, and caching configurations to keep load times fast. Because we avoid bloated pre-built themes and excessive plugins, your site stays fast even as you add content, which also supports better SEO rankings.'
       }
     ],
     
@@ -1719,7 +1697,7 @@ export const serviceData: Record<string, ServicePageData> = {
     schema: {
       serviceType: 'WordPress Development',
       priceRange: '$10,000 - $100,000+',
-      audience: 'Content-driven & Mid-market Businesses'
+      audience: 'US Businesses'
     }
   },
 
@@ -1729,29 +1707,37 @@ export const serviceData: Record<string, ServicePageData> = {
   'web-design-services': {
     slug: 'web-design-services',
     title: 'Web Design Services (UI/UX)',
-    metaDescription: 'Web design engineered for conversion, not compliments. UI/UX services grounded in research and testing to move business metrics, not just look good.',
-    pageGoal: 'Convert buyers who think they need \'design\' into a conversion-and-revenue conversation; reframe design as a business lever',
-    buyerPersona: 'Founders, marketing and product leaders who want a better-looking or better-converting site and may not yet frame it in revenue terms',
-    uniquePositioning: 'We design for conversion and revenue, not awards — UI/UX engineered to move the business metrics that matter, backed by research and testing, not taste.',
+    metaTitle: 'Web Design Services | UI/UX Design That Converts',
+    metaDescription: 'Professional web design services combining UI/UX best practices. We design websites for US businesses that are beautiful, usable, and built to convert.',
+    targetKeywords: [
+      'web design services',
+      'UI UX design company',
+      'website design USA',
+      'custom website design',
+      'user experience design services'
+    ],
+    pageGoal: 'Convert US businesses seeking beautiful, usable, and high-converting websites into a scoping engagement',
+    buyerPersona: 'Founders, marketing and product leaders at US businesses who want a website that reduces friction, guides attention, and increases conversions',
+    uniquePositioning: 'We treat design as a conversion tool, not decoration. Every layout decision is backed by UX principles and, where possible, real user data, so the final design doesn\'t just look good in a mockup, it performs once it\'s live.',
     
     hero: {
-      heading: 'Web Design Engineered for Conversion, Not Compliments',
-      subheading: 'A beautiful site that doesn\'t convert is an expensive liability. We design UI and UX around the numbers your business runs on — conversion rate, lead quality, activation, retention — using research and testing, not taste. Design as a revenue lever, not decoration.',
+      heading: 'Web Design Services Focused on Usability and Conversion',
+      subheading: 'Good design isn\'t just how a website looks, it\'s how easily a visitor can find what they need and take action. Our web design services combine visual design with UI/UX research to build sites that are both attractive and genuinely easy to use. We design for US businesses across industries, translating brand identity into interfaces that reduce friction, guide attention, and increase conversions.',
       credibilityBar: [
-        'Conversion-led UX',
+        'Custom visual design',
         'Research & testing-based',
+        'Conversion-focused layouts',
         'Accessible by standard',
-        'Built to convert across devices',
         'Design you own'
       ],
       primaryCTA: 'Book a design strategy call',
       secondaryCTA: 'Request a UX & conversion teardown',
-      socialProof: '[PLACEHOLDER: client logos / rating] · Representative work across SaaS, eCommerce, and B2B services.'
+      socialProof: 'Representative work across SaaS, eCommerce, and B2B services for US businesses.'
     },
     
     featuredAnswer: {
-      question: 'What is web design (UI/UX)?',
-      answer: 'Web design (UI/UX) is the design of how a website looks and works — the interface and the experience. For businesses, its value is measured in behavior: whether visitors convert, complete tasks, and return. Effective web design is a conversion discipline grounded in user research and testing, not an aesthetic exercise. The goal is a site that moves business metrics, not just one that looks good.'
+      question: 'What are web design services (UI/UX)?',
+      answer: 'Web design (UI/UX) is the discipline of designing how a website looks and functions from a user\'s perspective. UI, or user interface, covers the visual layout, colors, and interactive elements, while UX, or user experience, focuses on how intuitive and efficient the overall journey feels for a visitor trying to complete a task.'
     },
     
     problemSection: {
@@ -1764,8 +1750,8 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     solutionSection: {
-      heading: 'How We Design for the Number, Not the Mood Board',
-      content: 'We treat design as applied behavioral engineering.',
+      heading: 'Why Choose Us',
+      content: 'We treat design as a conversion tool, not decoration. Every layout decision is backed by UX principles and, where possible, real user data, so the final design doesn\'t just look good in a mockup, it performs once it\'s live. We treat design as applied behavioral engineering.',
       pillars: [
         {
           title: 'Research first',
@@ -1781,6 +1767,15 @@ export const serviceData: Record<string, ServicePageData> = {
         }
       ]
     },
+    
+    keyBenefits: [
+      'Custom visual design aligned with your brand identity',
+      'User research and testing to validate design decisions',
+      'Wireframing and prototyping before full development',
+      'Conversion-focused layouts for key landing pages',
+      'Accessible design that works for all users',
+      'Consistent design systems across your entire site'
+    ],
     
     capabilities: {
       heading: 'Design Capabilities',
@@ -1855,47 +1850,32 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     process: {
-      heading: 'From Research to Optimization',
+      heading: 'Our Process',
       steps: [
         {
           number: 1,
-          title: 'Discovery & research',
-          description: 'User research, behavior analysis, conversion goals, and a UX audit of the current experience.'
+          title: 'Research',
+          description: 'We study your audience, competitors, and current site performance to identify design opportunities.'
         },
         {
           number: 2,
-          title: 'Strategy',
-          description: 'Information architecture and conversion strategy governed by the metric to move.'
+          title: 'Wireframing',
+          description: 'We map out page layouts and user flows before adding visual design.'
         },
         {
           number: 3,
-          title: 'UX design',
-          description: 'Wireframes and prototypes of the key flows — structure before surface.'
+          title: 'Visual Design',
+          description: 'We design high-fidelity mockups that reflect your brand and support usability.'
         },
         {
           number: 4,
-          title: 'UI design',
-          description: 'Polished, on-brand, accessible interface design and a design system.'
+          title: 'Prototyping & Testing',
+          description: 'We test key flows with real users or stakeholders before development begins.'
         },
         {
           number: 5,
-          title: 'Validation',
-          description: 'Prototype testing and, where volume allows, live testing before and after launch.'
-        },
-        {
-          number: 6,
-          title: 'Development handoff',
-          description: 'Pixel-accurate, developer-ready specs — or we build it end to end.'
-        },
-        {
-          number: 7,
-          title: 'Launch',
-          description: 'Instrumented launch so impact is measured from day one.'
-        },
-        {
-          number: 8,
-          title: 'Optimization',
-          description: 'Ongoing CRO — compounding conversion gains over time.'
+          title: 'Handoff to Development',
+          description: 'We deliver design files and specifications ready for our development team to build.'
         }
       ]
     },
@@ -1940,28 +1920,20 @@ export const serviceData: Record<string, ServicePageData> = {
     
     faqs: [
       {
-        question: 'Isn\'t design just about looking good?',
-        answer: 'Looking good builds trust, and trust converts — so aesthetics matter. But if a site looks great and converts poorly, the design has failed at its actual job. We design for behavior and measure the result, with aesthetics serving the outcome rather than replacing it. Pretty is necessary; it isn\'t sufficient.'
+        question: 'What\'s the difference between UI and UX design?',
+        answer: 'UI (User Interface) design focuses on the visual interface, like colors, buttons, and layout. UX (User Experience) design focuses on the overall experience and how easily users can accomplish their goals on your site. We handle both to ensure your site is both beautiful and highly usable.'
       },
       {
-        question: 'How do you know your design will convert better?',
-        answer: 'Because we ground it in user research and validate it with testing rather than defending opinions in a meeting. We instrument before and after so the impact is measured, not assumed — and where traffic volume allows, we test changes rather than betting the whole site on a redesign.'
+        question: 'Do you redesign existing websites or only build new ones?',
+        answer: 'Both. We handle full redesigns of existing sites to improve performance and usability, as well as design for brand-new websites from the ground up.'
       },
       {
-        question: 'What does web design cost?',
-        answer: 'A focused conversion-led design typically runs $10K–$40K; a larger site or product UX engagement $40K–$100K+. Cost follows scope and we size it to the conversion return. You get a transparent estimate after a strategy call, and a teardown shows the opportunity first.'
+        question: 'How long does a website design project take?',
+        answer: 'Most design projects take three to six weeks depending on the number of page templates required and the rounds of revisions needed. We establish a clear timeline during our initial strategy call.'
       },
       {
-        question: 'Do you just design, or also build?',
-        answer: 'Both. We can deliver developer-ready designs for your team, or design and build the site end to end — which avoids the quality loss that often happens in handoff. We\'ll recommend whichever fits your situation.'
-      },
-      {
-        question: 'Will the design work on mobile?',
-        answer: 'Yes — responsive, mobile-first design is standard, because most traffic is mobile and a weak mobile experience silently costs the majority of your conversions. We design and test across devices as a matter of course.'
-      },
-      {
-        question: 'Do we own the designs?',
-        answer: 'Completely — the design files, the design system, and the assets are yours, with no lock-in. Full control, use them anywhere. We keep the relationship by improving your numbers.'
+        question: 'Will the design be responsive on mobile devices?',
+        answer: 'Yes, every design we deliver is fully responsive. We design and test across mobile, tablet, and desktop breakpoints to ensure a flawless experience for all users, regardless of device.'
       }
     ],
     
@@ -1983,7 +1955,7 @@ export const serviceData: Record<string, ServicePageData> = {
     schema: {
       serviceType: 'Web Design (UI/UX)',
       priceRange: '$10,000 - $100,000+',
-      audience: 'Founders, Marketing & Product Leaders'
+      audience: 'US Businesses (Founders, Marketing & Product Leaders)'
     }
   },
 
@@ -1993,29 +1965,37 @@ export const serviceData: Record<string, ServicePageData> = {
   'custom-web-development': {
     slug: 'custom-web-development',
     title: 'Custom Web Development',
-    metaDescription: 'Custom web development for when off-the-shelf stops fitting. Bespoke platforms engineered to your workflows, scale, and differentiation.',
-    pageGoal: 'Convert buyers whose needs exceed templates/platforms into a scoping engagement; justify custom over off-the-shelf in business terms',
-    buyerPersona: 'Founders and operators whose workflows, scale, or differentiation can\'t be served by templates or off-the-shelf platforms',
-    uniquePositioning: 'We build custom when — and only when — it earns its cost: bespoke platforms engineered to your exact workflows, scale, and differentiation, with the judgment to tell you when off-the-shelf is the smarter spend.',
+    metaTitle: 'Custom Web Development Services | Tailored Website Solutions',
+    metaDescription: 'Custom web development services built around your exact business requirements. No templates, no shortcuts, just code built for your goals.',
+    targetKeywords: [
+      'custom web development',
+      'custom website development company',
+      'tailored web solutions',
+      'bespoke web development USA',
+      'custom coded website'
+    ],
+    pageGoal: 'Convert US businesses whose needs exceed templates/platforms into a scoping engagement; justify custom over off-the-shelf in business terms',
+    buyerPersona: 'US businesses that need functionality tailored precisely to how they operate, not forced into a pre-built structure',
+    uniquePositioning: 'Custom development only makes sense when it\'s done right, otherwise you\'re paying more for something a template could have handled. We scope every custom project honestly, and only recommend a fully custom build when your requirements genuinely need it.',
     
     hero: {
-      heading: 'Custom Web Development for When Off-the-Shelf Stops Fitting',
-      subheading: 'Templates and platforms are the right answer until your workflows, scale, or differentiation outgrow them — then forcing a fit costs more than building right. We engineer bespoke platforms to your exact requirements, and we have the judgment to tell you when you don\'t need one.',
+      heading: 'Custom Web Development for Businesses That Need More Than a Template',
+      subheading: 'Templates work fine until your business needs something they weren\'t built to do. Our custom web development services exist for exactly that moment, when off-the-shelf solutions can\'t support your workflow, your integrations, or your growth plans. We build fully custom websites and web applications for US businesses that need functionality tailored precisely to how they operate, not forced into a pre-built structure.',
       credibilityBar: [
         'Built to your workflows',
-        'Engineered for scale',
-        'Full systems integration',
-        'You own 100% of the code',
-        'No lock-in'
+        'No third-party dependencies',
+        'Full control over scalability',
+        'Custom integrations',
+        'You own 100% of the code'
       ],
       primaryCTA: 'Book a scoping consultation',
       secondaryCTA: 'Request a custom-vs-platform assessment',
-      socialProof: '[PLACEHOLDER: client logos / rating] · Representative custom builds across SaaS, operations-heavy, and differentiated businesses.'
+      socialProof: 'Representative custom builds across SaaS, operations-heavy, and differentiated US businesses.'
     },
     
     featuredAnswer: {
       question: 'What is custom web development?',
-      answer: 'Custom web development is the building of a website or web application from the ground up to specific requirements, rather than using a template or off-the-shelf platform. It\'s justified when standard tools can\'t match your workflows, scale, or differentiation — the cost of forcing a fit then exceeds the cost of building right. The right partner builds custom only when it earns its return, and says so when it doesn\'t.'
+      answer: 'Custom web development means building a website or web application from the ground up using original code, rather than relying on pre-built themes, templates, or page builders. It gives businesses full control over functionality, performance, and scalability, which matters most when requirements go beyond what standard platforms support.'
     },
     
     problemSection: {
@@ -2028,23 +2008,32 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     solutionSection: {
-      heading: 'How We Decide — and Build — Custom',
-      content: 'We start with the honest question most vendors skip: do you actually need custom?',
+      heading: 'Why Choose Us',
+      content: 'Custom development only makes sense when it\'s done right, otherwise you\'re paying more for something a template could have handled. We scope every custom project honestly, and only recommend a fully custom build when your requirements genuinely need it. We start with the honest question most vendors skip: do you actually need custom?',
       pillars: [
         {
           title: 'The honest assessment',
-          description: 'We assess whether your workflows, scale, and differentiation genuinely exceed what off-the-shelf can do. If a platform or a configured solution will serve you well, we\'ll tell you — even though it\'s a smaller engagement for us — because recommending unnecessary custom work is how trust is lost.'
+          description: 'We assess whether your workflows, scale, and differentiation genuinely exceed what off-the-shelf can do. If a platform will serve you well, we\'ll tell you — because recommending unnecessary custom work is how trust is lost.'
         },
         {
           title: 'Workflow-exact engineering',
           description: 'When custom is justified, we build to earn its cost. The system fits how you actually work, eliminating the manual tax of ill-fitting software.'
         },
         {
-          title: 'Architecture for scale',
+          title: 'Long-term flexibility',
           description: 'Built for where you\'re going, so it doesn\'t become the next forced migration. Full integration: connected to your existing stack so data flows instead of being re-keyed.'
         }
       ]
     },
+    
+    keyBenefits: [
+      'Functionality built specifically around your workflows',
+      'No dependency on third-party themes or restrictive platforms',
+      'Full control over performance, security, and scalability',
+      'Custom integrations with internal tools and databases',
+      'Unique design not limited by template constraints',
+      'Long-term flexibility to add features as your business evolves'
+    ],
     
     capabilities: {
       heading: 'Custom Capabilities',
@@ -2119,47 +2108,32 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     process: {
-      heading: 'From Assessment to Optimization',
+      heading: 'Our Process',
       steps: [
         {
           number: 1,
-          title: 'Discovery & assessment',
-          description: 'Workflow, scale, and differentiation analysis; the honest custom-vs-platform decision; success metrics.'
+          title: 'Requirements Gathering',
+          description: 'We dig into your specific business processes to understand exactly what needs to be built.'
         },
         {
           number: 2,
-          title: 'Strategy',
-          description: 'Scope and sequencing governed by ROI — build what earns its cost, in the right order.'
+          title: 'Technical Planning',
+          description: 'We define the architecture, tech stack, and integrations required to support your goals.'
         },
         {
           number: 3,
-          title: 'Architecture',
-          description: 'Data model, integrations, and scale path designed first.'
+          title: 'Design & Development',
+          description: 'We design and build the site in parallel tracks to keep the timeline efficient.'
         },
         {
           number: 4,
-          title: 'Design',
-          description: 'Workflow- and conversion-led UX for the actual users.'
+          title: 'Testing',
+          description: 'We rigorously test custom functionality to confirm it performs reliably under real conditions.'
         },
         {
           number: 5,
-          title: 'Development',
-          description: 'Senior-led, incremental engineering with working demos.'
-        },
-        {
-          number: 6,
-          title: 'QA',
-          description: 'Functional, performance, security, and accessibility testing as a gate.'
-        },
-        {
-          number: 7,
-          title: 'Launch',
-          description: 'Controlled, monitored deployment with rollback.'
-        },
-        {
-          number: 8,
-          title: 'Optimization',
-          description: 'Post-launch iteration and support — protecting and growing the investment.'
+          title: 'Launch & Iteration',
+          description: 'We launch the site and continue refining features based on real usage data.'
         }
       ]
     },
@@ -2204,28 +2178,24 @@ export const serviceData: Record<string, ServicePageData> = {
     
     faqs: [
       {
-        question: 'Do we actually need custom, or will a platform work?',
-        answer: 'Often a platform works — and we\'ll tell you when it does, even though that\'s a smaller project for us. Custom is justified only when your workflows, scale, or differentiation genuinely exceed what off-the-shelf can do. We assess that honestly first, because recommending unnecessary custom work is the fastest way to lose your trust and your money.'
+        question: 'When does my business actually need custom web development?',
+        answer: 'Custom development makes sense when your business has unique workflows, needs deep integrations with internal systems, or requires functionality that standard platforms and templates can\'t support. If a pre-built platform can handle your needs, we\'ll tell you to use that instead.'
       },
       {
-        question: 'Isn\'t custom development expensive?',
-        answer: 'It costs more upfront than a template — but the relevant comparison is total cost. The manual workarounds, capability ceilings, and eventual forced migration of an ill-fitting platform often cost far more over time than building right once. We size both sides of that comparison so the decision is grounded in numbers, not assumption.'
+        question: 'Is custom web development more expensive than using a platform like WordPress or Shopify?',
+        answer: 'Typically yes, since it involves building from scratch, but it also removes long-term platform limitations and manual workarounds. We\'ll help you determine if the investment fits your goals and ROI expectations.'
       },
       {
-        question: 'What does a custom build cost?',
-        answer: 'A focused custom site typically runs $15K–$50K; a custom web application or platform $50K–$150K+. Cost follows scope and we size it to the return. You get a transparent estimate after a scoping consultation.'
+        question: 'What technologies do you use for custom builds?',
+        answer: 'We select the stack based on your project\'s needs, commonly using modern frameworks like React, Vue, Node.js, and cloud infrastructure suited to your scale. The technology is chosen to serve the business requirements, not our preferences.'
       },
       {
-        question: 'How long does custom development take?',
-        answer: 'A focused custom build is typically 8–16 weeks; a complex platform 3–6 months. We sequence so value ships in increments rather than one distant launch, with dates committed in the SOW.'
-      },
-      {
-        question: 'What if our needs change during the build?',
-        answer: 'They often do, and our process expects it — incremental delivery with working demos means you see and steer the build as it progresses, and a transparent change-control process handles evolving scope without surprises.'
+        question: 'Can a custom-built site still be easy for my team to manage?',
+        answer: 'Yes, we build custom content management interfaces so your team can update content without needing a developer for routine changes. Empowering your team to manage the site independently is always a core design goal.'
       },
       {
         question: 'Do we own the code?',
-        answer: 'Completely — all the code, infrastructure, and documentation, with no proprietary lock-in. You can take it in-house or move it anytime. With custom work especially, anything less would be unacceptable, and we agree.'
+        answer: 'Completely — all the code, infrastructure, and documentation, with no proprietary lock-in. You can take it in-house or move it anytime. With custom work especially, anything less would be unacceptable.'
       }
     ],
     
@@ -2247,7 +2217,7 @@ export const serviceData: Record<string, ServicePageData> = {
     schema: {
       serviceType: 'Custom Web Development',
       priceRange: '$15,000 - $150,000+',
-      audience: 'Founders & Operators with Unique Requirements'
+      audience: 'US Businesses with Unique Requirements'
     }
   },
 
@@ -2257,29 +2227,37 @@ export const serviceData: Record<string, ServicePageData> = {
   'web-application-development': {
     slug: 'web-application-development',
     title: 'Web Application Development',
-    metaDescription: 'Web application development for software that runs your business. Customer portals, internal tools, dashboards, and workflow systems engineered to scale.',
-    pageGoal: 'Convert buyers needing customer-facing or internal web apps, portals, and dashboards into scoping engagements',
-    buyerPersona: 'Founders, product leaders, and operations executives who need functional software delivered over the web — portals, dashboards, internal tools, customer apps',
-    uniquePositioning: 'We build web applications as operational and revenue infrastructure — portals, dashboards, and tools engineered for the workflows and scale your business runs on.',
+    metaTitle: 'Web Application Development Company | Custom Web App Development',
+    metaDescription: 'Custom web application development services for US businesses. We design and build secure, scalable web apps tailored to your workflows.',
+    targetKeywords: [
+      'web application development',
+      'custom web app development company',
+      'business web app development',
+      'hire web app developers',
+      'scalable web application development'
+    ],
+    pageGoal: 'Convert US businesses needing customer-facing or internal web apps, portals, and dashboards into scoping engagements',
+    buyerPersona: 'Founders, product leaders, and operations executives at US businesses automating internal processes, launching customer-facing portals, or building new digital products',
+    uniquePositioning: 'Internal tools and customer-facing applications fail when they\'re technically sound but painfully unusable. We pair strong engineering with genuine UX thinking, so the applications we build actually get adopted by the people using them daily.',
     
     hero: {
-      heading: 'Web Application Development for Software That Runs Your Business',
-      subheading: 'When you need software — a customer portal, an internal tool, a dashboard, a workflow system — delivered over the web, the build quality determines whether it accelerates the business or becomes a liability. We engineer web applications for the workflows, scale, and reliability your operations and customers depend on.',
+      heading: 'Web Application Development for Complex Business Workflows',
+      subheading: 'A web application isn\'t a marketing website, it\'s a working tool your team or your customers rely on to get something done. Our web application development services focus on building software that\'s reliable, secure, and genuinely usable, not just functional on paper. We build custom web applications for US businesses that need functionality tailored precisely to how they operate.',
       credibilityBar: [
         'Customer & internal apps',
-        'Engineered for scale',
-        'Secure & integrated',
-        'Senior-led',
+        'Secure & role-based permissions',
+        'Real-time data processing',
+        'API integrations',
         'You own 100% of the code'
       ],
       primaryCTA: 'Book an application scoping call',
       secondaryCTA: 'Request a web-app architecture guide',
-      socialProof: '[PLACEHOLDER: client logos / rating] · Representative work across portals, dashboards, internal tools, and customer-facing apps.'
+      socialProof: 'Representative work across portals, dashboards, internal tools, and customer-facing apps for US businesses.'
     },
     
     featuredAnswer: {
       question: 'What is web application development?',
-      answer: 'Web application development is the engineering of interactive software delivered through a browser — customer portals, dashboards, internal tools, and workflow systems — rather than static websites. For businesses, the value is operational and financial: applications that automate work, serve customers, and scale. The right partner engineers for the workflow, scale, security, and reliability the application\'s role demands.'
+      answer: 'Web application development is the process of building interactive, browser-based software that goes beyond static content, think dashboards, internal tools, customer portals, or booking systems. Unlike a standard website, a web app typically involves complex logic, data processing, and user accounts that drive real business operations.'
     },
     
     problemSection: {
@@ -2292,8 +2270,8 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     solutionSection: {
-      heading: 'How We Engineer Applications That Hold Up',
-      content: 'We build web applications as engineering, not as websites with extra buttons.',
+      heading: 'Why Choose Us',
+      content: 'Internal tools and customer-facing applications fail when they\'re technically sound but painfully unusable. We pair strong engineering with genuine UX thinking, so the applications we build actually get adopted by the people using them daily. We build web applications as engineering, not as websites with extra buttons.',
       pillars: [
         {
           title: 'Workflow-first design',
@@ -2309,6 +2287,15 @@ export const serviceData: Record<string, ServicePageData> = {
         }
       ]
     },
+    
+    keyBenefits: [
+      'Custom features built around your exact operational needs',
+      'Secure user authentication and role-based permissions',
+      'Real-time data processing and dashboard capabilities',
+      'API integrations with your existing business tools',
+      'Scalable architecture to support growing user bases',
+      'Clean, intuitive interfaces even for complex functionality'
+    ],
     
     capabilities: {
       heading: 'Application Capabilities',
@@ -2383,47 +2370,32 @@ export const serviceData: Record<string, ServicePageData> = {
     },
     
     process: {
-      heading: 'From Discovery to Optimization',
+      heading: 'Our Process',
       steps: [
         {
           number: 1,
           title: 'Discovery',
-          description: 'Workflow and user needs, scale and reliability requirements, integration map, and success metrics.'
+          description: 'We map your workflows and define the core problem the application needs to solve.'
         },
         {
           number: 2,
-          title: 'Strategy & scope',
-          description: 'A focused first version that proves core value, with a scale path it won\'t violate.'
+          title: 'Technical Architecture',
+          description: 'We design the database structure, API layer, and system architecture.'
         },
         {
           number: 3,
-          title: 'Architecture',
-          description: 'Data model, scale, security, and integration designed first.'
+          title: 'UI/UX Design',
+          description: 'We design interfaces that make complex functionality feel simple to use.'
         },
         {
           number: 4,
-          title: 'Design',
-          description: 'Workflow- and usability-led UX for the actual users.'
+          title: 'Agile Development',
+          description: 'We build in iterative sprints, giving you visibility into progress throughout.'
         },
         {
           number: 5,
-          title: 'Development',
-          description: 'Senior-led, incremental engineering with working demos and tight feedback loops.'
-        },
-        {
-          number: 6,
-          title: 'QA',
-          description: 'Functional, performance, security, and accessibility testing as a gate.'
-        },
-        {
-          number: 7,
-          title: 'Launch',
-          description: 'Controlled, monitored deployment with rollback and analytics.'
-        },
-        {
-          number: 8,
-          title: 'Optimization',
-          description: 'Post-launch iteration, scaling, and support.'
+          title: 'Testing & Deployment',
+          description: 'We test thoroughly under realistic conditions before deploying to production.'
         }
       ]
     },
@@ -2469,27 +2441,19 @@ export const serviceData: Record<string, ServicePageData> = {
     faqs: [
       {
         question: 'What\'s the difference between a website and a web application?',
-        answer: 'A website presents information; a web application does work — customers and staff interact with it to accomplish tasks (a portal, a dashboard, a workflow tool). Applications demand more from architecture, security, and reliability because people depend on them operationally, which is why build quality matters far more than it does for a marketing site.'
+        answer: 'A website primarily presents information, while a web application allows users to interact with data, complete tasks, and perform actions, like managing accounts, processing transactions, or running reports. Applications demand more from architecture, security, and reliability because people depend on them operationally.'
       },
       {
-        question: 'Should we build a full application or start smaller?',
-        answer: 'Start with a focused first version that proves the core value and gets into users\' hands — on an architecture that scales when it works. The trap is a big-bang build that\'s wrong in expensive ways no one discovers until launch. We scope a real, useful first version and sequence the rest against what usage teaches us.'
+        question: 'Can you build a web app that integrates with our existing software?',
+        answer: 'Yes, integrating with existing tools and databases through APIs is a standard part of most web application projects we handle. We connect it to your CRM, ERP, data, and internal systems so information flows and isn\'t re-keyed.'
       },
       {
-        question: 'What does a web application cost?',
-        answer: 'A focused application typically runs $25K–$75K; a complex portal or platform $75K–$250K+. Cost follows scope and we size it to the operational return. You get a transparent estimate after a scoping call.'
+        question: 'How long does web application development take?',
+        answer: 'Timelines vary significantly based on complexity, ranging from a few months for a focused tool to longer for feature-rich platforms. We provide a detailed timeline after scoping your specific requirements during our initial strategy call.'
       },
       {
-        question: 'Will it scale as our usage grows?',
-        answer: 'Yes — scale and reliability are designed in from the first architectural decision, because an application that buckles as usage grows forces a rebuild at the worst possible moment. We engineer for the load and uptime the application\'s role demands.'
-      },
-      {
-        question: 'Can it integrate with our existing systems?',
-        answer: 'Yes — integration is central, so the application removes silos rather than creating one. We connect it to your CRM, ERP, data, and internal systems so information flows and isn\'t re-keyed.'
-      },
-      {
-        question: 'Do we own the application and code?',
-        answer: 'Completely — all code, infrastructure, and documentation, with full handoff and no lock-in. For software your operations depend on, anything less would be unacceptable, and we agree.'
+        question: 'Do you provide ongoing support after the application launches?',
+        answer: 'Yes, we offer ongoing maintenance, bug fixes, and feature development to support your application as your needs evolve. We are here to ensure the application remains reliable and scalable long after deployment.'
       }
     ],
     
@@ -2511,2918 +2475,2879 @@ export const serviceData: Record<string, ServicePageData> = {
     schema: {
       serviceType: 'Web Application Development',
       priceRange: '$25,000 - $250,000+',
-      audience: 'Founders, Product Leaders & Operations Executives'
+      audience: 'US Businesses (Founders, Product Leaders & Operations Executives)'
     }
   },
 
-  // 10. shopify-plus-development
+  // ------------------------------------------
+  // 10. Shopify Plus Development
+  // ------------------------------------------
   'shopify-plus-development': {
-  slug: 'shopify-plus-development',
-  title: 'Shopify Plus Development',
-  metaDescription: 'Enterprise-grade Shopify Plus development for high-volume brands. Custom checkout, B2B, and automation for serious commerce operations.',
-  pageGoal: 'Convert high-volume and scaling brands evaluating Shopify Plus into a scoping call; justify the Plus premium in revenue terms; project value $40K–$200K+.',
-  buyerPersona: 'Founders, eCommerce directors, and CMOs at brands scaling past standard Shopify ($2M–$50M+) who need checkout control, B2B, or automation.',
-  uniquePositioning: 'We build on Shopify Plus to do what standard Shopify can\'t — checkout customization, B2B, scripting, and automation — and we\'ll tell you honestly whether your volume actually justifies the upgrade.',
-  
-  hero: {
-    heading: 'Shopify Plus Development for Brands That Have Outgrown Standard Shopify',
-    subheading: 'Shopify Plus earns its premium when you need control standard Shopify won\'t give you — a customizable checkout, real B2B, scripting, and automation at volume. We build Plus stores around those capabilities, engineered for the conversion and operational gains that justify the spend.',
-    credibilityBar: [
-      'Checkout & Functions customization',
-      'B2B & wholesale',
-      'Flow automation',
-      'High-volume architecture',
-      'You own the build'
+    slug: 'shopify-plus-development',
+    title: 'Shopify Plus Development',
+    metaTitle: 'Shopify Plus Development Services | Enterprise Shopify Experts',
+    metaDescription: 'Enterprise Shopify Plus development services for high-volume brands. Custom checkout, B2B, and automation built to scale your store.',
+    targetKeywords: [
+      'Shopify Plus development',
+      'enterprise Shopify experts',
+      'Shopify Plus checkout customization',
+      'Shopify B2B development',
+      'Shopify Flow automation'
     ],
-    primaryCTA: 'Book a Shopify Plus strategy call',
-    secondaryCTA: 'Request a Plus-vs-Shopify assessment',
-    socialProof: '[PLACEHOLDER: Shopify Plus Partner badge / brand logos / rating] · Representative work across high-volume DTC and B2B brands.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is Shopify Plus development?',
-    answer: 'Shopify Plus is Shopify\'s enterprise tier, adding checkout customization, scripting and Shopify Functions, native B2B, higher API limits, and automation through Flow. It\'s justified when a brand\'s volume, B2B needs, or checkout requirements exceed standard Shopify — the added capability then drives conversion and operational gains that outweigh the higher cost. Below that threshold, standard Shopify is the better-value choice.'
-  },
-  
-  problemSection: {
-    heading: 'When Standard Shopify Starts Capping Your Growth',
-    content: [
-      'Standard Shopify is excellent until you hit its ceilings — and at scale, those ceilings cost real money. You can\'t meaningfully customize the checkout, so you can\'t fix the exact step where high-volume stores leak the most revenue. You can\'t run true B2B alongside DTC, so wholesale gets bolted on with apps or run off-platform entirely. You can\'t script complex promotions or automate operations, so your team does at volume what software should be doing for free.',
-      'At a few thousand orders a month, these limits translate directly into lost margin and wasted labor. A checkout you can\'t optimize is a conversion ceiling on your highest-traffic flow. B2B run through workarounds is revenue captured inefficiently or lost to competitors with proper wholesale. Manual promotional and operational work that Flow and Functions could automate is staff cost that scales with your growth instead of shrinking against it.',
-      'The opposite error is just as expensive: upgrading to Plus before your volume justifies it means paying an enterprise premium for capabilities you\'re not yet using. The question is whether you\'ve actually crossed the threshold — and that\'s a numbers question, not a sales pitch.'
+    pageGoal: 'Convert high-volume and scaling brands evaluating Shopify Plus into a scoping call; justify the Plus premium in revenue terms; project value $40K–$200K+.',
+    buyerPersona: 'Founders, eCommerce directors, and CMOs at brands scaling past standard Shopify ($2M–$50M+) who need checkout control, B2B, or automation.',
+    uniquePositioning: 'High-volume Shopify Plus builds have less room for error; a checkout bug during a major sale event costs real revenue. We bring enterprise-level testing discipline to every Plus project, so your store holds up under pressure.',
+    
+    hero: {
+      heading: 'Shopify Plus Development for Brands That Have Outgrown Standard Shopify',
+      subheading: 'Shopify Plus earns its premium when you need control standard Shopify won\'t give you — a customizable checkout, real B2B, scripting, and automation at volume. We build Plus stores around those capabilities, engineered for the conversion and operational gains that justify the spend.',
+      credibilityBar: [
+        'Checkout & Functions customization',
+        'B2B & wholesale',
+        'Flow automation',
+        'High-volume architecture',
+        'You own the build'
+      ],
+      primaryCTA: 'Book a Shopify Plus strategy call',
+      secondaryCTA: 'Request a Plus-vs-Shopify assessment',
+      socialProof: 'Representative work across high-volume DTC and B2B enterprise brands.'
+    },
+    
+    featuredAnswer: {
+      question: 'What is Shopify Plus development?',
+      answer: 'Shopify Plus development is the process of building and customizing stores on Shopify\'s enterprise-tier platform, designed for high-volume merchants. It unlocks capabilities not available on standard Shopify, including checkout.liquid customization, Shopify Flow automation, and support for multiple storefronts under one account.'
+    },
+    
+    problemSection: {
+      heading: 'When Standard Shopify Starts Capping Your Growth',
+      content: [
+        'Standard Shopify is excellent until you hit its ceilings — and at scale, those ceilings cost real money. You can\'t meaningfully customize the checkout, so you can\'t fix the exact step where high-volume stores leak the most revenue. You can\'t run true B2B alongside DTC, so wholesale gets bolted on with apps or run off-platform entirely. You can\'t script complex promotions or automate operations, so your team does at volume what software should be doing for free.',
+        'At a few thousand orders a month, these limits translate directly into lost margin and wasted labor. A checkout you can\'t optimize is a conversion ceiling on your highest-traffic flow. B2B run through workarounds is revenue captured inefficiently or lost to competitors with proper wholesale. Manual promotional and operational work that Flow and Functions could automate is staff cost that scales with your growth instead of shrinking against it.',
+        'The opposite error is just as expensive: upgrading to Plus before your volume justifies it means paying an enterprise premium for capabilities you\'re not yet using. The question is whether you\'ve actually crossed the threshold — and that\'s a numbers question, not a sales pitch.'
+      ],
+      stats: [
+        {
+          label: 'Checkout Conversion Lift',
+          value: '10-20%',
+          description: 'Typical gains from customized Plus checkout'
+        },
+        {
+          label: 'Revenue Threshold',
+          value: '$5M+',
+          description: 'Typical revenue level where Plus economics make sense'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'How We Make Shopify Plus Pay for Itself',
+      content: 'High-volume Shopify Plus builds have less room for error; a checkout bug during a major sale event costs real revenue. We bring enterprise-level testing discipline to every Plus project, so your store holds up under pressure. We build Plus around the specific capabilities that justify it for your business — and we lead with the honest threshold question before recommending it.',
+      pillars: [
+        {
+          title: 'Checkout & Functions customization',
+          description: 'We use Plus\'s checkout extensibility and Shopify Functions to optimize the step where high-volume stores win or lose the most revenue — something standard Shopify simply can\'t do.'
+        },
+        {
+          title: 'B2B & wholesale',
+          description: 'Native B2B with account-specific pricing, catalogs, and workflows, so wholesale is a first-class revenue stream rather than a workaround.'
+        },
+        {
+          title: 'Flow automation',
+          description: 'Automated operational and marketing workflows that remove labor that otherwise scales with growth.'
+        }
+      ]
+    },
+    
+    keyBenefits: [
+      'Fully customized checkout experience beyond standard Shopify limits',
+      'Workflow automation using Shopify Flow to reduce manual work',
+      'Support for multiple storefronts from a single Plus account',
+      'Enterprise-grade integrations with ERP and inventory systems',
+      'Higher API rate limits to support complex app ecosystems',
+      'Dedicated technical support suited for high-traffic events'
     ],
-    stats: [
-      {
-        label: 'Checkout Conversion Lift',
-        value: '10-20%',
-        description: 'Typical gains from customized Plus checkout'
-      },
-      {
-        label: 'Revenue Threshold',
-        value: '$5M+',
-        description: 'Typical revenue level where Plus economics make sense'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Make Shopify Plus Pay for Itself',
-    content: 'We build Plus around the specific capabilities that justify it for your business — and we lead with the honest threshold question before recommending it.',
-    pillars: [
-      {
-        title: 'Checkout & Functions customization',
-        description: 'We use Plus\'s checkout extensibility and Shopify Functions to optimize the step where high-volume stores win or lose the most revenue — something standard Shopify simply can\'t do.'
-      },
-      {
-        title: 'B2B & wholesale',
-        description: 'Native B2B with account-specific pricing, catalogs, and workflows, so wholesale is a first-class revenue stream rather than a workaround.'
-      },
-      {
-        title: 'Flow automation',
-        description: 'Automated operational and marketing workflows that remove labor that otherwise scales with growth.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'Shopify Plus Capabilities',
-    items: [
-      {
-        service: 'Checkout & Functions customization',
-        whatItIs: 'Custom checkout logic and Shopify Functions for promotions, shipping, and payments.',
-        businessImpact: 'Optimizes the highest-leverage revenue step.'
-      },
-      {
-        service: 'B2B & wholesale',
-        whatItIs: 'Native B2B with account pricing, catalogs, and workflows.',
-        businessImpact: 'Turns wholesale into a first-class revenue stream.'
-      },
-      {
-        service: 'Flow automation',
-        whatItIs: 'Automated operational and marketing workflows.',
-        businessImpact: 'Removes labor that otherwise scales with growth.'
-      },
-      {
-        service: 'High-volume store architecture',
-        whatItIs: 'Builds engineered for traffic spikes and order volume.',
-        businessImpact: 'Reliability and conversion at scale.'
-      },
-      {
-        service: 'Custom Plus apps',
-        whatItIs: 'Private apps using elevated Plus API access.',
-        businessImpact: 'Capabilities standard-Shopify competitors lack.'
-      },
-      {
-        service: 'Replatforming to Plus',
-        whatItIs: 'Migration from standard Shopify or other platforms.',
-        businessImpact: 'Upgrade without data loss or SEO loss.'
-      },
-      {
-        service: 'Multi-store & expansion',
-        whatItIs: 'Expansion stores for new markets and brands.',
-        businessImpact: 'Scale across regions and brands on one stack.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Brands Choose Us for Plus Over a Generalist or an Enterprise Platform',
-    intro: 'At the Plus level, you\'re weighing a Plus specialist against a generalist agency or a heavier enterprise platform. Here\'s the honest comparison.',
-    options: [
-      {
-        option: 'Generalist Shopify agency',
-        whereWorks: 'Standard Shopify builds',
-        whereFails: 'Plus-specific checkout, B2B, scripting depth',
-        ourPosition: 'Plus specialists using its advanced capabilities fully'
-      },
-      {
-        option: 'Staying on standard Shopify',
-        whereWorks: 'Until you cross the threshold',
-        whereFails: 'Checkout, B2B, automation ceilings',
-        ourPosition: 'We confirm you\'ve crossed it before upgrading'
-      },
-      {
-        option: 'Adobe Commerce / enterprise platform',
-        whereWorks: 'Very large, complex catalogs',
-        whereFails: 'Cost and overhead vs. Plus for most brands',
-        ourPosition: 'Plus delivers most of the capability at lower TCO'
-      },
-      {
-        option: 'In-house Plus team',
-        whereWorks: 'Long-term ownership',
-        whereFails: 'Hiring lag, narrow Plus experience',
-        ourPosition: 'Immediate Plus expertise; handoff when ready'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Assessment to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery & threshold check', description: 'Volume, B2B, and checkout analysis; the honest Plus-vs-standard decision; revenue goals.' },
-      { number: 2, title: 'Strategy', description: 'Scope governed by the specific Plus capabilities that drive return.' },
-      { number: 3, title: 'Architecture', description: 'High-volume store structure, checkout logic, B2B model, and integrations.' },
-      { number: 4, title: 'Design', description: 'Conversion-led UX across DTC and B2B flows.' },
-      { number: 5, title: 'Development', description: 'Senior Plus build — checkout, Functions, Flow, custom apps — with working demos.' },
-      { number: 6, title: 'QA', description: 'Functional, payment, load, and B2B-flow testing as a gate.' },
-      { number: 7, title: 'Launch', description: 'Controlled cutover with redirects and monitoring — no traffic loss.' },
-      { number: 8, title: 'Optimization', description: 'Checkout and automation iteration — compounding gains post-launch.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A scaling brand doing several thousand orders a month had outgrown standard Shopify: it couldn\'t optimize its checkout, ran wholesale through clunky workarounds, and handled promotions and fulfillment routing manually.',
-    solution: 'We migrated to Plus, customized the checkout and used Functions to optimize the conversion step, built native B2B for wholesale, and automated promotional and fulfillment workflows with Flow.',
-    metrics: [
-      {
-        kpi: 'Checkout conversion',
-        result: 'Up materially',
-        whyItMatters: 'Gains on the highest-traffic revenue step'
-      },
-      {
-        kpi: 'B2B revenue',
-        result: 'Workaround → first-class channel',
-        whyItMatters: 'Wholesale captured efficiently and grown'
-      },
-      {
-        kpi: 'Manual ops work',
-        result: 'Largely automated',
-        whyItMatters: 'Labor cost decoupled from order growth'
-      },
-      {
-        kpi: 'Peak reliability',
-        result: 'Held through spikes',
-        whyItMatters: 'No lost sales during high-traffic events'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The Shopify Plus Business Case',
-    content: 'Plus ROI is the gap between the capabilities it unlocks and the premium it costs — and at sufficient volume, that gap is wide. Optimizing a checkout you previously couldn\'t touch lifts conversion on your highest-traffic flow, where small percentage gains are large absolute dollars. Proper B2B converts wholesale revenue you were capturing inefficiently or losing. Automation removes labor that otherwise grows with you. For a brand at the right volume, these gains comfortably exceed the Plus premium; below that volume, they don\'t — which is exactly why we check first.',
-    valueStreams: [
-      'Checkout conversion lift (revenue from existing traffic)',
-      'B2B revenue capture (wholesale growth without manual overhead)',
-      'Operations efficiency (automated fulfillment and back office)',
-      'Scalability (stability and performance at enterprise volume)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Do we actually need Shopify Plus?',
-      answer: 'Only if your volume, B2B needs, or checkout requirements have crossed the threshold — and we\'ll tell you honestly whether they have. Plus\'s value is real but it carries an enterprise premium; below the threshold, standard Shopify is the better-value choice. We assess your numbers first because recommending an upgrade you can\'t yet use is the fastest way to lose your trust.'
+    
+    capabilities: {
+      heading: 'Shopify Plus Capabilities',
+      items: [
+        {
+          service: 'Checkout & Functions customization',
+          whatItIs: 'Custom checkout logic and Shopify Functions for promotions, shipping, and payments.',
+          businessImpact: 'Optimizes the highest-leverage revenue step.'
+        },
+        {
+          service: 'B2B & wholesale',
+          whatItIs: 'Native B2B with account pricing, catalogs, and workflows.',
+          businessImpact: 'Turns wholesale into a first-class revenue stream.'
+        },
+        {
+          service: 'Flow automation',
+          whatItIs: 'Automated operational and marketing workflows.',
+          businessImpact: 'Removes labor that otherwise scales with growth.'
+        },
+        {
+          service: 'High-volume store architecture',
+          whatItIs: 'Builds engineered for traffic spikes and order volume.',
+          businessImpact: 'Reliability and conversion at scale.'
+        },
+        {
+          service: 'Custom Plus apps',
+          whatItIs: 'Private apps using elevated Plus API access.',
+          businessImpact: 'Capabilities standard-Shopify competitors lack.'
+        },
+        {
+          service: 'Replatforming to Plus',
+          whatItIs: 'Migration from standard Shopify or other platforms.',
+          businessImpact: 'Upgrade without data loss or SEO loss.'
+        },
+        {
+          service: 'Multi-store & expansion',
+          whatItIs: 'Expansion stores for new markets and brands.',
+          businessImpact: 'Scale across regions and brands on one stack.'
+        }
+      ]
     },
-    {
-      question: 'What can Plus do that standard Shopify can\'t?',
-      answer: 'The big four: customize the checkout (standard Shopify largely locks it), run native B2B alongside DTC, script complex logic with Shopify Functions, and automate workflows with Flow — plus higher API limits for volume. If you need none of these yet, you don\'t need Plus yet.'
+    
+    comparison: {
+      heading: 'Why Brands Choose Us for Plus Over a Generalist or an Enterprise Platform',
+      intro: 'At the Plus level, you\'re weighing a Plus specialist against a generalist agency or a heavier enterprise platform. Here\'s the honest comparison.',
+      options: [
+        {
+          option: 'Generalist Shopify agency',
+          whereWorks: 'Standard Shopify builds',
+          whereFails: 'Plus-specific checkout, B2B, scripting depth',
+          ourPosition: 'Plus specialists using its advanced capabilities fully'
+        },
+        {
+          option: 'Staying on standard Shopify',
+          whereWorks: 'Until you cross the threshold',
+          whereFails: 'Checkout, B2B, automation ceilings',
+          ourPosition: 'We confirm you\'ve crossed it before upgrading'
+        },
+        {
+          option: 'Adobe Commerce / enterprise platform',
+          whereWorks: 'Very large, complex catalogs',
+          whereFails: 'Cost and overhead vs. Plus for most brands',
+          ourPosition: 'Plus delivers most of the capability at lower TCO'
+        },
+        {
+          option: 'In-house Plus team',
+          whereWorks: 'Long-term ownership',
+          whereFails: 'Hiring lag, narrow Plus experience',
+          ourPosition: 'Immediate Plus expertise; handoff when ready'
+        }
+      ]
     },
-    {
-      question: 'What does a Plus build cost?',
-      answer: 'A Plus build or migration typically runs $40K–$120K; a complex B2B or multi-store build $120K–$200K+. That\'s separate from Shopify\'s Plus platform fee. Cost follows scope and we size it to the return. You get a transparent estimate after a strategy call.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        {
+          number: 1,
+          title: 'Enterprise Audit',
+          description: 'We review your current systems, traffic patterns, and integration needs.'
+        },
+        {
+          number: 2,
+          title: 'Architecture Planning',
+          description: 'We design a scalable Plus setup, including multi-store structure if needed.'
+        },
+        {
+          number: 3,
+          title: 'Custom Checkout Development',
+          description: 'We build a checkout experience tailored to your brand and conversion goals.'
+        },
+        {
+          number: 4,
+          title: 'Automation Setup',
+          description: 'We configure Shopify Flow and scripts to automate operational workflows.'
+        },
+        {
+          number: 5,
+          title: 'Launch & Scale Support',
+          description: 'We support high-traffic launches and continue optimizing post-launch.'
+        }
+      ]
     },
-    {
-      question: 'Will migrating to Plus disrupt our store or SEO?',
-      answer: 'Not when done correctly — Plus migration preserves your data, configuration, and SEO with a careful cutover and redirect plan. We treat continuity and traffic preservation as deliverables, not hopes.'
+    
+    outcome: {
+      challenge: 'A scaling brand doing several thousand orders a month had outgrown standard Shopify: it couldn\'t optimize its checkout, ran wholesale through clunky workarounds, and handled promotions and fulfillment routing manually.',
+      solution: 'We migrated to Plus, customized the checkout and used Functions to optimize the conversion step, built native B2B for wholesale, and automated promotional and fulfillment workflows with Flow.',
+      metrics: [
+        {
+          kpi: 'Checkout conversion',
+          result: 'Up materially',
+          whyItMatters: 'Gains on the highest-traffic revenue step'
+        },
+        {
+          kpi: 'B2B revenue',
+          result: 'Workaround → first-class channel',
+          whyItMatters: 'Wholesale captured efficiently and grown'
+        },
+        {
+          kpi: 'Manual ops work',
+          result: 'Largely automated',
+          whyItMatters: 'Labor cost decoupled from order growth'
+        },
+        {
+          kpi: 'Peak reliability',
+          result: 'Held through spikes',
+          whyItMatters: 'No lost sales during high-traffic events'
+        }
+      ]
     },
-    {
-      question: 'Can you build proper B2B on Plus?',
-      answer: 'Yes — native B2B with account-specific pricing, catalogs, quotes, and workflows, so wholesale operates as a first-class channel rather than a bolted-on workaround. This is one of the most common reasons brands move to Plus.'
+    
+    businessCase: {
+      heading: 'The Shopify Plus Business Case',
+      content: 'Plus ROI is the gap between the capabilities it unlocks and the premium it costs — and at sufficient volume, that gap is wide. Optimizing a checkout you previously couldn\'t touch lifts conversion on your highest-traffic flow, where small percentage gains are large absolute dollars. Proper B2B converts wholesale revenue you were capturing inefficiently or losing. Automation removes labor that otherwise grows with you. For a brand at the right volume, these gains comfortably exceed the Plus premium; below that volume, they don\'t — which is exactly why we check first.',
+      valueStreams: [
+        'Checkout conversion lift (revenue from existing traffic)',
+        'B2B revenue capture (wholesale growth without manual overhead)',
+        'Operations efficiency (automated fulfillment and back office)',
+        'Scalability (stability and performance at enterprise volume)'
+      ]
     },
-    {
-      question: 'Do we own everything?',
-      answer: 'Completely — theme code, custom apps, configuration, and data are yours, with no lock-in. Full control, take it elsewhere anytime.'
+    
+    faqs: [
+      {
+        question: 'What\'s the difference between Shopify and Shopify Plus?',
+        answer: 'Shopify Plus is the enterprise tier, offering custom checkout development, higher API limits, multi-store management, and dedicated support built for high-volume merchants. It is justified when a brand\'s volume, B2B needs, or checkout requirements exceed standard Shopify.'
+      },
+      {
+        question: 'Can you fully customize our Shopify Plus checkout?',
+        answer: 'Yes, checkout customization is one of the core advantages of Shopify Plus, and we build tailored checkout experiences that align with your brand and conversion goals. We use Plus\'s checkout extensibility and Shopify Functions to optimize the step where high-volume stores win or lose the most revenue.'
+      },
+      {
+        question: 'Do you support Shopify Flow automation setup?',
+        answer: 'Yes, we configure Shopify Flow to automate order processing, inventory alerts, customer segmentation, and other operational workflows. This removes labor that otherwise scales with your growth.'
+      },
+      {
+        question: 'Is Shopify Plus worth it for a growing brand?',
+        answer: 'Shopify Plus makes sense once you\'re managing significant order volume, need custom checkout capabilities, or require multi-store management. We can help assess if you\'re ready and will tell you honestly whether you\'ve crossed the threshold.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Find Out Whether Plus Pays Off for You',
+      primary: 'Book a Shopify Plus strategy call',
+      secondary: 'Request a Plus-vs-Shopify assessment'
+    },
+    
+    riskReversal: 'Builds are fixed-scope to a defined deliverable and price; optimization is 30-day rolling, retained on measured results.',
+    
+    pricing: {
+      range: '$40K–$200K+',
+      note: 'Build/migration: $40K–$120K; complex B2B/multi-store: $120K–$200K+'
+    },
+    
+    internalLinks: ['/shopify-development', '/ecommerce-development', '/web-development-services', '/b2b-commerce-development', '/custom-app-development'],
+    
+    schema: {
+      serviceType: 'Shopify Plus Development',
+      priceRange: '$40,000 - $200,000+',
+      audience: 'High-Volume DTC & B2B Enterprise Brands'
     }
-  ],
-  
-  cta: {
-    heading: 'Find Out Whether Plus Pays Off for You',
-    primary: 'Book a Shopify Plus strategy call',
-    secondary: 'Request a Plus-vs-Shopify assessment'
   },
-  
-  riskReversal: 'Builds are fixed-scope to a defined deliverable and price; optimization is 30-day rolling, retained on measured results.',
-  
-  pricing: {
-    range: '$40K–$200K+',
-    note: 'Build/migration: $40K–$120K; complex B2B/multi-store: $120K–$200K+'
-  },
-  
-  internalLinks: ['/shopify-development', '/ecommerce-development', '/web-development-services', '/b2b-commerce-development', '/custom-app-development'],
-  
-  schema: {
-    serviceType: 'Shopify Plus Development',
-    priceRange: '$40,000 - $200,000+',
-    audience: 'High-Volume DTC & B2B Brands'
-  }
-},
 
-// 11.  11: WooCommerce Development
-'woocommerce-development': {
-  slug: 'woocommerce-development',
-  title: 'WooCommerce Development',
-  metaDescription: 'WooCommerce development for WordPress stores that convert. Custom WooCommerce stores engineered for flexibility, scalability, and revenue.',
-  pageGoal: 'Convert WordPress-based and content-driven brands wanting commerce into a scoping call; position WooCommerce as the right choice for specific cases; project value $15K–$80K+.',
-  buyerPersona: 'Content-driven businesses, publishers, and SMBs already on WordPress who want to sell, plus brands wanting full control and ownership of their store.',
-  uniquePositioning: 'We build WooCommerce for brands that want commerce inside WordPress with full ownership and control — fast and secure, not the slow, plugin-bloated builds Woo is known for — and we\'ll tell you when Shopify is the smarter call.',
   
-  hero: {
-    heading: 'WooCommerce Development for Commerce You Fully Own',
-    subheading: 'WooCommerce is the right choice when you want a store inside WordPress, full control of your data and code, and no platform fees on every sale — if it\'s built properly. We engineer Woo stores that are fast and secure, not the slow, fragile, plugin-heavy builds that give it a bad name.',
-    credibilityBar: [
-      'Custom Woo builds',
-      'Performance-engineered',
-      'Security-hardened',
-      'Full ownership, no platform fees',
-      'Honest platform advice'
+ 
+  // 11. WooCommerce Development
+  // ------------------------------------------
+  'woocommerce-development': {
+    slug: 'woocommerce-development',
+    title: 'WooCommerce Development',
+    metaTitle: 'WooCommerce Development Services | Custom WooCommerce Stores',
+    metaDescription: 'Custom WooCommerce development services for US businesses. We build fast, secure WordPress-powered online stores that convert.',
+    targetKeywords: [
+      'WooCommerce development services',
+      'WooCommerce development company',
+      'custom WooCommerce store',
+      'WooCommerce plugin development',
+      'hire WooCommerce developer'
     ],
-    primaryCTA: 'Book a WooCommerce strategy call',
-    secondaryCTA: 'Request a Woo-vs-Shopify assessment',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative work across content-commerce, publishers, and SMB stores.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is WooCommerce development?',
-    answer: 'WooCommerce is an open-source commerce plugin for WordPress. It\'s the right choice when you want commerce inside an existing WordPress site, full ownership of your store and data, deep content-and-commerce integration, or freedom from per-transaction platform fees. Its trade-off is that you own performance, security, and hosting — so build quality matters more than on a hosted platform like Shopify.'
-  },
-  
-  problemSection: {
-    heading: 'Why WooCommerce Stores Underperform — and When It\'s the Wrong Tool',
-    content: [
-      'WooCommerce gets a bad reputation for the same reason WordPress does: most stores are built by stacking plugins until something works. The result is slow, fragile, and a security liability — a checkout dragged down by a dozen extensions, a store that breaks on update, and a maintenance burden that never ends. For a commerce site, where speed directly drives conversion, that\'s lost revenue on every visit.',
-      'Done poorly, the costs compound: a slow Woo store loses sales and rankings, an unmaintained one is a breach risk on a site handling payments, and a brittle one consumes developer time that should be building. These are build-quality problems, not platform problems — but they\'re real, and they\'re why so many Woo stores disappoint.',
-      'There\'s also an honesty point most Woo agencies skip: WooCommerce isn\'t always the right tool. If you don\'t already live in WordPress, don\'t need deep content-commerce integration, and would rather not own hosting, security, and performance yourself, Shopify is often the better-value choice. Choosing Woo for the wrong reasons means signing up for operational overhead you didn\'t need.'
+    pageGoal: 'Convert US businesses looking for fast, secure, and scalable WordPress-powered online stores.',
+    buyerPersona: 'US merchants, content-driven retail brands, and businesses wanting to leverage WordPress for eCommerce.',
+    uniquePositioning: 'We build lean, custom-coded WooCommerce solutions rather than relying on plugin bloat, ensuring stores stay fast, secure, and stable as they scale.',
+    
+    hero: {
+      heading: 'WooCommerce Development for Flexible, WordPress-Powered Stores',
+      subheading: 'WooCommerce gives you the flexibility of WordPress with the functionality of a full eCommerce platform, but making the most of it requires custom development, not just plugin installs. Our WooCommerce development services help US merchants build stores that are fast, secure, and genuinely tailored to their catalog. Whether you\'re launching a new store or need custom functionality added to an existing one, we build WooCommerce solutions that scale with your business.',
+      credibilityBar: [
+        'Custom Woo builds',
+        'Performance-engineered',
+        'Security-hardened',
+        'Full ownership, no platform fees',
+        'Honest platform advice'
+      ],
+      primaryCTA: 'Get a Custom WooCommerce Quote',
+      secondaryCTA: 'View Our eCommerce Portfolio',
+      socialProof: 'Representative work across content-commerce, publishers, and SMB stores.'
+    },
+    
+    featuredAnswer: {
+      question: 'What Is WooCommerce Development?',
+      answer: 'WooCommerce development is the process of building and customizing online stores on the WooCommerce plugin for WordPress. It combines WordPress\'s content flexibility with dedicated eCommerce functionality like product catalogs, cart, checkout, and payment processing, making it a popular choice for content-driven retail brands.'
+    },
+    
+    problemSection: {
+      heading: 'Why WooCommerce Stores Underperform — and When It\'s the Wrong Tool',
+      content: [
+        'WooCommerce gets a bad reputation for the same reason WordPress does: most stores are built by stacking plugins until something works. The result is slow, fragile, and a security liability — a checkout dragged down by a dozen extensions, a store that breaks on update, and a maintenance burden that never ends. For a commerce site, where speed directly drives conversion, that\'s lost revenue on every visit.',
+        'Done poorly, the costs compound: a slow Woo store loses sales and rankings, an unmaintained one is a breach risk on a site handling payments, and a brittle one consumes developer time that should be building. These are build-quality problems, not platform problems — but they\'re real, and they\'re why so many Woo stores disappoint.',
+        'There\'s also an honesty point most Woo agencies skip: WooCommerce isn\'t always the right tool. If you don\'t already live in WordPress, don\'t need deep content-commerce integration, and would rather not own hosting, security, and performance yourself, Shopify is often the better-value choice. Choosing Woo for the wrong reasons means signing up for operational overhead you didn\'t need.'
+      ],
+      stats: [
+        {
+          label: 'Performance Gap',
+          value: '50%+',
+          description: 'Typical speed difference between bloated and optimized WooCommerce'
+        },
+        {
+          label: 'Conversion Impact',
+          value: '20%+',
+          description: 'Conversion difference from performance and UX optimization'
+        }
+      ]
+    },
+    
+      solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'WooCommerce stores often slow down or break under plugin bloat. We build lean, custom-coded solutions and are selective about which plugins we use, so your store stays fast and stable as your catalog and traffic grow.',
+      pillars: [
+        {
+          title: 'Lean, custom builds',
+          description: 'We engineer to your needs rather than stacking extensions, so the store is fast and stable by design.'
+        },
+        {
+          title: 'Performance and security',
+          description: 'Core Web Vitals engineering, proper hosting architecture, and hardening, because a commerce site can\'t afford to be slow or vulnerable.'
+        },
+        {
+          title: 'Content-commerce integration',
+          description: 'We leverage exactly what makes Woo worth choosing — commerce and content working as one system, not two bolted together.'
+        }
+      ]
+    },
+    
+    keyBenefits: [
+      'Custom theme and functionality built around your product catalog',
+      'Custom plugin development for unique store requirements',
+      'Optimized performance even with large inventories',
+      'Secure, PCI-compliant payment gateway integrations',
+      'SEO-friendly structure leveraging WordPress\'s content strengths',
+      'Flexible content and blog integration alongside your store'
     ],
-    stats: [
-      {
-        label: 'Performance Gap',
-        value: '50%+',
-        description: 'Typical speed difference between bloated and optimized WooCommerce'
-      },
-      {
-        label: 'Conversion Impact',
-        value: '20%+',
-        description: 'Conversion difference from performance and UX optimization'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Build WooCommerce That Performs — or Tell You to Use Shopify',
-    content: 'We start with the honest platform question. WooCommerce is the right choice for specific situations: you\'re content-driven and already on WordPress, you want deep integration between content and commerce, you want full ownership with no per-sale platform fees, or you need the customization only open-source allows. If those don\'t describe you, we\'ll often point you to Shopify — because the right platform is the one that grows your profit, not our invoice.',
-    pillars: [
-      {
-        title: 'Lean, custom builds',
-        description: 'We engineer to your needs rather than stacking extensions, so the store is fast and stable by design.'
-      },
-      {
-        title: 'Performance and security',
-        description: 'Core Web Vitals engineering, proper hosting architecture, and hardening, because a commerce site can\'t afford to be slow or vulnerable.'
-      },
-      {
-        title: 'Content-commerce integration',
-        description: 'We leverage exactly what makes Woo worth choosing — commerce and content working as one system, not two bolted together.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'WooCommerce Capabilities',
-    items: [
-      {
-        service: 'Custom WooCommerce builds',
-        whatItIs: 'Lean, fast, brand-specific stores — no extension bloat.',
-        businessImpact: 'Performance and stability that protect conversion.'
-      },
-      {
-        service: 'Performance optimization',
-        whatItIs: 'Core Web Vitals, caching, and hosting architecture.',
-        businessImpact: 'Recovers sales and rankings lost to slow pages.'
-      },
-      {
-        service: 'Security hardening & maintenance',
-        whatItIs: 'Hardening, monitoring, and managed care for a payments site.',
-        businessImpact: 'Protects against breach cost on a commerce store.'
-      },
-      {
-        service: 'Content-commerce integration',
-        whatItIs: 'Deep integration of content and store.',
-        businessImpact: 'Leverages Woo\'s core advantage over hosted platforms.'
-      },
-      {
-        service: 'Custom functionality',
-        whatItIs: 'Bespoke features instead of bloated extensions.',
-        businessImpact: 'Capabilities without the sprawl that slows stores.'
-      },
-      {
-        service: 'Migration',
-        whatItIs: 'Onto Woo from elsewhere, or off bad Woo, with SEO preserved.',
-        businessImpact: 'Modernize without losing traffic.'
-      },
-      {
-        service: 'Subscriptions & B2B',
-        whatItIs: 'Recurring billing and B2B workflows on Woo.',
-        businessImpact: 'Revenue models beyond one-time sales.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Brands Choose Us for Woo Over a Cheap Build',
-    intro: 'WooCommerce is cheap to do badly. Here\'s the honest comparison, including when not to use it.',
-    options: [
-      {
-        option: 'DIY plugins-and-theme',
-        whereWorks: 'Tiny catalog, low stakes',
-        whereFails: 'Speed, security, scale',
-        ourPosition: 'Custom, lean, fast, secure'
-      },
-      {
-        option: 'Cheap Woo freelancer',
-        whereWorks: 'Small stores',
-        whereFails: 'Performance, security, continuity',
-        ourPosition: 'Enterprise-capable, with redundancy'
-      },
-      {
-        option: 'Shopify instead',
-        whereWorks: 'Most hosted-store needs',
-        whereFails: 'Content integration, full ownership, no fees',
-        ourPosition: 'We recommend it when it fits you better'
-      },
-      {
-        option: 'Generalist agency',
-        whereWorks: 'General web work',
-        whereFails: 'Commerce performance depth',
-        ourPosition: 'Commerce specialists measured on results'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Audit to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery & platform check', description: 'Needs analysis; the honest Woo-vs-Shopify decision; performance and security audit if existing.' },
-      { number: 2, title: 'Strategy', description: 'Scope governed by speed, security, and revenue goals.' },
-      { number: 3, title: 'Architecture', description: 'Store structure, extension strategy, hosting, and content-commerce model.' },
-      { number: 4, title: 'Design', description: 'Conversion-led product, cart, and checkout UX.' },
-      { number: 5, title: 'Development', description: 'Senior, lean build with working demos and SEO-safe migration.' },
-      { number: 6, title: 'QA', description: 'Functional, payment, performance, and security testing as a gate.' },
-      { number: 7, title: 'Launch', description: 'Controlled cutover with redirects and monitoring.' },
-      { number: 8, title: 'Optimization & care', description: 'Ongoing performance, security, and managed maintenance.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A content-driven brand with strong WordPress traffic was selling through a bloated WooCommerce setup — slow, repeatedly flagged for security issues, and poorly integrated with the content that drove its audience.',
-    solution: 'We rebuilt on a lean custom Woo store, replaced redundant extensions with targeted custom code, hardened security and re-architected hosting, engineered Core Web Vitals, and deeply integrated content with commerce.',
-    metrics: [
-      {
-        kpi: 'Load time',
-        result: 'Cut by ~55%',
-        whyItMatters: 'Higher conversion and better rankings'
-      },
-      {
-        kpi: 'Extensions',
-        result: 'Cut by ~half',
-        whyItMatters: 'Faster, more secure, far less fragile'
-      },
-      {
-        kpi: 'Content-to-sale path',
-        result: 'Disconnected → integrated',
-        whyItMatters: 'Audience converting into customers'
-      },
-      {
-        kpi: 'Security incidents',
-        result: 'Recurring → none',
-        whyItMatters: 'Breach risk and firefighting removed'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The WooCommerce Business Case',
-    content: 'Woo ROI, built properly, comes from three places. Performance: faster pages recover the conversions and search traffic a slow store loses. Ownership economics: no per-transaction platform fee means that at volume, you keep margin a hosted platform would take — which can be substantial over time. Content-commerce leverage: a store integrated with the content that drives your audience converts that audience far better than a disconnected one.',
-    valueStreams: [
-      'Performance (conversion and SEO gains from faster pages)',
-      'Ownership economics (no per-transaction platform fees)',
-      'Content-commerce leverage (audience converts to customers)',
-      'Full control (data and code ownership)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Should we use WooCommerce or Shopify?',
-      answer: 'Woo is the better choice if you\'re content-driven and on WordPress, want deep content-commerce integration, want full ownership with no per-sale fees, or need open-source customization. Shopify is usually better if you want a hosted store with minimal operational overhead and don\'t need those things. We\'ll tell you honestly which fits — and we frequently recommend Shopify when it\'s the better-value answer for you.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'Custom Theme & Functionality',
+          whatItIs: 'Custom design and functionality built specifically around your product catalog.',
+          businessImpact: 'A unique storefront tailored to your brand and product presentation needs.'
+        },
+        {
+          service: 'Custom Plugin Development',
+          whatItIs: 'Bespoke plugin development for unique store requirements.',
+          businessImpact: 'Get exact functionality without the bloat of off-the-shelf plugins.'
+        },
+        {
+          service: 'Optimized Performance',
+          whatItIs: 'Hosting, caching, and code optimized for large inventories.',
+          businessImpact: 'Fast load times that keep customers engaged and improve conversions.'
+        },
+        {
+          service: 'Secure Payment Integrations',
+          whatItIs: 'Secure, PCI-compliant payment gateway integrations.',
+          businessImpact: 'Safe, reliable transactions that build customer trust.'
+        },
+        {
+          service: 'SEO-Friendly Structure',
+          whatItIs: 'Architecture leveraging WordPress\'s content strengths.',
+          businessImpact: 'Better search visibility and organic traffic for your products.'
+        },
+        {
+          service: 'Content & Blog Integration',
+          whatItIs: 'Flexible content and blog integration alongside your store.',
+          businessImpact: 'Seamless content marketing that drives traffic directly to your products.'
+        }
+      ]
     },
-    {
-      question: 'Isn\'t WooCommerce slow and insecure?',
-      answer: 'Badly built Woo is — and that\'s most of it. Properly built, with a lean store, disciplined extensions, performance engineering, hardening, and proper hosting, Woo is fast and secure. The platform isn\'t the problem; the typical build is.'
+    
+    comparison: {
+      heading: 'Why Brands Choose Us for Woo Over a Cheap Build',
+      intro: 'WooCommerce is cheap to do badly. Here\'s the honest comparison, including when not to use it.',
+      options: [
+        {
+          option: 'DIY plugins-and-theme',
+          whereWorks: 'Tiny catalog, low stakes',
+          whereFails: 'Speed, security, scale',
+          ourPosition: 'Custom, lean, fast, secure'
+        },
+        {
+          option: 'Cheap Woo freelancer',
+          whereWorks: 'Small stores',
+          whereFails: 'Performance, security, continuity',
+          ourPosition: 'Enterprise-capable, with redundancy'
+        },
+        {
+          option: 'Shopify instead',
+          whereWorks: 'Most hosted-store needs',
+          whereFails: 'Content integration, full ownership, no fees',
+          ourPosition: 'We recommend it when it fits you better'
+        },
+        {
+          option: 'Generalist agency',
+          whereWorks: 'General web work',
+          whereFails: 'Commerce performance depth',
+          ourPosition: 'Commerce specialists measured on results'
+        }
+      ]
     },
-    {
-      question: 'What does a WooCommerce build cost?',
-      answer: 'A custom Woo build typically runs $15K–$50K; a complex or high-traffic build $50K–$80K+, plus hosting (which you own). Cost follows scope and we size it to the return. Transparent estimate after a strategy call.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Store Planning', description: 'We assess your catalog, business model, and required integrations.' },
+        { number: 2, title: 'Custom Design', description: 'We design a storefront tailored to your brand and product presentation needs.' },
+        { number: 3, title: 'Development', description: 'We build custom themes, plugins, and payment integrations.' },
+        { number: 4, title: 'Performance Optimization', description: 'We optimize hosting, caching, and code for fast load times.' },
+        { number: 5, title: 'Launch & Support', description: 'We launch the store and provide ongoing support and feature development.' }
+      ]
     },
-    {
-      question: 'Do we really avoid platform transaction fees?',
-      answer: 'Yes — WooCommerce itself takes no per-transaction cut (you pay only your payment processor, as you would anywhere). At volume, avoiding a platform\'s per-sale fee is a real, compounding saving — one of the genuine reasons to choose Woo.'
+    
+    outcome: {
+      challenge: 'A content-driven brand with strong WordPress traffic was selling through a bloated WooCommerce setup — slow, repeatedly flagged for security issues, and poorly integrated with the content that drove its audience.',
+      solution: 'We rebuilt on a lean custom Woo store, replaced redundant extensions with targeted custom code, hardened security and re-architected hosting, engineered Core Web Vitals, and deeply integrated content with commerce.',
+      metrics: [
+        {
+          kpi: 'Load time',
+          result: 'Cut by ~55%',
+          whyItMatters: 'Higher conversion and better rankings'
+        },
+        {
+          kpi: 'Extensions',
+          result: 'Cut by ~half',
+          whyItMatters: 'Faster, more secure, far less fragile'
+        },
+        {
+          kpi: 'Content-to-sale path',
+          result: 'Disconnected → integrated',
+          whyItMatters: 'Audience converting into customers'
+        },
+        {
+          kpi: 'Security incidents',
+          result: 'Recurring → none',
+          whyItMatters: 'Breach risk and firefighting removed'
+        }
+      ]
     },
-    {
-      question: 'Who handles hosting, security, and updates?',
-      answer: 'You own them — that\'s the trade-off for open-source control. We can manage all of it for you through a maintenance plan, or set you up to run it. Either way it\'s handled deliberately, not left to chance on a payments site.'
+    
+    businessCase: {
+      heading: 'The WooCommerce Business Case',
+      content: 'Woo ROI, built properly, comes from three places. Performance: faster pages recover the conversions and search traffic a slow store loses. Ownership economics: no per-transaction platform fee means that at volume, you keep margin a hosted platform would take — which can be substantial over time. Content-commerce leverage: a store integrated with the content that drives your audience converts that audience far better than a disconnected one.',
+      valueStreams: [
+        'Performance (conversion and SEO gains from faster pages)',
+        'Ownership economics (no per-transaction platform fees)',
+        'Content-commerce leverage (audience converts to customers)',
+        'Full control (data and code ownership)'
+      ]
     },
-    {
-      question: 'Do we own the store and code?',
-      answer: 'Completely — it\'s open-source and stays that way. The store, custom code, content, and data are yours with no lock-in. Full control, host and move it anywhere.'
+    
+    faqs: [
+      {
+        question: 'Is WooCommerce a good fit for a growing online store?',
+        answer: 'WooCommerce works well for merchants who want the flexibility of WordPress combined with strong content marketing capabilities. We can help evaluate if it fits your specific catalog and growth plans.'
+      },
+      {
+        question: 'Can you build custom functionality not available in existing plugins?',
+        answer: 'Yes, we develop custom WooCommerce plugins and functionality when off-the-shelf plugins don\'t meet your specific requirements.'
+      },
+      {
+        question: 'How do you keep WooCommerce stores fast?',
+        answer: 'We use optimized hosting, minimize unnecessary plugins, implement caching, and write efficient custom code to maintain fast load speeds.'
+      },
+      {
+        question: 'Can you migrate my store to WooCommerce from another platform?',
+        answer: 'Yes, we handle full migrations, including products, customer data, and SEO redirects to preserve your search rankings.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Get an Honest Read on Woo vs. Shopify',
+      primary: 'Get a Custom WooCommerce Quote',
+      secondary: 'View Our eCommerce Portfolio'
+    },
+    
+    riskReversal: 'Builds are fixed-scope to a defined deliverable and price; managed care is month-to-month, retained on performance.',
+    
+    pricing: {
+      range: '$15K–$80K+',
+      note: 'Custom store: $15K–$50K; complex/high-traffic: $50K–$80K+'
+    },
+    
+    internalLinks: ['/wordpress-development', '/ecommerce-development', '/web-development-services'],
+    
+    schema: {
+      serviceType: 'WooCommerce Development',
+      priceRange: '$15,000 - $80,000+',
+      audience: 'Content-Driven & WordPress-Based Commerce Brands'
     }
-  ],
-  
-  cta: {
-    heading: 'Get an Honest Read on Woo vs. Shopify',
-    primary: 'Book a WooCommerce strategy call',
-    secondary: 'Request a Woo-vs-Shopify assessment'
   },
-  
-  riskReversal: 'Builds are fixed-scope to a defined deliverable and price; managed care is month-to-month, retained on performance.',
-  
-  pricing: {
-    range: '$15K–$80K+',
-    note: 'Custom store: $15K–$50K; complex/high-traffic: $50K–$80K+'
-  },
-  
-  internalLinks: ['/wordpress-development', '/ecommerce-development', '/web-development-services'],
-  
-  schema: {
-    serviceType: 'WooCommerce Development',
-    priceRange: '$15,000 - $80,000+',
-    audience: 'Content-Driven & WordPress-Based Commerce Brands'
-  }
-},
 
-// 12: Magento Development
-'magento-development': {
-  slug: 'magento-development',
-  title: 'Magento Development',
-  metaDescription: 'Magento development for complex, high-volume commerce. Scalable, secure, and integrated Magento stores for enterprise commerce.',
-  pageGoal: 'Convert large/complex catalog and B2B merchants evaluating Adobe Commerce/Magento into a scoping call; project value $60K–$300K+.',
-  buyerPersona: 'Enterprise and upper-mid-market retailers and B2B sellers with large catalogs, complex pricing, or multi-store needs; digital and eCommerce directors.',
-  uniquePositioning: 'We build Magento (Adobe Commerce) for the genuinely complex — large catalogs, intricate B2B pricing, multi-store — and we\'ll tell you honestly when your needs don\'t justify its cost and complexity.',
-  
-  hero: {
-    heading: 'Magento Development for Commerce Too Complex for Lighter Platforms',
-    subheading: 'Magento (Adobe Commerce) earns its complexity when yours is real — huge catalogs, intricate B2B pricing, multi-store, multi-region. We engineer Magento for those requirements, with the performance and reliability complex commerce demands — and the honesty to tell you when a simpler platform would serve you better.',
-    credibilityBar: [
-      'Adobe Commerce & open-source',
-      'Large-catalog & B2B',
-      'Multi-store',
-      'Performance-engineered',
-      'Honest platform advice'
+
+  // 12. Magento Development
+  // ------------------------------------------
+  'magento-development': {
+    slug: 'magento-development',
+    title: 'Magento Development',
+    metaTitle: 'Magento Development Services | Custom Magento eCommerce Development',
+    metaDescription: 'Expert Magento development services for complex, high-volume US online stores. Custom builds, migrations, and optimization for Adobe Commerce.',
+    targetKeywords: [
+      'Magento development services',
+      'Magento development company',
+      'Adobe Commerce development',
+      'custom Magento development',
+      'hire Magento developer'
     ],
-    primaryCTA: 'Book a Magento strategy call',
-    secondaryCTA: 'Request a platform-fit assessment',
-    socialProof: '[PLACEHOLDER: client logos / Adobe partner status / rating] · Representative work across large-catalog retail and complex B2B.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is Magento development?',
-    answer: 'Magento, now Adobe Commerce, is an enterprise commerce platform built for complex requirements: very large catalogs, sophisticated B2B pricing and workflows, and multi-store, multi-region operations. It\'s justified when that complexity is genuine — its power then handles what lighter platforms can\'t. When requirements are simpler, Magento\'s cost and operational overhead make platforms like Shopify Plus the better-value choice.'
-  },
-  
-  problemSection: {
-    heading: 'When Your Commerce Complexity Outgrows Lighter Platforms — and When It Hasn\'t',
-    content: [
-      'Some commerce operations are genuinely too complex for lighter platforms, and forcing them onto one is its own expensive mistake. A catalog of hundreds of thousands of SKUs with complex attributes and relationships. B2B pricing with customer-specific catalogs, tiered pricing, quotes, and approval workflows. Multiple storefronts across brands and regions sharing inventory and logic. When this is your reality, a platform that can\'t handle it means workarounds, manual labor, and lost revenue at scale.',
-      'But Magento\'s power is also its cost. It\'s expensive to build, expensive to host, and demands real expertise to run well — a poorly built or under-resourced Magento store is slow, fragile, and a money pit. Many businesses end up on Magento for complexity they don\'t actually have, paying enterprise overhead for capabilities they never use, when Shopify Plus would have served them at a fraction of the total cost.',
-      'So the real question is whether your complexity genuinely warrants Magento. Getting that wrong in either direction is costly: under-powered for real complexity means lost revenue and manual labor; over-powered for simple needs means a permanent, unnecessary tax.'
+    pageGoal: 'Convert large/complex catalog and B2B merchants evaluating Adobe Commerce/Magento into a scoping call; project value $60K–$300K+.',
+    buyerPersona: 'Enterprise and upper-mid-market retailers and B2B sellers with large catalogs, complex pricing, or multi-store needs; digital and eCommerce directors.',
+    uniquePositioning: 'We build Magento (Adobe Commerce) for the genuinely complex — large catalogs, intricate B2B pricing, multi-store — and we\'ll tell you honestly when your needs don\'t justify its cost and complexity.',
+    
+    hero: {
+      heading: 'Magento Development for Complex, High-Volume Stores',
+      subheading: 'Magento, now Adobe Commerce, is built for merchants with complex catalogs, multiple storefronts, or B2B requirements that simpler platforms can\'t handle. Our Magento development services help US businesses take full advantage of that power without the performance issues that come from poor implementation. We build, customize, and optimize Magento stores for merchants who need serious scalability and flexibility from their eCommerce platform.',
+      credibilityBar: [
+        'Adobe Commerce & open-source',
+        'Large-catalog & B2B',
+        'Multi-store',
+        'Performance-engineered',
+        'Honest platform advice'
+      ],
+      primaryCTA: 'Book a Magento strategy call',
+      secondaryCTA: 'Request a platform-fit assessment',
+      socialProof: 'Representative work across large-catalog retail and complex B2B.'
+    },
+    
+    featuredAnswer: {
+      question: 'What is Magento development?',
+      answer: 'Magento development involves building and customizing online stores on the Magento (Adobe Commerce) platform, known for its flexibility in handling large product catalogs, multi-store setups, and complex B2B or B2C requirements. It\'s a code-heavy platform that rewards experienced development for both performance and security.'
+    },
+    
+    problemSection: {
+      heading: 'When Your Commerce Complexity Outgrows Lighter Platforms — and When It Hasn\'t',
+      content: [
+        'Some commerce operations are genuinely too complex for lighter platforms, and forcing them onto one is its own expensive mistake. A catalog of hundreds of thousands of SKUs with complex attributes and relationships. B2B pricing with customer-specific catalogs, tiered pricing, quotes, and approval workflows. Multiple storefronts across brands and regions sharing inventory and logic. When this is your reality, a platform that can\'t handle it means workarounds, manual labor, and lost revenue at scale.',
+        'But Magento\'s power is also its cost. It\'s expensive to build, expensive to host, and demands real expertise to run well — a poorly built or under-resourced Magento store is slow, fragile, and a money pit. Many businesses end up on Magento for complexity they don\'t actually have, paying enterprise overhead for capabilities they never use, when Shopify Plus would have served them at a fraction of the total cost.',
+        'So the real question is whether your complexity genuinely warrants Magento. Getting that wrong in either direction is costly: under-powered for real complexity means lost revenue and manual labor; over-powered for simple needs means a permanent, unnecessary tax.'
+      ],
+      stats: [
+        {
+          label: 'Catalog Size',
+          value: '10K+ SKUs',
+          description: 'Typical catalog size where Magento becomes valuable'
+        },
+        {
+          label: 'Total Cost Difference',
+          value: '50-100%',
+          description: 'Cost difference between Magento and lighter platforms over 3 years'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'Magento rewards experienced developers and punishes inexperienced ones with slow, vulnerable stores. Our team has deep Magento-specific expertise, so you get the platform\'s full power without the performance and security pitfalls that come from cutting corners.'
+    },
+    
+    keyBenefits: [
+      'Support for large, complex product catalogs and configurations',
+      'Multi-store and multi-currency setup for national or global reach',
+      'Custom module development for unique business requirements',
+      'B2B functionality including custom pricing and quoting',
+      'Performance tuning for fast load times despite platform complexity',
+      'Regular security patching to protect against vulnerabilities'
     ],
-    stats: [
-      {
-        label: 'Catalog Size',
-        value: '10K+ SKUs',
-        description: 'Typical catalog size where Magento becomes valuable'
-      },
-      {
-        label: 'Total Cost Difference',
-        value: '50-100%',
-        description: 'Cost difference between Magento and lighter platforms over 3 years'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Decide — and Build — Magento',
-    content: 'We start by pressure-testing whether you actually need Magento. We assess your catalog scale, B2B complexity, and multi-store requirements against what lighter platforms can handle. If Shopify Plus or another platform would serve you well at lower total cost, we\'ll tell you — because steering you onto enterprise overhead you don\'t need is the opposite of good advice.',
-    pillars: [
-      {
-        title: 'Complex-catalog & B2B engineering',
-        description: 'We use Magento\'s depth to handle the catalog scale, pricing logic, and B2B workflows that are the reason you\'re on it.'
-      },
-      {
-        title: 'Performance engineering',
-        description: 'Magento is only as good as its build and hosting, so we engineer for speed and reliability — the difference between Magento as an asset and Magento as a money pit.'
-      },
-      {
-        title: 'Multi-store architecture',
-        description: 'Shared inventory, logic, and content across brands and regions, done properly.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'Magento Capabilities',
-    items: [
-      {
-        service: 'Adobe Commerce development',
-        whatItIs: 'Full builds on Adobe Commerce and Magento open-source.',
-        businessImpact: 'Handles complexity lighter platforms can\'t.'
-      },
-      {
-        service: 'Large-catalog engineering',
-        whatItIs: 'Architecture for huge, complex catalogs.',
-        businessImpact: 'Performance and manageability at catalog scale.'
-      },
-      {
-        service: 'B2B commerce',
-        whatItIs: 'Customer catalogs, tiered pricing, quotes, and approvals.',
-        businessImpact: 'Captures complex B2B revenue properly.'
-      },
-      {
-        service: 'Multi-store & multi-region',
-        whatItIs: 'Multiple storefronts sharing inventory and logic.',
-        businessImpact: 'Scale across brands and regions efficiently.'
-      },
-      {
-        service: 'Performance engineering',
-        whatItIs: 'Speed and reliability optimization and hosting architecture.',
-        businessImpact: 'Turns Magento from money pit into asset.'
-      },
-      {
-        service: 'Migration & replatforming',
-        whatItIs: 'Onto or off Magento, with data and SEO preserved.',
-        businessImpact: 'Move without disruption or traffic loss.'
-      },
-      {
-        service: 'Integration',
-        whatItIs: 'ERP, PIM, OMS, and enterprise-system integration.',
-        businessImpact: 'Connected operations at enterprise scale.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Merchants Choose Us for Magento',
-    intro: 'Magento rewards expertise and punishes under-resourcing. Here\'s the honest comparison, including when to choose something lighter.',
-    options: [
-      {
-        option: 'Shopify Plus instead',
-        whereWorks: 'Most commerce, even high-volume',
-        whereFails: 'Extreme catalog/B2B complexity',
-        ourPosition: 'We recommend it when your complexity doesn\'t warrant Magento'
-      },
-      {
-        option: 'Cheap Magento build',
-        whereWorks: 'Never, really',
-        whereFails: 'Performance, reliability, the whole point',
-        ourPosition: 'Properly engineered and hosted'
-      },
-      {
-        option: 'Big enterprise SI',
-        whereWorks: 'Brand cover',
-        whereFails: 'High cost, slow, junior delivery',
-        ourPosition: 'Senior practitioners, lower TCO'
-      },
-      {
-        option: 'In-house Magento team',
-        whereWorks: 'Long-term ownership',
-        whereFails: 'Cost and hiring for scarce expertise',
-        ourPosition: 'Immediate expertise; handoff when ready'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Fit Assessment to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery & fit assessment', description: 'Catalog, B2B, and multi-store analysis; the honest Magento-vs-alternative decision.' },
-      { number: 2, title: 'Strategy', description: 'Scope governed by the complexity that justifies Magento, and by ROI.' },
-      { number: 3, title: 'Architecture', description: 'Catalog, pricing, multi-store, performance, and integration design.' },
-      { number: 4, title: 'Design', description: 'Conversion-led UX across complex catalog and B2B flows.' },
-      { number: 5, title: 'Development', description: 'Senior Magento build with working demos and rigorous performance work.' },
-      { number: 6, title: 'QA', description: 'Functional, payment, load, and B2B-flow testing as a gate.' },
-      { number: 7, title: 'Launch', description: 'Controlled cutover with redirects and monitoring — no traffic loss.' },
-      { number: 8, title: 'Optimization', description: 'Performance, reliability, and feature iteration.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A B2B distributor with a six-figure SKU count, customer-specific pricing, and multiple regional storefronts was on an under-resourced Magento build — slow, unreliable, and unable to keep its catalog and pricing manageable.',
-    solution: 'We re-engineered the catalog architecture, rebuilt B2B pricing and quoting properly, consolidated regional storefronts onto a shared multi-store setup, and engineered performance and hosting for reliability at scale.',
-    metrics: [
-      {
-        kpi: 'Catalog performance',
-        result: 'Slow → fast at scale',
-        whyItMatters: 'Usable, manageable six-figure catalog'
-      },
-      {
-        kpi: 'B2B pricing & quoting',
-        result: 'Manual → automated',
-        whyItMatters: 'Complex B2B revenue captured efficiently'
-      },
-      {
-        kpi: 'Regional storefronts',
-        result: 'Siloed → unified',
-        whyItMatters: 'Shared inventory and logic; lower overhead'
-      },
-      {
-        kpi: 'Reliability',
-        result: 'Unstable → stable',
-        whyItMatters: 'No lost sales to downtime'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The Magento Business Case',
-    content: 'Magento ROI — when it\'s genuinely warranted — comes from handling complexity that would otherwise cost you revenue and labor. Proper catalog architecture makes a massive catalog manageable and fast, protecting conversion at scale. Automated B2B pricing and quoting captures complex wholesale revenue that workarounds leak. Consolidated multi-store operations remove duplicate cost across brands and regions. Performance engineering turns an unreliable money pit into a dependable revenue platform.',
-    valueStreams: [
-      'Catalog scale (handling complex catalogs at speed)',
-      'B2B automation (complex wholesale captured efficiently)',
-      'Multi-store consolidation (lower cost across brands/regions)',
-      'Performance reliability (dependable revenue platform)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Do we actually need Magento, or would Shopify Plus do?',
-      answer: 'Magento is warranted for genuine complexity — very large catalogs, intricate B2B pricing, multi-store across brands and regions. If your needs are simpler, Shopify Plus usually delivers the capability at a fraction of Magento\'s total cost and overhead. We assess your complexity honestly first, because putting you on Magento for complexity you don\'t have is an expensive, lasting mistake.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'Large Catalog Support',
+          whatItIs: 'Architecture designed for huge, complex product configurations.',
+          businessImpact: 'Performance and manageability at catalog scale.'
+        },
+        {
+          service: 'Multi-Store Setup',
+          whatItIs: 'Multiple storefronts and currencies for global reach.',
+          businessImpact: 'Scale across brands and regions efficiently.'
+        },
+        {
+          service: 'Custom Module Development',
+          whatItIs: 'Tailored code for specific business needs.',
+          businessImpact: 'Exact functionality without relying on bloated third-party extensions.'
+        },
+        {
+          service: 'B2B Functionality',
+          whatItIs: 'Custom pricing, quoting, and approval workflows.',
+          businessImpact: 'Captures complex B2B revenue properly.'
+        },
+        {
+          service: 'Performance Tuning',
+          whatItIs: 'Deliberate optimization for fast load times.',
+          businessImpact: 'Prevents the slow load speeds Magento is known for when poorly built.'
+        },
+        {
+          service: 'Security Patching',
+          whatItIs: 'Regular updates and monitoring for vulnerabilities.',
+          businessImpact: 'Protects a prime target for eCommerce breaches.'
+        }
+      ]
     },
-    {
-      question: 'Why does Magento have a reputation for being slow and difficult?',
-      answer: 'Because it\'s powerful and therefore demanding — a poorly built or under-resourced Magento store is slow and fragile. Properly engineered and hosted, it performs. The reputation comes from under-investment, not from the platform\'s ceiling.'
+    
+    comparison: {
+      heading: 'Why Merchants Choose Us for Magento',
+      intro: 'Magento rewards expertise and punishes under-resourcing. Here\'s the honest comparison, including when to choose something lighter.',
+      options: [
+        {
+          option: 'Shopify Plus instead',
+          whereWorks: 'Most commerce, even high-volume',
+          whereFails: 'Extreme catalog/B2B complexity',
+          ourPosition: 'We recommend it when your complexity doesn\'t warrant Magento'
+        },
+        {
+          option: 'Cheap Magento build',
+          whereWorks: 'Never, really',
+          whereFails: 'Performance, reliability, the whole point',
+          ourPosition: 'Properly engineered and hosted'
+        },
+        {
+          option: 'Big enterprise SI',
+          whereWorks: 'Brand cover',
+          whereFails: 'High cost, slow, junior delivery',
+          ourPosition: 'Senior practitioners, lower TCO'
+        },
+        {
+          option: 'In-house Magento team',
+          whereWorks: 'Long-term ownership',
+          whereFails: 'Cost and hiring for scarce expertise',
+          ourPosition: 'Immediate expertise; handoff when ready'
+        }
+      ]
     },
-    {
-      question: 'What does a Magento build cost?',
-      answer: 'A Magento build or migration typically runs $60K–$150K; a complex enterprise B2B or multi-store build $150K–$300K+, plus hosting. Cost follows complexity and we size it to the return. Transparent estimate after a strategy call.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Technical Assessment', description: 'We assess your catalog complexity, traffic, and business requirements.' },
+        { number: 2, title: 'Architecture Planning', description: 'We plan store structure, extensions, and custom modules needed.' },
+        { number: 3, title: 'Development', description: 'We build and customize the store, including any custom modules required.' },
+        { number: 4, title: 'Performance Optimization', description: 'We tune the platform for speed, since Magento requires deliberate optimization.' },
+        { number: 5, title: 'Launch & Maintenance', description: 'We launch the store and provide ongoing security patching and support.' }
+      ]
     },
-    {
-      question: 'Open-source Magento or Adobe Commerce?',
-      answer: 'Open-source Magento avoids the Adobe license but you provide more yourself; Adobe Commerce adds managed cloud, B2B features, and support for a significant fee. We\'ll recommend the right one based on your complexity and team — not the one with the bigger margin for us.'
+    
+    outcome: {
+      challenge: 'A B2B distributor with a six-figure SKU count, customer-specific pricing, and multiple regional storefronts was on an under-resourced Magento build — slow, unreliable, and unable to keep its catalog and pricing manageable.',
+      solution: 'We re-engineered the catalog architecture, rebuilt B2B pricing and quoting properly, consolidated regional storefronts onto a shared multi-store setup, and engineered performance and hosting for reliability at scale.',
+      metrics: [
+        {
+          kpi: 'Catalog performance',
+          result: 'Slow → fast at scale',
+          whyItMatters: 'Usable, manageable six-figure catalog'
+        },
+        {
+          kpi: 'B2B pricing & quoting',
+          result: 'Manual → automated',
+          whyItMatters: 'Complex B2B revenue captured efficiently'
+        },
+        {
+          kpi: 'Regional storefronts',
+          result: 'Siloed → unified',
+          whyItMatters: 'Shared inventory and logic; lower overhead'
+        },
+        {
+          kpi: 'Reliability',
+          result: 'Unstable → stable',
+          whyItMatters: 'No lost sales to downtime'
+        }
+      ]
     },
-    {
-      question: 'Can you make our existing Magento store fast?',
-      answer: 'Often, yes — performance problems usually trace to build quality, hosting, and configuration, all of which we can re-engineer. We audit first and tell you honestly whether optimization or a rebuild gives the better return.'
+    
+    businessCase: {
+      heading: 'The Magento Business Case',
+      content: 'Magento ROI — when it\'s genuinely warranted — comes from handling complexity that would otherwise cost you revenue and labor. Proper catalog architecture makes a massive catalog manageable and fast, protecting conversion at scale. Automated B2B pricing and quoting captures complex wholesale revenue that workarounds leak. Consolidated multi-store operations remove duplicate cost across brands and regions. Performance engineering turns an unreliable money pit into a dependable revenue platform.',
+      valueStreams: [
+        'Catalog scale (handling complex catalogs at speed)',
+        'B2B automation (complex wholesale captured efficiently)',
+        'Multi-store consolidation (lower cost across brands/regions)',
+        'Performance reliability (dependable revenue platform)'
+      ]
     },
-    {
-      question: 'Do we own the platform and code?',
-      answer: 'With open-source Magento, completely — code, data, and configuration are yours with no lock-in. Adobe Commerce carries Adobe\'s licensing, which we\'ll explain in full so there are no surprises.'
+    
+    faqs: [
+      {
+        question: 'Is Magento a good fit for my business?',
+        answer: 'Magento tends to fit merchants with large catalogs, complex B2B requirements, or multi-store needs. For smaller catalogs, a platform like Shopify may be more cost-effective, and we can help you decide.'
+      },
+      {
+        question: 'What\'s the difference between Magento Open Source and Adobe Commerce?',
+        answer: 'Magento Open Source is free and self-hosted, while Adobe Commerce (Magento Commerce) is a paid, more feature-rich version with additional B2B tools and cloud hosting options.'
+      },
+      {
+        question: 'Can you build custom modules for unique functionality?',
+        answer: 'Yes, custom module development is a core part of most Magento projects, since Magento\'s flexibility often requires tailored code for specific business needs.'
+      },
+      {
+        question: 'How do you keep Magento stores secure?',
+        answer: 'We apply regular security patches, follow Magento security best practices, and monitor for vulnerabilities, since Magento requires proactive maintenance to stay secure.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Find Out Whether Magento Is Justified for You',
+      primary: 'Book a Magento strategy call',
+      secondary: 'Request a platform-fit assessment'
+    },
+    
+    riskReversal: 'Builds are phased and fixed-scope to defined deliverables, so spend is gated to milestones; managed care is month-to-month.',
+    
+    pricing: {
+      range: '$60K–$300K+',
+      note: 'Build/migration: $60K–$150K; enterprise B2B/multi-store: $150K–$300K+'
+    },
+    
+    internalLinks: ['/ecommerce-development', '/shopify-plus-development', '/web-development-services'],
+    
+    schema: {
+      serviceType: 'Magento Development',
+      priceRange: '$60,000 - $300,000+',
+      audience: 'Enterprise & Upper-Mid-Market Commerce Brands'
     }
-  ],
-  
-  cta: {
-    heading: 'Find Out Whether Magento Is Justified for You',
-    primary: 'Book a Magento strategy call',
-    secondary: 'Request a platform-fit assessment'
   },
-  
-  riskReversal: 'Builds are phased and fixed-scope to defined deliverables, so spend is gated to milestones; managed care is month-to-month.',
-  
-  pricing: {
-    range: '$60K–$300K+',
-    note: 'Build/migration: $60K–$150K; enterprise B2B/multi-store: $150K–$300K+'
-  },
-  
-  internalLinks: ['/ecommerce-development', '/shopify-plus-development', '/web-development-services'],
-  
-  schema: {
-    serviceType: 'Magento Development',
-    priceRange: '$60,000 - $300,000+',
-    audience: 'Enterprise & Upper-Mid-Market Commerce Brands'
-  }
-},
 
-// 13: Headless Commerce Development
-'headless-commerce-development': {
-  slug: 'headless-commerce-development',
-  title: 'Headless Commerce Development',
-  metaDescription: 'Headless commerce development for performance- and content-driven brands. Composable architecture for maximum performance, flexibility, and omnichannel.',
-  pageGoal: 'Convert performance- and content-driven brands evaluating headless into a scoping call; justify headless honestly; project value $75K–$300K+.',
-  buyerPersona: 'Sophisticated DTC brands, content-heavy commerce, and enterprises with omnichannel or performance requirements; CTOs, digital directors.',
-  uniquePositioning: 'We build headless commerce when it earns its complexity — maximum performance, content flexibility, and omnichannel — and we\'re candid that for most brands, it doesn\'t yet.',
-  
-  hero: {
-    heading: 'Headless Commerce for Brands Whose Requirements Have Outgrown Monolithic Platforms',
-    subheading: 'Headless commerce decouples your storefront from your commerce engine, unlocking maximum performance, total design freedom, and true omnichannel. It\'s powerful — and for most brands, premature. We build headless when it genuinely pays off, and we\'ll tell you honestly when a traditional platform is the smarter spend.',
-    credibilityBar: [
-      'Composable & headless architecture',
-      'Maximum performance',
-      'Omnichannel',
-      'Best-of-breed stack',
-      'Honest fit advice'
+  // ------------------------------------------
+    // ------------------------------------------
+  // 13. Headless Commerce Development
+
+  'headless-commerce-development': {
+    slug: 'headless-commerce-development',
+    title: 'Headless Commerce Development',
+    metaTitle: 'Headless Commerce Development Services | Headless eCommerce Solutions',
+    metaDescription: 'Headless commerce development for US brands that need speed and flexibility. Decouple your front end and back end for a faster, more customizable store.',
+    targetKeywords: [
+      'headless commerce development',
+      'headless ecommerce solutions',
+      'headless CMS development',
+      'composable commerce USA',
+      'decoupled ecommerce architecture'
     ],
-    primaryCTA: 'Book a headless strategy call',
-    secondaryCTA: 'Request a headless-readiness assessment',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative work across performance-driven and omnichannel commerce.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is headless commerce development?',
-    answer: 'Headless commerce separates the front-end experience from the back-end commerce engine, connecting them via APIs. This unlocks maximum performance, complete design freedom, and true omnichannel selling. It\'s justified for brands with demanding performance, content, or omnichannel needs — but it adds cost and complexity that most brands don\'t yet need, making a traditional or hosted platform the better choice below that threshold.'
-  },
-  
-  problemSection: {
-    heading: 'What Headless Solves — and Why Most Brands Don\'t Need It Yet',
-    content: [
-      'Monolithic commerce platforms tie your storefront to their back end, and for some brands that coupling becomes a real constraint. You can\'t achieve the page speed you need because you\'re bound to the platform\'s front-end rendering. You can\'t build the content-rich, custom experience your brand demands because the platform\'s templating limits you. You can\'t sell seamlessly across web, mobile, app, and emerging channels because the platform wasn\'t built for true omnichannel. When these constraints are genuinely limiting your business, headless removes them.',
-      'But headless is not a free upgrade — it\'s a significant increase in cost and complexity. You\'re now maintaining a separate front end and back end, integrating multiple best-of-breed services, and you need the team or partner to run it. For most brands, a well-built traditional or hosted platform delivers excellent performance and experience without that overhead. Going headless prematurely means paying for architecture you can\'t yet leverage.',
-      'The honest threshold is this: headless pays off when your performance, content, or omnichannel requirements genuinely exceed what a monolithic platform can deliver — and not before. Below that line, it\'s complexity for its own sake.'
+    pageGoal: 'Convert performance- and content-driven brands evaluating headless into a scoping call; justify headless honestly; project value $75K–$300K+.',
+    buyerPersona: 'Sophisticated DTC brands, content-heavy commerce, and enterprises with omnichannel or performance requirements; CTOs, digital directors.',
+    uniquePositioning: 'We build headless commerce when it earns its complexity — maximum performance, content flexibility, and omnichannel — and we\'re candid that for most brands, it doesn\'t yet.',
+    
+    hero: {
+      heading: 'Headless Commerce Development for Speed and Flexibility',
+      subheading: 'Traditional eCommerce platforms tie your front-end design to your back-end system, which limits speed and flexibility. Our headless commerce development services decouple the two, giving US brands the freedom to build fast, custom storefronts on top of any commerce back end. We build headless architectures for brands that need best-in-class performance, unique customer experiences, and the flexibility to plug in new tools without rebuilding the entire platform.',
+      credibilityBar: [
+        'Composable & headless architecture',
+        'Maximum performance',
+        'Omnichannel',
+        'Best-of-breed stack',
+        'Honest fit advice'
+      ],
+      primaryCTA: 'Book a headless strategy call',
+      secondaryCTA: 'Request a headless-readiness assessment',
+      socialProof: 'Representative work across performance-driven and omnichannel commerce.'
+    },
+    
+    featuredAnswer: {
+      question: 'What Is Headless Commerce Development?',
+      answer: 'Headless commerce is an architecture where the front-end presentation layer (what customers see) is decoupled from the back-end commerce engine (inventory, orders, payments). Instead of a monolithic platform controlling both, headless setups use APIs to connect a flexible front end to your chosen commerce back end, allowing each to be built, updated, and scaled independently.'
+    },
+    
+    problemSection: {
+      heading: 'What Headless Solves — and Why Most Brands Don\'t Need It Yet',
+      content: [
+        'Monolithic commerce platforms tie your storefront to their back end, and for some brands that coupling becomes a real constraint. You can\'t achieve the page speed you need because you\'re bound to the platform\'s front-end rendering. You can\'t build the content-rich, custom experience your brand demands because the platform\'s templating limits you. You can\'t sell seamlessly across web, mobile, app, and emerging channels because the platform wasn\'t built for true omnichannel. When these constraints are genuinely limiting your business, headless removes them.',
+        'But headless is not a free upgrade — it\'s a significant increase in cost and complexity. You\'re now maintaining a separate front end and back end, integrating multiple best-of-breed services, and you need the team or partner to run it. For most brands, a well-built traditional or hosted platform delivers excellent performance and experience without that overhead. Going headless prematurely means paying for architecture you can\'t yet leverage.',
+        'The honest threshold is this: headless pays off when your performance, content, or omnichannel requirements genuinely exceed what a monolithic platform can deliver — and not before. Below that line, it\'s complexity for its own sake.'
+      ],
+      stats: [
+        {
+          label: 'Performance Threshold',
+          value: '2x+',
+          description: 'Typical performance improvement needed to justify headless'
+        },
+        {
+          label: 'Cost Increase',
+          value: '50-100%',
+          description: 'Added cost and complexity of headless over monolithic'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'Headless commerce done poorly just adds complexity without the performance benefit. We\'ve built headless architectures specifically for speed and maintainability, so you get the flexibility without a fragile system that\'s hard to manage long term.'
+    },
+    
+    keyBenefits: [
+      'Significantly faster page load speeds than traditional platforms',
+      'Freedom to build fully custom front-end experiences',
+      'Flexibility to swap or upgrade back-end systems independently',
+      'Better support for omnichannel experiences (web, app, IoT)',
+      'Improved SEO potential through faster, cleaner front-end code',
+      'API-first architecture that scales with your business'
     ],
-    stats: [
-      {
-        label: 'Performance Threshold',
-        value: '2x+',
-        description: 'Typical performance improvement needed to justify headless'
-      },
-      {
-        label: 'Cost Increase',
-        value: '50-100%',
-        description: 'Added cost and complexity of headless over monolithic'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Decide — and Build — Headless',
-    content: 'We start by testing whether you\'ve crossed the threshold. We assess your performance requirements, content and experience ambitions, and omnichannel needs against what a well-built traditional platform can deliver. If a monolithic or hosted build would serve you well, we\'ll tell you — because recommending headless you can\'t yet leverage is expensive advice that serves us, not you.',
-    pillars: [
-      {
-        title: 'Best-of-breed composable architecture',
-        description: 'We select and integrate the right commerce engine, CMS, search, and front-end framework for your needs, rather than forcing a one-size stack.'
-      },
-      {
-        title: 'Performance-first front end',
-        description: 'A modern, fast front end that delivers the speed headless exists to unlock.'
-      },
-      {
-        title: 'True omnichannel',
-        description: 'An API-driven foundation that sells consistently across every channel.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'Headless Commerce Capabilities',
-    items: [
-      {
-        service: 'Composable architecture',
-        whatItIs: 'Best-of-breed commerce, CMS, search, and front-end integration.',
-        businessImpact: 'The right stack for your specific needs, not a fixed one.'
-      },
-      {
-        service: 'Headless storefront development',
-        whatItIs: 'Fast, custom front ends on modern frameworks.',
-        businessImpact: 'The performance and experience headless exists to deliver.'
-      },
-      {
-        service: 'Commerce engine integration',
-        whatItIs: 'Shopify, commercetools, and other engines, headless.',
-        businessImpact: 'Keep your commerce backbone; free the front end.'
-      },
-      {
-        service: 'Headless CMS integration',
-        whatItIs: 'Content platforms powering rich commerce content.',
-        businessImpact: 'Content and commerce as one flexible system.'
-      },
-      {
-        service: 'Omnichannel enablement',
-        whatItIs: 'API-driven selling across web, app, and channels.',
-        businessImpact: 'Consistent commerce everywhere customers are.'
-      },
-      {
-        service: 'Performance engineering',
-        whatItIs: 'Edge, caching, and rendering optimization.',
-        businessImpact: 'The speed that justifies going headless.'
-      },
-      {
-        service: 'Migration to headless',
-        whatItIs: 'Decoupling from a monolithic platform.',
-        businessImpact: 'Cross the threshold without disruption.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Brands Choose Us for Headless',
-    intro: 'Headless rewards architectural judgment. Here\'s the honest comparison, including when to stay monolithic.',
-    options: [
-      {
-        option: 'Stay traditional / hosted',
-        whereWorks: 'Most brands, most needs',
-        whereFails: 'Genuine performance/omnichannel limits',
-        ourPosition: 'We recommend it until you\'ve truly crossed the threshold'
-      },
-      {
-        option: 'DIY headless',
-        whereWorks: 'Strong internal eng teams',
-        whereFails: 'Integration complexity, maintainability',
-        ourPosition: 'Architected for performance and maintainability'
-      },
-      {
-        option: 'Enterprise SI',
-        whereWorks: 'Brand cover',
-        whereFails: 'High cost, slow, over-engineered',
-        ourPosition: 'Senior practitioners, right-sized stack'
-      },
-      {
-        option: 'Single-vendor \'headless\'',
-        whereWorks: 'Convenience',
-        whereFails: 'Loses best-of-breed advantage',
-        ourPosition: 'True composable, best-of-breed by need'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Readiness to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery & readiness check', description: 'Performance, content, and omnichannel analysis; the honest headless-vs-monolithic decision.' },
-      { number: 2, title: 'Strategy & stack selection', description: 'Selecting the right composable stack for your needs and ROI.' },
-      { number: 3, title: 'Architecture', description: 'Composable architecture, integrations, performance, and maintainability design.' },
-      { number: 4, title: 'Design', description: 'Custom, performance-conscious storefront UX.' },
-      { number: 5, title: 'Development', description: 'Senior front-end and integration engineering with working demos.' },
-      { number: 6, title: 'QA', description: 'Functional, performance, integration, and cross-channel testing as a gate.' },
-      { number: 7, title: 'Launch', description: 'Controlled cutover with redirects and monitoring — no traffic loss.' },
-      { number: 8, title: 'Optimization', description: 'Performance and experience iteration across channels.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A content-driven DTC brand had genuinely outgrown its monolithic platform: it needed page speed the platform couldn\'t deliver, a content-rich experience its templating blocked, and consistent selling across web and app.',
-    solution: 'We built a composable stack — keeping a proven commerce engine headless, adding a headless CMS for rich content, on a fast modern front end — and engineered for performance and maintainability so the brand\'s team could run it.',
-    metrics: [
-      {
-        kpi: 'Page speed',
-        result: 'Step-change improvement',
-        whyItMatters: 'Higher conversion; better rankings'
-      },
-      {
-        kpi: 'Content experience',
-        result: 'Constrained → fully custom',
-        whyItMatters: 'Brand storytelling that converts'
-      },
-      {
-        kpi: 'Omnichannel',
-        result: 'Web-only → web + app consistent',
-        whyItMatters: 'Consistent commerce across channels'
-      },
-      {
-        kpi: 'Maintainability',
-        result: 'Built for the team to run',
-        whyItMatters: 'Architecture as asset, not dependency'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The Headless Business Case',
-    content: 'Headless ROI — when the threshold is genuinely crossed — comes from performance, experience, and reach. The page-speed gains headless unlocks lift conversion and rankings, a direct revenue effect where speed was previously capped. The content and design freedom enables brand experiences that convert better than templated ones. True omnichannel captures revenue across channels a monolithic platform couldn\'t serve consistently. For brands that have genuinely outgrown monolithic limits, these gains justify the added cost.',
-    valueStreams: [
-      'Performance (conversion and rankings from speed gains)',
-      'Experience (brand storytelling that converts)',
-      'Omnichannel (revenue across all channels)',
-      'Future-proofing (architecture that adapts to new channels)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Do we actually need headless commerce?',
-      answer: 'Only if your performance, content-experience, or omnichannel requirements genuinely exceed what a well-built traditional or hosted platform delivers — and for most brands, they don\'t yet. Headless adds real cost and complexity; below the threshold, a monolithic build is the better-value choice. We assess your needs honestly first, because recommending headless you can\'t leverage serves our invoice, not your business.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'Faster Page Load Speeds',
+          whatItIs: 'Significantly faster performance than traditional platforms.',
+          businessImpact: 'Improves conversion rates and SEO.'
+        },
+        {
+          service: 'Fully Custom Front-End Experiences',
+          whatItIs: 'Freedom to build unique designs without platform constraints.',
+          businessImpact: 'Enhanced brand experience and customer engagement.'
+        },
+        {
+          service: 'Independent System Swapping',
+          whatItIs: 'Flexibility to swap or upgrade back-end systems independently.',
+          businessImpact: 'Future-proofs your stack and reduces migration costs.'
+        },
+        {
+          service: 'Omnichannel Support',
+          whatItIs: 'Better support for omnichannel experiences (web, app, IoT).',
+          businessImpact: 'Consistent selling across all customer touchpoints.'
+        },
+        {
+          service: 'Improved SEO Potential',
+          whatItIs: 'Faster, cleaner front-end code that search engines prefer.',
+          businessImpact: 'Better organic visibility and rankings.'
+        },
+        {
+          service: 'API-First Architecture',
+          whatItIs: 'Scalable architecture that connects to any service.',
+          businessImpact: 'Grows easily with your business needs.'
+        }
+      ]
     },
-    {
-      question: 'What\'s the real downside of headless?',
-      answer: 'Cost and complexity. You maintain a separate front end and back end, integrate multiple services, and need the capability to run it. That\'s worth it when headless removes a genuine constraint on your business — and wasteful when it doesn\'t. The downside is precisely why the threshold matters.'
+    
+    comparison: {
+      heading: 'Why Brands Choose Us for Headless',
+      intro: 'Headless rewards architectural judgment. Here\'s the honest comparison, including when to stay monolithic.',
+      options: [
+        {
+          option: 'Stay traditional / hosted',
+          whereWorks: 'Most brands, most needs',
+          whereFails: 'Genuine performance/omnichannel limits',
+          ourPosition: 'We recommend it until you\'ve truly crossed the threshold'
+        },
+        {
+          option: 'DIY headless',
+          whereWorks: 'Strong internal eng teams',
+          whereFails: 'Integration complexity, maintainability',
+          ourPosition: 'Architected for performance and maintainability'
+        },
+        {
+          option: 'Enterprise SI',
+          whereWorks: 'Brand cover',
+          whereFails: 'High cost, slow, over-engineered',
+          ourPosition: 'Senior practitioners, right-sized stack'
+        },
+        {
+          option: 'Single-vendor \'headless\'',
+          whereWorks: 'Convenience',
+          whereFails: 'Loses best-of-breed advantage',
+          ourPosition: 'True composable, best-of-breed by need'
+        }
+      ]
     },
-    {
-      question: 'What does headless commerce cost?',
-      answer: 'A headless build typically runs $75K–$200K; a complex composable or omnichannel build $200K–$300K+, plus the services in your stack. Cost follows scope and we size it to the return. Transparent estimate after a strategy call.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Architecture Assessment', description: 'We evaluate your current platform and define the ideal headless structure for your goals.' },
+        { number: 2, title: 'Back-End Selection', description: 'We help choose or configure the commerce back end that fits your catalog and operations.' },
+        { number: 3, title: 'Front-End Development', description: 'We build a fast, custom front end using modern frameworks connected via APIs.' },
+        { number: 4, title: 'Integration', description: 'We connect payment, inventory, and other systems through the API layer.' },
+        { number: 5, title: 'Testing & Launch', description: 'We test the full front-to-back experience thoroughly before going live.' }
+      ]
     },
-    {
-      question: 'Can we go headless but keep our commerce platform?',
-      answer: 'Often yes — a common, sensible approach is keeping a proven commerce engine (like Shopify) as the back end and going headless only on the front end. You get the performance and experience gains while keeping your commerce backbone. We\'ll advise whether that hybrid fits you.'
+    
+    outcome: {
+      challenge: 'A content-driven DTC brand had genuinely outgrown its monolithic platform: it needed page speed the platform couldn\'t deliver, a content-rich experience its templating blocked, and consistent selling across web and app.',
+      solution: 'We built a composable stack — keeping a proven commerce engine headless, adding a headless CMS for rich content, on a fast modern front end — and engineered for performance and maintainability so the brand\'s team could run it.',
+      metrics: [
+        {
+          kpi: 'Page speed',
+          result: 'Step-change improvement',
+          whyItMatters: 'Higher conversion; better rankings'
+        },
+        {
+          kpi: 'Content experience',
+          result: 'Constrained → fully custom',
+          whyItMatters: 'Brand storytelling that converts'
+        },
+        {
+          kpi: 'Omnichannel',
+          result: 'Web-only → web + app consistent',
+          whyItMatters: 'Consistent commerce across channels'
+        },
+        {
+          kpi: 'Maintainability',
+          result: 'Built for the team to run',
+          whyItMatters: 'Architecture as asset, not dependency'
+        }
+      ]
     },
-    {
-      question: 'Will our team be able to maintain it?',
-      answer: 'That\'s a core design goal — we engineer for maintainability and transfer knowledge, because headless that only the builder understands is a liability. We can also provide ongoing support. Either way, the architecture is built to be an asset your team can run.'
+    
+    businessCase: {
+      heading: 'The Headless Business Case',
+      content: 'Headless ROI — when the threshold is genuinely crossed — comes from performance, experience, and reach. The page-speed gains headless unlocks lift conversion and rankings, a direct revenue effect where speed was previously capped. The content and design freedom enables brand experiences that convert better than templated ones. True omnichannel captures revenue across channels a monolithic platform couldn\'t serve consistently. For brands that have genuinely outgrown monolithic limits, these gains justify the added cost.',
+      valueStreams: [
+        'Performance (conversion and rankings from speed gains)',
+        'Experience (brand storytelling that converts)',
+        'Omnichannel (revenue across all channels)',
+        'Future-proofing (architecture that adapts to new channels)'
+      ]
     },
-    {
-      question: 'Do we own the architecture and code?',
-      answer: 'Completely — the front-end code, the integrations, and the configuration are yours, with no lock-in. The best-of-breed services carry their own terms, which we\'ll lay out transparently.'
+    
+    faqs: [
+      {
+        question: 'What\'s the difference between headless commerce and a traditional platform?',
+        answer: 'A traditional platform bundles the front end and back end together, while headless commerce separates them, connected by APIs, giving you more flexibility over each layer independently.'
+      },
+      {
+        question: 'Is headless commerce right for every business?',
+        answer: 'Not necessarily. Headless commerce tends to benefit brands needing high performance, custom experiences, or omnichannel selling. Smaller stores may not need the added complexity, and we can help you evaluate fit.'
+      },
+      {
+        question: 'What front-end frameworks do you use for headless builds?',
+        answer: 'We commonly use modern frameworks like React or Next.js for headless front ends, chosen based on performance and SEO requirements.'
+      },
+      {
+        question: 'Can headless commerce improve my site\'s SEO?',
+        answer: 'Yes, headless architectures often allow for faster page speeds and more control over technical SEO elements, both of which are ranking factors for Google.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Find Out If You\'ve Actually Crossed the Headless Threshold',
+      primary: 'Book a headless strategy call',
+      secondary: 'Request a headless-readiness assessment'
+    },
+    
+    riskReversal: 'Builds are phased and fixed-scope to defined deliverables, gating spend to milestones; support is 30-day rolling.',
+    
+    pricing: {
+      range: '$75K–$300K+',
+      note: 'Build: $75K–$200K; complex composable/omnichannel: $200K–$300K+'
+    },
+    
+    internalLinks: ['/ecommerce-development', '/shopify-plus-development', '/cms-development', '/web-development-services'],
+    
+    schema: {
+      serviceType: 'Headless Commerce Development',
+      priceRange: '$75,000 - $300,000+',
+      audience: 'Performance-Driven & Omnichannel Commerce Brands'
     }
-  ],
-  
-  cta: {
-    heading: 'Find Out If You\'ve Actually Crossed the Headless Threshold',
-    primary: 'Book a headless strategy call',
-    secondary: 'Request a headless-readiness assessment'
   },
-  
-  riskReversal: 'Builds are phased and fixed-scope to defined deliverables, gating spend to milestones; support is 30-day rolling.',
-  
-  pricing: {
-    range: '$75K–$300K+',
-    note: 'Build: $75K–$200K; complex composable/omnichannel: $200K–$300K+'
-  },
-  
-  internalLinks: ['/ecommerce-development', '/shopify-plus-development', '/cms-development', '/web-development-services'],
-  
-  schema: {
-    serviceType: 'Headless Commerce Development',
-    priceRange: '$75,000 - $300,000+',
-    audience: 'Performance-Driven & Omnichannel Commerce Brands'
-  }
-},
-
-// 14: CMS Development
-'cms-development': {
-  slug: 'cms-development',
-  title: 'CMS Development',
-  metaDescription: 'CMS development that fits how your team works. Platform-agnostic CMS solutions from WordPress to headless, built for non-technical teams.',
-  pageGoal: 'Convert content-driven organizations choosing or escaping a CMS into a scoping call; position as platform-agnostic advisors; project value $20K–$120K+.',
-  buyerPersona: 'Marketing and digital leaders at content-heavy organizations, publishers, and enterprises choosing, migrating, or building a CMS.',
-  uniquePositioning: 'We\'re platform-agnostic CMS specialists — we recommend and build the right CMS for how your team actually works, from WordPress to headless, instead of selling the one we happen to prefer.',
-  
-  hero: {
-    heading: 'CMS Development That Fits How Your Team Actually Works',
-    subheading: 'The wrong CMS makes content a bottleneck — slow to publish, dependent on developers, impossible to scale. We recommend and build the right one for your team and your content operation, platform-agnostic, from WordPress and headless CMS to fully custom. The goal is a content engine your team runs, not fights.',
-    credibilityBar: [
-      'Platform-agnostic',
-      'Traditional, headless & custom CMS',
-      'Built for non-technical teams',
-      'Performance-engineered',
-      'You own it'
+  // ------------------------------------------
+  // 14. CMS Development
+  // ------------------------------------------
+   // ------------------------------------------
+  // 14. CMS Development
+  // ------------------------------------------
+  'cms-development': {
+    slug: 'cms-development',
+    title: 'CMS Development',
+    metaTitle: 'CMS Development Services | Custom Content Management Systems',
+    metaDescription: 'Custom CMS development services for US businesses. We build content management systems that make updating your website simple and secure.',
+    targetKeywords: [
+      'CMS development services',
+      'custom content management system',
+      'CMS development company',
+      'headless CMS development',
+      'hire CMS developer'
     ],
-    primaryCTA: 'Book a CMS strategy call',
-    secondaryCTA: 'Request a CMS selection guide',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative work across publishers, content-driven brands, and enterprise content operations.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is CMS development?',
-    answer: 'CMS development is the building, customizing, or migrating of a content management system — the platform a team uses to create and manage website content. The right CMS lets non-technical teams publish and scale content independently; the wrong one makes content a developer-dependent bottleneck. The best choice depends on your content operation, team, and technical needs, ranging from WordPress to headless platforms to custom systems.'
-  },
-  
-  problemSection: {
-    heading: 'When Your CMS Is the Bottleneck on Your Content',
-    content: [
-      'For a content-driven organization, the CMS is the engine of your growth — and the wrong one throttles it. Every page change needs a developer, so marketing moves at the speed of a ticket queue. The platform can\'t model the content types and relationships you actually have, so your team forces content into structures that don\'t fit. It can\'t scale to your content volume or deliver content across the channels and sites you operate. It\'s slow, hurting both experience and rankings.',
-      'The cost is velocity, and velocity is growth. A content team that ships independently moves at many times the pace of one waiting on developers — and in a content-driven business, that pace difference compounds directly into traffic, leads, and revenue. A CMS that fights your content model wastes your team\'s time daily. One that can\'t scale or go multichannel caps your reach.',
-      'There\'s also a selection trap: most CMS advice is really platform advocacy. Agencies recommend the CMS they build on, not the one that fits you. Choosing the wrong CMS — too simple for your needs, or needlessly complex — is a multi-year cost, because migrating later is expensive and disruptive.'
+    pageGoal: 'Convert content-driven organizations choosing or escaping a CMS into a scoping call; position as platform-agnostic advisors; project value $20K–$120K+.',
+    buyerPersona: 'Marketing and digital leaders at content-heavy organizations, publishers, and enterprises choosing, migrating, or building a CMS.',
+    uniquePositioning: 'We\'re platform-agnostic CMS specialists — we recommend and build the right CMS for how your team actually works, from WordPress to headless, instead of selling the one we happen to prefer.',
+    
+    hero: {
+      heading: 'CMS Development That Puts Your Team in Control',
+      subheading: 'A content management system should make your team\'s life easier, not require a developer for every small update. Our CMS development services focus on building intuitive, flexible systems that let non-technical teams manage content confidently. We build custom and platform-based CMS solutions for US businesses, matching the system to your content complexity, team size, and technical requirements.',
+      credibilityBar: [
+        'Platform-agnostic',
+        'Traditional, headless & custom CMS',
+        'Built for non-technical teams',
+        'Performance-engineered',
+        'You own it'
+      ],
+      primaryCTA: 'Book a CMS strategy call',
+      secondaryCTA: 'Request a CMS selection guide',
+      socialProof: 'Representative work across publishers, content-driven brands, and enterprise content operations.'
+    },
+    
+    featuredAnswer: {
+      question: 'What is CMS development?',
+      answer: 'CMS development is the process of building or customizing a content management system, the software that lets you create, edit, and organize website content without needing to write code. It can involve custom-built systems, popular platforms like WordPress, or headless CMS solutions that separate content management from the front-end presentation.'
+    },
+    
+    problemSection: {
+      heading: 'When Your CMS Is the Bottleneck on Your Content',
+      content: [
+        'For a content-driven organization, the CMS is the engine of your growth — and the wrong one throttles it. Every page change needs a developer, so marketing moves at the speed of a ticket queue. The platform can\'t model the content types and relationships you actually have, so your team forces content into structures that don\'t fit. It can\'t scale to your content volume or deliver content across the channels and sites you operate. It\'s slow, hurting both experience and rankings.',
+        'The cost is velocity, and velocity is growth. A content team that ships independently moves at many times the pace of one waiting on developers — and in a content-driven business, that pace difference compounds directly into traffic, leads, and revenue. A CMS that fights your content model wastes your team\'s time daily. One that can\'t scale or go multichannel caps your reach.',
+        'There\'s also a selection trap: most CMS advice is really platform advocacy. Agencies recommend the CMS they build on, not the one that fits you. Choosing the wrong CMS — too simple for your needs, or needlessly complex — is a multi-year cost, because migrating later is expensive and disruptive.'
+      ],
+      stats: [
+        {
+          label: 'Publish Time',
+          value: 'Days → Minutes',
+          description: 'Speed difference between developer-gated and self-serve CMS'
+        },
+        {
+          label: 'Team Velocity',
+          value: '5-10x',
+          description: 'Content output difference with the right CMS'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'We\'ve seen too many CMS builds prioritize technical elegance over actual usability for the people managing content daily. We design every CMS project around the people who\'ll be using it, so your team can publish confidently without constant developer support.'
+    },
+    
+    keyBenefits: [
+      'Intuitive editing interface for non-technical team members',
+      'Custom content types built around your specific content needs',
+      'Role-based permissions for teams with multiple content editors',
+      'Headless CMS options for multi-channel content delivery',
+      'SEO tools built into the content editing workflow',
+      'Scalable structure that grows with your content library'
     ],
-    stats: [
-      {
-        label: 'Publish Time',
-        value: 'Days → Minutes',
-        description: 'Speed difference between developer-gated and self-serve CMS'
-      },
-      {
-        label: 'Team Velocity',
-        value: '5-10x',
-        description: 'Content output difference with the right CMS'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Choose — and Build — the Right CMS',
-    content: 'We\'re platform-agnostic, and that\'s the point. We start by understanding your content operation — your content types and relationships, who publishes and how, your volume, your channels, and your technical constraints — and then recommend the CMS that genuinely fits, whether that\'s WordPress, a headless platform like Contentful or Sanity, or a custom build. We don\'t have a house platform to push, so the recommendation serves you.',
-    pillars: [
-      {
-        title: 'Team-first authoring',
-        description: 'A clean, well-structured editing experience modeled to your content, so non-technical people publish and scale independently.'
-      },
-      {
-        title: 'Performance and scale',
-        description: 'Engineered for your content volume and speed needs.'
-      },
-      {
-        title: 'Multichannel where relevant',
-        description: 'Headless architecture when you need to deliver content across multiple sites, apps, and channels from one source.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'CMS Capabilities',
-    items: [
-      {
-        service: 'CMS selection & strategy',
-        whatItIs: 'Platform-agnostic assessment and recommendation.',
-        businessImpact: 'The right CMS for your team — not an agency\'s favorite.'
-      },
-      {
-        service: 'WordPress development',
-        whatItIs: 'Custom, performance-engineered WordPress.',
-        businessImpact: 'Flexible, familiar, fast when built properly.'
-      },
-      {
-        service: 'Headless CMS development',
-        whatItIs: 'Contentful, Sanity, Strapi, and similar, integrated.',
-        businessImpact: 'Multichannel content from one source.'
-      },
-      {
-        service: 'Custom CMS development',
-        whatItIs: 'Bespoke content systems for unique needs.',
-        businessImpact: 'A perfect fit where off-the-shelf can\'t reach.'
-      },
-      {
-        service: 'CMS migration',
-        whatItIs: 'Moving between platforms with content and SEO preserved.',
-        businessImpact: 'Escape the wrong CMS without losing traffic.'
-      },
-      {
-        service: 'Content modeling',
-        whatItIs: 'Structuring content for reuse and scale.',
-        businessImpact: 'Content that scales across pages and channels.'
-      },
-      {
-        service: 'Multi-site & multichannel',
-        whatItIs: 'One CMS powering many sites and channels.',
-        businessImpact: 'Consistent content everywhere, managed once.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Organizations Choose Us for CMS Work',
-    intro: 'Most CMS advice is platform advocacy in disguise. Here\'s the honest comparison.',
-    options: [
-      {
-        option: 'Single-platform agency',
-        whereWorks: 'If their platform fits you',
-        whereFails: 'Recommends their CMS regardless of fit',
-        ourPosition: 'Platform-agnostic — the right CMS for you'
-      },
-      {
-        option: 'DIY CMS setup',
-        whereWorks: 'Simple content needs',
-        whereFails: 'Modeling, scale, team workflow',
-        ourPosition: 'Built around your actual content operation'
-      },
-      {
-        option: 'Freelancer',
-        whereWorks: 'Small content sites',
-        whereFails: 'Strategy, scale, multichannel, continuity',
-        ourPosition: 'Strategy-led, with redundancy'
-      },
-      {
-        option: 'Sticking with the wrong CMS',
-        whereWorks: 'Short term',
-        whereFails: 'Velocity, scale, team frustration',
-        ourPosition: 'Honest migration when it pays off'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Selection to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery', description: 'Content operation, team workflow, volume, channels, and technical constraints.' },
-      { number: 2, title: 'CMS selection', description: 'Platform-agnostic recommendation with the reasoning, governed by fit and ROI.' },
-      { number: 3, title: 'Architecture & content modeling', description: 'Content model, structure, and integration design.' },
-      { number: 4, title: 'Design', description: 'Team-first authoring experience and front-end UX.' },
-      { number: 5, title: 'Development', description: 'Senior build with working demos and SEO-safe migration where applicable.' },
-      { number: 6, title: 'QA', description: 'Functional, performance, and authoring-workflow testing as a gate.' },
-      { number: 7, title: 'Launch', description: 'Controlled cutover with redirects and monitoring — no traffic loss.' },
-      { number: 8, title: 'Optimization & training', description: 'Performance iteration and team training for independence.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A content-driven organization on an ill-fitting CMS needed a developer for every change, couldn\'t model its real content types, and couldn\'t deliver content across its several sites and an app from one source.',
-    solution: 'After a platform-agnostic assessment, we migrated to a headless CMS that fit their content model, built a clean team authoring experience, and architected one content source to power all their sites and the app.',
-    metrics: [
-      {
-        kpi: 'Publish time',
-        result: 'Developer-gated → self-serve',
-        whyItMatters: 'Content ships at marketing speed'
-      },
-      {
-        kpi: 'Content model fit',
-        result: 'Forced → natural',
-        whyItMatters: 'Team works with the system, not against it'
-      },
-      {
-        kpi: 'Channels from one source',
-        result: '1 → many',
-        whyItMatters: 'Consistent content across sites and app'
-      },
-      {
-        kpi: 'Page performance',
-        result: 'Improved',
-        whyItMatters: 'Better experience and rankings'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The CMS Business Case',
-    content: 'CMS ROI is fundamentally about content velocity, and velocity is growth for a content-driven business. A team that publishes independently instead of through a developer queue ships many times more content and campaigns — which compounds directly into traffic, leads, and revenue. A CMS that fits your content model recovers the time your team wastes fighting an ill-fitting one. A multichannel architecture extends reach across sites and channels without multiplying effort. Performance gains lift experience and rankings.',
-    valueStreams: [
-      'Content velocity (team publishes independently)',
-      'Team time recovered (content model fits)',
-      'Reach extension (multichannel from one source)',
-      'Performance (better experience and rankings)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Which CMS should we use?',
-      answer: 'It depends on your content operation — your content types, who publishes, your volume, your channels, and your technical needs. WordPress fits many content-driven sites; a headless CMS suits multichannel and developer-driven teams; custom fits unique needs. We\'re platform-agnostic and recommend what genuinely fits you, because most CMS advice is really advocacy for the agency\'s house platform.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'Intuitive Editing Interface',
+          whatItIs: 'Built for non-technical team members to use confidently.',
+          businessImpact: 'Removes the developer bottleneck for content updates.'
+        },
+        {
+          service: 'Custom Content Types',
+          whatItIs: 'Built around your specific content needs.',
+          businessImpact: 'Structure fits your business, not a generic template.'
+        },
+        {
+          service: 'Role-Based Permissions',
+          whatItIs: 'Access control for teams with multiple content editors.',
+          businessImpact: 'Safe, governed publishing across your organization.'
+        },
+        {
+          service: 'Headless CMS Options',
+          whatItIs: 'Multi-channel content delivery via API.',
+          businessImpact: 'Deliver content to web, app, and other platforms from one source.'
+        },
+        {
+          service: 'Integrated SEO Tools',
+          whatItIs: 'SEO fields and tools built into the content workflow.',
+          businessImpact: 'Ensures content is optimized for search engines from the start.'
+        },
+        {
+          service: 'Scalable Structure',
+          whatItIs: 'Architecture that grows with your content library.',
+          businessImpact: 'Maintains performance no matter how large your site gets.'
+        }
+      ]
     },
-    {
-      question: 'What\'s the difference between traditional and headless CMS?',
-      answer: 'A traditional CMS (like WordPress) couples content management and presentation in one system — simpler and great for single-site content teams. A headless CMS manages content and delivers it via API to any front end — better for multichannel, multiple sites, and developer-driven experiences. We\'ll tell you which model fits your operation.'
+    
+    comparison: {
+      heading: 'Why Organizations Choose Us for CMS Work',
+      intro: 'Most CMS advice is platform advocacy in disguise. Here\'s the honest comparison.',
+      options: [
+        {
+          option: 'Single-platform agency',
+          whereWorks: 'If their platform fits you',
+          whereFails: 'Recommends their CMS regardless of fit',
+          ourPosition: 'Platform-agnostic — the right CMS for you'
+        },
+        {
+          option: 'DIY CMS setup',
+          whereWorks: 'Simple content needs',
+          whereFails: 'Modeling, scale, team workflow',
+          ourPosition: 'Built around your actual content operation'
+        },
+        {
+          option: 'Freelancer',
+          whereWorks: 'Small content sites',
+          whereFails: 'Strategy, scale, multichannel, continuity',
+          ourPosition: 'Strategy-led, with redundancy'
+        },
+        {
+          option: 'Sticking with the wrong CMS',
+          whereWorks: 'Short term',
+          whereFails: 'Velocity, scale, team frustration',
+          ourPosition: 'Honest migration when it pays off'
+        }
+      ]
     },
-    {
-      question: 'What does CMS development cost?',
-      answer: 'A CMS build or migration typically runs $20K–$60K; a complex headless, custom, or multi-site build $60K–$120K+. Cost follows scope and we size it to the velocity and reach return. Transparent estimate after a strategy call.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Content Audit', description: 'We assess your current content structure and identify what the new CMS needs to support.' },
+        { number: 2, title: 'System Selection', description: 'We recommend the right CMS approach, whether platform-based, custom, or headless.' },
+        { number: 3, title: 'Configuration or Development', description: 'We configure or build the CMS around your specific content types and workflows.' },
+        { number: 4, title: 'Team Training', description: 'We train your team to use the system confidently before launch.' },
+        { number: 5, title: 'Launch & Support', description: 'We provide ongoing support as your content needs evolve.' }
+      ]
     },
-    {
-      question: 'Will our non-technical team be able to use it?',
-      answer: 'Yes — that\'s the core goal. We model content to your operation and build a clean authoring experience so your team publishes and scales independently, and we train them. Team independence is the deliverable, not an afterthought.'
+    
+    outcome: {
+      challenge: 'A content-driven organization on an ill-fitting CMS needed a developer for every change, couldn\'t model its real content types, and couldn\'t deliver content across its several sites and an app from one source.',
+      solution: 'After a platform-agnostic assessment, we migrated to a headless CMS that fit their content model, built a clean team authoring experience, and architected one content source to power all their sites and the app.',
+      metrics: [
+        {
+          kpi: 'Publish time',
+          result: 'Developer-gated → self-serve',
+          whyItMatters: 'Content ships at marketing speed'
+        },
+        {
+          kpi: 'Content model fit',
+          result: 'Forced → natural',
+          whyItMatters: 'Team works with the system, not against it'
+        },
+        {
+          kpi: 'Channels from one source',
+          result: '1 → many',
+          whyItMatters: 'Consistent content across sites and app'
+        },
+        {
+          kpi: 'Page performance',
+          result: 'Improved',
+          whyItMatters: 'Better experience and rankings'
+        }
+      ]
     },
-    {
-      question: 'Can you migrate us without losing content or SEO?',
-      answer: 'Yes — content and SEO preservation, with a full redirect plan and careful cutover, is standard. Migration done carelessly loses both; we treat preserving them as deliverables.'
+    
+    businessCase: {
+      heading: 'The CMS Business Case',
+      content: 'CMS ROI is fundamentally about content velocity, and velocity is growth for a content-driven business. A team that publishes independently instead of through a developer queue ships many times more content and campaigns — which compounds directly into traffic, leads, and revenue. A CMS that fits your content model recovers the time your team wastes fighting an ill-fitting one. A multichannel architecture extends reach across sites and channels without multiplying effort. Performance gains lift experience and rankings.',
+      valueStreams: [
+        'Content velocity (team publishes independently)',
+        'Team time recovered (content model fits)',
+        'Reach extension (multichannel from one source)',
+        'Performance (better experience and rankings)'
+      ]
     },
-    {
-      question: 'Do we own the CMS and content?',
-      answer: 'Completely — your content, configuration, and any custom code are yours with no lock-in. Open-source and custom CMSs are fully yours; commercial headless platforms carry their own terms, which we\'ll explain clearly.'
+    
+    faqs: [
+      {
+        question: 'Should I use a headless CMS or a traditional CMS?',
+        answer: 'A traditional CMS is simpler and works well for standard websites, while a headless CMS offers more flexibility for delivering content across multiple channels like web, app, and other platforms. We can help determine which fits your needs.'
+      },
+      {
+        question: 'Can you build a custom CMS instead of using an existing platform?',
+        answer: 'Yes, we build fully custom CMS solutions when existing platforms don\'t fit your specific content structure or workflow requirements.'
+      },
+      {
+        question: 'How easy will it be for my non-technical team to use?',
+        answer: 'Our CMS builds prioritize intuitive editing interfaces, so your team can manage content without needing technical training beyond an initial walkthrough.'
+      },
+      {
+        question: 'Does a custom CMS support SEO tools?',
+        answer: 'Yes, we build SEO fields and tools directly into the content editing workflow, including meta tags, schema markup, and URL controls.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Get a Platform-Agnostic CMS Recommendation',
+      primary: 'Book a CMS strategy call',
+      secondary: 'Request a CMS selection guide'
+    },
+    
+    riskReversal: 'Builds are fixed-scope to defined deliverables; the platform recommendation is genuinely agnostic, not tied to what we prefer to build.',
+    
+    pricing: {
+      range: '$20K–$120K+',
+      note: 'Build/migration: $20K–$60K; complex headless/custom/multi-site: $60K–$120K+'
+    },
+    
+    internalLinks: ['/wordpress-development', '/web-development-services', '/headless-commerce-development'],
+    
+    schema: {
+      serviceType: 'CMS Development',
+      priceRange: '$20,000 - $120,000+',
+      audience: 'Content-Driven Organizations & Enterprises'
     }
-  ],
-  
-  cta: {
-    heading: 'Get a Platform-Agnostic CMS Recommendation',
-    primary: 'Book a CMS strategy call',
-    secondary: 'Request a CMS selection guide'
   },
-  
-  riskReversal: 'Builds are fixed-scope to defined deliverables; the platform recommendation is genuinely agnostic, not tied to what we prefer to build.',
-  
-  pricing: {
-    range: '$20K–$120K+',
-    note: 'Build/migration: $20K–$60K; complex headless/custom/multi-site: $60K–$120K+'
-  },
-  
-  internalLinks: ['/wordpress-development', '/web-development-services', '/headless-commerce-development'],
-  
-  schema: {
-    serviceType: 'CMS Development',
-    priceRange: '$20,000 - $120,000+',
-    audience: 'Content-Driven Organizations & Enterprises'
-  }
-},
 
-// 15: AI Web Development
-'ai-web-development': {
-  slug: 'ai-web-development',
-  title: 'AI Web Development',
-  metaDescription: 'AI web development that delivers value, not a demo. Production-grade AI features engineered for reliability, cost, and real business impact.',
-  pageGoal: 'Convert businesses wanting AI-powered web capabilities into a scoping call; differentiate as practical AI builders, not hype; project value $40K–$250K+.',
-  buyerPersona: 'Founders, product, and digital leaders who want real AI capability in their product or site — and are wary of AI hype.',
-  uniquePositioning: 'We build AI into web products where it creates real business value — not because it\'s trendy — with the engineering rigor to make it reliable, and the honesty to tell you when AI isn\'t the answer.',
-  
-  hero: {
-    heading: 'AI Web Development That Delivers Value, Not a Demo',
-    subheading: 'AI can transform a product — or be expensive theater. We build AI-powered web applications where the capability genuinely moves the business: automation, personalization, intelligent search, AI features your users actually use. Engineered to be reliable in production, not impressive in a pitch.',
-    credibilityBar: [
-      'LLM & AI feature engineering',
-      'Production-grade reliability',
-      'Real-value use cases',
-      'Honest about AI\'s limits',
-      'You own it'
+ 
+  // 15. AI Web Development
+  // ------------------------------------------
+  'ai-web-development': {
+    slug: 'ai-web-development',
+    title: 'AI Web Development',
+    metaTitle: 'AI Web Development Services | AI-Powered Website Development',
+    metaDescription: 'AI web development services for US businesses. We integrate AI-powered features like personalization, search, and automation into your website.',
+    targetKeywords: [
+      'AI web development services',
+      'AI powered website development',
+      'AI integration for websites',
+      'machine learning web development',
+      'AI development company USA'
     ],
-    primaryCTA: 'Book an AI strategy call',
-    secondaryCTA: 'Request an AI use-case assessment',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative work building production AI features into web products.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is AI web development?',
-    answer: 'AI web development is the building of web applications and features powered by artificial intelligence — large language models, machine learning, and intelligent automation. For businesses, the value comes only when AI solves a real problem: automating work, personalizing experiences, or enabling capabilities that weren\'t feasible before. The hard part isn\'t adding AI; it\'s making it reliable, useful, and cost-effective in production.'
-  },
-  
-  problemSection: {
-    heading: 'Why Most AI Features Disappoint — and What Real Value Looks Like',
-    content: [
-      'AI is having its hype moment, and most AI features being shipped reflect it: capability added because it\'s trendy, not because it solves a problem. The result is a feature that demos impressively and gets used once, an AI tool that\'s unreliable enough that users stop trusting it, or a build whose token and infrastructure costs quietly balloon because no one engineered for cost. Worst of all is the AI feature that produces confidently wrong outputs in front of customers — a trust and liability problem, not a wow moment.',
-      'The cost of getting this wrong is real: budget spent on AI capability that doesn\'t move a metric, engineering effort on features users abandon, and sometimes reputational damage from AI that behaves unpredictably in front of customers. The hype creates pressure to add AI; the engineering reality is that adding it well is hard.',
-      'Real AI value is unglamorous and specific: automating a genuinely time-consuming process, personalizing an experience in a way that measurably lifts engagement or conversion, enabling intelligent search or support that users actually prefer. The question is never \'how do we add AI\' — it\'s \'where does AI solve a real problem reliably and cost-effectively,\' and sometimes the honest answer is that it doesn\'t, yet.'
+    pageGoal: 'Convert businesses wanting AI-powered web capabilities into a scoping call; differentiate as practical AI builders, not hype; project value $40K–$250K+.',
+    buyerPersona: 'Founders, product, and digital leaders who want real AI capability in their product or site — and are wary of AI hype.',
+    uniquePositioning: 'We build AI into web products where it creates real business value — not because it\'s trendy — with the engineering rigor to make it reliable, and the honesty to tell you when AI isn\'t the answer.',
+    
+    hero: {
+      heading: 'AI Web Development for Smarter, More Personalized Websites',
+      subheading: 'AI is no longer an add-on feature, it\'s becoming a core expectation for how modern websites personalize content, answer questions, and automate tasks. Our AI web development services help US businesses integrate genuinely useful AI capabilities into their sites, not gimmicks. We build AI-powered features including intelligent search, content personalization, recommendation engines, and automation tools that improve both user experience and operational efficiency.',
+      credibilityBar: [
+        'LLM & AI feature engineering',
+        'Production-grade reliability',
+        'Real-value use cases',
+        'Honest about AI\'s limits',
+        'You own it'
+      ],
+      primaryCTA: 'Book an AI strategy call',
+      secondaryCTA: 'Request an AI use-case assessment',
+      socialProof: 'Representative work building production AI features into web products.'
+    },
+    
+    featuredAnswer: {
+      question: 'What Is AI Web Development?',
+      answer: 'AI web development refers to building websites or web features that use artificial intelligence and machine learning to perform tasks like personalizing content, powering search, generating recommendations, or automating workflows. It typically involves integrating AI models or APIs into a site\'s front end and back end to create smarter, more adaptive user experiences.'
+    },
+    
+    problemSection: {
+      heading: 'Why Most AI Features Disappoint — and What Real Value Looks Like',
+      content: [
+        'AI is having its hype moment, and most AI features being shipped reflect it: capability added because it\'s trendy, not because it solves a problem. The result is a feature that demos impressively and gets used once, an AI tool that\'s unreliable enough that users stop trusting it, or a build whose token and infrastructure costs quietly balloon because no one engineered for cost. Worst of all is the AI feature that produces confidently wrong outputs in front of customers — a trust and liability problem, not a wow moment.',
+        'The cost of getting this wrong is real: budget spent on AI capability that doesn\'t move a metric, engineering effort on features users abandon, and sometimes reputational damage from AI that behaves unpredictably in front of customers. The hype creates pressure to add AI; the engineering reality is that adding it well is hard.',
+        'Real AI value is unglamorous and specific: automating a genuinely time-consuming process, personalizing an experience in a way that measurably lifts engagement or conversion, enabling intelligent search or support that users actually prefer. The question is never \'how do we add AI\' — it\'s \'where does AI solve a real problem reliably and cost-effectively,\' and sometimes the honest answer is that it doesn\'t, yet.'
+      ],
+      stats: [
+        {
+          label: 'AI Feature Adoption',
+          value: '<20%',
+          description: 'Typical adoption rate for AI features added without a real use case'
+        },
+        {
+          label: 'AI Running Cost',
+          value: '2-10x',
+          description: 'Cost difference between engineered and unengineered AI implementations'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'We approach AI as a tool to solve specific business problems, not a marketing buzzword to bolt onto a site. Every AI feature we build starts with a clear use case and measurable goal, so the investment actually improves your website\'s performance.'
+    },
+    
+    keyBenefits: [
+      'Personalized content and product recommendations for each visitor',
+      'AI-powered search that understands natural language queries',
+      'Automated workflows that reduce manual operational tasks',
+      'Predictive analytics to inform business and marketing decisions',
+      'Integration with leading AI models and APIs',
+      'Improved user engagement through smarter, adaptive experiences'
     ],
-    stats: [
-      {
-        label: 'AI Feature Adoption',
-        value: '<20%',
-        description: 'Typical adoption rate for AI features added without a real use case'
-      },
-      {
-        label: 'AI Running Cost',
-        value: '2-10x',
-        description: 'Cost difference between engineered and unengineered AI implementations'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Build AI That Works in Production',
-    content: 'We start with the problem, not the technology. We assess where AI genuinely creates value in your product or operation — and where it doesn\'t — because adding AI that doesn\'t solve a real problem is wasted spend, and we\'d rather tell you that than bill for it. When AI is the right tool, we engineer it for production, which is the part most teams underestimate.',
-    pillars: [
-      {
-        title: 'Production-grade AI engineering',
-        description: 'We build for reliability and graceful failure — handling the cases where models are uncertain or wrong, so your users get a dependable experience rather than confident nonsense.'
-      },
-      {
-        title: 'Cost engineering',
-        description: 'We architect for token and infrastructure efficiency, because AI costs that scale unchecked turn a feature into a liability.'
-      },
-      {
-        title: 'Right-sized models',
-        description: 'We use the appropriate model and approach for the job rather than the largest or trendiest, balancing capability against cost and latency.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'AI Web Capabilities',
-    items: [
-      {
-        service: 'AI feature engineering',
-        whatItIs: 'LLM and ML features built into web products.',
-        businessImpact: 'New capability that genuinely moves metrics.'
-      },
-      {
-        service: 'Intelligent automation',
-        whatItIs: 'AI-driven automation of real workflows.',
-        businessImpact: 'Recovers significant time on genuine processes.'
-      },
-      {
-        service: 'AI personalization',
-        whatItIs: 'Experiences personalized by AI.',
-        businessImpact: 'Measurable engagement and conversion lift.'
-      },
-      {
-        service: 'Intelligent search & discovery',
-        whatItIs: 'AI-powered search and recommendations.',
-        businessImpact: 'Users find and buy more, faster.'
-      },
-      {
-        service: 'RAG & knowledge systems',
-        whatItIs: 'Retrieval-augmented AI over your data.',
-        businessImpact: 'Accurate, grounded AI on your content.'
-      },
-      {
-        service: 'AI integration',
-        whatItIs: 'Integrating AI services into existing products.',
-        businessImpact: 'Add capability without a rebuild.'
-      },
-      {
-        service: 'AI cost & reliability engineering',
-        whatItIs: 'Optimizing AI for cost, latency, and reliability.',
-        businessImpact: 'Turns AI from liability into sustainable feature.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Companies Choose Us for AI Work',
-    intro: 'The AI space is full of hype and thin capability. Here\'s the honest comparison.',
-    options: [
-      {
-        option: 'AI-hype agency',
-        whereWorks: 'Selling the dream',
-        whereFails: 'Production reliability, cost, real value',
-        ourPosition: 'Production-grade, value-first, honest'
-      },
-      {
-        option: 'Generalist dev shop',
-        whereWorks: 'Standard web work',
-        whereFails: 'AI engineering depth',
-        ourPosition: 'AI specialists who ship reliable features'
-      },
-      {
-        option: 'DIY AI features',
-        whereWorks: 'Experiments',
-        whereFails: 'Reliability, cost control at scale',
-        ourPosition: 'Engineered for production and cost'
-      },
-      {
-        option: 'No AI at all',
-        whereWorks: 'When AI doesn\'t fit',
-        whereFails: 'Missing genuine AI opportunities',
-        ourPosition: 'We tell you honestly which applies'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Use-Case to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery & use-case assessment', description: 'Where AI genuinely creates value — and where it doesn\'t; success metrics; cost expectations.' },
-      { number: 2, title: 'Strategy', description: 'Scope governed by real value, reliability needs, and cost.' },
-      { number: 3, title: 'Architecture', description: 'Model selection, data, cost, reliability, and integration design.' },
-      { number: 4, title: 'Design', description: 'UX that sets honest AI expectations and handles uncertainty well.' },
-      { number: 5, title: 'Development', description: 'Senior AI engineering with reliability and cost controls, plus working demos.' },
-      { number: 6, title: 'QA & evaluation', description: 'Functional, reliability, and AI-output evaluation as a gate.' },
-      { number: 7, title: 'Launch', description: 'Controlled launch with monitoring of quality, cost, and usage.' },
-      { number: 8, title: 'Optimization', description: 'Quality, cost, and capability iteration in production.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A company wanted to \'add AI\' under competitive pressure but had no clear use case — risking spend on a feature that wouldn\'t be used or trusted.',
-    solution: 'We identified the one genuinely high-value use case — automating a time-consuming, repetitive process — and built a production-grade, cost-engineered AI feature for it, with reliable handling of uncertain cases, rather than scattering AI superficially across the product.',
-    metrics: [
-      {
-        kpi: 'Process time',
-        result: 'Cut dramatically',
-        whyItMatters: 'Real time recovered on a genuine workflow'
-      },
-      {
-        kpi: 'Feature adoption',
-        result: 'High and sustained',
-        whyItMatters: 'Used daily, not abandoned after launch'
-      },
-      {
-        kpi: 'AI running cost',
-        result: 'Engineered and controlled',
-        whyItMatters: 'Sustainable, not a ballooning liability'
-      },
-      {
-        kpi: 'Output reliability',
-        result: 'Trusted by users',
-        whyItMatters: 'Adopted because it\'s dependable'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The AI Business Case',
-    content: 'AI ROI is real but specific — it comes from the genuine problem AI solves, not from AI itself. Automating a truly time-consuming process recovers labor permanently. Personalization or intelligent search that measurably lifts engagement or conversion drives revenue. A capability AI uniquely enables can differentiate the product. The losses, by contrast, come from AI added without a real use case: wasted spend, abandoned features, and ballooning running costs.',
-    valueStreams: [
-      'Labor recovery (automation of genuine processes)',
-      'Engagement & conversion lift (personalization, search)',
-      'Differentiation (capabilities competitors can\'t match)',
-      'Cost savings (engineered for efficiency)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Should we add AI to our product?',
-      answer: 'Only where it solves a real problem reliably and cost-effectively — and we\'ll tell you honestly where that is, and where it isn\'t. AI added under hype pressure without a genuine use case is wasted spend on features users abandon. The right question isn\'t whether to add AI, but where AI specifically creates value for your business.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'Personalized Content & Recommendations',
+          whatItIs: 'Dynamic content and product recommendations for each visitor.',
+          businessImpact: 'Increases engagement and conversion rates.'
+        },
+        {
+          service: 'AI-Powered Search',
+          whatItIs: 'Search that understands natural language queries.',
+          businessImpact: 'Helps users find what they need faster and more accurately.'
+        },
+        {
+          service: 'Automated Workflows',
+          whatItIs: 'AI-driven automation of manual operational tasks.',
+          businessImpact: 'Reduces operational costs and frees up team time.'
+        },
+        {
+          service: 'Predictive Analytics',
+          whatItIs: 'Data analysis to inform business and marketing decisions.',
+          businessImpact: 'Helps you make proactive, data-driven decisions.'
+        },
+        {
+          service: 'AI Model & API Integration',
+          whatItIs: 'Integration with leading AI models and APIs.',
+          businessImpact: 'Leverages cutting-edge AI without building from scratch.'
+        },
+        {
+          service: 'Adaptive User Experiences',
+          whatItIs: 'Smarter, adaptive interfaces that improve user engagement.',
+          businessImpact: 'Creates a more engaging and personalized user journey.'
+        }
+      ]
     },
-    {
-      question: 'Why do so many AI features fail?',
-      answer: 'Because they\'re added for novelty, not engineered for production. Real-world AI has to handle uncertainty and wrong answers gracefully, control its running cost, and actually solve a problem users have. Most failed AI features skip that engineering and ship a demo. We build the production version.'
+    
+    comparison: {
+      heading: 'Why Companies Choose Us for AI Work',
+      intro: 'The AI space is full of hype and thin capability. Here\'s the honest comparison.',
+      options: [
+        {
+          option: 'AI-hype agency',
+          whereWorks: 'Selling the dream',
+          whereFails: 'Production reliability, cost, real value',
+          ourPosition: 'Production-grade, value-first, honest'
+        },
+        {
+          option: 'Generalist dev shop',
+          whereWorks: 'Standard web work',
+          whereFails: 'AI engineering depth',
+          ourPosition: 'AI specialists who ship reliable features'
+        },
+        {
+          option: 'DIY AI features',
+          whereWorks: 'Experiments',
+          whereFails: 'Reliability, cost control at scale',
+          ourPosition: 'Engineered for production and cost'
+        },
+        {
+          option: 'No AI at all',
+          whereWorks: 'When AI doesn\'t fit',
+          whereFails: 'Missing genuine AI opportunities',
+          ourPosition: 'We tell you honestly which applies'
+        }
+      ]
     },
-    {
-      question: 'What does AI web development cost?',
-      answer: 'An AI feature typically runs $40K–$120K; a complex AI-powered application $120K–$250K+, plus ongoing AI running costs (which we engineer to control). Cost follows scope and we size it to the value. Transparent estimate after a strategy call.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Use Case Discovery', description: 'We identify where AI can genuinely improve your website\'s performance or user experience.' },
+        { number: 2, title: 'Data & Model Planning', description: 'We plan the data sources and AI models or APIs needed for your specific use case.' },
+        { number: 3, title: 'Integration Development', description: 'We build the AI features into your site\'s front end and back end.' },
+        { number: 4, title: 'Testing & Refinement', description: 'We test AI outputs for accuracy and refine based on real performance data.' },
+        { number: 5, title: 'Launch & Monitoring', description: 'We launch the features and monitor performance to continue improving results.' }
+      ]
     },
-    {
-      question: 'How do you keep AI from producing wrong or embarrassing outputs?',
-      answer: 'By engineering for it — grounding AI in your real data where accuracy matters (retrieval-augmented approaches), designing the UX to handle uncertainty honestly, and building evaluation and guardrails. Confidently-wrong AI in front of customers is a trust and liability problem, and preventing it is core engineering, not an afterthought.'
+    
+    outcome: {
+      challenge: 'A company wanted to \'add AI\' under competitive pressure but had no clear use case — risking spend on a feature that wouldn\'t be used or trusted.',
+      solution: 'We identified the one genuinely high-value use case — automating a time-consuming, repetitive process — and built a production-grade, cost-engineered AI feature for it, with reliable handling of uncertain cases, rather than scattering AI superficially across the product.',
+      metrics: [
+        {
+          kpi: 'Process time',
+          result: 'Cut dramatically',
+          whyItMatters: 'Real time recovered on a genuine workflow'
+        },
+        {
+          kpi: 'Feature adoption',
+          result: 'High and sustained',
+          whyItMatters: 'Used daily, not abandoned after launch'
+        },
+        {
+          kpi: 'AI running cost',
+          result: 'Engineered and controlled',
+          whyItMatters: 'Sustainable, not a ballooning liability'
+        },
+        {
+          kpi: 'Output reliability',
+          result: 'Trusted by users',
+          whyItMatters: 'Adopted because it\'s dependable'
+        }
+      ]
     },
-    {
-      question: 'Won\'t AI running costs spiral?',
-      answer: 'They can if no one engineers for cost — which is exactly why we do. We architect for token and infrastructure efficiency, use right-sized models for each job, and monitor cost in production, so AI stays a sustainable feature rather than a ballooning liability.'
+    
+    businessCase: {
+      heading: 'The AI Business Case',
+      content: 'AI ROI is real but specific — it comes from the genuine problem AI solves, not from AI itself. Automating a truly time-consuming process recovers labor permanently. Personalization or intelligent search that measurably lifts engagement or conversion drives revenue. A capability AI uniquely enables can differentiate the product. The losses, by contrast, come from AI added without a real use case: wasted spend, abandoned features, and ballooning running costs.',
+      valueStreams: [
+        'Labor recovery (automation of genuine processes)',
+        'Engagement & conversion lift (personalization, search)',
+        'Differentiation (capabilities competitors can\'t match)',
+        'Cost savings (engineered for efficiency)'
+      ]
     },
-    {
-      question: 'Do we own the AI features and code?',
-      answer: 'Completely — the code, the integrations, and the configuration are yours with no lock-in. The underlying AI model providers carry their own terms, which we\'ll explain clearly so there are no surprises.'
+    
+    faqs: [
+      {
+        question: 'What kind of AI features can be added to a website?',
+        answer: 'Common features include AI-powered search, personalized content and product recommendations, chatbots, automated content generation, and predictive analytics dashboards.'
+      },
+      {
+        question: 'Do I need a lot of data to use AI on my website?',
+        answer: 'It depends on the use case. Some AI features, like chatbots or smart search, work well with existing content, while personalization and recommendation engines benefit from more user interaction data over time.'
+      },
+      {
+        question: 'Is AI web development expensive?',
+        answer: 'Costs vary based on the complexity of the AI features and whether you\'re using existing APIs or building custom models. We scope every project based on your specific goals and budget.'
+      },
+      {
+        question: 'Can AI features be added to my existing website?',
+        answer: 'Yes, in most cases AI capabilities can be integrated into your existing site without a full rebuild, depending on your current platform and architecture.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Find Out Where AI Actually Pays Off for You',
+      primary: 'Book an AI strategy call',
+      secondary: 'Request an AI use-case assessment'
+    },
+    
+    riskReversal: 'Builds are fixed-scope to defined deliverables; we\'ll tell you when AI isn\'t the right investment rather than sell it regardless.',
+    
+    pricing: {
+      range: '$40K–$250K+',
+      note: 'AI feature: $40K–$120K; complex AI application: $120K–$250K+'
+    },
+    
+    internalLinks: ['/web-development-services', '/ai-chatbot-development', '/saas-development', '/web-application-development'],
+    
+    schema: {
+      serviceType: 'AI Web Development',
+      priceRange: '$40,000 - $250,000+',
+      audience: 'Founders, Product & Digital Leaders'
     }
-  ],
-  
-  cta: {
-    heading: 'Find Out Where AI Actually Pays Off for You',
-    primary: 'Book an AI strategy call',
-    secondary: 'Request an AI use-case assessment'
   },
-  
-  riskReversal: 'Builds are fixed-scope to defined deliverables; we\'ll tell you when AI isn\'t the right investment rather than sell it regardless.',
-  
-  pricing: {
-    range: '$40K–$250K+',
-    note: 'AI feature: $40K–$120K; complex AI application: $120K–$250K+'
-  },
-  
-  internalLinks: ['/web-development-services', '/ai-chatbot-development', '/saas-development', '/web-application-development'],
-  
-  schema: {
-    serviceType: 'AI Web Development',
-    priceRange: '$40,000 - $250,000+',
-    audience: 'Founders, Product & Digital Leaders'
-  }
-},
 
-// 16: AI Chatbot Development
-'ai-chatbot-development': {
-  slug: 'ai-chatbot-development',
-  title: 'AI Chatbot Development',
-  metaDescription: 'AI chatbots that resolve customers, not frustrate them. RAG-grounded chatbots engineered for accuracy, resolution, and ROI.',
-  pageGoal: 'Convert businesses wanting AI chat/support/sales assistants into a scoping call; differentiate on accuracy and ROI; project value $25K–$150K+.',
-  buyerPersona: 'Customer-experience, support, and revenue leaders, plus founders, wanting AI chatbots that actually help — not frustrate — customers.',
-  uniquePositioning: 'We build AI chatbots that resolve real customer needs accurately — grounded in your actual knowledge — instead of the frustrating, hallucinating bots that damage customer trust.',
-  
-  hero: {
-    heading: 'AI Chatbots That Resolve Customers, Not Frustrate Them',
-    subheading: 'A bad chatbot is worse than none — it frustrates customers and erodes trust. We build AI chatbots grounded in your real knowledge that accurately resolve support, qualify leads, and guide customers, with honest handoff to humans when needed. Engineered for resolution rate and ROI, not deflection theater.',
-    credibilityBar: [
-      'Grounded in your knowledge (RAG)',
-      'Accurate, not hallucinating',
-      'Honest human handoff',
-      'Measured on resolution',
-      'You own it'
+ 
+  // 16. AI Chatbot Development
+  // ------------------------------------------
+  'ai-chatbot-development': {
+    slug: 'ai-chatbot-development',
+    title: 'AI Chatbot Development',
+    metaTitle: 'AI Chatbot Development Services | Custom AI Chatbots for Websites',
+    metaDescription: 'Custom AI chatbot development for US businesses. We build intelligent chatbots that answer questions, capture leads, and support customers 24/7.',
+    targetKeywords: [
+      'AI chatbot development services',
+      'custom AI chatbot development',
+      'chatbot development company',
+      'conversational AI development',
+      'hire chatbot developer'
     ],
-    primaryCTA: 'Book a chatbot strategy call',
-    secondaryCTA: 'Request a chatbot ROI assessment',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative work across support, sales, and customer-guidance chatbots.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is AI chatbot development?',
-    answer: 'AI chatbot development is the building of conversational AI that handles customer interactions — support, lead qualification, and guidance — over chat. Modern AI chatbots use large language models grounded in a business\'s own knowledge to answer accurately. Their value depends entirely on accuracy and genuine resolution: a chatbot that resolves real needs builds satisfaction and cuts cost, while one that hallucinates or deflects damages trust.'
-  },
-  
-  problemSection: {
-    heading: 'Why Chatbots Get Hated — and What a Good One Does',
-    content: [
-      'Most people\'s experience of chatbots is bad, and for good reason. The old rule-based bots understood nothing outside their script and trapped customers in dead-end menus. The new wave of poorly built AI bots has the opposite problem: they sound fluent but hallucinate — confidently giving customers wrong information, which is worse than no answer. And many are designed to deflect rather than resolve, blocking the human help customers actually need. Each erodes trust and pushes customers away.',
-      'The business cost is double-edged. A frustrating chatbot doesn\'t just fail to save support cost — it actively damages the customer relationship, drives complaints, and can lose the sale or the customer outright. A hallucinating bot creates support problems and liability when customers act on wrong answers. The deflection-first design that\'s supposed to cut cost often just defers it to angrier interactions later.',
-      'A good AI chatbot is the opposite: it accurately resolves the things it can, using your real knowledge, and hands off gracefully to a human when it can\'t — improving satisfaction while genuinely reducing cost. The difference between the two is entirely in how it\'s built.'
+    pageGoal: 'Convert businesses wanting AI chat/support/sales assistants into a scoping call; differentiate on accuracy and ROI; project value $25K–$150K+.',
+    buyerPersona: 'Customer-experience, support, and revenue leaders, plus founders, wanting AI chatbots that actually help — not frustrate — customers.',
+    uniquePositioning: 'We build AI chatbots that resolve real customer needs accurately — grounded in your actual knowledge — instead of the frustrating, hallucinating bots that damage customer trust.',
+    
+    hero: {
+      heading: 'AI Chatbot Development That Actually Helps Your Customers',
+      subheading: 'A good chatbot answers real questions and moves customers forward; a bad one frustrates them into leaving. Our AI chatbot development services focus on building conversational tools that genuinely help, whether that\'s answering support questions, qualifying leads, or guiding purchases. We build custom AI chatbots for US businesses across industries, trained on your specific content and integrated directly into your website or customer support workflow.',
+      credibilityBar: [
+        'Grounded in your knowledge (RAG)',
+        'Accurate, not hallucinating',
+        'Honest human handoff',
+        'Measured on resolution',
+        'You own it'
+      ],
+      primaryCTA: 'Book a chatbot strategy call',
+      secondaryCTA: 'Request a chatbot ROI assessment',
+      socialProof: 'Representative work across support, sales, and customer-guidance chatbots.'
+    },
+    
+    featuredAnswer: {
+      question: 'What is AI chatbot development?',
+      answer: 'AI chatbot development is the process of building conversational AI tools that interact with website visitors in natural language, answering questions, providing recommendations, or completing tasks like booking appointments. Modern chatbots use large language models to understand context and respond naturally, rather than relying on rigid, scripted decision trees.'
+    },
+    
+    problemSection: {
+      heading: 'Why Chatbots Get Hated — and What a Good One Does',
+      content: [
+        'Most people\'s experience of chatbots is bad, and for good reason. The old rule-based bots understood nothing outside their script and trapped customers in dead-end menus. The new wave of poorly built AI bots has the opposite problem: they sound fluent but hallucinate — confidently giving customers wrong information, which is worse than no answer. And many are designed to deflect rather than resolve, blocking the human help customers actually need. Each erodes trust and pushes customers away.',
+        'The business cost is double-edged. A frustrating chatbot doesn\'t just fail to save support cost — it actively damages the customer relationship, drives complaints, and can lose the sale or the customer outright. A hallucinating bot creates support problems and liability when customers act on wrong answers. The deflection-first design that\'s supposed to cut cost often just defers it to angrier interactions later.',
+        'A good AI chatbot is the opposite: it accurately resolves the things it can, using your real knowledge, and hands off gracefully to a human when it can\'t — improving satisfaction while genuinely reducing cost. The difference between the two is entirely in how it\'s built.'
+      ],
+      stats: [
+        {
+          label: 'Resolution Rate',
+          value: '60-80%',
+          description: 'Typical resolution rate for well-built AI chatbots'
+        },
+        {
+          label: 'Customer Satisfaction',
+          value: '+20%',
+          description: 'Satisfaction improvement over frustrating bots'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'We build chatbots people actually want to use, not ones that trap visitors in frustrating loops. By training on your specific content and defining clear escalation paths to human support, we make sure the chatbot adds value instead of creating a support bottleneck.'
+    },
+    
+    keyBenefits: [
+      '24/7 customer support without increasing staffing costs',
+      'Natural language understanding for more helpful conversations',
+      'Lead qualification and capture directly through chat',
+      'Trained on your specific business content and FAQs',
+      'Seamless handoff to human agents when needed',
+      'Integration with your CRM and support systems'
     ],
-    stats: [
-      {
-        label: 'Resolution Rate',
-        value: '60-80%',
-        description: 'Typical resolution rate for well-built AI chatbots'
-      },
-      {
-        label: 'Customer Satisfaction',
-        value: '+20%',
-        description: 'Satisfaction improvement over frustrating bots'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Build Chatbots That Actually Resolve',
-    content: 'We engineer for accurate resolution, which is the only thing that makes a chatbot worth having. We\'re clear-eyed about scope — we identify what a chatbot can reliably handle for your business and build for that, rather than overpromising an AI that does everything and delivers frustration.',
-    pillars: [
-      {
-        title: 'Grounded in your knowledge (RAG)',
-        description: 'We use retrieval-augmented generation so the chatbot answers from your actual documentation, policies, and data — not from a model\'s guesses — which is what prevents the hallucination that destroys trust.'
-      },
-      {
-        title: 'Honest human handoff',
-        description: 'We design the bot to recognize what it can\'t handle and hand off to a human gracefully, because trapping customers is what they hate most.'
-      },
-      {
-        title: 'Resolution-first design',
-        description: 'We optimize for genuinely resolving customer needs, not for deflection metrics that look good and feel terrible.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'AI Chatbot Capabilities',
-    items: [
-      {
-        service: 'AI support chatbots',
-        whatItIs: 'Bots that accurately resolve support, grounded in your knowledge.',
-        businessImpact: 'Cuts support cost while improving satisfaction.'
-      },
-      {
-        service: 'Lead qualification bots',
-        whatItIs: 'Conversational lead capture and qualification.',
-        businessImpact: 'More and better-qualified leads, 24/7.'
-      },
-      {
-        service: 'Sales & guidance bots',
-        whatItIs: 'Bots guiding customers to the right product or action.',
-        businessImpact: 'Higher conversion through guided experience.'
-      },
-      {
-        service: 'RAG knowledge grounding',
-        whatItIs: 'Retrieval over your real content for accuracy.',
-        businessImpact: 'Accurate answers, not hallucinations.'
-      },
-      {
-        service: 'Human handoff & escalation',
-        whatItIs: 'Graceful escalation to human agents.',
-        businessImpact: 'No trapped, frustrated customers.'
-      },
-      {
-        service: 'Multichannel deployment',
-        whatItIs: 'Web, app, and messaging-channel chatbots.',
-        businessImpact: 'Consistent help wherever customers are.'
-      },
-      {
-        service: 'Chatbot optimization',
-        whatItIs: 'Improving resolution, accuracy, and cost over time.',
-        businessImpact: 'Compounding gains post-launch.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Companies Choose Us for Chatbots',
-    intro: 'Most chatbots frustrate customers. Here\'s the honest comparison.',
-    options: [
-      {
-        option: 'Off-the-shelf bot builder',
-        whereWorks: 'Simple FAQ deflection',
-        whereFails: 'Accuracy, real resolution, integration',
-        ourPosition: 'Grounded, accurate, resolution-first'
-      },
-      {
-        option: 'Rule-based chatbot',
-        whereWorks: 'Very narrow scripts',
-        whereFails: 'Anything off-script; frustration',
-        ourPosition: 'AI that understands real questions'
-      },
-      {
-        option: 'Cheap AI bot (ungrounded)',
-        whereWorks: 'Demos',
-        whereFails: 'Hallucination, trust damage',
-        ourPosition: 'RAG-grounded; accurate by design'
-      },
-      {
-        option: 'Generalist dev shop',
-        whereWorks: 'Standard web work',
-        whereFails: 'Conversational-AI depth',
-        ourPosition: 'Chatbot specialists measured on resolution'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From ROI Assessment to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery & ROI assessment', description: 'What the chatbot can reliably handle; resolution and cost goals; knowledge sources.' },
-      { number: 2, title: 'Strategy', description: 'Scope governed by genuine resolution value and accuracy needs.' },
-      { number: 3, title: 'Architecture', description: 'RAG knowledge grounding, model selection, handoff, and integration design.' },
-      { number: 4, title: 'Design', description: 'Conversation design with honest expectations and graceful handoff.' },
-      { number: 5, title: 'Development', description: 'Senior conversational-AI engineering with accuracy controls and working demos.' },
-      { number: 6, title: 'QA & evaluation', description: 'Accuracy, resolution, and edge-case evaluation as a gate.' },
-      { number: 7, title: 'Launch', description: 'Controlled launch monitoring resolution, accuracy, and satisfaction.' },
-      { number: 8, title: 'Optimization', description: 'Resolution, accuracy, and cost iteration in production.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A company\'s support volume was overwhelming its team, but a previous off-the-shelf chatbot had frustrated customers so badly it was switched off, leaving the team wary of trying again.',
-    solution: 'We built a chatbot grounded in their real support knowledge that accurately resolved common issues, recognized what it couldn\'t handle, and handed those off to human agents gracefully — measured on genuine resolution, not deflection.',
-    metrics: [
-      {
-        kpi: 'Support tickets resolved by bot',
-        result: 'Substantial share, accurately',
-        whyItMatters: 'Real cost reduction, not deflection'
-      },
-      {
-        kpi: 'Customer satisfaction',
-        result: 'Improved vs. prior bot',
-        whyItMatters: 'Customers genuinely helped'
-      },
-      {
-        kpi: 'Human handoff',
-        result: 'Graceful, when needed',
-        whyItMatters: 'No trapped or frustrated customers'
-      },
-      {
-        kpi: 'Team load',
-        result: 'Materially reduced',
-        whyItMatters: 'Agents focus on complex issues'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The Chatbot Business Case',
-    content: 'Chatbot ROI is real when resolution is real. A chatbot that accurately resolves a meaningful share of support interactions cuts support cost directly, while improving satisfaction because customers get fast, correct answers. A lead-qualification bot captures and qualifies leads around the clock, feeding sales. A guidance bot lifts conversion by helping customers find the right product. The crucial caveat: these gains only materialize with accuracy and genuine resolution — a frustrating bot delivers negative ROI by damaging relationships.',
-    valueStreams: [
-      'Support cost reduction (accurate resolution)',
-      'Lead generation (24/7 qualification)',
-      'Conversion lift (guided customer experience)',
-      'Satisfaction improvement (customers helped, not frustrated)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Won\'t a chatbot just frustrate our customers like every other one?',
-      answer: 'Only if it\'s built badly — which most are. The frustration comes from bots that don\'t understand real questions, hallucinate wrong answers, or trap customers away from humans. We build the opposite: grounded in your real knowledge for accuracy, resolution-first, with graceful human handoff. Built properly, customers find it genuinely helpful.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: '24/7 Customer Support',
+          whatItIs: 'Automated support without increasing staffing costs.',
+          businessImpact: 'Reduces support overhead and improves response times.'
+        },
+        {
+          service: 'Natural Language Understanding',
+          whatItIs: 'More helpful conversations using modern AI.',
+          businessImpact: 'Resolves queries accurately instead of using rigid scripts.'
+        },
+        {
+          service: 'Lead Qualification & Capture',
+          whatItIs: 'Direct lead capture and qualification through chat.',
+          businessImpact: 'Increases sales pipeline and captures opportunities 24/7.'
+        },
+        {
+          service: 'Custom Content Training',
+          whatItIs: 'Trained on your specific business content and FAQs.',
+          businessImpact: 'Ensures accurate, business-relevant responses.'
+        },
+        {
+          service: 'Seamless Human Handoff',
+          whatItIs: 'Clear escalation paths to human agents.',
+          businessImpact: 'Prevents frustration by handling complex issues with human support.'
+        },
+        {
+          service: 'CRM & System Integration',
+          whatItIs: 'Integration with your CRM and support systems.',
+          businessImpact: 'Creates seamless workflows and logs customer interactions.'
+        }
+      ]
     },
-    {
-      question: 'How do you stop the chatbot from giving wrong answers?',
-      answer: 'By grounding it in your actual content with retrieval-augmented generation, so it answers from your real documentation and policies rather than guessing — and by building evaluation and guardrails. Ungrounded AI chatbots hallucinate; that\'s precisely the failure we engineer against, because a confidently wrong answer is worse than no answer.'
+    
+    comparison: {
+      heading: 'Why Companies Choose Us for Chatbots',
+      intro: 'Most chatbots frustrate customers. Here\'s the honest comparison.',
+      options: [
+        {
+          option: 'Off-the-shelf bot builder',
+          whereWorks: 'Simple FAQ deflection',
+          whereFails: 'Accuracy, real resolution, integration',
+          ourPosition: 'Grounded, accurate, resolution-first'
+        },
+        {
+          option: 'Rule-based chatbot',
+          whereWorks: 'Very narrow scripts',
+          whereFails: 'Anything off-script; frustration',
+          ourPosition: 'AI that understands real questions'
+        },
+        {
+          option: 'Cheap AI bot (ungrounded)',
+          whereWorks: 'Demos',
+          whereFails: 'Hallucination, trust damage',
+          ourPosition: 'RAG-grounded; accurate by design'
+        },
+        {
+          option: 'Generalist dev shop',
+          whereWorks: 'Standard web work',
+          whereFails: 'Conversational-AI depth',
+          ourPosition: 'Chatbot specialists measured on resolution'
+        }
+      ]
     },
-    {
-      question: 'What does an AI chatbot cost?',
-      answer: 'A focused support or lead bot typically runs $25K–$75K; a complex multichannel or sales chatbot $75K–$150K+, plus AI running costs (which we engineer to control). Cost follows scope and we size it to the resolution ROI. Transparent estimate after a strategy call.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Use Case Definition', description: 'We identify the specific tasks your chatbot needs to handle, support, sales, or both.' },
+        { number: 2, title: 'Content & Training', description: 'We train the chatbot on your business content, FAQs, and desired conversation flows.' },
+        { number: 3, title: 'Development & Integration', description: 'We build and integrate the chatbot into your website and relevant backend systems.' },
+        { number: 4, title: 'Testing', description: 'We test the chatbot across realistic scenarios to confirm accurate, helpful responses.' },
+        { number: 5, title: 'Launch & Optimization', description: 'We monitor real conversations after launch and refine responses over time.' }
+      ]
     },
-    {
-      question: 'Will it replace our support team?',
-      answer: 'No — and we wouldn\'t position it that way. It resolves the common, repetitive interactions accurately and hands the complex ones to your team gracefully, so your agents focus on what needs a human. It augments the team and improves the experience; it doesn\'t trap customers away from people.'
+    
+    outcome: {
+      challenge: 'A company\'s support volume was overwhelming its team, but a previous off-the-shelf chatbot had frustrated customers so badly it was switched off, leaving the team wary of trying again.',
+      solution: 'We built a chatbot grounded in their real support knowledge that accurately resolved common issues, recognized what it couldn\'t handle, and handed those off to human agents gracefully — measured on genuine resolution, not deflection.',
+      metrics: [
+        {
+          kpi: 'Support tickets resolved by bot',
+          result: 'Substantial share, accurately',
+          whyItMatters: 'Real cost reduction, not deflection'
+        },
+        {
+          kpi: 'Customer satisfaction',
+          result: 'Improved vs. prior bot',
+          whyItMatters: 'Customers genuinely helped'
+        },
+        {
+          kpi: 'Human handoff',
+          result: 'Graceful, when needed',
+          whyItMatters: 'No trapped or frustrated customers'
+        },
+        {
+          kpi: 'Team load',
+          result: 'Materially reduced',
+          whyItMatters: 'Agents focus on complex issues'
+        }
+      ]
     },
-    {
-      question: 'Can it connect to our systems?',
-      answer: 'Yes — we integrate the chatbot with your knowledge base, CRM, and relevant systems so it answers accurately and can take or trigger real actions, rather than being a disconnected FAQ veneer.'
+    
+    businessCase: {
+      heading: 'The Chatbot Business Case',
+      content: 'Chatbot ROI is real when resolution is real. A chatbot that accurately resolves a meaningful share of support interactions cuts support cost directly, while improving satisfaction because customers get fast, correct answers. A lead-qualification bot captures and qualifies leads around the clock, feeding sales. A guidance bot lifts conversion by helping customers find the right product. The crucial caveat: these gains only materialize with accuracy and genuine resolution — a frustrating bot delivers negative ROI by damaging relationships.',
+      valueStreams: [
+        'Support cost reduction (accurate resolution)',
+        'Lead generation (24/7 qualification)',
+        'Conversion lift (guided customer experience)',
+        'Satisfaction improvement (customers helped, not frustrated)'
+      ]
     },
-    {
-      question: 'Do we own the chatbot and its configuration?',
-      answer: 'Completely — the code, configuration, and conversation design are yours with no lock-in. The underlying AI provider carries its own terms, which we\'ll explain clearly.'
+    
+    faqs: [
+      {
+        question: 'What can an AI chatbot actually do for my website?',
+        answer: 'Depending on your goals, a chatbot can answer customer support questions, qualify sales leads, recommend products, book appointments, and provide instant responses outside business hours.'
+      },
+      {
+        question: 'Will the chatbot understand questions phrased differently each time?',
+        answer: 'Yes, modern AI chatbots use natural language understanding to interpret varied phrasing and context, rather than requiring exact keyword matches.'
+      },
+      {
+        question: 'Can the chatbot hand off to a human agent when needed?',
+        answer: 'Yes, we build in escalation paths so the chatbot can seamlessly transfer complex or sensitive conversations to your human support team.'
+      },
+      {
+        question: 'How is the chatbot trained on our specific business information?',
+        answer: 'We train the chatbot using your existing content, FAQs, product information, and support documentation, so responses are accurate and relevant to your business.'
+      }
+    ],
+    
+    cta: {
+      heading: 'See What an Accurate Chatbot Could Resolve for You',
+      primary: 'Book a chatbot strategy call',
+      secondary: 'Request a chatbot ROI assessment'
+    },
+    
+    riskReversal: 'Builds are fixed-scope to defined deliverables; optimization is 30-day rolling, retained on measured resolution.',
+    
+    pricing: {
+      range: '$25K–$150K+',
+      note: 'Focused support/lead bot: $25K–$75K; complex multichannel/sales: $75K–$150K+'
+    },
+    
+    internalLinks: ['/ai-web-development', '/web-development-services', '/saas-development'],
+    
+    schema: {
+      serviceType: 'AI Chatbot Development',
+      priceRange: '$25,000 - $150,000+',
+      audience: 'Customer Experience, Support & Revenue Leaders'
     }
-  ],
-  
-  cta: {
-    heading: 'See What an Accurate Chatbot Could Resolve for You',
-    primary: 'Book a chatbot strategy call',
-    secondary: 'Request a chatbot ROI assessment'
   },
-  
-  riskReversal: 'Builds are fixed-scope to defined deliverables; optimization is 30-day rolling, retained on measured resolution.',
-  
-  pricing: {
-    range: '$25K–$150K+',
-    note: 'Focused support/lead bot: $25K–$75K; complex multichannel/sales: $75K–$150K+'
-  },
-  
-  internalLinks: ['/ai-web-development', '/web-development-services', '/saas-development'],
-  
-  schema: {
-    serviceType: 'AI Chatbot Development',
-    priceRange: '$25,000 - $150,000+',
-    audience: 'Customer Experience, Support & Revenue Leaders'
-  }
-},
-
-// 17: API Development
-'api-development': {
-  slug: 'api-development',
-  title: 'API Development',
-  metaDescription: 'API development for the connective tissue of your business. Secure, scalable APIs engineered for integration, products, and ecosystems.',
-  pageGoal: 'Convert businesses needing APIs/integrations into a scoping call; frame APIs as business infrastructure; project value $20K–$150K+.',
-  buyerPersona: 'CTOs, product, and engineering leaders needing robust APIs, integrations, or a platform/ecosystem strategy.',
-  uniquePositioning: 'We engineer APIs as durable business infrastructure — the connective tissue that powers integrations, products, and ecosystems — built to scale, secure, and last.',
-  
-  hero: {
-    heading: 'API Development for the Connective Tissue of Your Business',
-    subheading: 'APIs are how your systems talk, how partners integrate, and how your product becomes a platform. Built poorly, they\'re a brittle, insecure liability; built well, they\'re durable infrastructure that compounds in value. We engineer APIs to scale, stay secure, and last.',
-    credibilityBar: [
-      'REST & GraphQL',
-      'Secure & scalable',
-      'Well-documented',
-      'Integration & platform APIs',
-      'You own it'
+ 
+  // 17. API Development
+  // ------------------------------------------
+  'api-development': {
+    slug: 'api-development',
+    title: 'API Development',
+    metaTitle: 'API Development Services | Custom API Development & Integration',
+    metaDescription: 'Custom API development and integration services for US businesses. We build secure, scalable APIs that connect your systems and applications.',
+    targetKeywords: [
+      'API development services',
+      'custom API development company',
+      'API integration services',
+      'REST API development',
+      'hire API developer'
     ],
-    primaryCTA: 'Book an API strategy call',
-    secondaryCTA: 'Request an API architecture guide',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative work across integration, product, and platform APIs.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is API development?',
-    answer: 'API development is the building of application programming interfaces — the interfaces that let software systems communicate. APIs power internal system integration, third-party connections, mobile and web app back ends, and platform ecosystems. For businesses, well-built APIs are durable infrastructure: they enable integration, automation, and new revenue, while poorly built ones become brittle, insecure, and costly to maintain.'
-  },
-  
-  problemSection: {
-    heading: 'When APIs Become a Liability Instead of Infrastructure',
-    content: [
-      'APIs are foundational, which means when they\'re built poorly the damage spreads to everything built on them. A brittle API breaks integrations every time it changes, creating constant firefighting. An insecure one is a serious breach vector, because APIs often expose exactly the data and operations attackers want. An undocumented, poorly designed API is expensive for your own team and impossible for partners to integrate with. And one that wasn\'t built to scale becomes a bottleneck precisely as usage grows.',
-      'The costs compound because of how much depends on the API layer. A breaking API means every consumer — your apps, your partners, your integrations — breaks with it. A security lapse at the API layer can expose your most sensitive data. Poor design and documentation turn every integration into a slow, expensive project. A non-scaling API caps the products and partnerships built on top of it.',
-      'Done right, APIs are the opposite: durable infrastructure that enables integration, automates operations, powers your products, and can turn your platform into an ecosystem partners build on — a compounding business asset rather than a maintenance burden.'
+    pageGoal: 'Convert businesses needing APIs/integrations into a scoping call; frame APIs as business infrastructure; project value $20K–$150K+.',
+    buyerPersona: 'CTOs, product, and engineering leaders needing robust APIs, integrations, or a platform/ecosystem strategy.',
+    uniquePositioning: 'We engineer APIs as durable business infrastructure — the connective tissue that powers integrations, products, and ecosystems — built to scale, secure, and last.',
+    
+    hero: {
+      heading: 'API Development Services That Connect Your Systems',
+      subheading: 'Modern businesses run on data moving between systems, your website, your CRM, your inventory system, third-party tools. Our API development services build the secure connections that let those systems actually talk to each other reliably. We design, build, and integrate custom APIs for US businesses that need their software ecosystem to work together smoothly, without manual data entry or fragile workarounds.',
+      credibilityBar: [
+        'REST & GraphQL',
+        'Secure & scalable',
+        'Well-documented',
+        'Integration & platform APIs',
+        'You own it'
+      ],
+      primaryCTA: 'Book an API strategy call',
+      secondaryCTA: 'Request an API architecture guide',
+      socialProof: 'Representative work across integration, product, and platform APIs.'
+    },
+    
+    featuredAnswer: {
+      question: 'What Is API Development?',
+      answer: 'API development is the process of building application programming interfaces, the set of rules that allow different software systems to communicate and exchange data. APIs let a website pull data from a database, connect to a payment processor, or sync information with a third-party tool, forming the connective layer behind most modern digital operations.'
+    },
+    
+    problemSection: {
+      heading: 'When APIs Become a Liability Instead of Infrastructure',
+      content: [
+        'APIs are foundational, which means when they\'re built poorly the damage spreads to everything built on them. A brittle API breaks integrations every time it changes, creating constant firefighting. An insecure one is a serious breach vector, because APIs often expose exactly the data and operations attackers want. An undocumented, poorly designed API is expensive for your own team and impossible for partners to integrate with. And one that wasn\'t built to scale becomes a bottleneck precisely as usage grows.',
+        'The costs compound because of how much depends on the API layer. A breaking API means every consumer — your apps, your partners, your integrations — breaks with it. A security lapse at the API layer can expose your most sensitive data. Poor design and documentation turn every integration into a slow, expensive project. A non-scaling API caps the products and partnerships built on top of it.',
+        'Done right, APIs are the opposite: durable infrastructure that enables integration, automates operations, powers your products, and can turn your platform into an ecosystem partners build on — a compounding business asset rather than a maintenance burden.'
+      ],
+      stats: [
+        {
+          label: 'API Breach Cost',
+          value: '$4M+',
+          description: 'Average cost of an API-related data breach'
+        },
+        {
+          label: 'Integration Time',
+          value: '10x',
+          description: 'Speed difference between well-documented and undocumented APIs'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'Poorly built APIs create more problems than they solve, security gaps, slow response times, and confusing documentation that makes future changes risky. We build APIs with security, clarity, and long-term maintainability as core requirements, not afterthoughts.'
+    },
+    
+    keyBenefits: [
+      'Custom APIs built to connect your specific systems and tools',
+      'Secure authentication and data handling protocols',
+      'Well-documented endpoints for easier long-term maintenance',
+      'Scalable design that handles growing request volumes',
+      'Integration with third-party APIs and services',
+      'Faster, more reliable data flow between your business systems'
     ],
-    stats: [
-      {
-        label: 'API Breach Cost',
-        value: '$4M+',
-        description: 'Average cost of an API-related data breach'
-      },
-      {
-        label: 'Integration Time',
-        value: '10x',
-        description: 'Speed difference between well-documented and undocumented APIs'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Engineer APIs to Last',
-    content: 'We treat APIs as infrastructure, with the rigor that implies. We design for the role it plays — internal integration, product back end, or public platform API for an ecosystem — and engineer it accordingly.',
-    pillars: [
-      {
-        title: 'Designed for durability',
-        description: 'Well-architected, versioned APIs with stable contracts, so changes don\'t break the systems and partners that depend on them.'
-      },
-      {
-        title: 'Secure by design',
-        description: 'Authentication, authorization, rate limiting, and data protection built in, because the API layer is a prime attack surface.'
-      },
-      {
-        title: 'Documented and developer-friendly',
-        description: 'Clear documentation and thoughtful design, so your team and your partners can integrate quickly rather than slowly and expensively.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'API Capabilities',
-    items: [
-      {
-        service: 'REST API development',
-        whatItIs: 'Well-designed, versioned REST APIs.',
-        businessImpact: 'Stable, broadly compatible integration.'
-      },
-      {
-        service: 'GraphQL API development',
-        whatItIs: 'Flexible GraphQL APIs where they fit.',
-        businessImpact: 'Efficient, flexible data access for clients.'
-      },
-      {
-        service: 'Systems integration',
-        whatItIs: 'Connecting internal and third-party systems via API.',
-        businessImpact: 'Ends silos and manual data movement.'
-      },
-      {
-        service: 'Platform & public APIs',
-        whatItIs: 'APIs partners and developers build on.',
-        businessImpact: 'Turns your product into an ecosystem.'
-      },
-      {
-        service: 'API security engineering',
-        whatItIs: 'Auth, rate limiting, and data protection.',
-        businessImpact: 'Protects a prime attack surface.'
-      },
-      {
-        service: 'API documentation & DX',
-        whatItIs: 'Clear docs and developer experience.',
-        businessImpact: 'Fast, cheap integration for teams and partners.'
-      },
-      {
-        service: 'Legacy API modernization',
-        whatItIs: 'Rebuilding brittle or insecure APIs.',
-        businessImpact: 'Removes a liability; restores reliability.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Companies Choose Us for API Work',
-    intro: 'API quality is invisible until it fails. Here\'s the honest comparison.',
-    options: [
-      {
-        option: 'Offshore build',
-        whereWorks: 'Well-specified scope',
-        whereFails: 'Design judgment, security, durability',
-        ourPosition: 'Senior-led, secure, built to last'
-      },
-      {
-        option: 'Freelancer',
-        whereWorks: 'Small APIs',
-        whereFails: 'Scale, security, documentation, continuity',
-        ourPosition: 'Infrastructure-grade with redundancy'
-      },
-      {
-        option: 'DIY / rushed internal',
-        whereWorks: 'Quick internal needs',
-        whereFails: 'Versioning, security, scale',
-        ourPosition: 'Engineered for durability and scale'
-      },
-      {
-        option: 'No-code integration tools',
-        whereWorks: 'Simple connections',
-        whereFails: 'Custom, complex, high-scale needs',
-        ourPosition: 'Engineered where tools can\'t reach'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Architecture to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery', description: 'API purpose, consumers, scale, security needs, and integration map.' },
-      { number: 2, title: 'Strategy & paradigm', description: 'REST vs. GraphQL and design approach for your use case; ROI.' },
-      { number: 3, title: 'Architecture', description: 'API design, versioning, security, scale, and integration architecture.' },
-      { number: 4, title: 'Design', description: 'API contract and developer-experience design.' },
-      { number: 5, title: 'Development', description: 'Senior API engineering with security and documentation, plus working demos.' },
-      { number: 6, title: 'QA & security testing', description: 'Functional, load, and security testing as a gate.' },
-      { number: 7, title: 'Launch', description: 'Controlled deployment with monitoring and versioning.' },
-      { number: 8, title: 'Optimization', description: 'Performance, security, and capability iteration.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A growing company\'s internal systems were connected by brittle, undocumented, insecure APIs that broke constantly, blocked partner integrations, and couldn\'t handle rising load.',
-    solution: 'We re-engineered the API layer with well-designed, versioned, secure, documented APIs, architected for scale, and built a clean public-facing API so partners could integrate.',
-    metrics: [
-      {
-        kpi: 'API stability',
-        result: 'Breaking → stable & versioned',
-        whyItMatters: 'Integrations stopped breaking on change'
-      },
-      {
-        kpi: 'Security posture',
-        result: 'Vulnerable → hardened',
-        whyItMatters: 'Prime attack surface protected'
-      },
-      {
-        kpi: 'Partner integration',
-        result: 'Blocked → enabled',
-        whyItMatters: 'Ecosystem and partnerships unlocked'
-      },
-      {
-        kpi: 'Scale',
-        result: 'Bottleneck → headroom',
-        whyItMatters: 'Supports growth without re-engineering'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The API Business Case',
-    content: 'API ROI comes from what reliable infrastructure enables and what unreliable infrastructure costs. Well-built APIs end the firefighting that brittle ones cause, recovering engineering time. They enable integrations and automation that remove manual work across the business. A secure API layer averts the substantial cost of a data breach. And a well-designed public API can turn your product into a platform partners build on — a genuine new revenue and moat driver. Poorly built APIs deliver the inverse on every count.',
-    valueStreams: [
-      'Engineering time recovered (firefighting eliminated)',
-      'Automation enabled (manual work removed)',
-      'Breach risk reduction (secure by design)',
-      'Ecosystem & partnerships (platform APIs)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'REST or GraphQL — which do we need?',
-      answer: 'It depends on your use case, not dogma. REST is stable, broadly compatible, and ideal for most integration and public APIs. GraphQL shines when clients need flexible, efficient access to complex, related data — common in rich app front ends. We\'ll recommend the right one for your consumers and needs rather than defaulting to a favorite.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'Custom API Connections',
+          whatItIs: 'Custom APIs built to connect your specific systems and tools.',
+          businessImpact: 'Enables seamless data flow without manual entry or workarounds.'
+        },
+        {
+          service: 'Secure Authentication',
+          whatItIs: 'Secure authentication and data handling protocols.',
+          businessImpact: 'Protects your data from unauthorized access and breaches.'
+        },
+        {
+          service: 'Well-Documented Endpoints',
+          whatItIs: 'Well-documented endpoints for easier long-term maintenance.',
+          businessImpact: 'Saves time and reduces risk during future updates.'
+        },
+        {
+          service: 'Scalable API Design',
+          whatItIs: 'Scalable design that handles growing request volumes.',
+          businessImpact: 'Ensures performance remains fast as your business grows.'
+        },
+        {
+          service: 'Third-Party API Integration',
+          whatItIs: 'Integration with third-party APIs and services.',
+          businessImpact: 'Connects your ecosystem with external tools seamlessly.'
+        },
+        {
+          service: 'Reliable Data Flow',
+          whatItIs: 'Faster, more reliable data flow between your business systems.',
+          businessImpact: 'Improves operational efficiency and accuracy.'
+        }
+      ]
     },
-    {
-      question: 'Why does API quality matter so much?',
-      answer: 'Because everything depends on it. A brittle API breaks every integration built on it; an insecure one exposes your most sensitive data; an undocumented one makes every integration slow and expensive; a non-scaling one caps your growth. APIs are infrastructure, and infrastructure quality is invisible until it fails — expensively.'
+    
+    comparison: {
+      heading: 'Why Companies Choose Us for API Work',
+      intro: 'API quality is invisible until it fails. Here\'s the honest comparison.',
+      options: [
+        {
+          option: 'Offshore build',
+          whereWorks: 'Well-specified scope',
+          whereFails: 'Design judgment, security, durability',
+          ourPosition: 'Senior-led, secure, built to last'
+        },
+        {
+          option: 'Freelancer',
+          whereWorks: 'Small APIs',
+          whereFails: 'Scale, security, documentation, continuity',
+          ourPosition: 'Infrastructure-grade with redundancy'
+        },
+        {
+          option: 'DIY / rushed internal',
+          whereWorks: 'Quick internal needs',
+          whereFails: 'Versioning, security, scale',
+          ourPosition: 'Engineered for durability and scale'
+        },
+        {
+          option: 'No-code integration tools',
+          whereWorks: 'Simple connections',
+          whereFails: 'Custom, complex, high-scale needs',
+          ourPosition: 'Engineered where tools can\'t reach'
+        }
+      ]
     },
-    {
-      question: 'What does API development cost?',
-      answer: 'A focused API typically runs $20K–$60K; a complex, secure, or platform API $60K–$150K+. Cost follows scope and we size it to the infrastructure value. Transparent estimate after a strategy call.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Requirements Mapping', description: 'We define what data needs to move between which systems, and how.' },
+        { number: 2, title: 'API Design', description: 'We design endpoints, data structures, and authentication protocols before development.' },
+        { number: 3, title: 'Development', description: 'We build the API following REST or GraphQL best practices, depending on your needs.' },
+        { number: 4, title: 'Testing & Documentation', description: 'We rigorously test endpoints and provide clear documentation for future maintenance.' },
+        { number: 5, title: 'Integration & Launch', description: 'We integrate the API with connected systems and monitor performance post-launch.' }
+      ]
     },
-    {
-      question: 'How do you secure APIs?',
-      answer: 'Security is built in — authentication, authorization, rate limiting, input validation, and data protection — because the API layer is a prime attack surface. We design and test for it rather than bolting it on, and we modernize insecure legacy APIs that are quietly exposing data.'
+    
+    outcome: {
+      challenge: 'A growing company\'s internal systems were connected by brittle, undocumented, insecure APIs that broke constantly, blocked partner integrations, and couldn\'t handle rising load.',
+      solution: 'We re-engineered the API layer with well-designed, versioned, secure, documented APIs, architected for scale, and built a clean public-facing API so partners could integrate.',
+      metrics: [
+        {
+          kpi: 'API stability',
+          result: 'Breaking → stable & versioned',
+          whyItMatters: 'Integrations stopped breaking on change'
+        },
+        {
+          kpi: 'Security posture',
+          result: 'Vulnerable → hardened',
+          whyItMatters: 'Prime attack surface protected'
+        },
+        {
+          kpi: 'Partner integration',
+          result: 'Blocked → enabled',
+          whyItMatters: 'Ecosystem and partnerships unlocked'
+        },
+        {
+          kpi: 'Scale',
+          result: 'Bottleneck → headroom',
+          whyItMatters: 'Supports growth without re-engineering'
+        }
+      ]
     },
-    {
-      question: 'Can you build APIs partners can integrate with?',
-      answer: 'Yes — well-designed, documented, secure public APIs are how a product becomes a platform. We engineer for developer experience so partners integrate quickly, which is what turns an API into an ecosystem and a revenue driver.'
+    
+    businessCase: {
+      heading: 'The API Business Case',
+      content: 'API ROI comes from what reliable infrastructure enables and what unreliable infrastructure costs. Well-built APIs end the firefighting that brittle ones cause, recovering engineering time. They enable integrations and automation that remove manual work across the business. A secure API layer averts the substantial cost of a data breach. And a well-designed public API can turn your product into a platform partners build on — a genuine new revenue and moat driver. Poorly built APIs deliver the inverse on every count.',
+      valueStreams: [
+        'Engineering time recovered (firefighting eliminated)',
+        'Automation enabled (manual work removed)',
+        'Breach risk reduction (secure by design)',
+        'Ecosystem & partnerships (platform APIs)'
+      ]
     },
-    {
-      question: 'Do we own the APIs and code?',
-      answer: 'Completely — the code, design, and documentation are yours with no lock-in. Full control, run and extend them anywhere.'
+    
+    faqs: [
+      {
+        question: 'What\'s the difference between a REST API and a GraphQL API?',
+        answer: 'REST APIs organize data around fixed endpoints and are widely used for their simplicity, while GraphQL allows clients to request exactly the data they need in a single query. We recommend the right approach based on your specific use case.'
+      },
+      {
+        question: 'Can you integrate our systems with third-party APIs?',
+        answer: 'Yes, integrating with third-party APIs, like payment processors, CRMs, or shipping providers, is a common part of our API development work.'
+      },
+      {
+        question: 'How do you secure custom APIs?',
+        answer: 'We implement authentication protocols like OAuth or API keys, encrypt data in transit, and follow security best practices to protect against common vulnerabilities.'
+      },
+      {
+        question: 'Will the API be documented for our internal developers?',
+        answer: 'Yes, we provide clear, thorough documentation for every API we build, making it easier for your internal team to maintain or extend it in the future.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Build API Infrastructure That Compounds',
+      primary: 'Book an API strategy call',
+      secondary: 'Request an API architecture guide'
+    },
+    
+    riskReversal: 'Builds are fixed-scope to defined deliverables; you own all code and documentation, with no lock-in.',
+    
+    pricing: {
+      range: '$20K–$150K+',
+      note: 'Focused API: $20K–$60K; complex/secure/platform API: $60K–$150K+'
+    },
+    
+    internalLinks: ['/web-development-services', '/web-application-development', '/saas-development'],
+    
+    schema: {
+      serviceType: 'API Development',
+      priceRange: '$20,000 - $150,000+',
+      audience: 'CTOs, Product & Engineering Leaders'
     }
-  ],
-  
-  cta: {
-    heading: 'Build API Infrastructure That Compounds',
-    primary: 'Book an API strategy call',
-    secondary: 'Request an API architecture guide'
   },
-  
-  riskReversal: 'Builds are fixed-scope to defined deliverables; you own all code and documentation, with no lock-in.',
-  
-  pricing: {
-    range: '$20K–$150K+',
-    note: 'Focused API: $20K–$60K; complex/secure/platform API: $60K–$150K+'
-  },
-  
-  internalLinks: ['/web-development-services', '/web-application-development', '/saas-development'],
-  
-  schema: {
-    serviceType: 'API Development',
-    priceRange: '$20,000 - $150,000+',
-    audience: 'CTOs, Product & Engineering Leaders'
-  }
-},
 
-// 18: Website Redesign Services
-
-'website-redesign-services': {
-  slug: 'website-redesign-services',
-  title: 'Website Redesign Services',
-  metaDescription: 'Website redesigns that improve the numbers, not just the look. Conversion-led redesigns that protect SEO equity and deliver measurable results.',
-  pageGoal: 'Convert businesses with an underperforming site into a redesign scoping call; frame redesign around conversion/business outcomes; project value $15K–$100K+.',
-  buyerPersona: 'Marketing leaders, founders, and execs whose current site looks dated or underperforms and who fear a redesign that loses traffic or conversion.',
-  uniquePositioning: 'We redesign for measurable business outcomes and protect what already works — conversion and SEO equity — instead of delivering a prettier site that performs worse.',
   
-  hero: {
-    heading: 'Website Redesigns That Improve the Numbers, Not Just the Look',
-    subheading: 'Plenty of redesigns make a site prettier and perform worse — conversion drops, traffic vanishes. We redesign around the business metrics that matter and protect the conversion and SEO equity you\'ve already paid for, so the new site is measurably better, not just newer.',
-    credibilityBar: [
-      'Conversion-led redesign',
-      'SEO equity protected',
-      'Data-driven, not taste-driven',
-      'Measured before & after',
-      'You own it'
+  // 18. Website Redesign Services
+  // ------------------------------------------
+  'website-redesign-services': {
+    slug: 'website-redesign-services',
+    title: 'Website Redesign Services',
+    metaTitle: 'Website Redesign Services | Modern, Conversion-Focused Redesigns',
+    metaDescription: 'Professional website redesign services for US businesses. We modernize outdated sites for better speed, SEO, and conversion rates without losing rankings.',
+    targetKeywords: [
+      'website redesign services',
+      'website redesign company',
+      'modernize old website',
+      'redesign website for SEO',
+      'website revamp services USA'
     ],
-    primaryCTA: 'Book a redesign strategy call',
-    secondaryCTA: 'Request a redesign opportunity audit',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative redesigns across SaaS, eCommerce, and B2B services.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is a website redesign?',
-    answer: 'A website redesign is the rebuilding of an existing site\'s design, structure, and often technology. Done well, it improves conversion, performance, and brand while preserving the SEO equity and traffic the site has earned. Done poorly, it can drop conversion and lose search rankings. The key is treating redesign as a data-driven business project — protecting what works, fixing what doesn\'t — not a purely visual refresh.'
-  },
-  
-  problemSection: {
-    heading: 'Why Redesigns Often Make Things Worse',
-    content: [
-      'The redesign graveyard is full of sites that launched beautiful and performed terribly, because the redesign was treated as a visual project instead of a business one. Conversion drops because the new design changed what was quietly working — a clear path to action replaced with a prettier but vaguer one. Search traffic collapses because the migration ignored SEO — broken redirects, lost URLs, changed structure — throwing away rankings the business spent years earning. The new site looks current and converts worse, which is the opposite of the point.',
-      'The cost is severe precisely because it\'s self-inflicted and often irreversible without another project. A conversion drop on a redesigned site directly reduces leads or revenue. A traffic collapse from a botched SEO migration can take many months to recover, if it recovers at all — a brutal cost for a project meant to help. And because the site looks better, the underperformance is often missed until the numbers are undeniable.',
-      'A redesign should be the opposite: a deliberate improvement that protects what works, fixes what doesn\'t, and is measured against business outcomes — not a roll of the dice dressed up as a refresh.'
+    pageGoal: 'Convert businesses with an underperforming site into a redesign scoping call; frame redesign around conversion/business outcomes; project value $15K–$100K+.',
+    buyerPersona: 'Marketing leaders, founders, and execs whose current site looks dated or underperforms and who fear a redesign that loses traffic or conversion.',
+    uniquePositioning: 'We redesign for measurable business outcomes and protect what already works — conversion and SEO equity — instead of delivering a prettier site that performs worse.',
+    
+    hero: {
+      heading: 'Website Redesign Services That Improve Performance, Not Just Looks',
+      subheading: 'An outdated website doesn\'t just look dated, it actively costs you conversions, credibility, and search rankings. Our website redesign services modernize your site\'s design and performance while protecting the SEO equity you\'ve already built. We work with US businesses whose current sites no longer reflect their brand, perform poorly on mobile, or simply aren\'t converting the traffic they\'re getting.',
+      credibilityBar: [
+        'Conversion-led redesign',
+        'SEO equity protected',
+        'Data-driven, not taste-driven',
+        'Measured before & after',
+        'You own it'
+      ],
+      primaryCTA: 'Book a redesign strategy call',
+      secondaryCTA: 'Request a redesign opportunity audit',
+      socialProof: 'Representative redesigns across SaaS, eCommerce, and B2B services.'
+    },
+    
+    featuredAnswer: {
+      question: 'What are website redesign services?',
+      answer: 'Website redesign is the process of overhauling an existing website\'s design, structure, and often its underlying technology, while typically preserving valuable content and SEO rankings. A well-executed redesign updates the look and functionality without losing the search visibility the original site had built over time.'
+    },
+    
+    problemSection: {
+      heading: 'Why Redesigns Often Make Things Worse',
+      content: [
+        'The redesign graveyard is full of sites that launched beautiful and performed terribly, because the redesign was treated as a visual project instead of a business one. Conversion drops because the new design changed what was quietly working — a clear path to action replaced with a prettier but vaguer one. Search traffic collapses because the migration ignored SEO — broken redirects, lost URLs, changed structure — throwing away rankings the business spent years earning. The new site looks current and converts worse, which is the opposite of the point.',
+        'The cost is severe precisely because it\'s self-inflicted and often irreversible without another project. A conversion drop on a redesigned site directly reduces leads or revenue. A traffic collapse from a botched SEO migration can take many months to recover, if it recovers at all — a brutal cost for a project meant to help. And because the site looks better, the underperformance is often missed until the numbers are undeniable.',
+        'A redesign should be the opposite: a deliberate improvement that protects what works, fixes what doesn\'t, and is measured against business outcomes — not a roll of the dice dressed up as a refresh.'
+      ],
+      stats: [
+        {
+          label: 'Traffic Loss Risk',
+          value: '30-60%',
+          description: 'Typical traffic drop from a botched SEO migration'
+        },
+        {
+          label: 'Conversion Drop Risk',
+          value: '20-40%',
+          description: 'Typical conversion drop from a design-focused redesign'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'Redesigns go wrong most often when SEO gets treated as an afterthought, resulting in lost rankings after launch. We build redirect mapping and technical SEO into the redesign process from the start, so your new site looks better and performs better in search.'
+    },
+    
+    keyBenefits: [
+      'Modern design that reflects your current brand and offerings',
+      'Improved mobile responsiveness and page speed',
+      'Strategic SEO redirects to preserve existing search rankings',
+      'Updated UX based on how users actually behave on your current site',
+      'Refreshed content structure optimized for conversions',
+      'Technical upgrades to improve security and maintainability'
     ],
-    stats: [
-      {
-        label: 'Traffic Loss Risk',
-        value: '30-60%',
-        description: 'Typical traffic drop from a botched SEO migration'
-      },
-      {
-        label: 'Conversion Drop Risk',
-        value: '20-40%',
-        description: 'Typical conversion drop from a design-focused redesign'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Redesign Without Breaking What Works',
-    content: 'We treat a redesign as a data-driven business project, beginning with what\'s actually working and what isn\'t. We measure — we instrument before and, where volume allows, test changes rather than betting the whole site on untested taste, then measure after so the impact is proven.',
-    pillars: [
-      {
-        title: 'Protect what works',
-        description: 'We identify your current site\'s converting paths and ranking pages and preserve them, so the redesign doesn\'t throw away hard-won performance.'
-      },
-      {
-        title: 'Fix what doesn\'t',
-        description: 'We ground design changes in conversion data and user research, targeting the actual weaknesses rather than redecorating broadly.'
-      },
-      {
-        title: 'SEO equity protection',
-        description: 'A rigorous migration plan — redirect mapping, URL strategy, structure preservation — so the traffic you\'ve earned survives the launch.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'Redesign Capabilities',
-    items: [
-      {
-        service: 'Conversion-led redesign',
-        whatItIs: 'Redesign grounded in conversion data and research.',
-        businessImpact: 'A site that converts better, not just looks better.'
-      },
-      {
-        service: 'SEO-safe migration',
-        whatItIs: 'Redirect mapping, URL, and structure preservation.',
-        businessImpact: 'Keeps the traffic you\'ve earned.'
-      },
-      {
-        service: 'Brand & UX modernization',
-        whatItIs: 'Current, credible design that builds trust.',
-        businessImpact: 'Trust that supports conversion.'
-      },
-      {
-        service: 'Performance re-engineering',
-        whatItIs: 'Speed and Core Web Vitals as part of the rebuild.',
-        businessImpact: 'Faster site; better conversion and rankings.'
-      },
-      {
-        service: 'Replatforming',
-        whatItIs: 'Moving to a better platform during redesign.',
-        businessImpact: 'Modern foundation without losing equity.'
-      },
-      {
-        service: 'Content & IA restructuring',
-        whatItIs: 'Information architecture rebuilt around user intent.',
-        businessImpact: 'Clearer paths; better conversion and SEO.'
-      },
-      {
-        service: 'Post-launch optimization',
-        whatItIs: 'CRO after launch to compound gains.',
-        businessImpact: 'Continuous improvement, not one-and-done.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Companies Choose Us for Redesigns',
-    intro: 'Most redesign risk is self-inflicted. Here\'s the honest comparison.',
-    options: [
-      {
-        option: 'Visual-only studio',
-        whereWorks: 'Brand aesthetics',
-        whereFails: 'Conversion, SEO migration',
-        ourPosition: 'Outcome-accountable, equity-protecting'
-      },
-      {
-        option: 'Cheap redesign',
-        whereWorks: 'Tiny low-stakes sites',
-        whereFails: 'Performance, SEO, measurement',
-        ourPosition: 'Data-driven, measured, safe migration'
-      },
-      {
-        option: 'DIY rebuild',
-        whereWorks: 'Very simple sites',
-        whereFails: 'SEO migration, conversion risk',
-        ourPosition: 'Protects what works; fixes what doesn\'t'
-      },
-      {
-        option: 'Freelancer',
-        whereWorks: 'Small projects',
-        whereFails: 'SEO, scale, continuity',
-        ourPosition: 'Full capability with redundancy'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Audit to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery & audit', description: 'Conversion and SEO audit of the current site; what\'s working, what isn\'t; goals.' },
-      { number: 2, title: 'Strategy', description: 'Redesign scope governed by conversion and traffic outcomes; what to preserve.' },
-      { number: 3, title: 'Architecture & migration plan', description: 'IA, structure, and a rigorous SEO migration plan.' },
-      { number: 4, title: 'Design', description: 'Conversion-led, research-grounded design — tested where possible.' },
-      { number: 5, title: 'Development', description: 'Senior build with working demos and equity-preserving migration.' },
-      { number: 6, title: 'QA', description: 'Functional, performance, redirect, and SEO testing as a gate.' },
-      { number: 7, title: 'Launch', description: 'Controlled cutover with redirects and monitoring — no traffic loss.' },
-      { number: 8, title: 'Optimization', description: 'Post-launch CRO and measurement against the goals.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A B2B company\'s site looked dated and converted poorly, but leadership feared — reasonably — that a redesign would lose the search traffic and conversion paths they depended on.',
-    solution: 'We audited what was working, redesigned around conversion data while preserving the converting paths and ranking pages, executed a rigorous SEO migration, and measured before and after.',
-    metrics: [
-      {
-        kpi: 'Conversion rate',
-        result: 'Up materially',
-        whyItMatters: 'More leads from the same traffic'
-      },
-      {
-        kpi: 'Organic traffic',
-        result: 'Preserved through launch',
-        whyItMatters: 'No SEO loss — the common redesign disaster avoided'
-      },
-      {
-        kpi: 'Brand perception',
-        result: 'Dated → credible',
-        whyItMatters: 'Trust that supports conversion'
-      },
-      {
-        kpi: 'Page performance',
-        result: 'Improved',
-        whyItMatters: 'Faster site; better rankings and UX'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The Redesign Business Case',
-    content: 'Redesign ROI is the conversion and brand lift you gain minus the performance you must not lose — which is why protection matters as much as improvement. A conversion lift on existing traffic adds leads or revenue at no extra acquisition cost. A modern, credible brand supports trust and conversion. Performance gains improve both UX and rankings. But the largest \'return\' is often the disaster avoided: preserving the SEO equity and converting paths a careless redesign would have destroyed, which protects revenue you already have.',
-    valueStreams: [
-      'Conversion lift (more leads/revenue from existing traffic)',
-      'Brand credibility (trust that supports conversion)',
-      'Performance gains (better UX and rankings)',
-      'Risk avoided (SEO equity and conversion paths protected)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Will a redesign hurt our SEO and traffic?',
-      answer: 'Not when it\'s done correctly — SEO equity protection through redirect mapping, URL strategy, and structure preservation is core to how we redesign. Done carelessly, redesigns absolutely can collapse traffic for months, which is exactly why this can\'t be treated as a visual-only project. We treat preserving your traffic as a non-negotiable deliverable.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'Modern Brand Design',
+          whatItIs: 'Design that reflects your current brand and offerings.',
+          businessImpact: 'Restores credibility and trust with modern aesthetics.'
+        },
+        {
+          service: 'Mobile & Speed Optimization',
+          whatItIs: 'Improved mobile responsiveness and page speed.',
+          businessImpact: 'Keeps users engaged and improves search rankings.'
+        },
+        {
+          service: 'SEO Rank Preservation',
+          whatItIs: 'Strategic SEO redirects to preserve existing search rankings.',
+          businessImpact: 'Protects your organic traffic during the migration.'
+        },
+        {
+          service: 'Behavior-Based UX',
+          whatItIs: 'Updated UX based on how users actually behave on your current site.',
+          businessImpact: 'Removes friction and drives more conversions.'
+        },
+        {
+          service: 'Conversion-Optimized Structure',
+          whatItIs: 'Refreshed content structure optimized for conversions.',
+          businessImpact: 'Guides visitors smoothly to key calls to action.'
+        },
+        {
+          service: 'Technical Upgrades',
+          whatItIs: 'Upgrades to improve security and maintainability.',
+          businessImpact: 'Ensures the site is safe, fast, and easy to update.'
+        }
+      ]
     },
-    {
-      question: 'How do we know the redesign will convert better, not worse?',
-      answer: 'Because we ground it in your conversion data and user research, preserve the paths that already work, and measure before and after rather than trusting taste. Where traffic volume allows, we test changes instead of betting the whole site on a redesign. The improvement is engineered and measured, not hoped for.'
+    
+    comparison: {
+      heading: 'Why Companies Choose Us for Redesigns',
+      intro: 'Most redesign risk is self-inflicted. Here\'s the honest comparison.',
+      options: [
+        {
+          option: 'Visual-only studio',
+          whereWorks: 'Brand aesthetics',
+          whereFails: 'Conversion, SEO migration',
+          ourPosition: 'Outcome-accountable, equity-protecting'
+        },
+        {
+          option: 'Cheap redesign',
+          whereWorks: 'Tiny low-stakes sites',
+          whereFails: 'Performance, SEO, measurement',
+          ourPosition: 'Data-driven, measured, safe migration'
+        },
+        {
+          option: 'DIY rebuild',
+          whereWorks: 'Very simple sites',
+          whereFails: 'SEO migration, conversion risk',
+          ourPosition: 'Protects what works; fixes what doesn\'t'
+        },
+        {
+          option: 'Freelancer',
+          whereWorks: 'Small projects',
+          whereFails: 'SEO, scale, continuity',
+          ourPosition: 'Full capability with redundancy'
+        }
+      ]
     },
-    {
-      question: 'What does a website redesign cost?',
-      answer: 'A focused redesign typically runs $15K–$50K; a larger redesign or replatform $50K–$100K+. Cost follows scope and we size it to the conversion and brand return. Transparent estimate after a strategy call, with an audit to show the opportunity first.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Audit', description: 'We analyze your current site\'s performance, traffic, and conversion data to identify what to fix.' },
+        { number: 2, title: 'Strategy', description: 'We define redesign goals and plan the new site structure and content strategy.' },
+        { number: 3, title: 'Design & Development', description: 'We design and build the new site, incorporating UX and SEO improvements.' },
+        { number: 4, title: 'SEO Migration Planning', description: 'We map redirects carefully to protect your existing search rankings during launch.' },
+        { number: 5, title: 'Launch & Monitoring', description: 'We launch the new site and monitor rankings and performance closely afterward.' }
+      ]
     },
-    {
-      question: 'Should we redesign or just rebuild parts?',
-      answer: 'Sometimes targeted improvements beat a full redesign — and we\'ll tell you honestly which gives the better return. A full redesign makes sense when the site is broadly underperforming or dated; selective fixes when specific pages or paths are the problem. We assess before recommending.'
+    
+    outcome: {
+      challenge: 'A B2B company\'s site looked dated and converted poorly, but leadership feared — reasonably — that a redesign would lose the search traffic and conversion paths they depended on.',
+      solution: 'We audited what was working, redesigned around conversion data while preserving the converting paths and ranking pages, executed a rigorous SEO migration, and measured before and after.',
+      metrics: [
+        {
+          kpi: 'Conversion rate',
+          result: 'Up materially',
+          whyItMatters: 'More leads from the same traffic'
+        },
+        {
+          kpi: 'Organic traffic',
+          result: 'Preserved through launch',
+          whyItMatters: 'No SEO loss — the common redesign disaster avoided'
+        },
+        {
+          kpi: 'Brand perception',
+          result: 'Dated → credible',
+          whyItMatters: 'Trust that supports conversion'
+        },
+        {
+          kpi: 'Page performance',
+          result: 'Improved',
+          whyItMatters: 'Faster site; better rankings and UX'
+        }
+      ]
     },
-    {
-      question: 'Can you move us to a better platform during the redesign?',
-      answer: 'Yes — replatforming during a redesign is common and efficient, and we preserve your SEO and content through the move. We\'ll recommend the right platform for your needs as part of the project.'
+    
+    businessCase: {
+      heading: 'The Redesign Business Case',
+      content: 'Redesign ROI is the conversion and brand lift you gain minus the performance you must not lose — which is why protection matters as much as improvement. A conversion lift on existing traffic adds leads or revenue at no extra acquisition cost. A modern, credible brand supports trust and conversion. Performance gains improve both UX and rankings. But the largest \'return\' is often the disaster avoided: preserving the SEO equity and converting paths a careless redesign would have destroyed, which protects revenue you already have.',
+      valueStreams: [
+        'Conversion lift (more leads/revenue from existing traffic)',
+        'Brand credibility (trust that supports conversion)',
+        'Performance gains (better UX and rankings)',
+        'Risk avoided (SEO equity and conversion paths protected)'
+      ]
     },
-    {
-      question: 'Do we own the redesigned site?',
-      answer: 'Completely — the design, code, content, and data are yours with no lock-in. Full control, take it anywhere.'
+    
+    faqs: [
+      {
+        question: 'Will a website redesign hurt my current Google rankings?',
+        answer: 'Not if done correctly. We carefully map 301 redirects and preserve key SEO elements during the redesign process specifically to protect your existing rankings.'
+      },
+      {
+        question: 'How do I know if my website needs a redesign?',
+        answer: 'Common signs include outdated design, poor mobile performance, slow load speeds, declining conversion rates, or a site that no longer reflects your current brand or offerings.'
+      },
+      {
+        question: 'How long does a website redesign take?',
+        answer: 'Most redesigns take six to twelve weeks depending on site size and complexity, including audit, design, development, and testing phases.'
+      },
+      {
+        question: 'Can you redesign my site without changing the platform it\'s built on?',
+        answer: 'Yes, we can redesign within your current platform or recommend a platform change if it better supports your goals, depending on your specific situation.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Redesign Without Rolling the Dice',
+      primary: 'Book a redesign strategy call',
+      secondary: 'Request a redesign opportunity audit'
+    },
+    
+    riskReversal: 'Redesigns are fixed-scope to defined deliverables, with SEO-equity protection built into the engagement; optimization is 30-day rolling.',
+    
+    pricing: {
+      range: '$15K–$100K+',
+      note: 'Focused redesign: $15K–$50K; larger redesign/replatform: $50K–$100K+'
+    },
+    
+    internalLinks: ['/web-development-services', '/web-design-services', '/website-speed-optimization'],
+    
+    schema: {
+      serviceType: 'Website Redesign Services',
+      priceRange: '$15,000 - $100,000+',
+      audience: 'Marketing Leaders, Founders & Executives'
     }
-  ],
-  
-  cta: {
-    heading: 'Redesign Without Rolling the Dice',
-    primary: 'Book a redesign strategy call',
-    secondary: 'Request a redesign opportunity audit'
   },
-  
-  riskReversal: 'Redesigns are fixed-scope to defined deliverables, with SEO-equity protection built into the engagement; optimization is 30-day rolling.',
-  
-  pricing: {
-    range: '$15K–$100K+',
-    note: 'Focused redesign: $15K–$50K; larger redesign/replatform: $50K–$100K+'
-  },
-  
-  internalLinks: ['/web-development-services', '/web-design-services', '/website-speed-optimization'],
-  
-  schema: {
-    serviceType: 'Website Redesign Services',
-    priceRange: '$15,000 - $100,000+',
-    audience: 'Marketing Leaders, Founders & Executives'
-  }
-},
 
-// 19: Website Speed Optimization
-'website-speed-optimization': {
-  slug: 'website-speed-optimization',
-  title: 'Website Speed Optimization',
-  metaDescription: 'Website speed optimization that recovers lost revenue and rankings. Core Web Vitals engineering for measurable performance gains.',
-  pageGoal: 'Convert businesses with slow sites into a speed engagement (often a fast, high-ROI entry point); project value $5K–$40K+.',
-  buyerPersona: 'Marketing, eCommerce, and technical leaders whose slow site is hurting conversion, rankings, or Core Web Vitals.',
-  uniquePositioning: 'We make sites measurably faster to recover the conversions and rankings slow pages quietly cost — a focused, high-ROI engagement with results you can measure.',
   
-  hero: {
-    heading: 'Website Speed Optimization That Recovers Lost Revenue and Rankings',
-    subheading: 'A slow site bleeds money invisibly — lower conversion, worse rankings, higher bounce. We make sites measurably faster, engineering Core Web Vitals and load performance to recover the revenue and search visibility that speed is costing you. Focused, fast, and measurable.',
-    credibilityBar: [
-      'Core Web Vitals engineering',
-      'Measurable before & after',
-      'Conversion & ranking focused',
-      'Fast, high-ROI engagement',
-      'You own it'
+  // 19. Website Speed Optimization
+  // ------------------------------------------
+  'website-speed-optimization': {
+    slug: 'website-speed-optimization',
+    title: 'Website Speed Optimization',
+    metaTitle: 'Website Speed Optimization Services | Improve Page Load Times',
+    metaDescription: 'Website speed optimization services for US businesses. We diagnose and fix slow load times to improve Core Web Vitals, SEO, and conversions.',
+    targetKeywords: [
+      'website speed optimization services',
+      'improve website load time',
+      'page speed optimization company',
+      'Core Web Vitals optimization',
+      'website performance optimization USA'
     ],
-    primaryCTA: 'Book a speed strategy call',
-    secondaryCTA: 'Request a free speed & Core Web Vitals audit',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative work across eCommerce, content, and SaaS sites.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is website speed optimization?',
-    answer: 'Website speed optimization is the engineering of a site to load and respond faster, including improving Core Web Vitals — Google\'s user-experience performance metrics. It matters because speed directly affects conversion (faster sites convert more), search rankings (Core Web Vitals are a ranking factor), and bounce rate. Because gains apply to existing traffic, speed optimization is typically one of the highest-ROI, fastest-payback web investments.'
-  },
-  
-  problemSection: {
-    heading: 'What a Slow Site Costs You — Quietly',
-    content: [
-      'Speed is the most underestimated number in web performance because its cost is invisible — nobody gets an invoice for a slow site, but everybody pays. Conversion drops measurably with every additional second of load time, because users abandon slow pages. Search rankings suffer, because Core Web Vitals are a confirmed ranking factor and Google favors fast experiences. Bounce rate rises as impatient visitors leave before the page even loads. Mobile users, often the majority, feel it worst.',
-      'The math is stark and compounding. For an eCommerce site, even a small conversion drop from slowness is significant revenue lost on every single visit, forever, until it\'s fixed. For a content or lead-gen site, lost rankings mean lost traffic at the top of the funnel, which cascades into lost leads and revenue. And because none of it shows up as an obvious failure — the site works, it\'s just slow — the cost accumulates unmanaged, often for years.',
-      'The flip side is why speed work is so attractive: because the losses apply to traffic you already have and already pay for, recovering them is pure upside, and the payback is usually fast.'
+    pageGoal: 'Convert businesses with slow sites into a speed engagement (often a fast, high-ROI entry point); project value $5K–$40K+.',
+    buyerPersona: 'Marketing, eCommerce, and technical leaders whose slow site is hurting conversion, rankings, or Core Web Vitals.',
+    uniquePositioning: 'We make sites measurably faster to recover the conversions and rankings slow pages quietly cost — a focused, high-ROI engagement with results you can measure.',
+    
+    hero: {
+      heading: 'Website Speed Optimization to Improve Rankings and Conversions',
+      subheading: 'Every extra second your site takes to load costs you conversions and search rankings, Google has made speed an explicit ranking factor through Core Web Vitals. Our website speed optimization services find exactly what\'s slowing your site down and fix it. We work with US businesses on any platform, diagnosing performance bottlenecks and implementing technical fixes that measurably improve load times.',
+      credibilityBar: [
+        'Core Web Vitals engineering',
+        'Measurable before & after',
+        'Conversion & ranking focused',
+        'Fast, high-ROI engagement',
+        'You own it'
+      ],
+      primaryCTA: 'Book a speed strategy call',
+      secondaryCTA: 'Request a free speed & Core Web Vitals audit',
+      socialProof: 'Representative work across eCommerce, content, and SaaS sites.'
+    },
+    
+    featuredAnswer: {
+      question: 'What Is Website Speed Optimization?',
+      answer: 'Website speed optimization is the process of improving how quickly a website loads and becomes interactive for users. It involves technical improvements like image compression, code minification, caching, and server optimization, all aimed at reducing load times and improving Core Web Vitals metrics that directly impact both user experience and SEO rankings.'
+    },
+    
+    problemSection: {
+      heading: 'What a Slow Site Costs You — Quietly',
+      content: [
+        'Speed is the most underestimated number in web performance because its cost is invisible — nobody gets an invoice for a slow site, but everybody pays. Conversion drops measurably with every additional second of load time, because users abandon slow pages. Search rankings suffer, because Core Web Vitals are a confirmed ranking factor and Google favors fast experiences. Bounce rate rises as impatient visitors leave before the page even loads. Mobile users, often the majority, feel it worst.',
+        'The math is stark and compounding. For an eCommerce site, even a small conversion drop from slowness is significant revenue lost on every single visit, forever, until it\'s fixed. For a content or lead-gen site, lost rankings mean lost traffic at the top of the funnel, which cascades into lost leads and revenue. And because none of it shows up as an obvious failure — the site works, it\'s just slow — the cost accumulates unmanaged, often for years.',
+        'The flip side is why speed work is so attractive: because the losses apply to traffic you already have and already pay for, recovering them is pure upside, and the payback is usually fast.'
+      ],
+      stats: [
+        {
+          label: 'Conversion Drop',
+          value: '7%',
+          description: 'Average conversion loss per second of load time'
+        },
+        {
+          label: 'Revenue Impact',
+          value: '6 figures+',
+          description: 'Annual revenue lost to slow pages for a growing business'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'Speed optimization requires diagnosing the real bottleneck, not just running generic fixes. We dig into your specific site\'s performance data to find what\'s actually causing slow load times, then fix the root cause rather than applying surface-level patches.',
+      pillars: [
+        {
+          title: 'Diagnose the Real Bottleneck',
+          description: 'We dig into your specific performance data to find what\'s actually causing slow load times, rather than running generic fixes.'
+        },
+        {
+          title: 'Fix the Root Cause',
+          description: 'We fix the underlying issues in code, assets, and server configuration rather than applying surface-level patches.'
+        },
+        {
+          title: 'Measurable Improvement',
+          description: 'We re-test performance metrics to confirm a measurable improvement in Core Web Vitals and load times.'
+        }
+      ]
+    },
+    
+    keyBenefits: [
+      'Faster page load times that reduce visitor bounce rates',
+      'Improved Core Web Vitals scores for better Google rankings',
+      'Optimized images and assets without sacrificing quality',
+      'Reduced server response times through backend optimization',
+      'Better mobile performance on slower connections',
+      'Higher conversion rates driven by a smoother experience'
     ],
-    stats: [
-      {
-        label: 'Conversion Drop',
-        value: '7%',
-        description: 'Average conversion loss per second of load time'
-      },
-      {
-        label: 'Revenue Impact',
-        value: '6 figures+',
-        description: 'Annual revenue lost to slow pages for a growing business'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Make Sites Genuinely Fast',
-    content: 'We engineer speed properly rather than installing a caching plugin and hoping. We scope it as a focused, high-ROI engagement, often the ideal entry point to working together: contained, measurable, and fast to pay back.',
-    pillars: [
-      {
-        title: 'Diagnose the real bottlenecks',
-        description: 'We measure where the time actually goes — render-blocking resources, unoptimized images, heavy scripts, slow server response, inefficient code — because speed work that doesn\'t target the actual bottleneck wastes effort.'
-      },
-      {
-        title: 'Core Web Vitals engineering',
-        description: 'We optimize the specific metrics Google measures (loading, interactivity, visual stability), because those are what affect rankings and reflect real user experience.'
-      },
-      {
-        title: 'Full-stack performance',
-        description: 'We address front end, assets, code, and server, because speed is determined across the whole stack, not in one place.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'Speed Optimization Capabilities',
-    items: [
-      {
-        service: 'Core Web Vitals optimization',
-        whatItIs: 'Engineering LCP, INP, and CLS into the green.',
-        businessImpact: 'Better rankings and real UX gains.'
-      },
-      {
-        service: 'Performance audit & diagnosis',
-        whatItIs: 'Finding where the time actually goes.',
-        businessImpact: 'Effort targeted at real bottlenecks.'
-      },
-      {
-        service: 'Front-end optimization',
-        whatItIs: 'Render-blocking, scripts, and asset optimization.',
-        businessImpact: 'Faster perceived and actual load.'
-      },
-      {
-        service: 'Image & media optimization',
-        whatItIs: 'Right-sizing and modern formats.',
-        businessImpact: 'Major load gains, common quick win.'
-      },
-      {
-        service: 'Caching & CDN',
-        whatItIs: 'Caching strategy and edge delivery.',
-        businessImpact: 'Faster global delivery and response.'
-      },
-      {
-        service: 'Server & backend performance',
-        whatItIs: 'Server response and backend efficiency.',
-        businessImpact: 'Faster foundation under everything.'
-      },
-      {
-        service: 'Code optimization',
-        whatItIs: 'Eliminating inefficient code and bloat.',
-        businessImpact: 'Sustained speed, not a temporary patch.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Companies Choose Us for Speed Work',
-    intro: 'Plenty of \'speed\' work is a plugin and a prayer. Here\'s the honest comparison.',
-    options: [
-      {
-        option: 'Caching plugin',
-        whereWorks: 'Marginal gains',
-        whereFails: 'Real bottlenecks, CWV, sustained speed',
-        ourPosition: 'Diagnosed, full-stack, measured'
-      },
-      {
-        option: 'Cheap freelancer',
-        whereWorks: 'Simple tweaks',
-        whereFails: 'Deep diagnosis, code, server',
-        ourPosition: 'Engineers the actual bottlenecks'
-      },
-      {
-        option: 'DIY',
-        whereWorks: 'Basic wins',
-        whereFails: 'Diagnosis, CWV nuance, sustained gains',
-        ourPosition: 'Measured, full-stack engineering'
-      },
-      {
-        option: 'Ignoring it',
-        whereWorks: 'Never',
-        whereFails: 'Ongoing lost revenue and rankings',
-        ourPosition: 'Recovers what slowness costs you'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Audit to Sustained Speed',
-    steps: [
-      { number: 1, title: 'Audit & diagnosis', description: 'Measure current performance and Core Web Vitals; find the real bottlenecks; set targets.' },
-      { number: 2, title: 'Strategy', description: 'Prioritized optimization plan by impact and effort; expected gains.' },
-      { number: 3, title: 'Front-end & asset optimization', description: 'Render-blocking, scripts, images, and delivery.' },
-      { number: 4, title: 'Backend & server optimization', description: 'Server response and backend efficiency.' },
-      { number: 5, title: 'Code optimization', description: 'Eliminating inefficiency for sustained speed.' },
-      { number: 6, title: 'QA', description: 'Performance, functional, and cross-device verification.' },
-      { number: 7, title: 'Measurement', description: 'Before/after measurement against targets — proven results.' },
-      { number: 8, title: 'Monitoring', description: 'Ongoing performance monitoring to hold the gains.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'An eCommerce site was loading slowly, failing Core Web Vitals, suffering high mobile bounce, and — unknown to the team — losing conversions and rankings to its speed.',
-    solution: 'We diagnosed the real bottlenecks, engineered Core Web Vitals into the green, optimized images and front-end delivery, improved server response, and cleaned up inefficient code, measuring throughout.',
-    metrics: [
-      {
-        kpi: 'Load time',
-        result: 'Cut by ~60%',
-        whyItMatters: 'Higher conversion; lower bounce'
-      },
-      {
-        kpi: 'Core Web Vitals',
-        result: 'Failing → passing',
-        whyItMatters: 'Ranking benefit and better UX'
-      },
-      {
-        kpi: 'Mobile conversion',
-        result: 'Up materially',
-        whyItMatters: 'Recovered the majority-traffic segment'
-      },
-      {
-        kpi: 'Organic visibility',
-        result: 'Improved',
-        whyItMatters: 'CWV-driven ranking gains'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The Speed Business Case',
-    content: 'Speed optimization is among the highest-ROI web investments because every gain lands on traffic you already have and already pay for — nothing extra to acquire. A conversion lift from faster pages adds revenue on every visit, permanently. Improved Core Web Vitals can lift rankings, adding organic traffic and the leads or sales it brings. Lower bounce keeps more visitors in the funnel. For an eCommerce or high-traffic site, these gains often dwarf the cost of the work and pay back in a very short window.',
-    valueStreams: [
-      'Conversion lift (more revenue from existing traffic)',
-      'Ranking gains (better organic visibility)',
-      'Lower bounce (more visitors in the funnel)',
-      'Fast payback (usually weeks to months)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Does site speed really affect revenue and rankings?',
-      answer: 'Yes, measurably on both. Conversion drops with each additional second of load time because users abandon slow pages, and Core Web Vitals are a confirmed Google ranking factor. The effect is real and continuous — a slow site loses revenue and visibility on every visit — which is what makes fixing it such high-ROI work.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'Faster Page Load Times',
+          whatItIs: 'Technical improvements that reduce load times.',
+          businessImpact: 'Reduces visitor bounce rates and improves user experience.'
+        },
+        {
+          service: 'Improved Core Web Vitals Scores',
+          whatItIs: 'Optimizing loading, interactivity, and visual stability.',
+          businessImpact: 'Leads to better Google search rankings.'
+        },
+        {
+          service: 'Optimized Images & Assets',
+          whatItIs: 'Image compression and asset minification.',
+          businessImpact: 'Reduces page weight without sacrificing quality.'
+        },
+        {
+          service: 'Reduced Server Response Times',
+          whatItIs: 'Backend optimization for faster server responses.',
+          businessImpact: 'Improves the foundational speed of the site.'
+        },
+        {
+          service: 'Better Mobile Performance',
+          whatItIs: 'Optimizations targeted at slower mobile connections.',
+          businessImpact: 'Ensures a smooth experience for mobile users.'
+        },
+        {
+          service: 'Higher Conversion Rates',
+          whatItIs: 'A smoother, faster overall user experience.',
+          businessImpact: 'Directly drives more leads and sales.'
+        }
+      ]
     },
-    {
-      question: 'Won\'t a caching plugin fix it?',
-      answer: 'Rarely more than marginally. Real speed problems usually live in render-blocking resources, unoptimized images, heavy scripts, slow server response, and inefficient code — things a plugin doesn\'t address. We diagnose where the time actually goes and engineer the real bottlenecks, front end to server, for sustained gains.'
+    
+    comparison: {
+      heading: 'Why Companies Choose Us for Speed Work',
+      intro: 'Plenty of \'speed\' work is a plugin and a prayer. Here\'s the honest comparison.',
+      options: [
+        {
+          option: 'Caching plugin',
+          whereWorks: 'Marginal gains',
+          whereFails: 'Real bottlenecks, CWV, sustained speed',
+          ourPosition: 'Diagnosed, full-stack, measured'
+        },
+        {
+          option: 'Cheap freelancer',
+          whereWorks: 'Simple tweaks',
+          whereFails: 'Deep diagnosis, code, server',
+          ourPosition: 'Engineers the actual bottlenecks'
+        },
+        {
+          option: 'DIY',
+          whereWorks: 'Basic wins',
+          whereFails: 'Diagnosis, CWV nuance, sustained gains',
+          ourPosition: 'Measured, full-stack engineering'
+        },
+        {
+          option: 'Ignoring it',
+          whereWorks: 'Never',
+          whereFails: 'Ongoing lost revenue and rankings',
+          ourPosition: 'Recovers what slowness costs you'
+        }
+      ]
     },
-    {
-      question: 'What does speed optimization cost?',
-      answer: 'A focused speed engagement typically runs $5K–$20K; a deeper, full-stack optimization $20K–$40K+. Cost follows scope and we size it to the recovered-revenue return. A free audit shows you the opportunity and expected gains first.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Performance Audit', description: 'We run detailed diagnostics to identify exactly what\'s slowing your site down.' },
+        { number: 2, title: 'Prioritization', description: 'We rank issues by impact, so we fix what will move the needle fastest first.' },
+        { number: 3, title: 'Technical Optimization', description: 'We implement fixes across images, code, caching, and server configuration.' },
+        { number: 4, title: 'Testing', description: 'We re-test performance metrics to confirm measurable improvement.' },
+        { number: 5, title: 'Ongoing Monitoring', description: 'We monitor performance over time, since new content can reintroduce speed issues.' }
+      ]
     },
-    {
-      question: 'How will we know it actually worked?',
-      answer: 'Because we measure before and after against concrete targets — load time and Core Web Vitals — so the improvement is proven, not claimed. Speed is one of the few web investments with an unambiguous, directly measurable result.'
+    
+    outcome: {
+      challenge: 'An eCommerce site was loading slowly, failing Core Web Vitals, suffering high mobile bounce, and — unknown to the team — losing conversions and rankings to its speed.',
+      solution: 'We diagnosed the real bottlenecks, engineered Core Web Vitals into the green, optimized images and front-end delivery, improved server response, and cleaned up inefficient code, measuring throughout.',
+      metrics: [
+        {
+          kpi: 'Load time',
+          result: 'Cut by ~60%',
+          whyItMatters: 'Higher conversion; lower bounce'
+        },
+        {
+          kpi: 'Core Web Vitals',
+          result: 'Failing → passing',
+          whyItMatters: 'Ranking benefit and better UX'
+        },
+        {
+          kpi: 'Mobile conversion',
+          result: 'Up materially',
+          whyItMatters: 'Recovered the majority-traffic segment'
+        },
+        {
+          kpi: 'Organic visibility',
+          result: 'Improved',
+          whyItMatters: 'CWV-driven ranking gains'
+        }
+      ]
     },
-    {
-      question: 'Is speed optimization a good way to start working with you?',
-      answer: 'Often, yes — it\'s a focused, contained, measurable engagement with fast payback, which makes it a low-risk way to see how we work before a larger project. Many clients start here.'
+    
+    businessCase: {
+      heading: 'The Speed Business Case',
+      content: 'Speed optimization is among the highest-ROI web investments because every gain lands on traffic you already have and already pay for — nothing extra to acquire. A conversion lift from faster pages adds revenue on every visit, permanently. Improved Core Web Vitals can lift rankings, adding organic traffic and the leads or sales it brings. Lower bounce keeps more visitors in the funnel. For an eCommerce or high-traffic site, these gains often dwarf the cost of the work and pay back in a very short window.',
+      valueStreams: [
+        'Conversion lift (more revenue from existing traffic)',
+        'Ranking gains (better organic visibility)',
+        'Lower bounce (more visitors in the funnel)',
+        'Fast payback (usually weeks to months)'
+      ]
     },
-    {
-      question: 'Will the gains last?',
-      answer: 'Yes, because we fix root causes in code, assets, and server rather than applying temporary patches — and we can monitor performance ongoing to hold the gains as the site evolves.'
+    
+    faqs: [
+      {
+        question: 'Why does website speed matter for SEO?',
+        answer: 'Google uses Core Web Vitals, which measure loading performance, interactivity, and visual stability, as a ranking factor. Faster sites tend to rank better and convert more visitors.'
+      },
+      {
+        question: 'How much can page speed optimization improve my load time?',
+        answer: 'Improvements vary based on your site\'s current state, but many sites see load times cut significantly through image optimization, caching, and code cleanup.'
+      },
+      {
+        question: 'Will speed optimization affect my website\'s design?',
+        answer: 'No, speed optimization focuses on technical performance improvements behind the scenes and typically doesn\'t require visual design changes.'
+      },
+      {
+        question: 'How often should website speed be re-evaluated?',
+        answer: 'We recommend checking performance regularly, especially after adding new content, images, or plugins, since these can gradually slow a site back down over time.'
+      }
+    ],
+    
+    cta: {
+      heading: 'See What Slowness Is Costing You',
+      primary: 'Book a speed strategy call',
+      secondary: 'Request a free speed & Core Web Vitals audit'
+    },
+    
+    riskReversal: 'Speed engagements are fixed-scope to defined targets and measured before/after — you see the result against the goal.',
+    
+    pricing: {
+      range: '$5K–$40K+',
+      note: 'Focused engagement: $5K–$20K; full-stack optimization: $20K–$40K+'
+    },
+    
+    internalLinks: ['/web-development-services', '/website-redesign-services', '/website-maintenance-services'],
+    
+    schema: {
+      serviceType: 'Website Speed Optimization',
+      priceRange: '$5,000 - $40,000+',
+      audience: 'Marketing, eCommerce & Technical Leaders'
     }
-  ],
-  
-  cta: {
-    heading: 'See What Slowness Is Costing You',
-    primary: 'Book a speed strategy call',
-    secondary: 'Request a free speed & Core Web Vitals audit'
   },
-  
-  riskReversal: 'Speed engagements are fixed-scope to defined targets and measured before/after — you see the result against the goal.',
-  
-  pricing: {
-    range: '$5K–$40K+',
-    note: 'Focused engagement: $5K–$20K; full-stack optimization: $20K–$40K+'
-  },
-  
-  internalLinks: ['/web-development-services', '/website-redesign-services', '/website-maintenance-services'],
-  
-  schema: {
-    serviceType: 'Website Speed Optimization',
-    priceRange: '$5,000 - $40,000+',
-    audience: 'Marketing, eCommerce & Technical Leaders'
-  }
-},
 
-// 20: Website Maintenance & Support
-'website-maintenance-services': {
-  slug: 'website-maintenance-services',
-  title: 'Website Maintenance & Support',
-  metaDescription: 'Website maintenance that protects a business-critical asset. Proactive security, monitoring, and continuous improvement with SLA-backed support.',
-  pageGoal: 'Convert businesses needing ongoing site care into a recurring retainer; frame as protecting a business-critical asset; recurring value $500–$10K+/mo.',
-  buyerPersona: 'Business owners and marketing/ops leaders responsible for a site they can\'t afford to have break, go insecure, or stagnate.',
-  uniquePositioning: 'We treat your site as the business-critical asset it is — proactive maintenance, security, and improvement that prevents costly problems and compounds value, not reactive break-fix.',
-  
-  hero: {
-    heading: 'Website Maintenance That Protects a Business-Critical Asset',
-    subheading: 'Your website runs while you sleep — and breaks, goes insecure, or slowly decays without care. We provide proactive maintenance, security, and continuous improvement that prevents costly problems before they happen and keeps your site fast, secure, and improving. Not reactive break-fix — active protection.',
-    credibilityBar: [
-      'Proactive, not reactive',
-      'Security & updates',
-      'Performance & uptime',
-      'Continuous improvement',
-      'SLA-backed'
+
+  // 20. Website Maintenance & Support
+  // ------------------------------------------
+  'website-maintenance-support': {
+    slug: 'website-maintenance-support',
+    title: 'Website Maintenance & Support',
+    metaTitle: 'Website Maintenance & Support Services | Ongoing Website Care',
+    metaDescription: 'Reliable website maintenance and support services for US businesses. We handle updates, security, backups, and fixes so your site stays fast and secure.',
+    targetKeywords: [
+      'website maintenance services',
+      'website support company',
+      'ongoing website maintenance',
+      'website care plan USA',
+      'hire website maintenance team'
     ],
-    primaryCTA: 'Book a maintenance consultation',
-    secondaryCTA: 'Request a maintenance plan overview',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative care across business-critical sites and stores.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is website maintenance and support?',
-    answer: 'Website maintenance and support is the ongoing work of keeping a website secure, updated, fast, and functioning — including security patching, software updates, backups, performance monitoring, uptime, fixes, and improvements. For businesses, it protects a revenue-generating asset: proactive maintenance prevents the costly breaches, downtime, and decay that neglected sites suffer, which is far cheaper than reacting to problems after they happen.'
-  },
-  
-  problemSection: {
-    heading: 'What Neglecting Your Site Actually Risks',
-    content: [
-      'A website isn\'t a finish-and-forget asset — it\'s live software exposed to the internet, and neglect carries real, sometimes severe, risk. Security vulnerabilities accumulate as software ages unpatched, and a breach on a business site means data loss, downtime, recovery cost, and reputational damage. Things break silently — a broken form quietly losing every lead, a payment issue losing sales — often unnoticed until the damage is done. Performance decays as the site grows untended. And the site stagnates, falling behind competitors who keep improving theirs.',
-      'The costs are asymmetric, which is the whole point. A breach, extended downtime, or a payment outage can cost many multiples of what proactive maintenance would have. A lead form broken for weeks before anyone notices is pure lost pipeline. Reacting to problems after they happen — emergency fixes, breach recovery, scrambling — is far more expensive and stressful than preventing them. Yet maintenance is exactly what gets deprioritized because, when it\'s working, nothing appears to be happening.',
-      'That invisibility is the trap: a well-maintained site looks the same as a neglected one, right up until the neglected one fails expensively.'
+    pageGoal: 'Convert businesses needing ongoing site care into a recurring retainer; frame as protecting a business-critical asset; recurring value $500–$10K+/mo.',
+    buyerPersona: 'Business owners and marketing/ops leaders responsible for a site they can\'t afford to have break, go insecure, or stagnate.',
+    uniquePositioning: 'We treat your site as the business-critical asset it is — proactive maintenance, security, and improvement that prevents costly problems and compounds value, not reactive break-fix.',
+    
+    hero: {
+      heading: 'Website Maintenance & Support You Can Rely On',
+      subheading: 'A website isn\'t a one-time project, it needs regular updates, security patches, and monitoring to stay fast, secure, and functional over time. Our website maintenance and support services handle that ongoing care so you don\'t have to think about it. We support US businesses across platforms with proactive maintenance, fast issue resolution, and the peace of mind that comes from knowing someone is watching your site.',
+      credibilityBar: [
+        'Proactive, not reactive',
+        'Security & updates',
+        'Performance & uptime',
+        'Continuous improvement',
+        'SLA-backed'
+      ],
+      primaryCTA: 'Book a maintenance consultation',
+      secondaryCTA: 'Request a maintenance plan overview',
+      socialProof: 'Representative care across business-critical sites and stores.'
+    },
+    
+    featuredAnswer: {
+      question: 'What Is Website Maintenance & Support?',
+      answer: 'Website maintenance and support refers to the ongoing tasks required to keep a website running smoothly after launch, including software updates, security monitoring, backups, bug fixes, and performance checks. Regular maintenance prevents small issues from becoming major problems and protects your site from security vulnerabilities.'
+    },
+    
+    problemSection: {
+      heading: 'What Neglecting Your Site Actually Risks',
+      content: [
+        'A website isn\'t a finish-and-forget asset — it\'s live software exposed to the internet, and neglect carries real, sometimes severe, risk. Security vulnerabilities accumulate as software ages unpatched, and a breach on a business site means data loss, downtime, recovery cost, and reputational damage. Things break silently — a broken form quietly losing every lead, a payment issue losing sales — often unnoticed until the damage is done. Performance decays as the site grows untended. And the site stagnates, falling behind competitors who keep improving theirs.',
+        'The costs are asymmetric, which is the whole point. A breach, extended downtime, or a payment outage can cost many multiples of what proactive maintenance would have. A lead form broken for weeks before anyone notices is pure lost pipeline. Reacting to problems after they happen — emergency fixes, breach recovery, scrambling — is far more expensive and stressful than preventing them. Yet maintenance is exactly what gets deprioritized because, when it\'s working, nothing appears to be happening.',
+        'That invisibility is the trap: a well-maintained site looks the same as a neglected one, right up until the neglected one fails expensively.'
+      ],
+      stats: [
+        {
+          label: 'Breach Prevention',
+          value: '50-100x',
+          description: 'Cost ratio of prevention vs. breach recovery'
+        },
+        {
+          label: 'Downtime Cost',
+          value: '$5K+ / hour',
+          description: 'Average revenue lost per hour of site downtime'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'Most website problems are preventable with consistent maintenance, but they\'re expensive to fix once they\'ve escalated into downtime or a security breach. We handle the unglamorous, essential work of keeping your site healthy, so it stays reliable without you having to monitor it yourself.',
+      pillars: [
+        {
+          title: 'Preventative Care',
+          description: 'We handle regular software and security updates to prevent vulnerabilities before they can be exploited.'
+        },
+        {
+          title: 'Continuous Monitoring',
+          description: 'We monitor uptime, security, and performance continuously so you don\'t have to watch it yourself.'
+        },
+        {
+          title: 'Fast Resolution',
+          description: 'We provide fast turnaround on bug fixes and technical issues with a dedicated point of contact.'
+        }
+      ]
+    },
+    
+    keyBenefits: [
+      'Regular software and plugin updates to prevent vulnerabilities',
+      'Proactive security monitoring and malware scanning',
+      'Automated backups to protect against data loss',
+      'Fast turnaround on bug fixes and technical issues',
+      'Performance checks to catch slowdowns before they impact users',
+      'A dedicated point of contact instead of a support ticket queue'
     ],
-    stats: [
-      {
-        label: 'Breach Prevention',
-        value: '50-100x',
-        description: 'Cost ratio of prevention vs. breach recovery'
-      },
-      {
-        label: 'Downtime Cost',
-        value: '$5K+ / hour',
-        description: 'Average revenue lost per hour of site downtime'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Protect and Improve Your Site',
-    content: 'We\'re proactive by design, because prevention is dramatically cheaper than reaction. We don\'t just preserve — we improve with continuous performance, conversion, and capability enhancements, so the site gets better over time instead of decaying.',
-    pillars: [
-      {
-        title: 'Security and updates',
-        description: 'We patch vulnerabilities, update software, and harden continuously, so the breach window stays closed rather than widening with age.'
-      },
-      {
-        title: 'Monitoring and uptime',
-        description: 'We monitor uptime, performance, and functionality so problems are caught and fixed before they cost you — a broken form or payment issue surfaced in minutes, not discovered in next month\'s numbers.'
-      },
-      {
-        title: 'Backups and recovery',
-        description: 'Regular, tested backups so that if something does go wrong, recovery is fast and complete.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'Maintenance Capabilities',
-    items: [
-      {
-        service: 'Security & patching',
-        whatItIs: 'Continuous vulnerability patching and hardening.',
-        businessImpact: 'Closes the breach window neglect opens.'
-      },
-      {
-        service: 'Software & dependency updates',
-        whatItIs: 'Keeping platform, plugins, and dependencies current.',
-        businessImpact: 'Stability and security as software ages.'
-      },
-      {
-        service: 'Monitoring & uptime',
-        whatItIs: 'Uptime, performance, and functionality monitoring.',
-        businessImpact: 'Problems caught before they cost you.'
-      },
-      {
-        service: 'Backups & recovery',
-        whatItIs: 'Regular, tested backups and fast recovery.',
-        businessImpact: 'Fast, complete recovery if anything fails.'
-      },
-      {
-        service: 'Fixes & support',
-        whatItIs: 'Prompt fixes and support, SLA-backed.',
-        businessImpact: 'Certainty on a business-critical system.'
-      },
-      {
-        service: 'Performance maintenance',
-        whatItIs: 'Keeping the site fast as it grows.',
-        businessImpact: 'No silent performance decay.'
-      },
-      {
-        service: 'Continuous improvement',
-        whatItIs: 'Ongoing conversion and capability enhancement.',
-        businessImpact: 'The site improves, not stagnates.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Companies Choose Us for Maintenance',
-    intro: 'Most maintenance is reactive break-fix. Here\'s the honest comparison.',
-    options: [
-      {
-        option: 'Reactive break-fix',
-        whereWorks: 'After something breaks',
-        whereFails: 'Prevention; costs more overall',
-        ourPosition: 'Proactive — prevents costly problems'
-      },
-      {
-        option: 'No maintenance',
-        whereWorks: 'Until it fails',
-        whereFails: 'Security, uptime, decay risk',
-        ourPosition: 'Active protection of the asset'
-      },
-      {
-        option: 'Freelancer on call',
-        whereWorks: 'Occasional fixes',
-        whereFails: 'Proactive monitoring, SLA, continuity',
-        ourPosition: 'Monitored, SLA-backed, with redundancy'
-      },
-      {
-        option: 'In-house ad hoc',
-        whereWorks: 'If resourced',
-        whereFails: 'Consistency, breadth, priority',
-        ourPosition: 'Consistent, broad, contractual care'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'How the Engagement Works',
-    steps: [
-      { number: 1, title: 'Onboarding & audit', description: 'Assess the site\'s security, performance, and risk; establish baselines and the plan.' },
-      { number: 2, title: 'Security hardening', description: 'Close existing vulnerabilities and harden from the start.' },
-      { number: 3, title: 'Monitoring setup', description: 'Uptime, performance, and functionality monitoring with alerting.' },
-      { number: 4, title: 'Backup & recovery setup', description: 'Regular, tested backups and a recovery plan.' },
-      { number: 5, title: 'Ongoing maintenance', description: 'Continuous patching, updates, monitoring, and fixes under SLA.' },
-      { number: 6, title: 'Continuous improvement', description: 'Scheduled performance, conversion, and capability work.' },
-      { number: 7, title: 'Reporting', description: 'Regular reporting on security, uptime, performance, and improvements.' },
-      { number: 8, title: 'Review', description: 'Periodic strategic review of the site and roadmap.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A business relied on its site for leads and sales but had no real maintenance — it had suffered a security scare, occasional unnoticed downtime, and once lost weeks of leads to a silently broken form.',
-    solution: 'We onboarded the site with a security hardening pass, set up uptime and functionality monitoring with alerting, established tested backups, and moved them to proactive SLA-backed care with continuous improvement.',
-    metrics: [
-      {
-        kpi: 'Security incidents',
-        result: 'Scare → none',
-        whyItMatters: 'Breach risk and recovery cost avoided'
-      },
-      {
-        kpi: 'Broken-functionality losses',
-        result: 'Weeks unnoticed → caught in minutes',
-        whyItMatters: 'No more silent lost leads or sales'
-      },
-      {
-        kpi: 'Uptime',
-        result: 'Unmonitored → monitored & high',
-        whyItMatters: 'Reliable revenue-generating asset'
-      },
-      {
-        kpi: 'Site trajectory',
-        result: 'Decaying → improving',
-        whyItMatters: 'Ahead of static competitors'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The Maintenance Business Case',
-    content: 'Maintenance ROI is mostly the cost of disasters that never happen — which is real value even though it\'s invisible. Proactive security prevents breaches whose cost (data loss, downtime, recovery, reputation) dwarfs the maintenance fee. Monitoring catches broken forms, payment failures, and downtime in minutes rather than weeks, preventing the silent revenue loss that neglected sites suffer. Tested backups make recovery fast instead of catastrophic. And continuous improvement compounds conversion and capability gains over time.',
-    valueStreams: [
-      'Breach prevention (cost avoided)',
-      'Silent loss prevention (revenue protected)',
-      'Fast recovery (downtime minimized)',
-      'Continuous improvement (compounding gains)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Do we really need ongoing maintenance?',
-      answer: 'If your site matters to your business, yes — it\'s live software exposed to the internet, and neglect risks breaches, silent breakage, downtime, and decay, all of which cost far more than maintenance. The trap is that a well-maintained site looks identical to a neglected one until the neglected one fails expensively. Maintenance is insurance plus improvement on a revenue-generating asset.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'Regular Software Updates',
+          whatItIs: 'Software and plugin updates applied consistently.',
+          businessImpact: 'Prevents vulnerabilities and keeps the site stable.'
+        },
+        {
+          service: 'Proactive Security Monitoring',
+          whatItIs: 'Continuous security monitoring and malware scanning.',
+          businessImpact: 'Protects your site and customer data from breaches.'
+        },
+        {
+          service: 'Automated Backups',
+          whatItIs: 'Regular, automated backups of your site data.',
+          businessImpact: 'Protects against catastrophic data loss.'
+        },
+        {
+          service: 'Fast Bug Fixes',
+          whatItIs: 'Prompt turnaround on bug fixes and technical issues.',
+          businessImpact: 'Minimizes disruption to your business operations.'
+        },
+        {
+          service: 'Performance Checks',
+          whatItIs: 'Regular checks to catch slowdowns before they impact users.',
+          businessImpact: 'Maintains a fast, smooth user experience.'
+        },
+        {
+          service: 'Dedicated Point of Contact',
+          whatItIs: 'A dedicated contact instead of a support ticket queue.',
+          businessImpact: 'Ensures your issues are understood and resolved quickly.'
+        }
+      ]
     },
-    {
-      question: 'What does website maintenance cost?',
-      answer: 'Plans typically range from around $500/month for essential proactive care to $10K+/month for comprehensive maintenance plus continuous improvement on complex or business-critical sites. The right level depends on your site\'s importance and complexity — we\'ll scope it to your actual risk and goals, not a one-size package.'
+    
+    comparison: {
+      heading: 'Why Companies Choose Us for Maintenance',
+      intro: 'Most maintenance is reactive break-fix. Here\'s the honest comparison.',
+      options: [
+        {
+          option: 'Reactive break-fix',
+          whereWorks: 'After something breaks',
+          whereFails: 'Prevention; costs more overall',
+          ourPosition: 'Proactive — prevents costly problems'
+        },
+        {
+          option: 'No maintenance',
+          whereWorks: 'Until it fails',
+          whereFails: 'Security, uptime, decay risk',
+          ourPosition: 'Active protection of the asset'
+        },
+        {
+          option: 'Freelancer on call',
+          whereWorks: 'Occasional fixes',
+          whereFails: 'Proactive monitoring, SLA, continuity',
+          ourPosition: 'Monitored, SLA-backed, with redundancy'
+        },
+        {
+          option: 'In-house ad hoc',
+          whereWorks: 'If resourced',
+          whereFails: 'Consistency, breadth, priority',
+          ourPosition: 'Consistent, broad, contractual care'
+        }
+      ]
     },
-    {
-      question: 'Isn\'t it cheaper to just fix things when they break?',
-      answer: 'It\'s far more expensive, on average. Reactive break-fix means paying emergency rates after the damage — a breach to recover from, downtime that already cost sales, leads already lost to a broken form. Proactive maintenance prevents most of those, and the cost of one prevented breach or outage typically exceeds a long stretch of maintenance fees.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Site Assessment', description: 'We review your current site\'s health, platform, and existing vulnerabilities.' },
+        { number: 2, title: 'Maintenance Plan Setup', description: 'We set up a maintenance schedule and monitoring tools suited to your site\'s needs.' },
+        { number: 3, title: 'Ongoing Monitoring', description: 'We continuously monitor uptime, security, and performance.' },
+        { number: 4, title: 'Regular Updates', description: 'We apply software, plugin, and security updates on a consistent schedule.' },
+        { number: 5, title: 'Support & Reporting', description: 'We handle support requests quickly and provide regular reports on site health.' }
+      ]
     },
-    {
-      question: 'What\'s included, and is there an SLA?',
-      answer: 'Security patching, software updates, monitoring, backups, fixes, performance maintenance, and continuous improvement — all SLA-backed, so you have contractual certainty on response times for a business-critical system. We scope the specifics to your site.'
+    
+    outcome: {
+      challenge: 'A business relied on its site for leads and sales but had no real maintenance — it had suffered a security scare, occasional unnoticed downtime, and once lost weeks of leads to a silently broken form.',
+      solution: 'We onboarded the site with a security hardening pass, set up uptime and functionality monitoring with alerting, established tested backups, and moved them to proactive SLA-backed care with continuous improvement.',
+      metrics: [
+        {
+          kpi: 'Security incidents',
+          result: 'Scare → none',
+          whyItMatters: 'Breach risk and recovery cost avoided'
+        },
+        {
+          kpi: 'Broken-functionality losses',
+          result: 'Weeks unnoticed → caught in minutes',
+          whyItMatters: 'No more silent lost leads or sales'
+        },
+        {
+          kpi: 'Uptime',
+          result: 'Unmonitored → monitored & high',
+          whyItMatters: 'Reliable revenue-generating asset'
+        },
+        {
+          kpi: 'Site trajectory',
+          result: 'Decaying → improving',
+          whyItMatters: 'Ahead of static competitors'
+        }
+      ]
     },
-    {
-      question: 'Can you maintain a site you didn\'t build?',
-      answer: 'Yes — we onboard with an audit and a security hardening pass to understand and stabilize the site first, then move it onto proactive care. We maintain sites on the major platforms regardless of who built them.'
+    
+    businessCase: {
+      heading: 'The Maintenance Business Case',
+      content: 'Maintenance ROI is mostly the cost of disasters that never happen — which is real value even though it\'s invisible. Proactive security prevents breaches whose cost (data loss, downtime, recovery, reputation) dwarfs the maintenance fee. Monitoring catches broken forms, payment failures, and downtime in minutes rather than weeks, preventing the silent revenue loss that neglected sites suffer. Tested backups make recovery fast instead of catastrophic. And continuous improvement compounds conversion and capability gains over time.',
+      valueStreams: [
+        'Breach prevention (cost avoided)',
+        'Silent loss prevention (revenue protected)',
+        'Fast recovery (downtime minimized)',
+        'Continuous improvement (compounding gains)'
+      ]
     },
-    {
-      question: 'Do we stay in control of our site?',
-      answer: 'Completely — you own the site, code, and data throughout, with no lock-in. Maintenance is a service, not a hostage arrangement; you can take the site elsewhere anytime, and we keep the relationship on reliability and value.'
+    
+    faqs: [
+      {
+        question: 'What does website maintenance actually include?',
+        answer: 'Typically it includes software and security updates, backups, uptime monitoring, performance checks, and prompt fixes for bugs or technical issues as they arise.'
+      },
+      {
+        question: 'How often should my website be updated?',
+        answer: 'Critical security updates should be applied as soon as they\'re released, while general maintenance checks are usually done monthly, depending on your site\'s platform and complexity.'
+      },
+      {
+        question: 'What happens if my website goes down?',
+        answer: 'With an active maintenance plan, we monitor uptime continuously and respond quickly to diagnose and resolve downtime issues, minimizing disruption to your business.'
+      },
+      {
+        question: 'Do you offer maintenance for websites you didn\'t originally build?',
+        answer: 'Yes, we provide maintenance and support for existing websites regardless of who originally built them, after an initial assessment of the current setup.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Protect the Asset Your Business Runs On',
+      primary: 'Book a maintenance consultation',
+      secondary: 'Request a maintenance plan overview'
+    },
+    
+    riskReversal: 'Maintenance runs month-to-month with SLA-backed response times — retained on reliability and value, never locked in.',
+    
+    pricing: {
+      range: '$500–$10K+ / mo',
+      note: 'Essential care: $500–$2K/mo; comprehensive: $2K–$5K/mo; complex/business-critical: $5K–$10K+/mo'
+    },
+    
+    internalLinks: ['/web-development-services', '/website-speed-optimization', '/website-redesign-services'],
+    
+    schema: {
+      serviceType: 'Website Maintenance & Support',
+      priceRange: '$500 - $10,000+ / month',
+      audience: 'Business Owners & Marketing/Operations Leaders'
     }
-  ],
-  
-  cta: {
-    heading: 'Protect the Asset Your Business Runs On',
-    primary: 'Book a maintenance consultation',
-    secondary: 'Request a maintenance plan overview'
   },
-  
-  riskReversal: 'Maintenance runs month-to-month with SLA-backed response times — retained on reliability and value, never locked in.',
-  
-  pricing: {
-    range: '$500–$10K+ / mo',
-    note: 'Essential care: $500–$2K/mo; comprehensive: $2K–$5K/mo; complex/business-critical: $5K–$10K+/mo'
-  },
-  
-  internalLinks: ['/web-development-services', '/website-speed-optimization', '/website-redesign-services'],
-  
-  schema: {
-    serviceType: 'Website Maintenance & Support',
-    priceRange: '$500 - $10,000+ / month',
-    audience: 'Business Owners & Marketing/Operations Leaders'
-  }
-},
 
-// 21: Full-Stack Development
-'full-stack-development': {
-  slug: 'full-stack-development',
-  title: 'Full-Stack Development',
-  metaDescription: 'Full-stack development with one accountable team, end to end. Senior capability across front end, back end, database, and infrastructure.',
-  pageGoal: 'Convert buyers needing end-to-end build capability into a scoping call; position as a complete team; project value $25K–$250K+.',
-  buyerPersona: 'Founders and product/engineering leaders who need front end, back end, and everything between built by one accountable team.',
-  uniquePositioning: 'We are a complete, senior full-stack team — front end, back end, database, infrastructure — so your build has one accountable owner instead of fragmented handoffs and finger-pointing.',
-  
-  hero: {
-    heading: 'Full-Stack Development With One Accountable Team, End to End',
-    subheading: 'Fragmenting a build across separate front-end, back-end, and infrastructure providers creates handoffs, gaps, and finger-pointing when something breaks. We deliver the whole stack — interface to infrastructure — as one senior, accountable team, so your product is coherent, complete, and owned by someone.',
-    credibilityBar: [
-      'Front end to infrastructure',
-      'One accountable team',
-      'Senior across the stack',
-      'Coherent architecture',
-      'You own it'
+ 
+  // 21. Full-Stack Development
+  // ------------------------------------------
+  'full-stack-development': {
+    slug: 'full-stack-development',
+    title: 'Full-Stack Development',
+    metaTitle: 'Full-Stack Development Services | Front-End & Back-End Development',
+    metaDescription: 'Full-stack development services for US businesses. We build complete web applications, handling front-end, back-end, database, and deployment.',
+    targetKeywords: [
+      'full stack development services',
+      'full stack development company',
+      'hire full stack developer',
+      'end to end web development',
+      'full stack web application development'
     ],
-    primaryCTA: 'Book a full-stack strategy call',
-    secondaryCTA: 'Request a technical scoping session',
-    socialProof: '[PLACEHOLDER: client logos / rating] · Representative end-to-end builds across web apps, SaaS, and platforms.'
-  },
-  
-  featuredAnswer: {
-    question: 'What is full-stack development?',
-    answer: 'Full-stack development is the building of every layer of a web application — the front-end interface users see, the back-end logic and database that power it, and the infrastructure it runs on — by one team or developer skilled across all of them. For businesses, the value is coherence and accountability: a single team owning the whole stack avoids the gaps, handoffs, and blame-shifting that fragmenting the build across specialists creates.'
-  },
-  
-  problemSection: {
-    heading: 'The Cost of a Fragmented Build',
-    content: [
-      'When a build is split across separate providers — one for front end, another for back end, a third for infrastructure — the seams become the problem. Things fall through the gaps between teams that each assumed the other had it. Integration is painful because nobody owns the whole picture. And when something breaks, you get finger-pointing instead of a fix, each provider blaming the others while your product stays broken and you referee.',
-      'The cost is coherence and accountability, both of which are expensive to lose. A product built across fragmented teams often lacks architectural coherence — the layers don\'t fit cleanly because no one designed them together — which creates technical debt and friction for years. The integration overhead of stitching separate builds together wastes time and budget. And diffuse accountability means problems take longer and cost more to resolve, because the first step is always figuring out whose fault it is.',
-      'A single full-stack team is the opposite: one owner of the whole stack, coherent architecture designed across all layers, and clear accountability — when something needs doing or fixing, there\'s one team responsible, not a blame triangle.'
+    pageGoal: 'Convert buyers needing end-to-end build capability into a scoping call; position as a complete team; project value $25K–$250K+.',
+    buyerPersona: 'Founders and product/engineering leaders who need front end, back end, and everything between built by one accountable team.',
+    uniquePositioning: 'We are a complete, senior full-stack team — front end, back end, database, infrastructure — so your build has one accountable owner instead of fragmented handoffs and finger-pointing.',
+    
+    hero: {
+      heading: 'Full-Stack Development for End-to-End Web Solutions',
+      subheading: 'Building a complete web application requires expertise across the front end, back end, database, and infrastructure, and coordinating separate specialists for each layer can slow projects down. Our full-stack development services bring all of that expertise together under one team. We build complete, end-to-end web applications for US businesses, handling everything from user interface to server logic to deployment, with a single team accountable for the whole product.',
+      credibilityBar: [
+        'Front end to infrastructure',
+        'One accountable team',
+        'Senior across the stack',
+        'Coherent architecture',
+        'You own it'
+      ],
+      primaryCTA: 'Book a full-stack strategy call',
+      secondaryCTA: 'Request a technical scoping session',
+      socialProof: 'Representative end-to-end builds across web apps, SaaS, and platforms.'
+    },
+    
+    featuredAnswer: {
+      question: 'What is full-stack development?',
+      answer: 'Full-stack development refers to building both the front end (what users see and interact with) and the back end (servers, databases, and application logic) of a web application. A full-stack approach means one team handles the entire technical stack, which reduces communication overhead and keeps the architecture consistent from end to end.'
+    },
+    
+    problemSection: {
+      heading: 'The Cost of a Fragmented Build',
+      content: [
+        'When a build is split across separate providers — one for front end, another for back end, a third for infrastructure — the seams become the problem. Things fall through the gaps between teams that each assumed the other had it. Integration is painful because nobody owns the whole picture. And when something breaks, you get finger-pointing instead of a fix, each provider blaming the others while your product stays broken and you referee.',
+        'The cost is coherence and accountability, both of which are expensive to lose. A product built across fragmented teams often lacks architectural coherence — the layers don\'t fit cleanly because no one designed them together — which creates technical debt and friction for years. The integration overhead of stitching separate builds together wastes time and budget. And diffuse accountability means problems take longer and cost more to resolve, because the first step is always figuring out whose fault it is.',
+        'A single full-stack team is the opposite: one owner of the whole stack, coherent architecture designed across all layers, and clear accountability — when something needs doing or fixing, there\'s one team responsible, not a blame triangle.'
+      ],
+      stats: [
+        {
+          label: 'Integration Overhead',
+          value: '30-50%',
+          description: 'Additional cost of stitching together fragmented builds'
+        },
+        {
+          label: 'Technical Debt',
+          value: '2-3x',
+          description: 'Higher technical debt from fragmented architecture'
+        }
+      ]
+    },
+    
+    solutionSection: {
+      heading: 'Why Choose Us',
+      content: 'Full-stack projects move faster and stay more consistent when one team owns the entire build. We handle every layer of your application in-house, which means fewer miscommunications, faster iteration, and a system that\'s easier to maintain long after launch.',
+      pillars: [
+        {
+          title: 'One Accountable Team',
+          description: 'One team owns the entire build across front end, back end, and infrastructure, eliminating hand-off gaps.'
+        },
+        {
+          title: 'Streamlined Communication',
+          description: 'Handling every layer in-house means fewer miscommunications and faster iteration cycles.'
+        },
+        {
+          title: 'Easier Long-Term Maintenance',
+          description: 'Unified technical ownership makes the system easier to maintain long after launch.'
+        }
+      ]
+    },
+    
+    keyBenefits: [
+      'One accountable team across front end, back end, and infrastructure',
+      'Consistent architecture without hand-off gaps between specialists',
+      'Faster development cycles through streamlined communication',
+      'Database design and API development handled in-house',
+      'Cloud deployment and infrastructure setup included',
+      'Easier long-term maintenance with unified technical ownership'
     ],
-    stats: [
-      {
-        label: 'Integration Overhead',
-        value: '30-50%',
-        description: 'Additional cost of stitching together fragmented builds'
-      },
-      {
-        label: 'Technical Debt',
-        value: '2-3x',
-        description: 'Higher technical debt from fragmented architecture'
-      }
-    ]
-  },
-  
-  solutionSection: {
-    heading: 'How We Deliver the Whole Stack Coherently',
-    content: 'We bring senior capability across every layer, working as one team. You own the entire result: all layers, all code, full documentation.',
-    pillars: [
-      {
-        title: 'Coherent architecture',
-        description: 'We design the front end, back end, database, and infrastructure together, so they fit cleanly rather than being stitched together after the fact — which is what prevents the technical debt fragmented builds accrue.'
-      },
-      {
-        title: 'One accountable owner',
-        description: 'The whole stack is our responsibility, so there\'s no blame-shifting and no gaps between teams — if it needs building or fixing, you have one team to call.'
-      },
-      {
-        title: 'Senior across the stack',
-        description: 'Real depth at each layer, not a generalist spread thin, so quality holds from interface to infrastructure.'
-      }
-    ]
-  },
-  
-  capabilities: {
-    heading: 'Full-Stack Capabilities',
-    items: [
-      {
-        service: 'Front-end development',
-        whatItIs: 'Modern, performant user interfaces.',
-        businessImpact: 'The experience users actually interact with.'
-      },
-      {
-        service: 'Back-end development',
-        whatItIs: 'Robust server-side logic and APIs.',
-        businessImpact: 'The engine that powers the product.'
-      },
-      {
-        service: 'Database engineering',
-        whatItIs: 'Well-designed, scalable data layers.',
-        businessImpact: 'Reliable, performant data foundation.'
-      },
-      {
-        service: 'Infrastructure & DevOps',
-        whatItIs: 'Cloud infrastructure, deployment, and CI/CD.',
-        businessImpact: 'Reliable, scalable foundation to run on.'
-      },
-      {
-        service: 'End-to-end web apps',
-        whatItIs: 'Complete applications, every layer.',
-        businessImpact: 'A coherent product from one team.'
-      },
-      {
-        service: 'Architecture across the stack',
-        whatItIs: 'Coherent design of all layers together.',
-        businessImpact: 'Prevents the debt fragmentation creates.'
-      },
-      {
-        service: 'Integration',
-        whatItIs: 'Connecting the stack and external systems.',
-        businessImpact: 'No seams, no silos.'
-      }
-    ]
-  },
-  
-  comparison: {
-    heading: 'Why Companies Choose Us for Full-Stack Work',
-    intro: 'Fragmented builds create gaps and blame. Here\'s the honest comparison.',
-    options: [
-      {
-        option: 'Multiple specialist providers',
-        whereWorks: 'Very large, well-coordinated programs',
-        whereFails: 'Gaps, handoffs, finger-pointing',
-        ourPosition: 'One accountable team, coherent stack'
-      },
-      {
-        option: 'Offshore team',
-        whereWorks: 'Well-specified scope',
-        whereFails: 'Cross-stack judgment, accountability',
-        ourPosition: 'Senior, coherent, accountable'
-      },
-      {
-        option: 'Freelancers per layer',
-        whereWorks: 'Tiny projects',
-        whereFails: 'Integration, coherence, continuity',
-        ourPosition: 'One team owning the whole stack'
-      },
-      {
-        option: 'Generalist solo dev',
-        whereWorks: 'Small simple apps',
-        whereFails: 'Depth at each layer at scale',
-        ourPosition: 'Senior depth across all layers'
-      }
-    ]
-  },
-  
-  process: {
-    heading: 'From Discovery to Optimization',
-    steps: [
-      { number: 1, title: 'Discovery', description: 'Product goals, requirements across all layers, and success metrics.' },
-      { number: 2, title: 'Strategy & scope', description: 'Coherent scope and sequencing across the full stack; ROI.' },
-      { number: 3, title: 'Architecture', description: 'Front end, back end, data, and infrastructure designed together.' },
-      { number: 4, title: 'Design', description: 'UX and interface design integrated with the build.' },
-      { number: 5, title: 'Development', description: 'Senior, full-stack engineering in coherent increments with working demos.' },
-      { number: 6, title: 'QA', description: 'Functional, performance, security, and integration testing across the stack.' },
-      { number: 7, title: 'Launch', description: 'Controlled, monitored deployment with infrastructure handled.' },
-      { number: 8, title: 'Optimization', description: 'Iteration and scaling across every layer.' }
-    ]
-  },
-  
-  outcome: {
-    challenge: 'A company\'s product had been built across separate front-end, back-end, and infrastructure providers — it lacked architectural coherence, suffered constant integration friction, and every problem triggered finger-pointing between vendors.',
-    solution: 'We took over as one accountable full-stack team, re-architected the layers to fit coherently, eliminated the integration friction, and gave the company a single owner for the entire stack.',
-    metrics: [
-      {
-        kpi: 'Accountability',
-        result: 'Blame triangle → one owner',
-        whyItMatters: 'Problems fixed, not debated'
-      },
-      {
-        kpi: 'Architectural coherence',
-        result: 'Fragmented → coherent',
-        whyItMatters: 'Technical debt and friction reduced'
-      },
-      {
-        kpi: 'Integration overhead',
-        result: 'Constant → eliminated',
-        whyItMatters: 'Time and budget recovered'
-      },
-      {
-        kpi: 'Delivery speed',
-        result: 'Improved',
-        whyItMatters: 'One coordinated team moves faster'
-      }
-    ]
-  },
-  
-  businessCase: {
-    heading: 'The Full-Stack Business Case',
-    content: 'Full-stack ROI comes from coherence and accountability — two things fragmented builds quietly tax. Coherent architecture designed across all layers prevents the technical debt and ongoing friction that stitched-together builds accrue, which saves cost for years. Eliminating cross-team integration overhead recovers time and budget. Clear, single-team accountability means problems are resolved fast instead of refereed, reducing downtime and management burden. And one coordinated team typically delivers faster than several that must hand off.',
-    valueStreams: [
-      'Technical debt reduction (coherent architecture)',
-      'Integration overhead eliminated (time/budget recovered)',
-      'Single accountability (problems resolved fast)',
-      'Delivery speed (one coordinated team)'
-    ]
-  },
-  
-  faqs: [
-    {
-      question: 'Why use one full-stack team instead of specialists for each layer?',
-      answer: 'Coherence and accountability. Splitting a build across separate front-end, back-end, and infrastructure providers creates gaps between teams, painful integration, and finger-pointing when something breaks. One full-stack team designs the layers to fit together, owns the whole result, and gives you a single team to call — which avoids the debt and blame fragmentation creates. For very large, well-coordinated programs specialists can work; for most builds, one accountable team is better.'
+    
+    capabilities: {
+      heading: 'Key Benefits',
+      items: [
+        {
+          service: 'One Accountable Team',
+          whatItIs: 'A single team accountable across front end, back end, and infrastructure.',
+          businessImpact: 'Eliminates finger-pointing and ensures cohesive ownership.'
+        },
+        {
+          service: 'Consistent Architecture',
+          whatItIs: 'Architecture built without hand-off gaps between specialists.',
+          businessImpact: 'Reduces technical debt and integration friction.'
+        },
+        {
+          service: 'Faster Development Cycles',
+          whatItIs: 'Streamlined communication across the entire stack.',
+          businessImpact: 'Accelerates time-to-market for new features.'
+        },
+        {
+          service: 'Database & API Development',
+          whatItIs: 'Database design and API development handled in-house.',
+          businessImpact: 'Ensures data flows efficiently and securely.'
+        },
+        {
+          service: 'Cloud Deployment & Infrastructure',
+          whatItIs: 'Cloud deployment and infrastructure setup included.',
+          businessImpact: 'Provides a reliable, scalable foundation to run on.'
+        },
+        {
+          service: 'Unified Technical Ownership',
+          whatItIs: 'A system built for easier long-term maintenance.',
+          businessImpact: 'Simplifies future updates and scaling.'
+        }
+      ]
     },
-    {
-      question: 'Does full-stack mean generalists who aren\'t deep at anything?',
-      answer: 'Not the way we do it. We bring senior depth at each layer — front end, back end, data, infrastructure — working as a team, not one generalist spread thin. You get both the coherence of a single team and real expertise at every layer.'
+    
+    comparison: {
+      heading: 'Why Companies Choose Us for Full-Stack Work',
+      intro: 'Fragmented builds create gaps and blame. Here\'s the honest comparison.',
+      options: [
+        {
+          option: 'Multiple specialist providers',
+          whereWorks: 'Very large, well-coordinated programs',
+          whereFails: 'Gaps, handoffs, finger-pointing',
+          ourPosition: 'One accountable team, coherent stack'
+        },
+        {
+          option: 'Offshore team',
+          whereWorks: 'Well-specified scope',
+          whereFails: 'Cross-stack judgment, accountability',
+          ourPosition: 'Senior, coherent, accountable'
+        },
+        {
+          option: 'Freelancers per layer',
+          whereWorks: 'Tiny projects',
+          whereFails: 'Integration, coherence, continuity',
+          ourPosition: 'One team owning the whole stack'
+        },
+        {
+          option: 'Generalist solo dev',
+          whereWorks: 'Small simple apps',
+          whereFails: 'Depth at each layer at scale',
+          ourPosition: 'Senior depth across all layers'
+        }
+      ]
     },
-    {
-      question: 'What does a full-stack build cost?',
-      answer: 'A focused full-stack build typically runs $25K–$75K; a complex application or platform $75K–$250K+. Cost follows scope and we size it to the return. Transparent estimate after a strategy call.'
+    
+    process: {
+      heading: 'Our Process',
+      steps: [
+        { number: 1, title: 'Requirements & Architecture', description: 'We define the application\'s requirements and design the full technical architecture.' },
+        { number: 2, title: 'Back-End Development', description: 'We build the server logic, database structure, and APIs powering the application.' },
+        { number: 3, title: 'Front-End Development', description: 'We build the user interface that connects to the back end you\'ve built.' },
+        { number: 4, title: 'Integration & Testing', description: 'We test the complete system end-to-end to confirm everything works together reliably.' },
+        { number: 5, title: 'Deployment & Support', description: 'We deploy to production infrastructure and provide ongoing support and updates.' }
+      ]
     },
-    {
-      question: 'Can you take over a product built by fragmented teams?',
-      answer: 'Yes — we often do. We assess the existing layers, re-architect for coherence where needed, eliminate the integration friction, and become the single accountable owner of the whole stack, ending the blame-shifting.'
+    
+    outcome: {
+      challenge: 'A company\'s product had been built across separate front-end, back-end, and infrastructure providers — it lacked architectural coherence, suffered constant integration friction, and every problem triggered finger-pointing between vendors.',
+      solution: 'We took over as one accountable full-stack team, re-architected the layers to fit coherently, eliminated the integration friction, and gave the company a single owner for the entire stack.',
+      metrics: [
+        {
+          kpi: 'Accountability',
+          result: 'Blame triangle → one owner',
+          whyItMatters: 'Problems fixed, not debated'
+        },
+        {
+          kpi: 'Architectural coherence',
+          result: 'Fragmented → coherent',
+          whyItMatters: 'Technical debt and friction reduced'
+        },
+        {
+          kpi: 'Integration overhead',
+          result: 'Constant → eliminated',
+          whyItMatters: 'Time and budget recovered'
+        },
+        {
+          kpi: 'Delivery speed',
+          result: 'Improved',
+          whyItMatters: 'One coordinated team moves faster'
+        }
+      ]
     },
-    {
-      question: 'Do you handle infrastructure and deployment too?',
-      answer: 'Yes — that\'s part of full-stack. We handle cloud infrastructure, deployment, and CI/CD alongside the application layers, so the whole stack is built, deployed, and owned coherently rather than handed off to yet another provider.'
+    
+    businessCase: {
+      heading: 'The Full-Stack Business Case',
+      content: 'Full-stack ROI comes from coherence and accountability — two things fragmented builds quietly tax. Coherent architecture designed across all layers prevents the technical debt and ongoing friction that stitched-together builds accrue, which saves cost for years. Eliminating cross-team integration overhead recovers time and budget. Clear, single-team accountability means problems are resolved fast instead of refereed, reducing downtime and management burden. And one coordinated team typically delivers faster than several that must hand off.',
+      valueStreams: [
+        'Technical debt reduction (coherent architecture)',
+        'Integration overhead eliminated (time/budget recovered)',
+        'Single accountability (problems resolved fast)',
+        'Delivery speed (one coordinated team)'
+      ]
     },
-    {
-      question: 'Do we own everything?',
-      answer: 'Completely — every layer, all code, infrastructure configuration, and documentation are yours with no lock-in. Full control, take it in-house or elsewhere anytime.'
+    
+    faqs: [
+      {
+        question: 'What does a full-stack developer actually do?',
+        answer: 'A full-stack developer works across both the front end, the visual interface users interact with, and the back end, the servers, databases, and logic that power the application.'
+      },
+      {
+        question: 'Is full-stack development better than hiring separate front-end and back-end teams?',
+        answer: 'It often streamlines communication and keeps architecture consistent, since one team understands the entire system. Separate specialists can still work well with strong project coordination, but full-stack teams typically move faster.'
+      },
+      {
+        question: 'What technologies do you use for full-stack development?',
+        answer: 'We select the stack based on your project\'s needs, commonly working with technologies like React, Node.js, Python, and cloud platforms such as AWS or GCP.'
+      },
+      {
+        question: 'Can you take over an existing application built by another team?',
+        answer: 'Yes, we regularly take over existing applications, starting with a technical audit to understand the current codebase before making changes or adding features.'
+      }
+    ],
+    
+    cta: {
+      heading: 'Get One Accountable Team for the Whole Build',
+      primary: 'Book a full-stack strategy call',
+      secondary: 'Request a technical scoping session'
+    },
+    
+    riskReversal: 'Builds are fixed-scope to defined deliverables, or 30-day rolling for dedicated teams — one accountable team, never a black box.',
+    
+    pricing: {
+      range: '$25K–$250K+',
+      note: 'Focused build: $25K–$75K; complex application/platform: $75K–$250K+'
+    },
+    
+    internalLinks: ['/web-development-services', '/web-application-development', '/saas-development'],
+    
+    schema: {
+      serviceType: 'Full-Stack Development',
+      priceRange: '$25,000 - $250,000+',
+      audience: 'Founders & Product/Engineering Leaders'
     }
-  ],
-  
-  cta: {
-    heading: 'Get One Accountable Team for the Whole Build',
-    primary: 'Book a full-stack strategy call',
-    secondary: 'Request a technical scoping session'
-  },
-  
-  riskReversal: 'Builds are fixed-scope to defined deliverables, or 30-day rolling for dedicated teams — one accountable team, never a black box.',
-  
-  pricing: {
-    range: '$25K–$250K+',
-    note: 'Focused build: $25K–$75K; complex application/platform: $75K–$250K+'
-  },
-  
-  internalLinks: ['/web-development-services', '/web-application-development', '/saas-development'],
-  
-  schema: {
-    serviceType: 'Full-Stack Development',
-    priceRange: '$25,000 - $250,000+',
-    audience: 'Founders & Product/Engineering Leaders'
   }
-},
-
-
-
-
 
 };
 
