@@ -135,7 +135,7 @@ export interface ServicePageData {
   cta: CTAData;
   riskReversal: string;
   pricing: PricingData;
-   keyBenefits: string[];
+  keyBenefits?: string[]; // Made optional to prevent TS errors on pages where it was removed
   // SEO
   internalLinks: string[];
   schema: {
@@ -2829,15 +2829,6 @@ export const serviceData: Record<string, ServicePageData> = {
       ]
     },
     
-    keyBenefits: [
-      'Custom theme and functionality built around your product catalog',
-      'Custom plugin development for unique store requirements',
-      'Optimized performance even with large inventories',
-      'Secure, PCI-compliant payment gateway integrations',
-      'SEO-friendly structure leveraging WordPress\'s content strengths',
-      'Flexible content and blog integration alongside your store'
-    ],
-    
     capabilities: {
       heading: 'Key Benefits',
       items: [
@@ -3059,15 +3050,6 @@ export const serviceData: Record<string, ServicePageData> = {
       heading: 'Why Choose Us',
       content: 'Magento rewards experienced developers and punishes inexperienced ones with slow, vulnerable stores. Our team has deep Magento-specific expertise, so you get the platform\'s full power without the performance and security pitfalls that come from cutting corners.'
     },
-    
-    keyBenefits: [
-      'Support for large, complex product catalogs and configurations',
-      'Multi-store and multi-currency setup for national or global reach',
-      'Custom module development for unique business requirements',
-      'B2B functionality including custom pricing and quoting',
-      'Performance tuning for fast load times despite platform complexity',
-      'Regular security patching to protect against vulnerabilities'
-    ],
     
     capabilities: {
       heading: 'Key Benefits',
@@ -3291,15 +3273,6 @@ export const serviceData: Record<string, ServicePageData> = {
       heading: 'Why Choose Us',
       content: 'Headless commerce done poorly just adds complexity without the performance benefit. We\'ve built headless architectures specifically for speed and maintainability, so you get the flexibility without a fragile system that\'s hard to manage long term.'
     },
-    
-    keyBenefits: [
-      'Significantly faster page load speeds than traditional platforms',
-      'Freedom to build fully custom front-end experiences',
-      'Flexibility to swap or upgrade back-end systems independently',
-      'Better support for omnichannel experiences (web, app, IoT)',
-      'Improved SEO potential through faster, cleaner front-end code',
-      'API-first architecture that scales with your business'
-    ],
     
     capabilities: {
       heading: 'Key Benefits',
@@ -3525,15 +3498,6 @@ export const serviceData: Record<string, ServicePageData> = {
       content: 'We\'ve seen too many CMS builds prioritize technical elegance over actual usability for the people managing content daily. We design every CMS project around the people who\'ll be using it, so your team can publish confidently without constant developer support.'
     },
     
-    keyBenefits: [
-      'Intuitive editing interface for non-technical team members',
-      'Custom content types built around your specific content needs',
-      'Role-based permissions for teams with multiple content editors',
-      'Headless CMS options for multi-channel content delivery',
-      'SEO tools built into the content editing workflow',
-      'Scalable structure that grows with your content library'
-    ],
-    
     capabilities: {
       heading: 'Key Benefits',
       items: [
@@ -3755,15 +3719,6 @@ export const serviceData: Record<string, ServicePageData> = {
       heading: 'Why Choose Us',
       content: 'We approach AI as a tool to solve specific business problems, not a marketing buzzword to bolt onto a site. Every AI feature we build starts with a clear use case and measurable goal, so the investment actually improves your website\'s performance.'
     },
-    
-    keyBenefits: [
-      'Personalized content and product recommendations for each visitor',
-      'AI-powered search that understands natural language queries',
-      'Automated workflows that reduce manual operational tasks',
-      'Predictive analytics to inform business and marketing decisions',
-      'Integration with leading AI models and APIs',
-      'Improved user engagement through smarter, adaptive experiences'
-    ],
     
     capabilities: {
       heading: 'Key Benefits',
@@ -3987,15 +3942,6 @@ export const serviceData: Record<string, ServicePageData> = {
       content: 'We build chatbots people actually want to use, not ones that trap visitors in frustrating loops. By training on your specific content and defining clear escalation paths to human support, we make sure the chatbot adds value instead of creating a support bottleneck.'
     },
     
-    keyBenefits: [
-      '24/7 customer support without increasing staffing costs',
-      'Natural language understanding for more helpful conversations',
-      'Lead qualification and capture directly through chat',
-      'Trained on your specific business content and FAQs',
-      'Seamless handoff to human agents when needed',
-      'Integration with your CRM and support systems'
-    ],
-    
     capabilities: {
       heading: 'Key Benefits',
       items: [
@@ -4216,15 +4162,6 @@ export const serviceData: Record<string, ServicePageData> = {
       heading: 'Why Choose Us',
       content: 'Poorly built APIs create more problems than they solve, security gaps, slow response times, and confusing documentation that makes future changes risky. We build APIs with security, clarity, and long-term maintainability as core requirements, not afterthoughts.'
     },
-    
-    keyBenefits: [
-      'Custom APIs built to connect your specific systems and tools',
-      'Secure authentication and data handling protocols',
-      'Well-documented endpoints for easier long-term maintenance',
-      'Scalable design that handles growing request volumes',
-      'Integration with third-party APIs and services',
-      'Faster, more reliable data flow between your business systems'
-    ],
     
     capabilities: {
       heading: 'Key Benefits',
@@ -4447,15 +4384,6 @@ export const serviceData: Record<string, ServicePageData> = {
       heading: 'Why Choose Us',
       content: 'Redesigns go wrong most often when SEO gets treated as an afterthought, resulting in lost rankings after launch. We build redirect mapping and technical SEO into the redesign process from the start, so your new site looks better and performs better in search.'
     },
-    
-    keyBenefits: [
-      'Modern design that reflects your current brand and offerings',
-      'Improved mobile responsiveness and page speed',
-      'Strategic SEO redirects to preserve existing search rankings',
-      'Updated UX based on how users actually behave on your current site',
-      'Refreshed content structure optimized for conversions',
-      'Technical upgrades to improve security and maintainability'
-    ],
     
     capabilities: {
       heading: 'Key Benefits',
@@ -4693,15 +4621,6 @@ export const serviceData: Record<string, ServicePageData> = {
       ]
     },
     
-    keyBenefits: [
-      'Faster page load times that reduce visitor bounce rates',
-      'Improved Core Web Vitals scores for better Google rankings',
-      'Optimized images and assets without sacrificing quality',
-      'Reduced server response times through backend optimization',
-      'Better mobile performance on slower connections',
-      'Higher conversion rates driven by a smoother experience'
-    ],
-    
     capabilities: {
       heading: 'Key Benefits',
       items: [
@@ -4938,15 +4857,6 @@ export const serviceData: Record<string, ServicePageData> = {
       ]
     },
     
-    keyBenefits: [
-      'Regular software and plugin updates to prevent vulnerabilities',
-      'Proactive security monitoring and malware scanning',
-      'Automated backups to protect against data loss',
-      'Fast turnaround on bug fixes and technical issues',
-      'Performance checks to catch slowdowns before they impact users',
-      'A dedicated point of contact instead of a support ticket queue'
-    ],
-    
     capabilities: {
       heading: 'Key Benefits',
       items: [
@@ -5182,15 +5092,6 @@ export const serviceData: Record<string, ServicePageData> = {
         }
       ]
     },
-    
-    keyBenefits: [
-      'One accountable team across front end, back end, and infrastructure',
-      'Consistent architecture without hand-off gaps between specialists',
-      'Faster development cycles through streamlined communication',
-      'Database design and API development handled in-house',
-      'Cloud deployment and infrastructure setup included',
-      'Easier long-term maintenance with unified technical ownership'
-    ],
     
     capabilities: {
       heading: 'Key Benefits',

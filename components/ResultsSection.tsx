@@ -82,15 +82,15 @@ export function ResultsSection() {
 
         <div className="mt-12 md:mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-white/8 bg-white/8 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s, i) => (
-            <div key={s.l} className="relative bg-surface-1 p-6 sm:p-8 md:p-10">
+            <div key={s.l} className="relative bg-surface-1 p-6 sm:p-8 md:p-10 transition-all duration-300 ease-out hover:bg-surface-2 hover:shadow-lg hover:shadow-primary/5 cursor-pointer">
               <div className="flex items-start justify-between">
-                <span className="text-xs uppercase tracking-[0.3em] text-violet-soft">0{i + 1}</span>
+                <span className="text-xs uppercase tracking-[0.3em] text-violet-soft transition-colors duration-300 ease-out hover:text-primary">0{i + 1}</span>
                 <Ring percent={[88, 99, 96, 84][i]} />
               </div>
               <div className="mt-6 md:mt-8">
                 <Counter value={s.v} suffix={s.suffix} decimals={s.decimals ?? 0} />
               </div>
-              <div className="mt-3 md:mt-4 text-xs sm:text-sm text-ink-mute">{s.l}</div>
+              <div className="mt-3 md:mt-4 text-xs sm:text-sm text-ink-mute transition-colors duration-300 ease-out hover:text-ink-soft">{s.l}</div>
             </div>
           ))}
         </div>

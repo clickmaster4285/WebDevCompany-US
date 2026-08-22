@@ -157,12 +157,12 @@ export function HeroSection() {
 </h2>
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
-            <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-violet px-6 py-4 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 min-h-[48px] sm:px-7">
+            <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-violet px-6 py-4 text-sm font-medium text-white transition-all duration-300 ease-out hover:from-blue-600 hover:to-purple-600 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 hover:scale-105 min-h-[48px] sm:px-7 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
               Start a project
-              <span className="transition-transform group-hover:translate-x-1">→</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110 group-hover:text-blue-200">→</span>
             </Link>
 
-            <Link href="#work" className="inline-flex items-center gap-3 rounded-full border border-white/15 px-6 py-4 text-sm font-medium text-white/80 transition-all hover:bg-white/5 hover:text-white hover:border-white/30 min-h-[48px] sm:px-7">
+            <Link href="#work" className="inline-flex items-center gap-3 rounded-full border border-white/15 px-6 py-4 text-sm font-medium text-white/80 transition-all duration-300 ease-out hover:bg-primary hover:text-white hover:border-primary hover:-translate-y-0.5 hover:scale-105 min-h-[48px] sm:px-7 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
               See selected work
             </Link>
           </div>
@@ -209,9 +209,9 @@ export function HeroSection() {
                 rows={3} 
                 placeholder="Project details" 
               />
-              <button 
-                type="submit" 
-                className="w-full rounded-xl bg-gradient-to-r from-primary to-violet hover:shadow-lg hover:shadow-primary/25 py-4 text-white font-medium transition-all hover:-translate-y-0.5 min-h-[48px]"
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-gradient-to-r from-primary to-violet hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:shadow-primary/25 py-4 text-white font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
               >
                 Send Message
               </button>

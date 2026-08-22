@@ -207,22 +207,22 @@ export function TechSection() {
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-6 md:gap-8 max-w-5xl mx-auto">
           {TECH.map((tech) => (
             <div key={tech.name} className="flex flex-col items-center gap-2 md:gap-3 group">
-              <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-surface/50 rounded-xl border border-border/50 backdrop-blur-sm transition-all group-hover:scale-110 group-hover:border-violet-soft group-hover:shadow-lg group-hover:shadow-violet-soft/20">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-surface/50 rounded-xl border border-border/50 backdrop-blur-sm transition-all duration-300 ease-out group-hover:scale-110 group-hover:border-violet-soft group-hover:shadow-lg group-hover:shadow-violet-soft/20 cursor-pointer">
                 {/* Note: Using standard <Image> for external SVGs/PNGs to avoid Next.js remotePatterns config issues */}
-                               <Image 
-                  src={tech.logo} 
-                  alt={`${tech.name} logo`} 
+                               <Image
+                  src={tech.logo}
+                  alt={`${tech.name} logo`}
                   width={32}
                   height={32}
                   unoptimized
-                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                   onError={(e) => {
                     // Fallback for broken images
                     (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔧%3C/text%3E%3C/svg%3E";
                   }}
                 />
               </div>
-              <span className="text-[10px] sm:text-xs text-ink-mute font-medium tracking-wide uppercase">{tech.name}</span>
+              <span className="text-[10px] sm:text-xs text-ink-mute font-medium tracking-wide uppercase transition-colors duration-300 ease-out group-hover:text-violet-soft">{tech.name}</span>
             </div>
           ))}
         </div>

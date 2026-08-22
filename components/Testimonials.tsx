@@ -31,7 +31,7 @@ export function TestimonialCard({
       className={cn(
         "flex h-auto w-[320px] shrink-0 flex-col justify-between gap-6",
         "rounded-2xl border border-border bg-card p-6 shadow-sm",
-        "transition-colors hover:bg-accent/50",
+        "transition-all duration-300 ease-out hover:bg-accent/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background",
         "sm:w-[380px]",
         className
       )}
@@ -41,7 +41,7 @@ export function TestimonialCard({
       </p>
 
       <div className="flex items-center gap-3">
-        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-background">
+        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-background transition-all duration-300 ease-out hover:ring-primary/50 hover:scale-110">
           <Image
             src={author.avatar}
             alt={`${author.name} profile`}
@@ -52,7 +52,7 @@ export function TestimonialCard({
         </div>
 
         <div className="flex flex-col">
-          <span className="text-sm font-semibold text-foreground">{author.name}</span>
+          <span className="text-sm font-semibold text-foreground transition-colors duration-300 ease-out hover:text-primary">{author.name}</span>
           <span className="text-xs text-muted-foreground">{author.role}</span>
         </div>
       </div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { serviceCategories } from "@/data/services-data";
-import { PlateHeader, CornerBrackets } from "./Primitives";
+import { PlateHeader, CornerBrackets, staggerContainer, scaleIn } from "./Primitives";
 
 export function CapabilitiesSection() {
   const [activeTab, setActiveTab] = useState(serviceCategories[0].id);
@@ -33,9 +33,21 @@ export function CapabilitiesSection() {
       </AnimatePresence>
 
       <AnimatePresence mode="wait">
-        <motion.div key={activeTab} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div 
+          key={activeTab} 
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          exit={{ opacity: 0, y: -20 }} 
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {currentCategory.services.map((service, index) => (
-            <motion.div key={service.slug} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * 0.05 }} className="group relative border border-white/10 bg-white/[0.02] p-5 transition-colors duration-300 hover:border-primary/30">
+            <motion.div 
+              key={service.slug} 
+              variants={scaleIn}
+              whileHover={{ y: -4 }} /* Premium hover lift */
+              className="group relative border border-white/10 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-primary/30 hover:bg-white/[0.04]"
+            >
               <CornerBrackets />
               <Link href={`/services/${service.slug}`} className="relative z-10 block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary/70">
                 <div className="mb-4 flex items-center justify-between">

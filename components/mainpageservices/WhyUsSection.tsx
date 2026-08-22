@@ -1,20 +1,43 @@
+import { motion } from "framer-motion";
 import { whyUs } from "@/data/services-data";
-import { PlateHeader, CornerBrackets } from "./Primitives";
+import { PlateHeader, staggerContainer, fadeInUp } from "./Primitives";
 
 export function WhyUsSection() {
   return (
     <section className="mb-32 max-w-5xl">
       <PlateHeader plate="02" label="Why us" title="Why Businesses Choose Clickmasters for Web Development" />
-      <div className="grid gap-20 px-10 md:grid-cols-3">
+
+      <motion.div 
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid grid-cols-1 items-stretch gap-6 px-10 md:grid-cols-3"
+      >
         {whyUs.map((item) => (
-          <div key={item.label} className="group relative border border-white/10 bg-white/[0.02] p-6">
-            <CornerBrackets />
-            <item.icon className="mb-4 h-6 w-6 text-primary/70" />
-            <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">{item.label}</div>
-            <p className="leading-relaxed text-white/60">{item.body}</p>
-          </div>
+          <motion.div
+            key={item.label}
+            variants={fadeInUp}
+            whileHover={{ y: -4 }}
+            className="group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-none border border-white/10 bg-white/[0.02] p-8 transition-colors duration-300 hover:border-primary/40 hover:bg-white/[0.04]"
+          >
+            {/* Subtle Hover Glow */}
+            <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(400px circle at 50% 0%, rgba(139, 92, 246, 0.06), transparent 40%)' }} />
+            
+            <div className="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-none border border-white/15 bg-black/40 transition-colors duration-300 group-hover:border-primary/50 group-hover:bg-primary/10">
+              <item.icon className="h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110" />
+            </div>
+
+            <h3 className="mb-3 min-h-[2.5rem] text-sm font-bold uppercase tracking-[0.15em] text-white">
+              {item.label}
+            </h3>
+
+            <p className="text-sm leading-relaxed text-white/50">
+              {item.body}
+            </p>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

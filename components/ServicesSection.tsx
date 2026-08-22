@@ -230,7 +230,7 @@ function ServiceCard({ service, index, code }: { service: any; index: number; co
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       whileHover="hover"
-      className="group relative border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
+      className="group relative border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 ease-out hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 cursor-pointer"
       style={{
         transformStyle: "preserve-3d",
       }}
@@ -408,7 +408,7 @@ export function ServicesSection() {
                         <div className="mt-1 text-[10px] uppercase tracking-widest text-white/40">{s.metric[1]}</div>
                       </div>
                       <Link
-                        className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/60 transition-colors hover:text-primary"
+                        className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/60 transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                         href="/contact"
                       >
                         [ Discuss this service ]
@@ -440,7 +440,7 @@ export function ServicesSection() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="relative flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors duration-200"
+                  className="relative flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   {isActive && (
                     <motion.span

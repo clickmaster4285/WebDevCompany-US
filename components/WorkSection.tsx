@@ -104,13 +104,13 @@ export function WorkSection() {
                 <div className="mt-8 sm:mt-10 flex flex-wrap items-end justify-between gap-4 sm:gap-6">
                   <div className="flex flex-wrap gap-2">
                     {p.tech.map((t) => (
-                      <span key={t} className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-ink-soft min-h-[32px] flex items-center">
+                      <span key={t} className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-ink-soft min-h-[32px] flex items-center transition-all duration-300 ease-out hover:border-violet/30 hover:bg-violet/10 hover:text-violet-soft cursor-pointer">
                         {t}
                       </span>
                     ))}
                   </div>
                   <div className="text-right">
-                    <div className="text-display text-xl sm:text-2xl text-violet-soft">{p.result}</div>
+                    <div className="text-display text-xl sm:text-2xl text-violet-soft transition-colors duration-300 ease-out hover:text-primary cursor-pointer">{p.result}</div>
                     <div className="text-xs uppercase tracking-widest text-ink-mute">Outcome</div>
                   </div>
                 </div>

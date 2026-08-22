@@ -4,12 +4,17 @@ import type { Variants } from "framer-motion";
 
 export const staggerContainer: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
 
 export const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+};
+
+export const scaleIn: Variants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export function RulerTicks() {
@@ -34,10 +39,10 @@ export function CornerBrackets({ active = false }: { active?: boolean }) {
   const dim = active ? "opacity-100" : "opacity-0 group-hover:opacity-100";
   return (
     <>
-      <span className={`${side} ${dim} left-0 top-0 border-l border-t`} />
-      <span className={`${side} ${dim} right-0 top-0 border-r border-t`} />
-      <span className={`${side} ${dim} bottom-0 left-0 border-b border-l`} />
-      <span className={`${side} ${dim} bottom-0 right-0 border-b border-r`} />
+      <span className={`${side} ${dim} left-0 top-0 border-l-2 border-t-2`} />
+      <span className={`${side} ${dim} right-0 top-0 border-r-2 border-t-2`} />
+      <span className={`${side} ${dim} bottom-0 left-0 border-b-2 border-l-2`} />
+      <span className={`${side} ${dim} bottom-0 right-0 border-b-2 border-r-2`} />
     </>
   );
 }
@@ -47,17 +52,17 @@ export function PlateHeader({ plate, label, title, lede }: { plate: string; labe
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={isInView ? "visible" : "hidden"} className="mb-12">
-      <motion.div variants={fadeInUp} className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary/70">
-        <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary motion-safe:animate-pulse" />
+    <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={isInView ? "visible" : "hidden"} className="mb-14">
+      <motion.div variants={fadeInUp} className="mb-5 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary/70">
+        <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_10px_rgba(139,92,246,0.8)]" />
         <span>Plate {plate}</span>
-        <span className="h-px w-6 bg-white/20" />
+        <span className="h-px w-8 bg-white/20" />
         <span className="text-white/40">{label}</span>
       </motion.div>
-      <motion.h2 variants={fadeInUp} className="max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+      <motion.h2 variants={fadeInUp} className="max-w-4xl text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl text-balance">
         {title}
       </motion.h2>
-      {lede && <motion.p variants={fadeInUp} className="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">{lede}</motion.p>}
+      {lede && <motion.p variants={fadeInUp} className="mt-6 max-w-3xl text-lg leading-relaxed text-white/60">{lede}</motion.p>}
     </motion.div>
   );
 }

@@ -198,9 +198,9 @@ const industriesCategories: DropdownSection[] = [
 
 function DropdownTrigger({ label }: { label: string }) {
   return (
-    <button className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet min-h-[44px] min-w-[44px]">
+    <button className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-100 hover:text-blue-600 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
       {label}
-      <ChevronDown className="ml-1 h-4 w-4" />
+      <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-300 hover:rotate-180 hover:text-blue-600" />
     </button>
   );
 }
@@ -265,7 +265,7 @@ export function Nav() {
           <nav className="hidden items-center gap-1 text-sm md:flex">
             <Link
               href="/"
-              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-100 hover:text-blue-600 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               Solutions
             </Link>
@@ -311,14 +311,14 @@ export function Nav() {
 
             <Link
               href="/about"
-              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-100 hover:text-blue-600 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               About
             </Link>
 
             <Link
               href="/contact"
-              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-100 hover:text-blue-600 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               Contact
             </Link>
@@ -327,17 +327,17 @@ export function Nav() {
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-violet min-h-[44px] min-w-[44px]"
+              className="group inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/25 min-h-[44px] min-w-[44px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               <span>Start a project</span>
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-blue-200" />
             </Link>
           </div>
 
           <button
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-950 transition hover:bg-slate-100 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-950 transition-all duration-300 ease-out hover:bg-slate-100 hover:scale-110 md:hidden focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -352,10 +352,10 @@ export function Nav() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between rounded-2xl px-4 py-4 text-sm font-bold text-slate-700 transition hover:bg-slate-50 hover:text-violet min-h-[48px]"
+                  className="flex items-center justify-between rounded-2xl px-4 py-4 text-sm font-bold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-50 hover:text-blue-600 hover:-translate-y-0.5 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   {link.label}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 hover:translate-x-1 hover:text-blue-600" />
                 </Link>
               ))}
             </div>
@@ -363,10 +363,10 @@ export function Nav() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-4 text-sm font-black text-white transition hover:bg-violet min-h-[48px]"
+              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-4 text-sm font-black text-white transition-all duration-300 ease-out hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/25 hover:-translate-y-0.5 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               Start a project
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 hover:translate-x-1 hover:text-blue-200" />
             </Link>
           </div>
         )}

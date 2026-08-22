@@ -57,7 +57,7 @@ function MagneticButton({
     <button
       ref={ref}
       onClick={onClick}
-      className="group inline-flex items-center gap-3 rounded-full bg-violet px-6 sm:px-8 py-4 text-sm sm:text-base font-medium text-white transition-[transform,box-shadow] duration-300 violet-glow hover:shadow-[0_40px_100px_-20px_var(--violet)] min-h-[48px] min-w-[48px] cursor-pointer"
+      className="group inline-flex items-center gap-3 rounded-full bg-violet px-6 sm:px-8 py-4 text-sm sm:text-base font-medium text-white transition-all duration-300 ease-out violet-glow hover:bg-blue-600 hover:shadow-[0_40px_100px_-20px_var(--violet)] hover:-translate-y-0.5 hover:scale-105 min-h-[48px] min-w-[48px] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
     >
       {children}
     </button>
