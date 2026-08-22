@@ -8,12 +8,16 @@ import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
 export function BlogsHero() {
   return (
-    <section className="relative overflow-hidden bg-background px-6 pb-20 pt-32 text-white md:px-10 md:pb-24 md:pt-36">
+    <section className="relative overflow-hidden bg-background pb-20 pt-32 text-white md:pb-24 md:pt-36">
+      {/* Background Grid Pattern */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      
+      {/* Background Glows */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
       <div className="absolute -right-32 top-20 h-80 w-80 rounded-full bg-violet/25 blur-3xl" />
       <div className="absolute -left-32 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
 
-      <div className="relative layout-container px-85 grid items-center gap-12 lg:grid-cols-[1fr_480px]">
+      <div className="relative layout-container grid items-center gap-12 lg:grid-cols-[1fr_480px]">
         <div>
           <div className="mb-10 rounded-xl px-4 py-2 backdrop-blur-sm">
             <Breadcrumb
@@ -27,7 +31,7 @@ export function BlogsHero() {
             Resources
           </span>
 
-          <h1 className="mt-7 max-w-3xl text-5xl font-black leading-[0.98] tracking-[-0.06em] text-white md:text-7xl">
+          <h1 className="mt-7 max-w-3xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             Blogs, Guides & Digital Growth Insights
           </h1>
 
@@ -53,7 +57,7 @@ export function BlogsHero() {
             </Link>
           </div>
 
-          <div className="mt-10 grid max-w-xl grid-cols-3 px-15 gap-3">
+          <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
             {[
               ["20+", "Guides"],
               ["5+", "Topics"],
@@ -105,7 +109,7 @@ export function BlogsHero() {
               scale: 1.03,
               rotate: 0,
             }}
-            className="relative z-10"
+            className="relative z-10 w-full max-w-[400px] lg:max-w-[520px]"
           >
             <Image
               src={blogHeroImg}
@@ -113,7 +117,7 @@ export function BlogsHero() {
               width={520}
               height={520}
               priority
-              className="h-auto w-full max-w-[520px] rounded-[2rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)]"
+              className="h-auto w-full rounded-[2rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)]"
             />
           </motion.div>
         </motion.div>
