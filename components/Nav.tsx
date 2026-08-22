@@ -262,7 +262,8 @@ export function Nav() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-1 text-sm md:flex">
+          {/* Changed md:flex to lg:flex */}
+          <nav className="hidden items-center gap-1 text-sm lg:flex">
             <Link
               href="/"
               className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-100 hover:text-blue-600 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
@@ -324,7 +325,8 @@ export function Nav() {
             </Link>
           </nav>
 
-          <div className="hidden md:block">
+          {/* Changed md:block to lg:block */}
+          <div className="hidden lg:block">
             <Link
               href="/contact"
               className="group inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/25 min-h-[44px] min-w-[44px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
@@ -334,18 +336,20 @@ export function Nav() {
             </Link>
           </div>
 
+          {/* Changed md:hidden to lg:hidden */}
           <button
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-950 transition-all duration-300 ease-out hover:bg-slate-100 hover:scale-110 md:hidden focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-950 transition-all duration-300 ease-out hover:bg-slate-100 hover:scale-110 lg:hidden focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
+        {/* Changed md:hidden to lg:hidden */}
         {mobileOpen && (
-          <div className="mt-3 rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-[0_20px_70px_rgba(15,23,42,0.14)] md:hidden">
+          <div className="mt-3 rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-[0_20px_70px_rgba(15,23,42,0.14)] lg:hidden">
             <div className="grid gap-2">
               {mobileLinks.map((link) => (
                 <Link
