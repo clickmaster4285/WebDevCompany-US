@@ -31,7 +31,7 @@ export function HeroSection() {
           observer.unobserve(video);
         }
       },
-      { rootMargin: "200px 0px" } // start loading 200px before it enters
+      { rootMargin: "200px 0px" }
     );
 
     observer.observe(video);
@@ -45,35 +45,22 @@ export function HeroSection() {
       const h = headline.current;
 
       if (h) {
-        const text = "ClickMasters, No.1 Web Development Services Company in USA";
-        h.innerHTML = "";
-        const words = text.split(' ');
+        const wordSpans = h.querySelectorAll<HTMLElement>("[data-word]");
         const allChars: HTMLElement[] = [];
 
-        words.forEach((word, wordIndex) => {
-          const wordContainer = document.createElement("span");
-          wordContainer.style.display = "inline-block";
-          wordContainer.style.whiteSpace = "nowrap";
-          
-          [...word].forEach((char) => {
-            const span = document.createElement("span");
-            span.textContent = char;
-            span.className = "inline-block";
-            wordContainer.appendChild(span);
-            allChars.push(span);
+        wordSpans.forEach((span) => {
+          const text = span.textContent || "";
+          span.textContent = "";
+          [...text].forEach((char) => {
+            const charSpan = document.createElement("span");
+            charSpan.textContent = char === " " ? "\u00A0" : char;
+            charSpan.className = "inline-block";
+            span.appendChild(charSpan);
+            allChars.push(charSpan);
           });
-          
-          h.appendChild(wordContainer);
-          
-          if (wordIndex < words.length - 1) {
-            const space = document.createElement("span");
-            space.textContent = "\u00A0";
-            space.style.display = "inline-block";
-            h.appendChild(space);
-          }
         });
 
-        gsap.set(allChars, { yPercent: 120, opacity: 0 });
+        gsap.set(allChars, { yPercent: 110, opacity: 0 });
         gsap.to(allChars, {
           yPercent: 0,
           opacity: 1,
@@ -84,8 +71,21 @@ export function HeroSection() {
         });
       }
 
-      gsap.from(".hero-fade", { y: 24, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.08, delay: 0.5 });
-      gsap.from(".cta-form", { y: 30, opacity: 0, duration: 0.8, ease: "expo.out", delay: 0.15 });
+      gsap.from(".hero-fade", {
+        y: 24,
+        opacity: 0,
+        duration: 1,
+        ease: "expo.out",
+        stagger: 0.08,
+        delay: 0.5,
+      });
+      gsap.from(".cta-form", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "expo.out",
+        delay: 0.15,
+      });
 
       if (browser.current && root.current) {
         gsap.to(browser.current, {
@@ -104,11 +104,19 @@ export function HeroSection() {
     return () => ctx.revert();
   }, []);
 
+  // Reusable handler for the spotlight effect
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  };
+
   return (
     <section
       ref={root}
       id="top"
-      className="relative mx-auto flex flex-col items-center justify-center overflow-x-hidden max-w-full min-h-[100dvh] w-full pt-20 pb-16 px-4 sm:px-6 sm:pt-24 sm:pb-20 md:px-10">
+      className="relative mx-auto flex flex-col items-center justify-center overflow-x-hidden max-w-full min-h-[100dvh] w-full pt-20 pb-16 px-4 sm:px-6 sm:pt-24 sm:pb-20 md:px-10"
+    >
       {/* Background Layer */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <video
@@ -129,41 +137,73 @@ export function HeroSection() {
 
       {/* Main Content */}
       <div className="relative z-10 layout-container px-4 sm:px-6 md:px-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
-        
         {/* Left Column */}
         <div>
           <h1
             ref={headline}
-            className="overflow-hidden font-bold text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95]"
+            className="font-bold text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-left"
           >
-            <span className="text-white">ClickMasters</span>
-            <span className="text-white/40">,</span>
-            <span className="text-primary"> No.1</span>
-            <span className="text-white"> Web Development</span>
-            <br className="hidden sm:block" />
-            <span className="text-white">Services</span>
-            <span className="text-white/40"> </span>
-            <span className="text-white">Company in</span>
-            <span className="text-primary"> USA</span>
+            {/* Line 1 */}
+            <span className="block overflow-hidden pb-[0.12em]">
+              <span className="inline-block">
+                <span data-word className="text-white">ClickMasters</span>
+                <span data-word className="text-white/40">,</span>
+                <span data-word className="text-primary"> No.1</span>
+                <span data-word className="text-white"> Web Development</span>
+              </span>
+            </span>
+            {/* Line 2 */}
+            <span className="block overflow-hidden pb-[0.12em]">
+              <span className="inline-block">
+                <span data-word className="text-white">Services Company in</span>
+                <span data-word className="text-primary"> USA</span>
+              </span>
+            </span>
           </h1>
 
-         <h2 className="hero-fade mt-6 text-white/90 text-xl sm:text-2xl md:text-3xl leading-tight font-medium">
-  <span className="text-primary">ClickMasters</span> is a{" "}
-  <span className="text-primary/80">
-    web development company in USA
-  </span>{" "}
-  helping ambitious brands build websites, web applications, and online stores
-  that feel effortless and are built to last.
-</h2>
+          <h2 className="hero-fade mt-6 text-white/90 text-xl sm:text-2xl md:text-3xl leading-tight font-medium text-left">
+            <span className="text-primary">ClickMasters</span> is a{" "}
+            <span className="text-primary/80">web development company in USA</span>{" "}
+            helping ambitious brands build websites, web applications, and online
+            stores that feel effortless and are built to last.
+          </h2>
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
-            <Link href="/contact" className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-violet px-6 py-4 text-sm font-medium text-white transition-all duration-300 ease-out hover:from-blue-600 hover:to-purple-600 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 hover:scale-105 min-h-[48px] sm:px-7 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
-              Start a project
-              <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110 group-hover:text-blue-200">→</span>
+            {/* Start a project button */}
+            <Link
+              href="/contact"
+              onMouseMove={handleMouseMove}
+              style={{ "--x": "50%", "--y": "50%" } as React.CSSProperties}
+              className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-violet px-6 py-4 text-sm font-medium text-white transition-all duration-300 ease-out hover:from-blue-600 hover:to-purple-600 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 hover:scale-105 min-h-[48px] sm:px-7 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
+            >
+              <span
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(200px circle at var(--x) var(--y), rgba(255, 255, 255, 0.25), transparent 80%)",
+                }}
+              />
+              <span className="relative z-10">Start a project</span>
+              <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110 group-hover:text-blue-200">
+                →
+              </span>
             </Link>
 
-            <Link href="#work" className="inline-flex items-center gap-3 rounded-full border border-white/15 px-6 py-4 text-sm font-medium text-white/80 transition-all duration-300 ease-out hover:bg-primary hover:text-white hover:border-primary hover:-translate-y-0.5 hover:scale-105 min-h-[48px] sm:px-7 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
-              See selected work
+            {/* See selected work button */}
+            <Link
+              href="#work"
+              onMouseMove={handleMouseMove}
+              style={{ "--x": "50%", "--y": "50%" } as React.CSSProperties}
+              className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full border border-white/15 px-6 py-4 text-sm font-medium text-white/80 transition-all duration-300 ease-out hover:bg-primary hover:text-white hover:border-primary hover:-translate-y-0.5 hover:scale-105 min-h-[48px] sm:px-7 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
+            >
+              <span
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(200px circle at var(--x) var(--y), rgba(255, 255, 255, 0.2), transparent 80%)",
+                }}
+              />
+              <span className="relative z-10">See selected work</span>
             </Link>
           </div>
 
@@ -171,49 +211,71 @@ export function HeroSection() {
             {[
               { val: "120+", label: "Projects", highlight: true },
               { val: "18", label: "Awards", highlight: false },
-              { val: "99", label: "Lighthouse", highlight: true }
+              { val: "99", label: "Lighthouse", highlight: true },
             ].map((item) => (
               <div key={item.label}>
-                <div className={`text-2xl font-semibold md:text-3xl ${item.highlight ? 'text-primary' : 'text-white'}`}>
+                <div
+                  className={`text-2xl font-semibold md:text-3xl ${
+                    item.highlight ? "text-primary" : "text-white"
+                  }`}
+                >
                   {item.val}
                 </div>
-                <div className="mt-2 text-xs uppercase tracking-widest text-white/50">{item.label}</div>
+                <div className="mt-2 text-xs uppercase tracking-widest text-white/50">
+                  {item.label}
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Right Column */}
-       <div className="cta-form">
+        <div className="cta-form">
           <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8">
-            <h3 className="text-lg sm:text-xl font-medium text-white">Ready to create something <span className="text-primary">unforgettable</span>?</h3>
-            <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <input 
-                type="text" 
-                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]" 
-                placeholder="Name" 
+            <h3 className="text-lg sm:text-xl font-medium text-white">
+              Ready to create something{" "}
+              <span className="text-primary">unforgettable</span>?
+            </h3>
+            <form
+              className="mt-6 space-y-4"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <input
+                type="text"
+                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]"
+                placeholder="Name"
               />
-              <input 
-                type="email" 
-                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]" 
-                placeholder="Email" 
+              <input
+                type="email"
+                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]"
+                placeholder="Email"
               />
-              {/* New Phone Number Input */}
-              <input 
-                type="tel" 
-                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]" 
-                placeholder="Phone number" 
+              <input
+                type="tel"
+                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]"
+                placeholder="Phone number"
               />
-              <textarea 
-                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[100px]" 
-                rows={3} 
-                placeholder="Project details" 
+              <textarea
+                className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[100px]"
+                rows={3}
+                placeholder="Project details"
               />
+              
+              {/* Submit Button with Spotlight Effect */}
               <button
                 type="submit"
-                className="w-full rounded-xl bg-gradient-to-r from-primary to-violet hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:shadow-primary/25 py-4 text-white font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
+                onMouseMove={handleMouseMove}
+                className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-primary to-violet hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:shadow-primary/25 py-4 text-white font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background cursor-pointer"
+                style={{ "--x": "50%", "--y": "50%" } as React.CSSProperties}
               >
-                Send Message
+                <span
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "radial-gradient(200px circle at var(--x) var(--y), rgba(255, 255, 255, 0.25), transparent 80%)",
+                  }}
+                />
+                <span className="relative z-10">Send Message</span>
               </button>
             </form>
           </div>

@@ -212,6 +212,14 @@
     background: oklch(0.62 0.21 295 / 0.45);
     color: #fff;
   }
+
+  /* Tailwind v4 removes the default pointer cursor from buttons/links;
+     restore it for all interactive elements unless disabled */
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  a:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 @utility text-display {
@@ -299,5 +307,39 @@
   
   .section-hero-subtitle {
     @apply mt-6 max-w-lg text-lg text-slate-400;
+  }
+
+  /* ── Global Button Spotlight ───────────────────────────────────────── */
+  button,
+  [role="button"] {
+    position: relative;
+    overflow: hidden;
+  }
+
+  button::before,
+  [role="button"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: radial-gradient(
+      320px circle at var(--x, 50%) var(--y, 50%),
+      rgba(139, 92, 246, 0.18),
+      transparent 70%
+    );
+    z-index: 0;
+  }
+
+  button:hover::before,
+  [role="button"]:hover::before {
+    opacity: 1;
+  }
+
+  button > *,
+  [role="button"] > * {
+    position: relative;
+    z-index: 1;
   }
 }
