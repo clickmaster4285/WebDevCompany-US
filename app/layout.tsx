@@ -1,17 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script"; // <-- Added this import
 import { Geist } from "next/font/google";
 import { siteConfig } from "@/lib/siteConfig";
 import { GlobalSpotlight } from "@/components/GlobalSpotlight";
 import "./globals.css";
 
 // ── Font optimization ──────────────────────────────────────────────────────
-// Geist is the ONLY font loaded. We import only the weights actually used
-// in visible text (400 body, 700 headings). This saves ~30KB vs loading all.
-// display: "swap" prevents FOIT — text appears immediately in fallback font,
-// then swaps to Geist once loaded. No invisible text period.
-// preload: true — Geist IS the LCP font (hero heading, body text).
-// Preloading it ensures the browser discovers the font early, reducing
-// the time text is invisible (FOIT) or shown in fallback (FOUT).
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -75,10 +69,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
-      <body className="min-h-full w-full flex flex-col"
-      suppressHydrationWarning >
-         <GlobalSpotlight />
-         {children}
+      <body 
+        className="min-h-full w-full flex flex-col"
+        suppressHydrationWarning
+      >
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NGB935HHG7"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NGB935HHG7');
+          `}
+        </Script>
+
+        <GlobalSpotlight />
+        {children}
       </body>
     </html>
   );
