@@ -43,7 +43,7 @@ export function Navbar() {
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 className={`flex items-center px-3 py-2 rounded-md transition-colors ${
-                  Object.keys(serviceData).some(s => pathname === `/${s}`) 
+                  pathname.startsWith('/services') 
                     ? 'text-blue-600 font-semibold' 
                     : 'text-gray-700 hover:text-blue-600'
                 }`}
@@ -62,6 +62,17 @@ export function Navbar() {
 
               {isServicesOpen && (
                 <div className="absolute top-full left-0 mt-2 w-72 md:w-80 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 max-h-[80vh] overflow-y-auto">
+                  <Link
+                    href="/services"
+                    className={`block px-4 py-2.5 hover:bg-gray-50 text-sm transition-colors border-b border-gray-100 ${
+                      pathname === '/services'
+                        ? 'text-blue-600 font-medium bg-blue-50'
+                        : 'text-gray-700 hover:text-blue-600'
+                    }`}
+                    onClick={() => setIsServicesOpen(false)}
+                  >
+                    View All Services
+                  </Link>
                   {services.map((service) => (
                     <Link
                       key={service.slug}
@@ -124,7 +135,18 @@ export function Navbar() {
             <div className="space-y-3">
               {/* Services Section */}
               <div className="space-y-2">
-                <div className="font-semibold text-gray-900 px-3">Services</div>
+                <div className={`font-semibold px-3 ${pathname.startsWith('/services') ? 'text-blue-600' : 'text-gray-900'}`}>Services</div>
+                <Link
+                  href="/services"
+                  className={`block px-3 py-2 text-sm rounded-md transition-colors ${
+                    pathname === '/services'
+                      ? 'text-blue-600 font-medium bg-blue-50'
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  View All Services
+                </Link>
                 {services.map((service) => (
                   <Link
                     key={service.slug}

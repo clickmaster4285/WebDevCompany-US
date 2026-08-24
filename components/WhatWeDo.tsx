@@ -145,7 +145,7 @@ export function WhatWeDoIntro() {
           </motion.div>
 
           {/* H1 Heading */}
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -153,7 +153,7 @@ export function WhatWeDoIntro() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-4"
           >
             What We Do
-          </motion.h1>
+          </motion.h2>
 
           {/* H2 Subheading */}
           <motion.h2
@@ -188,7 +188,7 @@ export function WhatWeDoIntro() {
         </div>
 
         {/* Services Grid - Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 mb-16">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 mb-16">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -202,11 +202,11 @@ export function WhatWeDoIntro() {
               }}
               className="service-feature group relative p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-primary/30 transition-all duration-300"
             >
-              {/* Glow effect on hover */}
+             
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative z-10">
-                {/* Icon container */}
+                
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary mb-4 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-300">
                   {service.icon}
                 </div>
@@ -219,7 +219,7 @@ export function WhatWeDoIntro() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </div> */}
 
         {/* CTA Button - Centered */}
         <motion.div
@@ -227,14 +227,14 @@ export function WhatWeDoIntro() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
-          className="flex justify-center"
+          className="flex justify-center mt-5"
         >
           <a
             href="#services"
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-violet text-white font-medium hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-violet text-white font-medium hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 ease-out hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
           >
             Explore Our Services
-            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>

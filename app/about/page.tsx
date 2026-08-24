@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { title } from "process";
+import { generateAboutSchema } from "@/lib/schema/aboutSchema";
 
 // ─── Elegant Background Shapes ──────────────────────────────────────────────
 function ElegantShape({
@@ -95,12 +95,16 @@ function StatCounter({ value, suffix = "" }: { value: number; suffix?: string })
 
 // ─── Cursor spotlight helper (imperative, no re-render on mousemove) ───────
 function handleSpotlight(e: React.MouseEvent<HTMLDivElement>) {
+  const currentTarget = e.currentTarget;
+  const clientX = e.clientX;
+  const clientY = e.clientY;
+  if (!currentTarget) return;
   requestAnimationFrame(() => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    e.currentTarget.style.setProperty("--x", `${x}%`);
-    e.currentTarget.style.setProperty("--y", `${y}%`);
+    const rect = currentTarget.getBoundingClientRect();
+    const x = ((clientX - rect.left) / rect.width) * 100;
+    const y = ((clientY - rect.top) / rect.height) * 100;
+    currentTarget.style.setProperty("--x", `${x}%`);
+    currentTarget.style.setProperty("--y", `${y}%`);
   });
 }
 
@@ -136,7 +140,7 @@ const cardVariants = {
 // ─── Data ────────────────────────────────────────────────────────────────────
 const stats = [
   { value: 8, suffix: "+", label: "Years Experience" },
-  { value: 200, suffix: "+", label: "Projects Delivered" },
+  { value: 120, suffix: "+", label: "Projects Delivered" },
   { value: 50, suffix: "+", label: "Team Members" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },
 ];
@@ -146,47 +150,48 @@ const values = [
     icon: Code2,
     title: "Technical Excellence",
     description:
-      "We push the boundaries of what's possible on the web, leveraging cutting-edge technologies to deliver performant, scalable solutions.",
+      "We like using the right tools for the job, not just the newest ones, so we can build sites and apps that hold up under real traffic and real use.",
   },
   {
     icon: Palette,
     title: "Craft & Design",
     description:
-      "Every pixel matters. We obsess over detail, creating interfaces that are as beautiful as they are intuitive.",
+      "Small details matter. We spend real time getting the little things right, so the final product feels as good as it looks.",
   },
   {
     icon: Lightbulb,
     title: "Innovation First",
     description:
-      "We don't follow trends — we set them. Our team constantly explores new ways to solve complex problems.",
+      "Instead of copying what everyone else is doing, we like finding better ways to solve the problems in front of us.",
   },
   {
     icon: Users,
     title: "Client Partnership",
     description:
-      "Your success is our success. We collaborate transparently, treating every project as a true partnership.",
+      "We see every project as a shared effort, not a handoff. We would rather be honest with you early than surprise you later.",
   },
   {
     icon: Target,
     title: "Results Driven",
     description:
-      "We measure success by real outcomes — faster load times, higher conversions, and measurable business growth.",
+      "We care about what actually happens after launch, faster load times, more conversions, and real growth for your business.",
   },
   {
     icon: Shield,
     title: "Quality Assurance",
     description:
-      "Rigorous testing, performance audits, and accessibility checks ensure every launch is rock-solid.",
+      "Before anything goes live, we test it, check performance, and make sure it works well for everyone, including people using assistive technology.",
   },
 ];
 
 const teamMembers = [
   {
     name: "Alex Chen",
-    role: "CEO & Founder",
+    role: "CEO and Founder",
     initials: "AC",
     color: "from-violet to-purple-600",
     image: "/assets/testimonial-2.jpg",
+    bio: "Focused on vision and strategy for the studio.",
   },
   {
     name: "Sarah Mitchell",
@@ -194,6 +199,7 @@ const teamMembers = [
     initials: "SM",
     color: "from-cyan-500 to-blue-600",
     image: "/assets/testimonial-1.jpg",
+    bio: "Leads technology decisions and keeps the team exploring better ways to build.",
   },
   {
     name: "Marcus Rivera",
@@ -201,6 +207,7 @@ const teamMembers = [
     initials: "MR",
     color: "from-rose-500 to-pink-600",
     image: "/assets/Marcus Rivera.jpeg",
+    bio: "Shapes how every project looks and feels to the people using it.",
   },
   {
     name: "Emily Nakamura",
@@ -208,6 +215,7 @@ const teamMembers = [
     initials: "EN",
     color: "from-amber-500 to-orange-600",
     image: "/assets/Emily Nakamura.jpeg",
+    bio: "Oversees the engineering team and makes sure every project ships in good shape.",
   },
 ];
 
@@ -411,7 +419,15 @@ function StoryVisual() {
 
 // ─── About Page Component ───────────────────────────────────────────────────
 export default function AboutPage() {
+  // Generate the JSON-LD schema
+  const jsonLd = generateAboutSchema();
   return (
+   <>
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
     <div className="min-h-screen bg-background text-foreground">
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION
@@ -571,11 +587,11 @@ export default function AboutPage() {
           >
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-1 border border-white/10 shadow-2xl shadow-black/40">
               <Image
-                src="/ourimage.png"
+                src="/about.jpeg"
                 alt="ClickMasters team and office"
                 fill
                 sizes="(max-width: 1024px) 100vw, 560px"
-                className="object-cover"
+                className="object-center"
                 priority
               />
               
@@ -703,7 +719,7 @@ export default function AboutPage() {
                 <h3 className="text-lg font-semibold text-ink">{member.name}</h3>
                 <p className="text-sm text-violet font-medium">{member.role}</p>
                 <div className="mt-3 pt-3 border-t border-border">
-                  <p className="text-xs text-ink-mute leading-relaxed">{(member as any).bio}</p>
+                  <p className="text-xs text-ink-mute leading-relaxed">{member.bio}</p>
                 </div>
               </div>
             </motion.div>
@@ -734,9 +750,9 @@ export default function AboutPage() {
             </h2>
 
             <p className="text-lg text-ink-soft max-w-2xl mx-auto mb-8">
-              Whether you have a fully defined project or just a spark of an
-              idea, we&apos;d love to hear from you. Let&apos;s explore what we
-              can create together.
+              Whether you already have a clear plan or just an early idea, we
+              would like to hear about it. Let&apos;s talk about what we could
+              build together.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -759,5 +775,6 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

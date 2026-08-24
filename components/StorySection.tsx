@@ -246,15 +246,15 @@ export function StorySection() {
                 <motion.div
                   key={p.title}
                   variants={slideUpVariants}
-                  className="group rounded-xl border border-border/50 bg-surface-1/20 p-3 sm:p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-violet/20 hover:bg-violet/[0.03] hover:shadow-sm"
+                  className="group rounded-xl border border-border/50 bg-surface-1/20 p-3 sm:p-4 backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-violet/20 hover:bg-violet/[0.03] hover:shadow-sm hover:shadow-violet/10 cursor-pointer"
                 >
-                  <p.icon className="h-4 w-4 text-violet" />
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-violet-soft">
+                  <p.icon className="h-4 w-4 text-violet transition-transform duration-300 group-hover:scale-110" />
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-violet-soft transition-colors duration-300 group-hover:text-primary">
                     {p.title}
                   </p>
-                  <p className="mt-1 text-xs sm:text-sm text-ink-soft">{p.desc}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-ink-soft transition-colors duration-300 group-hover:text-ink">{p.desc}</p>
                   {/* Full description for SEO and readability */}
-                  <p className="mt-2 text-[10px] sm:text-xs leading-relaxed text-ink-mute border-t border-border/30 pt-2">
+                  <p className="mt-2 text-[10px] sm:text-xs leading-relaxed text-ink-mute border-t border-border/30 pt-2 transition-colors duration-300 group-hover:text-ink-soft">
                     {p.fullDesc}
                   </p>
                 </motion.div>

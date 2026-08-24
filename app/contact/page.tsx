@@ -3,7 +3,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
-import { motion, animate, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
   Mail,
   MapPin,
@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { generateContactSchema } from "@/lib/schema/contactSchema";
 // ─── CRM lead endpoint config ───────────────────────────────────────────────
 const WEBSITE = "clickmasterswebdevelopmentcompany.com";
 const SERVICE = "Software Development";
@@ -83,6 +83,7 @@ function ElegantShape({
 }
 
 // ─── Animated counter for stats (supports decimals, e.g. 99.9%) ───────────
+// Rewritten to use requestAnimationFrame to ensure it never gets stuck at 0
 function StatCounter({
   value,
   suffix = "",
@@ -98,12 +99,28 @@ function StatCounter({
 
   useEffect(() => {
     if (!isInView) return;
-    const controls = animate(0, value, {
-      duration: 1.6,
-      ease: [0.25, 0.4, 0.25, 1] as const,
-      onUpdate: (v) => setDisplay(Number(v.toFixed(decimals))),
-    });
-    return () => controls.stop();
+
+    let start: number | null = null;
+    const duration = 1600; // 1.6 seconds
+
+    const step = (timestamp: number) => {
+      if (start === null) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      // Ease-out cubic for smooth animation
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * value;
+      
+      setDisplay(Number(current.toFixed(decimals)));
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        setDisplay(value); // Ensure it finishes exactly on the value
+      }
+    };
+
+    const animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
   }, [isInView, value, decimals]);
 
   return (
@@ -148,7 +165,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] as const },
+    transition: { duration: 0.6, ease: "easeOut" as const },
   },
 };
 
@@ -161,41 +178,16 @@ const heroStats: Array<{
   label: string;
 }> = [
   { display: "< 24h", label: "Response Time" },
-  { value: 200, suffix: "+", label: "Projects Delivered" },
+  { value: 120, suffix: "+", label: "Projects Delivered" },
   { value: 50, suffix: "+", label: "Enterprise Clients" },
   { value: 99.9, suffix: "%", decimals: 1, label: "Uptime Guarantee" },
 ];
 
 const budgetOptions = [
-  "$5,000 - $10,000",
-  "$10,000 - $25,000",
-  "$25,000 - $50,000",
+  "$5,000 – $10,000",
+  "$10,000 – $25,000",
+  "$25,000 – $50,000",
   "$50,000+",
-];
-
-const contactDetails = [
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+44 7988 576086",
-    href: "tel:+447988576086",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "sale@clickmasterswebdevelopmentcompany.com",
-    href: "mailto:sale@clickmasterswebdevelopmentcompany.com",
-  },
-  {
-    icon: MapPin,
-    label: "Office",
-    value: "London, United Kingdom",
-  },
-  {
-    icon: Clock,
-    label: "Business Hours",
-    value: "Monday - Friday: 9:00 AM - 6:00 PM\nSaturday - Sunday: Closed",
-  },
 ];
 
 const whyContactUs = [
@@ -430,7 +422,14 @@ export default function ContactPage() {
   const inputClasses =
     "w-full rounded-xl border border-border bg-surface-1/60 px-4 py-3.5 text-sm text-ink placeholder:text-ink-mute/50 focus:outline-none focus:ring-2 focus:ring-violet/40 focus:border-violet transition-all duration-200 backdrop-blur-sm";
 
+    const jsonLd = generateContactSchema();
   return (
+    <>
+     {/* Inject the structured data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <div className="min-h-screen bg-background text-foreground">
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION
@@ -511,7 +510,7 @@ export default function ContactPage() {
             animate="visible"
           >
             <p className="text-lg md:text-xl text-ink-soft leading-relaxed max-w-3xl mx-auto font-light">
-              Ready to transform your business? Share your details — we&apos;ll respond within one business day with a personalized roadmap.
+              Ready to transform your business? Share your details, we&apos;ll respond within one business day with a personalized roadmap.
             </p>
           </motion.div>
         </div>
@@ -692,7 +691,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-violet hover:bg-violet/90 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-violet/25 hover:shadow-violet/40 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 overflow-hidden"
+                  className="group relative w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-violet hover:bg-violet/90 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-violet/25 hover:shadow-violet/40 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 overflow-hidden cursor-pointer"
                 >
                   <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
                   {isSubmitting ? (
@@ -1011,5 +1010,6 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

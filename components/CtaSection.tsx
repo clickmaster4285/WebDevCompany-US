@@ -1,17 +1,23 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { useGsap } from "@/lib/gsap";
 import { HeroBrowserScene } from "./HeroBrowserScene";
 
-function MagneticButton({ children }: { children: React.ReactNode }) {
+function MagneticButton({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode;
+  onClick?: () => void;
+}) {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    // Cache rect across frames — only re-read on scroll/resize, not on every mousemove
     let cachedRect: DOMRect | null = null;
 
     const updateRect = () => {
@@ -50,7 +56,8 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
   return (
     <button
       ref={ref}
-      className="group inline-flex items-center gap-3 rounded-full bg-violet px-6 sm:px-8 py-4 text-sm sm:text-base font-medium text-white transition-[transform,box-shadow] duration-300 violet-glow hover:shadow-[0_40px_100px_-20px_var(--violet)] min-h-[48px] min-w-[48px]"
+      onClick={onClick}
+      className="group inline-flex items-center gap-3 rounded-full bg-violet px-6 sm:px-8 py-4 text-sm sm:text-base font-medium text-white transition-all duration-300 ease-out violet-glow hover:bg-blue-600 hover:shadow-[0_40px_100px_-20px_var(--violet)] hover:-translate-y-0.5 hover:scale-105 min-h-[48px] min-w-[48px] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
     >
       {children}
     </button>
@@ -60,15 +67,13 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
 export function CtaSection() {
   const root = useRef<HTMLElement>(null);
   const scene = useRef<HTMLDivElement>(null);
-
-  // Hook moved to the top level to fix the ESLint error
+  const router = useRouter();
   const { gsap } = useGsap();
 
   useEffect(() => {
     if (!gsap || !root.current) return;
 
     const ctx = gsap.context(() => {
-      // Scene animation
       gsap.fromTo(
         scene.current,
         { scale: 0.6, opacity: 0, y: 100 },
@@ -86,7 +91,6 @@ export function CtaSection() {
         },
       );
 
-      // Text stagger animation
       gsap.from(".cta-line", {
         yPercent: 110,
         duration: 1,
@@ -110,33 +114,36 @@ export function CtaSection() {
 
       <div className="layout-container px-4 sm:px-6 md:px-10">
         <div className="text-center">
-  <h2 className="text-display mx-auto max-w-none text-[clamp(2rem,6vw,7.2rem)] text-ink">
-    <span className="whitespace-nowrap sm:whitespace-normal">
-      {"Let's build something".split(" ").map((w, i) => (
-        <span
-          key={i}
-          className="inline-block overflow-hidden align-top mr-[0.2em]"
-        >
-          <span className="cta-line inline-block">{w}</span>
-        </span>
-      ))}
-    </span>
+          <h2 className="text-display mx-auto max-w-none text-[clamp(2rem,6vw,7.2rem)] text-ink">
+            <span className="whitespace-nowrap sm:whitespace-normal">
+              {"Let's build something".split(" ").map((w, i) => (
+                <span
+                  key={i}
+                  className="inline-block overflow-hidden align-top mr-[0.2em]"
+                >
+                  <span className="cta-line inline-block">{w}</span>
+                </span>
+              ))}
+            </span>
 
-    <br />
+            <br />
 
-    <span className="inline-block overflow-hidden align-top">
-      <span className="cta-line inline-block text-violet-soft italic">
-        exceptional.
-      </span>
-    </span>
-  </h2>
-</div>
+            <span className="inline-block overflow-hidden align-top">
+              <span className="cta-line inline-block text-violet-soft italic">
+                exceptional.
+              </span>
+            </span>
+          </h2>
+        </div>
+
         <div ref={scene} className="mx-auto mt-12 md:mt-20 aspect-5/4 w-full max-w-215">
           <HeroBrowserScene />
         </div>
-        {/* Now the linter will see that MagneticButton is being used */}
+
         <div className="flex justify-center mt-8 md:mt-10">
-          <MagneticButton>Send brief →</MagneticButton>
+          <MagneticButton onClick={() => router.push("/contact")}>
+            Send brief →
+          </MagneticButton>
         </div>
       </div>
     </section>

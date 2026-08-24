@@ -3,6 +3,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getServiceBySlug, getAllServiceSlugs } from "@/data/services";
+import { generateServiceSchema } from "@/lib/schema/serviceSchema";
 
 import { HeroSection } from "@/components/services/HeroSection";
 import { CredibilityBar } from "@/components/services/CredibilityBar";
@@ -17,12 +18,13 @@ import { BusinessCase } from "@/components/services/BusinessCase";
 import { FAQSection } from "@/components/services/FAQSection";
 import { CTASection } from "@/components/services/CTASection";
 import { RiskReversal } from "@/components/services/RiskReversal";
+import { KeyBenefits } from "@/components/services/KeyBenefits";
+
+import { siteConfig } from "@/lib/siteConfig";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
-
-import { siteConfig } from "@/lib/siteConfig";
 
 const SITE_URL = siteConfig.url;
 const COMPANY_NAME = siteConfig.legalName;
@@ -63,14 +65,17 @@ export async function generateMetadata({
 
   const canonicalUrl = `${SITE_URL}/${service.slug}`;
 
+  // ✅ Use metaTitle if it exists, otherwise fall back to title
+  const metaTitle = service.metaTitle || service.title;
+
   return {
-    title: `${service.title} | ${COMPANY_NAME}`,
+    title: metaTitle,
     description: service.metaDescription,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: service.title,
+      title: metaTitle,
       description: service.metaDescription,
       url: canonicalUrl,
       siteName: COMPANY_NAME,
@@ -79,7 +84,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: service.title,
+      title: metaTitle,
       description: service.metaDescription,
     },
     robots: {
@@ -101,27 +106,16 @@ export default async function ServicePage({ params }: PageProps) {
   const config = serviceConfig[slug] ?? serviceConfig.default;
 
   // ✅ JSON-LD structured data for SEO
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.title,
-    description: service.metaDescription,
-    provider: {
-      "@type": "Organization",
-      name: COMPANY_NAME,
-      url: SITE_URL,
-    },
-    url: `${SITE_URL}/${service.slug}`,
-    areaServed: "Global",
-  };
+  const jsonLd = generateServiceSchema(service);
 
   return (
     <>
-      {/* JSON-LD Structured Data */}
+      {/* ✅ Inject the schema into the HTML */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
       <HeroSection
         data={service.hero}
         slug={slug}
@@ -135,7 +129,6 @@ export default async function ServicePage({ params }: PageProps) {
         /* @ts-ignore */
         avatarImage={config.avatarImage}
       />
-
 
       <CredibilityBar items={service.hero.credibilityBar ?? []} />
 
@@ -155,6 +148,8 @@ export default async function ServicePage({ params }: PageProps) {
         content={service.solutionSection.content}
         pillars={service.solutionSection.pillars}
       />
+
+      <KeyBenefits benefits={service.keyBenefits || []} />
 
       <CapabilitiesTable
         heading={service.capabilities.heading}

@@ -41,16 +41,16 @@ export function Partners() {
               {partnersRow.map((partner, i) => (
                 <div
                   key={`${partner.name}-${i}`}
-                  className="flex flex-col items-center gap-2 group transition-transform duration-200 hover:scale-105"
+                  className="flex flex-col items-center gap-2 group transition-transform duration-300 ease-out hover:scale-105"
                 >
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl p-3 sm:p-4 transition-all duration-300 hover:bg-white/10">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl p-3 sm:p-4 transition-all duration-300 ease-out hover:bg-white/10 hover:shadow-lg hover:shadow-primary/10">
                     <Image
                       src={partner.icon}
                       alt={partner.name}
                       width={40}
                       height={40}
                       unoptimized
-                      className={`w-full h-full object-contain transition-all duration-300 ${
+                      className={`w-full h-full object-contain transition-all duration-300 ease-out ${
                         partner.dark ? "brightness-0 invert" : ""
                       }`}
                     />

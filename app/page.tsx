@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Nav } from "@/components/Nav";
 import { HeroSection } from "@/components/HeroSection";
 import { Partners } from "@/components/Partners";
+import { generateHomeSchema } from "@/lib/schema/homeSchema";
 
 // ── Above-the-fold: SSR for LCP/CLS ────────────────────────────────────────
 // These render on the server so the browser gets real HTML immediately.
@@ -72,6 +73,12 @@ const Footer = dynamic(
   { ssr: true }
 );
 
+const Testimonials = dynamic(
+  () => import("@/components/Testimonials").then((m) => ({ default: m.Testimonials })),
+  { ssr: true }
+);
+
+
 // ── Page: Server Component ─────────────────────────────────────────────────
 // By removing "use client", this page is a Server Component.
 // Next.js renders the entire component tree on the server, sends real HTML
@@ -87,8 +94,22 @@ const Footer = dynamic(
 //    It was adding ~2KB of dead JS + CSS animation classes.
 // 3. Partners is a direct import (not dynamic) because it's above-the-fold
 //    and needs its marquee animation to start immediately.
+
+ // Generate the JSON-LD schema
+  const jsonLd = generateHomeSchema();
 export default function HomePage() {
   return (
+
+    <>
+
+
+    {/* Inject the structured data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+
     <main className="relative w-full overflow-x-hidden bg-background text-ink">
       {/* Nav: client component (dropdowns, scroll state, mobile menu) */}
       <Nav />
@@ -100,8 +121,10 @@ export default function HomePage() {
       {/* Partners: direct import — above-the-fold, marquee starts instantly */}
       <Partners />
       <WhatWeDoIntro />
+            <ResultsSection />
+
       {/* Above-the-fold: SSR + lazy JS */}
-      <StorySection />
+      {/* <StorySection /> */}
       <ServicesSection />
       <WhyChoose />
       <TechSection />
@@ -109,15 +132,17 @@ export default function HomePage() {
       {/* Below-the-fold: all SSR + lazy JS */}
       <WorkSection />
       <ProcessSection />
-      <Process />
+      {/* <Process /> */}
      
       <Projects />
-      <ResultsSection />
-      <TestimonialsSection />
-      <AwardsSection />
+      <Testimonials></Testimonials>
+
+      {/* <TestimonialsSection /> */}
+      {/* <AwardsSection /> */}
       <Faq/>
       <CtaSection />
       <Footer />
     </main>
+    </>
   );
 }

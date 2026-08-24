@@ -14,42 +14,38 @@ import { Dropdown, DropdownSection, DropdownItem } from "@/components/ui/Dropdow
 // ⚡ Lightweight nav data (~14.5KB) instead of importing 7 large data files (~1MB total)
 import navData from "@/data/nav-data.json";
 
-const serviceIcons: Record<string, string> = {
-  "web-development-services": "🌐",
-  "enterprise-web-development": "🏢",
-  "saas-development": "☁️",
-  "ecommerce-development": "🛒",
-  "shopify-development": "🛍️",
-  "wordpress-development": "📝",
-  "web-design-services": "🎨",
-  "custom-web-development": "⚙️",
-  "web-application-development": "📱",
-  "shopify-plus-development": "💎",
-  "woocommerce-development": "🛒",
-  "magento-development": "🏪",
-  "headless-commerce-development": "🧩",
-  "cms-development": "📰",
-  "ai-web-development": "🤖",
-  "ai-chatbot-development": "💬",
-  "api-development": "🔌",
-  "website-redesign-services": "🔄",
-  "website-speed-optimization": "⚡",
-  "website-maintenance-services": "🔧",
-  "full-stack-development": "🖥️",
-};
-
-const allServices = navData.services.map((s) => ({
-  label: s.title,
-  href: `/${s.slug}`,
-  icon: serviceIcons[s.slug],
-}));
-
 const serviceCategories: DropdownSection[] = [
   {
     title: "All Services",
     href: "/services",
-    description: "",
-    items: allServices,
+    description: "Browse every web development, design, and AI solution we offer.",
+    items: [
+      // Core Development
+      { label: "Web Development Services", href: "/services/web-development-services", icon: "🌐" },
+      { label: "Enterprise Web Development", href: "/services/enterprise-web-development", icon: "🏢" },
+      { label: "Custom Web Development", href: "/services/custom-web-development", icon: "⚙️" },
+      { label: "Web Application Development", href: "/services/web-application-development", icon: "📱" },
+      { label: "Full Stack Development", href: "/services/full-stack-development", icon: "🖥️" },
+      
+      // Platforms & eCommerce
+      { label: "WordPress Development", href: "/services/wordpress-development", icon: "📝" },
+      { label: "Shopify Development", href: "/services/shopify-development", icon: "🛍️" },
+      { label: "Shopify Plus Development", href: "/services/shopify-plus-development", icon: "💎" },
+      { label: "WooCommerce Development", href: "/services/woocommerce-development", icon: "🛒" },
+      { label: "Magento Development", href: "/services/magento-development", icon: "🏪" },
+      { label: "eCommerce Development", href: "/services/ecommerce-development", icon: "🛒" },
+      { label: "Headless Commerce Development", href: "/services/headless-commerce-development", icon: "🧩" },
+      { label: "CMS Development", href: "/services/cms-development", icon: "📰" },
+      
+      // Design, AI & Support
+      { label: "Web Design Services (UI/UX)", href: "/services/web-design-services", icon: "🎨" },
+      { label: "Website Redesign Services", href: "/services/website-redesign-services", icon: "🔄" },
+      { label: "AI Web Development", href: "/services/ai-web-development", icon: "🤖" },
+      { label: "AI Chatbot Development", href: "/services/ai-chatbot-development", icon: "💬" },
+      { label: "API Development", href: "/services/api-development", icon: "🔌" },
+      { label: "Website Speed Optimization", href: "/services/website-speed-optimization", icon: "⚡" },
+      { label: "Website Maintenance & Support", href: "/services/website-maintenance-services", icon: "🔧" },
+    ],
   },
 ];
 
@@ -202,9 +198,9 @@ const industriesCategories: DropdownSection[] = [
 
 function DropdownTrigger({ label }: { label: string }) {
   return (
-    <button className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet min-h-[44px] min-w-[44px]">
+    <button className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-100 hover:text-blue-600 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
       {label}
-      <ChevronDown className="ml-1 h-4 w-4" />
+      <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-300 hover:rotate-180 hover:text-blue-600" />
     </button>
   );
 }
@@ -266,10 +262,11 @@ export function Nav() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-1 text-sm md:flex">
+          {/* Changed md:flex to lg:flex */}
+          <nav className="hidden items-center gap-1 text-sm lg:flex">
             <Link
               href="/"
-              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-100 hover:text-blue-600 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               Solutions
             </Link>
@@ -279,8 +276,8 @@ export function Nav() {
               sections={serviceCategories}
               variant="links"
               layout="simple-grid"
-              width="w-[600px] lg:w-[700px]"
-              showViewAll={false}
+              width="w-[760px] lg:w-[850px]"
+              showViewAll={true} 
               showSidebar={false}
             />
 
@@ -315,51 +312,54 @@ export function Nav() {
 
             <Link
               href="/about"
-              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-100 hover:text-blue-600 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               About
             </Link>
 
             <Link
               href="/contact"
-              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-violet min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="rounded-full px-4 py-2 font-semibold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-100 hover:text-blue-600 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               Contact
             </Link>
           </nav>
 
-          <div className="hidden md:block">
+          {/* Changed md:block to lg:block */}
+          <div className="hidden lg:block">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-violet min-h-[44px] min-w-[44px]"
+              className="group inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/25 min-h-[44px] min-w-[44px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               <span>Start a project</span>
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-blue-200" />
             </Link>
           </div>
 
+          {/* Changed md:hidden to lg:hidden */}
           <button
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-950 transition hover:bg-slate-100 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-950 transition-all duration-300 ease-out hover:bg-slate-100 hover:scale-110 lg:hidden focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
+        {/* Changed md:hidden to lg:hidden */}
         {mobileOpen && (
-          <div className="mt-3 rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-[0_20px_70px_rgba(15,23,42,0.14)] md:hidden">
+          <div className="mt-3 rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-[0_20px_70px_rgba(15,23,42,0.14)] lg:hidden">
             <div className="grid gap-2">
               {mobileLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between rounded-2xl px-4 py-4 text-sm font-bold text-slate-700 transition hover:bg-slate-50 hover:text-violet min-h-[48px]"
+                  className="flex items-center justify-between rounded-2xl px-4 py-4 text-sm font-bold text-slate-700 transition-all duration-300 ease-out hover:bg-slate-50 hover:text-blue-600 hover:-translate-y-0.5 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   {link.label}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 hover:translate-x-1 hover:text-blue-600" />
                 </Link>
               ))}
             </div>
@@ -367,10 +367,10 @@ export function Nav() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-4 text-sm font-black text-white transition hover:bg-violet min-h-[48px]"
+              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-4 text-sm font-black text-white transition-all duration-300 ease-out hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/25 hover:-translate-y-0.5 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               Start a project
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 hover:translate-x-1 hover:text-blue-200" />
             </Link>
           </div>
         )}

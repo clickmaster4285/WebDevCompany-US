@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import { siteConfig } from "@/lib/siteConfig";
+import { GlobalSpotlight } from "@/components/GlobalSpotlight";
 import "./globals.css";
 
 // ── Font optimization ──────────────────────────────────────────────────────
@@ -75,8 +76,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
       <body className="min-h-full w-full flex flex-col"
-     suppressHydrationWarning >
-        {children}
+      suppressHydrationWarning >
+         <GlobalSpotlight />
+         {children}
       </body>
     </html>
   );

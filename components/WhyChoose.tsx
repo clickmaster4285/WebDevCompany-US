@@ -203,12 +203,13 @@ export function WhyChooseSection() {
             </div>
 
             <h2 className="mb-5 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-              Why Choose Clickmasters
+              Why Choose Clickmasters Web Development Company
+
             </h2>
 
             <p className="mb-8 max-w-md text-base leading-relaxed text-white/60 md:text-lg">
-              There are many software development companies out there — here&apos;s why USA
-              businesses choose Clickmasters.
+             As a web development services company, we bring together design and engineering to build things that actually work well for your users.
+
             </p>
 
             {/* stat readout */}
@@ -231,10 +232,10 @@ export function WhyChooseSection() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center gap-2 bg-primary px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25"
+                className="group inline-flex items-center justify-center gap-2 bg-primary px-6 py-3 text-sm font-medium text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
               >
                 Start a project
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>
 

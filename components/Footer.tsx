@@ -52,22 +52,22 @@ export function Footer() {
             </div>
             <ul className="mt-5 space-y-3 text-sm text-ink-soft">
               <li>
-                <Link href="/" className="transition-colors hover:text-violet-soft">
+                <Link href="/" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="transition-colors hover:text-violet-soft">
+                <Link href="/about" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="transition-colors hover:text-violet-soft">
+                <Link href="/contact" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="transition-colors hover:text-violet-soft">
+                <Link href="/services" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Services
                 </Link>
               </li>
@@ -81,27 +81,27 @@ export function Footer() {
             </div>
             <ul className="mt-5 space-y-3 text-sm text-ink-soft">
               <li>
-                <Link href="/web-development-services" className="transition-colors hover:text-violet-soft">
+                <Link href="/web-development-services" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Web Development
                 </Link>
               </li>
               <li>
-                <Link href="/web-design-services" className="transition-colors hover:text-violet-soft">
+                <Link href="/web-design-services" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   UI/UX Design
                 </Link>
               </li>
               <li>
-                <Link href="/web-application-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/web-application-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Web Applications
                 </Link>
               </li>
               <li>
-                <Link href="/ecommerce-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/ecommerce-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   eCommerce Development
                 </Link>
               </li>
               <li>
-                <Link href="/saas-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/saas-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   SaaS Development
                 </Link>
               </li>
@@ -115,27 +115,27 @@ export function Footer() {
             </div>
             <ul className="mt-5 space-y-3 text-sm text-ink-soft">
               <li>
-                <Link href="/industries/healthcare-web-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/industries/healthcare-web-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Healthcare
                 </Link>
               </li>
               <li>
-                <Link href="/industries/fintech-web-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/industries/fintech-web-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Fintech
                 </Link>
               </li>
               <li>
-                <Link href="/industries/ecommerce-web-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/industries/ecommerce-web-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   eCommerce & Retail
                 </Link>
               </li>
               <li>
-                <Link href="/industries/saas-web-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/industries/saas-web-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   SaaS & Tech
                 </Link>
               </li>
               <li>
-                <Link href="/industries/real-estate-web-development" className="transition-colors hover:text-violet-soft">
+                <Link href="/industries/real-estate-web-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Real Estate
                 </Link>
               </li>
@@ -152,7 +152,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/case-studies"
-                  className="transition-colors hover:text-violet-soft"
+                  className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   Case Studies
                 </Link>
@@ -161,7 +161,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blogs"
-                  className="transition-colors hover:text-violet-soft"
+                  className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   Blog
                 </Link>
@@ -170,7 +170,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/compare"
-                  className="transition-colors hover:text-violet-soft"
+                  className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   Comparisons
                 </Link>
@@ -179,7 +179,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/faqs"
-                  className="transition-colors hover:text-violet-soft"
+                  className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   FAQs
                 </Link>
@@ -188,7 +188,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/testimonials"
-                  className="transition-colors hover:text-violet-soft"
+                  className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   Testimonials
                 </Link>
@@ -204,7 +204,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/technologies"
-                  className="transition-colors hover:text-violet-soft"
+                  className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   Our Tech Stack
                 </Link>
@@ -229,10 +229,10 @@ export function Footer() {
             {/* Scroll to Top Button */}
             <button
               onClick={scrollToTop}
-              className="group flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm text-ink-soft transition-all hover:bg-violet hover:text-white hover:scale-105 active:scale-95"
+              className="group flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm text-ink-soft transition-all duration-300 ease-out hover:bg-blue-600 hover:text-white hover:scale-105 hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
             >
               <span>Back to Top</span>
-              <ArrowUp className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+              <ArrowUp className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:text-blue-200" />
             </button>
           </div>
         </div>

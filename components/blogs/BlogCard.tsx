@@ -24,7 +24,7 @@ type BlogCardProps = {
 export function BlogCard({ blog }: BlogCardProps) {
   return (
     <Link href={`/blogs/${blog.slug}`} className="group block h-full">
-      <article className="overflow-hidden rounded-[1.7rem] border border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-violet/30 hover:shadow-[0_28px_80px_rgba(124,92,255,0.12)]">
+      <article className="overflow-hidden rounded-[1.7rem] border border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.06)] transition-all duration-300 ease-out hover:-translate-y-2 hover:border-violet/30 hover:shadow-[0_28px_80px_rgba(124,92,255,0.12)] cursor-pointer">
 
         {/* IMAGE */}
 
@@ -53,12 +53,12 @@ export function BlogCard({ blog }: BlogCardProps) {
               #{String(blog.id).padStart(2, "0")}
             </span>
 
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-sm transition group-hover:border-violet group-hover:bg-violet group-hover:text-white">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-sm transition-all duration-300 ease-out group-hover:border-violet group-hover:bg-violet group-hover:text-white group-hover:scale-110">
               ↗
             </span>
           </div>
 
-          <h3 className="mt-5 line-clamp-2 text-[24px] font-black leading-tight tracking-[-0.04em] text-slate-950 transition group-hover:text-violet">
+          <h3 className="mt-5 line-clamp-2 text-[24px] font-black leading-tight tracking-[-0.04em] text-slate-950 transition-all duration-300 ease-out group-hover:text-violet">
             {blog.title}
           </h3>
 
