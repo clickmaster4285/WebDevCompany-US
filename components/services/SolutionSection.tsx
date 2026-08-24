@@ -95,29 +95,32 @@ export function SolutionSection({ heading, content, pillars = [] }: SolutionSect
       </div>
 
       <div className="relative layout-container px-18">
+              {/* Changed inline-flex to flex w-fit mx-auto to center the badge */}
         <motion.span
           variants={fadeUpVariants}
           {...motionProps}
-          className="mb-5 inline-flex items-center gap-2 self-start rounded-full border border-violet/20 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm"
+          className="mb-5 flex w-fit mx-auto items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm"
         >
           <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
           Our Approach
         </motion.span>
 
+        {/* Changed text-left to text-center, added mx-auto */}
         <motion.h2
           variants={fadeUpVariants}
           {...motionProps}
           transition={{ delay: 0.1 }}
-          className="text-display max-w-3xl text-left text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-6xl"
+          className="text-display max-w-3xl mx-auto text-center text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-6xl"
         >
           {heading}
         </motion.h2>
 
+        {/* Changed text-justify to text-center, added mx-auto */}
         <motion.p
           variants={fadeUpVariants}
           {...motionProps}
           transition={{ delay: 0.2 }}
-          className="mt-5 max-w-2xl text-justify text-base leading-relaxed text-ink-soft sm:text-lg"
+          className="mt-5 max-w-2xl mx-auto text-center text-base leading-relaxed text-ink-soft sm:text-lg"
         >
           {content}
         </motion.p>
