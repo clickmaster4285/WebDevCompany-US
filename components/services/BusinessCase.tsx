@@ -92,17 +92,25 @@ export function BusinessCase({ heading, content, valueStreams }: BusinessCasePro
       </div>
 
       <div className="relative layout-container px-18">
-        <motion.div className="mb-14 sm:mb-16" variants={fadeUpVariants} {...motionProps}>
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm">
+        {/* WRAPPER UPDATED TO CENTER */}
+        <motion.div 
+          className="mb-14 flex flex-col items-center text-center sm:mb-16" 
+          variants={fadeUpVariants} 
+          {...motionProps}
+        >
+          {/* BADGE UPDATED */}
+          <span className="mb-5 flex w-fit mx-auto items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm">
             <TrendingUp className="h-3.5 w-3.5" aria-hidden="true" />
             Business Impact
           </span>
 
-          <h2 className="text-display max-w-3xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-6xl">
+          {/* H2 UPDATED */}
+          <h2 className="text-display max-w-3xl mx-auto text-center text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-6xl">
             {heading}
           </h2>
 
-          <p className="mt-5 max-w-3xl text-justify text-base leading-relaxed text-ink-soft sm:text-lg">
+          {/* P UPDATED */}
+          <p className="mt-5 max-w-3xl mx-auto text-center text-base leading-relaxed text-ink-soft sm:text-lg">
             {content}
           </p>
         </motion.div>

@@ -4781,8 +4781,8 @@ export const serviceData: Record<string, ServicePageData> = {
 
   // 20. Website Maintenance & Support
   // ------------------------------------------
-  'website-maintenance-support': {
-    slug: 'website-maintenance-support',
+  'website-maintenance-services': {
+    slug: 'website-maintenance-services',
     title: 'Website Maintenance & Support',
     metaTitle: 'Website Maintenance & Support Services | Ongoing Website Care',
     metaDescription: 'Reliable website maintenance and support services for US businesses. We handle updates, security, backups, and fixes so your site stays fast and secure.',

@@ -46,21 +46,21 @@ function ChallengeSolutionCard({
   content: string;
 }) {
   const isChallenge = type === "challenge";
-  const accentColor = isChallenge ? "text-destructive" : "text-violet";
-  const bgAccent = isChallenge ? "bg-destructive/10" : "bg-violet/10";
-  const ringAccent = isChallenge ? "ring-destructive/20" : "ring-violet/20";
-  const borderHover = isChallenge ? "hover:border-destructive/30" : "hover:border-violet/30";
   const Icon = isChallenge ? AlertTriangle : Lightbulb;
   const title = isChallenge ? "Challenge" : "Solution";
 
   return (
     <motion.div variants={itemVariants} className="relative">
-      <Card className={`group relative h-full overflow-hidden rounded-2xl border border-border/60 bg-surface-1/60 p-6 shadow-lg backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:bg-surface-1/80 hover:shadow-2xl ${borderHover} sm:p-8`}>
+      <Card className={`group relative h-full overflow-hidden rounded-2xl border border-border/60 bg-surface-1/60 p-6 shadow-lg backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:bg-surface-1/80 hover:shadow-2xl ${isChallenge ? "hover:border-destructive/30" : "hover:border-violet/30"} sm:p-8`}>
         <div className={`absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r ${isChallenge ? "from-destructive/60" : "from-violet/60"} to-transparent`} />
         <div className={`pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full ${isChallenge ? "bg-destructive/10" : "bg-violet/10"} opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100`} />
 
         <div className="mb-5 flex items-center gap-4 sm:mb-6">
-          <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${bgAccent} ${accentColor} ${ringAccent} ring-1 transition-all duration-300 group-hover:scale-110 group-hover:${isChallenge ? "bg-destructive" : "bg-violet"} group-hover:text-white group-hover:shadow-lg`}>
+          <div className={`flex h-11 w-11 items-center justify-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-110 group-hover:text-white group-hover:shadow-lg ${
+            isChallenge 
+              ? "bg-destructive/10 text-destructive ring-destructive/20 group-hover:bg-destructive" 
+              : "bg-violet/10 text-violet ring-violet/20 group-hover:bg-violet"
+          }`}>
             <Icon className="h-5 w-5" />
           </div>
           <CardTitle className="text-xl font-semibold tracking-tight text-ink sm:text-2xl">{title}</CardTitle>
@@ -70,8 +70,12 @@ function ChallengeSolutionCard({
           <p className="text-[15px] leading-relaxed text-ink-soft/80 sm:text-base sm:leading-relaxed">{content}</p>
         </CardContent>
 
-        <div className={`mt-6 flex items-center gap-2 text-sm font-medium ${accentColor}/0 transition-all duration-500 group-hover:${accentColor}/80 sm:mt-8`}>
-          <span className={`h-px w-0 ${isChallenge ? "bg-destructive/40" : "bg-violet/40"} transition-all duration-500 group-hover:w-6`} />
+        <div className={`mt-6 flex items-center gap-2 text-sm font-medium transition-all duration-500 sm:mt-8 ${
+          isChallenge 
+            ? "text-destructive/0 group-hover:text-destructive/80" 
+            : "text-violet/0 group-hover:text-violet/80"
+        }`}>
+          <span className={`h-px w-0 transition-all duration-500 group-hover:w-6 ${isChallenge ? "bg-destructive/40" : "bg-violet/40"}`} />
           <span className="flex items-center gap-1">
             {isChallenge ? "The problem" : "Our approach"}
             <ArrowUpRight className="h-3.5 w-3.5" />
@@ -154,15 +158,25 @@ export function OutcomeSection({ challenge, solution, metrics }: OutcomeSectionP
       </div>
 
       <div className="relative layout-container px-18">
-        <motion.div className="mb-16 sm:mb-20" variants={fadeUpVariants} {...motionProps}>
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm">
+        {/* WRAPPER UPDATED TO CENTER */}
+        <motion.div 
+          className="mb-16 flex flex-col items-center text-center sm:mb-20" 
+          variants={fadeUpVariants} 
+          {...motionProps}
+        >
+          {/* BADGE UPDATED */}
+          <span className="mb-4 flex w-fit mx-auto items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm">
             <TrendingUp className="h-3.5 w-3.5" aria-hidden="true" />
             Proven Results
           </span>
-          <h2 className="text-display mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-6xl">
+
+          {/* H2 UPDATED */}
+          <h2 className="text-display mt-5 max-w-3xl mx-auto text-center text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-6xl">
             Representative Outcome
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft sm:text-lg">
+
+          {/* P UPDATED */}
+          <p className="mt-4 max-w-2xl mx-auto text-center text-base leading-relaxed text-ink-soft sm:text-lg">
             Real numbers from a real engagement. Here is how we turned the challenge into measurable impact.
           </p>
         </motion.div>

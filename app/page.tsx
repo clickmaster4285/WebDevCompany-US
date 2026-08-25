@@ -3,6 +3,7 @@ import { Nav } from "@/components/Nav";
 import { HeroSection } from "@/components/HeroSection";
 import { Partners } from "@/components/Partners";
 import { generateHomeSchema } from "@/lib/schema/homeSchema";
+import { Metadata } from "next";
 
 // ── Above-the-fold: SSR for LCP/CLS ────────────────────────────────────────
 // These render on the server so the browser gets real HTML immediately.
@@ -94,6 +95,13 @@ const Testimonials = dynamic(
 //    It was adding ~2KB of dead JS + CSS animation classes.
 // 3. Partners is a direct import (not dynamic) because it's above-the-fold
 //    and needs its marquee animation to start immediately.
+
+// 2. Add the Metadata object here, right above your component
+export const metadata: Metadata = {
+  title: "USA No.1 Web Development Services Company | Clickmasters",
+  description:
+    "ClickMasters is a no.1 web development company in the USA building custom websites, web applications, and high-conversion eCommerce stores. Get a free proposal!",
+};
 
  // Generate the JSON-LD schema
   const jsonLd = generateHomeSchema();

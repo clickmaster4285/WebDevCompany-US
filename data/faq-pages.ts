@@ -4426,7 +4426,7 @@ export const faqPages = [
     },
     secondaryCta: {
       label: "Explore Website Maintenance & Support",
-      url: "/website-maintenance-support/",
+      url: "/website-maintenance-services/",
     },
     socialProof: {
       rating: "[PLACEHOLDER: rating]",
@@ -4623,7 +4623,7 @@ export const faqPages = [
     },
     secondaryCta: {
       label: "Explore Website Maintenance & Support",
-      url: "/website-maintenance-support/",
+      url: "/website-maintenance-services/",
     },
   },
   riskReversal: {
@@ -4655,7 +4655,7 @@ export const faqPages = [
     internalLinks: [
       {
         relation: "↑ Parent pillar",
-        url: "/website-maintenance-support/",
+        url: "/website-maintenance-services/",
         label: "Website Maintenance & Support pillar",
       },
       {
@@ -4683,7 +4683,7 @@ export const faqPages = [
     },
     secondary: {
       label: "Explore Website Maintenance & Support",
-      url: "/website-maintenance-support/",
+      url: "/website-maintenance-services/",
     },
   },
 },
@@ -6477,7 +6477,7 @@ export const faqPages = [
     },
     secondaryCta: {
       label: "Explore Website Maintenance & Support",
-      url: "/website-maintenance-support/",
+      url: "/website-maintenance-services/",
     },
     socialProof: {
       rating: "[PLACEHOLDER: rating]",
@@ -6674,7 +6674,7 @@ export const faqPages = [
     },
     secondaryCta: {
       label: "Explore Website Maintenance & Support",
-      url: "/website-maintenance-support/",
+      url: "/website-maintenance-services/",
     },
   },
   riskReversal: {
@@ -6706,7 +6706,7 @@ export const faqPages = [
     internalLinks: [
       {
         relation: "↑ Parent pillar",
-        url: "/website-maintenance-support/",
+        url: "/website-maintenance-services/",
         label: "Website Maintenance & Support pillar",
       },
       {
@@ -6734,7 +6734,7 @@ export const faqPages = [
     },
     secondary: {
       label: "Explore Website Maintenance & Support",
-      url: "/website-maintenance-support/",
+      url: "/website-maintenance-services/",
     },
   },
 },
