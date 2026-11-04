@@ -2447,7 +2447,7 @@ export const pages: Record<string, IndustryPageData> = {
   },
 
   // ----- Web Design & UI/UX for Hospitality -----
-  "web-design-serviceshospitality": {
+  "web-design-services/hospitality": {
     title: "Web Design & UI/UX for Hospitality",
     slug: "web-design-services/hospitality",
     hero: {
