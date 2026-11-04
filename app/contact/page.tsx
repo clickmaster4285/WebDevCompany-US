@@ -717,13 +717,8 @@ export default function ContactPage() {
                 )}
 
                 <p className="text-xs text-ink-mute/60 text-center">
-                  By submitting, you agree to our{" "}
-                  <Link
-                    href="/privacy"
-                    className="text-violet hover:underline"
-                  >
-                    privacy policy
-                  </Link>
+                  By submitting, you agree to our  privacy policy
+               
                   . We&apos;ll never share your information.
                 </p>
               </form>

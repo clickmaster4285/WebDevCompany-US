@@ -735,7 +735,7 @@ export default function TestimonialsPage() {
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Link
-          href="/submit-testimonial"
+          href="/contact"
           className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3 bg-violet text-white font-semibold rounded-full hover:bg-violet/90 transition-all duration-200 shadow-lg shadow-violet/25 hover:shadow-violet/40 hover:-translate-y-0.5"
         >
           <MessageSquare className="w-5 h-5" />

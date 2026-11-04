@@ -224,7 +224,7 @@ export default function LocationsContent() {
                 Start a Project
               </Link>
               <Link
-                href="/web-development-services"
+                href="/services"
                 className="px-6 py-3 glass text-ink-soft font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all"
               >
                 View All Services
