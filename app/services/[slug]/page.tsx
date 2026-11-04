@@ -63,7 +63,7 @@ export async function generateMetadata({
     };
   }
 
-  const canonicalUrl = `${SITE_URL}/${service.slug}`;
+  const canonicalUrl = `${SITE_URL}/services/${service.slug}`;
 
   // ✅ Use metaTitle if it exists, otherwise fall back to title
   const metaTitle = service.metaTitle || service.title;

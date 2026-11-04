@@ -4,7 +4,7 @@ import { ServicePageData } from "@/data/services";
 
 export function generateServiceSchema(service: ServicePageData) {
   const SITE_URL = siteConfig.url.replace(/\/$/, ""); // Removes trailing slash
-  const canonicalUrl = `${SITE_URL}/${service.slug}`;
+  const canonicalUrl = `${SITE_URL}/services/${service.slug}`;
 
   return {
     "@context": "https://schema.org",

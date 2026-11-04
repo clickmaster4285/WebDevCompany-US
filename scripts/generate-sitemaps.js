@@ -266,13 +266,20 @@ function run() {
   // Use the current route-backed service data source
   const servicesPath = path.join(DATA_DIR, 'services.ts');
   if (fs.existsSync(servicesPath)) {
+    serviceUrls.push({
+      loc: `${BASE_URL}/services`,
+      changefreq: 'daily',
+      priority: 0.8,
+      lastmod: new Date().toISOString()
+    });
+
     const servicesData = extractObject(servicesPath, 'serviceData');
     const serviceEntries = Object.values(servicesData || {}).filter(Boolean);
 
     for (const service of serviceEntries) {
       if (!service?.slug) continue;
       serviceUrls.push({
-        loc: `${BASE_URL}/${service.slug}`,
+        loc: `${BASE_URL}/services/${service.slug}`,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString()
