@@ -9,7 +9,7 @@ export const blogs = [
     author: "ClickMasters Team",
     date: "2026-06-23",
     readTime: "12 min read",
-    image: "/assets/webdev.webp",
+    image: "/assets/webdev-sm.webp",
 
     hero: {
       badge: "RESOURCES",
@@ -1140,7 +1140,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "10 min read",
-  image: "/assets/webcustom.png",
+  image: "/assets/webcustom.webp",
 
   hero: {
     badge: "RESOURCES",

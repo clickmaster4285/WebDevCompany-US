@@ -139,7 +139,7 @@ export const webDevelopmentPageData = {
           what_it_is:
             "Conversion-engineered storefronts on Shopify, Shopify Plus, and headless stacks.",
           business_impact: "Directly grows revenue per visitor and lowers cost-to-serve.",
-          link: "/ecommerce-shopify-development/",
+          link: "/ecommerce-development",
         },
         {
           service_deliverable: "Web Application Development",
@@ -162,7 +162,7 @@ export const webDevelopmentPageData = {
             "Replatforming and redesigns that preserve SEO equity and lift conversion.",
           business_impact:
             "Modernizes without losing the traffic and rankings you've paid for.",
-          link: "/website-redesign-migration/",
+          link: "/website-redesign-services",
         },
         {
           service_deliverable: "Optimization & Support",
@@ -170,7 +170,7 @@ export const webDevelopmentPageData = {
             "Speed, Core Web Vitals, CRO, and managed maintenance.",
           business_impact:
             "Protects and compounds the value of what you've built.",
-          link: "/optimization-support/",
+          link: "/website-maintenance-services",
         },
       ],
     },
@@ -402,11 +402,11 @@ export const webDevelopmentPageData = {
     internal_links: [
       "↓ /custom-web-development/",
       "↓ /enterprise-web-development/",
-      "↓ /ecommerce-shopify-development/",
+      "↓ /ecommerce-development",
       "↓ /web-application-development/",
       "↓ /saas-development/",
-      "↓ /website-redesign-migration/",
-      "↓ /optimization-support/",
+      "↓ /website-redesign-services",
+      "↓ /website-maintenance-services",
       "→ /cost/",
       "↑ home",
     ],

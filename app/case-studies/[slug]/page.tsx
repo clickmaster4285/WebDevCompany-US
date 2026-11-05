@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { caseStudies } from "@/data/case-studies";
 import { getMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import { TemplateCTA } from "@/components/ui/TemplateCta";
 import {
   CaseStudyHero,
@@ -69,6 +71,13 @@ export default async function CaseStudyDetailPage({
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Case studies", path: "/case-studies" },
+          { name: study.title, path: `/case-studies/${study.slug}` },
+        ])}
+      />
       {/* Hero Section */}
       <CaseStudyHero
         title={study.title}

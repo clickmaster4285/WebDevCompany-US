@@ -2,30 +2,21 @@
 
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { motion, AnimatePresence } from 'framer-motion';
-import { getAllLocationPages, LocationPageData } from '@/data/locationdata';
+import { LocationPageData } from '@/data/locationdata';
 
-export default function LocationsContent() {
-  const [locations, setLocations] = useState<LocationPageData[]>([]);
+export default function LocationsContent({ locations }: { locations: LocationPageData[] }) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedState, setSelectedState] = useState<string>('all');
-
-  useEffect(() => {
-    const allLocations = getAllLocationPages();
-    setLocations(allLocations);
-  }, []);
-
-  const states = ['all', ...new Set(locations.map(loc => loc.state))];
 
   const filteredLocations = locations.filter(loc => {
-    const matchesSearch = loc.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          loc.region.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          loc.primarySectors.some(s => s.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesState = selectedState === 'all' || loc.state === selectedState;
-    return matchesSearch && matchesState;
+    const query = searchTerm.toLowerCase();
+    return loc.city.toLowerCase().includes(query) ||
+      loc.region.toLowerCase().includes(query) ||
+      loc.state.toLowerCase().includes(query) ||
+      loc.primarySectors.some(s => s.toLowerCase().includes(query));
   });
 
   const groupedLocations = filteredLocations.reduce((acc, loc) => {
@@ -162,7 +153,10 @@ export default function LocationsContent() {
                                   {location.city}
                                 </h3>
                                 <p className="text-sm text-ink-mute">
-                                  {location.region}
+                                  {location.region}, {location.state}
+                                </p>
+                                <p className="mt-2 text-sm leading-relaxed text-ink-soft line-clamp-3">
+                                  {location.metaDescription}
                                 </p>
                               </div>
                               <span className="flex-shrink-0 w-8 h-8 rounded-full bg-violet/10 flex items-center justify-center group-hover:bg-violet/20 transition-colors">

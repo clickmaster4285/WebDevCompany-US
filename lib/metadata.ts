@@ -1,6 +1,7 @@
 // lib/metadata.ts
 import { Metadata } from "next/";
 import { siteConfig } from "./siteConfig";
+import { brandedTitle, clampDescription } from "./seo";
 
 interface MetadataProps {
   title: string;
@@ -31,18 +32,19 @@ export function getMetadata({
   // The canonical path. Leading slash is added automatically.
   const canonicalPath = slug ? `/${slug}` : "/";
   const imageUrl = imagePath || siteConfig.logo;
-  const fullTitle = `${title} | ${siteConfig.name}`;
+  const fullTitle = brandedTitle(title);
+  const safeDescription = clampDescription(description);
 
   return {
-    title: fullTitle,
-    description,
+    title: { absolute: fullTitle },
+    description: safeDescription,
     metadataBase: new URL(siteConfig.url),
     alternates: {
       canonical: canonicalPath,
     },
     openGraph: {
-      title,
-      description,
+      title: fullTitle,
+      description: safeDescription,
       url: canonicalPath,
       siteName: siteConfig.name,
       images: [
@@ -58,8 +60,8 @@ export function getMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: fullTitle,
+      description: safeDescription,
       images: [imageUrl],
     },
     ...(noIndex && {

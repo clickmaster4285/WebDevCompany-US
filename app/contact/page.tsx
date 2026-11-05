@@ -1,9 +1,9 @@
 // app/contact/page.tsx
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Mail,
   MapPin,
@@ -82,55 +82,6 @@ function ElegantShape({
   );
 }
 
-// ─── Animated counter for stats (supports decimals, e.g. 99.9%) ───────────
-// Rewritten to use requestAnimationFrame to ensure it never gets stuck at 0
-function StatCounter({
-  value,
-  suffix = "",
-  decimals = 0,
-}: {
-  value: number;
-  suffix?: string;
-  decimals?: number;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    let start: number | null = null;
-    const duration = 1600; // 1.6 seconds
-
-    const step = (timestamp: number) => {
-      if (start === null) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      // Ease-out cubic for smooth animation
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = eased * value;
-      
-      setDisplay(Number(current.toFixed(decimals)));
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        setDisplay(value); // Ensure it finishes exactly on the value
-      }
-    };
-
-    const animationFrame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, value, decimals]);
-
-  return (
-    <span ref={ref}>
-      {display}
-      {suffix}
-    </span>
-  );
-}
-
 // ─── Cursor spotlight helper (imperative, no re-render on mousemove) ───────
 function handleSpotlight(e: React.MouseEvent<HTMLDivElement>) {
   const rect = e.currentTarget.getBoundingClientRect();
@@ -171,16 +122,14 @@ const cardVariants = {
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 const heroStats: Array<{
-  display?: string;
-  value?: number;
-  suffix?: string;
-  decimals?: number;
+  display: string;
   label: string;
+  href?: string;
 }> = [
-  { display: "< 24h", label: "Response Time" },
-  { value: 120, suffix: "+", label: "Projects Delivered" },
-  { value: 50, suffix: "+", label: "Enterprise Clients" },
-  { value: 99.9, suffix: "%", decimals: 1, label: "Uptime Guarantee" },
+  { display: "US", label: "+1 325 202 4074", href: "tel:+13252024074" },
+  { display: "UK", label: "+44 7988 576086", href: "tel:+447988576086" },
+  { display: "PK", label: "+92 332 5394285", href: "tel:+923325394285" },
+  { display: "Read", label: "Case studies", href: "/case-studies" },
 ];
 
 const budgetOptions = [
@@ -219,25 +168,25 @@ const whyContactUs = [
 
 const contactTeam = [
   {
-    name: "Sarah Mitchell",
-    role: "Head of Sales",
-    initials: "SM",
+    name: "United States",
+    role: "+1 325 202 4074",
+    initials: "US",
     color: "from-violet to-purple-600",
-    image: "/image1.png",
+    href: "tel:+13252024074",
   },
   {
-    name: "James Wilson",
-    role: "Technical Lead",
-    initials: "JW",
+    name: "United Kingdom",
+    role: "+44 7988 576086",
+    initials: "UK",
     color: "from-cyan-500 to-blue-600",
-    image: "/image2.png",
+    href: "tel:+447988576086",
   },
   {
-    name: "Our Support Team",
-    role: "Always Ready to Help",
-    initials: undefined,
+    name: "Pakistan",
+    role: "+92 332 5394285",
+    initials: "PK",
     color: "from-emerald-500 to-teal-600",
-    image: "/image3.png",
+    href: "tel:+923325394285",
   },
 ];
 
@@ -303,8 +252,6 @@ function ContactVisual() {
 
 // ─── Team / support photo card — real photo, initials or icon as fallback ──
 function PersonCard({ member }: { member: (typeof contactTeam)[number] }) {
-  const [errored, setErrored] = useState(false);
-
   return (
     <motion.div
       variants={cardVariants as any}
@@ -322,28 +269,16 @@ function PersonCard({ member }: { member: (typeof contactTeam)[number] }) {
         <div
           className={`relative w-20 h-20 mx-auto mb-4 rounded-full p-[3px] bg-linear-to-br ${member.color} shadow-lg transition-transform duration-300 group-hover:scale-105`}
         >
-          <div className="relative w-full h-full rounded-full overflow-hidden bg-surface-2 ring-2 ring-background flex items-center justify-center">
-            {!errored ? (
-              <Image
-                src={member.image}
-                alt={member.name}
-                fill
-                unoptimized
-                sizes="80px"
-                className="object-cover"
-                onError={() => setErrored(true)}
-              />
-            ) : member.initials ? (
-              <span className="text-xl font-bold text-white/90">
-                {member.initials}
-              </span>
-            ) : (
-              <Users className="w-8 h-8 text-white/80" />
-            )}
+          <div className="relative flex h-full w-full items-center justify-center rounded-full bg-surface-2 ring-2 ring-background">
+            <span className="text-xl font-bold text-white/90">{member.initials}</span>
           </div>
         </div>
-        <h3 className="text-lg font-semibold text-ink">{member.name}</h3>
-        <p className="text-sm text-ink-mute">{member.role}</p>
+        <h3 className="text-lg font-semibold text-ink">
+          <a href={member.href} className="hover:text-violet">{member.name}</a>
+        </h3>
+        <p className="text-sm text-ink-mute">
+          <a href={member.href} className="hover:text-violet">{member.role}</a>
+        </p>
       </div>
     </motion.div>
   );
@@ -523,25 +458,18 @@ export default function ContactPage() {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto"
         >
           {heroStats.map((stat) => (
-            <motion.div
-              key={stat.label}
-              variants={cardVariants}
-              className="bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 hover:-translate-y-1 transition-all duration-300 group"
-            >
-              <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
-                {stat.display ? (
-                  stat.display
-                ) : (
-                  <StatCounter
-                    value={stat.value ?? 0}
-                    suffix={stat.suffix || ""}
-                    decimals={stat.decimals || 0}
-                  />
-                )}
-              </div>
-              <div className="text-sm text-ink-mute group-hover:text-ink transition-colors">
-                {stat.label}
-              </div>
+            <motion.div key={stat.label} variants={cardVariants}>
+              <Link
+                href={stat.href ?? "/contact"}
+                className="block bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 hover:-translate-y-1 transition-all duration-300 group"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
+                  {stat.display}
+                </div>
+                <div className="text-sm text-ink-mute group-hover:text-ink transition-colors">
+                  {stat.label}
+                </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
@@ -717,8 +645,10 @@ export default function ContactPage() {
                 )}
 
                 <p className="text-xs text-ink-mute/60 text-center">
-                  By submitting, you agree to our  privacy policy
-               
+                  By submitting, you agree to our{" "}
+                  <Link href="/privacy" className="underline underline-offset-2 hover:text-ink">
+                    privacy policy
+                  </Link>
                   . We&apos;ll never share your information.
                 </p>
               </form>
@@ -738,24 +668,30 @@ export default function ContactPage() {
           >
             {/* Consolidated contact details card */}
             <div className="p-6 md:p-8 rounded-2xl bg-surface-1/40 border border-border">
-              <h3 className="text-lg font-semibold text-ink mb-5">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 Contact Information
               </h3>
+              <p className="text-sm font-medium text-ink mb-1">
+                Clickmasters Web Development Company
+              </p>
+              <p className="text-xs text-ink-mute/80 mb-5 leading-relaxed">
+                Serving the United States, United Kingdom, and Pakistan. The US line is +1 325 202 4074.
+              </p>
               <div className="space-y-5">
-                {/* Pakistan */}
+                {/* United States — primary market */}
                 <div className="flex items-start gap-4">
                   <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
                     <Phone className="w-5 h-5 text-violet" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs text-ink-mute/70 mb-0.5">
-                      🇵🇰 Pakistan
+                      🇺🇸 United States
                     </p>
                     <Link
-                      href="tel:+923325394285"
+                      href="tel:+13252024074"
                       className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
                     >
-                      +92 332 5394285
+                      +1 325 202 4074
                     </Link>
                   </div>
                 </div>
@@ -778,20 +714,20 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* United States */}
+                {/* Pakistan */}
                 <div className="flex items-start gap-4">
                   <div className="w-11 h-11 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
                     <Phone className="w-5 h-5 text-violet" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs text-ink-mute/70 mb-0.5">
-                      🇺🇸 United States
+                      🇵🇰 Pakistan
                     </p>
                     <Link
-                      href="tel:+13252024074"
+                      href="tel:+923325394285"
                       className="text-sm font-medium text-ink hover:text-violet transition-colors break-words"
                     >
-                      +1 325 202 4074
+                      +92 332 5394285
                     </Link>
                   </div>
                 </div>
@@ -829,10 +765,10 @@ export default function ContactPage() {
                 succeed.
               </p>
               <Link
-                href="tel:+447988576086"
+                href="tel:+13252024074"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-violet hover:text-violet/80 transition-colors"
               >
-                Call +44 7988 576086
+                Call +1 325 202 4074
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -840,7 +776,7 @@ export default function ContactPage() {
             {/* Copyright */}
             <div className="text-center pt-2 pb-1">
               <p className="text-xs text-ink-mute/50">
-                © 2026 ClickMasters Digital Marketing Agency
+                © 2026 Clickmasters Web Development Company
               </p>
             </div>
           </motion.div>
@@ -927,14 +863,13 @@ export default function ContactPage() {
           >
             <div className="inline-flex items-center gap-2 bg-violet/10 text-violet px-3 py-1 rounded-full text-xs font-medium mb-4">
               <Users className="w-3.5 h-3.5" />
-              <span>Meet Our Team</span>
+              <span>Market lines</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">
-              The People Who Will Help You
+              Call the desk for your market
             </h2>
             <p className="text-ink-soft text-lg">
-              Our dedicated team is ready to understand your needs and deliver
-              solutions that exceed expectations.
+              The primary line for US work is +1 325 202 4074. UK and Pakistan numbers are listed beside it.
             </p>
           </motion.div>
 

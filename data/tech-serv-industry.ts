@@ -58,7 +58,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Hospitality consultation",
       secondaryCTA: "Request a Hospitality project estimate",
       socialProof:
-        "[PLACEHOLDER: Hospitality client logos / rating] · Representative Shopify Development work for Hospitality."
+        "Published outcomes are in the case studies · Representative Shopify Development work for Hospitality."
     },
     featuredAnswer:
       "Shopify Development for Hospitality means building a conversion-engineered Shopify store engineered for the sector's specific needs: driving direct bookings to cut third-party commissions. Unlike generic builds, it accounts for booking/PMS integration, mobile-first, and direct-booking conversion. Hospitality needs seamless direct booking and PMS integration — because every booking shifted from a commissioned platform to direct keeps the commission as margin. The result is Shopify store that fits Hospitality's requirements and drives direct-booking share and recovered commission margin — combining the fastest path to a converting store with low operational overhead with genuine sector understanding.",
@@ -148,7 +148,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Hospitality engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Hospitality engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Hospitality organization had a generic Shopify store that ignored booking/PMS integration and failed to address driving direct bookings to cut third-party commissions — built by a provider who didn't understand the sector.",
       solution:
@@ -230,7 +230,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Manufacturing & Industrial consultation",
       secondaryCTA: "Request a Manufacturing & Industrial project estimate",
       socialProof:
-        "[PLACEHOLDER: Manufacturing & Industrial client logos / rating] · Representative E-commerce Development work for Manufacturing & Industrial."
+        "Published outcomes are in the case studies · Representative E-commerce Development work for Manufacturing & Industrial."
     },
     featuredAnswer:
       "E-commerce Development for Manufacturing & Industrial means building a conversion-engineered online store on the right platform engineered for the sector's specific needs: generating qualified leads from technical buyers who research extensively. Unlike generic builds, it accounts for complex product catalogs, distributor/B2B logic, lead gen, and ERP/CRM integration. Manufacturing needs complex-catalog presentation, distributor logic, and lead capture — because industrial buyers self-educate before contacting sales, making the site the top of the funnel. The result is online store that fits Manufacturing & Industrial's requirements and drives qualified B2B pipeline from buyer research — combining revenue-per-visitor engineering across the right commerce platform with genuine sector understanding.",
@@ -319,7 +319,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Manufacturing & Industrial engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Manufacturing & Industrial engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Manufacturing & Industrial organization had a generic online store that ignored complex product catalogs and failed to address generating qualified leads from technical buyers who research extensively — built by a provider who didn't understand the sector.",
       solution:
@@ -404,7 +404,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Healthcare consultation",
       secondaryCTA: "Request a Healthcare project estimate",
       socialProof:
-        "[PLACEHOLDER: Healthcare client logos / rating] · Representative SaaS Development work for Healthcare."
+        "Published outcomes are in the case studies · Representative SaaS Development work for Healthcare."
     },
     featuredAnswer:
       "SaaS Development for Healthcare means building a scalable, secure SaaS product engineered for the sector's specific needs: handling protected health information compliantly while converting patients. Unlike generic builds, it accounts for HIPAA compliance, accessibility (ADA/WCAG), and EHR/practice-system integration. Healthcare requires HIPAA-aligned data handling, ADA/WCAG accessibility, and integration with clinical systems — standards generic builds ignore. The result is SaaS product that fits Healthcare's requirements and drives booked patient appointments and reduced compliance risk — combining multi-tenant, scalable architecture built to survive success with genuine sector understanding.",
@@ -493,7 +493,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Healthcare engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Healthcare engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Healthcare organization had a generic SaaS product that ignored HIPAA compliance and failed to address handling protected health information compliantly while converting patients — built by a provider who didn't understand the sector.",
       solution:
@@ -575,7 +575,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Fintech & Financial Services consultation",
       secondaryCTA: "Request a Fintech & Financial Services project estimate",
       socialProof:
-        "[PLACEHOLDER: Fintech & Financial Services client logos / rating] · Representative SaaS Development work for Fintech & Financial Services."
+        "Published outcomes are in the case studies · Representative SaaS Development work for Fintech & Financial Services."
     },
     featuredAnswer:
       "SaaS Development for Fintech & Financial Services means building a scalable, secure SaaS product engineered for the sector's specific needs: meeting financial-grade security and compliance while earning user trust. Unlike generic builds, it accounts for PCI-DSS, SOC 2, financial-grade security, and passing partner/enterprise security review. Fintech demands financial-grade security, compliance (PCI/SOC 2), and the trust signals cautious financial users require — where a failure can be existential. The result is SaaS product that fits Fintech & Financial Services's requirements and drives passed security reviews, unlocked enterprise deals, and reduced breach risk — combining multi-tenant, scalable architecture built to survive success with genuine sector understanding.",
@@ -662,7 +662,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Fintech & Financial Services engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Fintech & Financial Services engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Fintech & Financial Services organization had a generic SaaS product that ignored PCI-DSS and failed to address meeting financial-grade security and compliance while earning user trust — built by a provider who didn't understand the sector.",
       solution:
@@ -747,7 +747,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Startups consultation",
       secondaryCTA: "Request a Startups project estimate",
       socialProof:
-        "[PLACEHOLDER: Startups client logos / rating] · Representative SaaS Development work for Startups."
+        "Published outcomes are in the case studies · Representative SaaS Development work for Startups."
     },
     featuredAnswer:
       "SaaS Development for Startups means building a scalable, secure SaaS product engineered for the sector's specific needs: proving the model fast on an architecture that survives success. Unlike generic builds, it accounts for real MVPs on scalable architecture, investor-grade quality, and speed. Startups need a real MVP on sound architecture — cheap enough to prove the model, solid enough not to throw away when it works, and credible to investors. The result is SaaS product that fits Startups's requirements and drives a sellable, fundable product built without the rebuild tax — combining multi-tenant, scalable architecture built to survive success with genuine sector understanding.",
@@ -834,7 +834,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Startups engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Startups engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Startups organization had a generic SaaS product that ignored real MVPs on scalable architecture and failed to address proving the model fast on an architecture that survives success — built by a provider who didn't understand the sector.",
       solution:
@@ -916,7 +916,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Healthcare consultation",
       secondaryCTA: "Request a Healthcare project estimate",
       socialProof:
-        "[PLACEHOLDER: Healthcare client logos / rating] · Representative Web Application Development work for Healthcare."
+        "Published outcomes are in the case studies · Representative Web Application Development work for Healthcare."
     },
     featuredAnswer:
       "Web Application Development for Healthcare means building a custom web application or portal engineered for the sector's specific needs: handling protected health information compliantly while converting patients. Unlike generic builds, it accounts for HIPAA compliance, accessibility (ADA/WCAG), and EHR/practice-system integration. Healthcare requires HIPAA-aligned data handling, ADA/WCAG accessibility, and integration with clinical systems — standards generic builds ignore. The result is web application that fits Healthcare's requirements and drives booked patient appointments and reduced compliance risk — combining custom functionality and integration built for real operational needs with genuine sector understanding.",
@@ -1005,7 +1005,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Healthcare engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Healthcare engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Healthcare organization had a generic web application that ignored HIPAA compliance and failed to address handling protected health information compliantly while converting patients — built by a provider who didn't understand the sector.",
       solution:
@@ -1087,7 +1087,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Fintech & Financial Services consultation",
       secondaryCTA: "Request a Fintech & Financial Services project estimate",
       socialProof:
-        "[PLACEHOLDER: Fintech & Financial Services client logos / rating] · Representative Web Application Development work for Fintech & Financial Services."
+        "Published outcomes are in the case studies · Representative Web Application Development work for Fintech & Financial Services."
     },
     featuredAnswer:
       "Web Application Development for Fintech & Financial Services means building a custom web application or portal engineered for the sector's specific needs: meeting financial-grade security and compliance while earning user trust. Unlike generic builds, it accounts for PCI-DSS, SOC 2, financial-grade security, and passing partner/enterprise security review. Fintech demands financial-grade security, compliance (PCI/SOC 2), and the trust signals cautious financial users require — where a failure can be existential. The result is web application that fits Fintech & Financial Services's requirements and drives passed security reviews, unlocked enterprise deals, and reduced breach risk — combining custom functionality and integration built for real operational needs with genuine sector understanding.",
@@ -1174,7 +1174,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Fintech & Financial Services engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Fintech & Financial Services engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Fintech & Financial Services organization had a generic web application that ignored PCI-DSS and failed to address meeting financial-grade security and compliance while earning user trust — built by a provider who didn't understand the sector.",
       solution:
@@ -1259,7 +1259,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Manufacturing & Industrial consultation",
       secondaryCTA: "Request a Manufacturing & Industrial project estimate",
       socialProof:
-        "[PLACEHOLDER: Manufacturing & Industrial client logos / rating] · Representative Web Application Development work for Manufacturing & Industrial."
+        "Published outcomes are in the case studies · Representative Web Application Development work for Manufacturing & Industrial."
     },
     featuredAnswer:
       "Web Application Development for Manufacturing & Industrial means building a custom web application or portal engineered for the sector's specific needs: generating qualified leads from technical buyers who research extensively. Unlike generic builds, it accounts for complex product catalogs, distributor/B2B logic, lead gen, and ERP/CRM integration. Manufacturing needs complex-catalog presentation, distributor logic, and lead capture — because industrial buyers self-educate before contacting sales, making the site the top of the funnel. The result is web application that fits Manufacturing & Industrial's requirements and drives qualified B2B pipeline from buyer research — combining custom functionality and integration built for real operational needs with genuine sector understanding.",
@@ -1347,7 +1347,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Manufacturing & Industrial engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Manufacturing & Industrial engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Manufacturing & Industrial organization had a generic web application that ignored complex product catalogs and failed to address generating qualified leads from technical buyers who research extensively — built by a provider who didn't understand the sector.",
       solution:
@@ -1432,7 +1432,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Real Estate consultation",
       secondaryCTA: "Request a Real Estate project estimate",
       socialProof:
-        "[PLACEHOLDER: Real Estate client logos / rating] · Representative Web Application Development work for Real Estate."
+        "Published outcomes are in the case studies · Representative Web Application Development work for Real Estate."
     },
     featuredAnswer:
       "Web Application Development for Real Estate means building a custom web application or portal engineered for the sector's specific needs: capturing high-intent leads from listing and property-search traffic. Unlike generic builds, it accounts for IDX/MLS integration, fast property search, lead capture, and CRM/speed-to-lead. Real estate needs working IDX/MLS, performant search, and instant lead routing — because high-intent traffic and high deal values make every leaked lead costly. The result is web application that fits Real Estate's requirements and drives captured leads and speed-to-lead conversion — combining custom functionality and integration built for real operational needs with genuine sector understanding.",
@@ -1519,7 +1519,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Real Estate engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Real Estate engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Real Estate organization had a generic web application that ignored IDX/MLS integration and failed to address capturing high-intent leads from listing and property-search traffic — built by a provider who didn't understand the sector.",
       solution:
@@ -1602,7 +1602,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Law Firms consultation",
       secondaryCTA: "Request a Law Firms project estimate",
       socialProof:
-        "[PLACEHOLDER: Law Firms client logos / rating] · Representative Custom Web Development work for Law Firms."
+        "Published outcomes are in the case studies · Representative Custom Web Development work for Law Firms."
     },
     featuredAnswer:
       "Custom Web Development for Law Firms means building a custom-built website engineered for the sector's specific needs: converting high-value clients while respecting legal advertising ethics. Unlike generic builds, it accounts for credibility engineering, intake conversion, and bar/ethics-aware compliance. Law firms need credibility, frictionless intake, and ethics-aware compliance — because one signed case can outweigh the entire website and the rules carry conduct risk. The result is custom website that fits Law Firms's requirements and drives intake inquiries and signed high-value cases — combining conversion engineering, integration, and differentiation beyond templates with genuine sector understanding.",
@@ -1690,7 +1690,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Law Firms engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Law Firms engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Law Firms organization had a generic custom website that ignored credibility engineering and failed to address converting high-value clients while respecting legal advertising ethics — built by a provider who didn't understand the sector.",
       solution:
@@ -1772,7 +1772,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Fintech & Financial Services consultation",
       secondaryCTA: "Request a Fintech & Financial Services project estimate",
       socialProof:
-        "[PLACEHOLDER: Fintech & Financial Services client logos / rating] · Representative Custom Web Development work for Fintech & Financial Services."
+        "Published outcomes are in the case studies · Representative Custom Web Development work for Fintech & Financial Services."
     },
     featuredAnswer:
       "Custom Web Development for Fintech & Financial Services means building a custom-built website engineered for the sector's specific needs: meeting financial-grade security and compliance while earning user trust. Unlike generic builds, it accounts for PCI-DSS, SOC 2, financial-grade security, and passing partner/enterprise security review. Fintech demands financial-grade security, compliance (PCI/SOC 2), and the trust signals cautious financial users require — where a failure can be existential. The result is custom website that fits Fintech & Financial Services's requirements and drives passed security reviews, unlocked enterprise deals, and reduced breach risk — combining conversion engineering, integration, and differentiation beyond templates with genuine sector understanding.",
@@ -1859,7 +1859,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Fintech & Financial Services engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Fintech & Financial Services engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Fintech & Financial Services organization had a generic custom website that ignored PCI-DSS and failed to address meeting financial-grade security and compliance while earning user trust — built by a provider who didn't understand the sector.",
       solution:
@@ -1944,7 +1944,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Manufacturing & Industrial consultation",
       secondaryCTA: "Request a Manufacturing & Industrial project estimate",
       socialProof:
-        "[PLACEHOLDER: Manufacturing & Industrial client logos / rating] · Representative Custom Web Development work for Manufacturing & Industrial."
+        "Published outcomes are in the case studies · Representative Custom Web Development work for Manufacturing & Industrial."
     },
     featuredAnswer:
       "Custom Web Development for Manufacturing & Industrial means building a custom-built website engineered for the sector's specific needs: generating qualified leads from technical buyers who research extensively. Unlike generic builds, it accounts for complex product catalogs, distributor/B2B logic, lead gen, and ERP/CRM integration. Manufacturing needs complex-catalog presentation, distributor logic, and lead capture — because industrial buyers self-educate before contacting sales, making the site the top of the funnel. The result is custom website that fits Manufacturing & Industrial's requirements and drives qualified B2B pipeline from buyer research — combining conversion engineering, integration, and differentiation beyond templates with genuine sector understanding.",
@@ -2032,7 +2032,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Manufacturing & Industrial engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Manufacturing & Industrial engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Manufacturing & Industrial organization had a generic custom website that ignored complex product catalogs and failed to address generating qualified leads from technical buyers who research extensively — built by a provider who didn't understand the sector.",
       solution:
@@ -2117,7 +2117,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Healthcare consultation",
       secondaryCTA: "Request a Healthcare project estimate",
       socialProof:
-        "[PLACEHOLDER: Healthcare client logos / rating] · Representative Custom Web Development work for Healthcare."
+        "Published outcomes are in the case studies · Representative Custom Web Development work for Healthcare."
     },
     featuredAnswer:
       "Custom Web Development for Healthcare means building a custom-built website engineered for the sector's specific needs: handling protected health information compliantly while converting patients. Unlike generic builds, it accounts for HIPAA compliance, accessibility (ADA/WCAG), and EHR/practice-system integration. Healthcare requires HIPAA-aligned data handling, ADA/WCAG accessibility, and integration with clinical systems — standards generic builds ignore. The result is custom website that fits Healthcare's requirements and drives booked patient appointments and reduced compliance risk — combining conversion engineering, integration, and differentiation beyond templates with genuine sector understanding.",
@@ -2206,7 +2206,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Healthcare engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Healthcare engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Healthcare organization had a generic custom website that ignored HIPAA compliance and failed to address handling protected health information compliantly while converting patients — built by a provider who didn't understand the sector.",
       solution:
@@ -2288,7 +2288,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a E-commerce & Retail consultation",
       secondaryCTA: "Request a E-commerce & Retail project estimate",
       socialProof:
-        "[PLACEHOLDER: E-commerce & Retail client logos / rating] · Representative Web Design & UI/UX work for E-commerce & Retail."
+        "Published outcomes are in the case studies · Representative Web Design & UI/UX work for E-commerce & Retail."
     },
     featuredAnswer:
       "Web Design & UI/UX for E-commerce & Retail means building conversion- and brand-focused web design engineered for the sector's specific needs: growing revenue per visitor while building a distinctive brand. Unlike generic builds, it accounts for conversion engineering, performance, retention mechanics, and operations integration. Consumer commerce must win on conversion and brand at once — a fast, on-brand store engineered for revenue per visitor and loyalty. The result is website design that fits E-commerce & Retail's requirements and drives conversion rate, average order value, and repeat-purchase retention — combining design engineered for conversion, not just aesthetics with genuine sector understanding.",
@@ -2376,7 +2376,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical E-commerce & Retail engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical E-commerce & Retail engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A E-commerce & Retail organization had a generic website design that ignored conversion engineering and failed to address growing revenue per visitor while building a distinctive brand — built by a provider who didn't understand the sector.",
       solution:
@@ -2459,7 +2459,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Hospitality consultation",
       secondaryCTA: "Request a Hospitality project estimate",
       socialProof:
-        "[PLACEHOLDER: Hospitality client logos / rating] · Representative Web Design & UI/UX work for Hospitality."
+        "Published outcomes are in the case studies · Representative Web Design & UI/UX work for Hospitality."
     },
     featuredAnswer:
       "Web Design & UI/UX for Hospitality means building conversion- and brand-focused web design engineered for the sector's specific needs: driving direct bookings to cut third-party commissions. Unlike generic builds, it accounts for booking/PMS integration, mobile-first, and direct-booking conversion. Hospitality needs seamless direct booking and PMS integration — because every booking shifted from a commissioned platform to direct keeps the commission as margin. The result is website design that fits Hospitality's requirements and drives direct-booking share and recovered commission margin — combining design engineered for conversion, not just aesthetics with genuine sector understanding.",
@@ -2550,7 +2550,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Hospitality engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Hospitality engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Hospitality organization had a generic website design that ignored booking/PMS integration and failed to address driving direct bookings to cut third-party commissions — built by a provider who didn't understand the sector.",
       solution:
@@ -2632,7 +2632,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Law Firms consultation",
       secondaryCTA: "Request a Law Firms project estimate",
       socialProof:
-        "[PLACEHOLDER: Law Firms client logos / rating] · Representative Web Design & UI/UX work for Law Firms."
+        "Published outcomes are in the case studies · Representative Web Design & UI/UX work for Law Firms."
     },
     featuredAnswer:
       "Web Design & UI/UX for Law Firms means building conversion- and brand-focused web design engineered for the sector's specific needs: converting high-value clients while respecting legal advertising ethics. Unlike generic builds, it accounts for credibility engineering, intake conversion, and bar/ethics-aware compliance. Law firms need credibility, frictionless intake, and ethics-aware compliance — because one signed case can outweigh the entire website and the rules carry conduct risk. The result is website design that fits Law Firms's requirements and drives intake inquiries and signed high-value cases — combining design engineered for conversion, not just aesthetics with genuine sector understanding.",
@@ -2721,7 +2721,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Law Firms engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Law Firms engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Law Firms organization had a generic website design that ignored credibility engineering and failed to address converting high-value clients while respecting legal advertising ethics — built by a provider who didn't understand the sector.",
       solution:
@@ -2803,7 +2803,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Education consultation",
       secondaryCTA: "Request a Education project estimate",
       socialProof:
-        "[PLACEHOLDER: Education client logos / rating] · Representative Web Design & UI/UX work for Education."
+        "Published outcomes are in the case studies · Representative Web Design & UI/UX work for Education."
     },
     featuredAnswer:
       "Web Design & UI/UX for Education means building conversion- and brand-focused web design engineered for the sector's specific needs: converting prospects into applicants while meeting accessibility law. Unlike generic builds, it accounts for enrollment conversion, ADA/WCAG/Section 508 accessibility, and SIS/LMS integration. Education must convert applicants and meet strict accessibility law (ADA/WCAG/508), often integrating SIS/LMS — where inaccessible sites create real legal exposure. The result is website design that fits Education's requirements and drives completed applications and reduced accessibility-legal risk — combining design engineered for conversion, not just aesthetics with genuine sector understanding.",
@@ -2893,7 +2893,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Education engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Education engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Education organization had a generic website design that ignored enrollment conversion and failed to address converting prospects into applicants while meeting accessibility law — built by a provider who didn't understand the sector.",
       solution:
@@ -2975,7 +2975,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Education consultation",
       secondaryCTA: "Request a Education project estimate",
       socialProof:
-        "[PLACEHOLDER: Education client logos / rating] · Representative WordPress Development work for Education."
+        "Published outcomes are in the case studies · Representative WordPress Development work for Education."
     },
     featuredAnswer:
       "WordPress Development for Education means building a fast, secure, manageable WordPress site engineered for the sector's specific needs: converting prospects into applicants while meeting accessibility law. Unlike generic builds, it accounts for enrollment conversion, ADA/WCAG/Section 508 accessibility, and SIS/LMS integration. Education must convert applicants and meet strict accessibility law (ADA/WCAG/508), often integrating SIS/LMS — where inaccessible sites create real legal exposure. The result is WordPress site that fits Education's requirements and drives completed applications and reduced accessibility-legal risk — combining lean, performance-engineered WordPress your team can run with genuine sector understanding.",
@@ -3065,7 +3065,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Education engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Education engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Education organization had a generic WordPress site that ignored enrollment conversion and failed to address converting prospects into applicants while meeting accessibility law — built by a provider who didn't understand the sector.",
       solution:
@@ -3147,7 +3147,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Law Firms consultation",
       secondaryCTA: "Request a Law Firms project estimate",
       socialProof:
-        "[PLACEHOLDER: Law Firms client logos / rating] · Representative WordPress Development work for Law Firms."
+        "Published outcomes are in the case studies · Representative WordPress Development work for Law Firms."
     },
     featuredAnswer:
       "WordPress Development for Law Firms means building a fast, secure, manageable WordPress site engineered for the sector's specific needs: converting high-value clients while respecting legal advertising ethics. Unlike generic builds, it accounts for credibility engineering, intake conversion, and bar/ethics-aware compliance. Law firms need credibility, frictionless intake, and ethics-aware compliance — because one signed case can outweigh the entire website and the rules carry conduct risk. The result is WordPress site that fits Law Firms's requirements and drives intake inquiries and signed high-value cases — combining lean, performance-engineered WordPress your team can run with genuine sector understanding.",
@@ -3236,7 +3236,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Law Firms engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Law Firms engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Law Firms organization had a generic WordPress site that ignored credibility engineering and failed to address converting high-value clients while respecting legal advertising ethics — built by a provider who didn't understand the sector.",
       solution:
@@ -3318,7 +3318,7 @@ export const pages: Record<string, IndustryPageData> = {
       primaryCTA: "Book a Healthcare consultation",
       secondaryCTA: "Request a Healthcare project estimate",
       socialProof:
-        "[PLACEHOLDER: Healthcare client logos / rating] · Representative WordPress Development work for Healthcare."
+        "Published outcomes are in the case studies · Representative WordPress Development work for Healthcare."
     },
     featuredAnswer:
       "WordPress Development for Healthcare means building a fast, secure, manageable WordPress site engineered for the sector's specific needs: handling protected health information compliantly while converting patients. Unlike generic builds, it accounts for HIPAA compliance, accessibility (ADA/WCAG), and EHR/practice-system integration. Healthcare requires HIPAA-aligned data handling, ADA/WCAG accessibility, and integration with clinical systems — standards generic builds ignore. The result is WordPress site that fits Healthcare's requirements and drives booked patient appointments and reduced compliance risk — combining lean, performance-engineered WordPress your team can run with genuine sector understanding.",
@@ -3408,7 +3408,7 @@ export const pages: Record<string, IndustryPageData> = {
     ],
     outcome: {
       disclosure:
-        "Illustrative of typical Healthcare engagements; representative, not a specific named client. [PLACEHOLDER: replace with a verified case study.]",
+        "Illustrative of typical Healthcare engagements; representative, not a specific named client. Published project outcomes are in the case studies.",
       challenge:
         "A Healthcare organization had a generic WordPress site that ignored HIPAA compliance and failed to address handling protected health information compliantly while converting patients — built by a provider who didn't understand the sector.",
       solution:

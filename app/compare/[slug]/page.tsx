@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { comparisons } from "@/data/comparisons";
 import { getMetadata } from "@/lib/metadata";
 import { CompareDetailPage } from "@/components/compare/detail/CompareDetailPage";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 type ComparePageProps = {
   params: Promise<{
@@ -45,5 +47,16 @@ export default async function Page({ params }: ComparePageProps) {
     notFound();
   }
 
-  return <CompareDetailPage comparison={comparison} />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Comparisons", path: "/compare" },
+          { name: comparison.title, path: `/compare/${comparison.slug}` },
+        ])}
+      />
+      <CompareDetailPage comparison={comparison} />
+    </>
+  );
 }

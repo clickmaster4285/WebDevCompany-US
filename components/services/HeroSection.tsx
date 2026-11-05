@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import {
   motion,
   useReducedMotion,
   useMotionValue,
-  useInView,
   type Variants,
 } from "framer-motion";
 import {
@@ -117,9 +116,9 @@ const visualVariants: Variants = {
 };
 
 const stats = [
-  { label: "Projects Delivered", value: 120, suffix: "+" },
-  { label: "Client Retention", value: 95, suffix: "%" },
-  { label: "Uptime Guaranteed", value: 99.9, suffix: "%", decimals: 1 },
+  { label: "United States", value: "+1 325 202 4074" },
+  { label: "United Kingdom", value: "+44 7988 576086" },
+  { label: "Pakistan", value: "+92 332 5394285" },
 ];
 
 const features = [
@@ -130,52 +129,6 @@ const features = [
 ];
 
 const techStack = ["Next.js", "React", "Node.js", "TypeScript", "AWS", "Figma"];
-
-function AnimatedCounter({
-  value,
-  suffix = "",
-  decimals = 0,
-  duration = 2,
-}: {
-  value: number;
-  suffix?: string;
-  decimals?: number;
-  duration?: number;
-}) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    if (!isInView || hasAnimated.current) return;
-    hasAnimated.current = true;
-
-    let startTime: number;
-    let animationFrame: number;
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      setCount(Number((eased * value).toFixed(decimals)));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, value, duration, decimals]);
-
-  return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
-  );
-}
 
 function MagneticButton({
   children,
@@ -350,19 +303,13 @@ export function HeroSection({
             variants={itemVariants}
             className="mt-10 flex flex-col items-start gap-4 sm:flex-row"
           >
-            <MagneticButton
-              href={data.primaryCTALink ?? "/contact"}
-              variant="primary"
-            >
-              {data.primaryCTA}
+            <MagneticButton href="tel:+13252024074" variant="primary">
+              Call +1 325 202 4074
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </MagneticButton>
 
-            <MagneticButton
-              href={data.secondaryCTALink ?? "#projects"}
-              variant="secondary"
-            >
-              {data.secondaryCTA}
+            <MagneticButton href="/contact" variant="secondary">
+              {data.primaryCTA}
               <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
             </MagneticButton>
           </motion.div>
@@ -374,12 +321,8 @@ export function HeroSection({
           >
             {stats.map((stat) => (
               <div key={stat.label}>
-                <span className="block text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                  <AnimatedCounter
-                    value={stat.value}
-                    suffix={stat.suffix}
-                    decimals={stat.decimals}
-                  />
+                <span className="block text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+                  {stat.value}
                 </span>
                 <span className="mt-1 block text-xs font-medium text-ink-mute sm:text-sm">
                   {stat.label}
@@ -565,7 +508,7 @@ function TechVisual({
             <div className="text-[11px] font-medium uppercase tracking-wider text-ink-mute">
               Performance
             </div>
-            <div className="text-base font-bold text-ink">99+ Score</div>
+            <div className="text-base font-bold text-ink">US +1 325 202 4074</div>
           </div>
         </div>
       </motion.div>
@@ -583,7 +526,9 @@ function TechVisual({
             <div className="text-[11px] font-medium uppercase tracking-wider text-ink-mute">
               Delivered
             </div>
-            <div className="text-base font-bold text-ink">120+ Projects</div>
+            <a href="/case-studies" className="text-base font-bold text-ink underline-offset-2 hover:underline">
+              Case studies
+            </a>
           </div>
         </div>
       </motion.div>

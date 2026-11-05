@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { blogs } from "@/data/blogs";
 import { getMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { RelatedPages } from "@/components/seo/RelatedPages";
+import { absoluteUrl, breadcrumbJsonLd, clampDescription, SITE_URL } from "@/lib/seo";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { BlogContentRenderer } from "@/components/blogs/detail/BlogContentRenderer";
@@ -353,8 +356,37 @@ export default async function BlogDetailPage({ params }: PageProps) {
     listIndex >= 0 ? afterFirstBlock.slice(0, listIndex + 1) : afterFirstBlock;
   const afterMidCta = listIndex >= 0 ? afterFirstBlock.slice(listIndex + 1) : [];
 
+  const otherPosts = blogs
+    .filter((item) => item.slug !== blog.slug)
+    .slice(0, 3)
+    .map((item) => ({ href: `/blogs/${item.slug}`, label: item.title }));
+
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blogs", path: "/blogs" },
+          { name: blog.title, path: `/blogs/${blog.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: blog.title,
+          description: clampDescription(blog.hero?.description || blog.excerpt || blog.title),
+          datePublished: blog.date,
+          author: {
+            "@type": "Organization",
+            name: "Clickmasters Web Development Company",
+            url: SITE_URL,
+          },
+          publisher: { "@id": `${SITE_URL}/#organization` },
+          image: blog.image ? absoluteUrl(blog.image) : absoluteUrl("/logo.webp"),
+          mainEntityOfPage: absoluteUrl(`/blogs/${blog.slug}`),
+        }}
+      />
       <Nav />
 
       <article>
@@ -501,6 +533,15 @@ export default async function BlogDetailPage({ params }: PageProps) {
         </section>
       </article>
 
+      <RelatedPages
+        heading="Related pages"
+        links={[
+          { href: "/blogs", label: "All articles" },
+          { href: "/industries", label: "Industries we serve" },
+          { href: "/locations", label: "Cities we serve" },
+          ...otherPosts,
+        ]}
+      />
       <Footer />
     </main>
   );

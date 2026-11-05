@@ -5011,8 +5011,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Conversion Rate Optimization",
-      url: "/conversion-rate-optimization/",
+      label: "Explore Website Speed Optimization",
+      url: "/website-speed-optimization",
     },
     socialProof: {
       rating: "[PLACEHOLDER: rating]",
@@ -5208,8 +5208,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Conversion Rate Optimization",
-      url: "/conversion-rate-optimization/",
+      label: "Explore Website Speed Optimization",
+      url: "/website-speed-optimization",
     },
   },
   riskReversal: {
@@ -5241,7 +5241,7 @@ export const faqPages = [
     internalLinks: [
       {
         relation: "↑ Parent pillar",
-        url: "/conversion-rate-optimization/",
+        url: "/website-speed-optimization",
         label: "Conversion Rate Optimization pillar",
       },
       {
@@ -5268,8 +5268,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondary: {
-      label: "Explore Conversion Rate Optimization",
-      url: "/conversion-rate-optimization/",
+      label: "Explore Website Speed Optimization",
+      url: "/website-speed-optimization",
     },
   },
 },
@@ -5597,8 +5597,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Web Design & UI/UX",
-      url: "/web-design-ui-ux/",
+      label: "Explore Web Design Services",
+      url: "/web-design-services",
     },
     socialProof: {
       rating: "[PLACEHOLDER: rating]",
@@ -5794,8 +5794,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Web Design & UI/UX",
-      url: "/web-design-ui-ux/",
+      label: "Explore Web Design Services",
+      url: "/web-design-services",
     },
   },
   riskReversal: {
@@ -5827,7 +5827,7 @@ export const faqPages = [
     internalLinks: [
       {
         relation: "↑ Parent pillar",
-        url: "/web-design-ui-ux/",
+        url: "/web-design-services",
         label: "Web Design & UI/UX pillar",
       },
       {
@@ -5854,8 +5854,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondary: {
-      label: "Explore Web Design & UI/UX",
-      url: "/web-design-ui-ux/",
+      label: "Explore Web Design Services",
+      url: "/web-design-services",
     },
   },
 },
@@ -5890,8 +5890,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Website Migration Services",
-      url: "/website-migration-services/",
+      label: "Explore Website Redesign Services",
+      url: "/website-redesign-services",
     },
     socialProof: {
       rating: "[PLACEHOLDER: rating]",
@@ -6087,8 +6087,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Website Migration Services",
-      url: "/website-migration-services/",
+      label: "Explore Website Redesign Services",
+      url: "/website-redesign-services",
     },
   },
   riskReversal: {
@@ -6120,7 +6120,7 @@ export const faqPages = [
     internalLinks: [
       {
         relation: "↑ Parent pillar",
-        url: "/website-migration-services/",
+        url: "/website-redesign-services",
         label: "Website Migration Services pillar",
       },
       {
@@ -6147,8 +6147,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondary: {
-      label: "Explore Website Migration Services",
-      url: "/website-migration-services/",
+      label: "Explore Website Redesign Services",
+      url: "/website-redesign-services",
     },
   },
 },
@@ -7062,8 +7062,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Web Design & UI/UX",
-      url: "/web-design-ui-ux/",
+      label: "Explore Web Design Services",
+      url: "/web-design-services",
     },
     socialProof: {
       rating: "[PLACEHOLDER: rating]",
@@ -7259,8 +7259,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Web Design & UI/UX",
-      url: "/web-design-ui-ux/",
+      label: "Explore Web Design Services",
+      url: "/web-design-services",
     },
   },
   riskReversal: {
@@ -7292,7 +7292,7 @@ export const faqPages = [
     internalLinks: [
       {
         relation: "↑ Parent pillar",
-        url: "/web-design-ui-ux/",
+        url: "/web-design-services",
         label: "Web Design & UI/UX pillar",
       },
       {
@@ -7319,8 +7319,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondary: {
-      label: "Explore Web Design & UI/UX",
-      url: "/web-design-ui-ux/",
+      label: "Explore Web Design Services",
+      url: "/web-design-services",
     },
   },
 },
@@ -7355,8 +7355,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Conversion Rate Optimization",
-      url: "/conversion-rate-optimization/",
+      label: "Explore Website Speed Optimization",
+      url: "/website-speed-optimization",
     },
     socialProof: {
       rating: "[PLACEHOLDER: rating]",
@@ -7552,8 +7552,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondaryCta: {
-      label: "Explore Conversion Rate Optimization",
-      url: "/conversion-rate-optimization/",
+      label: "Explore Website Speed Optimization",
+      url: "/website-speed-optimization",
     },
   },
   riskReversal: {
@@ -7585,7 +7585,7 @@ export const faqPages = [
     internalLinks: [
       {
         relation: "↑ Parent pillar",
-        url: "/conversion-rate-optimization/",
+        url: "/website-speed-optimization",
         label: "Conversion Rate Optimization pillar",
       },
       {
@@ -7612,8 +7612,8 @@ export const faqPages = [
       url: "/contact/",
     },
     secondary: {
-      label: "Explore Conversion Rate Optimization",
-      url: "/conversion-rate-optimization/",
+      label: "Explore Website Speed Optimization",
+      url: "/website-speed-optimization",
     },
   },
 },

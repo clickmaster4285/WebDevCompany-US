@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = getMetadata({
   title: "Case Studies",
-  description: "Explore our portfolio of 200+ successful web development projects across SaaS, eCommerce, enterprise, and more — with measurable results.",
+  description: "Read published web development case studies across SaaS, eCommerce, and enterprise projects.",
   slug: "case-studies",
 });
 

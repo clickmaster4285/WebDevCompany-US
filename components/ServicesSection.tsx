@@ -10,7 +10,7 @@ import { ArrowUpRight } from "lucide-react";
 import devImg from "@/public/assets/service-dev.jpg";
 import designImg from "@/public/assets/service-design.jpg";
 import saasImg from "@/public/assets/work-saas.jpg";
-import ecomImg from "@/public/assets/work-ecom.jpg";
+import ecomImg from "@/public/assets/work-ecom-sm.jpg";
 import corpImg from "@/public/assets/work-corp.jpg";
 
 // Featured services — image + real content from your services data file
@@ -148,7 +148,7 @@ export function ServicesSection() {
               {FEATURED_SERVICES.map((s) => (
                 <Link
                   key={s.slug}
-                  href={`/services/${s.slug}`}
+                  href={`/${s.slug}`}
                   className="group relative flex h-[50vh] sm:h-[60vh] w-[85vw] sm:w-[80vw] max-w-[900px] shrink-0 overflow-hidden border border-white/10 bg-surface-1 transition-colors duration-300 hover:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
                 >
                   {/* ruler ticks along the top edge */}

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useGsap } from "@/lib/gsap";
-import { HeroBrowserScene } from "./HeroBrowserScene";
 import heroVideo from "@/public/assets/hero.mp4";
 import Link from "next/link";
 
@@ -146,17 +145,12 @@ export function HeroSection() {
             {/* Line 1 */}
             <span className="block overflow-hidden pb-[0.12em]">
               <span className="inline-block">
-                <span data-word className="text-white">ClickMasters</span>
-                <span data-word className="text-white/40">,</span>
-                <span data-word className="text-primary"> No.1</span>
-                <span data-word className="text-white"> Web Development</span>
+                <span data-word className="text-white">Web development company </span>
               </span>
             </span>
-            {/* Line 2 */}
             <span className="block overflow-hidden pb-[0.12em]">
               <span className="inline-block">
-                <span data-word className="text-white">Services Company in</span>
-                <span data-word className="text-primary"> USA</span>
+                <span data-word className="text-white">for US businesses</span>
               </span>
             </span>
           </h1>
@@ -170,8 +164,8 @@ export function HeroSection() {
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
             {/* Start a project button */}
-            <Link
-              href="/contact"
+            <a
+              href="tel:+13252024074"
               onMouseMove={handleMouseMove}
               style={{ "--x": "50%", "--y": "50%" } as React.CSSProperties}
               className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-violet px-6 py-4 text-sm font-medium text-white transition-all duration-300 ease-out hover:from-blue-600 hover:to-purple-600 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 hover:scale-105 min-h-[48px] sm:px-7 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
@@ -183,11 +177,11 @@ export function HeroSection() {
                     "radial-gradient(200px circle at var(--x) var(--y), rgba(255, 255, 255, 0.25), transparent 80%)",
                 }}
               />
-              <span className="relative z-10">Start a project</span>
+              <span className="relative z-10">Call +1 325 202 4074</span>
               <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110 group-hover:text-blue-200">
                 →
               </span>
-            </Link>
+            </a>
 
             {/* See selected work button */}
             <Link
@@ -207,13 +201,13 @@ export function HeroSection() {
             </Link>
           </div>
 
-          <div className="hero-fade mt-16 grid max-w-md grid-cols-3 gap-6">
+          <div className="hero-fade mt-16 grid max-w-lg grid-cols-3 gap-6">
             {[
-              { val: "120+", label: "Projects", highlight: true },
-              { val: "18", label: "Awards", highlight: false },
-              { val: "99", label: "Lighthouse", highlight: true },
+              { val: "Call", label: "+1 325 202 4074", href: "tel:+13252024074", highlight: true },
+              { val: "Work", label: "Case studies", href: "/case-studies", highlight: false },
+              { val: "3", label: "US · UK · PK", href: "/contact", highlight: true },
             ].map((item) => (
-              <div key={item.label}>
+              <Link key={item.label} href={item.href}>
                 <div
                   className={`text-2xl font-semibold md:text-3xl ${
                     item.highlight ? "text-primary" : "text-white"
@@ -224,7 +218,7 @@ export function HeroSection() {
                 <div className="mt-2 text-xs uppercase tracking-widest text-white/50">
                   {item.label}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

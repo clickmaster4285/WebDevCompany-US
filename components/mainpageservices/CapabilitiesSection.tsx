@@ -49,7 +49,7 @@ export function CapabilitiesSection() {
               className="group relative border border-white/10 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-primary/30 hover:bg-white/[0.04]"
             >
               <CornerBrackets />
-              <Link href={`/services/${service.slug}`} className="relative z-10 block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary/70">
+              <Link href={`/${service.slug}`} className="relative z-10 block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary/70">
                 <div className="mb-4 flex items-center justify-between">
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/60">{currentCategory.code}—{String(index + 1).padStart(3, "0")}</span>
                   <span className="h-1 w-1 rounded-full bg-white/20 transition-colors duration-300 group-hover:bg-primary" />

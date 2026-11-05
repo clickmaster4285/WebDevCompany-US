@@ -2740,7 +2740,7 @@ export const serviceData: Record<string, ServicePageData> = {
       note: 'Build/migration: $40K–$120K; complex B2B/multi-store: $120K–$200K+'
     },
     
-    internalLinks: ['/shopify-development', '/ecommerce-development', '/web-development-services', '/b2b-commerce-development', '/custom-app-development'],
+    internalLinks: ['/shopify-development', '/ecommerce-development', '/web-development-services', '/headless-commerce-development', '/web-application-development'],
     
     schema: {
       serviceType: 'Shopify Plus Development',

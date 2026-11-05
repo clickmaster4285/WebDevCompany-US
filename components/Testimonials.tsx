@@ -45,9 +45,11 @@ export function TestimonialCard({
           <Image
             src={author.avatar}
             alt={`${author.name} profile`}
-            fill
+            width={40}
+            height={40}
             sizes="40px"
-            className="object-cover"
+            quality={60}
+            className="h-10 w-10 object-cover"
           />
         </div>
 
@@ -74,7 +76,7 @@ const defaultTestimonials: Array<{
     author: {
       name: "Sarah Jenkins",
       role: "CTO, NovaTech SaaS",
-      avatar: "/images/clients/sarah.jpeg",
+      avatar: "/images/clients/sarah-sm.jpeg",
     },
     text: "ClickMasters integrated custom AI tools into our SaaS platform seamlessly. The code quality and product strategy they brought to the table were exactly what we needed to scale.",
     href: "https://x.com",
@@ -83,7 +85,7 @@ const defaultTestimonials: Array<{
     author: {
       name: "Marcus Vance",
       role: "Founder, Loom & Thread",
-      avatar: "/images/clients/marcus.jpeg",
+      avatar: "/images/clients/marcus-sm.jpeg",
     },
     text: "Our new online store feels effortless for our customers and is built to last. Conversion rates are up 40% since the UI/UX redesign by the ClickMasters team. Highly recommend!",
     href: "https://x.com",
@@ -92,7 +94,7 @@ const defaultTestimonials: Array<{
     author: {
       name: "Elena Rodriguez",
       role: "Product Lead, FinFlow",
-      avatar: "/images/clients/elena.jpeg",
+      avatar: "/images/clients/elena-sm.jpeg",
     },
     text: "Finding a US-based web dev team that actually understands product strategy is rare. ClickMasters delivered our custom web app ahead of schedule and it performs flawlessly.",
     href: "https://x.com",
@@ -101,7 +103,7 @@ const defaultTestimonials: Array<{
     author: {
       name: "David Kim",
       role: "CEO, Orbit Media",
-      avatar: "/images/clients/david.jpeg",
+      avatar: "/images/clients/david-xs.jpeg",
     },
     text: "They bring strategy, design, and code together in one place. Working with ClickMasters felt like having an elite in-house team rather than an external agency. 10/10.",
     href: "https://x.com",
@@ -110,7 +112,7 @@ const defaultTestimonials: Array<{
     author: {
       name: "Chloe Bennett",
       role: "Founder, EcoCart",
-      avatar: "/images/clients/chloe.jpeg",
+      avatar: "/images/clients/chloe-sm.jpeg",
     },
     text: "The attention to how every product looks, feels, and performs is real. ClickMasters built our eCommerce platform from the ground up and it's an absolute joy to use.",
     href: "https://x.com",

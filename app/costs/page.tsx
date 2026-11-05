@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 import { getMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = getMetadata({
-  title: "Web Development Cost Guides — Pricing & Estimates",
+  title: "Web Development Cost Guides",
   description:
     "Complete cost guides for web development, eCommerce, Shopify, SaaS, and more. Get transparent pricing estimates for your next project.",
   slug: "costs",

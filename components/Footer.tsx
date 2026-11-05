@@ -32,8 +32,16 @@ export function Footer() {
             </Link>
 
             <p className="mt-6 max-w-xs text-sm text-ink-mute">
-              A premium web development studio crafting cinematic digital
-              products.
+              Clickmasters Web Development Company. Serving the United States,
+              United Kingdom, and Pakistan.
+            </p>
+            <p className="mt-3 max-w-xs text-sm text-ink-soft">
+              <a href="tel:+13252024074" className="hover:text-blue-400">
+                US +1 325 202 4074
+              </a>
+            </p>
+            <p className="mt-1 max-w-xs text-sm text-ink-mute">
+              sales@clickmasterswebdevelopmentcompany.com
             </p>
 
             {/* Social/Trust Badge */}
@@ -79,27 +87,27 @@ export function Footer() {
             </div>
             <ul className="mt-5 space-y-3 text-sm text-ink-soft">
               <li>
-                <Link href="/services/web-development-services" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
+                <Link href="/web-development-services" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Web Development
                 </Link>
               </li>
               <li>
-                <Link href="/services/web-design-services" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
+                <Link href="/web-design-services" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   UI/UX Design
                 </Link>
               </li>
               <li>
-                <Link href="/services/web-application-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
+                <Link href="/web-application-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Web Applications
                 </Link>
               </li>
               <li>
-                <Link href="/services/ecommerce-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
+                <Link href="/ecommerce-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   eCommerce Development
                 </Link>
               </li>
               <li>
-                <Link href="/services/saas-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
+                <Link href="/saas-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   SaaS Development
                 </Link>
               </li>
@@ -112,6 +120,11 @@ export function Footer() {
               Industries
             </div>
             <ul className="mt-5 space-y-3 text-sm text-ink-soft">
+              <li>
+                <Link href="/industries" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
+                  All industries
+                </Link>
+              </li>
               <li>
                 <Link href="/industries/healthcare-web-development" className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background">
                   Healthcare
@@ -146,6 +159,14 @@ export function Footer() {
               Resources
             </div>
             <ul className="mt-5 space-y-3 text-sm text-ink-soft">
+              <li>
+                <Link
+                  href="/locations"
+                  className="transition-all duration-300 ease-out hover:text-blue-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
+                >
+                  Locations
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/case-studies"
@@ -211,7 +232,11 @@ export function Footer() {
         {/* Bottom Bar with Scroll to Top Button */}
         <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-8 text-xs text-ink-mute">
           <div>
-            © {new Date().getFullYear()} ClickMasters Digital Marketing Agency
+            © {new Date().getFullYear()} Clickmasters Web Development Company
+            {" · "}
+            <Link href="/privacy" className="hover:text-blue-400">
+              Privacy
+            </Link>
           </div>
 
           <div className="flex items-center gap-4">

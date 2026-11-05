@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getLocationPageBySlug, getAllLocationSlugs } from '@/data/locationdata';
 import { LocationPage } from '@/components/locations/LocationPage';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, clampDescription, SITE_URL } from '@/lib/seo';
 
 export async function generateStaticParams() {
   const slugs = getAllLocationSlugs();
@@ -48,5 +50,34 @@ export default async function LocationPageRoute({
     notFound();
   }
 
-  return <LocationPage data={pageData} />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Locations', path: '/locations' },
+          { name: pageData.city, path: `/locations/${pageData.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: pageData.title,
+          description: clampDescription(pageData.metaDescription),
+          url: `${SITE_URL}/locations/${pageData.slug}`,
+          provider: { '@id': `${SITE_URL}/#organization` },
+          areaServed: {
+            '@type': 'City',
+            name: pageData.city,
+            containedInPlace: {
+              '@type': 'AdministrativeArea',
+              name: pageData.state,
+            },
+          },
+        }}
+      />
+      <LocationPage data={pageData} />
+    </>
+  );
 }

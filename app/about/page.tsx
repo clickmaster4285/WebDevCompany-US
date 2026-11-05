@@ -1,15 +1,13 @@
 // app/about/page.tsx
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import {
   motion,
   useMotionValue,
   useSpring,
   useTransform,
-  animate,
-  useInView,
 } from "framer-motion";
 import {
   Code2,
@@ -69,30 +67,6 @@ function ElegantShape({
   );
 }
 
-// ─── Animated counter for stats ─────────────────────────────────────────────
-function StatCounter({ value, suffix = "" }: { value: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-    const controls = animate(0, value, {
-      duration: 1.6,
-      ease: [0.25, 0.4, 0.25, 1] as const,
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    });
-    return () => controls.stop();
-  }, [isInView, value]);
-
-  return (
-    <span ref={ref}>
-      {display}
-      {suffix}
-    </span>
-  );
-}
-
 // ─── Cursor spotlight helper (imperative, no re-render on mousemove) ───────
 function handleSpotlight(e: React.MouseEvent<HTMLDivElement>) {
   const currentTarget = e.currentTarget;
@@ -139,10 +113,10 @@ const cardVariants = {
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 const stats = [
-  { value: 8, suffix: "+", label: "Years Experience" },
-  { value: 120, suffix: "+", label: "Projects Delivered" },
-  { value: 50, suffix: "+", label: "Team Members" },
-  { value: 98, suffix: "%", label: "Client Satisfaction" },
+  { value: "US", label: "+1 325 202 4074", href: "tel:+13252024074" },
+  { value: "UK", label: "+44 7988 576086", href: "tel:+447988576086" },
+  { value: "PK", label: "+92 332 5394285", href: "tel:+923325394285" },
+  { value: "Open", label: "Case studies", href: "/case-studies" },
 ];
 
 const values = [
@@ -186,64 +160,43 @@ const values = [
 
 const teamMembers = [
   {
-    name: "Alex Chen",
-    role: "CEO and Founder",
-    initials: "AC",
+    name: "Strategy",
+    role: "How engagements are scoped",
+    initials: "ST",
     color: "from-violet to-purple-600",
-    image: "/assets/testimonial-2.jpg",
-    bio: "Focused on vision and strategy for the studio.",
+    bio: "Scope, pricing, and the commercial shape of a project. Named work lives in the case studies.",
   },
   {
-    name: "Sarah Mitchell",
-    role: "CTO",
-    initials: "SM",
-    color: "from-cyan-500 to-blue-600",
-    image: "/assets/testimonial-1.jpg",
-    bio: "Leads technology decisions and keeps the team exploring better ways to build.",
-  },
-  {
-    name: "Marcus Rivera",
-    role: "Head of Design",
-    initials: "MR",
-    color: "from-rose-500 to-pink-600",
-    image: "/assets/Marcus Rivera.jpeg",
-    bio: "Shapes how every project looks and feels to the people using it.",
-  },
-  {
-    name: "Emily Nakamura",
-    role: "Head of Engineering",
+    name: "Engineering",
+    role: "How the product is built",
     initials: "EN",
+    color: "from-cyan-500 to-blue-600",
+    bio: "Implementation, performance, and the stack chosen for the job.",
+  },
+  {
+    name: "Design",
+    role: "How the product is used",
+    initials: "DS",
+    color: "from-rose-500 to-pink-600",
+    bio: "Interface and content structure for the people who have to use the site.",
+  },
+  {
+    name: "Delivery",
+    role: "How the project ships",
+    initials: "DL",
     color: "from-amber-500 to-orange-600",
-    image: "/assets/Emily Nakamura.jpeg",
-    bio: "Oversees the engineering team and makes sure every project ships in good shape.",
+    bio: "Reviews, launch, and the handoff. Proof of delivery is the case study, not a portrait.",
   },
 ];
 
 // ─── Team avatar: real photo in a gradient ring, initials as fallback ──────
 function TeamAvatar({ member }: { member: (typeof teamMembers)[number] }) {
-  const [errored, setErrored] = useState(false);
-
   return (
     <div
       className={`relative w-20 h-20 mx-auto mb-4 rounded-full p-[3px] bg-linear-to-br ${member.color} shadow-lg transition-transform duration-300 group-hover:scale-105`}
     >
-      <div className="relative w-full h-full rounded-full overflow-hidden bg-surface-2 ring-2 ring-background flex items-center justify-center">
-        {!errored ? (
-          // Real photo, served from public/assets/ — paths are set
-          // in the teamMembers array above.
-          <Image
-            src={member.image}
-            alt={member.name}
-            fill
-            unoptimized
-            sizes="80px"
-            className="object-cover"
-            onError={() => setErrored(true)}
-          />
-        ) : (
-          // Falls back to initials automatically if a photo is missing/404s.
-          <span className="text-xl font-bold text-white/90">{member.initials}</span>
-        )}
+      <div className="relative flex h-full w-full items-center justify-center rounded-full bg-surface-2 ring-2 ring-background">
+        <span className="text-xl font-bold text-white/90">{member.initials}</span>
       </div>
     </div>
   );
@@ -251,25 +204,11 @@ function TeamAvatar({ member }: { member: (typeof teamMembers)[number] }) {
 
 // ─── Mini avatar: compact photo circle for overlapping stacks ─────────────
 function MiniAvatar({ member }: { member: (typeof teamMembers)[number] }) {
-  const [errored, setErrored] = useState(false);
-
   return (
     <div
-      className={`relative w-10 h-10 rounded-full overflow-hidden border-2 border-background bg-linear-to-br ${member.color} flex items-center justify-center`}
+      className={`relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-background bg-linear-to-br ${member.color}`}
     >
-      {!errored ? (
-        <Image
-          src={member.image}
-          alt={member.name}
-          fill
-          unoptimized
-          sizes="40px"
-          className="object-cover"
-          onError={() => setErrored(true)}
-        />
-      ) : (
-        <span className="text-xs font-bold text-white">{member.initials}</span>
-      )}
+      <span className="text-xs font-bold text-white">{member.initials}</span>
     </div>
   );
 }
@@ -334,6 +273,7 @@ function StoryVisual() {
             fill
             unoptimized
             sizes="(min-width: 1024px) 560px, 100vw"
+            quality={60}
             className="object-cover"
             onError={() => setImgErrored(true)}
           />
@@ -409,8 +349,8 @@ function StoryVisual() {
           ))}
         </div>
         <div>
-          <div className="text-sm font-semibold text-ink">50+ experts</div>
-          <div className="text-xs text-ink-mute">building daily</div>
+          <a href="/case-studies" className="text-sm font-semibold text-ink hover:underline">Case studies</a>
+          <div className="text-xs text-ink-mute">delivered work</div>
         </div>
       </motion.div>
     </div>
@@ -508,18 +448,19 @@ export default function AboutPage() {
           animate="visible"
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto"
         >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              variants={cardVariants}
-              className="bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 hover:-translate-y-1 transition-all duration-300 group"
-            >
-              <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
-                <StatCounter value={stat.value} suffix={stat.suffix} />
-              </div>
-              <div className="text-sm text-ink-mute group-hover:text-ink transition-colors">
-                {stat.label}
-              </div>
+          {stats.map((stat) => (
+            <motion.div key={stat.label} variants={cardVariants}>
+              <Link
+                href={stat.href}
+                className="block bg-surface-1/60 backdrop-blur-sm border border-border rounded-2xl p-5 text-center hover:bg-surface-1 hover:-translate-y-1 transition-all duration-300 group"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-violet mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-ink-mute group-hover:text-ink transition-colors">
+                  {stat.label}
+                </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
@@ -554,10 +495,10 @@ export default function AboutPage() {
 
             <div className="space-y-4 text-ink-soft leading-relaxed">
               <p>
-                ClickMasters started in 2018 with a simple idea. Web development should be treated as a craft, not something you buy off a shelf. Our founder, Alex Chen, kept seeing businesses settle for websites that looked fine but never really captured what made them different.
+                ClickMasters started as a studio with a simple idea. Web development should be treated as a craft, not something you buy off a shelf. Businesses were settling for websites that looked fine but never really captured what made them different.
               </p>
               <p>
-                What began as a two person team has grown into a full service studio with more than 50 people. Over the years we have worked with startups just getting off the ground and with large, established companies, building everything from full SaaS platforms to bold, memorable brand websites.
+                The work since then is documented in our case studies: startups and established companies, from SaaS platforms to brand websites. We publish the project, not a headcount.
               </p>
               <p>
                 Today, we are known for caring about quality, working closely with our clients, and turning big ideas into something real. Every project is a chance to build something a little better than what came before it.
@@ -571,8 +512,8 @@ export default function AboutPage() {
                 ))}
               </div>
               <div className="text-sm text-ink-mute">
-                <span className="font-semibold text-ink">50+</span> team
-                members worldwide
+                <a href="/case-studies" className="font-semibold text-ink underline-offset-2 hover:underline">Case studies</a>{" "}
+                from delivered projects
               </div>
             </div>
           </motion.div>
@@ -587,10 +528,11 @@ export default function AboutPage() {
           >
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-1 border border-white/10 shadow-2xl shadow-black/40">
               <Image
-                src="/about.jpeg"
+                src="/about-sm.jpeg"
                 alt="ClickMasters team and office"
                 fill
                 sizes="(max-width: 1024px) 100vw, 560px"
+                quality={60}
                 className="object-center"
                 priority
               />
@@ -686,10 +628,10 @@ export default function AboutPage() {
             <span>Leadership</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">
-            Meet the People Behind the Code
+            How the studio is organized
           </h2>
           <p className="text-ink-soft text-lg">
-            A small group of builders, designers, and strategists who care about doing this work well.
+            Roles on a project, not named staff we cannot document here. Delivered work is in the case studies.
           </p>
         </motion.div>
 

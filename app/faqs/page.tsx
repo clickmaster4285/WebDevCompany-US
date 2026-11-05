@@ -165,11 +165,12 @@ export default function FAQsPage() {
                 className="relative z-10 flex justify-center items-center"
               >
                 <Image
-                  src="/assets/faqside.png"
+                  src="/assets/faqside.webp"
                   alt="FAQ Hero"
                   width={520}
                   height={520}
                   sizes="(max-width: 520px) 100vw, 520px"
+                  quality={60}
                   priority
                   className="h-auto w-full max-w-[520px] rounded-[2rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)]"
                 />
@@ -250,13 +251,13 @@ export default function FAQsPage() {
                 Contact Support
               </Link>
 
-              <Link
-                href="/book-call"
+              <a
+                href="tel:+13252024074"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-black text-white transition hover:bg-white/15"
               >
                 <Calendar className="h-4 w-4" />
-                Book a Call
-              </Link>
+                Call +1 325 202 4074
+              </a>
             </div>
           </div>
         </div>
@@ -272,13 +273,13 @@ export default function FAQsPage() {
         </button>
       )}
 
-      <Link
-        href="/chat"
+      <a
+        href="tel:+13252024074"
         className="fixed bottom-8 right-8 z-40 flex items-center gap-2 rounded-full bg-violet p-4 text-white shadow-lg shadow-violet/20 transition hover:scale-105 hover:bg-violet/90"
       >
         <MessageCircle className="h-6 w-6" />
-        <span className="hidden text-sm font-black md:inline">Chat with us</span>
-      </Link>
+        <span className="hidden text-sm font-black md:inline">Call the US desk</span>
+      </a>
     </main>
   );
 }

@@ -16,10 +16,7 @@ type HeroSectionProps = {
 export function HeroSection({
   heading,
   description,
-  credibilityBar,
   primaryCTA,
-  secondaryCTA,
-  socialProof,
 }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 text-white">
@@ -49,26 +46,22 @@ export function HeroSection({
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-300">
               {description}
             </p>
-            {(primaryCTA || secondaryCTA) && (
-              <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="tel:+13252024074"
+                  className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-500"
+                >
+                  Call +1 325 202 4074
+                </Link>
                 {primaryCTA && (
                   <Link
-                    href="#contact"
-                    className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-500"
+                    href="/contact"
+                    className="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/20"
                   >
                     {primaryCTA}
                   </Link>
                 )}
-                {secondaryCTA && (
-                  <Link
-                    href="#services"
-                    className="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/20"
-                  >
-                    {secondaryCTA}
-                  </Link>
-                )}
-              </div>
-            )}
+            </div>
           </motion.div>
 
           {/* Right Image */}
@@ -82,10 +75,11 @@ export function HeroSection({
               <div className="absolute inset-0 rounded-3xl bg-blue-500/20 blur-3xl"></div>
               <div className="relative aspect-[1408/768] w-full">
                 <Image
-                  src="/batch9.png"
+                  src="/batch9.webp"
                   alt="Service illustration"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 704px"
+                  quality={60}
                   className="rounded-3xl object-cover shadow-2xl shadow-blue-900/50"
                   priority
                 />

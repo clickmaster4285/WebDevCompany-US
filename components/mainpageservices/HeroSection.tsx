@@ -24,9 +24,11 @@ function HeroPanel() {
       className="group relative hidden aspect-[4/3] w-full overflow-hidden border border-white/10 bg-surface-1 lg:block shadow-2xl shadow-black/50"
     >
       <Image 
-        src="/services/serviceshero.png" 
+        src="/services/serviceshero.webp" 
         alt="ClickMasters Web Development Services" 
         fill 
+        sizes="(max-width: 1024px) 100vw, 640px"
+        quality={60}
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         priority
       />

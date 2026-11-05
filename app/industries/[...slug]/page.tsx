@@ -3,6 +3,8 @@ import { industriesData } from '@/data/industries';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import IndustryPageClient from './IndustryPageClient';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, clampDescription, SITE_URL } from '@/lib/seo';
 
 // 1. Pre-render all pages at build time
 export async function generateStaticParams() {
@@ -49,5 +51,27 @@ export default async function IndustriesPage({
   const pageData = industriesData[slugKey];
   if (!pageData) notFound();
 
-  return <IndustryPageClient data={pageData} />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Industries', path: '/industries' },
+          { name: pageData.title, path: `/industries/${pageData.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: pageData.title,
+          description: clampDescription(pageData.metaDescription),
+          url: `${SITE_URL}/industries/${pageData.slug}`,
+          provider: { '@id': `${SITE_URL}/#organization` },
+          areaServed: pageData.title.replace(/ Web Development$/, '') || 'United States',
+        }}
+      />
+      <IndustryPageClient data={pageData} />
+    </>
+  );
 }

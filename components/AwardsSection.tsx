@@ -34,10 +34,10 @@ export function AwardsSection() {
                 <div className="text-xs uppercase tracking-widest text-ink-mute">{a.y}</div>
                 <div className="mt-4 sm:mt-6 text-display text-xl sm:text-2xl text-ink">{a.n}</div>
                 <div className="mt-2 text-xs sm:text-sm text-ink-soft">{a.d}</div>
-                <div className="mt-6 sm:mt-8 inline-flex items-center gap-2 text-xs text-violet-soft">
+                <a href="/case-studies" className="mt-6 sm:mt-8 inline-flex items-center gap-2 text-xs text-violet-soft hover:underline">
                   <span className="h-1.5 w-1.5 rounded-full bg-violet" />
-                  Verified
-                </div>
+                  See case studies
+                </a>
               </div>
             </div>
           ))}

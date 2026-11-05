@@ -226,6 +226,7 @@ const STATIC_PAGES = [
   { loc: `${BASE_URL}/`, changefreq: 'daily', priority: 1.0 },
   { loc: `${BASE_URL}/about`, changefreq: 'monthly', priority: 0.6 },
   { loc: `${BASE_URL}/contact`, changefreq: 'monthly', priority: 0.6 },
+  { loc: `${BASE_URL}/privacy`, changefreq: 'yearly', priority: 0.3 },
   { loc: `${BASE_URL}/testimonials`, changefreq: 'weekly', priority: 0.7 },
 ];
 
@@ -279,7 +280,7 @@ function run() {
     for (const service of serviceEntries) {
       if (!service?.slug) continue;
       serviceUrls.push({
-        loc: `${BASE_URL}/services/${service.slug}`,
+        loc: `${BASE_URL}/${service.slug}`,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString()

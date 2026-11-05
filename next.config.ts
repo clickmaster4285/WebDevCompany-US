@@ -16,8 +16,60 @@ const cspHeader = `
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.88.65'],
-  experimental: {
-    inlineCss: true,
+  images: {
+    deviceSizes: [640, 750, 828],
+    imageSizes: [64, 96, 128, 256, 384],
+    formats: ["image/webp"],
+    qualities: [60, 75],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/services/:slug",
+        destination: "/:slug",
+        statusCode: 301,
+      },
+      {
+        source: "/serv-tech-industry/:path*",
+        destination: "/:path*",
+        statusCode: 301,
+      },
+      {
+        source: "/chat",
+        destination: "/contact",
+        statusCode: 301,
+      },
+      {
+        source: "/book-call",
+        destination: "/contact",
+        statusCode: 301,
+      },
+      {
+        source: "/blog",
+        destination: "/blogs",
+        statusCode: 301,
+      },
+      {
+        source: "/conversion-rate-optimization",
+        destination: "/website-speed-optimization",
+        statusCode: 301,
+      },
+      {
+        source: "/web-design-ui-ux",
+        destination: "/web-design-services",
+        statusCode: 301,
+      },
+      {
+        source: "/website-migration-services",
+        destination: "/website-redesign-services",
+        statusCode: 301,
+      },
+      {
+        source: "/submit-testimonial",
+        destination: "/testimonials",
+        statusCode: 301,
+      },
+    ];
   },
   turbopack: {
     rules: {

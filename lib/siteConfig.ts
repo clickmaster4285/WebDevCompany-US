@@ -10,7 +10,7 @@ export const siteConfig = {
   // This is the correct web path for your logo
   logo: "/logo.webp", 
   
-  email: "info@clickmasterswebdevelopmentcompany.com", // Update if different
-  telephone: "+1 (555) 123-4567", // Update with your actual number
-  address: "Your Business Address, City, State, ZIP", // Update with your actual address
+  email: "sales@clickmasterswebdevelopmentcompany.com",
+  telephone: "+1-325-202-4074",
+  serviceArea: "United States, United Kingdom, and Pakistan",
 };

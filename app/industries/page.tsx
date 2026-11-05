@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { industriesData } from '@/data/industries';
 import { getMetadata } from '@/lib/metadata';
 import IndustriesIndexClient from './IndustriesIndexClient';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
@@ -26,5 +28,28 @@ export default function IndustriesIndexPage() {
     pricing: industry.pricing,
   }));
 
-  return <IndustriesIndexClient industries={industries} />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Industries', path: '/industries' },
+        ])}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'Industries we serve',
+          itemListElement: industries.map((industry, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: industry.title,
+            url: absoluteUrl(`/industries/${industry.slug}`),
+          })),
+        }}
+      />
+      <IndustriesIndexClient industries={industries} />
+    </>
+  );
 }

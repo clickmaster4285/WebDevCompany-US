@@ -4,9 +4,9 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useGsap } from "@/lib/gsap";
-import saasImg from "@/public/assets/kitchenFlow.jpg";
+import saasImg from "@/public/assets/kitchenFlow-sm.jpg";
 import fintechImg from "@/public/assets/work-fintech.jpg";
-import ecomImg from "@/public/assets/work-ecom.jpg";
+import ecomImg from "@/public/assets/work-ecom-sm.jpg";
 import corpImg from "@/public/assets/work-corp.jpg";
 
 const PROJECTS = [
@@ -87,12 +87,12 @@ export function WorkSection() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative aspect-[16/10] md:aspect-auto">
-                <Image src={p.img} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" fill />
+                <Image src={p.img} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" fill sizes="(max-width: 768px) 100vw, 650px" quality={60} />
                 <div className="absolute inset-0 bg-gradient-to-t from-surface-1/60 to-transparent" />
               </div>
               <div className="flex flex-col justify-between p-6 sm:p-8 md:p-14">
                 <div className="flex items-start justify-between text-xs uppercase tracking-[0.3em] text-ink-mute">
-                  <span className="text-violet-soft">0{i + 1}</span>
+                  <span className="text-violet-soft">{String(i + 1).padStart(2, "0")}</span>
                   <span>{p.industry}</span>
                 </div>
                 <div>

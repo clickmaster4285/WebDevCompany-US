@@ -491,7 +491,7 @@ export const industriesData: Record<string, IndustryPage> = {
         'Real estate websites attract motivated, high-intent visitors — people actively looking to buy, sell, or rent — and then routinely fail to capture them. Listings that load slowly or display poorly send browsers to a competitor\'s faster site. Property search that\'s clunky or limited frustrates the exact behavior visitors came to do. Lead capture that\'s weak or absent lets high-intent prospects browse and leave without ever entering your pipeline.',
         'The cost is direct: real estate is high-value and high-intent, so a leaked lead can be a lost commission or a lost sale worth far more than the website. A brokerage driving traffic to listings while converting poorly is paying to let motivated buyers and sellers slip through.'
       ],
-      image: '/assets/webdev.webp',
+      image: '/assets/webdev-sm.webp',
       imageAlt: 'Real estate web development - property search platform'
     },
     solutionSection: {
@@ -1034,7 +1034,7 @@ export const industriesData: Record<string, IndustryPage> = {
         'Industrial and B2B buyers do extensive online research before ever contacting a vendor — and most manufacturer websites fail them at exactly that stage. Complex products presented with thin specifications, no clear configuration or compatibility information, and poor search leave technical buyers unable to evaluate whether you have what they need. Distributor and dealer models go unsupported, confusing the actual purchasing path.',
         'The cost is qualified pipeline lost before sales ever sees it. Manufacturing deals are high-value and sales cycles are long, so a buyer who can\'t evaluate your products online, or can\'t easily inquire, simply moves to a competitor whose site served them better.'
       ],
-      image: '/assets/webcustom.png',
+      image: '/assets/webcustom.webp',
       imageAlt: 'Manufacturing web development - industrial product catalog'
     },
     solutionSection: {
@@ -1215,7 +1215,7 @@ export const industriesData: Record<string, IndustryPage> = {
         'Consumer commerce is won on two fronts at once, and weak builds lose on both. On conversion: a slow store, a leaky checkout, product pages that don\'t sell, and a poor mobile experience forfeit revenue from traffic the brand paid dearly to acquire. On brand: a generic, templated experience that doesn\'t feel like the brand erodes the distinctiveness and emotional connection that consumer loyalty and premium pricing depend on.',
         'The economics are direct and large. A consumer brand converting at well below its category benchmark is leaving substantial revenue on the table every day. Weak retention — driven by a forgettable experience and no post-purchase engagement — means paying repeatedly to re-acquire customers who should have come back.'
       ],
-      image: '/assets/work-ecom.jpg',
+      image: '/assets/work-ecom-sm.jpg',
       imageAlt: 'Ecommerce web development - online store shopping experience'
     },
     solutionSection: {
@@ -1396,7 +1396,7 @@ export const industriesData: Record<string, IndustryPage> = {
         'Hospitality businesses hand a substantial share of revenue to third-party platforms in commissions — and much of it is avoidable. The reason is that their own websites don\'t win the direct booking: a clunky or slow reservation experience, a booking flow that breaks on mobile, and a site that doesn\'t give guests a reason to book direct all push reservations to the third-party platforms that then charge for the privilege.',
         'Over a year, the math is striking. A hotel or restaurant group routing a large share of bookings through commissioned platforms is paying a recurring tax that often dwarfs the cost of a website built to capture those bookings directly. Every percentage point of bookings shifted from third-party to direct flows straight to margin.'
       ],
-      image: '/assets/kitchenFlow.jpg',
+      image: '/assets/kitchenFlow-sm.jpg',
       imageAlt: 'Hospitality web development - restaurant booking experience'
     },
     solutionSection: {
@@ -1899,7 +1899,7 @@ export const industriesData: Record<string, IndustryPage> = {
       range: '$15K–$80K+',
       note: 'Focused practice site: $15K–$40K; multi-location/DSO: $40K–$80K+'
     },
-    internalLinks: ['/web-development-services', '/healthcare-web-development', '/web-design-services'],
+    internalLinks: ['/web-development-services', '/industries/healthcare-web-development', '/web-design-services'],
     schema: {
       serviceType: 'Dental Web Development',
       priceRange: '$15,000 - $80,000+',

@@ -69,9 +69,11 @@ export function ProcessSection() {
           <div className="group relative aspect-[4/5] w-full overflow-hidden border border-white/10 bg-surface-1 shadow-2xl shadow-black/50">
             <CornerBrackets active />
             <Image 
-              src="/services/process.png" 
+              src="/services/process.webp" 
               alt="ClickMasters Web Development Process" 
               fill 
+              sizes="(max-width: 1024px) 100vw, 480px"
+              quality={60}
               className="object-center transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
