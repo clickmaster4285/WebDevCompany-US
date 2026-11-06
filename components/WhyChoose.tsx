@@ -117,9 +117,9 @@ function ReasonRow({ reason, index }: { reason: (typeof REASONS)[number]; index:
           transition={{ duration: 0.5, delay: index * 0.09 + 0.3, ease: [0.175, 0.885, 0.32, 1.275] }}
           className="flex items-center gap-1.5"
         >
-          <a href="/case-studies" className="text-[8px] font-mono uppercase tracking-wider text-primary/50 underline-offset-2 hover:text-primary hover:underline">
+          <Link href="/case-studies" className="text-[8px] font-mono uppercase tracking-wider text-primary/50 underline-offset-2 hover:text-primary hover:underline">
             Case studies
-          </a>
+          </Link>
           <CheckCircle className="h-3.5 w-3.5 text-primary/40 transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
         </motion.div>
       </div>
@@ -223,10 +223,10 @@ export function WhyChooseSection() {
                   animate={listInView ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }}
                   transition={{ duration: 0.8, delay: 0.4, ease: [0.68, -0.55, 0.265, 1.55] }}
                 >
-                  <a href="/case-studies" className="hover:underline">See work</a>
+                  <Link href="/case-studies" className="hover:underline">See work</Link>
                 </motion.div>
                 <div className="mt-1 text-[10px] uppercase tracking-widest text-white/40">
-                  Projects shipped
+                  Case studies
                 </div>
               </div>
             </div>

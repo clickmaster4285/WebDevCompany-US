@@ -1,6 +1,8 @@
 import { pages } from "@/data/tech-serv-industry";
 import { getServiceBySlug, type ServicePageData } from "@/data/services";
 import { costData } from "@/data/costdata";
+import { comparisons } from "@/data/comparisons";
+import { getAllLocationPages } from "@/data/locationdata";
 
 export const INDUSTRY_HUBS: Record<string, { href: string; label: string }> = {
   healthcare: { href: "/industries/healthcare-web-development", label: "Healthcare" },
@@ -100,4 +102,124 @@ function dedupe(links: RelatedLink[]): RelatedLink[] {
     seen.add(link.href);
     return true;
   });
+}
+
+const COMPARISONS_FOR_SERVICE: Record<string, string[]> = {
+  "web-development-services": ["custom-vs-template-website", "nextjs-vs-react"],
+  "custom-web-development": ["custom-vs-template-website", "mern-vs-laravel", "nextjs-vs-react"],
+  "web-application-development": ["mern-vs-laravel", "nextjs-vs-react"],
+  "full-stack-development": ["mern-vs-laravel", "nextjs-vs-react"],
+  "wordpress-development": ["wordpress-vs-shopify", "webflow-vs-wordpress", "wordpress-vs-webflow-vs-shopify"],
+  "shopify-development": ["wordpress-vs-shopify", "shopify-vs-woocommerce", "shopify-vs-magento", "wordpress-vs-webflow-vs-shopify"],
+  "woocommerce-development": ["shopify-vs-woocommerce", "wordpress-vs-shopify"],
+  "magento-development": ["shopify-vs-magento"],
+  "ecommerce-development": ["shopify-vs-woocommerce", "shopify-vs-magento", "headless-vs-traditional-commerce", "wordpress-vs-shopify"],
+  "headless-commerce-development": ["headless-vs-traditional-commerce"],
+  "shopify-plus-development": ["shopify-vs-magento", "headless-vs-traditional-commerce"],
+  "web-design-services": ["webflow-vs-wordpress", "custom-vs-template-website", "wordpress-vs-webflow-vs-shopify"],
+  "saas-development": ["custom-vs-template-website", "nextjs-vs-react"],
+};
+
+function comparisonLink(slug: string): RelatedLink | undefined {
+  const comparison = comparisons.find((item) => item.slug === slug);
+  if (!comparison?.slug) return undefined;
+  return {
+    href: `/compare/${comparison.slug}`,
+    label: comparison.title,
+    description: comparison.excerpt,
+  };
+}
+
+export function comparisonLinksForService(serviceSlug: string): RelatedLink[] {
+  const slugs = COMPARISONS_FOR_SERVICE[serviceSlug] ?? [];
+  return dedupe(
+    slugs.flatMap((slug) => {
+      const link = comparisonLink(slug);
+      return link ? [link] : [];
+    }),
+  );
+}
+
+export function allComparisonLinks(): RelatedLink[] {
+  return dedupe(
+    comparisons.flatMap((comparison) => {
+      if (typeof comparison.slug !== "string") return [];
+      return [{
+        href: `/compare/${comparison.slug}`,
+        label: comparison.title,
+        description: comparison.excerpt,
+      }];
+    }),
+  );
+}
+
+export function serviceLinksForComparison(comparisonSlug: string): RelatedLink[] {
+  const links: RelatedLink[] = [{ href: "/compare", label: "All comparisons", description: "Every platform and approach comparison" }];
+  for (const [serviceSlug, comparisonSlugs] of Object.entries(COMPARISONS_FOR_SERVICE)) {
+    if (!comparisonSlugs.includes(comparisonSlug)) continue;
+    const service = getServiceBySlug(serviceSlug);
+    if (!service) continue;
+    links.push({
+      href: `/${service.slug}`,
+      label: service.title,
+      description: "Service this comparison informs",
+    });
+  }
+  return dedupe(links);
+}
+
+export function locationLinks(): RelatedLink[] {
+  return getAllLocationPages().map((location) => ({
+    href: `/locations/${location.slug}`,
+    label: `${location.city} web development`,
+    description: `${location.city}, ${location.state}`,
+  }));
+}
+
+export function relatedLinksForCombo(key: string): RelatedLink[] {
+  const [serviceSlug, industryToken] = key.split("/");
+  const links: RelatedLink[] = [];
+  const service = serviceSlug ? getServiceBySlug(serviceSlug) : undefined;
+  if (service) {
+    links.push({
+      href: `/${service.slug}`,
+      label: service.title,
+      description: "Service overview",
+    });
+  }
+  const hub = industryToken ? INDUSTRY_HUBS[industryToken] : undefined;
+  if (hub) {
+    links.push({
+      href: hub.href,
+      label: `${hub.label} industry`,
+      description: "Industry overview",
+    });
+  }
+  for (const [otherKey, page] of Object.entries(pages)) {
+    if (otherKey === key) continue;
+    const [otherService, otherIndustry] = otherKey.split("/");
+    if (otherService !== serviceSlug && otherIndustry !== industryToken) continue;
+    links.push({
+      href: `/${otherKey}`,
+      label: page.title,
+      description: otherService === serviceSlug ? "Same service, another industry" : "Related industry page",
+    });
+  }
+  return dedupe(links);
+}
+
+export function comboLinksForIndustrySlug(industrySlug: string): RelatedLink[] {
+  const tokens = Object.entries(INDUSTRY_HUBS)
+    .filter(([, hub]) => hub.href === `/industries/${industrySlug}`)
+    .map(([token]) => token);
+  if (!tokens.length) return [];
+  return dedupe(
+    Object.entries(pages)
+      .filter(([key]) => tokens.some((token) => key.endsWith(`/${token}`)))
+      .map(([key, page]) => ({
+        href: `/${key}`,
+        label: page.title,
+        description: page.hero.description,
+      })),
+  );
 }

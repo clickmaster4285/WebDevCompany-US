@@ -1,7 +1,7 @@
 import type { ServicePageData } from "@/data/services";
 import { generateServiceSchema } from "@/lib/schema/serviceSchema";
 import { breadcrumbJsonLd, US_PHONE_DISPLAY } from "@/lib/seo";
-import { INDUSTRY_HUBS, relatedLinksForService, serviceIndustryPages } from "@/lib/related";
+import { INDUSTRY_HUBS, comparisonLinksForService, locationLinks, relatedLinksForService, serviceIndustryPages } from "@/lib/related";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { RelatedPages } from "@/components/seo/RelatedPages";
 import { HeroSection } from "@/components/services/HeroSection";
@@ -39,6 +39,8 @@ export function ServicePageView({ service }: { service: ServicePageData }) {
         (item, index, list) => list.findIndex((other) => other.href === item.href) === index,
       );
   const related = relatedLinksForService(service);
+  const comparisons = comparisonLinksForService(service.slug);
+  const cities = service.slug === "web-development-services" ? locationLinks() : [];
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -138,6 +140,8 @@ export function ServicePageView({ service }: { service: ServicePageData }) {
       />
 
       <RelatedPages heading="Industries we serve" links={industryPages} />
+      <RelatedPages heading="Related comparisons" links={comparisons} />
+      <RelatedPages heading="Cities we serve" links={cities} />
       <RelatedPages heading="Related pages" links={related} />
 
       <FAQSection faqs={service.faqs} />

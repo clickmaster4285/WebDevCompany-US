@@ -3,8 +3,8 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { LocationPageData } from '@/data/locationdata';
+import Link from 'next/link';
+import { getAllLocationPages, LocationPageData } from '@/data/locationdata';
 import { AboveTheFold } from './AboveTheFold';
 import { FeaturedAnswerBlock } from './FeaturedAnswerBlock';
 import { WhatBusinessesNeed } from './WhatBusinessesNeed';
@@ -97,9 +97,57 @@ export const LocationPage: React.FC<LocationPageProps> = ({ data }) => {
 
           <FAQ items={faqs} city={city} />
 
+          <RelatedCities currentSlug={data.slug} state={state} />
+
           <CTASection city={city} primaryCTA={primaryCTA} secondaryCTA={secondaryCTA} />
         </div>
       </div>
     </div>
   );
 };
+
+function RelatedCities({ currentSlug, state }: { currentSlug: string; state: string }) {
+  const others = getAllLocationPages().filter((page) => page.slug !== currentSlug);
+  const sameState = others.filter((page) => page.state === state);
+  const offset = currentSlug.length % Math.max(others.length, 1);
+  const rotated = others.slice(offset).concat(others.slice(0, offset));
+  const filler = rotated.filter((page) => page.state !== state).slice(0, 3);
+  const links = [...sameState, ...filler].filter(
+    (page, index, list) => list.findIndex((item) => item.slug === page.slug) === index,
+  );
+
+  return (
+    <section className="py-12">
+      <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+        Web development in other cities
+      </h2>
+      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-soft">
+        The same senior team covers these markets. Start with the{" "}
+        <Link href="/web-development-services" className="text-violet-soft underline-offset-2 hover:underline">
+          web development services
+        </Link>{" "}
+        overview, or open another city.
+      </p>
+      <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {links.map((page) => (
+          <li key={page.slug}>
+            <Link
+              href={`/locations/${page.slug}`}
+              className="block rounded-2xl border border-white/10 px-4 py-3 text-sm text-ink transition hover:border-violet/40"
+            >
+              {page.city}, {page.state}
+            </Link>
+          </li>
+        ))}
+        <li>
+          <Link
+            href="/locations"
+            className="block rounded-2xl border border-white/10 px-4 py-3 text-sm text-ink transition hover:border-violet/40"
+          >
+            All cities
+          </Link>
+        </li>
+      </ul>
+    </section>
+  );
+}

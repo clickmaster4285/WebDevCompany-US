@@ -34,6 +34,13 @@ type PageProps = {
   }>;
 };
 
+export function generateStaticParams() {
+  return blogs.map((blog) => ({ slug: blog.slug }));
+}
+
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 function getBlogCtas(blog: any) {
   return [
     {

@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = getMetadata({
   title: "Testimonials",
-  description: "Hear from our clients — read real success stories and see how we've helped businesses achieve measurable results through expert web development.",
+  description: "Client testimonials are published here after ClickMasters can confirm the client and the wording.",
   slug: "testimonials",
 });
 

@@ -13,9 +13,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Star,
-  Users,
-  ThumbsUp,
-  Award,
   MessageSquare,
   Play,
   Building2,
@@ -29,10 +26,8 @@ import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 import { cn } from "@/lib/utils";
 import { 
   testimonials, 
-  testimonialStats, 
   industries,
   getTestimonialsByIndustry,
-  getFeaturedTestimonials,
   getTestimonialsWithVideo,
   getTestimonialByIndex
 } from "@/data/testimonials";
@@ -43,12 +38,16 @@ export default function TestimonialsPage() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const handleNext = () =>
+  const handleNext = () => {
+    if (testimonials.length === 0) return;
     setCurrentIndex((index) => (index + 1) % testimonials.length);
-  const handlePrevious = () =>
+  };
+  const handlePrevious = () => {
+    if (testimonials.length === 0) return;
     setCurrentIndex(
       (index) => (index - 1 + testimonials.length) % testimonials.length
     );
+  };
 
   // Auto-play carousel
   useEffect(() => {
@@ -67,7 +66,36 @@ export default function TestimonialsPage() {
   }, []);
 
   const currentTestimonial = getTestimonialByIndex(currentIndex);
-  const featuredTestimonials = getFeaturedTestimonials();
+
+  if (!currentTestimonial) {
+    return (
+      <div className="min-h-[50vh] bg-background text-foreground">
+        <section className="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
+          <div className="relative layout-container px-4 md:px-18">
+            <div className="mx-auto max-w-3xl text-center">
+              <div className="mb-6 text-left">
+                <Breadcrumb customLabels={{ testimonials: "Testimonials" }} />
+              </div>
+              <h1 className="text-4xl font-bold tracking-tight text-ink md:text-5xl">
+                What Our Clients Say
+              </h1>
+              <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-soft">
+                Approved client testimonials are not published on this page yet.
+                We only post feedback we can attribute to a real client.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-violet px-6 py-3 text-sm font-medium text-white"
+              >
+                Talk to the team
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
   const videoTestimonials = getTestimonialsWithVideo();
   const filteredTestimonials = getTestimonialsByIndustry(activeFilter);
 
@@ -134,47 +162,8 @@ export default function TestimonialsPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-ink-soft mb-8 max-w-2xl mx-auto">
-              Real stories from real people who transformed their businesses
-              with our solutions
+              Feedback from clients whose wording ClickMasters has confirmed.
             </p>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-              {[
-                { icon: Users, value: testimonialStats.totalClients, label: "Clients" },
-                {
-                  icon: ThumbsUp,
-                  value: `${testimonialStats.satisfactionRate}%`,
-                  label: "Satisfaction",
-                },
-                {
-                  icon: Star,
-                  value: testimonialStats.averageRating,
-                  label: "Avg. Rating",
-                },
-                {
-                  icon: Award,
-                  value: testimonialStats.projectsDelivered,
-                  label: "Projects",
-                },
-              ].map((stat, idx) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-surface-1 rounded-2xl p-4 border border-border"
-                >
-                  <stat.icon className="w-6 h-6 text-violet mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-ink">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-ink-mute">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -212,7 +201,7 @@ export default function TestimonialsPage() {
                     className="w-full h-full object-cover"
                     draggable={false}
                     priority
-                    quality={90}
+                    quality={75}
                   />
                   {currentTestimonial.featured && (
                     <div className="absolute top-4 left-4 bg-violet text-white text-xs font-medium px-3 py-1 rounded-full">
@@ -315,7 +304,7 @@ export default function TestimonialsPage() {
                     className="w-full h-full object-cover"
                     draggable={false}
                     priority
-                    quality={90}
+                    quality={75}
                   />
                   {currentTestimonial.featured && (
                     <div className="absolute top-4 left-4 bg-violet text-white text-xs font-medium px-3 py-1 rounded-full">
@@ -522,7 +511,7 @@ export default function TestimonialsPage() {
                           width={48}
                           height={48}
                           className="w-full h-full object-cover"
-                          quality={80}
+                          quality={75}
                         />
                       </div>
                       <div>

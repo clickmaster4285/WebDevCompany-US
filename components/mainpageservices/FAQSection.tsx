@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { faqs } from "@/data/services-data";
 import { PlateHeader, CornerBrackets, staggerContainer, fadeInUp } from "./Primitives";
@@ -40,19 +40,15 @@ export function FAQSection() {
                   <span className={`flex-1 pr-4 font-medium transition-colors ${isOpen ? "text-white" : "text-white/80"}`}>{faq.q}</span>
                   <Plus className={`h-5 w-5 flex-shrink-0 text-primary transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`} />
                 </button>
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="p-5 pl-14 pt-0 text-white/60">{faq.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div
+                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="p-5 pl-14 pt-0 text-white/60">{faq.a}</p>
+                  </div>
+                </div>
               </motion.div>
             );
           })}

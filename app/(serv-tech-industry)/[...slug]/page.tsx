@@ -6,6 +6,8 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { pages } from "@/data/tech-serv-industry";
 import { getAllServiceSlugs, getServiceBySlug } from "@/data/services";
 import { getMetadata } from "@/lib/metadata";
+import { RelatedPages } from "@/components/seo/RelatedPages";
+import { relatedLinksForCombo } from "@/lib/related";
 import { breadcrumbJsonLd, clampDescription, SITE_URL } from "@/lib/seo";
 
 type PageProps = {
@@ -104,6 +106,7 @@ export default async function ServTechIndustryPage({ params }: PageProps) {
       <JsonLd data={serviceSchema} />
       {page.faqs.length > 0 ? <JsonLd data={faqSchema} /> : null}
       <IndustryPageTemplate data={page} />
+      <RelatedPages heading="Related pages" links={relatedLinksForCombo(key)} />
     </>
   );
 }

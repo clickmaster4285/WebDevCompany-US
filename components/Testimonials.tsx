@@ -67,67 +67,31 @@ const defaultTitle = "Loved by ambitious brands"
 const defaultDescription =
   "From custom web apps to AI-powered SaaS platforms, we help founders and teams build digital products that look, feel, and perform beautifully."
 
-const defaultTestimonials: Array<{
+type TestimonialItem = {
+  id: string
   author: TestimonialAuthor
   text: string
   href?: string
-}> = [
-  {
-    author: {
-      name: "Sarah Jenkins",
-      role: "CTO, NovaTech SaaS",
-      avatar: "/images/clients/sarah-sm.jpeg",
-    },
-    text: "ClickMasters integrated custom AI tools into our SaaS platform seamlessly. The code quality and product strategy they brought to the table were exactly what we needed to scale.",
-    href: "https://x.com",
-  },
-  {
-    author: {
-      name: "Marcus Vance",
-      role: "Founder, Loom & Thread",
-      avatar: "/images/clients/marcus-sm.jpeg",
-    },
-    text: "Our new online store feels effortless for our customers and is built to last. Conversion rates are up 40% since the UI/UX redesign by the ClickMasters team. Highly recommend!",
-    href: "https://x.com",
-  },
-  {
-    author: {
-      name: "Elena Rodriguez",
-      role: "Product Lead, FinFlow",
-      avatar: "/images/clients/elena-sm.jpeg",
-    },
-    text: "Finding a US-based web dev team that actually understands product strategy is rare. ClickMasters delivered our custom web app ahead of schedule and it performs flawlessly.",
-    href: "https://x.com",
-  },
-  {
-    author: {
-      name: "David Kim",
-      role: "CEO, Orbit Media",
-      avatar: "/images/clients/david-xs.jpeg",
-    },
-    text: "They bring strategy, design, and code together in one place. Working with ClickMasters felt like having an elite in-house team rather than an external agency. 10/10.",
-    href: "https://x.com",
-  },
-  {
-    author: {
-      name: "Chloe Bennett",
-      role: "Founder, EcoCart",
-      avatar: "/images/clients/chloe-sm.jpeg",
-    },
-    text: "The attention to how every product looks, feels, and performs is real. ClickMasters built our eCommerce platform from the ground up and it's an absolute joy to use.",
-    href: "https://x.com",
-  },
-]
+}
+
+// No approved homepage quotes are on file. Do not add names or results here
+// until the business confirms the client and the wording.
+const defaultTestimonials: TestimonialItem[] = []
+
+function uniqueTestimonials(items: TestimonialItem[]) {
+  const seen = new Set<string>()
+  return items.filter((item) => {
+    if (!item.id || seen.has(item.id)) return false
+    seen.add(item.id)
+    return true
+  })
+}
 
 // ── Main Component ──────────────────────────────────────────────────────────
 interface TestimonialsSectionProps {
   title?: string
   description?: string
-  testimonials?: Array<{
-    author: TestimonialAuthor
-    text: string
-    href?: string
-  }>
+  testimonials?: TestimonialItem[]
   className?: string
 }
 
@@ -137,6 +101,9 @@ export function TestimonialsSection({
   testimonials = defaultTestimonials,
   className,
 }: TestimonialsSectionProps) {
+  const unique = uniqueTestimonials(testimonials)
+  if (unique.length === 0) return null
+
   return (
     <section
       className={cn(
@@ -170,16 +137,18 @@ export function TestimonialsSection({
               
               {/* SET 1 */}
               <div className="flex shrink-0 gap-[var(--gap)] mr-[var(--gap)]">
-                {testimonials.map((testimonial, index) => (
-                  <TestimonialCard key={`set-1-${index}`} {...testimonial} />
-                ))}
+                {unique.map((testimonial) => {
+                  const { id, ...card } = testimonial
+                  return <TestimonialCard key={id} {...card} />
+                })}
               </div>
 
-              {/* SET 2 */}
-              <div className="flex shrink-0 gap-[var(--gap)] mr-[var(--gap)]">
-                {testimonials.map((testimonial, index) => (
-                  <TestimonialCard key={`set-2-${index}`} {...testimonial} />
-                ))}
+              {/* Visual clone for the marquee. Hidden from assistive tech and not a second testimonial. */}
+              <div className="flex shrink-0 gap-[var(--gap)] mr-[var(--gap)]" aria-hidden="true">
+                {unique.map((testimonial) => {
+                  const { id, ...card } = testimonial
+                  return <TestimonialCard key={`${id}-clone`} {...card} />
+                })}
               </div>
 
             </div>

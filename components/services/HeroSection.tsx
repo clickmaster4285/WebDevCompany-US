@@ -478,7 +478,7 @@ function TechVisual({
           </div>
           <div className="pl-5">
             <span className="text-ink">performance:</span>{" "}
-            <span className="text-emerald-400">&quot;99+ Lighthouse&quot;</span>,
+            <span className="text-emerald-400">&quot;monitored&quot;</span>,
           </div>
           <div className="text-ink-soft/50">{"}"});</div>
           <div className="h-2" />

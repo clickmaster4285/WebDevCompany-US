@@ -17,15 +17,18 @@ const cspHeader = `
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.88.65'],
   images: {
-    deviceSizes: [640, 750, 828],
-    imageSizes: [64, 96, 128, 256, 384],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ["image/webp"],
     qualities: [60, 75],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   async redirects() {
     return [
       {
-        source: "/services/:slug",
+        // Legacy service URLs only. A dot means a file in public/services,
+        // which must not be redirected into the page catch-all.
+        source: "/services/:slug([^.]*)",
         destination: "/:slug",
         statusCode: 301,
       },

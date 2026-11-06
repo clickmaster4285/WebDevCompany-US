@@ -2,45 +2,50 @@
 
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useGsap } from "@/lib/gsap";
-import saasImg from "@/public/assets/kitchenFlow-sm.jpg";
-import fintechImg from "@/public/assets/work-fintech.jpg";
-import ecomImg from "@/public/assets/work-ecom-sm.jpg";
-import corpImg from "@/public/assets/work-corp.jpg";
 
 const PROJECTS = [
-{
-  name: "Kitchen Flow",
-  industry: "Restaurant",
-  img: saasImg,
-  desc: "A modern restaurant website featuring online reservations, digital menus, event bookings, and a premium dining experience.",
-  tech: ["Next.js", "Tailwind CSS", "Node.js", "PostgreSQL"],
-  result: "+156% reservations",
-},
   {
-    name: "SmileCraft Dental",
-    industry: "Healthcare",
-    img: fintechImg,
-    desc: "A modern dental clinic website with online appointment booking, treatment pages, and patient resources.",
-    tech: ["React", "Next.js", "Stripe"],
-    result: "+94% bookings",
+    name: "PropTech portfolio platform",
+    industry: "PropTech",
+    img: "/assets/casestudy/proptech.jpg",
+    href: "/case-studies/proptech-build-to-rent-portfolio-management",
+    desc: "Portfolio management platform for a UK build-to-rent landlord. Scope and stated outcomes are in the project write-up.",
+    tech: ["React", "Node.js/Fastify", "PostgreSQL"],
   },
   {
-    name: "PrimeNest Realty",
-    industry: "Real Estate",
-    img: ecomImg,
-    desc: "A property showcase platform featuring advanced search, interactive maps, and agent profiles.",
-    tech: ["Next.js", "Mapbox", "Supabase"],
-    result: "12K+ monthly visitors",
+    name: "FinTech wealth platform",
+    industry: "FinTech",
+    img: "/assets/casestudy/fintech.jpg",
+    href: "/case-studies/fintech-wealth-management-platform",
+    desc: "Wealth management platform for a UK discretionary investment manager. Scope and stated outcomes are in the project write-up.",
+    tech: ["React", "Node.js/Fastify", "PostgreSQL"],
   },
   {
-    name: "AutoMotive",
-    industry: "E-commerce",
-    img: corpImg,
-    desc: "A scalable online store with custom product experiences, fast checkout, and optimized conversions.",
-    tech: ["Shopify", "Hydrogen", "GraphQL"],
-    result: "+143% revenue",
+    name: "Housing allocations platform",
+    industry: "GovTech",
+    img: "/assets/casestudy/govtech.jpg",
+    href: "/case-studies/govtech-housing-allocations-platform",
+    desc: "Housing allocations platform for a UK district council. Scope and stated outcomes are in the project write-up.",
+    tech: ["React", "GOV.UK Design System", "Node.js/Fastify"],
+  },
+  {
+    name: "Frailty assessment tool",
+    industry: "HealthTech",
+    img: "/assets/casestudy/healthtech.jpg",
+    href: "/case-studies/healthtech-frailty-assessment-tool",
+    desc: "Frailty assessment tool for an NHS community trust. Scope and stated outcomes are in the project write-up.",
+    tech: ["React", "Node.js/Fastify", "PostgreSQL"],
+  },
+  {
+    name: "Fashion marketplace",
+    industry: "eCommerce",
+    img: "/assets/casestudy/ecommerce.jpg",
+    href: "/case-studies/ecommerce-fashion-marketplace-platform",
+    desc: "Multi-brand marketplace for a UK retailer. Scope and stated outcomes are in the project write-up.",
+    tech: ["Next.js", "React", "Shopify Plus"],
   },
 ];
 
@@ -48,7 +53,7 @@ export function WorkSection() {
   const root = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const { gsap, ScrollTrigger } = useGsap();
+    const { gsap } = useGsap();
     const ctx = gsap.context(() => {
       const panels = gsap.utils.toArray<HTMLElement>(".work-panel");
       panels.forEach((panel, i) => {
@@ -72,16 +77,15 @@ export function WorkSection() {
   return (
     <section ref={root} id="work" className="relative py-10 md:py-20">
       <div className="layout-container px-4 sm:px-6 md:px-10">
-        {/* <div className="text-eyebrow mb-4">/ Selected work</div> */}
         <h2 className="text-display mx-auto text-[clamp(2rem,5vw,4rem)] text-ink max-w-3xl">
-          Recent products we've shaped, shipped <span className="text-violet-soft">and scaled.</span>
+          Recent products we&apos;ve shaped, shipped <span className="text-violet-soft">and scaled.</span>
         </h2>
       </div>
 
       <div className="mt-12 sm:mt-16 space-y-8 sm:space-y-10 px-4 sm:px-6 md:px-10">
         {PROJECTS.map((p, i) => (
           <article
-            key={p.name}
+            key={p.href}
             className="work-panel sticky top-20 sm:top-24 mx-auto max-w-[1300px] overflow-hidden rounded-3xl border border-white/5 bg-surface-1"
             style={{ zIndex: i + 1 }}
           >
@@ -97,22 +101,23 @@ export function WorkSection() {
                 </div>
                 <div>
                   <h3 className="text-display mt-6 sm:mt-10 text-[clamp(1.8rem,4vw,3.6rem)] text-ink">
-                    {p.name}
+                    <Link href={p.href} className="hover:text-violet-soft">
+                      {p.name}
+                    </Link>
                   </h3>
                   <p className="mt-4 sm:mt-5 max-w-md text-sm sm:text-base text-ink-soft">{p.desc}</p>
                 </div>
                 <div className="mt-8 sm:mt-10 flex flex-wrap items-end justify-between gap-4 sm:gap-6">
                   <div className="flex flex-wrap gap-2">
                     {p.tech.map((t) => (
-                      <span key={t} className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-ink-soft min-h-[32px] flex items-center transition-all duration-300 ease-out hover:border-violet/30 hover:bg-violet/10 hover:text-violet-soft cursor-pointer">
+                      <span key={t} className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-ink-soft min-h-[32px] flex items-center">
                         {t}
                       </span>
                     ))}
                   </div>
-                  <div className="text-right">
-                    <div className="text-display text-xl sm:text-2xl text-violet-soft transition-colors duration-300 ease-out hover:text-primary cursor-pointer">{p.result}</div>
-                    <div className="text-xs uppercase tracking-widest text-ink-mute">Outcome</div>
-                  </div>
+                  <Link href={p.href} className="text-sm text-violet-soft hover:text-primary">
+                    Read the write-up
+                  </Link>
                 </div>
               </div>
             </div>

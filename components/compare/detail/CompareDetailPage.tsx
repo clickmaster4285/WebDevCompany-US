@@ -8,6 +8,8 @@ import { CompareTable } from "./CompareTable";
 import { CompareSectionRenderer } from "./CompareSectionRenderer";
 import { CompareCTA } from "./CompareCTA";
 import { CompareTableOfContents } from "./CompareTableOfContents";
+import { RelatedPages } from "@/components/seo/RelatedPages";
+import { serviceLinksForComparison } from "@/lib/related";
 
 type CompareDetailPageProps = {
   comparison: Comparison;
@@ -86,6 +88,11 @@ export function CompareDetailPage({
           />
         </div>
       </section>
+
+      <RelatedPages
+        heading="Related services"
+        links={serviceLinksForComparison(comparison.slug)}
+      />
 
       <Footer />
     </main>

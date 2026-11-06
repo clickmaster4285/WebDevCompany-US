@@ -74,7 +74,7 @@ export function ProcessSection() {
               fill 
               sizes="(max-width: 1024px) 100vw, 480px"
               quality={60}
-              className="object-center transition-transform duration-700 ease-out group-hover:scale-105"
+              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div 

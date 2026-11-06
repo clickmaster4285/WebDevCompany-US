@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import IndustryPageClient from './IndustryPageClient';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { RelatedPages } from '@/components/seo/RelatedPages';
+import { comboLinksForIndustrySlug } from '@/lib/related';
 import { breadcrumbJsonLd, clampDescription, SITE_URL } from '@/lib/seo';
 
 // 1. Pre-render all pages at build time
@@ -72,6 +74,10 @@ export default async function IndustriesPage({
         }}
       />
       <IndustryPageClient data={pageData} />
+      <RelatedPages
+        heading="Related service pages"
+        links={comboLinksForIndustrySlug(pageData.slug)}
+      />
     </>
   );
 }

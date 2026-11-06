@@ -21,7 +21,6 @@ const FEATURED_SERVICES = [
     slug: "web-development-services",
     img: devImg,
     desc: "Professional web development services for US businesses. We design, build, and scale fast, secure, SEO-ready websites that turn visitors into customers.",
-    metric: ["99", "Lighthouse"],
   },
   {
     n: "02",
@@ -29,7 +28,6 @@ const FEATURED_SERVICES = [
     slug: "web-design-services",
     img: designImg,
     desc: "Professional web design services combining UI/UX best practices. We design websites for US businesses that are beautiful, usable, and built to convert.",
-    metric: ["+38%", "Conversion"],
   },
   {
     n: "03",
@@ -37,7 +35,6 @@ const FEATURED_SERVICES = [
     slug: "saas-development",
     img: saasImg,
     desc: "Full-cycle SaaS development services covering MVP to scale. We build secure, multi-tenant SaaS platforms for US startups and growth-stage companies.",
-    metric: ["6w", "Avg. MVP"],
   },
   {
     n: "04",
@@ -45,7 +42,6 @@ const FEATURED_SERVICES = [
     slug: "ecommerce-development",
     img: ecomImg,
     desc: "Custom eCommerce development services that increase conversions and sales. We build fast, secure online stores for US retailers on any platform.",
-    metric: ["3.2×", "AOV lift"],
   },
   {
     n: "05",
@@ -53,7 +49,6 @@ const FEATURED_SERVICES = [
     slug: "website-speed-optimization",
     img: corpImg,
     desc: "We make your site load faster, which helps both your visitors and your search rankings. Core Web Vitals, edge caching and rendering pipelines tuned to perfection.",
-    metric: ["<200ms", "TTFB"],
   },
 ];
 
@@ -188,12 +183,6 @@ export function ServicesSection() {
                         {s.title}
                       </h3>
                       <p className="mt-4 max-w-lg text-sm sm:text-base text-white/55">{s.desc}</p>
-                      <div className="mt-6 flex items-center gap-8">
-                        <div className="border-l-2 border-primary/60 pl-3">
-                          <div className="font-mono text-2xl sm:text-3xl font-bold text-primary">{s.metric[0]}</div>
-                          <div className="mt-1 text-[10px] uppercase tracking-widest text-white/40">{s.metric[1]}</div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </Link>
