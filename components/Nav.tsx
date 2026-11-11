@@ -10,6 +10,7 @@ import {
   X,
 } from "lucide-react";
 import { Dropdown, DropdownSection, DropdownItem } from "@/components/ui/Dropdown";
+import { CmsHeaderLinks, CmsMobileLinks } from "@/components/cms/CmsNavLinks";
 
 // ⚡ Lightweight nav data (~14.5KB) instead of importing 7 large data files (~1MB total)
 import navData from "@/data/nav-data.json";
@@ -323,6 +324,9 @@ export function Nav() {
             >
               Contact
             </Link>
+
+            {/* ERP header navigation (renders nothing when the ERP has none) */}
+            <CmsHeaderLinks />
           </nav>
 
           {/* Changed md:block to lg:block */}
@@ -362,6 +366,7 @@ export function Nav() {
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 hover:translate-x-1 hover:text-blue-600" />
                 </Link>
               ))}
+              <CmsMobileLinks onNavigate={() => setMobileOpen(false)} />
             </div>
 
             <Link

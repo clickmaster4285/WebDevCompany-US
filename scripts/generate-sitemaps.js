@@ -366,6 +366,10 @@ function run() {
     console.log(`✅ Generated ${catFilename} with ${urls.length} urls.`);
   }
 
+  // ERP-created pages: served dynamically by app/sitemap-cms.xml/route.ts so
+  // pages published after this build are included without a redeploy.
+  activeSitemaps.push(`${BASE_URL}/sitemap-cms.xml`);
+
   // 4. Generate Sitemap Index (sitemap.xml)
   const indexXml = generateSitemapIndexXml(activeSitemaps);
   fs.writeFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), indexXml);

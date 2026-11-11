@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import Image from "next/image";
+import { CmsFooterColumns } from "@/components/cms/CmsNavLinks";
 
 export function Footer() {
   // Scroll to top function
@@ -226,8 +227,11 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          
+
         </div>
+
+        {/* ERP footer navigation (renders nothing when the ERP has none) */}
+        <CmsFooterColumns />
 
         {/* Bottom Bar with Scroll to Top Button */}
         <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-8 text-xs text-ink-mute">

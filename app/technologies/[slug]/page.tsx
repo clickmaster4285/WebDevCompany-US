@@ -11,6 +11,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { RelatedPages } from "@/components/seo/RelatedPages";
 import { absoluteUrl, breadcrumbJsonLd, clampDescription, SITE_URL } from "@/lib/seo";
 import { industryLinksFromSlug, type RelatedLink } from "@/lib/related";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
 // 1. Pre-render all technology pages at build time
 export async function generateStaticParams() {
@@ -33,7 +34,7 @@ export async function generateStaticParams() {
 }
 
 // 2. Dynamic SEO Metadata (Next.js 15/16 compatible)
-export async function generateMetadata({ 
+async function baseGenerateMetadata({ 
   params 
 }: { 
   params: Promise<{ slug: string }> 
@@ -213,4 +214,15 @@ export default async function TechnologyPage({
 
   // If neither is found, return 404
   notFound();
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/technologies/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
+  );
 }

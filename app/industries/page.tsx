@@ -5,8 +5,9 @@ import { getMetadata } from '@/lib/metadata';
 import IndustriesIndexClient from './IndustriesIndexClient';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
+import { withEditedSeo } from "@/lib/cms/metadata";
 
-export async function generateMetadata(): Promise<Metadata> {
+async function baseGenerateMetadata(): Promise<Metadata> {
   return getMetadata({
     title: 'Industries We Serve',
     description:
@@ -52,4 +53,9 @@ export default function IndustriesIndexPage() {
       <IndustriesIndexClient industries={industries} />
     </>
   );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata() {
+  return withEditedSeo("/industries", await baseGenerateMetadata());
 }

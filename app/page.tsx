@@ -5,6 +5,7 @@ import { Partners } from "@/components/Partners";
 import { generateHomeSchema } from "@/lib/schema/homeSchema";
 import { Metadata } from "next";
 import { getMetadata } from "@/lib/metadata";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
 // ── Above-the-fold: SSR for LCP/CLS ────────────────────────────────────────
 // These render on the server so the browser gets real HTML immediately.
@@ -98,7 +99,7 @@ const Testimonials = dynamic(
 //    and needs its marquee animation to start immediately.
 
 // 2. Add the Metadata object here, right above your component
-export const metadata: Metadata = getMetadata({
+const baseMetadata: Metadata = getMetadata({
   title: "USA Web Development Company",
   description:
     "ClickMasters builds custom websites, web applications, and eCommerce stores for US businesses. Call +1 325 202 4074.",
@@ -155,4 +156,9 @@ export default function HomePage() {
     </main>
     </>
   );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export function generateMetadata() {
+  return withEditedSeo("/", baseMetadata);
 }

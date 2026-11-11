@@ -6,6 +6,7 @@ import { getLocationPageBySlug, getAllLocationSlugs } from '@/data/locationdata'
 import { LocationPage } from '@/components/locations/LocationPage';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, clampDescription, SITE_URL } from '@/lib/seo';
+import { withEditedSeo } from "@/lib/cms/metadata";
 
 export async function generateStaticParams() {
   const slugs = getAllLocationSlugs();
@@ -16,7 +17,7 @@ export async function generateStaticParams() {
 
 import { getMetadata } from "@/lib/metadata";
 
-export async function generateMetadata({ 
+async function baseGenerateMetadata({ 
   params 
 }: { 
   params: Promise<{ slug: string }> 
@@ -79,5 +80,16 @@ export default async function LocationPageRoute({
       />
       <LocationPage data={pageData} />
     </>
+  );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/locations/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
   );
 }

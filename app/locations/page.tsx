@@ -1,3 +1,5 @@
+import { metadata as layoutMetadata } from "./layout";
+import { withEditedSeo } from "@/lib/cms/metadata";
 import LocationsContent from './LocationsContent';
 import { getAllLocationPages } from '@/data/locationdata';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -30,4 +32,10 @@ export default function LocationsPage() {
       <LocationsContent locations={locations} />
     </>
   );
+}
+
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export function generateMetadata() {
+  return withEditedSeo("/locations", layoutMetadata);
 }

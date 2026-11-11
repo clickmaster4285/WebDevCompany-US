@@ -10,6 +10,7 @@ import { CostFactors } from "@/components/costs/CostFactors";
 import { CostComparison } from "@/components/costs/CostComparison";
 import { CostFAQ } from "@/components/costs/CostFAQ";
 import { CostCTA } from "@/components/costs/CostCTA";
+import { withEditedSeo } from "@/lib/cms/metadata";
 // ❌ Remove this import - CostLayout is not needed
 // import { CostLayout } from "@/components/costs/CostLayout";
 
@@ -28,7 +29,7 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
+async function baseGenerateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -149,5 +150,16 @@ export default async function CostPage({ params }: PageProps) {
         ]}
       />
     </>
+  );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/costs/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
   );
 }

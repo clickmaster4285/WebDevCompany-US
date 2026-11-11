@@ -12,8 +12,9 @@ import { BlogContentRenderer } from "@/components/blogs/detail/BlogContentRender
 import { AnimatedCTA } from "@/components/blogs/detail/AnimatedCTA";
 import { BlogTOC } from "@/components/blogs/detail/BlogTOC";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb"; // ✅ Added import
+import { withEditedSeo } from "@/lib/cms/metadata";
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+async function baseGenerateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const blog = blogs.find((item) => item.slug === slug);
 
@@ -551,5 +552,16 @@ export default async function BlogDetailPage({ params }: PageProps) {
       />
       <Footer />
     </main>
+  );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/blogs/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
   );
 }

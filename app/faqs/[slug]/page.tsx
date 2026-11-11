@@ -6,6 +6,7 @@ import { FAQDetailPage } from "@/components/faq-detail/FAQDetailPage";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { RelatedPages } from "@/components/seo/RelatedPages";
 import { breadcrumbJsonLd } from "@/lib/seo";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
 type FAQDetailRouteProps = {
   params: Promise<{
@@ -19,7 +20,7 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: FAQDetailRouteProps): Promise<Metadata> {
+async function baseGenerateMetadata({ params }: FAQDetailRouteProps): Promise<Metadata> {
   const { slug } = await params;
   const faq = faqPages.find((item) => item.slug === slug);
 
@@ -97,5 +98,16 @@ export default async function Page({ params }: FAQDetailRouteProps) {
       <FAQDetailPage faq={faq} />
       <RelatedPages heading="Related pages" links={related} />
     </>
+  );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/faqs/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
   );
 }

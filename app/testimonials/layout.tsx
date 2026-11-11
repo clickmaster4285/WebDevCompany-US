@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { getMetadata } from "@/lib/metadata";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
-export const metadata: Metadata = getMetadata({
+const baseMetadata: Metadata = getMetadata({
   title: "Testimonials",
   description: "Client testimonials are published here after ClickMasters can confirm the client and the wording.",
   slug: "testimonials",
@@ -27,4 +28,9 @@ export default function TestimonialsLayout({
       <Footer />
     </div>
   );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export function generateMetadata() {
+  return withEditedSeo("/testimonials", baseMetadata);
 }

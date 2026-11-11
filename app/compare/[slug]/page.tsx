@@ -5,6 +5,7 @@ import { getMetadata } from "@/lib/metadata";
 import { CompareDetailPage } from "@/components/compare/detail/CompareDetailPage";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/seo";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
 type ComparePageProps = {
   params: Promise<{
@@ -20,7 +21,7 @@ export function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: ComparePageProps): Promise<Metadata> {
+async function baseGenerateMetadata({ params }: ComparePageProps): Promise<Metadata> {
   const { slug } = await params;
 
   const comparison = comparisons.find((item) => item.slug === slug);
@@ -58,5 +59,16 @@ export default async function Page({ params }: ComparePageProps) {
       />
       <CompareDetailPage comparison={comparison} />
     </>
+  );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/compare/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
   );
 }

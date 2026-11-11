@@ -6,8 +6,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { RelatedPages } from "@/components/seo/RelatedPages";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import { allComparisonLinks, locationLinks } from "@/lib/related";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
-export const metadata: Metadata = getMetadata({
+const baseMetadata: Metadata = getMetadata({
   title: "All Development Services",
   description:
     "Custom websites, eCommerce, SaaS, and AI web development for US businesses. Browse every service.",
@@ -28,4 +29,9 @@ export default function ServicesMainPage() {
       <RelatedPages heading="Platform comparisons" links={allComparisonLinks()} />
     </>
   );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export function generateMetadata() {
+  return withEditedSeo("/services", baseMetadata);
 }

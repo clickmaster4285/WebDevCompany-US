@@ -1,16 +1,31 @@
 import type { NextConfig } from "next";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 
+// ERP CMS: created pages may use images/videos from any https host and
+// YouTube/Vimeo embeds; their forms may post to the ERP. CMS_EDITOR_ORIGIN
+// (e.g. https://erp.clickmasters.pk) lets the ERP's "Live page" preview frame
+// the site; without it framing stays blocked exactly as before.
+function originOf(value: string | undefined): string {
+  try {
+    return value ? new URL(value).origin : "";
+  } catch {
+    return "";
+  }
+}
+const cmsApiOrigin = originOf(process.env.CMS_API_URL);
+const cmsEditorOrigin = originOf(process.env.CMS_EDITOR_ORIGIN);
+
 const cspHeader = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.simpleicons.org https://upload.wikimedia.org;
   style-src 'self' 'unsafe-inline';
-  img-src 'self' data: blob: https://cdn.jsdelivr.net https://cdn.simpleicons.org https://upload.wikimedia.org;
+  img-src 'self' data: blob: https:;
   font-src 'self' data:;
-  media-src 'self' blob: data:;
+  media-src 'self' blob: data: https:;
+  frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com;
   connect-src 'self' ws: https://crm.clickmasters.pk;
-  frame-ancestors 'none';
-  form-action 'self';
+  frame-ancestors ${cmsEditorOrigin ? `'self' ${cmsEditorOrigin}` : "'none'"};
+  form-action 'self'${cmsApiOrigin ? ` ${cmsApiOrigin}` : ""};
   base-uri 'self';
 `;
 
@@ -104,10 +119,10 @@ const nextConfig: NextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload',
           },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
+          // Superseded by CSP frame-ancestors when the ERP editor may frame the site.
+          ...(cmsEditorOrigin
+            ? []
+            : [{ key: 'X-Frame-Options', value: 'DENY' }]),
           {
             key: 'X-Content-Type-Options',
             value: 'nosniff',

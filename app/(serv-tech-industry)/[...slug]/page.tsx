@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import IndustryPageTemplate from "@/components/services-tech-industry/Mainslugpag";
 import { ServicePageView } from "@/components/services/ServicePageView";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -9,6 +8,8 @@ import { getMetadata } from "@/lib/metadata";
 import { RelatedPages } from "@/components/seo/RelatedPages";
 import { relatedLinksForCombo } from "@/lib/related";
 import { breadcrumbJsonLd, clampDescription, SITE_URL } from "@/lib/seo";
+import { cmsMetadataOr, renderCmsPageOrNotFound } from "@/components/cms/CmsRoute";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
 type PageProps = {
   params: Promise<{ slug: string[] }>;
@@ -29,24 +30,31 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (slug.length === 1) {
     const service = getServiceBySlug(slug[0]);
     if (service) {
-      return getMetadata({
-        title: service.metaTitle || service.title,
-        description: service.metaDescription,
-        slug: service.slug,
-      });
+      return withEditedSeo(
+        `/${service.slug}`,
+        getMetadata({
+          title: service.metaTitle || service.title,
+          description: service.metaDescription,
+          slug: service.slug,
+        }),
+      );
     }
   }
 
   const page = pages[key];
   if (!page) {
-    return { title: "Page Not Found" };
+    // Not code-owned: an ERP-created page at this path, or the normal 404.
+    return cmsMetadataOr(`/${key}`, { title: "Page Not Found" });
   }
 
-  return getMetadata({
-    title: page.title,
-    description: page.hero.description,
-    slug: key,
-  });
+  return withEditedSeo(
+    `/${key}`,
+    getMetadata({
+      title: page.title,
+      description: page.hero.description,
+      slug: key,
+    }),
+  );
 }
 
 export default async function ServTechIndustryPage({ params }: PageProps) {
@@ -62,7 +70,8 @@ export default async function ServTechIndustryPage({ params }: PageProps) {
 
   const page = pages[key];
   if (!page) {
-    notFound();
+    // A5: code-owned routes win; otherwise an ERP-created page, else 404.
+    return renderCmsPageOrNotFound(`/${key}`);
   }
 
   const [serviceSlug, industrySlug] = key.split("/");

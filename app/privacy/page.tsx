@@ -3,8 +3,9 @@ import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { getMetadata } from "@/lib/metadata";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
-export const metadata: Metadata = getMetadata({
+const baseMetadata: Metadata = getMetadata({
   title: "Privacy Policy",
   description:
     "How Clickmasters Web Development Company handles contact details and analytics data submitted through this website.",
@@ -53,4 +54,9 @@ export default function PrivacyPage() {
       <Footer />
     </div>
   );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export function generateMetadata() {
+  return withEditedSeo("/privacy", baseMetadata);
 }

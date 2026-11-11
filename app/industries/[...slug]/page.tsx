@@ -7,6 +7,7 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { RelatedPages } from '@/components/seo/RelatedPages';
 import { comboLinksForIndustrySlug } from '@/lib/related';
 import { breadcrumbJsonLd, clampDescription, SITE_URL } from '@/lib/seo';
+import { withEditedSeo } from "@/lib/cms/metadata";
 
 // 1. Pre-render all pages at build time
 export async function generateStaticParams() {
@@ -23,7 +24,7 @@ export async function generateStaticParams() {
 import { getMetadata } from "@/lib/metadata";
 
 // 2. Dynamic SEO Metadata (Next.js 15/16 compatible)
-export async function generateMetadata({ 
+async function baseGenerateMetadata({ 
   params 
 }: { 
   params: Promise<{ slug: string[] }> 
@@ -79,5 +80,16 @@ export default async function IndustriesPage({
         links={comboLinksForIndustrySlug(pageData.slug)}
       />
     </>
+  );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/industries/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
   );
 }

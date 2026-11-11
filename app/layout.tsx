@@ -3,6 +3,15 @@ import Script from "next/script";
 import { Geist } from "next/font/google";
 import { siteConfig } from "@/lib/siteConfig";
 import { GlobalSpotlight } from "@/components/GlobalSpotlight";
+import { ErpPageEdits } from "@/components/cms/ErpPageEdits";
+import { CmsNavProvider } from "@/components/cms/CmsNavContext";
+import { getCmsSiteInfo, getEditedPageSlugs } from "@/lib/cms/client";
+import { toFooterColumns, toHeaderNav } from "@/lib/cms/navigation";
+import { safeColor } from "@/lib/cms/sanitize";
+import {
+  erpAntiFlickerCss,
+  erpAntiFlickerScript,
+} from "@/lib/cms/anti-flicker";
 import "./globals.css";
 
 // ── Font optimization ──────────────────────────────────────────────────────
@@ -62,17 +71,77 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+/** ERP design colors → CSS tokens. Site tokens change only with CMS_APPLY_THEME_COLORS=true. */
+function erpThemeStyle(
+  primary: string | undefined,
+  secondary: string | undefined,
+): React.CSSProperties | undefined {
+  const vars: Record<string, string> = {};
+  if (primary) vars["--erp-primary"] = primary;
+  if (secondary) vars["--erp-secondary"] = secondary;
+  if (primary && process.env.CMS_APPLY_THEME_COLORS === "true") {
+    vars["--violet"] = primary;
+    vars["--primary"] = primary;
+    vars["--ring"] = primary;
+  }
+  return Object.keys(vars).length > 0
+    ? (vars as React.CSSProperties)
+    : undefined;
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // ERP CMS (optional): resolves to null / [] when unconfigured or
+  // unreachable, in which case everything renders exactly as before.
+  const [cmsSite, editedSlugs] = await Promise.all([
+    getCmsSiteInfo(),
+    getEditedPageSlugs(),
+  ]);
+  const cmsHeaderNav = toHeaderNav(cmsSite?.navigation?.header);
+  const cmsFooterColumns = toFooterColumns(cmsSite?.navigation?.footer);
+  const themeStyle = erpThemeStyle(
+    safeColor(
+      cmsSite?.design?.colors?.primary ?? cmsSite?.website?.primaryColor,
+    ),
+    safeColor(
+      cmsSite?.design?.colors?.secondary ?? cmsSite?.website?.secondaryColor,
+    ),
+  );
+  const antiFlicker =
+    editedSlugs.length > 0 && process.env.CMS_ANTI_FLICKER !== "off";
+
   return (
-    <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
-      <body 
+    <html
+      lang="en"
+      className={`${geistSans.variable} h-full antialiased`}
+      style={themeStyle}
+      // The anti-flicker <head> script may set data-erp-pending before hydration.
+      suppressHydrationWarning
+    >
+      <head>
+        {antiFlicker && (
+          <>
+            <style dangerouslySetInnerHTML={{ __html: erpAntiFlickerCss }} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: erpAntiFlickerScript(editedSlugs),
+              }}
+            />
+          </>
+        )}
+      </head>
+      <body
         className="min-h-full w-full flex flex-col"
         suppressHydrationWarning
       >
+        {/* Must stay before {children}: see ErpPageEdits for why. Renders no DOM. */}
+        <ErpPageEdits
+          editedSlugs={editedSlugs}
+          antiFlicker={process.env.CMS_ANTI_FLICKER !== "off"}
+        />
         {/* Google Analytics (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NGB935HHG7"
@@ -99,7 +168,9 @@ export default function RootLayout({
         </Script>
 
         <GlobalSpotlight />
-        {children}
+        <CmsNavProvider header={cmsHeaderNav} footer={cmsFooterColumns}>
+          {children}
+        </CmsNavProvider>
       </body>
     </html>
   );

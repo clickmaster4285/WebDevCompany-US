@@ -19,6 +19,7 @@ import {
   CaseStudyRelated,
 } from "@/components/case-study";
 import { CaseStudyStats } from "@/components/case-study/CaseStudyStats";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
 export async function generateStaticParams() {
   return caseStudies.map((study) => ({
@@ -26,7 +27,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ 
+async function baseGenerateMetadata({ 
   params 
 }: { 
   params: Promise<{ slug: string }> 
@@ -162,5 +163,16 @@ export default async function CaseStudyDetailPage({
         </div>
       </main>
     </div>
+  );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/case-studies/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
   );
 }

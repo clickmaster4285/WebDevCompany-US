@@ -6,8 +6,9 @@ import Link from "next/link";
 import { ArrowRight, DollarSign, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import { getMetadata } from "@/lib/metadata";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
-export const metadata: Metadata = getMetadata({
+const baseMetadata: Metadata = getMetadata({
   title: "Web Development Cost Guides",
   description:
     "Complete cost guides for web development, eCommerce, Shopify, SaaS, and more. Get transparent pricing estimates for your next project.",
@@ -150,4 +151,9 @@ function CostCard({
       </div>
     </Link>
   );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export function generateMetadata() {
+  return withEditedSeo("/costs", baseMetadata);
 }
