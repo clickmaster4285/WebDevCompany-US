@@ -70,6 +70,14 @@ export function relatedLinksForService(service: ServicePageData): RelatedLink[] 
     });
   }
 
+  if (service.slug === "web-development-services" || service.slug === "custom-web-development") {
+    links.push({
+      href: "/blogs/web-development-company",
+      label: "What to look for in a web development company",
+      description: "How to compare firms before you hire",
+    });
+  }
+
   links.push(
     { href: "/case-studies", label: "Case studies", description: "Dated project outcomes" },
     { href: "/industries", label: "All industries" },

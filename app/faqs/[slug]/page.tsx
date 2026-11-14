@@ -56,6 +56,12 @@ export default async function Page({ params }: FAQDetailRouteProps) {
 
   const serviceHref = faq.aboveTheFold?.secondaryCta?.url?.replace(/\/$/, "") || "";
   const related = [
+    ...(slug === "how-to-choose-web-development-company"
+      ? [{
+          href: "/blogs/web-development-company",
+          label: "What to look for in a web development company",
+        }]
+      : []),
     ...(serviceHref.startsWith("/") && !serviceHref.startsWith("/faqs")
       ? [{ href: serviceHref, label: faq.aboveTheFold.secondaryCta.label }]
       : []),

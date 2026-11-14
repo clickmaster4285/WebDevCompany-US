@@ -68,6 +68,29 @@ const nextConfig: NextConfig = {
         statusCode: 301,
       },
       {
+        // Published with a typo ("comapny") under /blog/. The article lives
+        // with the rest of the blog, at the corrected slug.
+        source: "/blog/web-development-comapny",
+        destination: "/blogs/web-development-company",
+        statusCode: 301,
+      },
+      {
+        source: "/blogs/web-development-comapny",
+        destination: "/blogs/web-development-company",
+        statusCode: 301,
+      },
+      {
+        source: "/web-development-comapny",
+        destination: "/blogs/web-development-company",
+        statusCode: 301,
+      },
+      {
+        // CMS drafts were created under /blog/. Every other article is /blogs/.
+        source: "/blog/:path*",
+        destination: "/blogs/:path*",
+        statusCode: 301,
+      },
+      {
         source: "/conversion-rate-optimization",
         destination: "/website-speed-optimization",
         statusCode: 301,

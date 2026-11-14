@@ -25,6 +25,17 @@ export async function GET() {
   for (const page of await getCmsPages()) {
     if (typeof page?.slug !== "string" || page.noindex === true) continue;
     const path = slugToPath(normalizeSlug(page.slug));
+    // /blog/* 301s to /blogs/*, and the misspelled company article 301s to
+    // its corrected slug. Neither source URL should be submitted.
+    const slug = normalizeSlug(page.slug);
+    if (
+      slug === "blog" ||
+      slug.startsWith("blog/") ||
+      slug === "web-development-comapny" ||
+      slug.endsWith("/web-development-comapny")
+    ) {
+      continue;
+    }
     if (seen.has(path) || isCodeOwnedPath(path)) continue;
     seen.add(path);
     const lastmod =

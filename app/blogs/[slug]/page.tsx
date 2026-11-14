@@ -364,8 +364,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
     listIndex >= 0 ? afterFirstBlock.slice(0, listIndex + 1) : afterFirstBlock;
   const afterMidCta = listIndex >= 0 ? afterFirstBlock.slice(listIndex + 1) : [];
 
-  const otherPosts = blogs
-    .filter((item) => item.slug !== blog.slug)
+  const others = blogs.filter((item) => item.slug !== blog.slug);
+  const byNewest = (a: { date?: string }, b: { date?: string }) =>
+    (b.date ?? "").localeCompare(a.date ?? "");
+  const otherPosts = [
+    ...others.filter((item) => item.category === blog.category).sort(byNewest),
+    ...others.filter((item) => item.category !== blog.category).sort(byNewest),
+  ]
     .slice(0, 3)
     .map((item) => ({ href: `/blogs/${item.slug}`, label: item.title }));
 
@@ -395,6 +400,19 @@ export default async function BlogDetailPage({ params }: PageProps) {
           mainEntityOfPage: absoluteUrl(`/blogs/${blog.slug}`),
         }}
       />
+      {blog.faqs?.length > 0 ? (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: blog.faqs.map((faq: { question: string; answer: string }) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: { "@type": "Answer", text: faq.answer },
+            })),
+          }}
+        />
+      ) : null}
       <Nav />
 
       <article>
