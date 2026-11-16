@@ -91,7 +91,7 @@ export default async function CaseStudyDetailPage({
       />
 
       {/* Main Content */}
-      <main className="layout-container px-6 md:px-12 py-12 lg:py-16">
+      <div className="layout-container px-6 md:px-12 py-12 lg:py-16">
         {/* Stats Bar — full width, above the grid */}
         <CaseStudyStats
           region={study.location}
@@ -161,7 +161,7 @@ export default async function CaseStudyDetailPage({
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

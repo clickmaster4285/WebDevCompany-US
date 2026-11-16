@@ -10,6 +10,7 @@ import { relatedLinksForCombo } from "@/lib/related";
 import { breadcrumbJsonLd, clampDescription, SITE_URL } from "@/lib/seo";
 import { cmsMetadataOr, renderCmsPageOrNotFound } from "@/components/cms/CmsRoute";
 import { withEditedSeo } from "@/lib/cms/metadata";
+import { contextualBlogLinks } from "@/lib/cms/blog-posts";
 
 type PageProps = {
   params: Promise<{ slug: string[] }>;
@@ -64,7 +65,12 @@ export default async function ServTechIndustryPage({ params }: PageProps) {
   if (slug.length === 1) {
     const service = getServiceBySlug(slug[0]);
     if (service) {
-      return <ServicePageView service={service} />;
+      return (
+        <ServicePageView
+          service={service}
+          relatedArticles={await contextualBlogLinks(`/${service.slug}`)}
+        />
+      );
     }
   }
 

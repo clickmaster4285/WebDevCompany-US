@@ -11,7 +11,7 @@ import { CTASection } from "@/components/mainpageservices/CTASection";
 
 export function ServicesMainPageClient() {
   return (
-    <main className="relative overflow-hidden bg-background">
+    <div className="relative overflow-hidden bg-background">
       <div className="pointer-events-none absolute inset-0" style={BLUEPRINT_GRID} aria-hidden="true" />
       <RulerTicks />
 
@@ -23,6 +23,6 @@ export function ServicesMainPageClient() {
         <FAQSection />
         <CTASection />
       </div>
-    </main>
+    </div>
   );
 }

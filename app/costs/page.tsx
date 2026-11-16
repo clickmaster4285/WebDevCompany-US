@@ -20,7 +20,7 @@ export default function CostsPage() {
   const costs = slugs.map((slug) => costData[slug]);
 
   return (
-    <main className="relative overflow-hidden">
+    <div className="relative overflow-hidden">
       <style>{`
         @keyframes fade-in-up {
           from { opacity: 0; transform: translateY(20px); }
@@ -89,7 +89,7 @@ export default function CostsPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

@@ -8,6 +8,8 @@ import { normalizeSlug } from "./slug";
 /** Folders with their own dynamic child route: everything below is theirs (their 404). */
 const OWNED_SUBTREES = new Set([
   "api",
+  // Legacy /blog/<slug> URLs: 301 to /blogs/<slug> (app/blog/[...slug]).
+  "blog",
   "blogs",
   "case-studies",
   "compare",

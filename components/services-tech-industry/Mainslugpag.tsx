@@ -18,7 +18,7 @@ interface Props {
 
 export default function IndustryPageTemplate({ data }: Props) {
   return (
-    <main className="bg-white text-gray-900">
+    <div className="bg-white text-gray-900">
       {/* 1. Hero Section */}
       <HeroSection {...data.hero} />
       
@@ -41,6 +41,6 @@ export default function IndustryPageTemplate({ data }: Props) {
         
         <FAQAccordion items={data.faqs} />
       </section>
-    </main>
+    </div>
   );
 }

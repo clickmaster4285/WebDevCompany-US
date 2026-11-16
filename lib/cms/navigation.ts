@@ -1,3 +1,4 @@
+import { blogAwareHref } from "./blog-slugs";
 import { safeUrl, text } from "./sanitize";
 import type { CmsNavItem } from "./types";
 
@@ -20,7 +21,9 @@ function sorted(items: CmsNavItem[] | undefined): CmsNavItem[] {
 
 function toLink(item: CmsNavItem): NavLink | null {
   const label = text(item.label).trim();
-  const href = safeUrl(item.url) ?? (item.children?.length ? "#" : undefined);
+  const safe = safeUrl(item.url);
+  // "/blog/x" (ERP blog prefix) is served at "/blogs/x": link there directly.
+  const href = (safe && blogAwareHref(safe)) ?? (item.children?.length ? "#" : undefined);
   if (!label || !href) return null;
   return item.target === "_blank"
     ? { label, href, target: "_blank" }

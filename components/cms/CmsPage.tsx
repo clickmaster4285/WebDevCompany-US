@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { blogAwareHref } from "@/lib/cms/blog-slugs";
 import { allowCustomJs } from "@/lib/cms/config";
 import { safeColor, sanitizeCss, sanitizeHtml } from "@/lib/cms/sanitize";
 import type { CmsPage as CmsPageData } from "@/lib/cms/types";
@@ -12,13 +13,21 @@ import { PAGE_TONE } from "./primitives";
 // The page's own design.colors (if any) only re-tint the accent of this page,
 // via --cms-accent; the site's theme stays the source of truth otherwise.
 
-export function CmsPage({ page }: { page: CmsPageData }) {
+export function CmsPage({
+  page,
+  embedded = false,
+}: {
+  page: CmsPageData;
+  /** Rendered below a site hero (e.g. the blog template): no Nav gap. */
+  embedded?: boolean;
+}) {
   const css = sanitizeCss(page.customCode?.css);
   const html = sanitizeHtml(page.customCode?.html);
   const js =
     typeof page.customCode?.js === "string" ? page.customCode.js.trim() : "";
   // A leading hero clears the fixed Nav itself; anything else gets the gap.
-  const startsWithHero = renderableSections(page.sections)[0]?.type === "hero";
+  const startsWithHero =
+    embedded || renderableSections(page.sections)[0]?.type === "hero";
   const accent =
     process.env.CMS_APPLY_THEME_COLORS === "true"
       ? safeColor(page.design?.colors?.primary)
@@ -42,7 +51,16 @@ export function CmsPage({ page }: { page: CmsPageData }) {
       {css && <style dangerouslySetInnerHTML={{ __html: css }} />}
       <CmsSectionRenderer
         sections={page.sections}
-        posts={Array.isArray(page.context?.posts) ? page.context.posts : []}
+        posts={
+          Array.isArray(page.context?.posts)
+            ? page.context.posts.map((post) =>
+                typeof post?.url === "string"
+                  ? { ...post, url: blogAwareHref(post.url) }
+                  : post,
+              )
+            : []
+        }
+        embedded={embedded}
       />
       {html && (
         <div

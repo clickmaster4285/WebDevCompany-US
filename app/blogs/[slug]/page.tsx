@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { blogs } from "@/data/blogs";
 import { getMetadata } from "@/lib/metadata";
@@ -12,21 +12,122 @@ import { BlogContentRenderer } from "@/components/blogs/detail/BlogContentRender
 import { AnimatedCTA } from "@/components/blogs/detail/AnimatedCTA";
 import { BlogTOC } from "@/components/blogs/detail/BlogTOC";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb"; // ✅ Added import
-import { withEditedSeo } from "@/lib/cms/metadata";
+import { CmsPage } from "@/components/cms/CmsPage";
+import { CmsImage } from "@/components/cms/primitives";
+import { mergeSeo, withEditedSeo } from "@/lib/cms/metadata";
+import {
+  blogPostExists,
+  getErpBlogArticle,
+  getLiveErpBlogEntries,
+  isoDate,
+  type ErpBlogArticle,
+} from "@/lib/cms/blog-posts";
+import { correctBlogSlug } from "@/lib/cms/blog-slugs";
+
+/** og:type "article" (+ publish date) on top of the site's standard metadata. */
+function asArticle(meta: Metadata, publishedTime?: string): Metadata {
+  return {
+    ...meta,
+    openGraph: {
+      ...(meta.openGraph ?? {}),
+      type: "article",
+      ...(publishedTime ? { publishedTime } : {}),
+    },
+  };
+}
+
+function erpArticleMetadata(article: ErpBlogArticle): Metadata {
+  const path = `/blogs/${article.slug}`;
+  const base = getMetadata({
+    title: article.title,
+    description: article.metaDescription,
+    slug: path.slice(1),
+    imagePath: article.image,
+  });
+  // ERP SEO overrides (og fields, robots, twitter handle) apply, but the
+  // canonical is always this URL: an ERP canonical may still name the old
+  // /blog/ path, which would canonicalise the article to a redirect.
+  const { canonicalUrl: _ignored, ...seo } = article.page.seo ?? {};
+  void _ignored;
+  const meta = mergeSeo(base, seo, { noindex: article.noindex });
+  const title = article.seoTitle;
+  return asArticle(
+    {
+      ...meta,
+      ...(title ? { title: { absolute: title } } : {}),
+      alternates: { ...(meta.alternates ?? {}), canonical: path },
+      openGraph: {
+        ...(meta.openGraph ?? {}),
+        url: path,
+        ...(title && !seo.ogTitle ? { title } : {}),
+      },
+      twitter: {
+        ...(meta.twitter ?? {}),
+        ...(title && !seo.ogTitle ? { title } : {}),
+      } as Metadata["twitter"],
+    },
+    article.publishedAt,
+  );
+}
 
 async function baseGenerateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const blog = blogs.find((item) => item.slug === slug);
 
   if (!blog) {
-    return { title: "Blog Not Found" };
+    const article = await getErpBlogArticle(slug);
+    return article ? erpArticleMetadata(article) : { title: "Blog Not Found" };
   }
 
-  return getMetadata({
-    title: blog.title,
-    description: blog.hero?.description || blog.excerpt || "",
-    slug: `blogs/${slug}`,
-  });
+  return asArticle(
+    getMetadata({
+      title: blog.title,
+      description: blog.hero?.description || blog.excerpt || "",
+      slug: `blogs/${slug}`,
+    }),
+    blog.date,
+  );
+}
+
+const ORGANIZATION = {
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: "ClickMasters",
+  legalName: "Clickmasters Web Development Company",
+  url: SITE_URL,
+  logo: { "@type": "ImageObject", url: absoluteUrl("/logo.webp") },
+};
+
+/** BlogPosting JSON-LD shared by code and ERP posts (one per page). */
+function blogPostingJsonLd(post: {
+  slug: string;
+  title: string;
+  description: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+}) {
+  const url = absoluteUrl(`/blogs/${post.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title.length > 110 ? `${post.title.slice(0, 109)}…` : post.title,
+    description: clampDescription(post.description || post.title),
+    image: [absoluteUrl(post.image || "/logo.webp")],
+    ...(post.datePublished ? { datePublished: post.datePublished } : {}),
+    ...(post.dateModified || post.datePublished
+      ? { dateModified: post.dateModified || post.datePublished }
+      : {}),
+    // Site convention: posts are authored by the company (see "Written by").
+    author: {
+      "@type": "Organization",
+      name: "Clickmasters Web Development Company",
+      url: SITE_URL,
+    },
+    publisher: ORGANIZATION,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    url,
+  };
 }
 
 type PageProps = {
@@ -40,7 +141,9 @@ export function generateStaticParams() {
 }
 
 export const dynamic = "force-static";
-export const dynamicParams = false;
+// Code posts are prerendered; ERP-published posts render on first request
+// (then cached like every page, ~60s). Unknown slugs are still a 404.
+export const dynamicParams = true;
 
 function getBlogCtas(blog: any) {
   return [
@@ -262,29 +365,6 @@ function CTASection({ cta }: { cta: any }) {
             </div>
           </div>
         </div>
-
-        <div className="border-t border-slate-100 bg-slate-50 p-7 lg:border-l lg:border-t-0">
-          <p className="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">
-            Fit Check
-          </p>
-
-          <div className="mt-5 space-y-4">
-            {[
-              ["Scope", "Website / SaaS / Commerce"],
-              ["Budget", "Clear range discussion"],
-              ["Timeline", "Launch-ready planning"],
-            ].map(([label, value]) => (
-              <div key={label} className="rounded-2xl bg-white p-4 shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
-                  {label}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-slate-800">
-                  {value}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
   );
   }
@@ -342,12 +422,240 @@ function CTASection({ cta }: { cta: any }) {
   );
 }
 
+type BlogHeroProps = {
+  slug: string;
+  /** Visible breadcrumb label for this post. */
+  title: string;
+  heading: string;
+  description: string;
+  badge: string;
+  readTime: string;
+  author: string;
+  date: string;
+  category: string;
+  credibility: string[];
+};
+
+/** The blog post hero (shared by code and ERP posts). */
+function BlogHero({
+  slug,
+  title,
+  heading,
+  description,
+  badge,
+  readTime,
+  author,
+  date,
+  category,
+  credibility,
+}: BlogHeroProps) {
+  return (
+    <section className="relative overflow-hidden bg-background px-6 pb-20 pt-20 text-white md:px-10">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
+
+      <div className="relative layout-container px-18 md:10">
+        <div className="mt-15 text-left">
+          <Breadcrumb
+            customLabels={{
+              blogs: "Blogs",
+              [slug]: title,
+            }}
+          />
+        </div>
+        <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_340px] lg:items-end">
+          <div>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-violet-soft backdrop-blur">
+                {badge}
+              </span>
+
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white/60">
+                {readTime}
+              </span>
+            </div>
+
+            <h1 className="mt-7 max-w-5xl text-5xl font-black leading-[0.98] tracking-[-0.06em] text-white md:text-7xl">
+              {heading}
+            </h1>
+
+            <p className="mt-8 max-w-3xl text-xl leading-9 text-white/68">
+              {description}
+            </p>
+
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <Link
+  href="/#contact"
+  className="rounded-full text-black bg-white px-6 py-3 text-sm font-bold transition hover:-translate-y-0.5"
+>
+  Start a project →
+</Link>
+
+
+              <Link
+                href="/blogs"
+                className="rounded-full border border-white/15 px-6 py-3 text-sm font-bold text-white/80 transition hover:border-white/30 hover:text-white"
+              >
+                Back to blogs
+              </Link>
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/40">
+              Article Details
+            </p>
+
+            <div className="mt-6 space-y-5">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/35">
+                  Written by
+                </p>
+                <p className="mt-1 font-semibold text-white">{author}</p>
+              </div>
+
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/35">
+                  Published
+                </p>
+                <p className="mt-1 font-semibold text-white">{date}</p>
+              </div>
+
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/35">
+                  Category
+                </p>
+                <p className="mt-1 font-semibold text-white">{category}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {credibility.length > 0 && (
+          <div className="mt-14 grid gap-3 md:grid-cols-5">
+            {credibility.map((item: string, index: number) => (
+              <div
+                key={item}
+                className="group rounded-2xl border border-white/10 bg-white/[0.055] p-4 backdrop-blur transition hover:-translate-y-1 hover:bg-white/[0.09]"
+              >
+                <span className="text-xs font-black text-violet-soft">
+                  0{index + 1}
+                </span>
+                <p className="mt-3 text-sm font-semibold leading-6 text-white/78">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/** Published ERP posts other than `exceptSlug`, as related-article links. */
+async function erpPostLinks(exceptSlug: string) {
+  // Only posts that load: a related link must never be a broken link.
+  return (await getLiveErpBlogEntries(3))
+    .filter((entry) => entry.slug !== exceptSlug)
+    .slice(0, 2)
+    .map((entry) => ({
+      href: `/blogs/${entry.slug}`,
+      label: entry.title?.trim() || entry.slug.replace(/-/g, " "),
+    }));
+}
+
+/** An ERP-published post, in the same template as the code posts. */
+async function ErpBlogDetail({ article }: { article: ErpBlogArticle }) {
+  const ctas = getBlogCtas({});
+  const published = isoDate(article.publishedAt);
+  const otherPosts = [
+    ...(await erpPostLinks(article.slug)).slice(0, 2),
+    ...blogs
+      .slice(0, 3)
+      .map((item) => ({ href: `/blogs/${item.slug}`, label: item.title })),
+  ];
+
+  return (
+    <main className="min-h-screen bg-background text-foreground">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blogs", path: "/blogs" },
+          { name: article.title, path: `/blogs/${article.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={blogPostingJsonLd({
+          slug: article.slug,
+          title: article.title,
+          description: article.metaDescription,
+          image: article.image,
+          datePublished: article.publishedAt,
+          dateModified: article.publishedAt,
+        })}
+      />
+      <Nav />
+
+      <article>
+        <BlogHero
+          slug={article.slug}
+          title={article.title}
+          heading={article.title}
+          description={article.summary || article.metaDescription}
+          badge={article.badge || "Blog"}
+          readTime={article.readTime}
+          author={article.author || "ClickMasters Team"}
+          date={published || ""}
+          category="Blog"
+          credibility={[]}
+        />
+
+        {article.image ? (
+          <div className="layout-container px-6 pt-16 md:px-10">
+            {/* CmsImage: ERP images may come from any host. */}
+            <CmsImage
+              src={article.image}
+              alt={article.title}
+              eager
+              className="aspect-video w-full rounded-[2rem] border border-white/10 object-cover"
+            />
+          </div>
+        ) : null}
+
+        <CmsPage page={article.body} embedded />
+
+        <div className="layout-container px-6 pb-16 md:px-10">
+          <CTASection cta={ctas[2]} />
+        </div>
+      </article>
+
+      <RelatedPages
+        heading="Related pages"
+        links={[
+          // Same topic-neutral links as the code posts: right for any ERP post.
+          { href: "/blogs", label: "All articles" },
+          { href: "/industries", label: "Industries we serve" },
+          { href: "/locations", label: "Cities we serve" },
+          ...otherPosts,
+        ]}
+      />
+      <Footer />
+    </main>
+  );
+}
+
 export default async function BlogDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const blog = blogs.find((item) => item.slug === slug);
 
   if (!blog) {
-    notFound();
+    // Misspelled slug under /blogs/ too: straight to the corrected post.
+    const corrected = correctBlogSlug(slug);
+    if (corrected !== slug && (await blogPostExists(corrected)))
+      permanentRedirect(`/blogs/${corrected}`);
+    const article = await getErpBlogArticle(slug);
+    if (!article) notFound();
+    return <ErpBlogDetail article={article} />;
   }
 
   const ctas = getBlogCtas(blog);
@@ -368,11 +676,16 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const byNewest = (a: { date?: string }, b: { date?: string }) =>
     (b.date ?? "").localeCompare(a.date ?? "");
   const otherPosts = [
-    ...others.filter((item) => item.category === blog.category).sort(byNewest),
-    ...others.filter((item) => item.category !== blog.category).sort(byNewest),
-  ]
-    .slice(0, 3)
-    .map((item) => ({ href: `/blogs/${item.slug}`, label: item.title }));
+    // Newest ERP-published posts first, so new articles get internal links.
+    ...(await erpPostLinks(blog.slug)).slice(0, 2),
+    // Then code posts: same category first, newest first.
+    ...[
+      ...others.filter((item) => item.category === blog.category).sort(byNewest),
+      ...others.filter((item) => item.category !== blog.category).sort(byNewest),
+    ]
+      .slice(0, 3)
+      .map((item) => ({ href: `/blogs/${item.slug}`, label: item.title })),
+  ];
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -384,21 +697,14 @@ export default async function BlogDetailPage({ params }: PageProps) {
         ])}
       />
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: blog.title,
-          description: clampDescription(blog.hero?.description || blog.excerpt || blog.title),
+        data={blogPostingJsonLd({
+          slug: blog.slug,
+          title: blog.title,
+          description: blog.hero?.description || blog.excerpt || blog.title,
+          image: blog.image,
           datePublished: blog.date,
-          author: {
-            "@type": "Organization",
-            name: "Clickmasters Web Development Company",
-            url: SITE_URL,
-          },
-          publisher: { "@id": `${SITE_URL}/#organization` },
-          image: blog.image ? absoluteUrl(blog.image) : absoluteUrl("/logo.webp"),
-          mainEntityOfPage: absoluteUrl(`/blogs/${blog.slug}`),
-        }}
+          dateModified: blog.date,
+        })}
       />
       {blog.faqs?.length > 0 ? (
         <JsonLd
@@ -416,105 +722,18 @@ export default async function BlogDetailPage({ params }: PageProps) {
       <Nav />
 
       <article>
-        <section className="relative overflow-hidden bg-background px-6 pb-20 pt-20 text-white md:px-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,92,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
-
-          <div className="relative layout-container px-18 md:10">
-            <div className="mt-15 text-left">
-              <Breadcrumb
-                customLabels={{
-                  blogs: "Blogs",
-                  [slug]: blog.title,
-                }}
-              />
-            </div>
-            <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_340px] lg:items-end">
-              <div>
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-violet-soft backdrop-blur">
-                    {blog.hero?.badge || blog.category}
-                  </span>
-
-                  <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white/60">
-                    {blog.readTime}
-                  </span>
-                </div>
-
-                <h1 className="mt-7 max-w-5xl text-5xl font-black leading-[0.98] tracking-[-0.06em] text-white md:text-7xl">
-                  {blog.hero?.title || blog.title}
-                </h1>
-
-                <p className="mt-8 max-w-3xl text-xl leading-9 text-white/68">
-                  {blog.hero?.description || blog.excerpt}
-                </p>
-
-                <div className="mt-9 flex flex-wrap items-center gap-4">
-                  <Link
-  href="/#contact"
-  className="rounded-full text-black bg-white px-6 py-3 text-sm font-bold transition hover:-translate-y-0.5"
->
-  Start a project →
-</Link>
-
-
-                  <Link
-                    href="/blogs"
-                    className="rounded-full border border-white/15 px-6 py-3 text-sm font-bold text-white/80 transition hover:border-white/30 hover:text-white"
-                  >
-                    Back to blogs
-                  </Link>
-                </div>
-              </div>
-
-              <div className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl">
-                <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/40">
-                  Article Details
-                </p>
-
-                <div className="mt-6 space-y-5">
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-white/35">
-                      Written by
-                    </p>
-                    <p className="mt-1 font-semibold text-white">{blog.author}</p>
-                  </div>
-
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-white/35">
-                      Published
-                    </p>
-                    <p className="mt-1 font-semibold text-white">{blog.date}</p>
-                  </div>
-
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-white/35">
-                      Category
-                    </p>
-                    <p className="mt-1 font-semibold text-white">{blog.category}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {blog.credibility?.length > 0 && (
-              <div className="mt-14 grid gap-3 md:grid-cols-5">
-                {blog.credibility.map((item: string, index: number) => (
-                  <div
-                    key={item}
-                    className="group rounded-2xl border border-white/10 bg-white/[0.055] p-4 backdrop-blur transition hover:-translate-y-1 hover:bg-white/[0.09]"
-                  >
-                    <span className="text-xs font-black text-violet-soft">
-                      0{index + 1}
-                    </span>
-                    <p className="mt-3 text-sm font-semibold leading-6 text-white/78">
-                      {item}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
+        <BlogHero
+          slug={slug}
+          title={blog.title}
+          heading={blog.hero?.title || blog.title}
+          description={blog.hero?.description || blog.excerpt}
+          badge={blog.hero?.badge || blog.category}
+          readTime={blog.readTime}
+          author={blog.author}
+          date={blog.date}
+          category={blog.category}
+          credibility={blog.credibility ?? []}
+        />
 
         <section className="layout-container grid gap-10 px-6 py-16 md:px-10 lg:grid-cols-[220px_1fr]">
           <BlogTOC headings={headings || []} />
@@ -535,7 +754,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 </p>
 
                 <h2 className="mt-4 text-4xl font-black tracking-tight text-slate-950">
-                  Choosing a Web Development Company
+                  Frequently Asked Questions
                 </h2>
 
                 <div className="mt-8 space-y-4">

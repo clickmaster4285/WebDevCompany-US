@@ -65,9 +65,11 @@ export function getMetadata({
       images: [imageUrl],
     },
     ...(noIndex && {
+      // noindex, follow: keep the page out of the index but let crawlers
+      // follow its links (nav/footer) as usual.
       robots: {
         index: false,
-        follow: false,
+        follow: true,
       },
     }),
   };

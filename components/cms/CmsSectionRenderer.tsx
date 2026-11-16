@@ -37,9 +37,12 @@ export function renderableSections(
 export function CmsSectionRenderer({
   sections,
   posts = [],
+  embedded = false,
 }: {
   sections: CmsSection[] | undefined;
   posts?: CmsPost[];
+  /** Below a site hero that owns the <h1>: no section may claim it. */
+  embedded?: boolean;
 }) {
   const visible = renderableSections(sections);
   return (
@@ -51,7 +54,7 @@ export function CmsSectionRenderer({
             key={section.id ?? `${section.type}-${i}`}
             section={section}
             posts={posts}
-            isFirst={i === 0}
+            isFirst={!embedded && i === 0}
           />
         );
       })}

@@ -13,6 +13,7 @@ import {
   CMS_TAG_PAGES,
   CMS_TAG_SITE,
 } from "@/lib/cms/config";
+import { siteSlugForCmsSlug } from "@/lib/cms/blog-slugs";
 import { normalizeSlug, slugToPath } from "@/lib/cms/slug";
 
 export const runtime = "nodejs";
@@ -56,6 +57,12 @@ export async function POST(request: Request) {
 
   const path = slugToPath(normalizeSlug(raw));
   if (PATH_PATTERN.test(path)) revalidatePath(path);
+  // A created blog post ("/blog/x") is served at "/blogs/x" and listed on /blogs.
+  const servedAt = slugToPath(siteSlugForCmsSlug(raw));
+  if (servedAt !== path && PATH_PATTERN.test(servedAt)) {
+    revalidatePath(servedAt);
+    revalidatePath("/blogs");
+  }
 
   return Response.json({ ok: true, path }, { headers: NO_STORE });
 }

@@ -250,7 +250,13 @@ function run() {
   const activeSitemaps = [];
 
   // 1. Generate Static/Main Sitemap (1st Position)
-  const mainUrls = STATIC_PAGES.map(p => ({
+  // /testimonials is noindex while it has no approved testimonials
+  // (app/testimonials/layout.tsx); a noindex URL must not be in the sitemap.
+  const hasTestimonials =
+    extractData(path.join(DATA_DIR, 'testimonials.ts'), 'testimonials').length > 0;
+  const mainUrls = STATIC_PAGES.filter(
+    p => hasTestimonials || p.loc !== `${BASE_URL}/testimonials`
+  ).map(p => ({
     loc: p.loc,
     changefreq: p.changefreq,
     priority: p.priority,

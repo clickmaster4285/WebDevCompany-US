@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { RelatedPages } from "@/components/seo/RelatedPages";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import { withEditedSeo } from "@/lib/cms/metadata";
+import { contextualBlogLinks } from "@/lib/cms/blog-posts";
 
 type FAQDetailRouteProps = {
   params: Promise<{
@@ -68,6 +69,7 @@ export default async function Page({ params }: FAQDetailRouteProps) {
     { href: "/faqs", label: "All FAQs" },
     { href: "/industries", label: "Industries we serve" },
     { href: "/locations", label: "Cities we serve" },
+    ...(await contextualBlogLinks(`/faqs/${faq.slug}`)),
     ...neighbors,
   ];
 

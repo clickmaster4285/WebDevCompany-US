@@ -7,6 +7,7 @@ import {
   cmsBaseUrl,
   cmsWarn,
 } from "./config";
+import { cmsBlogSlugRank, siteSlugForCmsSlug } from "./blog-slugs";
 import { normalizeFlatEdits, normalizeSectionEdits } from "./edits";
 import { encodeSlugForUrl, normalizeSlug } from "./slug";
 import type { CmsPage, CmsPageSummary, CmsSiteInfo, PageEdits } from "./types";
@@ -254,10 +255,15 @@ export const getLivePageEdits = cache((path: string) =>
 
 /* --------------------------- live updates --------------------------- */
 
-function stampOf(pages: CmsPageSummary[], slug: string): string {
-  const entry = pages.find(
-    (p) => typeof p?.slug === "string" && normalizeSlug(p.slug) === slug,
-  );
+function stampOf(
+  pages: CmsPageSummary[],
+  slug: string,
+  toPath: (cmsSlug: string) => string = normalizeSlug,
+): string {
+  // Several ERP slugs can map to one blog path: pick the one that is served.
+  const entry = pages
+    .filter((p) => typeof p?.slug === "string" && toPath(p.slug) === slug)
+    .sort((a, b) => cmsBlogSlugRank(a.slug!) - cmsBlogSlugRank(b.slug!))[0];
   if (!entry) return "";
   return [entry.version ?? "", entry.publishedAt ?? "", entry.title ?? ""].join(
     "|",
@@ -287,6 +293,7 @@ export async function getLiveStamp(
   if (!Array.isArray(editedPages) || !Array.isArray(createdPages)) return null;
   return {
     edits: stampOf(editedPages, slug),
-    page: stampOf(createdPages, slug),
+    // Created blog posts are served at /blogs/<slug> (see blog-slugs.ts).
+    page: stampOf(createdPages, slug, siteSlugForCmsSlug),
   };
 }

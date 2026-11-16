@@ -30,9 +30,11 @@ export function BlogCard({ blog }: BlogCardProps) {
 
         <div className="relative aspect-[16/9] overflow-hidden">
           <Image
-            src={blog.image || "/assets/blog-placeholder.jpg"}
+            src={blog.image || "/assets/blog-hero.webp"}
             alt={blog.title}
             fill
+            // ERP images can come from any host (not in images.remotePatterns).
+            unoptimized={/^(https?:)?\/\//i.test(blog.image ?? "") || (blog.image ?? "").startsWith("data:")}
             className="object-cover transition duration-700 group-hover:scale-110"
             sizes="(max-width:768px)100vw,(max-width:1200px)50vw,33vw"
           />

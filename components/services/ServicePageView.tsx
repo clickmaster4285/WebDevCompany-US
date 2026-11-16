@@ -1,7 +1,7 @@
 import type { ServicePageData } from "@/data/services";
 import { generateServiceSchema } from "@/lib/schema/serviceSchema";
 import { breadcrumbJsonLd, US_PHONE_DISPLAY } from "@/lib/seo";
-import { INDUSTRY_HUBS, comparisonLinksForService, locationLinks, relatedLinksForService, serviceIndustryPages } from "@/lib/related";
+import { INDUSTRY_HUBS, comparisonLinksForService, locationLinks, relatedLinksForService, serviceIndustryPages, type RelatedLink } from "@/lib/related";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { RelatedPages } from "@/components/seo/RelatedPages";
 import { HeroSection } from "@/components/services/HeroSection";
@@ -30,7 +30,14 @@ const serviceConfig: Record<string, { showSocial: boolean; avatarImage: string }
   },
 };
 
-export function ServicePageView({ service }: { service: ServicePageData }) {
+export function ServicePageView({
+  service,
+  relatedArticles = [],
+}: {
+  service: ServicePageData;
+  /** Extra links (e.g. published ERP articles) for the "Related pages" list. */
+  relatedArticles?: RelatedLink[];
+}) {
   const config = serviceConfig[service.slug] ?? serviceConfig.default;
   const childIndustries = serviceIndustryPages(service.slug);
   const industryPages = childIndustries.length
@@ -38,7 +45,7 @@ export function ServicePageView({ service }: { service: ServicePageData }) {
     : Object.values(INDUSTRY_HUBS).filter(
         (item, index, list) => list.findIndex((other) => other.href === item.href) === index,
       );
-  const related = relatedLinksForService(service);
+  const related = [...relatedLinksForService(service), ...relatedArticles];
   const comparisons = comparisonLinksForService(service.slug);
   const cities = service.slug === "web-development-services" ? locationLinks() : [];
 

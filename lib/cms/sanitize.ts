@@ -1,4 +1,5 @@
 import sanitizeHtmlLib from "sanitize-html";
+import { blogAwareHref } from "./blog-slugs";
 
 // A6 — every CMS (html) field goes through this allow-list sanitizer, and
 // every CMS URL through safeUrl(). Only http:, https:, mailto:, tel: and
@@ -134,7 +135,9 @@ const HTML_OPTIONS: sanitizeHtmlLib.IOptions = {
   disallowedTagsMode: "discard",
   transformTags: {
     a: (tagName, attribs) => {
-      const href = safeUrl(attribs.href);
+      const safe = safeUrl(attribs.href);
+      // ERP blog links ("/blog/x") point straight at "/blogs/x" (no redirect).
+      const href = safe ? blogAwareHref(safe) : undefined;
       const next: Record<string, string> = { ...attribs };
       if (href) next.href = href;
       else delete next.href;

@@ -11,6 +11,7 @@ import {
   text,
 } from "@/lib/cms/sanitize";
 import type { CmsSectionSettings } from "@/lib/cms/types";
+import { blogAwareHref } from "@/lib/cms/blog-slugs";
 
 /* ------------------------------------------------------------------ */
 /* Look & feel = this website's own design system (app/globals.css,     */
@@ -264,7 +265,10 @@ export function CmsLink({
   className?: string;
   children: ReactNode;
 }) {
-  const href = safeUrl(url);
+  const safe = safeUrl(url);
+  // "/blog/x" (the ERP's blog prefix) is served at "/blogs/x": link there
+  // directly instead of through a redirect.
+  const href = safe ? blogAwareHref(safe) : undefined;
   if (!href) return <span className={className}>{children}</span>;
 
   const extra =
