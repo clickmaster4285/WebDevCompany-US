@@ -676,6 +676,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const byNewest = (a: { date?: string }, b: { date?: string }) =>
     (b.date ?? "").localeCompare(a.date ?? "");
   const otherPosts = [
+    
     // Newest ERP-published posts first, so new articles get internal links.
     ...(await erpPostLinks(blog.slug)).slice(0, 2),
     // Then code posts: same category first, newest first.
