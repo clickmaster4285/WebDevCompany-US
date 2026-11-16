@@ -8,6 +8,7 @@ import { absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 export default function LocationsPage() {
   const locations = getAllLocationPages();
 
+  
   return (
     <>
       <JsonLd
