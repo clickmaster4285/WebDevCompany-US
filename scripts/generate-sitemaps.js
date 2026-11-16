@@ -226,6 +226,7 @@ const STATIC_PAGES = [
   { loc: `${BASE_URL}/`, changefreq: 'daily', priority: 1.0 },
   { loc: `${BASE_URL}/about`, changefreq: 'monthly', priority: 0.6 },
   { loc: `${BASE_URL}/contact`, changefreq: 'monthly', priority: 0.6 },
+  { loc: `${BASE_URL}/privacy`, changefreq: 'yearly', priority: 0.3 },
   { loc: `${BASE_URL}/testimonials`, changefreq: 'weekly', priority: 0.7 },
 ];
 
@@ -249,7 +250,13 @@ function run() {
   const activeSitemaps = [];
 
   // 1. Generate Static/Main Sitemap (1st Position)
-  const mainUrls = STATIC_PAGES.map(p => ({
+  // /testimonials is noindex while it has no approved testimonials
+  // (app/testimonials/layout.tsx); a noindex URL must not be in the sitemap.
+  const hasTestimonials =
+    extractData(path.join(DATA_DIR, 'testimonials.ts'), 'testimonials').length > 0;
+  const mainUrls = STATIC_PAGES.filter(
+    p => hasTestimonials || p.loc !== `${BASE_URL}/testimonials`
+  ).map(p => ({
     loc: p.loc,
     changefreq: p.changefreq,
     priority: p.priority,
@@ -266,6 +273,13 @@ function run() {
   // Use the current route-backed service data source
   const servicesPath = path.join(DATA_DIR, 'services.ts');
   if (fs.existsSync(servicesPath)) {
+    serviceUrls.push({
+      loc: `${BASE_URL}/services`,
+      changefreq: 'daily',
+      priority: 0.8,
+      lastmod: new Date().toISOString()
+    });
+
     const servicesData = extractObject(servicesPath, 'serviceData');
     const serviceEntries = Object.values(servicesData || {}).filter(Boolean);
 
@@ -357,6 +371,10 @@ function run() {
     activeSitemaps.push(`${BASE_URL}/${catFilename}`);
     console.log(`✅ Generated ${catFilename} with ${urls.length} urls.`);
   }
+
+  // ERP-created pages: served dynamically by app/sitemap-cms.xml/route.ts so
+  // pages published after this build are included without a redeploy.
+  activeSitemaps.push(`${BASE_URL}/sitemap-cms.xml`);
 
   // 4. Generate Sitemap Index (sitemap.xml)
   const indexXml = generateSitemapIndexXml(activeSitemaps);

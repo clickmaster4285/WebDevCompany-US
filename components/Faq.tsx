@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { motion, useInView } from "framer-motion";
 import { ChevronDown, Sparkles } from "lucide-react";
 
 const faqs = [
@@ -79,15 +80,6 @@ function FAQItem({
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
-  const faqSchema = {
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  };
-
   return (
     <motion.div
       ref={ref}
@@ -101,8 +93,6 @@ function FAQItem({
       itemProp="mainEntity"
       itemType="https://schema.org/Question"
     >
-      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-
       {/* active accent bar */}
       <span
         className={`absolute -left-4 top-0 h-full w-[2px] bg-primary transition-opacity duration-300 sm:-left-6 ${
@@ -147,33 +137,22 @@ function FAQItem({
         </motion.div>
       </button>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden"
-            itemScope
-            itemProp="acceptedAnswer"
-            itemType="https://schema.org/Answer"
-          >
-            <div className="pb-5 pl-10 pr-4 sm:pb-6 sm:pl-12">
-              <motion.p
-                initial={{ y: -8, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -8, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="text-sm leading-relaxed text-white/60 sm:text-base"
-                itemProp="text"
-              >
-                {faq.answer}
-              </motion.p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+        itemScope
+        itemProp="acceptedAnswer"
+        itemType="https://schema.org/Answer"
+      >
+        <div className={isOpen ? "overflow-hidden" : "overflow-hidden"}>
+          <div className="pb-5 pl-10 pr-4 sm:pb-6 sm:pl-12">
+            <p className="text-sm leading-relaxed text-white/60 sm:text-base" itemProp="text">
+              {faq.answer}
+            </p>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }
@@ -324,7 +303,10 @@ export function FAQSection() {
 
   return (
     <section ref={sectionRef} id="faq" className="relative overflow-hidden py-16 md:py-24 bg-black">
-      <script type="application/ld+json">{JSON.stringify(faqPageSchema)}</script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
+      />
 
       <div className="pointer-events-none absolute inset-0" style={BLUEPRINT_GRID} aria-hidden="true" />
 
@@ -391,13 +373,13 @@ export function FAQSection() {
             >
               <p className="text-sm text-white/40">
                 Still have questions?{" "}
-                <a
+                <Link
                   href="/contact"
                   className="inline-flex items-center gap-1 text-primary transition-colors hover:text-primary/80"
                 >
                   Get in touch
                   <Sparkles className="h-3.5 w-3.5" />
-                </a>
+                </Link>
               </p>
             </motion.div>
           </div>

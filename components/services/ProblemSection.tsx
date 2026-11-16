@@ -14,7 +14,7 @@ import {
   Loader2,
   Sparkles,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ProblemStat } from "@/data/services";
 
 const containerVariants: Variants = {
@@ -66,62 +66,36 @@ function AnimatedCounter({
   value,
   suffix = "",
   prefix = "",
-  duration = 2,
 }: {
   value: string;
   suffix?: string;
   prefix?: string;
-  duration?: number;
 }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [displayValue, setDisplayValue] = useState("0");
+  const numeric = Number(value);
+  const formatted = Number.isFinite(numeric)
+    ? suffix === "%"
+      ? numeric.toFixed(1)
+      : numeric >= 1000
+        ? Math.floor(numeric).toLocaleString()
+        : Number.isInteger(numeric)
+          ? String(numeric)
+          : numeric.toFixed(1)
+    : value;
 
-  useEffect(() => {
-    if (!isInView) return;
-    const numericMatch = value.match(/[\d.]+/);
-    if (!numericMatch) {
-      setDisplayValue(value);
-      return;
-    }
-
-    const target = parseFloat(numericMatch[0]);
-    const startTime = performance.now();
-
-    const animate = (currentTime: number) => {
-      const elapsed = (currentTime - startTime) / 1000;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = target * eased;
-
-      let formatted: string;
-      if (suffix === "%") {
-        formatted = current.toFixed(1);
-      } else if (target >= 1000) {
-        formatted = Math.floor(current).toLocaleString();
-      } else if (Number.isInteger(target)) {
-        formatted = Math.floor(current).toString();
-      } else {
-        formatted = current.toFixed(1);
-      }
-
-      setDisplayValue(`${prefix}${formatted}${suffix}`);
-      if (progress < 1) requestAnimationFrame(animate);
-    };
-
-    requestAnimationFrame(animate);
-  }, [isInView, value, suffix, prefix, duration]);
-
-  return <span ref={ref} className="tabular-nums tracking-tight">{displayValue}</span>;
+  return (
+    <span className="tabular-nums tracking-tight">
+      {prefix}
+      {formatted}
+      {suffix}
+    </span>
+  );
 }
 
 function StatCard({
   stat,
-  index,
   shouldReduceMotion,
 }: {
   stat: ProblemStat;
-  index: number;
   shouldReduceMotion: boolean;
 }) {
   const suffix = stat.value.includes("%") ? "%" : "";
@@ -144,7 +118,7 @@ function StatCard({
 
       <div className="relative z-10 flex-1">
         <div className="text-display text-3xl font-bold text-destructive sm:text-4xl md:text-5xl">
-          <AnimatedCounter value={cleanValue} prefix={prefix} suffix={suffix} duration={1.8 + index * 0.2} />
+          <AnimatedCounter value={cleanValue} prefix={prefix} suffix={suffix} />
         </div>
         <div className="mt-2 text-sm font-semibold tracking-wide text-ink sm:text-base">{stat.label}</div>
         <div className="mt-1.5 text-sm leading-relaxed text-ink-mute">{stat.description}</div>
@@ -283,7 +257,7 @@ export function ProblemSection({
                 {...motionPref}
               >
                 {stats.map((stat, index) => (
-                  <StatCard key={index} stat={stat} index={index} shouldReduceMotion={isReduced} />
+                  <StatCard key={index} stat={stat} shouldReduceMotion={isReduced} />
                 ))}
               </motion.div>
             )}

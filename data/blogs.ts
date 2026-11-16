@@ -9,7 +9,7 @@ export const blogs = [
     author: "ClickMasters Team",
     date: "2026-06-23",
     readTime: "12 min read",
-    image: "/assets/webdev.webp",
+    image: "/assets/webdev-sm.webp",
 
     hero: {
       badge: "RESOURCES",
@@ -1140,7 +1140,7 @@ export const blogs = [
   author: "ClickMasters Team",
   date: "2026-06-28",
   readTime: "10 min read",
-  image: "/assets/webcustom.png",
+  image: "/assets/webcustom.webp",
 
   hero: {
     badge: "RESOURCES",
@@ -2250,6 +2250,144 @@ export const blogs = [
       "Now you know how we work. The first step is a no-cost discovery call — we'll understand your goals, give you an honest assessment, and lay out a clear scope and fixed estimate. No black box, no obligation, no leap of faith.",
     primaryText: "Start with a discovery call",
     secondaryText: "Request the process overview",
+  },
+},
+{
+  id: 11,
+  slug: "web-development-company",
+  title: "Web Development Company: What to Look For",
+  excerpt:
+    "How to judge a web development company before you hire: ownership, seniority, process, and fit — without a pay-to-play list.",
+  category: "Web Development",
+  author: "ClickMasters Team",
+  date: "2026-11-14",
+  readTime: "9 min read",
+  image: "/assets/webdev-sm.webp",
+
+  hero: {
+    badge: "GUIDE",
+    title: "Web Development Company: What to Look For",
+    description:
+      "How to judge a web development company before you hire: ownership, seniority, process, and fit — without a pay-to-play list.",
+  },
+
+  credibility: [
+    "What the firm actually owns",
+    "Who does the work",
+    "A process you can see",
+    "Fit for your scope",
+    "Questions to ask first",
+  ],
+
+  content: [
+    {
+      type: "featuredAnswer",
+      text: "A web development company is the firm you hire to design, build, and launch a website, web application, or online store. Judge one on who does the work, whether you own the code, how the process stays visible, and whether the firm fits your scope and budget. The right company is the one that matches the project, not the one with the largest claim.",
+    },
+    {
+      type: "heading",
+      text: "What You Are Actually Hiring",
+    },
+    {
+      type: "paragraph",
+      text: "A web development company takes a business problem and turns it into software people can use: a marketing site, a store, an internal tool, or a product. The deliverable is the build. The thing you are paying for is judgment — what to build, what to leave out, and how to ship it without locking you into a platform you do not control.",
+    },
+    {
+      type: "paragraph",
+      text: "That is different from a template subscription, a freelancer working alone, or a staff-augmentation bench that only writes the tickets you already wrote. A company should be able to scope the work, design the experience, engineer it, test it, and launch it, then tell you plainly when a smaller engagement is the better buy.",
+    },
+    {
+      type: "heading",
+      text: "Four Checks Before You Shortlist",
+    },
+    {
+      type: "paragraph",
+      text: "Use the same checks on every firm, including us. A list that cannot survive these questions is an ad.",
+    },
+    {
+      type: "table",
+      columns: ["Check", "What good looks like", "What to walk away from"],
+      rows: [
+        [
+          "Ownership",
+          "You own the code, content, and accounts when you pay",
+          "The agency keeps the repo, the theme license, or the hosting login",
+        ],
+        [
+          "Who does the work",
+          "Seniors stay on the project after the sale",
+          "A senior sells it and a junior bench builds it with no named lead",
+        ],
+        [
+          "Process",
+          "Scope, demos, and a test gate before launch",
+          "A single reveal at the end, with changes treated as surprises",
+        ],
+        [
+          "Fit",
+          "The firm has done work at your size and on your platform",
+          "Every project is described as a flagship, regardless of budget",
+        ],
+      ],
+    },
+    {
+      type: "heading",
+      text: "How to Run the Conversation",
+    },
+    {
+      type: "list",
+      items: [
+        "Write the outcome first — the page, product, or store you need, and what 'done' means.",
+        "Ask who will do the work after the proposal, by role, not by company size.",
+        "Ask what you will own on the day you pay the final invoice.",
+        "Ask how you will see progress before launch, and what happens if the scope changes.",
+        "Shortlist three firms that fit the project. A longer list does not make the decision clearer.",
+        "Start with a defined first engagement instead of an open-ended retainer.",
+      ],
+    },
+    {
+      type: "heading",
+      text: "Where ClickMasters Fits",
+    },
+    {
+      type: "paragraph",
+      text: "ClickMasters is a senior-led web development company for mid-market and enterprise websites, SaaS products, and serious commerce builds. We publish the process, the comparison framework, and the reasons a large consultancy or a template may be the better fit. If the project is a one-page brochure or a board wants a global brand name for optics, we will say so.",
+    },
+    {
+      type: "paragraph",
+      text: "Use the shortlist guide if you are comparing several US firms, and the process page if you want the stages before you book a call. This article is the filter you apply to any of them, including us.",
+    },
+  ],
+
+  faqs: [
+    {
+      question: "What does a web development company do?",
+      answer:
+        "It scopes, designs, builds, tests, and launches websites, web applications, and online stores. A good firm also tells you what not to build, and hands you the code and accounts when the work is paid for.",
+    },
+    {
+      question: "How is a web development company different from a freelancer?",
+      answer:
+        "A freelancer is one person. A company should cover scoping, design, engineering, and testing without the project stopping when one person is unavailable. You still need to confirm that seniors stay on the work after the sale.",
+    },
+    {
+      question: "What should I own when the project ends?",
+      answer:
+        "The source code, the design files you paid for, the content, and the accounts the site runs on: hosting, domain, analytics, and the store or CMS admin. If the contract keeps any of those with the firm, treat that as lock-in and price it in.",
+    },
+    {
+      question: "How do I compare web development companies without a paid list?",
+      answer:
+        "Score each firm on ownership, who does the work, process, and fit for your budget. Talk to three. A ranking that does not show its method is advertising.",
+    },
+  ],
+
+  cta: {
+    title: "See Whether We Are the Right Firm",
+    description:
+      "Bring the scope you have. We will tell you if a senior-led build fits, and if it does not, what kind of partner does. No obligation.",
+    primaryText: "Start a project",
+    secondaryText: "Read the process",
   },
 },
 

@@ -113,7 +113,7 @@ export function WhatWeDoIntro() {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/what.jpeg')",
+          backgroundImage: "url('/what.webp')",
           filter: "brightness(0.3)",
         }}
       >

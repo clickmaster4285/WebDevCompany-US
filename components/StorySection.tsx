@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useGsap } from "@/lib/gsap";
-import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Sparkles, Code2, Palette, Target, ArrowRight } from "lucide-react";
 import storyImg from "@/public/assets/story-workstation.jpg";
 
@@ -56,26 +56,8 @@ function FloatingOrb({
 }
 
 function StatCounter({ value, suffix = "", decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-    let startTime: number;
-    let raf: number;
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / 2000, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Number((eased * value).toFixed(decimals)));
-      if (progress < 1) raf = requestAnimationFrame(animate);
-    };
-    raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
-  }, [isInView, value, decimals]);
-
-  return <span ref={ref}>{display}{suffix}</span>;
+  const rendered = Number.isInteger(value) && decimals === 0 ? String(value) : value.toFixed(decimals);
+  return <span>{rendered}{suffix}</span>;
 }
 
 const stats = [

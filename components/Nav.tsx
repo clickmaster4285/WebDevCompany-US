@@ -10,6 +10,7 @@ import {
   X,
 } from "lucide-react";
 import { Dropdown, DropdownSection, DropdownItem } from "@/components/ui/Dropdown";
+import { CmsHeaderLinks, CmsMobileLinks } from "@/components/cms/CmsNavLinks";
 
 // ⚡ Lightweight nav data (~14.5KB) instead of importing 7 large data files (~1MB total)
 import navData from "@/data/nav-data.json";
@@ -21,30 +22,30 @@ const serviceCategories: DropdownSection[] = [
     description: "Browse every web development, design, and AI solution we offer.",
     items: [
       // Core Development
-      { label: "Web Development Services", href: "/services/web-development-services", icon: "🌐" },
-      { label: "Enterprise Web Development", href: "/services/enterprise-web-development", icon: "🏢" },
-      { label: "Custom Web Development", href: "/services/custom-web-development", icon: "⚙️" },
-      { label: "Web Application Development", href: "/services/web-application-development", icon: "📱" },
-      { label: "Full Stack Development", href: "/services/full-stack-development", icon: "🖥️" },
+      { label: "Web Development Services", href: "/web-development-services", icon: "🌐" },
+      { label: "Enterprise Web Development", href: "/enterprise-web-development", icon: "🏢" },
+      { label: "Custom Web Development", href: "/custom-web-development", icon: "⚙️" },
+      { label: "Web Application Development", href: "/web-application-development", icon: "📱" },
+      { label: "Full Stack Development", href: "/full-stack-development", icon: "🖥️" },
       
       // Platforms & eCommerce
-      { label: "WordPress Development", href: "/services/wordpress-development", icon: "📝" },
-      { label: "Shopify Development", href: "/services/shopify-development", icon: "🛍️" },
-      { label: "Shopify Plus Development", href: "/services/shopify-plus-development", icon: "💎" },
-      { label: "WooCommerce Development", href: "/services/woocommerce-development", icon: "🛒" },
-      { label: "Magento Development", href: "/services/magento-development", icon: "🏪" },
-      { label: "eCommerce Development", href: "/services/ecommerce-development", icon: "🛒" },
-      { label: "Headless Commerce Development", href: "/services/headless-commerce-development", icon: "🧩" },
-      { label: "CMS Development", href: "/services/cms-development", icon: "📰" },
+      { label: "WordPress Development", href: "/wordpress-development", icon: "📝" },
+      { label: "Shopify Development", href: "/shopify-development", icon: "🛍️" },
+      { label: "Shopify Plus Development", href: "/shopify-plus-development", icon: "💎" },
+      { label: "WooCommerce Development", href: "/woocommerce-development", icon: "🛒" },
+      { label: "Magento Development", href: "/magento-development", icon: "🏪" },
+      { label: "eCommerce Development", href: "/ecommerce-development", icon: "🛒" },
+      { label: "Headless Commerce Development", href: "/headless-commerce-development", icon: "🧩" },
+      { label: "CMS Development", href: "/cms-development", icon: "📰" },
       
       // Design, AI & Support
-      { label: "Web Design Services (UI/UX)", href: "/services/web-design-services", icon: "🎨" },
-      { label: "Website Redesign Services", href: "/services/website-redesign-services", icon: "🔄" },
-      { label: "AI Web Development", href: "/services/ai-web-development", icon: "🤖" },
-      { label: "AI Chatbot Development", href: "/services/ai-chatbot-development", icon: "💬" },
-      { label: "API Development", href: "/services/api-development", icon: "🔌" },
-      { label: "Website Speed Optimization", href: "/services/website-speed-optimization", icon: "⚡" },
-      { label: "Website Maintenance & Support", href: "/services/website-maintenance-services", icon: "🔧" },
+      { label: "Web Design Services (UI/UX)", href: "/web-design-services", icon: "🎨" },
+      { label: "Website Redesign Services", href: "/website-redesign-services", icon: "🔄" },
+      { label: "AI Web Development", href: "/ai-web-development", icon: "🤖" },
+      { label: "AI Chatbot Development", href: "/ai-chatbot-development", icon: "💬" },
+      { label: "API Development", href: "/api-development", icon: "🔌" },
+      { label: "Website Speed Optimization", href: "/website-speed-optimization", icon: "⚡" },
+      { label: "Website Maintenance & Support", href: "/website-maintenance-services", icon: "🔧" },
     ],
   },
 ];
@@ -323,6 +324,9 @@ export function Nav() {
             >
               Contact
             </Link>
+
+            {/* ERP header navigation (renders nothing when the ERP has none) */}
+            <CmsHeaderLinks />
           </nav>
 
           {/* Changed md:block to lg:block */}
@@ -362,6 +366,7 @@ export function Nav() {
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 hover:translate-x-1 hover:text-blue-600" />
                 </Link>
               ))}
+              <CmsMobileLinks onNavigate={() => setMobileOpen(false)} />
             </div>
 
             <Link

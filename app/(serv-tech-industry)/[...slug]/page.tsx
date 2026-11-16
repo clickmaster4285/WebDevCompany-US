@@ -1,94 +1,127 @@
-// app/(serv-tech-industry)/[...slug]/page.tsx
-import { pages } from '@/data/tech-serv-industry';
-import IndustryPageTemplate from '@/components/services-tech-industry/Mainslugpag';
-import { CategoryOverview } from '@/components/services-tech-industry/CategoryOverview';
-import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
-import { getMetadata } from '@/lib/metadata';
+import type { Metadata } from "next";
+import IndustryPageTemplate from "@/components/services-tech-industry/Mainslugpag";
+import { ServicePageView } from "@/components/services/ServicePageView";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { pages } from "@/data/tech-serv-industry";
+import { getAllServiceSlugs, getServiceBySlug } from "@/data/services";
+import { getMetadata } from "@/lib/metadata";
+import { RelatedPages } from "@/components/seo/RelatedPages";
+import { relatedLinksForCombo } from "@/lib/related";
+import { breadcrumbJsonLd, clampDescription, SITE_URL } from "@/lib/seo";
+import { cmsMetadataOr, renderCmsPageOrNotFound } from "@/components/cms/CmsRoute";
+import { withEditedSeo } from "@/lib/cms/metadata";
+import { contextualBlogLinks } from "@/lib/cms/blog-posts";
 
-// Helper: group pages by category
-function getCategoryPages(category: string) {
-  return Object.entries(pages).filter(([slug]) => 
-    slug.startsWith(category + '/') && !slug.startsWith('technologies/')
+type PageProps = {
+  params: Promise<{ slug: string[] }>;
+};
+
+export function generateStaticParams() {
+  const serviceParams = getAllServiceSlugs().map((slug) => ({ slug: [slug] }));
+  const comboParams = Object.keys(pages).map((slug) => ({
+    slug: slug.split("/"),
+  }));
+  return [...serviceParams, ...comboParams];
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const key = slug.join("/");
+
+  if (slug.length === 1) {
+    const service = getServiceBySlug(slug[0]);
+    if (service) {
+      return withEditedSeo(
+        `/${service.slug}`,
+        getMetadata({
+          title: service.metaTitle || service.title,
+          description: service.metaDescription,
+          slug: service.slug,
+        }),
+      );
+    }
+  }
+
+  const page = pages[key];
+  if (!page) {
+    // Not code-owned: an ERP-created page at this path, or the normal 404.
+    return cmsMetadataOr(`/${key}`, { title: "Page Not Found" });
+  }
+
+  return withEditedSeo(
+    `/${key}`,
+    getMetadata({
+      title: page.title,
+      description: page.hero.description,
+      slug: key,
+    }),
   );
 }
 
-// 1. Pre-render all pages at build time
-export async function generateStaticParams() {
-  const categories = new Set(Object.keys(pages).map((slug) => slug.split('/')[0]));
-  const params: { slug: string[] }[] = [];
+export default async function ServTechIndustryPage({ params }: PageProps) {
+  const { slug } = await params;
+  const key = slug.join("/");
 
-  // Multi-segment slugs (detail pages like /shopify/hospitality)
-  // Exclude technology pages since they're now handled by the dedicated technologies route
-  for (const slug of Object.keys(pages)) {
-    if (!slug.startsWith('technologies/')) {
-      params.push({ slug: slug.split('/') });
+  if (slug.length === 1) {
+    const service = getServiceBySlug(slug[0]);
+    if (service) {
+      return (
+        <ServicePageView
+          service={service}
+          relatedArticles={await contextualBlogLinks(`/${service.slug}`)}
+        />
+      );
     }
   }
 
-  // Single-segment slugs (category overview pages like /shopify)
-  // Exclude technologies since it's now a dedicated route
-  for (const category of categories) {
-    if (category !== 'technologies') {
-      params.push({ slug: [category] });
-    }
+  const page = pages[key];
+  if (!page) {
+    // A5: code-owned routes win; otherwise an ERP-created page, else 404.
+    return renderCmsPageOrNotFound(`/${key}`);
   }
 
-  return params;
-}
+  const [serviceSlug, industrySlug] = key.split("/");
+  const service = serviceSlug ? getServiceBySlug(serviceSlug) : undefined;
 
-// 2. Dynamic SEO Metadata (Next.js 15/16 compatible)
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ slug: string[] }> 
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const slugKey = slug.join('/');
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: page.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
 
-  // --- Single segment = Category overview ---
-  if (slug.length === 1) {
-    const category = slug[0];
-    const categoryPages = getCategoryPages(category);
-    if (categoryPages.length === 0) return { title: 'Page Not Found' };
-    return getMetadata({
-      title: `${category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} Solutions`,
-      description: `Explore our ${category.replace(/-/g, ' ')} solutions across industries.`,
-      slug: category,
-    });
-  }
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: page.title,
+    serviceType: service?.schema.serviceType ?? page.title,
+    description: clampDescription(page.hero.description),
+    url: `${SITE_URL}/${key}`,
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: industrySlug
+      ? industrySlug.replace(/-/g, " ")
+      : ["United States", "United Kingdom", "Pakistan"],
+  };
 
-  // --- Industry/service detail pages ---
-  const pageData = pages[slugKey];
-  if (!pageData) return { title: 'Page Not Found' };
-
-  return getMetadata({
-    title: pageData.title,
-    description: pageData.hero.description,
-    slug: slugKey,
-  });
-}
-
-// 3. The Page Component (Next.js 15/16 compatible)
-export default async function ServTechIndustryPage({ 
-  params 
-}: { 
-  params: Promise<{ slug: string[] }> 
-}) {
-  const { slug } = await params;
-  const slugKey = slug.join('/');
-
-  // --- Single segment = Category overview ---
-  if (slug.length === 1) {
-    const category = slug[0];
-    const categoryPages = getCategoryPages(category);
-    if (categoryPages.length === 0) notFound();
-    return <CategoryOverview category={category} pages={categoryPages} />;
-  }
-
-  // --- Industry/service detail pages ---
-  const pageData = pages[slugKey];
-  if (!pageData) notFound();
-
-  return <IndustryPageTemplate data={pageData} />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          ...(service
+            ? [{ name: service.title, path: `/${service.slug}` }]
+            : []),
+          { name: page.title, path: `/${key}` },
+        ])}
+      />
+      <JsonLd data={serviceSchema} />
+      {page.faqs.length > 0 ? <JsonLd data={faqSchema} /> : null}
+      <IndustryPageTemplate data={page} />
+      <RelatedPages heading="Related pages" links={relatedLinksForCombo(key)} />
+    </>
+  );
 }

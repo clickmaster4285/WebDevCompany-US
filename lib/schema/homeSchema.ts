@@ -11,6 +11,7 @@ export function generateHomeSchema() {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         "name": "ClickMasters",
+        "legalName": "Clickmasters Web Development Company",
         "alternateName": "ClickMasters Web Development Company",
         "url": SITE_URL,
         "logo": `${SITE_URL}/logo.webp`,

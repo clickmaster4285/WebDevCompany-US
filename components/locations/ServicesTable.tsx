@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Code2,
@@ -19,6 +20,7 @@ interface ServiceItem {
   service: string;
   description: string;
   benefit: string;
+  href: string;
   icon?: LucideIcon;
 }
 
@@ -58,14 +60,15 @@ export const ServicesTable: React.FC<ServicesTableProps> = ({ services, city, re
 
           return (
             <motion.div
-              key={index}
+              key={item.href}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.06 }}
               viewport={{ once: true }}
               whileHover={{ y: -6 }}
-              className="group relative glass rounded-2xl border border-white/5 p-6 overflow-hidden hover:border-violet/30 transition-all duration-300 hover:shadow-xl hover:shadow-violet/10"
+              className="group relative glass rounded-2xl border border-white/5 overflow-hidden hover:border-violet/30 transition-all duration-300 hover:shadow-xl hover:shadow-violet/10"
             >
+              <Link href={item.href} className="block p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet">
               {/* Decorative glow on hover */}
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-violet/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -94,6 +97,7 @@ export const ServicesTable: React.FC<ServicesTableProps> = ({ services, city, re
                   {item.benefit}
                 </p>
               </div>
+              </Link>
             </motion.div>
           );
         })}
@@ -108,36 +112,42 @@ export const getDefaultServices = (city: string, region: string): ServiceItem[] 
       service: "Custom websites",
       description: "Conversion-engineered custom sites",
       benefit: `Built to convert ${city}-area buyers in your sector`,
+      href: "/custom-web-development",
       icon: Code2,
     },
     {
       service: "E-commerce & Shopify",
       description: "Stores built to sell",
       benefit: `For ${region} consumer and retail brands`,
+      href: "/shopify-development",
       icon: ShoppingCart,
     },
     {
       service: "Web applications",
       description: "Custom apps and portals",
       benefit: `For ${city} businesses needing real functionality`,
+      href: "/web-application-development",
       icon: LayoutGrid,
     },
     {
       service: "SaaS development",
       description: "Scalable SaaS products",
       benefit: `For ${region}'s startups and software companies`,
+      href: "/saas-development",
       icon: Layers,
     },
     {
       service: "Web design & UI/UX",
       description: "Conversion- and brand-focused design",
       benefit: `Distinctive, on-brand experiences for ${city}`,
+      href: "/web-design-services",
       icon: Palette,
     },
     {
       service: "Maintenance & optimization",
       description: "Ongoing care and CRO",
       benefit: `Keeping ${city} sites fast, secure, converting`,
+      href: "/website-maintenance-services",
       icon: Wrench,
     },
   ];

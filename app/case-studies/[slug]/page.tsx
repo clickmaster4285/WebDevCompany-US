@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { caseStudies } from "@/data/case-studies";
 import { getMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import { TemplateCTA } from "@/components/ui/TemplateCta";
 import {
   CaseStudyHero,
@@ -17,6 +19,7 @@ import {
   CaseStudyRelated,
 } from "@/components/case-study";
 import { CaseStudyStats } from "@/components/case-study/CaseStudyStats";
+import { withEditedSeo } from "@/lib/cms/metadata";
 
 export async function generateStaticParams() {
   return caseStudies.map((study) => ({
@@ -24,7 +27,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ 
+async function baseGenerateMetadata({ 
   params 
 }: { 
   params: Promise<{ slug: string }> 
@@ -69,6 +72,13 @@ export default async function CaseStudyDetailPage({
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Case studies", path: "/case-studies" },
+          { name: study.title, path: `/case-studies/${study.slug}` },
+        ])}
+      />
       {/* Hero Section */}
       <CaseStudyHero
         title={study.title}
@@ -81,7 +91,7 @@ export default async function CaseStudyDetailPage({
       />
 
       {/* Main Content */}
-      <main className="layout-container px-6 md:px-12 py-12 lg:py-16">
+      <div className="layout-container px-6 md:px-12 py-12 lg:py-16">
         {/* Stats Bar — full width, above the grid */}
         <CaseStudyStats
           region={study.location}
@@ -151,7 +161,18 @@ export default async function CaseStudyDetailPage({
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
+  );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/case-studies/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
   );
 }

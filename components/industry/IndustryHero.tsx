@@ -155,10 +155,11 @@ export function IndustryHero({ data }: IndustryHeroProps) {
           <div className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-border/60 bg-surface-1/40 shadow-2xl backdrop-blur-sm md:rounded-3xl">
             <div className="relative aspect-[4/3] w-full overflow-hidden">
               <Image
-                src="/foridustryherosection.png"
+                src="/foridustryherosection.webp"
                 alt="Industry hero illustration"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 512px"
+                quality={60}
                 className="object-cover transition-transform duration-700 hover:scale-105"
                 priority
               />

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import blogHeroImg from "@/public/assets/blog-hero.png";
+import blogHeroImg from "@/public/assets/blog-hero.webp";
 import { Breadcrumb } from "@/components/breadcrumb/Breadcrumb";
 
 export function BlogsHero() {
@@ -116,6 +116,8 @@ export function BlogsHero() {
               alt="Blog Hero"
               width={520}
               height={520}
+              sizes="(max-width: 1024px) 90vw, 520px"
+              quality={60}
               priority
               className="h-auto w-full rounded-[2rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)]"
             />

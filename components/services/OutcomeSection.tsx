@@ -167,17 +167,19 @@ export function OutcomeSection({ challenge, solution, metrics }: OutcomeSectionP
           {/* BADGE UPDATED */}
           <span className="mb-4 flex w-fit mx-auto items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet backdrop-blur-sm">
             <TrendingUp className="h-3.5 w-3.5" aria-hidden="true" />
-            Proven Results
+            Example scenario
           </span>
 
-          {/* H2 UPDATED */}
           <h2 className="text-display mt-5 max-w-3xl mx-auto text-center text-3xl font-semibold tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-6xl">
             Representative Outcome
           </h2>
 
-          {/* P UPDATED */}
           <p className="mt-4 max-w-2xl mx-auto text-center text-base leading-relaxed text-ink-soft sm:text-lg">
-            Real numbers from a real engagement. Here is how we turned the challenge into measurable impact.
+            The figures below show the shape of this kind of project. Dated outcomes are in the{" "}
+            <a href="/case-studies" className="text-violet underline-offset-2 hover:underline">
+              case studies
+            </a>
+            .
           </p>
         </motion.div>
 

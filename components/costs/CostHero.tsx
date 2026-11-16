@@ -180,10 +180,11 @@ export function CostHero({
               {/* Image container with decorative elements */}
               <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border/50 shadow-2xl shadow-violet/10">
                 <Image
-                  src="/costimage.png"
+                  src="/costimage.webp"
                   alt="Web development cost visualization and pricing breakdown"
                   fill
                   sizes="(max-width: 1024px) 100vw, 688px"
+                  quality={60}
                   className="object-cover"
                   priority
                 />

@@ -18,7 +18,7 @@ type FAQDetailPageProps = {
 
 export function FAQDetailPage({ faq }: FAQDetailPageProps) {
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
+    <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       <section className="relative overflow-hidden px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:pb-20 lg:pt-36">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(124,92,255,0.18),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(99,102,241,0.12),transparent_35%)]" />
 
@@ -124,11 +124,12 @@ export function FAQDetailPage({ faq }: FAQDetailPageProps) {
                 className="relative z-10 flex justify-center items-center"
               >
                 <Image
-                  src="/assets/faqside.png"
+                  src="/assets/faqside.webp"
                   alt="FAQ Hero"
                   width={520}
                   height={520}
                   sizes="(max-width: 520px) 100vw, 520px"
+                  quality={60}
                   priority
                   className="h-auto w-full max-w-[520px] rounded-[2rem] object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.35)]"
                 />
@@ -313,7 +314,7 @@ export function FAQDetailPage({ faq }: FAQDetailPageProps) {
           </div>
         </section>
       </section>
-    </main>
+    </div>
   );
 }
 

@@ -1,8 +1,9 @@
 # *
 User-agent: *
 Allow: /
+Allow: /api-development
 Disallow: /admin
-Disallow: /api
+Disallow: /api/
 Disallow: /login
 
 

@@ -26,9 +26,9 @@ const trustSignals = [
 ];
 
 const statsPreview = [
-  { value: "120+", label: "Projects" },
-  { value: "95%", label: "Retention" },
-  { value: "6yr", label: "Proven" },
+  { value: "US", label: "+1 325 202 4074" },
+  { value: "UK", label: "+44 7988 576086" },
+  { value: "PK", label: "+92 332 5394285" },
 ];
 
 /* ─────────────────────────────────────────────
@@ -253,14 +253,15 @@ export function CTASection({ heading, primary, secondary }: CTASectionProps) {
                   className="mt-8 flex flex-col gap-3 sm:flex-row"
                 >
                   <motion.a
-                    href="/contact"
+                    href="tel:+13252024074"
+                    title={primary}
                     variants={slideUpVariants}
                     whileHover={shouldReduceMotion ? {} : { scale: 1.03, y: -2 }}
                     whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
                     className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-violet shadow-xl shadow-black/20 transition-all hover:shadow-2xl hover:shadow-black/30 sm:px-8 sm:py-4 sm:text-base"
                   >
                     <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-violet-200/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                    <span className="relative">{primary}</span>
+                    <span className="relative">Call +1 325 202 4074</span>
                     <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </motion.a>
 
@@ -338,21 +339,9 @@ export function CTASection({ heading, primary, secondary }: CTASectionProps) {
                     <div className="my-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
                     {/* Testimonial mini */}
-                    <div className="flex items-start gap-3">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-white">
-                        JM
-                      </div>
-                      <div>
-                        <p className="text-xs leading-relaxed text-white/60">
-                          &ldquo;They delivered a complex SaaS platform ahead of
-                          schedule. The transparency throughout was
-                          refreshing.&rdquo;
-                        </p>
-                        <p className="mt-2 text-[11px] font-medium text-white/40">
-                          — James M., Founder
-                        </p>
-                      </div>
-                    </div>
+                    <a href="/case-studies" className="block text-xs leading-relaxed text-white/70 underline-offset-2 hover:text-white hover:underline">
+                      Read delivered project outcomes in the case studies.
+                    </a>
 
                     {/* Tech icons row */}
                     <div className="mt-5 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3">

@@ -12,7 +12,7 @@ export function generateAboutSchema() {
         "@type": "AboutPage",
         "url": aboutUrl,
         "name": "About ClickMasters",
-        "description": "ClickMasters is a web development company built on real craft, not shortcuts. Founded in 2018, we've grown from a two-person team into a full-service studio of more than 50 people, building websites, web apps, and SaaS platforms for startups and established companies.",
+        "description": "Clickmasters Web Development Company builds websites, web apps, and SaaS platforms. Delivered work is published as case studies.",
         "mainEntity": { "@id": `${SITE_URL}/#organization` },
         "breadcrumb": {
           "@type": "BreadcrumbList",
@@ -26,40 +26,11 @@ export function generateAboutSchema() {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         "name": "ClickMasters",
+        "legalName": "Clickmasters Web Development Company",
         "url": SITE_URL,
         "logo": `${SITE_URL}/logo.webp`,
-        "foundingDate": "2018",
-        "founder": {
-          "@type": "Person",
-          "name": "Alex Chen",
-          "jobTitle": "CEO & Founder"
-        },
-        "numberOfEmployees": {
-          "@type": "QuantitativeValue",
-          "value": "50+"
-        },
-        "employee": [
-          {
-            "@type": "Person",
-            "name": "Alex Chen",
-            "jobTitle": "CEO & Founder"
-          },
-          {
-            "@type": "Person",
-            "name": "Sarah Mitchell",
-            "jobTitle": "CTO"
-          },
-          {
-            "@type": "Person",
-            "name": "Marcus Rivera",
-            "jobTitle": "Head of Design"
-          },
-          {
-            "@type": "Person",
-            "name": "Emily Nakamura",
-            "jobTitle": "Head of Engineering"
-          }
-        ]
+        "email": "sales@clickmasterswebdevelopmentcompany.com",
+        "telephone": "+1-325-202-4074",
       }
     ]
   };

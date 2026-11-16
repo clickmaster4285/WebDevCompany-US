@@ -3,6 +3,11 @@ import type { Metadata } from "next";
 import { faqPages } from "@/data/faq-pages";
 import { getMetadata } from "@/lib/metadata";
 import { FAQDetailPage } from "@/components/faq-detail/FAQDetailPage";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { RelatedPages } from "@/components/seo/RelatedPages";
+import { breadcrumbJsonLd } from "@/lib/seo";
+import { withEditedSeo } from "@/lib/cms/metadata";
+import { contextualBlogLinks } from "@/lib/cms/blog-posts";
 
 type FAQDetailRouteProps = {
   params: Promise<{
@@ -16,7 +21,7 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: FAQDetailRouteProps): Promise<Metadata> {
+async function baseGenerateMetadata({ params }: FAQDetailRouteProps): Promise<Metadata> {
   const { slug } = await params;
   const faq = faqPages.find((item) => item.slug === slug);
 
@@ -41,5 +46,76 @@ export default async function Page({ params }: FAQDetailRouteProps) {
     notFound();
   }
 
-  return <FAQDetailPage faq={faq} />;
+  const index = faqPages.findIndex((item) => item.slug === slug);
+  const neighbors = faqPages
+    .filter((_, itemIndex) => itemIndex !== index)
+    .slice(0, 4)
+    .map((item) => ({
+      href: `/faqs/${item.slug}`,
+      label: item.page.title,
+    }));
+
+  const serviceHref = faq.aboveTheFold?.secondaryCta?.url?.replace(/\/$/, "") || "";
+  const related = [
+    ...(slug === "how-to-choose-web-development-company"
+      ? [{
+          href: "/blogs/web-development-company",
+          label: "What to look for in a web development company",
+        }]
+      : []),
+    ...(serviceHref.startsWith("/") && !serviceHref.startsWith("/faqs")
+      ? [{ href: serviceHref, label: faq.aboveTheFold.secondaryCta.label }]
+      : []),
+    { href: "/faqs", label: "All FAQs" },
+    { href: "/industries", label: "Industries we serve" },
+    { href: "/locations", label: "Cities we serve" },
+    ...(await contextualBlogLinks(`/faqs/${faq.slug}`)),
+    ...neighbors,
+  ];
+
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "FAQs", path: "/faqs" },
+          { name: faq.page.title, path: `/faqs/${faq.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: faq.page.title,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.aboveTheFold.directAnswer,
+              },
+            },
+            ...(faq.relatedQuestions ?? []).map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          ],
+        }}
+      />
+      <FAQDetailPage faq={faq} />
+      <RelatedPages heading="Related pages" links={related} />
+    </>
+  );
+}
+
+// Edited-page SEO from the ERP (Part B), applied on the server.
+export async function generateMetadata(
+  props: Parameters<typeof baseGenerateMetadata>[0],
+) {
+  const { slug } = await props.params;
+  return withEditedSeo(
+    `/faqs/${[slug].flat().join("/")}`,
+    await baseGenerateMetadata(props),
+  );
 }

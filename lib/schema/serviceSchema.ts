@@ -17,28 +17,5 @@ export function generateServiceSchema(service: ServicePageData) {
     },
     "areaServed": ["United States", "United Kingdom", "Pakistan"],
     "url": canonicalUrl,
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": `${SITE_URL}/`
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": `${SITE_URL}/services`
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": service.title,
-          "item": canonicalUrl
-        }
-      ]
-    }
   };
 }
