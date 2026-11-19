@@ -122,6 +122,17 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-5WXTD44P"
+          strategy="beforeInteractive"
+        />
+        <Script id="google-tag-manager" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `}
+        </Script>
         {antiFlicker && (
           <>
             <style dangerouslySetInnerHTML={{ __html: erpAntiFlickerCss }} />
@@ -142,20 +153,6 @@ export default async function RootLayout({
           editedSlugs={editedSlugs}
           antiFlicker={process.env.CMS_ANTI_FLICKER !== "off"}
         />
-        {/* Google Analytics (gtag.js) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-NGB935HHG7"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-NGB935HHG7');
-          `}
-        </Script>
-
         {/* Microsoft Clarity */}
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
