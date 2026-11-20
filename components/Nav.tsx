@@ -345,7 +345,9 @@ export function Nav() {
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-950 transition-all duration-300 ease-out hover:bg-slate-100 hover:scale-110 lg:hidden focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -353,7 +355,7 @@ export function Nav() {
 
         {/* Changed md:hidden to lg:hidden */}
         {mobileOpen && (
-          <div className="mt-3 rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-[0_20px_70px_rgba(15,23,42,0.14)] lg:hidden">
+          <div id="mobile-menu" className="mt-3 rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-[0_20px_70px_rgba(15,23,42,0.14)] lg:hidden">
             <div className="grid gap-2">
               {mobileLinks.map((link) => (
                 <Link

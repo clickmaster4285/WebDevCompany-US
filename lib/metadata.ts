@@ -50,8 +50,8 @@ export function getMetadata({
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
+          // Dimensions only for custom images; the default logo is not 1200x630.
+          ...(imagePath ? { width: 1200, height: 630 } : {}),
           alt: title,
         },
       ],

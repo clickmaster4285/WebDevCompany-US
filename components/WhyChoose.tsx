@@ -117,7 +117,7 @@ function ReasonRow({ reason, index }: { reason: (typeof REASONS)[number]; index:
           transition={{ duration: 0.5, delay: index * 0.09 + 0.3, ease: [0.175, 0.885, 0.32, 1.275] }}
           className="flex items-center gap-1.5"
         >
-          <Link href="/case-studies" className="text-[8px] font-mono uppercase tracking-wider text-primary/50 underline-offset-2 hover:text-primary hover:underline">
+          <Link href="/case-studies" className="text-[10px] font-mono uppercase tracking-wider text-primary/50 underline-offset-2 hover:text-primary hover:underline">
             Case studies
           </Link>
           <CheckCircle className="h-3.5 w-3.5 text-primary/40 transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
@@ -142,7 +142,6 @@ export function WhyChooseSection() {
           sizes="100vw"
           quality={60}
           className="object-cover"
-          priority
         />
         {/* Dark overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />

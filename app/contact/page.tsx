@@ -24,21 +24,13 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { generateContactSchema } from "@/lib/schema/contactSchema";
-// ─── CRM lead endpoint config ───────────────────────────────────────────────
-const WEBSITE = "clickmasterswebdevelopmentcompany.com";
-const SERVICE = "Software Development";
-
-function getUtmParams() {
-  if (typeof window === "undefined") return {};
-  const params = new URLSearchParams(window.location.search);
-  return {
-    utm_source: params.get("utm_source") || "",
-    utm_medium: params.get("utm_medium") || "",
-    utm_campaign: params.get("utm_campaign") || "",
-    utm_term: params.get("utm_term") || "",
-    utm_content: params.get("utm_content") || "",
-  };
-}
+// ─── CRM lead endpoint config (shared with the homepage hero form) ─────────
+import {
+  LEADS_ENDPOINT,
+  LEAD_WEBSITE as WEBSITE,
+  LEAD_SERVICE as SERVICE,
+  getUtmParams,
+} from "@/lib/leads";
 
 // ─── Elegant Background Shapes ──────────────────────────────────────────────
 function ElegantShape({
@@ -327,7 +319,7 @@ export default function ContactPage() {
     };
 
     try {
-      const res = await fetch("https://crm.clickmasters.pk/api/leads", {
+      const res = await fetch(LEADS_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

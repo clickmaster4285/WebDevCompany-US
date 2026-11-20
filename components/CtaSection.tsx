@@ -1,18 +1,18 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useGsap } from "@/lib/gsap";
 import { HeroBrowserScene } from "./HeroBrowserScene";
 
 function MagneticButton({
   children,
-  onClick,
+  href,
 }: {
   children: React.ReactNode;
-  onClick?: () => void;
+  href: string;
 }) {
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -54,20 +54,19 @@ function MagneticButton({
   }, []);
 
   return (
-    <button
+    <Link
       ref={ref}
-      onClick={onClick}
+      href={href}
       className="group inline-flex items-center gap-3 rounded-full bg-violet px-6 sm:px-8 py-4 text-sm sm:text-base font-medium text-white transition-all duration-300 ease-out violet-glow hover:bg-blue-600 hover:shadow-[0_40px_100px_-20px_var(--violet)] hover:-translate-y-0.5 hover:scale-105 min-h-[48px] min-w-[48px] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
     >
       {children}
-    </button>
+    </Link>
   );
 }
 
 export function CtaSection() {
   const root = useRef<HTMLElement>(null);
   const scene = useRef<HTMLDivElement>(null);
-  const router = useRouter();
   const { gsap } = useGsap();
 
   useEffect(() => {
@@ -141,7 +140,7 @@ export function CtaSection() {
         </div>
 
         <div className="flex justify-center mt-8 md:mt-10">
-          <MagneticButton onClick={() => router.push("/contact")}>
+          <MagneticButton href="/contact">
             Send brief →
           </MagneticButton>
         </div>

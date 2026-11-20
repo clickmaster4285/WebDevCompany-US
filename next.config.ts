@@ -17,13 +17,13 @@ const cmsEditorOrigin = originOf(process.env.CMS_EDITOR_ORIGIN);
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.simpleicons.org https://upload.wikimedia.org;
-  style-src 'self' 'unsafe-inline';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.simpleicons.org https://upload.wikimedia.org https://www.googletagmanager.com https://*.google-analytics.com https://www.clarity.ms https://*.clarity.ms;
+  style-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
   img-src 'self' data: blob: https:;
   font-src 'self' data:;
   media-src 'self' blob: data: https:;
-  frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com;
-  connect-src 'self' ws: https://crm.clickmasters.pk;
+  frame-src 'self' https://www.googletagmanager.com https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com;
+  connect-src 'self' ws: https://crm.clickmasters.pk https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.clarity.ms https://c.bing.com;
   frame-ancestors ${cmsEditorOrigin ? `'self' ${cmsEditorOrigin}` : "'none'"};
   form-action 'self'${cmsApiOrigin ? ` ${cmsApiOrigin}` : ""};
   base-uri 'self';

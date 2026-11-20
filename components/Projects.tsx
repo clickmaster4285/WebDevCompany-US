@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
 
 import AiVideo from "@/public/assets/ai.mp4";
 import WebDesign from "@/public/assets/web-design.mp4";
@@ -155,9 +156,12 @@ function ProjectShot({
         </motion.div>
 
         {/* ── CASE STUDY LINK ── */}
-        <div className="absolute top-6 right-8 text-mono text-white/60 z-20">
-          ↗ case study
-        </div>
+        <Link
+          href="/case-studies"
+          className="absolute top-6 right-8 text-mono text-white/60 hover:text-white z-20"
+        >
+          ↗ case studies
+        </Link>
       </motion.div>
     </section>
   );
@@ -172,7 +176,7 @@ export function Projects() {
   </h2>
 
   <p className="mt-4 max-w-xl text-base text-white/60">
-    A few real projects and the results they brought our clients.
+    The kinds of products we design, build and secure for our clients.
   </p>
 </div>
       {projects.map((p, i) => (

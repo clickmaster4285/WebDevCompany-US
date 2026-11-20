@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useGsap } from "@/lib/gsap";
 import heroVideo from "@/public/assets/hero.mp4";
 import Link from "next/link";
+import { submitLead } from "@/lib/leads";
 
 // Dark poster matching the video tint
 const POSTER_BASE64 =
@@ -15,6 +16,29 @@ export function HeroSection() {
   const browser = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [leadStatus, setLeadStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [leadError, setLeadError] = useState<string | null>(null);
+
+  const handleLeadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    setLeadStatus("sending");
+    setLeadError(null);
+    const error = await submitLead({
+      name: String(data.get("name") ?? ""),
+      email: String(data.get("email") ?? ""),
+      phone: String(data.get("phone") ?? ""),
+      message: String(data.get("message") ?? ""),
+    });
+    if (error) {
+      setLeadError(error);
+      setLeadStatus("idle");
+    } else {
+      form.reset();
+      setLeadStatus("sent");
+    }
+  };
 
   // IntersectionObserver — only load/play video when hero scrolls into view
   useEffect(() => {
@@ -230,36 +254,51 @@ export function HeroSection() {
               Ready to create something{" "}
               <span className="text-primary">unforgettable</span>?
             </h3>
-            <form
-              className="mt-6 space-y-4"
-              onSubmit={(e) => e.preventDefault()}
-            >
+            <form className="mt-6 space-y-4" onSubmit={handleLeadSubmit}>
+              <label htmlFor="hero-name" className="sr-only">Name</label>
               <input
+                id="hero-name"
+                name="name"
                 type="text"
+                autoComplete="name"
+                required
                 className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]"
                 placeholder="Name"
               />
+              <label htmlFor="hero-email" className="sr-only">Email</label>
               <input
+                id="hero-email"
+                name="email"
                 type="email"
+                autoComplete="email"
+                required
                 className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]"
                 placeholder="Email"
               />
+              <label htmlFor="hero-phone" className="sr-only">Phone number</label>
               <input
+                id="hero-phone"
+                name="phone"
                 type="tel"
+                autoComplete="tel"
                 className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[48px]"
                 placeholder="Phone number"
               />
+              <label htmlFor="hero-message" className="sr-only">Project details</label>
               <textarea
+                id="hero-message"
+                name="message"
                 className="w-full rounded-xl bg-white/10 px-4 py-4 text-white placeholder:text-white/40 border border-white/5 focus:border-primary/50 focus:outline-none focus:bg-white/15 transition-all min-h-[100px]"
                 rows={3}
                 placeholder="Project details"
               />
-              
+
               {/* Submit Button with Spotlight Effect */}
               <button
                 type="submit"
+                disabled={leadStatus === "sending"}
                 onMouseMove={handleMouseMove}
-                className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-primary to-violet hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:shadow-primary/25 py-4 text-white font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background cursor-pointer"
+                className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-primary to-violet hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:shadow-primary/25 py-4 text-white font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background cursor-pointer disabled:cursor-wait disabled:opacity-70"
                 style={{ "--x": "50%", "--y": "50%" } as React.CSSProperties}
               >
                 <span
@@ -269,8 +308,16 @@ export function HeroSection() {
                       "radial-gradient(200px circle at var(--x) var(--y), rgba(255, 255, 255, 0.25), transparent 80%)",
                   }}
                 />
-                <span className="relative z-10">Send Message</span>
+                <span className="relative z-10">
+                  {leadStatus === "sending" ? "Sending…" : "Send Message"}
+                </span>
               </button>
+              <p role="status" aria-live="polite" className="min-h-[1.25rem] text-sm">
+                {leadStatus === "sent" && (
+                  <span className="text-green-400">Thanks! We&apos;ll be in touch shortly.</span>
+                )}
+                {leadError && <span className="text-red-400">{leadError}</span>}
+              </p>
             </form>
           </div>
         </div>
